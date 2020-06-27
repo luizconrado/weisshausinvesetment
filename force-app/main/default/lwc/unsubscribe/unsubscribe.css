@@ -1,0 +1,16 @@
+/**
+ * Created by prasad on 11.06.20.
+ 
+*/
+
+.set-max-width{
+    max-width: 550px;
+}
+
+.primaryButton{
+    border: 0px;
+    background: #EB0A0A;
+    color: #fff;
+    padding: 14px 24px;
+    height:48px;
+}

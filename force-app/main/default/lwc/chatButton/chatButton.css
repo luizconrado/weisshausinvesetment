@@ -1,0 +1,20 @@
+/**
+ * Created by prasad on 18.06.20.
+ */
+
+.slds-card__footer {
+    text-align: center;
+    border-top: 1px solid rgb(239, 239, 239);
+}
+
+.slds-card__body {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.slds-button {
+    padding: 14px 24px;
+    font-weight: 700;
+    background: #EB0A0A;
+    color: #fff;
+}

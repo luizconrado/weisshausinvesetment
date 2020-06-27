@@ -1,0 +1,102 @@
+<apex:page title="Double optin confirmation" controller="LeadService" docType="html-5.0" showHeader="false" sidebar="false">
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" ></script>
+        <style>
+            .red{
+            color:red;
+            }
+            .form-area
+            {
+            background-color: #FAFAFA;
+            padding: 10px 40px 60px;
+            margin: 10px 0px 60px;
+            border: 1px solid GREY;
+            }
+        </style>
+        
+        <script>
+        j$ = jQuery.noConflict();
+        
+        /*j$(document).ready(function(){ 
+            alert("test");
+            j$('#characterLeft').text('140 characters left');
+            j$('#message').keydown(function () {
+                var max = 140;
+                var len =  j$(this).val().length;
+                if (len >= max) {
+                    j$('#characterLeft').text('You have reached the limit');
+                    j$('#characterLeft').addClass('red');
+                    j$('#btnSubmit').addClass('disabled');            
+                } 
+                else {
+                    var ch = max - len;
+                    j$('#characterLeft').text(ch + ' characters left');
+                    j$('#btnSubmit').removeClass('disabled');
+                    j$('#characterLeft').removeClass('red');            
+                }
+            });    
+        });*/
+        
+        </script>
+        
+    </head>
+    <apex:form id="thisForm">
+        
+        <div class="container">
+            <div class="col-md-12">
+                <div class="form-area">  
+                    <apex:outputPanel id="panel1" rendered="{!showForm}" layout="block">
+                    <apex:pageMessages />
+                    
+                    <br style="clear:both"/>
+                    <h3 style="margin-bottom: 25px; text-align: center;">Double Opt-in Confirmation</h3>
+                    <div class="form-group">
+                        <apex:inputText styleClass="form-control" required="false" html-placeholder="First Name" id="firstname" value="{!firstname}"/>
+                    </div>
+                    <div class="form-group">
+                        <apex:inputText styleClass="form-control" required="true" html-placeholder="Last Name" id="lastname" value="{!lastname}"/>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
+                            <apex:inputText styleClass="form-control" required="true" html-placeholder="Email" id="email" value="{!email}"/>
+                        </div>   
+                        
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span></span>
+                            <apex:inputText styleClass="form-control" required="false" html-placeholder="Phone Number" id="phone" value="{!phonenumber}"/>
+                        </div> 
+                    </div> 
+                    
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span><apex:inputCheckbox id="box1" value="{!termsandconditions}" required="true"/></span>
+                            <b>&nbsp;&nbsp;I accept these terms and conditions</b>
+                        </div> 
+                    </div>
+                    <!--<div class="form-group">
+                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required="true"/> 
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" type="textarea" id="message" placeholder="Message" maxlength="140" rows="7"></textarea>
+                        <span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>                   
+                    </div>-->
+                    
+                    <center>
+                    <apex:commandButton action="{!updateLeadWithConfirmartion}" value="Submit Form" styleClass="btn btn-primary pull-right" />
+                    </center>
+                    </apex:outputPanel>
+                    
+                    <apex:outputPanel id="panel2" rendered="{!!showForm}" layout="block">
+                        Thank you for submitting details.
+                    </apex:outputPanel>
+                </div>
+            </div>
+        </div>
+    </apex:form>
+</apex:page>

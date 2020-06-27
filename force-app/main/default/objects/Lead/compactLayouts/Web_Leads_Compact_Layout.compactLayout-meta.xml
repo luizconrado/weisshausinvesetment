@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Web_Leads_Compact_Layout</fullName>
+    <fields>Name</fields>
+    <fields>Company</fields>
+    <fields>Email</fields>
+    <fields>Doubt_Opt_in_Status__c</fields>
+    <fields>Website</fields>
+    <label>Web Leads Compact Layout</label>
+</CompactLayout>
+ 

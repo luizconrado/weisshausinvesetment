@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <description>Chat Button</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Chat Button</masterLabel>
+    <targets>
+        <target>lightning__Tab</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="title" type="String" default="Einen Chat beginnen"/>
+            <property name="description" type="String" default="Chatten Sie mit unseren Experten und lösen Sie Ihre Probleme in Echtzeit."/>
+            <property name="buttonLabel" type="String" default="Chat starten"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

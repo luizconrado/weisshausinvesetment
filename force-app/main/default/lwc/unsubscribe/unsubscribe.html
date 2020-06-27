@@ -1,0 +1,74 @@
+<!--
+ - Created by prasad on 11.06.20.
+ -->
+
+<!-- Verify Email Account -->
+<template>
+    <!-- Loader START-->
+    <template if:true={loaded}>
+        <div class="spinnerHolder">
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+    </template>
+    <!-- Loader END-->
+
+    <article class="slds-card" style="margin-top: 5rem;">
+        <div class="slds-card__header ">
+            <lightning-layout>
+                <lightning-layout-item padding="around-small" size="3">
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="6">
+                    <div class=" set-max-width">
+                        <header class="slds-media slds-media_center  slds-has-flexi-truncate">
+                            <div class="slds-media__body " style="text-align: center;
+    padding-top: .75rem;">
+                                <span class="slds-card__header-title" style="font-size: 2rem;">
+                                    <span>Ausloggen {productname}</span>
+                                </span>
+                            </div>
+                        </header>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="3">
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+        <div class="slds-card__body slds-card__body_inner ">
+
+            <lightning-layout>
+                <lightning-layout-item padding="around-small" size="3">
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="6">
+                    <div class="inputDesign set-max-width">
+                        <lightning-combobox name="Anrede" variant="label-hidden" value={reason}
+                            placeholder="Grund für die Abmeldung" options={reasonOptions} onchange={handleResonChange}>
+                        </lightning-combobox>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="3">
+                </lightning-layout-item>
+            </lightning-layout>
+
+
+
+        </div>
+        <footer class="slds-card__footer " style="text-align: center;">
+
+            <lightning-layout>
+                <lightning-layout-item padding="around-small" size="3">
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="6" style="text-align: center;">
+                    <div class="set-max-width">
+                        <button class="slds-button primaryButton" onclick={handleOptout}>Abmelden</button>
+
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="3">
+                </lightning-layout-item>
+
+            </lightning-layout>
+
+        </footer>
+    </article>
+
+</template>

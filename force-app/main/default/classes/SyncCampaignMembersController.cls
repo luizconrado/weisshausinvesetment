@@ -27,7 +27,7 @@ public with sharing class SyncCampaignMembersController {
     public static void startSync(String campaignId){
         Campaign campaing=[SELECT Id, Products__c FROM Campaign WHERE id=:campaignId];
        
-        List<String> products=campaing.Products__c.split(';');
+        List<String> products=(campaing.Products__c!=null)?campaing.Products__c.split(';'):new List<String>();
         Map<String,DescribeFieldResult> leadFieldMap=Util.getAllObjectFields('Lead');
         Map<String,DescribeFieldResult> contactFieldMap=Util.getAllObjectFields('Contact');
         
@@ -67,7 +67,7 @@ public with sharing class SyncCampaignMembersController {
         }
         
         if(leadProductFileds.size()>0){
-            String leadQuery='SELECT Id FROM Lead WHERE ';
+            String leadQuery='SELECT Id FROM Lead WHERE IsConverted=false AND ';
             for(String apiName:leadProductFileds){
                 leadQuery+=' '+apiName+'=\'Subscribed\' OR ';
             }

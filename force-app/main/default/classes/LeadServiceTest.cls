@@ -1,11 +1,41 @@
 @isTest
 public class LeadServiceTest {
     
+    
+   
+    
     @testSetup
     static void setupdata(){
         Lead l=TestDataFactory.getWebLead(true);
     }
 
+    @isTest
+    static void updateLeadToUnSubscribed(){
+        Test.startTest();
+        LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1];
+        Lead l2=TestDataFactory.getWebLead(false);
+        l2.Newsletter__c='Subscribed';
+        insert l2;
+        Lead l=TestDataFactory.getWebLead(true);
+        l.Newsletter__c='Subscribed';
+        update l;
+        Database.LeadConvert lc = new database.LeadConvert();
+        lc.setLeadId(l.Id);
+        lc.setDoNotCreateOpportunity(True);
+        lc.setOwnerId(Userinfo.getUserId());
+        lc.setConvertedStatus(convertStatus.MasterLabel);
+        List<Account> a=[SELECT id FROM Account ];
+        Database.LeadConvertResult lcr = Database.convertLead(lc);
+        Campaign c=TestDataFactory.getCampaing(true);
+        TestDataFactory.getLeadCampaignMember(c.Id, l2.id, true);
+        if(a.size()>0)
+            TestDataFactory.getContactCampaignMember(c.Id, a.get(0).id, true);
+        LeadService.updateLeadToUnSubscribed(l.Email,'Newsletter','s');
+        LeadService.updateLeadToUnSubscribed(l2.Email,'Newsletter','s');
+        List<CampaignMember> cm=[select id from CampaignMember where Campaignid=:c.Id];
+        System.assert(cm.size()==0);
+        Test.stopTest();
+    }
     @isTest
     static void convertLeadTest(){
         Test.startTest();

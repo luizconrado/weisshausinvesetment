@@ -3,29 +3,30 @@
  -->
 <!-- Contact Support -->
 <template>
+
     <div class="outter-wrapper">
         <article class="slds-card">
             <div class="slds-card__header slds-grid">
                 <header class="slds-media slds-media_center slds-has-flexi-truncate">
                     <div class="slds-media__figure">
-                <span class="slds-icon_container slds-icon-standard-case" title="case">
-                <lightning-icon icon-name="standard:live_chat_visitor"></lightning-icon>
+                <span class="slds-icon_container" title="case">
+                <lightning-icon icon-name="utility:chat" size="large"></lightning-icon>
                 <span class="slds-assistive-text">{title}</span>
                 </span>
                     </div>
-                    <div class="slds-media__body">
-                        <h2 class="slds-card__header-title">
-                            <span>{title}</span>
-                        </h2>
-                    </div>
-
                 </header>
             </div>
-            <div class="slds-card__body slds-card__body_inner">{description}
+
+            <div class="slds-card__body slds-card__body_inner">
+                <div class="slds-media__body box-title">
+                    <span >{title}</span>
+                </div>
+                <div class="slds-media__body">
+                    {description}
+                </div>
             </div>
-            <footer class="slds-card__footer" style="text-align: center;
-    border-top: 1px #efefef solid;">
-                <button type="submit" class="slds-button slds-button_neutral slds-button_stretch customButton"
+            <footer class="slds-card__footer">
+                <button type="submit" class="slds-button slds-button_neutral customButton"
                         onclick={chatClick}>{buttonLabel}
                 </button>
             </footer>

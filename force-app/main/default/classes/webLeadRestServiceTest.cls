@@ -26,6 +26,37 @@ public class webLeadRestServiceTest {
         System.assert(l.size()>0);
         Test.stopTest();   
     }
+     @IsTest
+    static void testAccountExsistGet(){
+        Test.startTest();
+        Account a=new Account();
+        a.PersonEmail='test@test.com';
+        a.LastName='Testaccount';
+        insert a;
+        
+        String baseUrl = URL.getSalesforceBaseUrl().toExternalForm();
+        
+        RestRequest req = new RestRequest(); 
+        RestResponse res = new RestResponse();
+        RestContext.response = res;
+        
+        
+        req.requestURI = baseUrl+'/services/apexrest/generate/lead/'; 
+        req.httpMethod = 'GET';
+        req.addHeader('Content-Type', 'application/json');
+        
+        
+        req.params.put('fields[email][value]', 'test@test.com');
+        req.params.put('fields[productInterested][value]', 'Newsletter');
+        req.headers.put('User-Agent', 'crome;https://weisshausinve0.wpengine.com');
+        
+        RestContext.request = req;
+        webLeadRestService.doPost();        
+      
+        List<Lead> l=[Select id from Lead ];
+        System.assert(l.size()>0);
+        Test.stopTest();   
+    }
     @IsTest
     static void testDublicateGet(){
         Test.startTest();

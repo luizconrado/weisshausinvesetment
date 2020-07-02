@@ -1,90 +1,77 @@
 public without sharing class LeadService {
 
-    private static Map<String, String> getProductMetaDataConfiguration() {
-        Map<String, String> productCodeAPIMap = new Map<String, String>();
-        List<Subscription_Product_Configuration__mdt> productConfigList = [SELECT Id, Label, Field_API__c FROM Subscription_Product_Configuration__mdt];
-        for (Subscription_Product_Configuration__mdt productConfigRec : productConfigList) {
-            productCodeAPIMap.put(productConfigRec.Label, productConfigRec.Field_API__c);
-        }
-        return productCodeAPIMap;
-    }
+   
     //Rest api
     /*
      * Description: called from webhook to check and update exsisting lead and accounts
+     * email:sends verify account email as external user
 	*/
-    public static Lead leadDupeMerge(Lead ldRec) {
-        Map<String, String> productCodeAPIMap = getProductMetaDataConfiguration();
-        if(!productCodeAPIMap.containsKey(ldRec.ProductInterest__c)) return ldRec;
+    public static void leadDupeMerge(Lead ldRec) {
+        Map<String, String> productCodeAPIMap = Constant.PRODUCT_CONFIGURATION;
+        List<String> personAccountFields=new List<String>();
+        for(String apiName:productCodeAPIMap.values()) personAccountFields.add(apiname.replace('__c','__pc'));
         String email=ldRec.Email;
-        String leadQuery = 'SELECT Id,Phone ,LastName, FirstName, MiddleName, Suffix ,Lead_Origin__c,Email,Gender__c,Accepted_Terms_and_Conditions__c,Newsletter__c,Product_A__c,Product_B__c,Product_C__c,Product_D__c,ProductInterest__c FROM Lead WHERE Email =:email  AND IsConverted = false';
-        String accountQuery = 'SELECT Id,Phone ,LastName, FirstName, MiddleName, Suffix ,PersonEmail,Gender__pc,Accepted_Terms_and_Conditions__pc,Newsletter__pc,Product_D__pc,Product_C__pc,Product_A__pc,Product_B__pc,ProductInterest__pc FROM Account WHERE PersonEmail =:email';
+        String leadQuery = 'SELECT Id,Phone ,LastName, FirstName, MiddleName, Suffix ,Last_Email_Sent_Date__c,Lead_Origin__c,Email,Gender__c,Accepted_Terms_and_Conditions__c,ProductInterest__c,'+String.join(productCodeAPIMap.values(),',')+' FROM Lead WHERE Email =:email  AND IsConverted = false';
+        String accountQuery = 'SELECT Id,Phone ,LastName, FirstName, MiddleName, Suffix ,Last_Email_Sent_Date__pc,Origin__pc,PersonEmail,Gender__pc,Accepted_Terms_and_Conditions__pc,ProductInterest__pc,'+String.join(personAccountFields,',')+' FROM Account WHERE PersonEmail =:email';
         List<Lead> existingLeads = Database.query(leadQuery);
         List<Account> existingAccounts = Database.query(accountQuery);
-
        
-        //updataing lead
-        if(existingLeads.size()>0){
-            Lead leadMaster=existingLeads.get(0);
-            //merging lead origin
-            if(ldRec.Lead_Origin__c!=null && leadMaster.Lead_Origin__c!=null && !leadMaster.Lead_Origin__c.contains(ldRec.Lead_Origin__c))
-                leadMaster.Lead_Origin__c = (leadMaster.Lead_Origin__c !=null)?leadMaster.Lead_Origin__c +';'+ldRec.Lead_Origin__c:ldRec.Lead_Origin__c;
-            
-            
-            //update product status 
-            if (leadMaster.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == null 
-                || leadMaster.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Not Subscribed'
-                || leadMaster.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Unsubscribed') { 
-                    leadMaster.put(productCodeAPIMap.get(ldRec.ProductInterest__c), 'Awaiting Confirmation');
-                }
-            else if (leadMaster.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Awaiting Confirmation') {
-                leadMaster.put(productCodeAPIMap.get(ldRec.ProductInterest__c), 'Resend Confirmation');
-            }
-            //updating latest product intrest
-            leadMaster.put('ProductInterest__c', ldRec.ProductInterest__c);
-            ldRec=leadMaster;
-        }
-        else{
-            //updatating product status for new lead
-            if (ldRec.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == null 
-                || ldRec.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Not Subscribed' || ldRec.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Unsubscribed') 
-                ldRec.put(productCodeAPIMap.get(ldRec.ProductInterest__c), 'Awaiting Confirmation');
-            else if (ldRec.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Awaiting Confirmation')
-                ldRec.put(productCodeAPIMap.get(ldRec.ProductInterest__c), 'Resend Confirmation');
-        }
         //updataing account
         if(existingAccounts.size()>0){
             Account accountMaster=existingAccounts.get(0);
             String fieldApi=productCodeAPIMap.get(ldRec.ProductInterest__c).replace('__c','__pc');
+            //merging lead origin
+            if(ldRec.Lead_Origin__c!=null && accountMaster.Origin__pc!=null && !accountMaster.Origin__pc.contains(ldRec.Lead_Origin__c))
+                accountMaster.Origin__pc = (accountMaster.Origin__pc !=null)?accountMaster.Origin__pc +';'+ldRec.Lead_Origin__c:ldRec.Lead_Origin__c;
+                        
             //updataing product status on person account account 
-            if (accountMaster.get(fieldApi) == null || accountMaster.get(fieldApi) == 'Not Subscribed' || accountMaster.get(fieldApi) == 'Unsubscribed') {
-                accountMaster.put(fieldApi, 'Awaiting Confirmation');
-            } else if (accountMaster.get(fieldApi) == 'Awaiting Confirmation') {
-                accountMaster.put(fieldApi, 'Resend Confirmation');
-            }
+            if (accountMaster.get(fieldApi) == null 
+                || accountMaster.get(fieldApi) == 'Not Subscribed' 
+                || accountMaster.get(fieldApi) == 'Unsubscribed'
+                || accountMaster.get(fieldApi) == 'Resend Confirmation') {
+                    accountMaster.put(fieldApi, 'Awaiting Confirmation');
+                    accountMaster.Last_Email_Sent_Date__pc=Date.today();
+            } 
             accountMaster.put('ProductInterest__pc', ldRec.ProductInterest__c);
-            if(existingLeads.size()==0){
-                //copying exsisting data from person account
-                ldRec.Accepted_Terms_and_Conditions__c=accountMaster.Accepted_Terms_and_Conditions__pc;
-                ldRec.Gender__c=accountMaster.Gender__pc;
-                if(productCodeAPIMap.get(ldRec.ProductInterest__c)!='Newsletter__c')ldRec.Newsletter__c=accountMaster.Newsletter__pc;
-             	if(productCodeAPIMap.get(ldRec.ProductInterest__c)!='Product_A__c')ldRec.Product_A__c=accountMaster.Product_A__pc;
-                if(productCodeAPIMap.get(ldRec.ProductInterest__c)!='Product_B__c')ldRec.Product_B__c=accountMaster.Product_B__pc;
-                if(productCodeAPIMap.get(ldRec.ProductInterest__c)!='Product_C__c')ldRec.Product_C__c=accountMaster.Product_C__pc;
-                if(productCodeAPIMap.get(ldRec.ProductInterest__c)!='Product_D__c')ldRec.Product_D__c=accountMaster.Product_D__pc;
-                ldRec.Phone=accountMaster.Phone;
-                ldRec.FirstName=accountMaster.FirstName;
-                ldRec.MiddleName=accountMaster.MiddleName;
-                ldRec.LastName=accountMaster.LastName;
-                ldRec.Suffix=accountMaster.Suffix;
-            
-            }
-            
             update accountMaster;
+            sendVerificationEmail(accountMaster.Id);
+            
+        }
+        //updataing lead
+        else if(existingLeads.size()>0){
+            Lead leadMaster=existingLeads.get(0);
+            //merging lead origin
+            if(ldRec.Lead_Origin__c!=null && leadMaster.Lead_Origin__c!=null && !leadMaster.Lead_Origin__c.contains(ldRec.Lead_Origin__c))
+                leadMaster.Lead_Origin__c = (leadMaster.Lead_Origin__c !=null)?leadMaster.Lead_Origin__c +';'+ldRec.Lead_Origin__c:ldRec.Lead_Origin__c;
+            //update product status 
+            if (leadMaster.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == null 
+                || leadMaster.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Not Subscribed'
+                || leadMaster.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Unsubscribed'
+                || leadMaster.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Resend Confirmation') { 
+                    leadMaster.put(productCodeAPIMap.get(ldRec.ProductInterest__c), 'Awaiting Confirmation');
+                    leadMaster.Last_Email_Sent_Date__c=Date.today();
+                }
+            //updating latest product intrest
+            leadMaster.put('ProductInterest__c', ldRec.ProductInterest__c);
+            ldRec=leadMaster;
+        }
+        //create new lead
+        else{
+            //updatating product status for new lead
+            if (ldRec.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == null 
+                || ldRec.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Not Subscribed' 
+                || ldRec.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Unsubscribed'
+                || ldRec.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Resend Confirmation') {
+                	ldRec.put(productCodeAPIMap.get(ldRec.ProductInterest__c), 'Awaiting Confirmation');
+                    ldRec.Last_Email_Sent_Date__c=Date.today();
+                }
+                
+        }
+        if(existingAccounts.size()==0) {
+            upsert ldRec;
+            sendVerificationEmail(ldRec.Id,ldRec.Email);
         }
         
-        
-        return ldRec;
-         
     }
 
     //LC Button
@@ -94,9 +81,7 @@ public without sharing class LeadService {
     @AuraEnabled
     public static String convertLeadToPersonAccount(String leadId,String leadEmail){
         LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1];
-        List<Account> personAccount=[SELECT Id FROM Account WHERE PersonEmail =:leadEmail];
-        
-        Id personAccountRecordTypeId =  Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('PersonAccount').getRecordTypeId();
+        List<Account> personAccount=[SELECT Id FROM Account WHERE PersonEmail =:leadEmail AND recordTypeId=:Constant.PERSON_ACCOUNT_RECORDTYPEID];
         Database.LeadConvert lc = new database.LeadConvert();
         if(personAccount.size()>0) lc.setAccountId(personAccount.get(0).Id);
        
@@ -108,44 +93,99 @@ public without sharing class LeadService {
         return lcr.getAccountId();
        
     }
+     /*
+     * Description: resends verification email to lead
+     * email:sends verify account email as intenral user
+	*/
+    @AuraEnabled
+    public static void sendEmailToLead(String leadId,String emailToProducts){
+        List<Lead> leadlist=getLeadList('','',leadId);
+        Map<String,Object> emailProductMap=(Map<String,Object>)JSON.deserializeUntyped(emailToProducts);
+        if(leadlist.size()>0){
+            Lead ldRec=leadlist.get(0);
+            if(((Boolean)emailProductMap.get('newsletter'))==true){
+                ldRec.Newsletter__c='Resend Confirmation';
+                ldRec.ProductInterest__c='Newsletter';
+                ldRec.Last_Email_Sent_Date__c=Date.today();
+                update ldRec;
+                sendVerificationEmail(ldRec.id, Constant.LEAD_VERIFY_EMAIL_TEMPLATE);
+            }
+            if(((Boolean)emailProductMap.get('productA'))==true){
+                ldRec.Product_A__c='Resend Confirmation';
+                ldRec.ProductInterest__c='Product A';
+                ldRec.Last_Email_Sent_Date__c=Date.today();
+                update ldRec;
+                sendVerificationEmail(ldRec.id, Constant.LEAD_VERIFY_EMAIL_TEMPLATE);
+            }
+        }
+        
+        
+    }
     
 
     //LWC Component
+    /*
+     * Description: saves lead details when filled in verification form
+	*/
     @AuraEnabled
     public static Boolean updateLeadWithConfirmation(String email, String product, String salutation, String lastName, String firstName, Boolean termsAndConditions, String phoneNumber, String leadId) {
-
+        Map<String, String> productCodeAPIMap = Constant.PRODUCT_CONFIGURATION;
         Boolean showForm = true;
         if (checkProductConfiguration(product, email)) {
-            showForm = updateLead(email, product, salutation, lastName, firstName, termsAndConditions, phoneNumber,leadId);
+            String fieldToUpdate = productCodeAPIMap.get(product);
+            List<Lead> leadList = getLeadList(email, fieldToUpdate,leadId);
+            //update lead with entered details
+            if (leadList.size() > 0) {
+                Lead LeadRec = leadList.get(0);
+                if(salutation!=null || String.isNotEmpty(salutation)){
+                    LeadRec.Salutation = salutation;
+                    LeadRec.Gender__c=(salutation.contains('Herr'))?'Male':'Female';
+                }
+                LeadRec.LastName = lastName;
+                LeadRec.FirstName = firstName;
+                LeadRec.Phone = phoneNumber;
+                LeadRec.put(productCodeAPIMap.get(product), 'Subscribed');
+                showForm = updateLeadDML(LeadRec, showForm);
+            }
+            
         }
         return showForm;
     }
 
     /*
      * Description: on load of unsubscribe page product is updateted to unsubscribe
+     * email:sends product unsubscribed email
 	*/
     @AuraEnabled
     public static Boolean updateLeadToUnSubscribed(String email,String product,String reason){
-        Map<String, String> productCodeAPIMap = getProductMetaDataConfiguration();
+        product=product.replace('+',' ');
+        Map<String, String> productCodeAPIMap = Constant.PRODUCT_CONFIGURATION;
         if(!productCodeAPIMap.containsKey(product)) return true;
-        String leadQuery = 'SELECT Id,Email,' + productCodeAPIMap.get(product) + ' FROM Lead WHERE Email =:email  AND IsConverted = false';
-        String accountQuery = 'SELECT Id,PersonEmail,' + productCodeAPIMap.get(product).replace('__c','__pc')  + ' FROM Account WHERE PersonEmail =:email';
+        String leadQuery = 'SELECT Id,Email,Reason_For_Unsubscribing__c,' + productCodeAPIMap.get(product) + ' FROM Lead WHERE Email =:email  AND IsConverted = false';
+        String accountQuery = 'SELECT Id,PersonEmail,ProductInterest__pc,Reason_For_Unsubscribing__pc,' + productCodeAPIMap.get(product).replace('__c','__pc')  + ' FROM Account WHERE PersonEmail =:email';
         List<Lead> existingLeads = Database.query(leadQuery);
         List<Account> existingAccounts = Database.query(accountQuery);
         List<String> leadAndContactId=new List<String>();
-        if(existingLeads.size()>0){
-            Lead leadMaster=existingLeads.get(0);
-            leadMaster.put(productCodeAPIMap.get(product), 'UnSubscribed');
-            leadAndContactId.add(leadMaster.id);
-            update leadMaster;
-        }
         if(existingAccounts.size()>0){
             Account accountMaster=existingAccounts.get(0);
             accountMaster.put(productCodeAPIMap.get(product).replace('__c','__pc'), 'UnSubscribed');
-            List<Contact> personContact=[SELECT id FROM Contact WHERE accountId=:accountMaster.id AND Account.ispersonaccount=true];
-            if(personContact.size()>0) leadAndContactId.add(personContact.get(0).Id);
+            accountMaster.ProductInterest__pc=product;
+            accountMaster.Reason_For_Unsubscribing__pc=reason;
+            List<Contact> personContact=[SELECT id,Email FROM Contact WHERE accountId=:accountMaster.id AND Account.ispersonaccount=true];
+            leadAndContactId.add(personContact.get(0).Id);
             update accountMaster;
+            MailUtility.sendAccountHtmlEmail(personContact.get(0).Id, accountMaster.id, Constant.ACCOUNT_UNSUBSCRIBE_EMAIL_TEMPLATE, personContact.get(0).Email);
         }
+        else if(existingLeads.size()>0){
+            Lead leadMaster=existingLeads.get(0);
+            leadMaster.put(productCodeAPIMap.get(product), 'UnSubscribed');
+            leadMaster.Reason_For_Unsubscribing__c=reason;
+            leadMaster.ProductInterest__c=product;
+            leadAndContactId.add(leadMaster.id);
+            update leadMaster;
+            MailUtility.sendLeadHtmlEmail(leadMaster.Id, Constant.LEAD_UNSUBSCRIBE_EMAIL_TEMPLATE, leadMaster.Email);
+        }
+        
         
         List<CampaignMember> campaignMember=[select id from CampaignMember where Campaign.Products__c=:product AND LeadOrContactId IN:leadAndContactId];
         if(campaignMember.size()>0){
@@ -157,71 +197,69 @@ public without sharing class LeadService {
     
     /*
      * Description: on load of verification from update terms and condition and subscribe status
+     * email:sends product subscribed email
 	*/
     @AuraEnabled
     public static leadWrapper checkAndUpdateLeadOnload(String email, String product) {
+        product=product.replace('+',' ');
         leadWrapper respWrapper = new leadWrapper();
 
         Boolean showForm = true;
         if (checkProductConfiguration(product, email)) {
-            Map<String, String> productCodeAPIMap = getProductMetaDataConfiguration();
+            
+            
+            Map<String, String> productCodeAPIMap = Constant.PRODUCT_CONFIGURATION;
             String fieldToUpdate = productCodeAPIMap.get(product);
+            List<Account> accountList=Database.query('SELECT id,Accepted_Terms_and_Conditions__pc,Salutation,LastName,Phone,'+productCodeAPIMap.get(product).replace('__c','__pc')+' FROM Account WHERE PersonEmail=:email');
             List<Lead> leadList = getLeadList(email, fieldToUpdate,'');
-            if (leadList.size() > 0) {
+            //update account with product status
+            if(accountList.size()>0){
+                Account accountRec = accountList.get(0);
+                showForm = false;
+                accountRec.put(productCodeAPIMap.get(product).replace('__c','__pc'), 'Subscribed');
+                accountRec.Accepted_Terms_and_Conditions__pc=true;
+                update accountRec;
+                Contact personContact=[SELECT id,Email FROM Contact WHERE accountId=:accountRec.id AND account.IsPersonAccount=true];
+                MailUtility.sendAccountHtmlEmail(personContact.id, accountRec.id, Constant.ACCOUNT_SUBSCRIBED_EMAIL_TEMPLATE, personContact.Email);
+            }
+            //update lead with product status
+            else if (leadList.size() > 0) {
                 Lead LeadRec = leadList.get(0);
                 if(String.isBlank(LeadRec.Salutation) || String.isBlank(LeadRec.LastName) || String.isBlank(LeadRec.Phone)){
                     showForm = true;
-                }else{
+                }
+                else{
                     showForm = false;
                 }
-
                 LeadRec.put(productCodeAPIMap.get(product), 'Subscribed');
                 LeadRec.Accepted_Terms_and_Conditions__c=true;
                 respWrapper.leadId = LeadRec.Id;
                 updateLeadDML(LeadRec, showForm);
+                MailUtility.sendLeadHtmlEmail(LeadRec.id, Constant.LEAD_SUBSCRIBED_EMAIL_TEMPLATE, LeadRec.Email);
             }
         }
         respWrapper.showForm = showForm;
         return respWrapper;
     }
     
+    //helpers
+    private static void sendVerificationEmail(String accountId){
+        Contact personContact=[SELECT id,Email FROM Contact WHERE AccountId=:accountId AND Account.ispersonaccount=true];
+        MailUtility.sendAccountHtmlEmail(personContact.Id, accountId, Constant.ACCOUNT_VERIFY_EMAIL_TEMPLATE, personContact.Email);
+    }
+    private static void sendVerificationEmail(String leadId,String leadEmail){
+        MailUtility.sendLeadHtmlEmail(leadId,Constant.LEAD_VERIFY_EMAIL_TEMPLATE,leadEmail);
+    }
+   
     private static Boolean checkProductConfiguration(String product, String email) {
         if (product.contains('+'))product = product.replace('+', ' ');
-        Map<String, String> productCodeAPIMap = getProductMetaDataConfiguration();
-        if (String.isNotBlank(email) && String.isNotBlank(product) && productCodeAPIMap.containsKey(product)) {
-
-            return true;
-        }
+        Map<String, String> productCodeAPIMap = Constant.PRODUCT_CONFIGURATION;
+        if (String.isNotBlank(email) && String.isNotBlank(product) && productCodeAPIMap.containsKey(product)) return true;
         return false;
-    }
-
-    private static Boolean updateLead(String email, String product, String salutation, String lastName, String firstName, Boolean termsAndConditions, String phoneNumber, String leadId) {
-        Map<String, String> productCodeAPIMap = getProductMetaDataConfiguration();
-        Boolean showForm = true;
-        String fieldToUpdate = productCodeAPIMap.get(product);
-        List<Lead> leadList = getLeadList(email, fieldToUpdate,leadId); //Database.query('SELECT Id FROM Lead WHERE Email =:email AND IsConverted = false AND LeadSource = \'Website\' AND ' + fieldToUpdate + ' = \'Awaiting Confirmation\' FOR UPDATE');
-        System.debug('leadList ' + leadList);
-        if (leadList.size() > 0) {
-            Lead LeadRec = leadList.get(0);
-            if(salutation!=null || String.isNotEmpty(salutation)){
-                LeadRec.Salutation = salutation;
-                LeadRec.Gender__c=(salutation.contains('Herr'))?'Male':'Female';
-            }
-            
-            LeadRec.LastName = lastName;
-            LeadRec.FirstName = firstName;
-            LeadRec.Accepted_Terms_and_Conditions__c = termsAndConditions;
-            LeadRec.Phone = phoneNumber;
-            LeadRec.put(productCodeAPIMap.get(product), 'Subscribed');
-
-            showForm = updateLeadDML(LeadRec, showForm);
-        }
-        return showForm;
     }
 
     private static Boolean updateLeadDML(Lead LeadRec, Boolean showForm) {
         try {
-            System.debug('LeadRec ' + LeadRec);
             update LeadRec;
             showForm = false;
         } catch (Exception ex) {

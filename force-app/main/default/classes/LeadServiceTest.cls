@@ -1,6 +1,6 @@
 @isTest
 public class LeadServiceTest {
-    
+     
     
    
     
@@ -17,7 +17,7 @@ public class LeadServiceTest {
         l2.Newsletter__c='Subscribed';
         insert l2;
         Lead l=TestDataFactory.getWebLead(true);
-        l.Newsletter__c='Subscribed';
+        l.Newsletter__c='Subscribed'; 
         update l;
         Database.LeadConvert lc = new database.LeadConvert();
         lc.setLeadId(l.Id);
@@ -53,13 +53,7 @@ public class LeadServiceTest {
                                                ,'123456789',l.id);
         Test.stopTest();
     }
-    @isTest
-    static void updateWithRandomNumberTest(){
-        Test.startTest();
-        LeadService.updateWithRandomNumber([SELECT Id,LeadSource,Activation_Number__c FROM lead]);
-        
-        Test.stopTest();
-    }
+   
     
     @isTest
     static void leadDupeMergeTest(){
@@ -93,6 +87,8 @@ public class LeadServiceTest {
     static void checkAndUpdateLeadOnloadTest(){
         Test.startTest();
         Lead l=[SELECT id,Email FROM Lead LIMIT 1];
+        l.Newsletter__c='Awaiting Confirmation';
+        update l;
         LeadService.checkAndUpdateLeadOnload(l.Email, 'Newsletter');
         Test.stopTest();
     }

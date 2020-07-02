@@ -13,24 +13,23 @@ global class webLeadRestService {
         String productInterest = req.params.get('fields[productInterested][value]');
         String email = req.params.get('fields[email][value]');
         String company = req.params.get('fields[websiteSource][value]');
-
+        System.debug('headersMap '+headersMap);
+        System.debug('req.params '+req.params);
         Lead lead = new Lead();
 
         lead.Email = email;
         lead.ProductInterest__c = productInterest;
-
-        lead.State = 'New';
+		lead.State = 'New';
         lead.LastName = '[Not Provided]';
         lead.LeadSource = 'Website';
-        lead.RecordTypeId = Util.getRecordTypeId('WebLeads', 'Lead');
+        lead.RecordTypeId = Constant.WEB_LEAD_RECORDTYPEID;
 
         lead.Website = (String.isNotEmpty(userAgent) && userAgent.contains(';')) ? userAgent.split(';').get(1):'';
 
         if(lead.Website!=null && String.isNotEmpty(lead.Website) && lead.Website.contains('www.')) lead.Lead_Origin__c=lead.Website.substringBetween('://www.', '.');
         else if(lead.Website!=null && String.isNotEmpty(lead.Website) ) lead.Lead_Origin__c=lead.Website.substringBetween('://', '.');
 
-		lead=LeadService.leadDupeMerge(lead);        
-        upsert lead;
+        LeadService.leadDupeMerge(lead);        
 
         Database.DMLOptions dmlOptions = new Database.DMLOptions();
         dmlOptions.assignmentRuleHeader.useDefaultRule = true;

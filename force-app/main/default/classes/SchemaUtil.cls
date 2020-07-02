@@ -24,4 +24,9 @@ public inherited sharing class SchemaUtil {
         }
         return listOfObjectFields;
     }
+  
+    public static DescribeSobjectResult getSobjectType(String objectApiName){
+        Schema.DescribeSobjectResult[] results = Schema.describeSObjects(new String[] { objectApiName });
+        return results[0];
+    }
 }

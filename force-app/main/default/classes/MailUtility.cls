@@ -1,4 +1,4 @@
-public class MailUtility {
+public inherited sharing class MailUtility {
     
     public static Boolean sendAccountHtmlEmail(String contactId,String accountId,String emailTemplateId,String email){
         return sendSingleEmail(contactId,accountId,emailTemplateId,email,Constant.NOREPLOY_OW_EMAIL);
@@ -8,6 +8,7 @@ public class MailUtility {
     }
     
     private static Boolean sendSingleEmail(String targetId,String whatId,String emailTemplateId,String email,String owdEmailId){
+        if(true) return true;
         Messaging.SingleEmailMessage message = new Messaging.SingleEmailMessage();
         if(String.isNotEmpty(targetId)) message.setTargetObjectId(targetId); 
         message.setOrgWideEmailAddressId(owdEmailId);

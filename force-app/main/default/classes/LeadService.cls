@@ -108,18 +108,23 @@ public without sharing class LeadService {
                 ldRec.ProductInterest__c='Newsletter';
                 ldRec.Last_Email_Sent_Date__c=Date.today();
                 update ldRec;
-                sendVerificationEmail(ldRec.id, Constant.LEAD_VERIFY_EMAIL_TEMPLATE);
+                sendVerificationEmail(ldRec.Id, ldRec.Email);
             }
             if(((Boolean)emailProductMap.get('productA'))==true){
                 ldRec.Product_A__c='Resend Confirmation';
                 ldRec.ProductInterest__c='Product A';
                 ldRec.Last_Email_Sent_Date__c=Date.today();
                 update ldRec;
-                sendVerificationEmail(ldRec.id, Constant.LEAD_VERIFY_EMAIL_TEMPLATE);
+                sendVerificationEmail(ldRec.Id,  ldRec.Email);
             }
         }
         
         
+    }
+    
+    @AuraEnabled
+    public static List<History_Tracker__c> getLastEmailToLeadInfo(String leadId){
+        return [SELECT id,User__r.Name,Field__c,New_Value__c,CreatedDate FROM History_Tracker__c WHERE Object__c='Lead' AND  Field__c='ProductInterest__c' AND Record_Id__c=:leadId ORDER BY CreatedDate Desc];
     }
     
 
@@ -247,10 +252,11 @@ public without sharing class LeadService {
         Contact personContact=[SELECT id,Email FROM Contact WHERE AccountId=:accountId AND Account.ispersonaccount=true];
         MailUtility.sendAccountHtmlEmail(personContact.Id, accountId, Constant.ACCOUNT_VERIFY_EMAIL_TEMPLATE, personContact.Email);
     }
+    
     private static void sendVerificationEmail(String leadId,String leadEmail){
         MailUtility.sendLeadHtmlEmail(leadId,Constant.LEAD_VERIFY_EMAIL_TEMPLATE,leadEmail);
     }
-   
+    
     private static Boolean checkProductConfiguration(String product, String email) {
         if (product.contains('+'))product = product.replace('+', ' ');
         Map<String, String> productCodeAPIMap = Constant.PRODUCT_CONFIGURATION;

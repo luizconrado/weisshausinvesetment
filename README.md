@@ -17,10 +17,13 @@ Constant
 SchemaUtil
 AccountTriggerHandler
 LeadTriggerHandler
+TrackingEventsHandler
+
 
 ApexTrigger
 AccountTrigger
 LeadTrigger
+TrackingEventsTrigger
 
 Custom Filed
 Contact.Origin__pc
@@ -33,3 +36,12 @@ Lead_Send_Thank_You_Mail
 Lead Send Conformation Mail	
 Lead Send unsubscription Mail	
 
+Custom Object
+History Tracker
+
+Custom Metadata
+Trigger Settings
+History Tracker Configuration
+
+Platform Event
+Tracking Event

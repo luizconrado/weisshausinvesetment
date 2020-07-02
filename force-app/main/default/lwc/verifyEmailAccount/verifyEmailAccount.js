@@ -109,7 +109,7 @@ export default class VerifyEmailAccount extends LightningElement {
                 this.leadId = result.leadId;
                 this.showForm = result.showForm;
                 if (this.showForm == false) {
-                    setTimeout(() => location.href = 'https://www.weisshausinvestment.com/', 2000);
+                    setTimeout(() => location.href = 'https://www.weisshausinvestment.com/', 5000);
                 }
             })
             .catch(error => {

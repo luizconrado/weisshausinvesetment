@@ -13,8 +13,8 @@ export default class Unsubscribe extends LightningElement {
     reason;
     loaded;
     reasonOptions = [
-        { label: 'nicht interessiert', value: 'nicht interessiert' },
-        { label: 'andere', value: 'andere' },
+        { label: 'Nicht Nnteressiert', value: 'Nicht Nnteressiert' },
+        { label: 'Andere', value: 'Andere' },
 
     ];
 

@@ -39,7 +39,7 @@ public inherited sharing  class TrackHistory {
         if(toInsertRecords.size()>0) insert toInsertRecords;
         
     }
-    // insert
+    // insert changes
     public static void publishChanges(String objectName,List<sObject> newRecords){
         //check configuration
         List<String> fields=getFieldsToTrack(objectName);
@@ -64,7 +64,7 @@ public inherited sharing  class TrackHistory {
         }
         if(toPublishRecords.size()>0) EventBus.publish(toPublishRecords);
     }
-    // update
+    // update changes
     public static void publishChanges(String objectName,List<sObject> newRecords,Map<id,sObject> oldRecords){
         //check configuration
         List<String> fields=getFieldsToTrack(objectName);
@@ -94,7 +94,7 @@ public inherited sharing  class TrackHistory {
        
     private static List<String> getFieldsToTrack(String ObjectName){
         //get field names that needs to be tracked
-        List<History_Tracker_Configuration__mdt> fieldConfig=[SELECT Fields__c FROM History_Tracker_Configuration__mdt WHERE DeveloperName=:ObjectName AND Active__c=True];
+        List<History_Tracker_Configuration__mdt> fieldConfig=[SELECT Fields__c FROM History_Tracker_Configuration__mdt WHERE DeveloperName=:ObjectName AND Track_Change__c=True];
         List<String> fields=new List<String>();
         if(fieldConfig.size()>0) fields=fieldConfig.get(0).Fields__c.split(',');
         return fields;
@@ -106,5 +106,33 @@ public inherited sharing  class TrackHistory {
         if(objectName=='Case') name='CaseNumber';
         if(objectName=='Contact' || objectName=='Account' || objectName=='Lead') name='LastName';
         return name;
+    }
+	// view of records
+    @AuraEnabled
+    public static void logUsageEntry(String recordId ,String objectName){
+         //Check for status
+        List<History_Tracker_Configuration__mdt> fieldConfig=[SELECT Id FROM History_Tracker_Configuration__mdt WHERE DeveloperName=:objectName AND Track_View__c=True];
+        if(fieldConfig.size()==0) return;
+        //Check if record created in past 5 min
+        DateTime pastFiveMin=DateTime.now();
+        pastFiveMin=pastFiveMin.addMinutes(-5);  
+        List<History_Tracker__c> exsists=[SELECT id FROM History_Tracker__c WHERE Record_Id__c=:recordId AND CreatedDate>=:pastFiveMin AND User__c=:userinfo.getUserId()];
+        if(exsists.size()>0) return;
+        //query record name 
+        String name=getFieldApiForName(objectName);
+        String query='SELECT Id,'+name+' FROM '+objectName+' WHERE Id=:recordId';
+        List<Sobject> result=database.query(query);
+        if(result.size()==0) return;
+        //get object details
+        DescribeSobjectResult objectDetails=SchemaUtil.getSobjectType(objectName);
+        History_Tracker__c log=new History_Tracker__c();
+        //insert log
+        log.Object_Label__c=objectDetails.getLabel();
+        log.Object__c=objectName;
+        log.User__c=Userinfo.getUserId();
+        log.Record_Id__c=String.valueOf(result.get(0).get('Id'));
+        log.Record_Name__c=String.valueOf(result.get(0).get(name));
+        log.RecordTypeId=Constant.TRACK_USAGE_HISTORY_RECORDTYPE_ID;
+		insert log;
     }
 }

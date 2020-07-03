@@ -17,14 +17,19 @@ Constant
 SchemaUtil
 AccountTriggerHandler
 LeadTriggerHandler
+OpportuntiyTriggerHandler
 Util
 TrackingEventsHandler
-
+SyncCampaignMembersController
+CaseTriggerHandler
+TrackerDashboardController
 
 ## ApexTrigger
 AccountTrigger
 LeadTrigger
 TrackingEventsTrigger
+OpportuntiyTrigger
+CaseTrigger
 
 ## Custom Filed
 Contact.Origin__pc
@@ -49,3 +54,21 @@ Tracking Event
 
 ## Custom Settings
 Email_Configuration__c
+
+## Record Type
+Campaign.Campaign
+Contract.Contract
+
+## web components
+loginUsageReport
+verifyEmailAccount
+unsubscribe
+usageDashboard
+
+## static resource
+charjs
+charjs_treemap
+
+## Global Value Set
+Unsubscription reasons
+Product_Subscription_Status

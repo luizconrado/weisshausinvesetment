@@ -24,7 +24,16 @@ public inherited sharing class SchemaUtil {
         }
         return listOfObjectFields;
     }
-  
+    public static Map<String,PicklistEntry[]> getObjectPicklistFileds(DescribeSObjectResult sObjectName){
+        Map<String,PicklistEntry[]> picklistValues=new Map<String,PicklistEntry[]>();
+        for (SObjectField f : sObjectName.fields.getMap().values()) {
+            DescribeFieldResult field = f.getDescribe();
+            if(field.getType()===Schema.DisplayType.Picklist){
+                picklistValues.put(field.getName(),field.getPicklistValues());
+            }
+        }
+        return picklistValues;
+    }
     public static DescribeSobjectResult getSobjectType(String objectApiName){
         Schema.DescribeSobjectResult[] results = Schema.describeSObjects(new String[] { objectApiName });
         return results[0];

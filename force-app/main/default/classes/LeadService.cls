@@ -28,7 +28,7 @@ public without sharing class LeadService {
             if (accountMaster.get(fieldApi) == null 
                 || accountMaster.get(fieldApi) == 'Not Subscribed' 
                 || accountMaster.get(fieldApi) == 'Unsubscribed'
-                || accountMaster.get(fieldApi) == 'Resend Confirmation') {
+                || accountMaster.get(fieldApi) == 'Confirmation Resent') {
                     accountMaster.put(fieldApi, 'Awaiting Confirmation');
                     accountMaster.Last_Email_Sent_Date__pc=Date.today();
             } 
@@ -47,7 +47,7 @@ public without sharing class LeadService {
             if (leadMaster.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == null 
                 || leadMaster.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Not Subscribed'
                 || leadMaster.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Unsubscribed'
-                || leadMaster.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Resend Confirmation') { 
+                || leadMaster.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Confirmation Resent') { 
                     leadMaster.put(productCodeAPIMap.get(ldRec.ProductInterest__c), 'Awaiting Confirmation');
                     leadMaster.Last_Email_Sent_Date__c=Date.today();
                 }
@@ -61,7 +61,7 @@ public without sharing class LeadService {
             if (ldRec.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == null 
                 || ldRec.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Not Subscribed' 
                 || ldRec.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Unsubscribed'
-                || ldRec.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Resend Confirmation') {
+                || ldRec.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Confirmation Resent') {
                 	ldRec.put(productCodeAPIMap.get(ldRec.ProductInterest__c), 'Awaiting Confirmation');
                     ldRec.Last_Email_Sent_Date__c=Date.today();
                 }
@@ -104,14 +104,14 @@ public without sharing class LeadService {
         if(leadlist.size()>0){
             Lead ldRec=leadlist.get(0);
             if(((Boolean)emailProductMap.get('newsletter'))==true){
-                ldRec.Newsletter__c='Resend Confirmation';
+                ldRec.Newsletter__c='Confirmation Resent';
                 ldRec.ProductInterest__c='Newsletter';
                 ldRec.Last_Email_Sent_Date__c=Date.today();
                 update ldRec;
                 sendVerificationEmail(ldRec.Id, ldRec.Email);
             }
             if(((Boolean)emailProductMap.get('productA'))==true){
-                ldRec.Product_A__c='Resend Confirmation';
+                ldRec.Product_A__c='Confirmation Resent';
                 ldRec.ProductInterest__c='Product A';
                 ldRec.Last_Email_Sent_Date__c=Date.today();
                 update ldRec;
@@ -151,6 +151,7 @@ public without sharing class LeadService {
                 LeadRec.Phone = phoneNumber;
                 LeadRec.put(productCodeAPIMap.get(product), 'Subscribed');
                 showForm = updateLeadDML(LeadRec, showForm);
+                MailUtility.sendLeadHtmlEmail(LeadRec.id, Constant.LEAD_SUBSCRIBED_EMAIL_TEMPLATE, LeadRec.Email);
             }
             
         }
@@ -199,6 +200,15 @@ public without sharing class LeadService {
         return true;
     }
     
+    @AuraEnabled(cacheable=true)
+    public static Map<String,String> getUnsubscribeOptions(){
+        Map<String,PicklistEntry[]> allPicklistValues=SchemaUtil.getObjectPicklistFileds(SchemaUtil.getSobjectType('Lead'));
+        Map<String,String> values=new Map<String,String>();
+        for(PicklistEntry entry:allPicklistValues.get('Reason_For_Unsubscribing__c')){
+            values.put(entry.getValue(),entry.getLabel());
+        }
+        return values;
+    }
     
     /*
      * Description: on load of verification from update terms and condition and subscribe status
@@ -211,8 +221,6 @@ public without sharing class LeadService {
 
         Boolean showForm = true;
         if (checkProductConfiguration(product, email)) {
-            
-            
             Map<String, String> productCodeAPIMap = Constant.PRODUCT_CONFIGURATION;
             String fieldToUpdate = productCodeAPIMap.get(product);
             List<Account> accountList=Database.query('SELECT id,Accepted_Terms_and_Conditions__pc,Salutation,LastName,Phone,'+productCodeAPIMap.get(product).replace('__c','__pc')+' FROM Account WHERE PersonEmail=:email');
@@ -240,7 +248,7 @@ public without sharing class LeadService {
                 LeadRec.Accepted_Terms_and_Conditions__c=true;
                 respWrapper.leadId = LeadRec.Id;
                 updateLeadDML(LeadRec, showForm);
-                MailUtility.sendLeadHtmlEmail(LeadRec.id, Constant.LEAD_SUBSCRIBED_EMAIL_TEMPLATE, LeadRec.Email);
+               
             }
         }
         respWrapper.showForm = showForm;
@@ -283,7 +291,7 @@ public without sharing class LeadService {
         if(String.isNotEmpty(leadId)){
             queryStr += 'Id =: leadId';
         }else{
-            queryStr += 'Email =:email AND IsConverted = false AND LeadSource = \'Website\' AND ' + fieldToUpdate + ' IN (\'Awaiting Confirmation\',\'Resend Confirmation\',\'Subscribed\') FOR UPDATE';
+            queryStr += 'Email =:email AND IsConverted = false AND LeadSource = \'Website\' AND ' + fieldToUpdate + ' IN (\'Awaiting Confirmation\',\'Confirmation Resent\',\'Subscribed\') FOR UPDATE';
         }
         List<Lead> leadList = Database.query(queryStr);
         return leadList;

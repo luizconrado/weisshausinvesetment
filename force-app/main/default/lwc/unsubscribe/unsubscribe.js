@@ -1,6 +1,7 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, wire } from 'lwc';
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import unsubscribeFromProduct from '@salesforce/apex/LeadService.updateLeadToUnSubscribed';
+import allOptions from '@salesforce/apex/LeadService.getUnsubscribeOptions';
 import errorMsg from '@salesforce/label/c.form_error_msg';
 import successUnsubscribeMessage from '@salesforce/label/c.from_successUnsubscribe_msg';
 
@@ -12,14 +13,23 @@ export default class Unsubscribe extends LightningElement {
     productname;
     reason;
     loaded;
-    reasonOptions = [
-        { label: 'Nicht Nnteressiert', value: 'Nicht Nnteressiert' },
-        { label: 'Andere', value: 'Andere' },
-
-    ];
+    reasonOptions;
 
     get reasonOptions() {
         return this.reasonOptions;
+    }
+    @wire(allOptions)
+    wiredallContacts({ error, data }) {
+        if (error) {
+
+        } else if (data) {
+            let reasonOptions = [];
+            for (let value in data) {
+                reasonOptions.push({ value: value, label: data[value] });
+            }
+
+            this.reasonOptions = reasonOptions;
+        }
     }
 
     connectedCallback() {

@@ -10,7 +10,7 @@ public with sharing class SyncCampaignMembersController {
                 if(objFieldMap.containsKey(apiName)) fieldList.add(apiName);
                 
             }
-            
+             
         }
         return fieldList;
     }
@@ -28,8 +28,8 @@ public with sharing class SyncCampaignMembersController {
         Campaign campaing=[SELECT Id, Products__c FROM Campaign WHERE id=:campaignId];
        
         List<String> products=(campaing.Products__c!=null)?campaing.Products__c.split(';'):new List<String>();
-        Map<String,DescribeFieldResult> leadFieldMap=Util.getAllObjectFields('Lead');
-        Map<String,DescribeFieldResult> contactFieldMap=Util.getAllObjectFields('Contact');
+        Map<String,DescribeFieldResult> leadFieldMap=SchemaUtil.getAllObjectFields('Lead');
+        Map<String,DescribeFieldResult> contactFieldMap=SchemaUtil.getAllObjectFields('Contact');
         
         List<String> contactProductFileds=getObjectAvilabelFields(products,contactFieldMap);
         List<String> leadProductFileds=getObjectAvilabelFields(products,leadFieldMap);

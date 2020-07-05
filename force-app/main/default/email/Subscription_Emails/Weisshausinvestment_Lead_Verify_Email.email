@@ -403,7 +403,7 @@
                                     <p style="font-weight: bold;">Schaltfläche oben funktioniert nicht?</p>
                                     <p>Kopieren Sie einfach diesen Link und fügen Sie ihn in Ihren Browser ein:</p>
                                     <p>
-                                        {!$Label.siteUrl}/s/verifyemailaccount?email={!Lead.Email}&product={!Lead.ProductInterest__c}</p>
+                                        {!$Label.siteUrl}/s/verifyemailaccount?email={!Lead.Email}&product={!Lead.ProductInterest_Encode__c}</p>
                                     <br>
                                     <p>Prost,</p>
                                     <p>Ihr Weisshaus-Investmentteam</p>

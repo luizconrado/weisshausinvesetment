@@ -255,6 +255,40 @@ public without sharing class LeadService {
         return respWrapper;
     }
     
+    /*
+     * Description: on load of unsubscribe check if its already unsubscribed
+     * email:sends successfuly unsubscribed email
+	*/
+    @AuraEnabled
+    public static Boolean checkUnsubscribedStatus(String email,String product){
+        product=product.replace('+',' ');
+        Boolean showForm = true;
+        if (checkProductConfiguration(product, email)) {
+            Map<String, String> productCodeAPIMap = Constant.PRODUCT_CONFIGURATION;
+            String fieldToUpdate = productCodeAPIMap.get(product);
+            List<Account> accountList=Database.query('SELECT id,Accepted_Terms_and_Conditions__pc,Salutation,LastName,Phone,'+productCodeAPIMap.get(product).replace('__c','__pc')+' FROM Account WHERE PersonEmail=:email');
+            List<Lead> leadList = getLeadList(email, fieldToUpdate,'');
+            //check account with product status
+            if(accountList.size()>0){
+                Account accountRec = accountList.get(0);
+                showForm = (accountRec.get(productCodeAPIMap.get(product).replace('__c','__pc'))=='Unsubscribed')?false:true;
+                if(showForm==false){
+                    Contact personContact=[SELECT id,Email FROM Contact WHERE accountId=:accountRec.id AND account.IsPersonAccount=true];
+                    MailUtility.sendAccountHtmlEmail(personContact.id, accountRec.id, Constant.ACCOUNT_UNSUBSCRIBE_EMAIL_TEMPLATE, personContact.Email);   
+                }
+            }
+            //check lead with product status
+            else if (leadList.size() > 0) {
+                Lead LeadRec = leadList.get(0);
+                showForm = (LeadRec.get(productCodeAPIMap.get(product))=='Unsubscribed')?false:true;
+                 if(showForm==false){
+                    MailUtility.sendLeadHtmlEmail(LeadRec.id, Constant.LEAD_UNSUBSCRIBE_EMAIL_TEMPLATE, LeadRec.Email);
+                }
+            }
+        }
+        return showForm;
+    }
+    
     //helpers
     private static void sendVerificationEmail(String accountId){
         Contact personContact=[SELECT id,Email FROM Contact WHERE AccountId=:accountId AND Account.ispersonaccount=true];

@@ -41,10 +41,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Doubt_Opt_in_Status__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Product_A__c</field>
             </layoutItems>
             <layoutItems>
@@ -112,10 +108,8 @@
                 <behavior>Edit</behavior>
                 <field>ProductInterest__c</field>
             </layoutItems>
-
         </layoutColumns>
         <layoutColumns>
-
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Primary__c</field>
@@ -299,7 +293,6 @@
         <quickActionListItems>
             <quickActionName>NewCase</quickActionName>
         </quickActionListItems>
-
         <quickActionListItems>
             <quickActionName>NewEvent</quickActionName>
         </quickActionListItems>

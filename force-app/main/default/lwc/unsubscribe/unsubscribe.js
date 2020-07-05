@@ -1,6 +1,7 @@
 import { LightningElement, wire } from 'lwc';
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import unsubscribeFromProduct from '@salesforce/apex/LeadService.updateLeadToUnSubscribed';
+import checkUnsubscribedStatus from '@salesforce/apex/LeadService.checkUnsubscribedStatus';
 import allOptions from '@salesforce/apex/LeadService.getUnsubscribeOptions';
 import errorMsg from '@salesforce/label/c.form_error_msg';
 import successUnsubscribeMessage from '@salesforce/label/c.from_successUnsubscribe_msg';
@@ -14,6 +15,7 @@ export default class Unsubscribe extends LightningElement {
     reason;
     loaded;
     reasonOptions;
+    showform = true;
 
     get reasonOptions() {
         return this.reasonOptions;
@@ -35,7 +37,18 @@ export default class Unsubscribe extends LightningElement {
     connectedCallback() {
         this.parameters = this.getQueryParameters();
         this.emailAddress = this.parameters.email;
-        this.productname = this.parameters.product;
+        this.productname = this.parameters.product.replace(/\+/g, ' ');
+
+        checkUnsubscribedStatus({
+            email: this.emailAddress,
+            product: this.productname
+        }).then(data => {
+            if (data === false) {
+                this.showform = false;
+                setTimeout(() => location.href = 'https://www.weisshausinvestment.com/', 4000);
+            }
+
+        })
     }
     applyStyle() {
         const style = document.createElement('style');
@@ -84,7 +97,7 @@ export default class Unsubscribe extends LightningElement {
             .then(result => {
                 this.showToast('Success', successUnsubscribeMessage, 'success');
                 this.loaded = false;
-                setTimeout(() => location.href = 'https://www.weisshausinvestment.com/', 2000);
+                setTimeout(() => location.href = 'https://www.weisshausinvestment.com/', 4000);
             })
         then(error => {
             this.showToast('Error', errorMsg, 'error');

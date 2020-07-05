@@ -21,9 +21,9 @@
         <label>Unsubscribed</label>
     </customValue>
     <customValue>
-        <fullName>Resend Confirmation</fullName>
+        <fullName>Confirmation Resent</fullName>
         <default>false</default>
-        <label>Resend Confirmation</label>
+        <label>Confirmation Resent</label>
     </customValue>
     <masterLabel>Product Subscription Status</masterLabel>
     <sorted>false</sorted>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Account</label>
+    <protected>false</protected>
+    <values>
+        <field>Fields__c</field>
+        <value xsi:type="xsd:string">Accepted_Terms_and_Conditions__pc, Active__c, CustomerPriority__c, Gender__pc, Languages__pc, Last_Email_Sent_Date__pc, Level__pc, Newsletter__pc, Origin__pc, Product_A__pc, Product_B__pc, Product_C__pc, Product_D__pc, ProductInterest__pc, Reason_For_Unsubscribing__pc</value>
+    </values>
+    <values>
+        <field>Track_Change__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Track_View__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+</CustomMetadata>

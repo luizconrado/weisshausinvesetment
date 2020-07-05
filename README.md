@@ -36,6 +36,9 @@ Contact.Origin__pc
 Contact.ProductInterest__c
 Contact.Last_Email_Sent__c
 Lead.Last_Email_Sent__c
+Lead.ProductInterest_Encode__c
+Contact.ProductInterest_Encode__c
+
 
 ## Email Alerts
 Lead_Send_Thank_You_Mail

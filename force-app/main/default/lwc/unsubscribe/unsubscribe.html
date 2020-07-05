@@ -13,7 +13,7 @@
     <!-- Loader END-->
 
     <article class="slds-card" style="margin-top: 5rem;">
-        <div class="slds-card__header ">
+        <div class="slds-card__header" if:true={showform}>
             <lightning-layout>
                 <lightning-layout-item padding="around-small" size="3">
                 </lightning-layout-item>
@@ -35,7 +35,7 @@
         </div>
         <div class="slds-card__body slds-card__body_inner ">
 
-            <lightning-layout>
+            <lightning-layout if:true={showform}>
                 <lightning-layout-item padding="around-small" size="3">
                 </lightning-layout-item>
                 <lightning-layout-item padding="around-small" size="6">
@@ -49,10 +49,30 @@
                 </lightning-layout-item>
             </lightning-layout>
 
+            <lightning-layout if:false={showform}>
+                <lightning-layout-item padding="around-small" size="3">
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="6">
+                    <div class=" set-max-width">
+                        <header class="slds-media slds-media_center  slds-has-flexi-truncate">
+                            <div class="slds-media__body " style="text-align: center;
+    padding-top: .75rem;">
+                                <span class="slds-card__header-title" style="font-size: 2rem;">
+                                    <span>Wir bedauern, Sie verloren zu haben
+                                    </span>
+                                </span>
+                            </div>
+                        </header>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="3">
+                </lightning-layout-item>
+            </lightning-layout>
+
 
 
         </div>
-        <footer class="slds-card__footer " style="text-align: center;">
+        <footer if:true={showform} class="slds-card__footer " style="text-align: center;">
 
             <lightning-layout>
                 <lightning-layout-item padding="around-small" size="3">

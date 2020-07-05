@@ -4,6 +4,5 @@
     <fields>Name</fields>
     <fields>Company</fields>
     <fields>Email</fields>
-    <fields>Double_Opt_in_Status__c</fields>
     <label>WebLead Compact Layout</label>
 </CompactLayout>

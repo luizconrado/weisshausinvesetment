@@ -6,24 +6,13 @@
     <compactLayoutAssignment>WebLead_Compact_Layout</compactLayoutAssignment>
     <label>WebLeads</label>
     <picklistValues>
-        <picklist>Double_Opt_in_Status__c</picklist>
+        <picklist>Gender__c</picklist>
         <values>
-            <fullName>Awaiting confirmation</fullName>
-            <default>true</default>
-        </values>
-        <values>
-            <fullName>Customer confirmed</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>Doubt_Opt_in_Status__c</picklist>
-        <values>
-            <fullName>Awaiting customer confirmation</fullName>
+            <fullName>Female</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Customer confirmed</fullName>
+            <fullName>Male</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -193,12 +182,23 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Web</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Webinar</fullName>
             <default>false</default>
         </values>
         <values>
             <fullName>Website</fullName>
             <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Lead_Origin__c</picklist>
+        <values>
+            <fullName>weisshausinvestment</fullName>
+            <default>false</default>
         </values>
     </picklistValues>
     <picklistValues>
@@ -231,12 +231,12 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Not Subscribed</fullName>
-            <default>true</default>
+            <fullName>Confirmation Resent</fullName>
+            <default>false</default>
         </values>
         <values>
-            <fullName>Resend Confirmation</fullName>
-            <default>false</default>
+            <fullName>Not Subscribed</fullName>
+            <default>true</default>
         </values>
         <values>
             <fullName>Subscribed</fullName>
@@ -288,12 +288,12 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Not Subscribed</fullName>
-            <default>true</default>
+            <fullName>Confirmation Resent</fullName>
+            <default>false</default>
         </values>
         <values>
-            <fullName>Resend Confirmation</fullName>
-            <default>false</default>
+            <fullName>Not Subscribed</fullName>
+            <default>true</default>
         </values>
         <values>
             <fullName>Subscribed</fullName>
@@ -311,12 +311,12 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Not Subscribed</fullName>
-            <default>true</default>
+            <fullName>Confirmation Resent</fullName>
+            <default>false</default>
         </values>
         <values>
-            <fullName>Resend Confirmation</fullName>
-            <default>false</default>
+            <fullName>Not Subscribed</fullName>
+            <default>true</default>
         </values>
         <values>
             <fullName>Subscribed</fullName>
@@ -334,12 +334,12 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Not Subscribed</fullName>
-            <default>true</default>
+            <fullName>Confirmation Resent</fullName>
+            <default>false</default>
         </values>
         <values>
-            <fullName>Resend Confirmation</fullName>
-            <default>false</default>
+            <fullName>Not Subscribed</fullName>
+            <default>true</default>
         </values>
         <values>
             <fullName>Subscribed</fullName>
@@ -357,12 +357,12 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Not Subscribed</fullName>
-            <default>true</default>
+            <fullName>Confirmation Resent</fullName>
+            <default>false</default>
         </values>
         <values>
-            <fullName>Resend Confirmation</fullName>
-            <default>false</default>
+            <fullName>Not Subscribed</fullName>
+            <default>true</default>
         </values>
         <values>
             <fullName>Subscribed</fullName>
@@ -385,6 +385,21 @@
         </values>
         <values>
             <fullName>Warm</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason_For_Unsubscribing__c</picklist>
+        <values>
+            <fullName>Andere</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nicht Interessiert</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nicht Offenlegen</fullName>
             <default>false</default>
         </values>
     </picklistValues>

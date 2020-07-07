@@ -23,7 +23,26 @@ TrackingEventsHandler
 SyncCampaignMembersController
 CaseTriggerHandler
 TrackerDashboardController
+--
+TestDataFactory
+SyncCampaignMembersControllerTest
+webLeadRestServiceTest
+LeadServiceTest
+AccountServiceTest
+TrackHistoryTest
+TrackerDashboardControllerTest
 
+OpportuntiyTriggerHandlerTest
+AccountTriggerHandlerTest
+LeadTriggerHandlerTest
+CampaignTriggerHandlerTest
+CaseTriggerHandlerTest
+
+SchemaUtilTest
+RandomUtilTest
+MailUtilityTest
+ConstantTest
+UtilTest
 ## ApexTrigger
 AccountTrigger
 LeadTrigger
@@ -38,12 +57,9 @@ Contact.Last_Email_Sent__c
 Lead.Last_Email_Sent__c
 Lead.ProductInterest_Encode__c
 Contact.ProductInterest_Encode__c
+Campaing.Product__c
 
 
-## Email Alerts
-Lead_Send_Thank_You_Mail
-Lead Send Conformation Mail	
-Lead Send unsubscription Mail	
 
 ## Custom Object
 History Tracker
@@ -59,8 +75,10 @@ Tracking Event
 Email_Configuration__c
 
 ## Record Type
-Campaign.Campaign
-Contract.Contract
+Campaign.Standard_Campaign
+Contract.Standard_Contract
+Opportuntiy.Standard_Opportunity
+Case.Standard_Case
 
 ## web components
 loginUsageReport
@@ -75,3 +93,9 @@ charjs_treemap
 ## Global Value Set
 Unsubscription reasons
 Product_Subscription_Status
+
+# Sales process
+Default
+
+# Support Process
+Default

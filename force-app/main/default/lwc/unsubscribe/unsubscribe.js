@@ -86,6 +86,10 @@ export default class Unsubscribe extends LightningElement {
         return params;
     }
     handleOptout(event) {
+        if (!this.reason) {
+            this.template.querySelector('.GrundField').reportValidity();
+            return;
+        }
         this.loaded = true;
         const params = {
             "email": this.emailAddress,
@@ -107,6 +111,7 @@ export default class Unsubscribe extends LightningElement {
     }
     handleResonChange(event) {
         this.reason = event.target.value;
+        this.template.querySelector('.GrundField').reportValidity();
     }
     showToast(theTitle, theMessage, theVariant) {
         const event = new ShowToastEvent({

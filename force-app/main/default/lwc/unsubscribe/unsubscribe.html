@@ -40,8 +40,9 @@
                 </lightning-layout-item>
                 <lightning-layout-item padding="around-small" size="6">
                     <div class="inputDesign set-max-width">
-                        <lightning-combobox name="Anrede" variant="label-hidden" value={reason}
-                            placeholder="Grund für die Abmeldung" options={reasonOptions} onchange={handleResonChange}>
+                        <lightning-combobox class="GrundField" name="Grund" variant="label-hidden" value={reason}
+                            placeholder="Grund für die Abmeldung" options={reasonOptions}
+                            message-when-value-missing="Wähle eine Option" required onchange={handleResonChange}>
                         </lightning-combobox>
                     </div>
                 </lightning-layout-item>

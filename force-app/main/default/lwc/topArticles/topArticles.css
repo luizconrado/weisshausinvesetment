@@ -2,8 +2,9 @@
  * Created by prasad on 18.06.20.
  */
 
-.slds-card__footer {
+ .slds-card__footer {
     text-align: center;
+    /*border-top: 1px solid rgb(239, 239, 239);*/
 }
 
 .slds-card {
@@ -25,13 +26,13 @@
     font-weight: normal;
     font-size: 24px;
     line-height: 28px;
-    margin-top: 42.79px;
-    margin-bottom: 40px;
+    margin-top: 20px;
+    margin-bottom: 27px;
 }
 
 .iconCls{
     width: 60px;
-    height: 36.92px;
+    height: 60px;
 }
 
 .description{
@@ -40,7 +41,7 @@
     font-weight: normal;
     font-size: 16px;
     line-height: 24px;
-    text-align: center;
+    text-align: left;
     color: #666666;
 }
 
@@ -62,4 +63,12 @@
 
 .customButton:hover{
     box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.13);
+}
+
+.customAnchor{
+    color:#666666;
+    display:block;
+}
+.customAnchor:hover{
+    color: rgb(235, 10, 10);
 }

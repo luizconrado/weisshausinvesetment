@@ -10,7 +10,7 @@
                 <header class="slds-media slds-media_center slds-has-flexi-truncate">
                     <div class="slds-media__figure">
                 <span class="slds-icon_container" title="case">
-                <lightning-icon icon-name="utility:chat" size="large"></lightning-icon>
+                    <img src="/resource/Support_Images/chat-3.png" alt={title} class="iconCls"/>
                 <span class="slds-assistive-text">{title}</span>
                 </span>
                     </div>
@@ -21,12 +21,12 @@
                 <div class="slds-media__body box-title">
                     <span >{title}</span>
                 </div>
-                <div class="slds-media__body">
+                <div class="slds-media__body description">
                     {description}
                 </div>
             </div>
             <footer class="slds-card__footer">
-                <button type="submit" class="slds-button customButton"
+                <button type="submit" class="customButton"
                         onclick={chatClick}>{buttonLabel}
                 </button>
             </footer>

@@ -11,14 +11,6 @@
     border:0;
 }
 
-.slds-button {
-    padding: 14px 24px;
-    font-weight: 500;
-    background: #EB0A0A;
-    color: #fff;
-    line-height: 16px;
-}
-
 .slds-media__figure{
     width :100%;
     text-align: center;
@@ -30,9 +22,45 @@
 
 .box-title{
     font-family: "HelveticaNeue", Helvetica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    margin-top: 24px;
+    margin-bottom: 40px;
+}
+
+.iconCls{
+    width: 60px;
+    height: 55.71px;
+}
+
+.description{
+    font-family: Helvetica Neue;
+    font-style: normal;
+    font-weight: normal;
     font-size: 16px;
-    font-weight: bold;
-    line-height: 22px;
-    letter-spacing: 0px;
-    margin: 3.5rem auto 1.5rem;
+    line-height: 24px;
+    text-align: center;
+    color: #666666;
+}
+
+.customButton{
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+    font-size:16px !important;
+    font-weight : 500;
+    background: #EB0A0A;
+    border-radius: 4px;
+    padding: 14px 24px;
+    text-transform: none;
+    color: #ffffff;
+    border-color: rgb(235, 10, 10);
+    border-width: 2px;
+    border-style: solid;
+    min-width: 135px;
+    transition: all .2s;
+}
+
+.customButton:hover{
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.13);
 }

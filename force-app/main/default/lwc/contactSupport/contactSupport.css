@@ -27,6 +27,7 @@
     line-height: 28px;
     margin-top: 42.79px;
     margin-bottom: 40px;
+    color: #444444;
 }
 
 .iconCls{
@@ -58,6 +59,7 @@
     border-style: solid;
     min-width: 135px;
     transition: all .2s;
+    outline: none;
 }
 
 .customButton:hover{

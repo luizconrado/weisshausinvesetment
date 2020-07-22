@@ -5,6 +5,12 @@
 
 .set-max-width{
     max-width: 550px;
+    
+}
+
+.header-font{
+    font-size:2rem;
+    text-align: center;
 }
 
 .primaryButton{

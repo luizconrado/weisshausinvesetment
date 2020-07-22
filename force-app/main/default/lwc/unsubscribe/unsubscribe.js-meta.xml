@@ -6,5 +6,11 @@
     <targets>
         <target>lightning__Tab</target>
         <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
     </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="unsubscribedtext" type="String" default="Wir bedauern, Sie verloren zu haben" />
+        </targetConfig>
+    </targetConfigs>
 </LightningComponentBundle>

@@ -2,7 +2,7 @@
  * Created by prasad on 11.06.20.
  */
 
-import { LightningElement } from 'lwc';
+import { LightningElement, api } from 'lwc';
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import updateLead from '@salesforce/apex/LeadService.updateLeadWithConfirmation';
 import checkLeadOnLoad from '@salesforce/apex/LeadService.checkAndUpdateLeadOnload';
@@ -13,7 +13,7 @@ import warrningMsg from '@salesforce/label/c.form_warrning_msg';
 
 
 export default class VerifyEmailAccount extends LightningElement {
-
+    @api subscribedtext = 'Danke fürs Abonnieren';
     parameters = {};
     salutation;
     firstName;
@@ -68,8 +68,8 @@ export default class VerifyEmailAccount extends LightningElement {
     }
 
     salutationsList = [
-        { label: 'Herr.', value: 'Herr.' },
-        { label: 'Frau.', value: 'Frau.' },
+        { label: 'Herr', value: 'Herr' },
+        { label: 'Frau', value: 'Frau' },
         { label: 'Herr Dr.', value: 'Herr Dr.' },
         { label: 'Frau Dr.', value: 'Frau Dr.' },
         { label: 'Herr Prof.', value: 'Herr Prof.' },

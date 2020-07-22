@@ -7,6 +7,11 @@
     max-width: 550px;
 }
 
+.header-font{
+    font-size:2rem;
+    text-align: center;
+}
+
 .primaryButton{
     border: 0px;
     background: #EB0A0A;

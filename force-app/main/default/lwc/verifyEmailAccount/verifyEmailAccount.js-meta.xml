@@ -7,5 +7,11 @@
     <targets>
         <target>lightning__Tab</target>
         <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
     </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="subscribedtext" type="String" default="Danke fürs Abonnieren" />
+        </targetConfig>
+    </targetConfigs>
 </LightningComponentBundle>

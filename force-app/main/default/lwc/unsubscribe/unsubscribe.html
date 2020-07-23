@@ -15,29 +15,20 @@
     <article class="slds-card" style="margin-top: 5rem;">
         <div class="slds-card__header" if:true={showform}>
             <lightning-layout>
-                <lightning-layout-item padding="around-small" size="3">
-                </lightning-layout-item>
-                <lightning-layout-item padding="around-small" size="6">
-                    <div class=" set-max-width">
-                        <header class="slds-media slds-media_center  slds-has-flexi-truncate">
-                            <div class="slds-media__body " style="text-align: center;padding-top: .75rem;">
-                                <span class="slds-card__header-title" style="font-size: 2rem;">
-                                    <span>Ausloggen {productname}</span>
-                                </span>
-                            </div>
-                        </header>
+
+                <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
+                    <div class="header-font">
+                        Ausloggen {productname}
                     </div>
+
                 </lightning-layout-item>
-                <lightning-layout-item padding="around-small" size="3">
-                </lightning-layout-item>
+
             </lightning-layout>
         </div>
         <div class="slds-card__body slds-card__body_inner ">
 
             <lightning-layout if:true={showform}>
-                <lightning-layout-item padding="around-small" size="3">
-                </lightning-layout-item>
-                <lightning-layout-item padding="around-small" size="6">
+                <lightning-layout-item padding="around-small" size="12">
                     <div class="inputDesign set-max-width">
                         <lightning-combobox class="GrundField" name="Grund" variant="label-hidden" value={reason}
                             placeholder="Grund für die Abmeldung" options={reasonOptions}
@@ -45,22 +36,19 @@
                         </lightning-combobox>
                     </div>
                 </lightning-layout-item>
-                <lightning-layout-item padding="around-small" size="3">
-                </lightning-layout-item>
+
             </lightning-layout>
 
             <lightning-layout if:false={showform}>
-                <lightning-layout-item padding="around-small" size="3">
-                </lightning-layout-item>
-                <lightning-layout-item padding="around-small" size="6">
+
+                <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
                     <div class="header-font">
                         <span>{unsubscribedtext}</span>
                     </div>
 
 
                 </lightning-layout-item>
-                <lightning-layout-item padding="around-small" size="3">
-                </lightning-layout-item>
+
             </lightning-layout>
 
 
@@ -69,16 +57,14 @@
         <footer if:true={showform} class="slds-card__footer " style="text-align: center;">
 
             <lightning-layout>
-                <lightning-layout-item padding="around-small" size="3">
-                </lightning-layout-item>
-                <lightning-layout-item padding="around-small" size="6" style="text-align: center;">
+
+                <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
                     <div class="set-max-width">
                         <button class="slds-button primaryButton" onclick={handleOptout}>Abmelden</button>
 
                     </div>
                 </lightning-layout-item>
-                <lightning-layout-item padding="around-small" size="3">
-                </lightning-layout-item>
+
 
             </lightning-layout>
 

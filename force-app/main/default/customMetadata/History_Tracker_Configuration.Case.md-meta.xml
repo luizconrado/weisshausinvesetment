@@ -7,6 +7,10 @@
         <value xsi:type="xsd:string">Status</value>
     </values>
     <values>
+        <field>Object__c</field>
+        <value xsi:type="xsd:string">Case</value>
+    </values>
+    <values>
         <field>Track_Change__c</field>
         <value xsi:type="xsd:boolean">true</value>
     </values>

@@ -22,9 +22,6 @@
         <label>Article Details</label>
         <layoutColumns>
             <layoutItems>
-                <field>Question__c</field>
-            </layoutItems>
-            <layoutItems>
                 <field>Answer__c</field>
             </layoutItems>
         </layoutColumns>
@@ -50,12 +47,6 @@
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
-            <layoutItems>
-                <field>RecordTypeId</field>
-            </layoutItems>
-            <layoutItems>
-                <field>ArticleType</field>
-            </layoutItems>
             <layoutItems>
                 <field>IsVisibleInApp</field>
             </layoutItems>
@@ -83,6 +74,11 @@
     </layoutSections>
     <platformActionList>
         <actionListContext>Record</actionListContext>
+        <platformActionListItems>
+            <actionName>EditDraftKnowledgeArticleVersion</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
         <platformActionListItems>
             <actionName>DeleteDraftKnowledgeArticleVersion</actionName>
             <actionType>StandardButton</actionType>
@@ -117,11 +113,6 @@
             <actionName>FeedItem.TextPost</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>7</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>EditDraftKnowledgeArticleVersion</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>0</sortOrder>
         </platformActionListItems>
     </platformActionList>
 </Layout>

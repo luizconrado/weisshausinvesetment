@@ -2,24 +2,11 @@
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
         <fullName>Privacy_Web_Link</fullName>
+        <categories>Community</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Privacy Web Link</shortDescription>
-        <value>https://weisshausinve0.wpengine.com/datenschutz/</value>
-    </labels>
-    <labels>
-        <fullName>Send_Subscribed_Email</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Send Subscribed Email</shortDescription>
-        <value>true</value>
-    </labels>
-    <labels>
-        <fullName>Send_Verification_Email</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Send Verification Email</shortDescription>
-        <value>true</value>
+        <value>https://www.weisshausinvestment.com/datenschutz/</value>
     </labels>
     <labels>
         <fullName>Track_History_Exclusion</fullName>
@@ -28,6 +15,14 @@
         <protected>false</protected>
         <shortDescription>Track History Exclusion</shortDescription>
         <value>admin@salesforce.com</value>
+    </labels>
+    <labels>
+        <fullName>community_uri</fullName>
+        <categories>Community</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>community_uri</shortDescription>
+        <value>/support/s/</value>
     </labels>
     <labels>
         <fullName>form_error_msg</fullName>
@@ -64,15 +59,16 @@
     <labels>
         <fullName>performLeadDuplicateCheck</fullName>
         <language>en_US</language>
-        <protected>true</protected>
+        <protected>false</protected>
         <shortDescription>performLeadDuplicateCheck</shortDescription>
-        <value>true</value>
+        <value>false</value>
     </labels>
     <labels>
         <fullName>siteUrl</fullName>
+        <categories>Community</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>siteUrl</shortDescription>
-        <value>https://dev-weisshausinvestment--dev.cs89.force.com</value>
+        <value>https://dev-weisshausinvestment.cs101.force.com/support</value>
     </labels>
 </CustomLabels>

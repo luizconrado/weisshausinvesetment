@@ -16,6 +16,19 @@ public inherited sharing class Constant {
         if(PERSON_ACCOUNT_RECORDTYPEID==null)PERSON_ACCOUNT_RECORDTYPEID=SchemaUtil.getRecordTypeId('PersonAccount', 'Account');
         return PERSON_ACCOUNT_RECORDTYPEID;
     }}
+    public static final String STANDARD_OPPORTUNITY_RECORDTYPEID{private set;get{
+        if(STANDARD_OPPORTUNITY_RECORDTYPEID==null)STANDARD_OPPORTUNITY_RECORDTYPEID=SchemaUtil.getRecordTypeId('Standard_Opportunity', 'Opportunity');
+        return STANDARD_OPPORTUNITY_RECORDTYPEID;
+    }}
+    public static final String STANDARD_CASE_RECORDTYPEID{private set;get{
+        if(STANDARD_CASE_RECORDTYPEID==null)STANDARD_CASE_RECORDTYPEID=SchemaUtil.getRecordTypeId('Standard_Case', 'Case');
+        return STANDARD_CASE_RECORDTYPEID;
+    }}
+     public static final String STANDARD_CAMPAIGN_RECORDTYPEID{private set;get{
+        if(STANDARD_CAMPAIGN_RECORDTYPEID==null)STANDARD_CAMPAIGN_RECORDTYPEID=SchemaUtil.getRecordTypeId('Standard_Campaign', 'Campaign');
+        return STANDARD_CAMPAIGN_RECORDTYPEID;
+    }}
+     
     public static final Map<String, String> PRODUCT_CONFIGURATION{private set;get{
         if(PRODUCT_CONFIGURATION==null)PRODUCT_CONFIGURATION=Util.getProductMetaDataConfiguration();
         return PRODUCT_CONFIGURATION;

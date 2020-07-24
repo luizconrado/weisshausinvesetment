@@ -13,11 +13,12 @@ public virtual class TriggerHandler {
         this.triggerNew = triggerNew;
         this.triggerNewMap = triggerNewMap;
         this.triggerOldMap = triggerOldMap;
+          
+
         this.operation = operation;
     }
 
     public virtual void execute() {
-
         switch on this.operation {
 
             when BEFORE_INSERT {

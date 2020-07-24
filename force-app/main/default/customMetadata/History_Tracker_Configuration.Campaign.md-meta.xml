@@ -7,6 +7,10 @@
         <value xsi:type="xsd:string">Name</value>
     </values>
     <values>
+        <field>Object__c</field>
+        <value xsi:type="xsd:string">Campaign</value>
+    </values>
+    <values>
         <field>Track_Change__c</field>
         <value xsi:type="xsd:boolean">true</value>
     </values>

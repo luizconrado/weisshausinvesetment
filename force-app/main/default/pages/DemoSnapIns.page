@@ -1,0 +1,78 @@
+<apex:page >
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
+	
+    <style type='text/css'>
+         .embeddedServiceHelpButton .helpButton .uiButton {
+            background-color: #eb0a0a;
+            font-family: "Arial", sans-serif;
+        }
+
+        .embeddedServiceHelpButton .helpButton .uiButton:focus {
+            outline: 1px solid #eb0a0a;
+        }
+        .embeddedServiceHelpButton .helpButton .message{
+            background-color:#eb0a0a;
+            border-style:none;
+            margin:0px;
+        }
+    </style>
+	<body>
+        <div style="text-align: center;margin-top: 200px;font-weight: 700;font-size: 4em;">
+            <h1>
+                Weisshausinvestment
+            </h1>
+        </div>
+    </body>
+    <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+    <script type='text/javascript'>
+        var initESW = function (gslbBaseURL) {
+            embedded_svc.settings.displayHelpButton = true; //Or false
+            embedded_svc.settings.language = 'de'; //For example, enter 'en' or 'en-US'
+            
+            //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+            //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+            
+            //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+            //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+            
+            // Settings for Chat
+            //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+            // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+            // Returns a valid button ID.
+            //};
+            //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+            //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+            //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+            
+            embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+            embedded_svc.settings.entryFeature = 'LiveAgent';
+            
+            embedded_svc.init(
+                'https://weisshausinvestment--dev.my.salesforce.com',
+                'https://dev-weisshausinvestment.cs101.force.com/support',
+                gslbBaseURL,
+                '00D1X0000008dzV',
+                'Web_Support',
+                {
+                    baseLiveAgentContentURL: 'https://c.la1-c1cs-cdg.salesforceliveagent.com/content',
+                    deploymentId: '5725I000000gPtx',
+                    buttonId: '5735I000000gQ4O',
+                    baseLiveAgentURL: 'https://d.la1-c1cs-cdg.salesforceliveagent.com/chat',
+                    eswLiveAgentDevName: 'Web_Support',
+                    isOfflineSupportEnabled: true
+                }
+            );
+        };
+    
+    if (!window.embedded_svc) {
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://weisshausinvestment--dev.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+        s.onload = function () {
+            initESW(null);
+        };
+        document.body.appendChild(s);
+    } else {
+        initESW('https://service.force.com');
+    }
+    </script>
+</apex:page>

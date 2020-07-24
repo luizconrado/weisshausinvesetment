@@ -13,7 +13,7 @@
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>Description</field>
-                <uiBehavior>Required</uiBehavior>
+                <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
@@ -23,7 +23,7 @@
         </quickActionLayoutColumns>
         <quickActionLayoutColumns/>
     </quickActionLayout>
-    <standardLabel>Guest Community Case</standardLabel>
     <targetObject>Case</targetObject>
+    <targetRecordType>Case.Standard_Case</targetRecordType>
     <type>Create</type>
 </QuickAction>

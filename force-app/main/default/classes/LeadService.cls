@@ -25,10 +25,7 @@ public without sharing class LeadService {
                 accountMaster.Origin__pc = (accountMaster.Origin__pc !=null)?accountMaster.Origin__pc +';'+ldRec.Lead_Origin__c:ldRec.Lead_Origin__c;
                         
             //updataing product status on person account account 
-            if (accountMaster.get(fieldApi) == null 
-                || accountMaster.get(fieldApi) == 'Not Subscribed' 
-                || accountMaster.get(fieldApi) == 'Unsubscribed'
-                || accountMaster.get(fieldApi) == 'Confirmation Resent') {
+            if (accountMaster.get(fieldApi) == null || accountMaster.get(fieldApi) == 'Not Subscribed' || accountMaster.get(fieldApi) == 'Unsubscribed'  || accountMaster.get(fieldApi) == 'Confirmation Resent') {
                     accountMaster.put(fieldApi, 'Awaiting Confirmation');
                     accountMaster.Last_Email_Sent_Date__pc=Date.today();
             } 
@@ -44,10 +41,7 @@ public without sharing class LeadService {
             if(ldRec.Lead_Origin__c!=null && leadMaster.Lead_Origin__c!=null && !leadMaster.Lead_Origin__c.contains(ldRec.Lead_Origin__c))
                 leadMaster.Lead_Origin__c = (leadMaster.Lead_Origin__c !=null)?leadMaster.Lead_Origin__c +';'+ldRec.Lead_Origin__c:ldRec.Lead_Origin__c;
             //update product status 
-            if (leadMaster.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == null 
-                || leadMaster.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Not Subscribed'
-                || leadMaster.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Unsubscribed'
-                || leadMaster.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Confirmation Resent') { 
+            if (leadMaster.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == null || leadMaster.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Not Subscribed' || leadMaster.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Unsubscribed'|| leadMaster.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Confirmation Resent') { 
                     leadMaster.put(productCodeAPIMap.get(ldRec.ProductInterest__c), 'Awaiting Confirmation');
                     leadMaster.Last_Email_Sent_Date__c=Date.today();
                 }
@@ -58,10 +52,7 @@ public without sharing class LeadService {
         //create new lead
         else{
             //updatating product status for new lead
-            if (ldRec.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == null 
-                || ldRec.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Not Subscribed' 
-                || ldRec.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Unsubscribed'
-                || ldRec.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Confirmation Resent') {
+            if (ldRec.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == null || ldRec.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Not Subscribed' || ldRec.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Unsubscribed' || ldRec.get(productCodeAPIMap.get(ldRec.ProductInterest__c)) == 'Confirmation Resent') {
                 	ldRec.put(productCodeAPIMap.get(ldRec.ProductInterest__c), 'Awaiting Confirmation');
                     ldRec.Last_Email_Sent_Date__c=Date.today();
                 }
@@ -193,10 +184,8 @@ public without sharing class LeadService {
         }
         
         
-        List<CampaignMember> campaignMember=[select id from CampaignMember where Campaign.Products__c=:product AND LeadOrContactId IN:leadAndContactId];
-        if(campaignMember.size()>0){
-            delete campaignMember;
-        }
+        List<CampaignMember> campaignMember=[select id from CampaignMember where Campaign.Product__c=:product AND LeadOrContactId IN:leadAndContactId];
+        if(campaignMember.size()>0)   delete campaignMember;
         return true;
     }
     
@@ -238,12 +227,8 @@ public without sharing class LeadService {
             //update lead with product status
             else if (leadList.size() > 0) {
                 Lead LeadRec = leadList.get(0);
-                if(String.isBlank(LeadRec.Salutation) || String.isBlank(LeadRec.LastName) || String.isBlank(LeadRec.Phone)){
-                    showForm = true;
-                }
-                else{
-                    showForm = false;
-                }
+                if(String.isBlank(LeadRec.Salutation) || String.isBlank(LeadRec.LastName) || String.isBlank(LeadRec.Phone)) showForm = true;
+                else showForm = false;
                 LeadRec.put(productCodeAPIMap.get(product), 'Subscribed');
                 LeadRec.Accepted_Terms_and_Conditions__c=true;
                 respWrapper.leadId = LeadRec.Id;
@@ -281,9 +266,7 @@ public without sharing class LeadService {
             else if (leadList.size() > 0) {
                 Lead LeadRec = leadList.get(0);
                 showForm = (LeadRec.get(productCodeAPIMap.get(product))=='Unsubscribed')?false:true;
-                 if(showForm==false){
-                    MailUtility.sendLeadHtmlEmail(LeadRec.id, Constant.LEAD_UNSUBSCRIBE_EMAIL_TEMPLATE, LeadRec.Email);
-                }
+                 if(showForm==false) MailUtility.sendLeadHtmlEmail(LeadRec.id, Constant.LEAD_UNSUBSCRIBE_EMAIL_TEMPLATE, LeadRec.Email);
             }
         }
         return showForm;
@@ -305,7 +288,7 @@ public without sharing class LeadService {
         if (String.isNotBlank(email) && String.isNotBlank(product) && productCodeAPIMap.containsKey(product)) return true;
         return false;
     }
-
+	
     private static Boolean updateLeadDML(Lead LeadRec, Boolean showForm) {
         try {
             update LeadRec;
@@ -325,7 +308,7 @@ public without sharing class LeadService {
         if(String.isNotEmpty(leadId)){
             queryStr += 'Id =: leadId';
         }else{
-            queryStr += 'Email =:email AND IsConverted = false AND LeadSource = \'Website\' AND ' + fieldToUpdate + ' IN (\'Awaiting Confirmation\',\'Confirmation Resent\',\'Subscribed\') FOR UPDATE';
+            queryStr += 'Email =:email AND IsConverted = false AND LeadSource = \'Website\'  FOR UPDATE';
         }
         List<Lead> leadList = Database.query(queryStr);
         return leadList;

@@ -378,7 +378,7 @@
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                         <tr>
                             <td class="content-block">
-                                <img src="https://weisshausinvestment--dev--c.documentforce.com/servlet/servlet.ImageServer?id=0150E00000124TR&oid=00D0E0000004yw3&lastMod=1591817764000"/>
+                                <img src="https://weisshausinvestment--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000cWLO&oid=00D5I000002GOw0&lastMod=1591962454000"/>
                             </td>
                         </tr>
                     </table>
@@ -393,7 +393,7 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <br>
-                                    <p>Hallo Kunde,</p>
+                                    <p>Hallo Kunde</p>
                                     <p>Bitte bestätigen Sie {!Lead.Email}. Vielen Dank!.</p>
                                     <br>
                                     <p><a class="confirm"

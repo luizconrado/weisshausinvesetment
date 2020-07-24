@@ -94,7 +94,7 @@ public inherited sharing  class TrackHistory {
        
     private static List<String> getFieldsToTrack(String ObjectName){
         //get field names that needs to be tracked
-        List<History_Tracker_Configuration__mdt> fieldConfig=[SELECT Fields__c FROM History_Tracker_Configuration__mdt WHERE DeveloperName=:ObjectName AND Track_Change__c=True];
+        List<History_Tracker_Configuration__mdt> fieldConfig=[SELECT Fields__c FROM History_Tracker_Configuration__mdt WHERE Object__c=:ObjectName AND Track_Change__c=True];
         List<String> fields=new List<String>();
         if(fieldConfig.size()>0) fields=fieldConfig.get(0).Fields__c.split(',');
         return fields;
@@ -111,7 +111,7 @@ public inherited sharing  class TrackHistory {
     @AuraEnabled
     public static void logUsageEntry(String recordId ,String objectName){
          //Check for status
-        List<History_Tracker_Configuration__mdt> fieldConfig=[SELECT Id FROM History_Tracker_Configuration__mdt WHERE DeveloperName=:objectName AND Track_View__c=True];
+        List<History_Tracker_Configuration__mdt> fieldConfig=[SELECT Id FROM History_Tracker_Configuration__mdt WHERE Object__c=:objectName AND Track_View__c=True];
         if(fieldConfig.size()==0) return;
         //Check if record created in past 5 min
         DateTime pastFiveMin=DateTime.now();

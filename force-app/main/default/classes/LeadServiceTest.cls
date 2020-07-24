@@ -1,96 +1,100 @@
 @isTest
 public class LeadServiceTest {
      
-    
-   
-    
-    @testSetup
-    static void setupdata(){
-        Lead l=TestDataFactory.getWebLead(true);
-    }
-
-    @isTest
-    static void updateLeadToUnSubscribed(){
-        Test.startTest();
-        LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1];
-        Lead l2=TestDataFactory.getWebLead(false);
-        l2.Newsletter__c='Subscribed';
-        insert l2;
-        Lead l=TestDataFactory.getWebLead(true);
-        l.Newsletter__c='Subscribed'; 
-        update l;
-        Database.LeadConvert lc = new database.LeadConvert();
-        lc.setLeadId(l.Id);
-        lc.setDoNotCreateOpportunity(True);
-        lc.setOwnerId(Userinfo.getUserId());
-        lc.setConvertedStatus(convertStatus.MasterLabel);
-        List<Account> a=[SELECT id FROM Account ];
-        Database.LeadConvertResult lcr = Database.convertLead(lc);
-        Campaign c=TestDataFactory.getCampaing(true);
-        TestDataFactory.getLeadCampaignMember(c.Id, l2.id, true);
-        if(a.size()>0)
-            TestDataFactory.getContactCampaignMember(c.Id, a.get(0).id, true);
-        LeadService.updateLeadToUnSubscribed(l.Email,'Newsletter','s');
-        LeadService.updateLeadToUnSubscribed(l2.Email,'Newsletter','s');
-        List<CampaignMember> cm=[select id from CampaignMember where Campaignid=:c.Id];
-        System.assert(cm.size()==0);
-        Test.stopTest();
-    }
-    @isTest
-    static void convertLeadTest(){
-        Test.startTest();
-        Lead l=[SELECT Id,Email FROM Lead limit 1];
-        LeadService.convertLeadToPersonAccount(l.Id,l.Email);
-        
-        Test.stopTest();
-    }    
-    @isTest 
-    static void updateLeadWithConfirmationTest(){
-        Test.startTest();
-        Lead l=[SELECT Id,Email FROM Lead limit 1];
-		LeadService.updateLeadWithConfirmation(Util.randomString(6),'Newsletter','Mr'
-                                               ,Util.randomString(6),Util.randomString(6),true
-                                               ,'123456789',l.id);
-        Test.stopTest();
-    }
-   
-    
-    @isTest
-    static void leadDupeMergeTest(){
-        Test.startTest();
-        Lead l=[select id,Email,ProductInterest__c from lead Limit 1] ;
-        Lead dupLead=TestDataFactory.getWebLead(false);
-        dupLead.Email=l.Email;
-        dupLead.ProductInterest__c='Product B';
-        insert dupLead;
-        Test.stopTest();
-    }
-    @isTest
-    static void resendMailTest(){
-        Test.startTest();
-        
-        Lead l=[select id,Email,ProductInterest__c from lead Limit 1] ;
-        Lead dupLead=TestDataFactory.getWebLead(false);
-        dupLead.Email=l.Email;
-        dupLead.ProductInterest__c='Product B';
-        insert dupLead;
-        Lead dupLead1=TestDataFactory.getWebLead(false);
-        dupLead1.Email=l.Email;
-        dupLead1.ProductInterest__c='Product B';
-        insert dupLead1;
        
-        Test.stopTest();
+   
+    
+    @isTest
+    static void getLastEmailToLeadInfoTest(){
         
+        Test.startTest();
+        LeadService.leadWrapper x=new LeadService.leadWrapper();
+
+        x.leadId=null;
+        x.showForm=true;
+        Lead l=TestDataFactory.getWebLead(true);
+        List<History_Tracker__c> history=LeadService.getLastEmailToLeadInfo(l.Email);
+        Test.stopTest();
+    }
+   
+    
+    @isTest
+    static void convertLeadToPersonAccountTest(){
+        Lead l=TestDataFactory.getWebLead(true);
+        Test.startTest();
+        LeadService.convertLeadToPersonAccount(l.Id,l.Email);
+        Test.stopTest();
+    }
+    @isTest 
+    static void sendEmailToLeadTest(){
+        Lead l=TestDataFactory.getWebLead(true);
+        Test.startTest();
+        LeadService.sendEmailToLead(l.Id,JSON.serialize(New Map<String,Boolean>{
+            'newsletter'=>true,
+                'productA'=>true
+                }));
+        Test.stopTest();
+    }
+    
+    @isTest 
+    static void subscribeLeadTest(){
+        Lead l=TestDataFactory.getWebLead(false);
+        l.Newsletter__c='Awaiting Confirmation';
+        insert l;
+        Lead l2=TestDataFactory.getWebLead(false);
+        l2.Phone='';
+        l2.Salutation='';
+        l2.Newsletter__c='Awaiting Confirmation';
+        insert l2;
+        Test.startTest();
+        LeadService.checkAndUpdateLeadOnload(l2.Email,'Newsletter');
+        LeadService.updateLeadWithConfirmation(l2.Email, 'Newsletter', 'Herr', 'Test', 'User', true, '+498756321', l2.id);
+        LeadService.checkAndUpdateLeadOnload(l.Email,'Newsletter');
+        Lead conformLead=[select id,Newsletter__c from lead where email=:l.Email limit 1];
+        System.assert(conformLead.Newsletter__c=='Subscribed');
+      
+        Test.stopTest();        
+    }
+    @isTest 
+    static void subscribeAccountTest(){
+        Account a=TestDataFactory.getPersonAccount(true);
+        Test.startTest();
+        LeadService.checkAndUpdateLeadOnload(a.PersonEmail,'Newsletter');
+        Account conformAccount=[select id,Newsletter__pc from Account limit 1];
+        System.assert(conformAccount.Newsletter__pc=='Subscribed');
+        Test.stopTest();
     }
     
     @isTest
-    static void checkAndUpdateLeadOnloadTest(){
+    static void unsubscribeLeadTest(){
+        Map<String,String> options= LeadService.getUnsubscribeOptions();
+        Lead l=TestDataFactory.getWebLead(true);
+        Lead l2=TestDataFactory.getWebLead(false);
+        l2.Newsletter__c='Unsubscribed';
+        insert l2;
         Test.startTest();
-        Lead l=[SELECT id,Email FROM Lead LIMIT 1];
-        l.Newsletter__c='Awaiting Confirmation';
-        update l;
-        LeadService.checkAndUpdateLeadOnload(l.Email, 'Newsletter');
+        LeadService.checkUnsubscribedStatus(l.Email,'Newsletter');
+        LeadService.updateLeadToUnSubscribed(l.Email,'Newsletter',options.values().get(0));
+        LeadService.checkUnsubscribedStatus(l2.Email,'Newsletter');
+        Lead conformLead=[SELECT Newsletter__c FROM Lead WHERE email=:l.Email LIMIT 1];
+        System.assert(conformLead.Newsletter__c=='Unsubscribed');
         Test.stopTest();
     }
+    @isTest
+    static void unsubscribeAccountTest(){
+         Map<String,String> options= LeadService.getUnsubscribeOptions();
+        Account a=TestDataFactory.getPersonAccount(true);
+        Account a2=TestDataFactory.getPersonAccount(false);
+        a2.Newsletter__pc='Unsubscribed';
+        insert a2;
+        Test.startTest();
+        LeadService.checkUnsubscribedStatus(a.PersonEmail,'Newsletter');
+        LeadService.updateLeadToUnSubscribed(a.PersonEmail,'Newsletter',options.values().get(0));
+        LeadService.checkUnsubscribedStatus(a2.PersonEmail,'Newsletter');
+        Account conformAccount=[SELECT Newsletter__pc FROM Account WHERE PersonEmail=:a.PersonEmail LIMIT 1];
+        System.assert(conformAccount.Newsletter__pc=='Unsubscribed');
+        Test.stopTest();
+    }
+    
    
 }

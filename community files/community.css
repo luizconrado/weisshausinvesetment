@@ -1,0 +1,327 @@
+@font-face {
+    font-family: 'HelveticaNeue' !important;
+    src: url('HelveticaNeue.ttc') format('truetype');
+}
+
+* {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.forceCommunityThemeHeroBase .contentCaption{
+    font-size:16px !important;
+    font-weight: bold !important;
+}
+
+.forceCommunityThemeHeroBase .contentTitle{
+    font-size:34px !important;
+    font-weight: normal !important;
+}
+
+.forceCommunityHeadline{
+    padding-top: 40px !important;
+    padding-bottom: 20px !important;
+}
+
+.forceCommunityHeadline .headlineTitle{
+    font-family: HelveticaNeue !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-size: 34px !important;
+    line-height: 39px !important;
+    align-items: center !important;
+    text-align: center !important;
+    color: #444444 !important;
+}
+
+.forceCommunityHeadline .headlineInfo{
+    font-family: HelveticaNeue !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+    text-align: center !important;
+    color: #666666 !important;
+    margin-top: 20px !important;
+}
+
+.forceCommunityThemeSearch.helpCenterHomeHero .search-input{
+    font-size:16px !important;
+}
+
+.siteforceThemeLayoutStarter {
+    font-size:16px !important;
+}
+
+.forceCommunityTopArticleList{
+    position: relative;
+    padding: 0;
+    background: rgb(255, 255, 255);
+    border: 0px solid #c9c9c9;
+    border-radius: .25rem;
+    background-clip: padding-box;
+    box-shadow: none;
+}
+
+.forceCommunityTopArticleList .title{
+    padding: .75rem 1rem 0;
+    width: 100%;
+}
+
+.forceCommunityTopArticleList .listContent{
+    min-height: 11.8rem;
+}
+
+.forceCommunityTopArticleListForTopic .topicHeader{
+    border-bottom: 1px #c9c9c9 solid;
+}
+
+.forceCommunityTopArticleList .forceCommunityTopArticleListForTopic{
+    width : 100% !important;
+    padding: .75rem 1rem 0;
+}
+
+.forceCommunityTopArticleItem .article-title {
+    font-size: 16px !important;
+}
+
+.forceCommunityTopArticleItem .article-title-link:focus {
+    box-shadow: 0 0 0 0px rgb(235, 10, 10) !important;
+}
+
+.selfServiceTopicTrendingArticles42 .slds-grid--vertical a:focus{
+    box-shadow: 0 0 0 0px rgb(235, 10, 10) !important;
+}
+
+.forceCommunityTopArticleListForTopic .topicHeader{
+    display:none !important;
+}
+
+.forceCommunityTopArticleList .title{
+    margin-bottom :0px;
+    margin-top:14px;
+}
+
+.slds-text-body_small, .slds-text-body--small{
+    font-size: 16px !important;
+}
+
+article.content .forcePageBlockSectionRow ~ .forcePageBlockSectionRow{
+    display:none;
+}
+
+.forceCommunityContactSupportButton, .contactSupportButton{
+    padding: 14px 24px !important;
+    font-weight: 700;
+    background: #eb0a0a !important;
+    color: #fff !important;
+    line-height: 16px !important;
+}
+
+.slds-input{
+    height:48px;
+}
+
+.contactSupportButton{
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+    font-size:16px !important;
+    font-weight : 500;
+}
+
+.contactSupportButton:hover{
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.13);
+    background: #eb0a0a !important;
+}
+
+.forceCommunityEmbeddedServiceHelpButton .flatButton{
+    font-weight : 500 !important;
+}
+
+.forceCommunityContactSupportForm{
+    padding : 40px 60px;
+}
+
+.forceCommunityContactSupportForm .slds-text-align_center{
+    text-align : left !important;
+}
+
+.forceCommunityContactSupportForm .slds-page-header__title{
+    font-size: 24px;
+    line-height: 1.5;
+    color: #444444;
+}
+
+.forceCommunityCaseDeflection .header-message{
+    text-align : left !important;
+    padding: 60px 50px 0 58px;
+}
+
+.forceCommunityCaseDeflection .slds-page-header__title{
+    font-size: 24px;
+    line-height: 1.5;
+    color: #444444;
+}
+
+.selfServiceArticleLayout .article-head{
+    font-size: 24px !important;
+    color: #444444 !important;
+    line-height: 1.5 !important;
+    font-weight: normal !important;
+}
+
+.selfServiceTopicTrendingArticles42>h2{
+    font-size: 24px !important;
+    color: #444444 !important;
+    line-height: 1.5 !important;
+    font-weight: normal !important;
+}
+
+.selfServiceArticleLayout.zoom.article-column{
+    padding: 40px 60px !important;
+}
+
+.comm-topic-trending-articles .slds-text-heading--small{
+    padding: 40px 60px 0 60px !important;
+}
+
+.comm-topic-trending-articles .slds-grid--vertical{
+    padding: 0  60px 0 60px !important;
+}
+/*custom*/
+/*header*/
+.themeHeader{
+    border-bottom: 3px solid #EB0A0A;
+}
+.themeBottomBorder{
+    background-color:#EB0A0A !important;
+}
+.themeHeaderInner {
+    padding-bottom:15px !important;
+    padding-top:38px !important;
+}
+
+/*live agent*/
+
+.forceCommunityEmbeddedServiceHelpButton{
+    height: 46px !important;
+    bottom: 12px !important;
+    right: 12px !important;
+}
+
+.forceCommunityEmbeddedServiceHelpButton .flatButton {
+    border-radius:4px !important;
+    padding:0 12px !important; 
+    height: 46px !important;
+}
+.forceCommunityEmbeddedServiceHelpButton .help{
+    padding-right:0px !important;
+}
+.forceCommunityEmbeddedServiceHelpButton .help svg{
+    width:0.8em  !important;
+    height:46px !important;
+}
+
+.embeddedServiceSidebarMinimizedDefaultUI{
+    bottom: 12px !important;
+    border-radius:4px !important;
+    min-width:44px !important;
+    max-width:44px !important;
+    background-color: #EB0A0A !important;
+    border: none !important;
+}
+.embeddedServiceSidebarMinimizedDefaultUI .content{
+    margin-left:8px !important;
+}
+
+.embeddedServiceSidebar.layout-docked .dockableContainer {
+    border-radius:4px 4px 0 0 !important;
+}
+.sidebarHeader .minimizeButton:active,
+.sidebarHeader .closeButton:active,
+.sidebarHeader .minimizeButton:focus,
+.sidebarHeader .closeButton:focus {
+    outline:none !important;
+}
+/*footer*/
+.community-footer {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    justify-content: center;
+    padding: 20px 20px 20px 40px;
+
+    border-top: 1px solid #c9c9c9;
+    border-bottom: 1px solid #c9c9c9;
+}
+
+.community-footer__column {
+    display: flex;
+    flex-direction: column;
+}
+
+.community-footer__column--item {
+    padding-bottom: 5px;
+}
+
+.community-footer__column--item h4 {
+    color: #444444;
+    font-family: "HelveticaNeue", Helvetica;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: capitalize;
+    line-height: 22px;
+    letter-spacing: 0px;
+    margin: 0 0 2px 0;
+}
+
+.community-footer__column--item.divider {
+    border-top: 1px solid #EB0A0A;
+    width: 10%;
+    text-align: left;
+    padding-top: 8px;
+   
+}
+
+.community-footer__column--item.extra-padding {
+    padding-top: 25px;
+}
+
+.community-footer__column--item a {
+    box-shadow: none;
+     color: #444444 !important;
+    font-family: "HelveticaNeue", Helvetica;
+    font-size: 14px;
+    justify-content: flex-start;
+    text-align: left;
+   
+    
+    text-decoration: none;
+}
+
+.community-footer__column--item a:hover {
+    color: #EB0A0A !important;
+    text-decoration: none !important;
+}
+
+.community-footer__column--item.text-item a:hover {
+    color: #444444 !important;
+}
+
+.community-fotter-image {
+    padding: 15px;
+    text-align: center;
+  
+}
+
+.community-fotter-image img {
+    max-width: 4%;
+}
+
+@media (max-width:640px) {
+    .community-footer {
+        grid-template-columns: auto;
+    }
+
+    .community-footer__column {
+        align-items: center;
+        padding: 20px 0 20px 0;
+    }
+}

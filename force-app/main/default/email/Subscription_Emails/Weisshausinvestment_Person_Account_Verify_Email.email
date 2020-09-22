@@ -1,8 +1,9 @@
 <!doctype html>
 <html>
+
 <head>
-    <meta name="viewport" content="width=device-width"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Simple Transactional Email</title>
     <style>
         /* -------------------------------------
@@ -168,7 +169,7 @@
             width: 100%;
         }
 
-        .btn > tbody > tr > td {
+        .btn>tbody>tr>td {
             padding-bottom: 15px;
         }
 
@@ -363,86 +364,90 @@
                 border-color: #34495e !important;
             }
         }
-
     </style>
 </head>
+
 <body class="">
-<span class="preheader">Überprüfen Sie das E-Mail-Konto für das Newsletter-Abonnement.</span>
-<table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
-    <tr>
-        <td class="container">
-            <div class="content">
+    <span class="preheader">Überprüfen Sie das E-Mail-Konto für das Newsletter-Abonnement.</span>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
+        <tr>
+            <td class="container">
+                <div class="content">
 
-                <!-- START HEADER -->
-                <div class="header">
-                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                    <!-- START HEADER -->
+                    <div class="header">
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td class="content-block">
+                                    <img
+                                        src="https://weisshausinvestment--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000cWLO&oid=00D5I000002GOw0&lastMod=1591962454000" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- START CENTERED WHITE CONTAINER -->
+                    <table role="presentation" class="main">
+
+                        <!-- START MAIN CONTENT AREA -->
                         <tr>
-                            <td class="content-block">
-                                <img src="https://weisshausinvestment--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000cWLO&oid=00D5I000002GOw0&lastMod=1591962454000"/>
+                            <td class="wrapper">
+                                <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <br>
+                                        <p>Sehr geehrte(r) Kunde,</p>
+                                        <p>vielen Dank für Ihr Interesse an unserer Weisshaus Investment Plattform.</p>
+                                        <p>Bitte bestätigen Sie ihre E-mail Adresse ({!Account.PersonEmail}). Vielen Dank!.</p>
+                                        <br>
+                                        <p><a class="confirm"
+                                                href="{!$Label.siteUrl}/s/verifyemailaccount?email={!Account.PersonEmail}&product={!Account.ProductInterest__pc}">Bestätigen
+                                                Sie Ihre E-Mail-Adresse >></a></p>
+                                        <br>
+                                        <p style="font-weight: bold;">Schaltfläche oben funktioniert nicht?</p>
+                                        <p>Kopieren Sie einfach diesen Link und fügen Sie ihn in Ihren Browser ein:</p>
+                                        <p>
+                                            {!$Label.siteUrl}/s/verifyemailaccount?email={!Account.PersonEmail}&product={!Account.ProductInterest_Encode__pc}
+                                        </p>
+                                        <br>
+                                        <p>Mit freundlichen Grüßen,</p>
+                                        <p>Ihr Weisshaus Investment Team</p>
                             </td>
                         </tr>
                     </table>
-                </div>
+            </td>
+        </tr>
 
-                <!-- START CENTERED WHITE CONTAINER -->
-                <table role="presentation" class="main">
+        <!-- END MAIN CONTENT AREA -->
+    </table>
+    <!-- END CENTERED WHITE CONTAINER -->
 
-                    <!-- START MAIN CONTENT AREA -->
-                    <tr>
-                        <td class="wrapper">
-                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <br>
-                                    <p>Hallo Kunde</p>
-                                    <p>Bitte bestätigen Sie {!Account.PersonEmail}. Vielen Dank!.</p>
-                                    <br>
-                                    <p><a class="confirm"
-                                          href="{!$Label.siteUrl}/s/verifyemailaccount?email={!Account.PersonEmail}&product={!Account.ProductInterest__pc}">Bestätigen
-                                        Sie Ihre E-Mail-Adresse >></a></p>
-                                    <br>
-                                    <p style="font-weight: bold;">Schaltfläche oben funktioniert nicht?</p>
-                                    <p>Kopieren Sie einfach diesen Link und fügen Sie ihn in Ihren Browser ein:</p>
-                                    <p>
-                                        {!$Label.siteUrl}/s/verifyemailaccount?email={!Account.PersonEmail}&product={!Account.ProductInterest_Encode__pc}</p>
-                                    <br>
-                                    <p>Prost,</p>
-                                    <p>Ihr Weisshaus-Investmentteam</p>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
+    <!-- START FOOTER -->
+    <div class="footer">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="content-block">
+                    <p class="apple-link">Sie erhalten diese E-Mail, weil {!Account.PersonEmail} auf Weisshausinvestment
+                        registriert ist. Bitte antworten Sie nicht direkt auf diese E-Mail. Wenn Sie Fragen
+                        oder Feedback haben, rufen Sie bitte an: +49 3074395959</p>
+                    <br>
+                    <p class="apple-link">Copyright &#169; 2019 Weisshausinvestment Gmbh | Hardenberstr. 32,
+                        10623 Berlin | Charlottenburg District Court | HRB 215045 |
+                        <a class="confirm"
+                            href="{!$Label.siteUrl}/s/unsubscribe?email={!Account.PersonEmail}&product={!Account.ProductInterest__pc}">
+                            abmelden
+                        </a>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- END FOOTER -->
 
-                    <!-- END MAIN CONTENT AREA -->
-                </table>
-                <!-- END CENTERED WHITE CONTAINER -->
-
-                <!-- START FOOTER -->
-                <div class="footer">
-                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                        <tr>
-                            <td class="content-block">
-                                <p class="apple-link">Sie erhalten diese E-Mail, weil {!Account.PersonEmail} auf Weisshausinvestment 
-                                    registriert ist. Bitte antworten Sie nicht direkt auf diese E-Mail. Wenn Sie Fragen
-                                    oder Feedback haben, rufen Sie bitte an: +49 3074395959</p>
-                                <br>
-                                <p class="apple-link">Copyright &#169; 2019 Weisshausinvestment Gmbh | Hardenberstr. 32,
-                                    10623 Berlin | Charlottenburg District Court | HRB 215045 |
-                                    <a class="confirm"
-                                          href="{!$Label.siteUrl}/s/unsubscribe?email={!Account.PersonEmail}&product={!Account.ProductInterest__pc}">
-                                          abmelden
-                                    </a>
-                                    </p>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <!-- END FOOTER -->
-
-            </div>
-        </td>
-        <td>&nbsp;</td>
+    </div>
+    </td>
+    <td>&nbsp;</td>
     </tr>
-</table>
+    </table>
 </body>
+
 </html>

@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Simple Transactional Email</title>
+    <title>Weisshaus Account Email Verification</title>
     <style>
         /* -------------------------------------
             GLOBAL RESETS
@@ -379,8 +379,15 @@
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td class="content-block">
-                                    <img
-                                        src="https://weisshausinvestment--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000cWLO&oid=00D5I000002GOw0&lastMod=1591962454000" />
+                                    <table width="23%">
+                                        <tr>
+                                            <td>
+                                                <img width="200"
+                                                    style="text-align: right; width: 207px; border: 0; text-decoration:none; vertical-align: baseline;"
+                                                    src="https://weisshausinvestment--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000cWLO&oid=00D5I000002GOw0&lastMod=1591962454000" />
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </td>
                             </tr>
                         </table>
@@ -394,17 +401,20 @@
                             <td class="wrapper">
                                 <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                     <tr>
-                                        <br>
-                                        <p>Sehr geehrte(r) Kunde,</p>
+                                     
+                                         <br>
+                                        <p>Sehr geehrte Kundin / Sehr geehrter Kunde,</p>
                                         <p>vielen Dank für Ihr Interesse an unserer Weisshaus Investment Plattform.</p>
-                                        <p>Bitte bestätigen Sie ihre E-mail Adresse ({!Account.PersonEmail}). Vielen Dank!.</p>
+                                        <p>Bitte bestätigen Sie Ihre E-mail Adresse ({!Account.PersonEmail}) unter folgendem Link
+                                            - Vielen Dank!</p>
                                         <br>
-                                        <p><a class="confirm"
-                                                href="{!$Label.siteUrl}/s/verifyemailaccount?email={!Account.PersonEmail}&product={!Account.ProductInterest__pc}">Bestätigen
-                                                Sie Ihre E-Mail-Adresse >></a></p>
+                                        <p style="text-align:center;"><a class="confirm"
+                                                href="{!$Label.siteUrl}/s/verifyemailaccount?email={!Account.PersonEmail}&product={!Account.ProductInterest__pc}">LINK
+                                                FÜR BESTÄTIGUNG</a></p>
                                         <br>
-                                        <p style="font-weight: bold;">Schaltfläche oben funktioniert nicht?</p>
-                                        <p>Kopieren Sie einfach diesen Link und fügen Sie ihn in Ihren Browser ein:</p>
+                                        <p style="font-weight: bold;">Link oben funktioniert nicht?</p>
+                                        <p>Kopieren Sie einfach den folgenden Link und fügen Sie ihn in Ihren Browser
+                                            ein:</p>
                                         <p>
                                             {!$Label.siteUrl}/s/verifyemailaccount?email={!Account.PersonEmail}&product={!Account.ProductInterest_Encode__pc}
                                         </p>

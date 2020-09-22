@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Simple Transactional Email</title>
+    <title>Weisshaus Lead Email Verification</title>
     <style>
         /* -------------------------------------
             GLOBAL RESETS
@@ -378,9 +378,12 @@
                     <div class="header">
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                             <tr>
-                                <td class="content-block">
-                                    <img
+                                <td class="content-block" >
+                                    <table width="23%"><tr><td>
+                                        <img width="200" style="text-align: right; width: 207px; border: 0; text-decoration:none; vertical-align: baseline;"
                                         src="https://weisshausinvestment--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000cWLO&oid=00D5I000002GOw0&lastMod=1591962454000" />
+                                    </td></tr></table>
+                                    
                                 </td>
                             </tr>
                         </table>
@@ -395,16 +398,15 @@
                                 <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <br>
-                                        <p>Sehr geehrte(r) Kunde,</p>
+                                        <p>Sehr geehrte Kundin / Sehr geehrter Kunde,</p>
                                         <p>vielen Dank für Ihr Interesse an unserer Weisshaus Investment Plattform.</p>
-                                        <p>Bitte bestätigen Sie ihre E-mail Adresse ({!Lead.Email}). Vielen Dank!.</p>
+                                        <p>Bitte bestätigen Sie Ihre E-mail Adresse ({!Lead.Email}) unter folgendem Link - Vielen Dank!</p>
                                         <br>
-                                        <p><a class="confirm"
-                                                href="{!$Label.siteUrl}/s/verifyemailaccount?email={!Lead.Email}&product={!Lead.ProductInterest__c}">Bestätigen
-                                                Sie Ihre E-Mail-Adresse >></a></p>
+                                        <p style="text-align:center;"><a class="confirm"
+                                                href="{!$Label.siteUrl}/s/verifyemailaccount?email={!Lead.Email}&product={!Lead.ProductInterest__c}">LINK FÜR BESTÄTIGUNG</a></p>
                                         <br>
-                                        <p style="font-weight: bold;">Schaltfläche oben funktioniert nicht?</p>
-                                        <p>Kopieren Sie einfach diesen Link und fügen Sie ihn in Ihren Browser ein:</p>
+                                        <p style="font-weight: bold;">Link oben funktioniert nicht?</p>
+                                        <p>Kopieren Sie einfach den folgenden Link und fügen Sie ihn in Ihren Browser ein:</p>
                                         <p>
                                             {!$Label.siteUrl}/s/verifyemailaccount?email={!Lead.Email}&product={!Lead.ProductInterest_Encode__c}
                                         </p>
@@ -426,11 +428,11 @@
         <table role="presentation" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td class="content-block">
-                    <p class="apple-link">Sie erhalten diese E-Mail, weil {!Lead.Email} auf Weisshausinvestment
+                    <p class="apple-link">Sie erhalten diese E-Mail, weil {!Lead.Email} auf Weisshaus Investment
                         registriert ist. Bitte antworten Sie nicht direkt auf diese E-Mail. Wenn Sie Fragen
                         oder Feedback haben, rufen Sie bitte an: +49 3074395959</p>
                     <br>
-                    <p class="apple-link">Copyright &#169; 2019 Weisshausinvestment Gmbh | Hardenberstr. 32,
+                    <p class="apple-link">Copyright &#169; 2020 Weisshaus Investment Platform Gmbh | Hardenberstr. 32,
                         10623 Berlin | Charlottenburg District Court | HRB 215045 |
                         <a class="confirm"
                             href="{!$Label.siteUrl}/s/unsubscribe?email={!Lead.Email}&product={!Lead.ProductInterest__c}">

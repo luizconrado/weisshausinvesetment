@@ -7,7 +7,7 @@
 
     <article class="slds-card">
         <div class="slds-card__header slds-grid">
-            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate fix-height">
                 <div class="slds-media__figure">
                     <span class="slds-icon_container" title="case">
                         <img src={emailLogo} alt={title} class="iconCls" />
@@ -19,9 +19,9 @@
 
         <div class="slds-card__body slds-card__body_inner">
             <div class="slds-media__body box-title">
-                <span>{title}</span>
+                <h4>{title}</h4>
             </div>
-            <div class="slds-media__body description">
+            <div class="slds-media__body slds-text-align_center description">
                 {description}
             </div>
         </div>

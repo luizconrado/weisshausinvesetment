@@ -1,0 +1,51 @@
+<aura:component controller="LeadService" implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global" >
+    <aura:html tag="style">
+        .cuf-content {
+        padding: 0 0rem !important;
+        }
+        .slds-p-around--medium {
+        padding: 0rem !important;
+        }       
+        .slds-modal__content{
+        height:unset !important;
+        max-height:unset !important;
+        }
+    </aura:html>
+    <aura:attribute name="leadRecordRecord" type="Object"/>
+    <aura:attribute name="recordLoadError" type="String"/>
+    <aura:attribute name="loader" type="boolean" default="false"/>
+    
+    <force:recordData aura:id="recordEditor"
+                      recordId="{!v.recordId}"
+                      fields="Name,Email"
+                      targetFields="{!v.leadRecordRecord}"
+                      targetError="{!v.recordLoadError}"
+                      recordUpdated="{!c.onRecordEvent}"
+                      />
+    <section>
+        <header class="modal-header  slds-modal__header">
+            <button onclick="{!c.close}" class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                X
+                <span class="slds-assistive-text">Close</span>
+            </button>
+            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Convert {!v.leadRecordRecord.Name}</h2>
+        </header>
+        <div class="slds-modal__content slds-p-around_medium slds-is-relative"  id="modal-content-id-1">
+            <aura:if isTrue="{!v.loader}">
+                <lightning:spinner alternativeText="Loading" size="medium" />
+            </aura:if>
+            <aura:if isTrue="{!v.leadRecordRecord}">
+                <ul>
+                	<li>Convert lead to person Account.</li>
+                </ul>
+            </aura:if>
+        </div>
+        <footer class="modal-footer slds-modal__footer">
+            
+            <lightning:button label="Cancel" title="Cancel" onclick="{! c.close }"/>
+            
+            <lightning:button variant="brand" label="Convert" title="Convert" onclick="{! c.convert }" />
+            
+        </footer>
+    </section>
+</aura:component>

@@ -2,6 +2,10 @@
  * Created by prasad on 18.06.20.
  */
 
+ *{
+    font-family: "HelveticaNeue", Helvetica;
+ }
+
 .slds-card__footer {
     text-align: center;
 }
@@ -9,6 +13,16 @@
 .slds-card {
     border:0;
 }
+.fix-height{
+    max-height: 48px;
+    height: 48px;
+    margin-bottom:8px;
+}
+.fix-height img{
+    height: 30px;
+    width: 40px;
+}
+
 
 .slds-media__figure{
     width :100%;
@@ -20,29 +34,23 @@
 }
 
 .box-title{
-    font-family: "HelveticaNeue", Helvetica;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 28px;
-    margin-top: 42.79px;
-    margin-bottom: 40px;
     color: #444444;
+    margin-bottom: 16px;
 }
-
-.iconCls{
-    width: 60px;
-    height: 36.92px;
+.box-title h4{
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0px;
+    margin: 2.5rem auto 1.5rem;
+    font-weight: bold;
 }
 
 .description{
-    font-family: Helvetica Neue;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
     color: #666666;
+    line-height:1.5;
+    letter-spacing:0px;
+    min-height: 72px;
+    min-width: 272px;
 }
 
 .customButton{
@@ -54,12 +62,13 @@
     padding: 14px 24px;
     text-transform: none;
     color: #ffffff;
-    border-color: rgb(235, 10, 10);
+    border-color:#EB0A0A;
     border-width: 2px;
     border-style: solid;
     min-width: 135px;
     transition: all .2s;
     outline: none;
+    line-height:19px;
 }
 
 .customButton:hover{

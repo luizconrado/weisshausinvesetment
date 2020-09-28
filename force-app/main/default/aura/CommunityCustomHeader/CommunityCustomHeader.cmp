@@ -1,0 +1,53 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+     <aura:handler name='init' value='{!this}' action='{!c.onInit}'/>
+    <div class="wrapper">
+        <div class="community-header">
+            <div class="community-header__item wrap-item"></div>
+            <div class="community-header__item">
+                <a href="https://weisshausinve0.wpengine.com">
+                    <img
+                         src="https://dev-weisshausinvestment.cs101.force.com/support/file-asset/X20200917">
+                    </img>
+                </a>
+            </div>
+            <div class="community-header__item navigation desktop">
+                <div class="community-header__item-nav">
+                    <a href="https://weisshausinve0.wpengine.com"> Über uns</a>
+                </div>
+                <div class="community-header__item-nav">
+                    <a href="https://weisshausinve0.wpengine.com"> Presse</a>
+                </div>
+                <div class="community-header__item-nav">
+                    <a href="https://weisshausinve0.wpengine.com"> Karriere</a>
+                </div>
+                
+            </div>
+            <div class="mobile community-header__item navigation ">
+                <button class="toggle-button" id="nav-toggle">
+                    <span class="toggle-button__bar"></span>
+                    <span class="toggle-button__bar"></span>
+                    <span class="toggle-button__bar"></span>
+                </button>
+            </div>
+            
+        </div>
+        <div class="toggle community-header-popup">
+            <div class="community-header-backdrop"></div>
+            <div class="community-header-widget">
+                <div id="nav-popup" class="community-header-widget__item-nav align-right">
+                    X 
+                </div>
+                <div class="community-header-widget__item-nav">
+                    <a href="https://weisshausinve0.wpengine.com"> Über uns</a>
+                </div>
+                <div class="community-header-widget__item-nav">
+                    <a href="https://weisshausinve0.wpengine.com"> Presse</a>
+                </div>
+                <div class="community-header-widget__item-nav">
+                    <a href="https://weisshausinve0.wpengine.com"> Karriere</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</aura:component>

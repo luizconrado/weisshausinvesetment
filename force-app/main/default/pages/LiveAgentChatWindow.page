@@ -1,190 +1,145 @@
 <apex:page showHeader="false">
     <style>
-        #liveAgentChatLogText .operator,
-        .client {
-            display: block;
-            margin-top: 20px;
-            padding:5px;
+        *{
+        	box-sizing: border-box;
+        }
+        .header{
+        	height: 2rem;
+            background: black;
+            color: white;
+            display: grid;
+        	grid-template-columns:auto 1rem;
+        	align-content:center;
         }
         
-        #liveAgentChatLogText .system{
-        	text-align:center;
+        .header-name{
+        	font-size:larger;
+        	justify-self:center;
+        }
+        .header-close button{
+            color: red;
+            background: black;
+            border: none;
         }
         
-        /*chat window*/
-        #liveAgentChatLog{
-            width: auto;
-            height: auto;
-            top: 43px;
-            position: absolute;
-            overflow-y: auto;
+        
+        #liveAgentClientChatSettings{
+        	position: absolute;
+            top: calc(0px + 2rem);
+            bottom: 0;
             left: 0;
             right: 0;
-            bottom: 70px;
-            border :none;
-            
+		}
+        
+        #liveAgentClientChat{
+        	height:100%;
         }
         
-        /*Agent*/
-        #liveAgentChatLogText .operator .name {
-        display: none;
-        color: #ffffff;
-        background-color: rgb(235, 10, 10);
-        overflow: hidden;
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
+        #liveAgentChatLog{
+        	overflow:overlay;
+        	height:calc(100% - 3rem);
         }
         
-        #liveAgentChatLogText .operator .name strong {
-        margin-left: 2px
-        width:2ch;
+        #liveAgentChatLogText{
+            display: flex;
+            flex-direction: column;
         }
         
-        #liveAgentChatLogText .operator .messageText {
-        color: #666666;
-        background: #f4f4f4;
-        border-radius: 10px 10px 10px 0;
-        position: relative;
-        font-weight: 400;
-        line-height: 1.3;
-        max-width: 70%;
-        font-size: 1.25em;
-        padding: 10px;
-        white-space: pre-wrap;
+        #liveAgentChatLogTyping{
+        	padding: .5rem;
         }
         
-        #liveAgentChatLogText .operator .timestamp {
-            color:#666;
-            font-size:.625em;
-            line-height:1.3;
-            font-weight:400px;
-        	display:block;
-        	text-align:left;
+        .client{
+        	margin-top:1rem;
+            margin-left: 1rem;
+        	align-self:flex-start;
+        	display:flex !important;
+        	flex-flow:column-reverse
         }
-        
-        #liveAgentChatLogText .operator em {
-            padding:5px;
-        	display:block;
+        .client + .timestamp{
+        	align-self:flex-start;
+        	margin-left: 1rem;
+        	color:#0000009c;
         }
-        
-        /*user*/
-        #liveAgentChatLogText .client .name {
-        	display: none;
+        .client .messageText{
+        	padding:0.5rem;
+        	background-color:#005fb2;
+       	 	border-radius: .5rem .5rem .5rem 0;
+            color: white;
+            font-size: medium;
+    		
+
         }
-        
-        #liveAgentChatLogText .client {
-        	text-align: right
+        .operator{
+        	margin-top:1rem;
+        	margin-right:1rem;
+        	align-self:flex-end;
+        	display:flex !important;
+        	flex-flow:column-reverse
+        	
         }
-        
-        
-        
-        #liveAgentChatLogText .client .messageText {
-            background: #eb0a0a;
-            color: #ffffff;
-            margin-left: auto;
-            position: relative;
-            font-weight: 400;
-            line-height: 1.3;
-            max-width: 70%;
-            padding: 10px;
-            font-size: 1.25em;
-            border-radius: 10px 10px 0;
-            white-space: pre-wrap;
+        .operator + .timestamp{
+        	align-self:flex-end;
+        	margin-right: 1rem;
+        	color:#0000009c;
         }
-        #liveAgentChatLogText .client .timestamp {
-            color:#666;
-            font-size:.625em;
-            line-height:1.3;
-            font-weight:400px;
-        	display:block;
-        	text-align:right;
+        .operator .name{
+        	align-self:flex-end;
         }
-        
-        /*input*/    
-        #liveAgentInputWrapper{
-        	background-color:#ededed;
+        .operator .messageText{
+        	padding:0.5rem;
+        	background-color:#eb0a0a;
+        	border-radius: .5rem .5rem 0;
+            color: white;
+            font-size: medium;
+    	}
+        .system{
+            align-self: center;
+    		font-size: large;
         }
         #liveAgentChatInput{
-            width:98%;
-            border:1px solid #fff;
-            background:#fff;
-            font-size:1.25em;
-            line-height:1.3;
-            overflow:hidden;
-            color:#666666;
-            box-sizing:border-box;
-            outline:none;
-            flex-grow:1;
-            padding:15px 8px;
-            margin:8px;
+        	height: 48px;
+            border-radius: 0px;
+            background-color: rgb(255, 255, 255);
+            border: 1px solid rgb(201, 201, 201);
+            padding: 0 1rem 0 .75rem;
+            line-height: 1.875rem;
+        	width:100%
         }
-        #chat-header{
-        	top:0px;
-        	display:flex;
-        	width:100%;
-        	border-radius:8px 8px 0 0;
-        	background-color:#000;
-        }
-        #headerText{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-grow: 1;
-            align-self: stretch;
-            width: calc(100% - 96px);
-            color: #ffffff;
-            text-decoration: none;
-            line-height: normal;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            font-weight: normal;
-        	padding:14px;
-        }
-        #headerclosebutton{
-            padding: 14px;
-            color:#ffffff;
-        	cursor:pointer;
-            background: none;
-            border: none;
-            float: left;
+        #liveAgentChatInput:focus,#liveAgentChatInput:active{
+            outline: 0;
+            border-color: rgb(21, 137, 238);
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 0 3px #0070d2;
         }
     </style>
-    <div style="top: 0; left: 0; right: 0; bottom: 0; position: absolute;">
-        <liveAgent:clientChat >
-            <div id="chat-header">
-                <h2 id="headerText">
-                    Connecting To Live Agent
-                </h2>
-                <span id="headerclosebutton" onclick="endChat();">
-                    X
-                </span>
+    <header>
+   		<div class="header">
+        	<div class="header-name" id="agent_name">
+                Searching for available agent...
             </div>
-           
-            
-            <liveAgent:clientChatAlertMessage />
-            <liveAgent:clientChatStatusMessage />
-            <div style="display: flex;flex-direction: column;">
-                <div style="top: 3.5em; right: 0; left: 0; padding: 0; z-index: 0;" >
-                    <liveAgent:clientChatLog showTimeStamp="false" />
-                </div>
-                <div id="liveAgentInputWrapper" style="position: fixed; height: auto; right: 0; bottom: 0; left: 0;">
-                    <liveagent:clientChatInput />    
-                </div>
+            <div class="header-close">
+                <button onclick="endChat();">X</button>
             </div>
-           
-            
-        </liveAgent:clientChat>
-    </div>
+        </div>
+        
+    </header>
+    <liveAgent:clientChat >
+        <liveAgent:clientChatAlertMessage />
+        <liveAgent:clientChatStatusMessage />
+        <liveAgent:clientChatLog showTimeStamp="true" />
+        <liveagent:clientChatInput />  
+    </liveAgent:clientChat>
     <script>
-     liveagent.addEventListener(liveagent.chasitor.Events.CHAT_ESTABLISHED, newagent);
+    liveagent.addEventListener(liveagent.chasitor.Events.CHAT_ESTABLISHED, newagent);
     
-     function newagent() {  
+    function newagent() {  
          let details = liveagent.chasitor.getDetails();
          let agentName=details.agent.agentName
-         document.getElementById('headerText').innerHTML=agentName;
-         console.log(agentName);
+         document.getElementById('agent_name').innerHTML='Connected to - '+agentName;
+        	
+       	
+         
      }
     function endChat(){
         SfdcApp.LiveAgent.Chasitor.endChat();

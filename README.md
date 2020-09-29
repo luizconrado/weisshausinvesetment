@@ -8,6 +8,12 @@ Weisshausinvestment Person Account Verify Email
 Weisshausinvestment Person Account unsubscribe Email	
 Weisshausinvestment Person Account Verify Email	
 
+## Apex Page
+AgentSupport
+LiveAgent
+LiveAgentChatWindow
+LiveAgentPreChat
+
 ## ApexClass
 LeadService
 webLeadRestService
@@ -79,6 +85,15 @@ Campaign.Standard_Campaign
 Contract.Standard_Contract
 Opportuntiy.Standard_Opportunity
 Case.Standard_Case
+
+## Aura components
+CommunityCustomFooter
+CommunityCustomHeader
+CommunityCustomTheme
+ConvertLeadToPersonAccountAndContact
+SendAccountEmailConfirmation
+SendLeadEmailConfirmation
+SyncCampaignMembers
 
 ## web components
 loginUsageReport

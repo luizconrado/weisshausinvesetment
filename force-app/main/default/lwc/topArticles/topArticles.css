@@ -51,7 +51,8 @@
     line-height:1.5;
     letter-spacing:0px;
     min-height: 72px;
-    min-width: 272px;
+    max-width: 18rem;
+    margin: auto;
 }
 
 .customButton{
@@ -83,3 +84,4 @@
 .customAnchor:hover{
     color:#EB0A0A;
 }
+

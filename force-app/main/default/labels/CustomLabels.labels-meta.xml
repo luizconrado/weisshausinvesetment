@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
-        <fullName>LA_PreChat_Base_StartChat_04I5I000000gDvU_8176325</fullName>
-        <categories>Snap-ins</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LA_PreChat_Base_StartChat_04I5I000000gDvU_8176325</shortDescription>
-        <value>Send</value>
-    </labels>
-    <labels>
         <fullName>Privacy_Web_Link</fullName>
-        <categories>Community</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Privacy Web Link</shortDescription>
@@ -38,7 +29,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>community_uri</shortDescription>
-        <value>/support/s/</value>
+        <value>/s/</value>
     </labels>
     <labels>
         <fullName>form_error_msg</fullName>
@@ -81,10 +72,9 @@
     </labels>
     <labels>
         <fullName>siteUrl</fullName>
-        <categories>Community</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>siteUrl</shortDescription>
-        <value>https://dev-weisshausinvestment.cs101.force.com/support</value>
+        <value>https://support.weisshausinvestment.com/</value>
     </labels>
 </CustomLabels>

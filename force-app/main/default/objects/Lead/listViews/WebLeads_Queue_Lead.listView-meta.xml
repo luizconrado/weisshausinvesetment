@@ -9,7 +9,7 @@
     <columns>CORE.USERS.ALIAS</columns>
     <columns>LEAD.UNREAD</columns>
     <filterScope>Queue</filterScope>
-    <label>WebLeads Queue</label>
+    <label>Web Leads Queue</label>
     <queue>WebLeads_Queue</queue>
     <sharedTo>
         <allInternalUsers/>

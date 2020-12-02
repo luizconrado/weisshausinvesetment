@@ -1,20 +1,33 @@
 public class TestDataFactory {
       
     public static Lead getWebLead(Boolean doInsert){
-        return getLead(SchemaUtil.getRecordTypeId('WebLeads', 'Lead'),doInsert);
+        return generateLead(SchemaUtil.getRecordTypeId('WebLeads', 'Lead'),doInsert);
     }
     public static Account getPersonAccount(Boolean doInsert){
-        return getAccount(Constant.PERSON_ACCOUNT_RECORDTYPEID, doInsert);
+        return generateAccount(Constant.PERSON_ACCOUNT_RECORDTYPEID, doInsert);
     }
+  
     public static Opportunity getStandardOpportunity(String accountId,Boolean doInsert){
-        return getOpportunity(Constant.STANDARD_OPPORTUNITY_RECORDTYPEID,accountId,doInsert);
+        return generateOpportunity(Constant.STANDARD_OPPORTUNITY_RECORDTYPEID,accountId,doInsert);
     }
     public static Case getStandardCase(String accountId,Boolean doInsert){
-        return getCase(Constant.STANDARD_CASE_RECORDTYPEID, accountid, doInsert);
+        return generateCase(Constant.STANDARD_CASE_RECORDTYPEID, accountid, doInsert);
+    }
+     public static Case getBankCase(String accountId,Boolean doInsert){
+        return generateCase(Constant.BANKINGCASE_CASE_RECORDTYPEID, accountid, doInsert);
     }
     public static Campaign getStandardCampaign(Boolean doInsert){
-        return getCampaing(Constant.STANDARD_CAMPAIGN_RECORDTYPEID,doInsert);
+        return generateCampaing(Constant.STANDARD_CAMPAIGN_RECORDTYPEID,doInsert);
     }    
+    
+    public static Contact getContact(Boolean doInsert){
+        Contact c=new Contact();
+        c.LastName=RandomUtil.randomString(6);
+        c.Newsletter__c='Subscribed';
+        if(doInsert) insert c;
+        return c;
+    }
+    
     public static CampaignMember getLeadCampaignMember(String campaignId,String leadId,Boolean doInsert){
         CampaignMember cm=new CampaignMember();
         cm.LeadId=leadId;
@@ -33,8 +46,96 @@ public class TestDataFactory {
         return cm;
             
     }
+    public static Bank_Account__c getBankAccount(String accountId,Boolean doInsert){
+        return generateBankAccount(accountId,doInsert);
+    }
+    public static Bank_Case__c getCardBankCase(String caseId,Boolean doInsert){
+        return generateBankCase(Constant.BANKCASE_CARD_RECORDTYPEID,caseId,doInsert);
+    }
+    public static Bank_Case__c getBookingBankCase(String caseId,Boolean doInsert){
+        return generateBankCase(Constant.BANKCASE_BOOKING_RECORDTYPEID,caseId,doInsert);
+    }
+    public static Bank_Case__c getBankAccountBankCase(String caseId,Boolean doInsert){
+        return generateBankCase(Constant.BANKCASE_BANKACCOUNT_RECORDTYPEID,caseId,doInsert);
+    }
+     public static Bank_Case__c getTimedOrderBankCase(String caseId,Boolean doInsert){
+        return generateBankCase(Constant.BANKCASE_TIMEDGORDER_RECORDTYPEID,caseId,doInsert);
+    }
+
+    
+    public static Card__c getCard(String accountId,String bankId,Boolean doInsert){
+        Card__c card=new Card__c();
+        card.name='434971******2356';
+        card.Name_On_Card__c='NAME1 NAME2 SURNAME';
+        card.Person_Account__c=accountId;
+        card.Bank_Account__c=bankId;
+        card.Solarisbank_Id__c='testcardeaea2acad1bcf119a9c0cfcboo';
+
+        if(doInsert) insert card;
+        return card;
+    }
+    public static Reservation__c getReservation(String bankId,Boolean doInsert){
+        Reservation__c res=new Reservation__c();
+        res.Bank_Account__c=bankId;
+        res.Solarisbank_Id__c='088434f167eaea2acad1bcf119a9c0cfcboo';
+        if(doInsert) insert res;
+        return res;
+    }
+    
+    public static Booking__c getBooking(String bankaccountId,Boolean doInsert){
+        return generateBooking(bankaccountId,doInsert);
+    }
+    
+    public static Scheduled_Order__c getTimedOrder(String bankaccountId,Boolean doInsert){
+            return generateScheduledOrder(Constant.TIMED_SCHEDULEDORDER_RECORDTYPEID,bankaccountId,doInsert);
+    }
+    public static Scheduled_Order__c getStandingOrder(String bankaccountId,Boolean doInsert){
         
-    private static Campaign getCampaing(String recordTypeId,Boolean doInsert){
+            return generateScheduledOrder(Constant.STANDING_SCHEDULEDORDER_RECORDTYPEID,bankaccountId,doInsert);
+    }
+    
+    ////////
+    //Generators
+    ////////
+    
+    private static Booking__c generateBooking(String bankaccountId,Boolean doInsert){
+        Booking__c book=new Booking__c();
+        book.Bank_Account__c=bankaccountId;
+        book.Solarisbank_Id__c='088434f167eaea2acad1bcf119a9c0cfcboo';
+        book.Transaction_Id__c='088434f167eaea2acad1bcf119a9c0cfcboo';
+        if(doInsert) insert book;
+        return book;
+    }
+    
+    private static Scheduled_Order__c generateScheduledOrder(String recordTypeId,String bankaccountId,Boolean doInsert){
+        Scheduled_Order__c order=new Scheduled_Order__c();
+        order.recordTypeId=recordTypeId;
+        order.Bank_Account__c=bankaccountId;
+        order.Solarisbank_Id__c='088434f167eaea2acad1bcf119a9c0cfcboo';
+        if(doInsert) insert order;
+        return order;
+    }
+    
+    private static Bank_Case__c generateBankCase(String recordTypeId,String caseId,Boolean doInsert){
+        Bank_Case__c bc=new Bank_Case__c();
+        bc.RecordTypeId=recordTypeId;
+        bc.Case__c=caseId;
+        if(doInsert) insert bc;
+        return bc;
+    }
+    
+    private static Bank_Account__c generateBankAccount(Final String accountId,Boolean doInsert){
+        Bank_Account__c ba=new Bank_Account__c();
+        ba.Person_Account__c = accountId;
+        ba.Name='DE98110101002528376528';
+        ba.BIC__c='SOBKDEBBXXX';
+        ba.Status__c='Active';
+        ba.Solarisbank_Id__c='0652225cebcd3bec2c95ea8c461fe146cacc';
+        if(doInsert ) insert ba;
+        return ba;
+    }
+        
+    private static Campaign generateCampaing(String recordTypeId,Boolean doInsert){
         Campaign c=new Campaign();
         c.Name=RandomUtil.randomString(3);
         c.Product__c='Newsletter';
@@ -47,7 +148,7 @@ public class TestDataFactory {
     
     
     
-    private static Lead getLead(String recordtypeid,Boolean doInsert){
+    private static Lead generateLead(String recordtypeid,Boolean doInsert){
        
         
         Lead lead = new Lead();
@@ -64,26 +165,22 @@ public class TestDataFactory {
         
     }
     
-    private static Account getAccount(String recordtypeid,Boolean doInsert){
+    private static Account generateAccount(String recordtypeid,Boolean doInsert){
         
         Account account = new Account();
         account.PersonEmail= RandomUtil.randomString(3)+'@'+RandomUtil.randomString(4)+'.com';
         account.ProductInterest__pc = 'Newsletter';
         account.LastName = RandomUtil.randomString(4);
         account.RecordTypeId = recordtypeid;
+        account.Solarisbank_Id__c='0652225cebcd3bec2c95ea8c461fe146cacc';
+        account.Solarisbank_Tenent__c='Sandbox'; 
         if(doInsert) insert account;
         return account;
     }
     
-    public static Contact getContact(Boolean doInsert){
-        Contact c=new Contact();
-        c.LastName=RandomUtil.randomString(6);
-        c.Newsletter__c='Subscribed';
-        if(doInsert) insert c;
-        return c;
-    }
     
-    private static Opportunity getOpportunity(Final String recordTypeId,Final String accountId,Final Boolean doInsert){
+    
+    private static Opportunity generateOpportunity(Final String recordTypeId,Final String accountId,Final Boolean doInsert){
         Opportunity opp=new Opportunity();
         opp.Name=RandomUtil.randomString(4);
         opp.AccountId=accountId;
@@ -94,7 +191,7 @@ public class TestDataFactory {
         return opp;
     }
     
-    private static Case getCase(String recordTypeId,String accountid,Boolean doInsert){
+    private static Case generateCase(String recordTypeId,String accountid,Boolean doInsert){
         Case c=new Case();
         c.RecordTypeId=recordTypeId;
         c.Status='New';

@@ -7,6 +7,9 @@
         <label>Information</label>
         <layoutColumns>
             <layoutItems>
+                <field>CurrencyIsoCode</field>
+            </layoutItems>
+            <layoutItems>
                 <field>Title</field>
             </layoutItems>
             <layoutItems>

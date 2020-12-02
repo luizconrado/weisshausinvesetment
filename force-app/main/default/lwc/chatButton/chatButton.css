@@ -49,8 +49,7 @@
     line-height:1.5;
     letter-spacing:0px;
     min-height: 72px;
-    max-width: 18rem;
-    margin: auto;
+    min-width: 272px;
 }
 
 .customButton{
@@ -74,5 +73,3 @@
 .customButton:hover{
     box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.13);
 }
-
-

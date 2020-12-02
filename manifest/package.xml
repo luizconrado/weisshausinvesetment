@@ -17,10 +17,98 @@
 		<name>ApexTrigger</name>
 	</types>
 	<types>
-		<members>Account.Active__c</members>
-		<members>Account.CustomerPriority__c</members>
-		<members>AccountContactRelation.Relationship_Strength__c</members>
+		<members>Account.Birth_City__c</members>
+		<members>Account.Birth_Country__c</members>
+		<members>Account.Birth_Name__c</members>
+		<members>Account.Business_Purpose__c</members>
+		<members>Account.Completed_Name__c</members>
+		<members>Account.Employment_Status__c</members>
+		<members>Account.Fatca_Crs_Confirmed_At__c</members>
+		<members>Account.Fatca_Relevant__c</members>
+		<members>Account.Flagged_By_Compliance__c</members>
+		<members>Account.Industry_Key__c</members>
+		<members>Account.Is_Test__c</members>
+		<members>Account.Marital_Status__c</members>
+		<members>Account.Nationality__c</members>
+		<members>Account.Own_Economic_Interest_Signed_At__c</members>
+		<members>Account.Solarisbank_Id__c</members>
+		<members>Account.Solarisbank_Tenent__c</members>
+		<members>Account.Solarisbank_Web_UI__c</members>
+		<members>Account.Tax_Assessment__c</members>
+		<members>Account.Terms_Conditions_Signed_At__c</members>
+		<members>Bank_Account__c.BIC__c</members>
+		<members>Bank_Account__c.Closure_Reasons__c</members>
+		<members>Bank_Account__c.Is_Test__c</members>
+		<members>Bank_Account__c.Person_Account__c</members>
+		<members>Bank_Account__c.Solarisbank_Id__c</members>
+		<members>Bank_Account__c.Status__c</members>
+		<members>Bank_Account__c.Type__c</members>
+		<members>Bank_Case__c.Account__c</members>
+		<members>Bank_Case__c.Action__c</members>
+		<members>Bank_Case__c.Api_Error__c</members>
+		<members>Bank_Case__c.Bank_Account__c</members>
+		<members>Bank_Case__c.Booking__c</members>
+		<members>Bank_Case__c.Card__c</members>
+		<members>Bank_Case__c.Case__c</members>
+		<members>Bank_Case__c.Description__c</members>
+		<members>Bank_Case__c.Identification__c</members>
+		<members>Bank_Case__c.Is_Test__c</members>
+		<members>Bank_Case__c.New_Card_Status__c</members>
+		<members>Bank_Case__c.New_Order_Status__c</members>
+		<members>Bank_Case__c.Old_Card_Status__c</members>
+		<members>Bank_Case__c.Old_Order_Status__c</members>
+		<members>Bank_Case__c.Record__c</members>
+		<members>Bank_Case__c.Reservation__c</members>
+		<members>Bank_Case__c.Scheduled_Order__c</members>
+		<members>Bank_Case__c.Seizure__c</members>
+		<members>Bank_Case__c.Statement__c</members>
+		<members>Bank_Case__c.Tax_Identification__c</members>
+		<members>Booking__c.Amount__c</members>
+		<members>Booking__c.Bank_Account__c</members>
+		<members>Booking__c.Booking_Date__c</members>
+		<members>Booking__c.Booking_Type__c</members>
+		<members>Booking__c.Card__c</members>
+		<members>Booking__c.Creation_Date__c</members>
+		<members>Booking__c.Creditor_Identifier__c</members>
+		<members>Booking__c.Description__c</members>
+		<members>Booking__c.End_To_End_Id__c</members>
+		<members>Booking__c.Is_Test__c</members>
+		<members>Booking__c.Mandate_Reference__c</members>
+		<members>Booking__c.Meta_Info__c</members>
+		<members>Booking__c.Recipient_BIC__c</members>
+		<members>Booking__c.Recipient_IBAN__c</members>
+		<members>Booking__c.Recipient_Name__c</members>
+		<members>Booking__c.Reconciliation_Id__c</members>
+		<members>Booking__c.Recorded_At__c</members>
+		<members>Booking__c.Return_Transaction_Id__c</members>
+		<members>Booking__c.Sender_BIC__c</members>
+		<members>Booking__c.Sender_IBAN__c</members>
+		<members>Booking__c.Sender_Name__c</members>
+		<members>Booking__c.Sepa_Return_Code__c</members>
+		<members>Booking__c.Sepa_Return_Reason_Definition__c</members>
+		<members>Booking__c.Sepa_Return_Reason__c</members>
+		<members>Booking__c.Solarisbank_Id__c</members>
+		<members>Booking__c.Transaction_Id__c</members>
+		<members>Booking__c.Unit__c</members>
+		<members>Booking__c.Valuta_Date__c</members>
+		<members>Campaign.Product__c</members>
 		<members>Campaign.Products__c</members>
+		<members>Card__c.Bank_Account__c</members>
+		<members>Card__c.Expiration_Date__c</members>
+		<members>Card__c.Is_Test__c</members>
+		<members>Card__c.Name_On_Card__c</members>
+		<members>Card__c.Person_Account__c</members>
+		<members>Card__c.Solarisbank_Id__c</members>
+		<members>Card__c.Status__c</members>
+		<members>Card__c.Type__c</members>
+		<members>Case.Is_Test__c</members>
+		<members>Case.JIRA_Description__c</members>
+		<members>Case.Type_II__c</members>
+		<members>Case_Verification__c.Address_Verfied__c</members>
+		<members>Case_Verification__c.Birthdate_Verified__c</members>
+		<members>Case_Verification__c.Case__c</members>
+		<members>Case_Verification__c.Name_Verified__c</members>
+		<members>Case_Verification__c.Phone_Verified__c</members>
 		<members>Contact.Accepted_Terms_and_Conditions__c</members>
 		<members>Contact.Gender__c</members>
 		<members>Contact.Languages__c</members>
@@ -35,10 +123,12 @@
 		<members>Contact.Product_C__c</members>
 		<members>Contact.Product_D__c</members>
 		<members>Contact.Reason_For_Unsubscribing__c</members>
+		<members>Email_Configuration__c.Organization_Wide_Address__c</members>
 		<members>Email_Configuration__c.Send_Subscribed_Email__c</members>
 		<members>Email_Configuration__c.Send_Unsubscribed_Email__c</members>
 		<members>Email_Configuration__c.Send_Verification_Email__c</members>
 		<members>History_Tracker_Configuration__mdt.Fields__c</members>
+		<members>History_Tracker_Configuration__mdt.Object__c</members>
 		<members>History_Tracker_Configuration__mdt.Track_Change__c</members>
 		<members>History_Tracker_Configuration__mdt.Track_View__c</members>
 		<members>History_Tracker__c.Field_Label__c</members>
@@ -53,6 +143,25 @@
 		<members>History_Tracker__c.Record__c</members>
 		<members>History_Tracker__c.Relation__c</members>
 		<members>History_Tracker__c.User__c</members>
+		<members>Identification_Attempt__c.Agent_Name__c</members>
+		<members>Identification_Attempt__c.Identification_Time__c</members>
+		<members>Identification_Attempt__c.Identification__c</members>
+		<members>Identification_Attempt__c.Is_Test__c</members>
+		<members>Identification_Attempt__c.Reason__c</members>
+		<members>Identification_Attempt__c.Result__c</members>
+		<members>Identification_Attempt__c.Solarisbank_Id__c</members>
+		<members>Identification_Attempt__c.Type__c</members>
+		<members>Identification__c.Account__c</members>
+		<members>Identification__c.Completed_At__c</members>
+		<members>Identification__c.Failure_Reason__c</members>
+		<members>Identification__c.Identification_Id__c</members>
+		<members>Identification__c.Is_Test__c</members>
+		<members>Identification__c.Method__c</members>
+		<members>Identification__c.Reference__c</members>
+		<members>Identification__c.Solarisbank_Id__c</members>
+		<members>Identification__c.State__c</members>
+		<members>Identification__c.Status__c</members>
+		<members>Identification__c.URL__c</members>
 		<members>Knowledge__kav.Answer__c</members>
 		<members>Knowledge__kav.Question__c</members>
 		<members>Lead.Accepted_Terms_and_Conditions__c</members>
@@ -69,13 +178,132 @@
 		<members>Lead.Product_C__c</members>
 		<members>Lead.Product_D__c</members>
 		<members>Lead.Reason_For_Unsubscribing__c</members>
-		<members>Lead.Send_Email__c</members>
+		<members>LiveChatTranscript.Chat_Origin__c</members>
+		<members>LiveChatTranscript.Email__c</members>
+		<members>LiveChatTranscript.First_Name__c</members>
+		<members>LiveChatTranscript.Last_Name__c</members>
+		<members>Log_Event__e.Body__c</members>
+		<members>Log_Event__e.Type__c</members>
+		<members>Log__c.Class_Name__c</members>
+		<members>Log__c.Component_Name__c</members>
+		<members>Log__c.Endpoint__c</members>
+		<members>Log__c.Log_Number__c</members>
+		<members>Log__c.Method_Name__c</members>
+		<members>Log__c.Object_Name__c</members>
+		<members>Log__c.Operation__c</members>
+		<members>Log__c.Record_Id__c</members>
+		<members>Log__c.Record__c</members>
+		<members>Log__c.Response_Status_Code__c</members>
+		<members>Log__c.Stack_Trace__c</members>
+		<members>Log__c.User__c</members>
 		<members>Opportunity.Budget_Confirmed__c</members>
 		<members>Opportunity.Discovery_Completed__c</members>
+		<members>Opportunity.Is_Test__c</members>
 		<members>Opportunity.Loss_Reason__c</members>
 		<members>Opportunity.ROI_Analysis_Completed__c</members>
+		<members>Reservation__c.Amount__c</members>
+		<members>Reservation__c.Bank_Account__c</members>
+		<members>Reservation__c.Description__c</members>
+		<members>Reservation__c.Expired_At__c</members>
+		<members>Reservation__c.Expires_At__c</members>
+		<members>Reservation__c.Is_Test__c</members>
+		<members>Reservation__c.Meta_Info__c</members>
+		<members>Reservation__c.Reference__c</members>
+		<members>Reservation__c.Reservation_Type__c</members>
+		<members>Reservation__c.Resolved_At__c</members>
+		<members>Reservation__c.Settlement_Amount__c</members>
+		<members>Reservation__c.Solarisbank_Id__c</members>
+		<members>Reservation__c.Status__c</members>
+		<members>Reservation__c.Unit__c</members>
+		<members>Scheduled_Order__c.Amount__c</members>
+		<members>Scheduled_Order__c.Bank_Account__c</members>
+		<members>Scheduled_Order__c.Created_At__c</members>
+		<members>Scheduled_Order__c.Description__c</members>
+		<members>Scheduled_Order__c.End_To_End_Id__c</members>
+		<members>Scheduled_Order__c.Execute_At__c</members>
+		<members>Scheduled_Order__c.Executed_At__c</members>
+		<members>Scheduled_Order__c.First_Execution_Date__c</members>
+		<members>Scheduled_Order__c.Is_Test__c</members>
+		<members>Scheduled_Order__c.Last_Execution_Date__c</members>
+		<members>Scheduled_Order__c.Month_End_Execution__c</members>
+		<members>Scheduled_Order__c.Next_Occurrence__c</members>
+		<members>Scheduled_Order__c.Recipient_BIC__c</members>
+		<members>Scheduled_Order__c.Recipient_IBAN__c</members>
+		<members>Scheduled_Order__c.Recipient_Name__c</members>
+		<members>Scheduled_Order__c.Reference__c</members>
+		<members>Scheduled_Order__c.Reoccurrence__c</members>
+		<members>Scheduled_Order__c.Scheduled_Transaction_Id__c</members>
+		<members>Scheduled_Order__c.Scheduled_Transaction_Status__c</members>
+		<members>Scheduled_Order__c.Solarisbank_Id__c</members>
+		<members>Scheduled_Order__c.Status__c</members>
+		<members>Scheduled_Order__c.Unit__c</members>
+		<members>Seizure__c.Account__c</members>
+		<members>Seizure__c.Additional_Cost__c</members>
+		<members>Seizure__c.Amount__c</members>
+		<members>Seizure__c.Authority_Name__c</members>
+		<members>Seizure__c.Creditor_Address__c</members>
+		<members>Seizure__c.Creditor_City__c</members>
+		<members>Seizure__c.Creditor_Country__c</members>
+		<members>Seizure__c.Creditor_IBAN__c</members>
+		<members>Seizure__c.Creditor_Name__c</members>
+		<members>Seizure__c.Creditor_Postal_Code__c</members>
+		<members>Seizure__c.Creditor_Representative_Address__c</members>
+		<members>Seizure__c.Creditor_Representative_Case_Number__c</members>
+		<members>Seizure__c.Creditor_Representative_City__c</members>
+		<members>Seizure__c.Creditor_Representative_Country__c</members>
+		<members>Seizure__c.Creditor_Representative_IBAN__c</members>
+		<members>Seizure__c.Creditor_Representative_Name__c</members>
+		<members>Seizure__c.Creditor_Representative_Postal_Code__c</members>
+		<members>Seizure__c.Creditor_Representative_State__c</members>
+		<members>Seizure__c.Creditor_State__c</members>
+		<members>Seizure__c.Debtor_Address__c</members>
+		<members>Seizure__c.Debtor_City__c</members>
+		<members>Seizure__c.Debtor_Country__c</members>
+		<members>Seizure__c.Debtor_Name__c</members>
+		<members>Seizure__c.Debtor_Postal_Code__c</members>
+		<members>Seizure__c.Debtor_State__c</members>
+		<members>Seizure__c.Delivery_Date__c</members>
+		<members>Seizure__c.Enactment_Date__c</members>
+		<members>Seizure__c.Is_Test__c</members>
+		<members>Seizure__c.Resolution_Case_Number__c</members>
+		<members>Seizure__c.Seizure_Type__c</members>
+		<members>Seizure__c.Solarisbank_Id__c</members>
+		<members>Seizure__c.Status__c</members>
+		<members>Seizure__c.Unit__c</members>
+		<members>Solarisbank_Api_Config__mdt.Active__c</members>
+		<members>Solarisbank_Api_Config__mdt.Auth_Uri__c</members>
+		<members>Solarisbank_Api_Config__mdt.Block_Card_URI__c</members>
+		<members>Solarisbank_Api_Config__mdt.Bookings_URI__c</members>
+		<members>Solarisbank_Api_Config__mdt.Card_Details_URI__c</members>
+		<members>Solarisbank_Api_Config__mdt.Client_Id__c</members>
+		<members>Solarisbank_Api_Config__mdt.Client_Secret__c</members>
+		<members>Solarisbank_Api_Config__mdt.Close_Card_URI__c</members>
+		<members>Solarisbank_Api_Config__mdt.Host_Url__c</members>
+		<members>Solarisbank_Api_Config__mdt.Reservation_URI__c</members>
+		<members>Solarisbank_Api_Config__mdt.Sepa_Credit_Transfer_URI__c</members>
+		<members>Solarisbank_Api_Config__mdt.Sepa_Direct_Debit_URI__c</members>
+		<members>Solarisbank_Api_Config__mdt.Unblock_Card_URI__c</members>
+		<members>Solarisbank_Api_Config__mdt.Version__c</members>
+		<members>Statement__c.Balance_End__c</members>
+		<members>Statement__c.Balance_Start__c</members>
+		<members>Statement__c.Bank_Account__c</members>
+		<members>Statement__c.Disclaimer__c</members>
+		<members>Statement__c.Is_Test__c</members>
+		<members>Statement__c.Issue_Date__c</members>
+		<members>Statement__c.Solarisbank_Id__c</members>
+		<members>Statement__c.Statement_Period_End_Date__c</members>
+		<members>Statement__c.Statement_Period_Start_Date__c</members>
+		<members>Statement__c.Unit__c</members>
 		<members>Subscription_Product_Configuration__mdt.Code__c</members>
 		<members>Subscription_Product_Configuration__mdt.Field_API__c</members>
+		<members>Tax_Identification__c.Account__c</members>
+		<members>Tax_Identification__c.Country__c</members>
+		<members>Tax_Identification__c.Identification_Number__c</members>
+		<members>Tax_Identification__c.Is_Test__c</members>
+		<members>Tax_Identification__c.Primary__c</members>
+		<members>Tax_Identification__c.Reason_Description__c</members>
+		<members>Tax_Identification__c.Reason_No_Tin__c</members>
+		<members>Tax_Identification__c.Solarisbank_Id__c</members>
 		<members>Tracking_Events__e.Field__c</members>
 		<members>Tracking_Events__e.New_Value__c</members>
 		<members>Tracking_Events__e.Object__c</members>
@@ -110,14 +338,31 @@
 	</types>
 	<types>
 		<members>Account</members>
-		<members>Lead</members>
+		<members>Account</members>
+		<members>Bank_Account__c</members>
+		<members>Bank_Case__c</members>
+		<members>Booking__c</members>
 		<members>CampaignMember</members>
+		<members>Card__c</members>
 		<members>Case</members>
+		<members>Case_Verification__c</members>
 		<members>Contact</members>
 		<members>Email_Configuration__c</members>
 		<members>History_Tracker_Configuration__mdt</members>
 		<members>History_Tracker__c</members>
+		<members>Identification_Attempt__c</members>
+		<members>Identification__c</members>
+		<members>Knowledge__kav</members>
+		<members>Lead</members>
+		<members>Log_Event__e</members>
+		<members>Log__c</members>
+		<members>Reservation__c</members>
+		<members>Scheduled_Order__c</members>
+		<members>Seizure__c</members>
+		<members>Solarisbank_Api_Config__mdt</members>
+		<members>Statement__c</members>
 		<members>Subscription_Product_Configuration__mdt</members>
+		<members>Tax_Identification__c</members>
 		<members>Tracking_Events__e</members>
 		<members>Trigger_Setting__mdt</members>
 		<name>CustomObject</name>
@@ -136,11 +381,64 @@
 		<name>EmailTemplate</name>
 	</types>
 	<types>
+		<members>Bank_Account_Record_Page</members>
+		<members>Chat_Transcript_Record_Page</members>
+		<members>Custom_Account_Record_Page</members>
+		<members>Custom_Case_Record_Page</members>
+		<members>Identification_Record_Page</members>
+		<name>FlexiPage</name>
+	</types>
+	<types>
 		<members>*</members>
 		<name>GlobalValueSet</name>
 	</types>
 	<types>
-		<members>*</members>
+		<members>Account-Account Layout</members>
+		<members>Asset-Asset Layout</members>
+		<members>Bank_Account__c-Bank Account Layout</members>
+		<members>Bank_Case__c-Bank Account Layout</members>
+		<members>Bank_Case__c-Bank Case Layout</members>
+		<members>Bank_Case__c-Booking Layout</members>
+		<members>Bank_Case__c-Card Layout</members>
+		<members>Bank_Case__c-Person Account Layout</members>
+		<members>Bank_Case__c-Reservation Layout</members>
+		<members>Bank_Case__c-Standing Order</members>
+		<members>Bank_Case__c-Statement</members>
+		<members>Bank_Case__c-Timed Order</members>
+		<members>Booking__c-Booking Layout</members>
+		<members>Campaign-Campaign Layout</members>
+		<members>CampaignMember-Campaign Member Page Layout</members>
+		<members>Card__c-Card Layout</members>
+		<members>Case-Banking Card Management</members>
+		<members>Case-Case Layout</members>
+		<members>CaseClose-Close Case Layout</members>
+		<members>Case_Verification__c-Case Verification Layout</members>
+		<members>History_Tracker_Configuration__mdt-Filed History Tracker Layout</members>
+		<members>History_Tracker__c-Field History Tracker Layout</members>
+		<members>Idea-Idea Layout</members>
+		<members>Identification_Attempt__c-Identification Attempt Layout</members>
+		<members>Identification__c-Video Identification Layout</members>
+		<members>Identification__c-eSigning Page Layout</members>
+		<members>Knowledge__kav-Guest User FAQ Layout</members>
+		<members>Knowledge__kav-Knowledge Layout</members>
+		<members>Knowledge__kav-Lightning Knowledge FAQ Layout</members>
+		<members>Lead-Lead Layout</members>
+		<members>Lead-WebLeads</members>
+		<members>LiveChatTranscript-Chat Transcript Layout</members>
+		<members>Log__c-Debug Log</members>
+		<members>Log__c-Integration Log</members>
+		<members>Log__c-Log Layout</members>
+		<members>Opportunity-Opportunity Layout</members>
+		<members>PersonAccount-Person Account Layout</members>
+		<members>Reservation__c-Reservation Layout</members>
+		<members>Scheduled_Order__c-Persons Timed Order Layout</members>
+		<members>Scheduled_Order__c-Standing Order Layout</members>
+		<members>Seizure__c-Seizure Layout</members>
+		<members>Solarisbank_Api_Config__mdt-Solarisbank Api Config Layout</members>
+		<members>Statement__c-Statement Layout</members>
+		<members>Subscription_Product_Configuration__mdt-Subscription Product Configuration Layout</members>
+		<members>Tax_Identification__c-Tax Identification Layout</members>
+		<members>Trigger_Setting__mdt-Trigger Setting Layout</members>
 		<name>Layout</name>
 	</types>
 	<types>
@@ -148,12 +446,77 @@
 		<name>LightningComponentBundle</name>
 	</types>
 	<types>
-		<members>*</members>
+		<members>Account.AllAccounts</members>
+		<members>History_Tracker_Configuration__mdt.All</members>
+		<members>History_Tracker__c.All</members>
+		<members>Log__c.Debug</members>
+		<members>Log__c.Integeration</members>
+		<name>ListView</name>
+	</types>
+	<types>
+		<members>Case_Banking_Case</members>
+		<members>Default_Opportunity</members>
+		<name>PathAssistant</name>
+	</types>
+	<types>
+		<members>Admin</members>
+		<members>Business Development</members>
+		<members>Business Development Admin</members>
+		<members>Legal Compliance</members>
+		<members>Legal Compliance Admin</members>
+		<name>Profile</name>
+	</types>
+	<types>
+		<members>Account.Resend_Confirmation_Email</members>
+		<members>Account.Sync_Solarisbank</members>
+		<members>Bank_Account__c.Sync_Solarisbank</members>
+		<members>Bank_Case__c.Cancel_Time_Order</members>
+		<members>Bank_Case__c.Change_Card_Status</members>
+		<members>Bank_Case__c.Check_Balance</members>
+		<members>Bank_Case__c.Transaction_Details</members>
+		<members>Campaign.Sync_Members</members>
+		<members>Case.Verify_User_Identity</members>
+		<members>Lead.Resend_Confirmation_Email</members>
 		<name>QuickAction</name>
 	</types>
 	<types>
-		<members>*</members>
+		<members>Account.PersonAccount</members>
+		<members>Account.Standard_Account</members>
+		<members>Account.WebLeads</members>
+		<members>Bank_Case__c.Account</members>
+		<members>Bank_Case__c.Bank_Account</members>`
+		<members>Bank_Case__c.Booking</members>
+		<members>Bank_Case__c.Card</members>
+		<members>Bank_Case__c.Reservation</members>
+		<members>Bank_Case__c.Standing_Order</members>
+		<members>Bank_Case__c.Statement</members>
+		<members>Bank_Case__c.Timed_Order</members>
+		<members>Campaign.Standard_Campaign</members>
+		<members>Case.Banking_Case</members>
+		<members>Case.E_V_Konto_App_Case</members>
+		<members>Case.General_Questions</members>
+		<members>Case.Investment_Case</members>
+		<members>Contact.Default</members>
+		<members>Contact.WebLeads</members>
+		<members>Contract.Standard_Contract</members>
+		<members>History_Tracker__c.Field_History</members>
+		<members>History_Tracker__c.Usage_Tracker</members>
+		<members>Identification__c.Video_Identification</members>
+		<members>Identification__c.eSigning</members>
+		<members>Knowledge__kav.FAQ</members>
+		<members>Lead.WebLeads</members>
+		<members>Log__c.Debug</members>
+		<members>Log__c.Integration</members>
+		<members>Opportunity.Standard_Opportunity</members>
+		<members>Scheduled_Order__c.Standing_Order</members>
+		<members>Scheduled_Order__c.Timed_Order</members>
+		<members>Statement__c.BANK_STATEMENTS</members>
+		<members>Statement__c.STATEMENT_OF_ACCOUNTS</members>
 		<name>RecordType</name>
 	</types>
-	<version>48.0</version>
+	<types>
+		<members>*</members>
+		<name>Role</name>
+	</types>
+	<version>49.0</version>
 </Package>

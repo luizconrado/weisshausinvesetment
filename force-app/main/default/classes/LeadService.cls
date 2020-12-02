@@ -289,12 +289,22 @@ public without sharing class LeadService {
         return false;
     }
 	
+    @testvisible
     private static Boolean updateLeadDML(Lead LeadRec, Boolean showForm) {
         try {
             update LeadRec;
             showForm = false;
         } catch (Exception ex) {
-            AuraHandledException e = new AuraHandledException(ex.getMessage());
+            LogService.LogMetadata details=new LogService.LogMetadata();
+            details.error=ex;
+            details.userId=userinfo.getUserId();
+            details.recordId=LeadRec.Id;
+            details.objectName='Lead';
+            details.className='LeadService';
+            details.operation='Update Lead';
+            details.methodName='updateLeadDML';
+            String index = LogService.logError(details);
+            AuraHandledException e = new AuraHandledException('Please contact your System admin.And provide '+index+' id to resolve issue.');
             e.setMessage(ex.getMessage());
             System.debug('Exception ' + ex.getMessage());
             throw e;

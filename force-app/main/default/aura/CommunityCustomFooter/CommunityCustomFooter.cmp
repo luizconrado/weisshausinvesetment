@@ -10,17 +10,17 @@
                     </h4>
                 </div>
                 <div class="community-footer__column--item">
-                    <a href="https://weisshausinve0.wpengine.com/about-us/">
+                    <a href="{!$Label.c.WissehouseWebsite_Url+'/about-us'}">
                         Über uns
                     </a>
                 </div>
                 <div class="community-footer__column--item">
-                    <a href="https://weisshausinve0.wpengine.com/presse/">
+                    <a href="{!$Label.c.WissehouseWebsite_Url+'/presse'}">
                         Presse
                     </a>
                 </div>
                 <div class="community-footer__column--item">
-                    <a href="https://weisshausinve0.wpengine.com/karriere/">
+                    <a href="{!$Label.c.WissehouseWebsite_Url+'/karriere'}">
                         Karriere
                     </a>
                 </div>
@@ -38,17 +38,17 @@
                     </h4>
                 </div>
                 <div class="community-footer__column--item">
-                    <a href="https://weisshausinve0.wpengine.com/datenschutz/">
+                    <a href="{!$Label.c.WissehouseWebsite_Url+'/datenschutz'}">
                         Datenschutz
                     </a>
                 </div>
                 <div class="community-footer__column--item">
-                    <a href="https://weisshausinve0.wpengine.com/imprint/">
+                    <a href="{!$Label.c.WissehouseWebsite_Url+'/imprint'}">
                         Impressum
                     </a>
                 </div>
                 <div class="community-footer__column--item">
-                    <a href="https://weisshausinve0.wpengine.com/agbs/">
+                    <a href="{!$Label.c.WissehouseWebsite_Url+'/agbs'}">
                         AGB
                     </a>
                 </div>

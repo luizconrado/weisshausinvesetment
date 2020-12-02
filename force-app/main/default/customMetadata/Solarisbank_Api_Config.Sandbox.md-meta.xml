@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Sandbox</label>
+    <protected>false</protected>
+    <values>
+        <field>Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Auth_Uri__c</field>
+        <value xsi:type="xsd:string">/oauth/token</value>
+    </values>
+    <values>
+        <field>Block_Card_URI__c</field>
+        <value xsi:type="xsd:string">/cards/:card_id/block</value>
+    </values>
+    <values>
+        <field>Bookings_URI__c</field>
+        <value xsi:type="xsd:string">/accounts/:account_id/bookings</value>
+    </values>
+    <values>
+        <field>Card_Details_URI__c</field>
+        <value xsi:type="xsd:string">/cards/:card_id</value>
+    </values>
+    <values>
+        <field>Client_Id__c</field>
+        <value xsi:type="xsd:string">5duxlbyrbq6eryz33jep051u3iogfy1dhdrvuejyfunbj9oqxygo5jugegriyevnwcpsi6</value>
+    </values>
+    <values>
+        <field>Client_Secret__c</field>
+        <value xsi:type="xsd:string">1q29rlb70e734iauj3un77oissxqkx6ell4q24rmxr6l63surth84oj20n4kelrcdt16be</value>
+    </values>
+    <values>
+        <field>Close_Card_URI__c</field>
+        <value xsi:type="xsd:string">/cards/:card_id/close</value>
+    </values>
+    <values>
+        <field>Host_Url__c</field>
+        <value xsi:type="xsd:string">https://api.solaris-sandbox.de</value>
+    </values>
+    <values>
+        <field>Reservation_URI__c</field>
+        <value xsi:type="xsd:string">/accounts/:account_id/reservations</value>
+    </values>
+    <values>
+        <field>Sepa_Credit_Transfer_URI__c</field>
+        <value xsi:type="xsd:string">/persons/:person_id/accounts/:account_id/transactions/sepa_credit_transfer/:id</value>
+    </values>
+    <values>
+        <field>Sepa_Direct_Debit_URI__c</field>
+        <value xsi:type="xsd:string">/persons/:person_id/accounts/:account_id/transactions/sepa_direct_debit/:id</value>
+    </values>
+    <values>
+        <field>Unblock_Card_URI__c</field>
+        <value xsi:type="xsd:string">/cards/:card_id/unblock</value>
+    </values>
+    <values>
+        <field>Version__c</field>
+        <value xsi:type="xsd:string">/v1</value>
+    </values>
+</CustomMetadata>

@@ -1,7 +1,7 @@
 .THIS .community-header {
     display: flex;
     border-bottom: 3px solid #EB0A0A;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     padding-top: 38px;
     padding-left: 120px;
     padding-right: 120px;
@@ -15,6 +15,7 @@
 
 .THIS .community-header__item img {
     width: 220px;
+    vertical-align:baseline;
 }
 
 

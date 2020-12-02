@@ -5,6 +5,7 @@ private class MailUtilityTest {
     static void sendMailsTest(){
         Email_Configuration__c config = new Email_Configuration__c();
         config.Send_Subscribed_Email__c=true;
+        config.Organization_Wide_Address__c='Support';
         insert config;
         Lead l=TestDataFactory.getWebLead(true);
         Account a=TestDataFactory.getPersonAccount(true);

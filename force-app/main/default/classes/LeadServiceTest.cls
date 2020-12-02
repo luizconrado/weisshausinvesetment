@@ -36,6 +36,14 @@ public class LeadServiceTest {
         Test.stopTest();
     }
     
+    @isTest
+    static void updateLeadDMLNegative(){
+        Lead l=TestDataFactory.getWebLead(false);
+        try{
+            LeadService.updateLeadDML(l,true);
+        }catch(Exception e){}
+    }
+    
     @isTest 
     static void subscribeLeadTest(){
         Lead l=TestDataFactory.getWebLead(false);

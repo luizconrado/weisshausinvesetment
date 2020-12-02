@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Action__c</fullName>
+    <externalId>false</externalId>
+    <label>Action</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Block</fullName>
+                <default>false</default>
+                <label>Block Card</label>
+            </value>
+            <value>
+                <fullName>Close</fullName>
+                <default>false</default>
+                <label>Close Card</label>
+            </value>
+            <value>
+                <fullName>Unblock</fullName>
+                <default>false</default>
+                <label>Unblock Card</label>
+            </value>
+            <value>
+                <fullName>Cancel Timed Order</fullName>
+                <default>false</default>
+                <label>Cancel Timed Order</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

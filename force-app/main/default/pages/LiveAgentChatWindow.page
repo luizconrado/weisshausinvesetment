@@ -1,20 +1,22 @@
 <apex:page showHeader="false">
+    <meta name="viewport" content="width=device-width,inital-scale=1.0,user-scalable=false"/>
+
     <style>
         *{
-        	box-sizing: border-box;
+            box-sizing: border-box;
         }
         .header{
-        	height: 2rem;
+            height: 2rem;
             background: black;
             color: white;
             display: grid;
-        	grid-template-columns:auto 1rem;
-        	align-content:center;
+            grid-template-columns:auto 1rem;
+            align-content:center;
         }
         
         .header-name{
-        	font-size:larger;
-        	justify-self:center;
+            font-size:larger;
+            justify-self:center;
         }
         .header-close button{
             color: red;
@@ -24,20 +26,20 @@
         
         
         #liveAgentClientChatSettings{
-        	position: absolute;
+            position: absolute;
             top: calc(0px + 2rem);
             bottom: 0;
             left: 0;
             right: 0;
-		}
+        }
         
         #liveAgentClientChat{
-        	height:100%;
+            height:100%;
         }
         
         #liveAgentChatLog{
-        	overflow:overlay;
-        	height:calc(100% - 3rem);
+            overflow:overlay;
+            height:calc(100% - 3rem);
         }
         
         #liveAgentChatLogText{
@@ -46,65 +48,65 @@
         }
         
         #liveAgentChatLogTyping{
-        	padding: .5rem;
+            padding: .5rem;
         }
         
         .client{
-        	margin-top:1rem;
+            margin-top:1rem;
             margin-left: 1rem;
-        	align-self:flex-start;
-        	display:flex !important;
-        	flex-flow:column-reverse
+            align-self:flex-start;
+            display:flex !important;
+            flex-flow:column-reverse
         }
         .client + .timestamp{
-        	align-self:flex-start;
-        	margin-left: 1rem;
-        	color:#0000009c;
+            align-self:flex-start;
+            margin-left: 1rem;
+            color:#0000009c;
         }
         .client .messageText{
-        	padding:0.5rem;
-        	background-color:#005fb2;
-       	 	border-radius: .5rem .5rem .5rem 0;
+            padding:0.5rem;
+            background-color:#005fb2;
+            border-radius: .5rem .5rem .5rem 0;
             color: white;
             font-size: medium;
-    		
+            
 
         }
         .operator{
-        	margin-top:1rem;
-        	margin-right:1rem;
-        	align-self:flex-end;
-        	display:flex !important;
-        	flex-flow:column-reverse
-        	
+            margin-top:1rem;
+            margin-right:1rem;
+            align-self:flex-end;
+            display:flex !important;
+            flex-flow:column-reverse
+            
         }
         .operator + .timestamp{
-        	align-self:flex-end;
-        	margin-right: 1rem;
-        	color:#0000009c;
+            align-self:flex-end;
+            margin-right: 1rem;
+            color:#0000009c;
         }
         .operator .name{
-        	align-self:flex-end;
+            align-self:flex-end;
         }
         .operator .messageText{
-        	padding:0.5rem;
-        	background-color:#eb0a0a;
-        	border-radius: .5rem .5rem 0;
+            padding:0.5rem;
+            background-color:#eb0a0a;
+            border-radius: .5rem .5rem 0;
             color: white;
             font-size: medium;
-    	}
+        }
         .system{
             align-self: center;
-    		font-size: large;
+            font-size: large;
         }
         #liveAgentChatInput{
-        	height: 48px;
+            height: 48px;
             border-radius: 0px;
             background-color: rgb(255, 255, 255);
             border: 1px solid rgb(201, 201, 201);
             padding: 0 1rem 0 .75rem;
             line-height: 1.875rem;
-        	width:100%
+            width:100%
         }
         #liveAgentChatInput:focus,#liveAgentChatInput:active{
             outline: 0;
@@ -114,8 +116,8 @@
         }
     </style>
     <header>
-   		<div class="header">
-        	<div class="header-name" id="agent_name">
+        <div class="header">
+            <div class="header-name" id="agent_name">
                 Searching for available agent...
             </div>
             <div class="header-close">
@@ -137,8 +139,8 @@
          let details = liveagent.chasitor.getDetails();
          let agentName=details.agent.agentName
          document.getElementById('agent_name').innerHTML='Connected to - '+agentName;
-        	
-       	
+            
+        
          
      }
     function endChat(){

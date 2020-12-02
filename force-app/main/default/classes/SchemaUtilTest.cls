@@ -4,6 +4,7 @@ public class SchemaUtilTest {
     @isTest
     static void getObjectPicklistFiledsTest(){
         SchemaUtil.getObjectPicklistFileds( SchemaUtil.getSobjectType('Account'));
+        SchemaUtil.getDependentPicklistValues(Case.Type_II__c);
     }
     @isTest
     static void getAllObjectFieldsTest(){

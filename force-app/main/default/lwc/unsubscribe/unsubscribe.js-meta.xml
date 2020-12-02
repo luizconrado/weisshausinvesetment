@@ -10,7 +10,7 @@
     </targets>
     <targetConfigs>
         <targetConfig targets="lightningCommunity__Default">
-            <property name="unsubscribedtext" type="String" default="Wir bedauern, Sie verloren zu haben" />
+            <property name="unsubscribedtext" type="String" default="Wir bedauern, Sie verloren zu haben"/>
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

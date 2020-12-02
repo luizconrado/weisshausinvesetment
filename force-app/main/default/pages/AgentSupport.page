@@ -1,17 +1,18 @@
 <apex:page showHeader="false" sidebar="false">
-    <meta name="viewport" content="width=device-width"/>
-    <script type='text/javascript' src='https://c.la1-c1cs-cdg.salesforceliveagent.com/content/g/js/48.0/deployment.js'>
+    <meta name="viewport" content="width=device-width,inital-scale=1.0,user-scalable=false"/>
+    <script type='text/javascript' src='https://c.la2-c2-cdg.salesforceliveagent.com/content/g/js/49.0/deployment.js'>
     </script>
+    
     <style>
         
         *{
-        	box-sizing: border-box;
+            box-sizing: border-box;
         }
         
         
-       	.main{
-        	display:grid;
-        	grid-template-columns:auto;
+        .main{
+            display:grid;
+            grid-template-columns:auto;
         
         }
         .header{
@@ -20,21 +21,21 @@
             border-bottom:2px solid black;
         }
         .chat{
-        	display:none;
-        	width:100%;
+            display:none;
+            width:100%;
         }
         .chat iframe{
-        	width:100%;
-        	height:calc(90vh - 2rem);
+            width:100%;
+            height:calc(90vh - 2rem);
         }
         .hide{
-        	display: none;
+            display: none;
         }
         .show{
-        	display: block;
+            display: block;
         }
         .loading{
-        	position: fixed;
+            position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -42,10 +43,10 @@
             font-weight: 100;
         }
         #loading{
-        	display:none;
+            display:none;
         }
         .header-logo{
-            background:url("https://support.weisshausinvestment.com/file-asset/croppedWeisshausLogo_Final");
+            background:url("https://support.weisshausinvestment.com/file-asset/WeisshausLogo_Final");
             height: 2rem;
             background-size: contain;
             background-repeat: no-repeat;
@@ -54,11 +55,11 @@
         .form{
             display:flex;
             flex-flow:column;
-        	align-items:center;
-        	margin-top:2rem;
+            align-items:center;
+            margin-top:2rem;
         }
         .form-element--input{
-        	width:40%;
+            width:40%;
         }
         
         .form-element--heading{
@@ -74,8 +75,8 @@
             border: 1px solid rgb(201, 201, 201);
             padding: 0 1rem 0 .75rem;
             line-height: 1.875rem;
-        	margin:10px;
-        	width:100%
+            margin:10px;
+            width:100%
         
         }
         .form-element--input input:focus,
@@ -86,10 +87,10 @@
             box-shadow: 0 0 3px #0070d2;
         }
         .form-element--button{
-        	width:15%;
+            width:15%;
         }
         .form-element--button button{
-        	cursor:pointer;
+            cursor:pointer;
             background: #eb0a0a;
             padding: 14px 24px;
             text-transform: none;
@@ -97,40 +98,45 @@
             border: none;
             transition: all .2s;
             outline: none;
-        	width:100%
+            width:100%
         
         }
         
         .form-element--button button:hover{
-        	box-shadow: 0 8px 12px 0 rgba(0,0,0,.13);
+            box-shadow: 0 8px 12px 0 rgba(0,0,0,.13);
         }
         
         @media (max-width:650px){
             .form-element--input{
-           	 	width:80%;
+                width:80%;
             }
             .form-element--button{
-        		width:40%;
+                width:40%;
             }
         }
          
     </style>
     <script>
-	    let name='';
-    	let fname='';
-    	let email='';
-     	let run = false;
+        let name='';
+        let fname='';
+        let email='';
+        let run = false;
     
         if (!window._laq) { window._laq = []; }
         window._laq.push(function () {
             liveagent.showWhenOnline('5735I000000gQ4O', document.getElementById('chatonline'));
             liveagent.showWhenOffline('5735I000000gQ4O', document.getElementById('liveagent_button_offline_5735I000000gQ4O'));
         });
+
+       
+            
+
+
     
-    	window.addEventListener("load", function(event) {
+        window.addEventListener("load", function(event) {
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
-           	
+            
             if(urlParams.get('email')){
                 email=urlParams.get('email');
             }
@@ -162,20 +168,20 @@
                     startchat();
                 }
                 else{
-                	if(!name){
-                    	lnameElement.style.border='1px solid red';
+                    if(!name){
+                        lnameElement.style.border='1px solid red';
                     }
                     else{
                         lnameElement.style.border='1px solid rgb(201, 201, 201)';
                     }
                     if(!email){
-                    	emailElement.style.border='1px solid red';
+                        emailElement.style.border='1px solid red';
                     }
                     else{
                         emailElement.style.border='1px solid rgb(201, 201, 201)';
                     }
                     if(!fname){
-                    	fnameElement.style.border='1px solid red';
+                        fnameElement.style.border='1px solid red';
                     }
                     else{
                         fnameElement.style.border='1px solid rgb(201, 201, 201)';
@@ -183,17 +189,16 @@
                 }
             });
         });
-    	function startchat(){
-        	showchat();
+        function startchat(){
+            showchat();
             hideform();
             showLoading();
             let origin = window.location.origin || window.location.href || 'unknown';
             
             if (!window._laq) { window._laq = []; }
            
-            
-            liveagent.init('https://d.la1-c1cs-cdg.salesforceliveagent.com/chat', '5725I000000gPtx', '00D1X0000008dzV');
-            
+            liveagent.init('https://d.la2-c2-cdg.salesforceliveagent.com/chat', '5725I000000gPtx', '00D5I000002GOw0');
+
             liveagent.addCustomDetail('FirstName', fname || '',true);
             liveagent.addCustomDetail('LastName',  name,true);
             liveagent.addCustomDetail('Email', email || '',true);
@@ -224,26 +229,26 @@
                 }
             });
         }
-    	function showchat(){
+        function showchat(){
             let chatElement=document.querySelector(".chat");
             chatElement.style.display='block';
         }
-    	function hideform(){ 
-        	let chatElement=document.querySelector(".form");
+        function hideform(){ 
+            let chatElement=document.querySelector(".form");
             chatElement.style.display='none';
-    	}
-    	function showLoading(){
+        }
+        function showLoading(){
             let loadElement=document.querySelector("#loading");
             loadElement.style.display='block';
             setTimeout(function(){ loadElement.classList.add("loading"); }, 10);
         }
-    	function hideLoading(){
+        function hideLoading(){
             let loadElement=document.querySelector("#loading");
             loadElement.style.display='none';
             setTimeout(function(){ loadElement.classList.remove("loading"); }, 10);
 
         }
-    	
+        
     </script>
     <div id="chatonline"></div>
    
@@ -257,7 +262,7 @@
             </div>
         </header>
         <div class="chat">
-        	<iframe frameborder="0" name="frameWindow" id="frameWindow"></iframe>
+            <iframe frameborder="0" name="frameWindow" id="frameWindow"></iframe>
         </div>
         
         <div class="form">
@@ -275,7 +280,7 @@
                 <input type="email" id="form_email" name="email" placeholder="E-Mail"/>
             </div>
             <div class="form-element--button">
-            	<button type="button" id="start_chat">Start Chat</button>    
+                <button type="button" id="start_chat">Start Chat</button>    
             </div>
             
 

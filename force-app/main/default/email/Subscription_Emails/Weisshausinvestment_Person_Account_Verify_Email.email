@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Weisshaus Account Email Verification</title>
+    <title>Simple Transactional Email</title>
     <style>
         /* -------------------------------------
             GLOBAL RESETS
@@ -384,7 +384,7 @@
                                             <td>
                                                 <img width="200"
                                                     style="text-align: right; width: 207px; border: 0; text-decoration:none; vertical-align: baseline;"
-                                                    src="https://weisshausinvestment--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000cWLO&oid=00D5I000002GOw0&lastMod=1591962454000" />
+                                                    src="https://weisshausinvestment--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000cWLT&oid=00D5I000002GOw0" />
                                             </td>
                                         </tr>
                                     </table>
@@ -404,13 +404,13 @@
                                      
                                          <br>
                                         <p>Sehr geehrte Kundin / Sehr geehrter Kunde,</p>
-                                        <p>vielen Dank für Ihr Interesse an unserer Weisshaus Investment Plattform.</p>
+                                        <p>vielen Dank für Ihr Interesse an unserer EV Smart Money Holding Plattform.</p>
                                         <p>Bitte bestätigen Sie Ihre E-mail Adresse ({!Account.PersonEmail}) unter folgendem Link
                                             - Vielen Dank!</p>
                                         <br>
-                                        <p style="text-align:center;"><a class="confirm"
+                                        <p ><a class="confirm"
                                                 href="{!$Label.siteUrl}/s/verifyemailaccount?email={!Account.PersonEmail}&product={!Account.ProductInterest__pc}">LINK
-                                                FÜR BESTÄTIGUNG</a></p>
+                                                FÜR BESTÄTIGUNG >>></a></p>
                                         <br>
                                         <p style="font-weight: bold;">Link oben funktioniert nicht?</p>
                                         <p>Kopieren Sie einfach den folgenden Link und fügen Sie ihn in Ihren Browser
@@ -420,7 +420,7 @@
                                         </p>
                                         <br>
                                         <p>Mit freundlichen Grüßen,</p>
-                                        <p>Ihr Weisshaus Investment Team</p>
+                                        <p>Ihr EV Smart Money Holding Team</p>
                             </td>
                         </tr>
                     </table>
@@ -436,12 +436,12 @@
         <table role="presentation" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td class="content-block">
-                    <p class="apple-link">Sie erhalten diese E-Mail, weil {!Account.PersonEmail} auf Weisshausinvestment
-                        registriert ist. Bitte antworten Sie nicht direkt auf diese E-Mail. Wenn Sie Fragen
-                        oder Feedback haben, rufen Sie bitte an: +49 3074395959</p>
+                    <p class="apple-link">Sie erhalten diese E-Mail, weil {!Account.PersonEmail} auf www.ev-smartmoney.de registriert ist. Diese E-Mail wurde automatisiert versandt. Bitte antworten Sie nicht direkt auf diese E-Mail.
+
+ 
+Bei Fragen oder Feedback, wenden Sie sich an unseren Kundenservice unter: +49 3074395959</p>
                     <br>
-                    <p class="apple-link">Copyright &#169; 2019 Weisshausinvestment Gmbh | Hardenberstr. 32,
-                        10623 Berlin | Charlottenburg District Court | HRB 215045 |
+                    <p class="apple-link">Copyright &#169; 2020 EV Smart Money Holding GmbH | Klaus-Groth-Straße 3, 14050 Berlin | Charlottenburg District Court | HRB 215045 |
                         <a class="confirm"
                             href="{!$Label.siteUrl}/s/unsubscribe?email={!Account.PersonEmail}&product={!Account.ProductInterest__pc}">
                             abmelden

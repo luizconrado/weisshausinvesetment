@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Investment_Case</fullName>
+    <active>true</active>
+    <businessProcess>Default</businessProcess>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <label>Investment Case</label>
+    <picklistValues>
+        <picklist>Origin</picklist>
+        <values>
+            <fullName>Chat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Priority</picklist>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason</picklist>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type_II__c</picklist>
+        <values>
+            <fullName>Account Statement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Account confirmation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bank Data Deletion</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bank Data Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Card Chargeback</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Card Delivery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Card Information Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Card Transaction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closure Info</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closure Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Direct Debit return</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fraudulent Transaction Monitoring</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Identification Complaints</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Identification Issues</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Identification creation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Information Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Investigation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>P-Konto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner Card Block</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner Card Closure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner Card Unblock</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payment Recall</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payment investigation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payment request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone Chang%28Without access%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seizure Information Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seizures Payout</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tax ID Input</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Update Details</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>User Complaint</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

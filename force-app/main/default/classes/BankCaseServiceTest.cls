@@ -1,5 +1,6 @@
 @isTest
 public class BankCaseServiceTest {
+    
     @isTest
     static void testchangeCardStatusToJira(){
         Test.setMock(HttpCalloutMock.class, new SolarisbankCardWrapper.MockResponse());
@@ -12,10 +13,10 @@ public class BankCaseServiceTest {
         Reservation__c res=TestDataFactory.getReservation(bankAccountDetails.Id,true);
         
         Case caseDetails=TestDataFactory.getBankCase(accountDetails.Id,true);
-        Bank_Case__c cardBankCaseDetails=TestDataFactory.getCardBankCase(caseDetails.Id,false);
+        Bank_Case_Item__c cardBankCaseDetails=TestDataFactory.getCardBankCase(caseDetails.Id,false);
         cardBankCaseDetails.Card__c=cardDetails.Id;
         insert cardBankCaseDetails;
-        Bank_Case__c bcase=BankCaseOverrideControler.getBankCaseDetails(cardBankCaseDetails.Id);
+        Bank_Case_Item__c bcase=BankCaseOverrideControler.getBankCaseDetails(cardBankCaseDetails.Id);
         Test.startTest();
         
         BankCaseOverrideControler.changeCardStatus(bcase,'Block','Test It',true);
@@ -33,10 +34,10 @@ public class BankCaseServiceTest {
         Reservation__c res=TestDataFactory.getReservation(bankAccountDetails.Id,true);
         
         Case caseDetails=TestDataFactory.getBankCase(accountDetails.Id,true);
-        Bank_Case__c cardBankCaseDetails=TestDataFactory.getCardBankCase(caseDetails.Id,false);
+        Bank_Case_Item__c cardBankCaseDetails=TestDataFactory.getCardBankCase(caseDetails.Id,false);
         cardBankCaseDetails.Card__c=cardDetails.Id;
         insert cardBankCaseDetails;
-        Bank_Case__c bcase=BankCaseOverrideControler.getBankCaseDetails(cardBankCaseDetails.Id);
+        Bank_Case_Item__c bcase=BankCaseOverrideControler.getBankCaseDetails(cardBankCaseDetails.Id);
         Test.startTest();
         
         BankCaseOverrideControler.changeCardStatus(bcase,'Block','Test It',false);
@@ -54,10 +55,10 @@ public class BankCaseServiceTest {
         Reservation__c res=TestDataFactory.getReservation(bankAccountDetails.Id,true);
         
         Case caseDetails=TestDataFactory.getBankCase(accountDetails.Id,true);
-        Bank_Case__c cardBankCaseDetails=TestDataFactory.getCardBankCase(caseDetails.Id,false);
+        Bank_Case_Item__c cardBankCaseDetails=TestDataFactory.getCardBankCase(caseDetails.Id,false);
         cardBankCaseDetails.Card__c=cardDetails.Id;
         insert cardBankCaseDetails;
-        Bank_Case__c bcase=BankCaseOverrideControler.getBankCaseDetails(cardBankCaseDetails.Id);
+        Bank_Case_Item__c bcase=BankCaseOverrideControler.getBankCaseDetails(cardBankCaseDetails.Id);
         Test.startTest();
         try{
             BankCaseOverrideControler.changeCardStatus(bcase,'Unblock','Test It',false);
@@ -77,10 +78,10 @@ public class BankCaseServiceTest {
         Reservation__c res=TestDataFactory.getReservation(bankAccountDetails.Id,true);
         
         Case caseDetails=TestDataFactory.getBankCase(accountDetails.Id,true);
-        Bank_Case__c cardBankCaseDetails=TestDataFactory.getTimedOrderBankCase(caseDetails.Id,false);
+        Bank_Case_Item__c cardBankCaseDetails=TestDataFactory.getTimedOrderBankCase(caseDetails.Id,false);
         cardBankCaseDetails.Scheduled_Order__c=tOrder.Id;
         insert cardBankCaseDetails;
-        Bank_Case__c bcase=BankCaseOverrideControler.getBankCaseDetails(cardBankCaseDetails.Id);
+        Bank_Case_Item__c bcase=BankCaseOverrideControler.getBankCaseDetails(cardBankCaseDetails.Id);
         Test.startTest();
         try{
         BankCaseOverrideControler.requestCancleTimedOrder(bcase,'Test It');
@@ -99,10 +100,10 @@ public class BankCaseServiceTest {
         Reservation__c res=TestDataFactory.getReservation(bankAccountDetails.Id,true);
         
         Case caseDetails=TestDataFactory.getBankCase(accountDetails.Id,true);
-        Bank_Case__c cardBankCaseDetails=TestDataFactory.getTimedOrderBankCase(caseDetails.Id,false);
+        Bank_Case_Item__c cardBankCaseDetails=TestDataFactory.getTimedOrderBankCase(caseDetails.Id,false);
         cardBankCaseDetails.Scheduled_Order__c=tOrder.Id;
         insert cardBankCaseDetails;
-        Bank_Case__c bcase=BankCaseOverrideControler.getBankCaseDetails(cardBankCaseDetails.Id);
+        Bank_Case_Item__c bcase=BankCaseOverrideControler.getBankCaseDetails(cardBankCaseDetails.Id);
         Test.startTest();
         BankCaseOverrideControler.requestCancleTimedOrder(bcase,'Test It');
         
@@ -156,4 +157,5 @@ public class BankCaseServiceTest {
         }catch(Exception e){}
         Test.stopTest();
     }
+
 }

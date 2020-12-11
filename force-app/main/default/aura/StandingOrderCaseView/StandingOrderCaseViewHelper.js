@@ -17,7 +17,7 @@
             if (state === "SUCCESS") {
                 let records=data.map(function(rec){
                     rec.selected=(selectedRecordsId.includes(rec.Id))?true:false;
-                    rec.price=_helper.formatCurrency(rec.Amount__c);
+                    rec.price=_helper.formatCurrency(rec.Amount__c/100);
                     rec.FirstExecutionDate=_helper.formatDateTime(rec.First_Execution_Date__c);
                     rec.LastExecutionDate=_helper.formatDateTime(rec.Last_Execution_Date__c);
                     rec.NextOccurrence=_helper.formatDateTime(rec.Next_Occurrence__c);

@@ -47,7 +47,7 @@
                     let caseDetails=data[0];
                     component.set('v.caseDetails',caseDetails);
                     component.set('v.selectedType',caseDetails['Type']);
-                    component.set('v.reasonForContact',caseDetails['Description']);
+                    component.set('v.reasonForContact',caseDetails['Internal_Description__c']);
                     
                     _helper.setDependentCaseTypes(component,caseDetails['Type'],caseDetails['Type_II__c']);
                     

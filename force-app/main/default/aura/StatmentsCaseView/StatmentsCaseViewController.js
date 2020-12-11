@@ -32,14 +32,17 @@
         let yearFilter=component.get('v.yearFilter');
         let quaterFilter=component.get('v.quaterFilter');
         
-        if(periodFilter=='ANNUALLY' && quaterFilter > 13){
-            helper.showToast('Enter Valid Year','Please enter valid year','warning');
+        if(periodFilter=='MONTHLY' && quaterFilter > 13){
+            helper.showToast('Enter Valid Year','Please enter valid month','warning');
             return;
         }
-        else if(periodFilter!='ANNUALLY' && quaterFilter > 5){
+        else if(periodFilter=='QUARTERLY' && quaterFilter > 5){
             helper.showToast('Enter Valid Quater','Please enter valid quater','warning');
             return;
         }
+        else if(periodFilter=='ANNUALLY'){
+                quaterFilter=1;
+       	}
         
         let body;
         if (isRange) {
@@ -88,17 +91,17 @@
                     Bank_Account__c:bankAccountDetails.Id,
                     Statement_Period_Start_Date__c:result.statement_period_start_date,
                     Statement_Period_End_Date__c:result.statement_period_end_date,
-                    Balance_Start__c:result.account_information.balance_start.value/100,
-                    Balance_End__c:result.account_information.balance_end.value/100,
+                    Balance_Start__c:result.account_information.balance_start.value,
+                    Balance_End__c:result.account_information.balance_end.value,
                     Unit__c:result.account_information.balance_start.unit,
                     Issue_Date__c:result.issue_date,
                     Disclaimer__c:result.disclaimer,
                     
-                    startDate: helper.formatDateTime(result.statement_period_start_date),
-                    endDate: helper.formatDateTime(result.statement_period_end_date),
+                    startDate: helper.formatDateTime(result.statement_period_start_date/100),
+                    endDate: helper.formatDateTime(result.statement_period_end_date/100),
                     issueDate: result.issue_date,
-                    balanceStart: helper.formatCurrency(result.account_information.balance_start.value),
-                    balanceEnd: helper.formatCurrency(result.account_information.balance_end.value),
+                    balanceStart: helper.formatCurrency(result.account_information.balance_start.value/100),
+                    balanceEnd: helper.formatCurrency(result.account_information.balance_end.value/100),
                 }
                 
                 component.set('v.selectedStatementInfo',Statement__c);

@@ -1,7 +1,7 @@
 public class TestDataFactory {
-      
+     
     public static Lead getWebLead(Boolean doInsert){
-        return generateLead(SchemaUtil.getRecordTypeId('WebLeads', 'Lead'),doInsert);
+        return generateLead(Constant.DEFAULT_LEAD_RECORDTYPEID,doInsert);
     }
     public static Account getPersonAccount(Boolean doInsert){
         return generateAccount(Constant.PERSON_ACCOUNT_RECORDTYPEID, doInsert);
@@ -49,19 +49,21 @@ public class TestDataFactory {
     public static Bank_Account__c getBankAccount(String accountId,Boolean doInsert){
         return generateBankAccount(accountId,doInsert);
     }
-    public static Bank_Case__c getCardBankCase(String caseId,Boolean doInsert){
+    
+    public static Bank_Case_Item__c getCardBankCase(String caseId,Boolean doInsert){
         return generateBankCase(Constant.BANKCASE_CARD_RECORDTYPEID,caseId,doInsert);
     }
-    public static Bank_Case__c getBookingBankCase(String caseId,Boolean doInsert){
+    public static Bank_Case_Item__c getBookingBankCase(String caseId,Boolean doInsert){
         return generateBankCase(Constant.BANKCASE_BOOKING_RECORDTYPEID,caseId,doInsert);
     }
-    public static Bank_Case__c getBankAccountBankCase(String caseId,Boolean doInsert){
+    public static Bank_Case_Item__c getBankAccountBankCase(String caseId,Boolean doInsert){
         return generateBankCase(Constant.BANKCASE_BANKACCOUNT_RECORDTYPEID,caseId,doInsert);
     }
-     public static Bank_Case__c getTimedOrderBankCase(String caseId,Boolean doInsert){
+     public static Bank_Case_Item__c getTimedOrderBankCase(String caseId,Boolean doInsert){
         return generateBankCase(Constant.BANKCASE_TIMEDGORDER_RECORDTYPEID,caseId,doInsert);
     }
 
+    
     
     public static Card__c getCard(String accountId,String bankId,Boolean doInsert){
         Card__c card=new Card__c();
@@ -94,9 +96,9 @@ public class TestDataFactory {
             return generateScheduledOrder(Constant.STANDING_SCHEDULEDORDER_RECORDTYPEID,bankaccountId,doInsert);
     }
     
-    ////////
-    //Generators
-    ////////
+    /*
+    Generators
+	*/
     
     private static Booking__c generateBooking(String bankaccountId,Boolean doInsert){
         Booking__c book=new Booking__c();
@@ -116,8 +118,8 @@ public class TestDataFactory {
         return order;
     }
     
-    private static Bank_Case__c generateBankCase(String recordTypeId,String caseId,Boolean doInsert){
-        Bank_Case__c bc=new Bank_Case__c();
+    private static Bank_Case_Item__c generateBankCase(String recordTypeId,String caseId,Boolean doInsert){
+        Bank_Case_Item__c bc=new Bank_Case_Item__c();
         bc.RecordTypeId=recordTypeId;
         bc.Case__c=caseId;
         if(doInsert) insert bc;
@@ -200,6 +202,5 @@ public class TestDataFactory {
         if(doInsert) insert c;
         return c;
     }
-
 
 }

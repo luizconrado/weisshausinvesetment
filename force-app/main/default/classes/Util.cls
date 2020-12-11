@@ -12,13 +12,13 @@ public inherited sharing class Util {
     public static Boolean checkEmailPermission(String templateId){
        	Boolean pass=true;
         Email_Configuration__c config = Email_Configuration__c.getOrgDefaults();
-        if(templateId==Constant.LEAD_VERIFY_EMAIL_TEMPLATE || templateId==Constant.ACCOUNT_VERIFY_EMAIL_TEMPLATE){
+        if( templateId==Constant.ACCOUNT_VERIFY_EMAIL_TEMPLATE){
             pass = config.Send_Verification_Email__c;
         }
-        else if(templateId==Constant.LEAD_SUBSCRIBED_EMAIL_TEMPLATE || templateId==Constant.ACCOUNT_SUBSCRIBED_EMAIL_TEMPLATE){
+        else if( templateId==Constant.ACCOUNT_SUBSCRIBED_EMAIL_TEMPLATE){
             pass = config.Send_Subscribed_Email__c;
         }
-        else if(templateId==Constant.LEAD_UNSUBSCRIBE_EMAIL_TEMPLATE || templateId==Constant.ACCOUNT_UNSUBSCRIBE_EMAIL_TEMPLATE){
+        else if( templateId==Constant.ACCOUNT_UNSUBSCRIBE_EMAIL_TEMPLATE){
             pass = config.Send_Unsubscribed_Email__c;
         }
         return pass;

@@ -2,14 +2,14 @@
 private class MailUtilityTest {
 
     @isTest
-    static void sendMailsTest(){
+    static void sendMailsTest(){ 
         Email_Configuration__c config = new Email_Configuration__c();
         config.Send_Subscribed_Email__c=true;
         config.Organization_Wide_Address__c='Support';
         insert config;
         Lead l=TestDataFactory.getWebLead(true);
         Account a=TestDataFactory.getPersonAccount(true);
-        MailUtility.sendLeadHtmlEmail(l.Id, Constant.LEAD_SUBSCRIBED_EMAIL_TEMPLATE, l.Email);
+        MailUtility.sendLeadHtmlEmail(l.Id, Constant.ACCOUNT_UNSUBSCRIBE_EMAIL_TEMPLATE, l.Email);
         Contact c=[Select id FROM Contact];
         MailUtility.sendAccountHtmlEmail(c.id,a.id, Constant.ACCOUNT_SUBSCRIBED_EMAIL_TEMPLATE,a.PersonEmail);
     }

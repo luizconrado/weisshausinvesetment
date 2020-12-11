@@ -1,8 +1,8 @@
 public inherited sharing class Constant {
     //LEAD
-    public static final String WEB_LEAD_RECORDTYPEID{private set;get{
-        if(WEB_LEAD_RECORDTYPEID==null)WEB_LEAD_RECORDTYPEID=SchemaUtil.getRecordTypeId('WebLeads', 'Lead');
-        return WEB_LEAD_RECORDTYPEID;
+    public static final String DEFAULT_LEAD_RECORDTYPEID{private set;get{
+        if(DEFAULT_LEAD_RECORDTYPEID==null)DEFAULT_LEAD_RECORDTYPEID=SchemaUtil.getRecordTypeId('Default', 'Lead');
+        return DEFAULT_LEAD_RECORDTYPEID;
     }}
     //HISTORY TRACKER
     public static final String TRACK_FIELD_CHANGE_RECORDTYPE_ID{private set;get{
@@ -66,36 +66,38 @@ public inherited sharing class Constant {
     }}
     
     //BANK CASE
+    
     public static final String BANKCASE_ACCOUNT_RECORDTYPEID{private set;get{
-        if(BANKCASE_ACCOUNT_RECORDTYPEID==null)BANKCASE_ACCOUNT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Account', 'Bank_Case__c');
+        if(BANKCASE_ACCOUNT_RECORDTYPEID==null)BANKCASE_ACCOUNT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Account', 'Bank_Case_Item__c');
         return BANKCASE_ACCOUNT_RECORDTYPEID;
     }}
     public static final String BANKCASE_BANKACCOUNT_RECORDTYPEID{private set;get{
-        if(BANKCASE_BANKACCOUNT_RECORDTYPEID==null)BANKCASE_BANKACCOUNT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Bank_Account', 'Bank_Case__c');
+        if(BANKCASE_BANKACCOUNT_RECORDTYPEID==null)BANKCASE_BANKACCOUNT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Bank_Account', 'Bank_Case_Item__c');
         return BANKCASE_BANKACCOUNT_RECORDTYPEID;
     }}
     public static final String BANKCASE_CARD_RECORDTYPEID{private set;get{
-        if(BANKCASE_CARD_RECORDTYPEID==null)BANKCASE_CARD_RECORDTYPEID=SchemaUtil.getRecordTypeId('Card', 'Bank_Case__c');
+        if(BANKCASE_CARD_RECORDTYPEID==null)BANKCASE_CARD_RECORDTYPEID=SchemaUtil.getRecordTypeId('Card', 'Bank_Case_Item__c');
         return BANKCASE_CARD_RECORDTYPEID;
     }}
     public static final String BANKCASE_BOOKING_RECORDTYPEID{private set;get{
-        if(BANKCASE_BOOKING_RECORDTYPEID==null)BANKCASE_BOOKING_RECORDTYPEID=SchemaUtil.getRecordTypeId('Booking', 'Bank_Case__c');
+        if(BANKCASE_BOOKING_RECORDTYPEID==null)BANKCASE_BOOKING_RECORDTYPEID=SchemaUtil.getRecordTypeId('Booking', 'Bank_Case_Item__c');
         return BANKCASE_BOOKING_RECORDTYPEID;
     }}
+
     public static final String BANKCASE_RESERVATION_RECORDTYPEID{private set;get{
-        if(BANKCASE_RESERVATION_RECORDTYPEID==null)BANKCASE_RESERVATION_RECORDTYPEID=SchemaUtil.getRecordTypeId('Reservation', 'Bank_Case__c');
+        if(BANKCASE_RESERVATION_RECORDTYPEID==null)BANKCASE_RESERVATION_RECORDTYPEID=SchemaUtil.getRecordTypeId('Reservation', 'Bank_Case_Item__c');
         return BANKCASE_RESERVATION_RECORDTYPEID;
     }}
     public static final String BANKCASE_STANDINGORDER_RECORDTYPEID{private set;get{
-        if(BANKCASE_STANDINGORDER_RECORDTYPEID==null)BANKCASE_STANDINGORDER_RECORDTYPEID=SchemaUtil.getRecordTypeId('Standing_Order', 'Bank_Case__c');
+        if(BANKCASE_STANDINGORDER_RECORDTYPEID==null)BANKCASE_STANDINGORDER_RECORDTYPEID=SchemaUtil.getRecordTypeId('Standing_Order', 'Bank_Case_Item__c');
         return BANKCASE_STANDINGORDER_RECORDTYPEID;
     }}
     public static final String BANKCASE_TIMEDGORDER_RECORDTYPEID{private set;get{
-        if(BANKCASE_TIMEDGORDER_RECORDTYPEID==null)BANKCASE_TIMEDGORDER_RECORDTYPEID=SchemaUtil.getRecordTypeId('Timed_Order', 'Bank_Case__c');
+        if(BANKCASE_TIMEDGORDER_RECORDTYPEID==null)BANKCASE_TIMEDGORDER_RECORDTYPEID=SchemaUtil.getRecordTypeId('Timed_Order', 'Bank_Case_Item__c');
         return BANKCASE_TIMEDGORDER_RECORDTYPEID;
     }}
     public static final String BANKCASE_STATEMENT_RECORDTYPEID{private set;get{
-        if(BANKCASE_STATEMENT_RECORDTYPEID==null)BANKCASE_STATEMENT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Statement', 'Bank_Case__c');
+        if(BANKCASE_STATEMENT_RECORDTYPEID==null)BANKCASE_STATEMENT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Statement', 'Bank_Case_Item__c');
         return BANKCASE_STATEMENT_RECORDTYPEID;
     }}
     
@@ -107,26 +109,17 @@ public inherited sharing class Constant {
     
     
     // EMAIL TEMPLATE
-    public static final ID LEAD_VERIFY_EMAIL_TEMPLATE{private set;get{
-        if(LEAD_VERIFY_EMAIL_TEMPLATE==null) LEAD_VERIFY_EMAIL_TEMPLATE=[SELECT id,name,developername FROM emailtemplate WHERE developername ='Weisshausinvestment_Lead_Verify_Email'].Id;
-        return LEAD_VERIFY_EMAIL_TEMPLATE;
-    }}
+    
     public static final ID ACCOUNT_VERIFY_EMAIL_TEMPLATE{private set;get{
         if(ACCOUNT_VERIFY_EMAIL_TEMPLATE==null) ACCOUNT_VERIFY_EMAIL_TEMPLATE=[SELECT id,name,developername FROM emailtemplate WHERE developername ='Weisshausinvestment_Person_Account_Verify_Email'].Id;
         return ACCOUNT_VERIFY_EMAIL_TEMPLATE;
     }}
-    public static final ID LEAD_UNSUBSCRIBE_EMAIL_TEMPLATE{private set;get{
-        if(LEAD_UNSUBSCRIBE_EMAIL_TEMPLATE==null) LEAD_UNSUBSCRIBE_EMAIL_TEMPLATE=[SELECT id,name,developername FROM emailtemplate WHERE developername ='Weisshausinvestment_Lead_unsubscribe_Email'].Id;
-        return LEAD_UNSUBSCRIBE_EMAIL_TEMPLATE;
-    }}
+     
     public static final ID ACCOUNT_UNSUBSCRIBE_EMAIL_TEMPLATE{private set;get{
         if(ACCOUNT_UNSUBSCRIBE_EMAIL_TEMPLATE==null) ACCOUNT_UNSUBSCRIBE_EMAIL_TEMPLATE=[SELECT id,name,developername FROM emailtemplate WHERE developername ='Weisshausinvestment_Person_Account_unsubscribe_Email'].Id;
         return ACCOUNT_UNSUBSCRIBE_EMAIL_TEMPLATE;
     }}
-    public static final ID LEAD_SUBSCRIBED_EMAIL_TEMPLATE{private set;get{
-        if(LEAD_SUBSCRIBED_EMAIL_TEMPLATE==null) LEAD_SUBSCRIBED_EMAIL_TEMPLATE=[SELECT id,name,developername FROM emailtemplate WHERE developername ='Weisshausinvestment_Lead_Thank_You_Email'].Id;
-        return LEAD_SUBSCRIBED_EMAIL_TEMPLATE;
-    }}
+     
     public static final ID ACCOUNT_SUBSCRIBED_EMAIL_TEMPLATE{private set;get{
         if(ACCOUNT_SUBSCRIBED_EMAIL_TEMPLATE==null) ACCOUNT_SUBSCRIBED_EMAIL_TEMPLATE=[SELECT id,name,developername FROM emailtemplate WHERE developername ='Weisshausinvestment_Person_Account_Thank_You_Email'].Id;
         return ACCOUNT_SUBSCRIBED_EMAIL_TEMPLATE;

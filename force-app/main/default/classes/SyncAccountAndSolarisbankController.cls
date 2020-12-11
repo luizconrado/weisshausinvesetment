@@ -2,7 +2,7 @@ public class SyncAccountAndSolarisbankController {
     
     @AuraEnabled 
     public static void startSyncWithBank(String sfAccountId){
-        Account sfAccount=[SELECT Id, LastName, FirstName, Salutation, MiddleName,Gender__pc,PersonEmail,Phone,PersonTitle,
+        Account sfAccount=[SELECT Id, LastName, FirstName, Salutation, MiddleName,Gender__pc,PersonEmail,Phone,PersonTitle,Type,
                            ShippingStreet, ShippingCity, ShippingState, ShippingPostalCode, ShippingCountry ,
                            BillingStreet, BillingCity, BillingState, BillingPostalCode, BillingCountry,Solarisbank_Id__c,Solarisbank_Tenent__c,
                            Tax_Assessment__c,Marital_Status__c,Terms_Conditions_Signed_At__c ,Flagged_By_Compliance__c,Own_Economic_Interest_Signed_At__c ,
@@ -66,6 +66,7 @@ public class SyncAccountAndSolarisbankController {
             sfAccount.Salutation = personDetails.salutation;
             sfAccount.Gender__pc=(personDetails.salutation=='MR')?'Male':'Female';
             sfAccount.FirstName = personDetails.first_name;
+            sfAccount.Type = 'Coustomer';
             if(personDetails.last_name!=null)sfAccount.LastName = personDetails.last_name;
             if(personDetails.address != null)  sfAccount.BillingStreet =  personDetails.address.line_1;
             if(personDetails.address != null) sfAccount.BillingPostalCode = personDetails.address.postal_code;
@@ -173,7 +174,8 @@ public class SyncAccountAndSolarisbankController {
                     taxId.Primary__c=taxIdentification.primary;
                     taxId.Reason_No_Tin__c=taxIdentification.reason_no_tin;
                     taxId.Reason_Description__c=taxIdentification.reason_description;
-                    taxId.Name=taxIdentification.number_Z;
+                    taxId.Name=taxIdentification.country+''+taxIdentification.number_Z;
+                    taxId.Identification_Number__c=taxIdentification.number_Z;
                     toUpdateTaxIdentification.add(taxId);
                 }
                 else{

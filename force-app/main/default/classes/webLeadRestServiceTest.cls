@@ -19,7 +19,7 @@ public class webLeadRestServiceTest {
         RestContext.request = req;
         webLeadRestService.doPost();    
         
-        List<Lead> l=[Select id from Lead ];
+        List<Account> l=[Select id from Account ];
         System.assert(l.size()>0);
         
         Test.stopTest();   
@@ -27,9 +27,10 @@ public class webLeadRestServiceTest {
    
     @isTest
     static void doPostUpdateLead(){
-        Lead l=TestDataFactory.getWebLead(false);
-        l.Lead_origin__c='weisshause';
-        insert l;
+        Account a=TestDataFactory.getPersonAccount(false);
+        a.LastName='test';
+        a.PersonEmail='weisshause@test.com';
+        insert a;
         Test.startTest();
         String baseUrl = URL.getSalesforceBaseUrl().toExternalForm();
         RestRequest req = new RestRequest(); 
@@ -39,15 +40,15 @@ public class webLeadRestServiceTest {
         req.requestURI = baseUrl+'/services/apexrest/generate/lead/'; 
         req.httpMethod = 'GET';
         req.addHeader('Content-Type', 'application/json');
-        req.params.put('fields[email][value]', l.Email);
+        req.params.put('fields[email][value]', a.PersonEmail);
         req.params.put('fields[productInterested][value]', 'Product A');
         req.headers.put('User-Agent', 'crome;https://weisshaus1.com');
         
         RestContext.request = req;
         webLeadRestService.doPost();    
         
-        Lead conformLeadUpdate=[Select id,ProductInterest__c from Lead LIMIT 1 ];
-        System.assert(conformLeadUpdate.ProductInterest__c=='Product A');
+        Account conformLeadUpdate=[Select id,ProductInterest__pc from Account LIMIT 1 ];
+        System.assert(conformLeadUpdate.ProductInterest__pc=='Product A');
         Test.stopTest();
     }
     

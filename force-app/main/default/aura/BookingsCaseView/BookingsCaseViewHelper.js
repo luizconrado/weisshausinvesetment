@@ -17,7 +17,7 @@
             if (state === "SUCCESS") {
                 let records=data.map(function(rec){
                     rec.selected=(selectedBookingsId.includes(rec.Id))?true:false;
-                    rec.price=_helper.formatCurrency(rec.Amount__c);
+                    rec.price=_helper.formatCurrency(rec.Amount__c/100);
                     rec.BookingDate=_helper.formatDateTime(rec.Booking_Date__c);
                     rec.isSepta=(rec.Sepa_Return_Reason_Definition__c)?true:false;
                     return rec;

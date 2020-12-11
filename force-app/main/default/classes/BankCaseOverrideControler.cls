@@ -1,4 +1,5 @@
 public with sharing class BankCaseOverrideControler {
+    
     /////////////////////////////
     //Constants
     ////////////////////////////
@@ -38,7 +39,7 @@ public with sharing class BankCaseOverrideControler {
     ////////////////////////////
     @AuraEnabled
     public static List<Case> getCaseDetails(String caseId){
-        return [SELECT id,AccountId,Type,CaseNumber,Type_II__c,Description ,
+        return [SELECT id,AccountId,Type,CaseNumber,Type_II__c,Description ,Internal_Description__c,
                 Account.Name, Account.BillingStreet, Account.BillingCity, Account.BillingState, Account.BillingPostalCode, Account.BillingCountry,
                 Account.Phone,Account.Industry , Account.PersonBirthdate,Account.Solarisbank_Id__c
                 FROM Case 
@@ -47,14 +48,14 @@ public with sharing class BankCaseOverrideControler {
     }
     
     @AuraEnabled
-    public static List<Bank_Case__c> fetchExsistingBankCases(String caseId){
+    public static List<Bank_Case_Item__c> fetchExsistingBankCases(String caseId){
         return [SELECT Id, Case__c, Bank_Account__c, Booking__c, Reservation__c, Scheduled_Order__c, 
                 Statement__c, Card__c, Seizure__c, Identification__c, Tax_Identification__c, Is_Test__c, 
                 Account__c 
-                FROM Bank_Case__c WHERE Case__c=:caseId];            
+                FROM Bank_Case_Item__c WHERE Case__c=:caseId];            
     }
     @AuraEnabled
-    public static Bank_Case__c getBankCaseDetails(String recordId){
+    public static Bank_Case_Item__c getBankCaseDetails(String recordId){
         return [SELECT Id, Case__c, Statement__c, 
                 Reservation__c,Reservation__r.Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c,
                 Booking__c,Booking__r.Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c,Booking__r.Bank_Account__r.Person_Account__r.Solarisbank_Id__c,Booking__r.Bank_Account__r.Solarisbank_Id__c,Booking__r.Transaction_Id__c,
@@ -63,7 +64,7 @@ public with sharing class BankCaseOverrideControler {
                 Scheduled_Order__r.Bank_Account__r.Solarisbank_Id__c,Scheduled_Order__r.Bank_Account__r.Person_Account__r.Solarisbank_Id__c,Scheduled_Order__r.Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c,
                 Bank_Account__c,Bank_Account__r.Solarisbank_Id__c,Bank_Account__r.Person_Account__r.Solarisbank_Id__c,Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c,
                 Seizure__c, Identification__c, Tax_Identification__c, Is_Test__c,  Account__c 
-                FROM Bank_Case__c WHERE Id=:recordId];            
+                FROM Bank_Case_Item__c WHERE Id=:recordId];            
     }
     
     @AuraEnabled
@@ -150,26 +151,26 @@ public with sharing class BankCaseOverrideControler {
     @AuraEnabled
     public static String retriveTransactionDetails(String bankcaseId){
         
-        Bank_Case__c bankCase=getBankCaseDetails(bankcaseId);
+        Bank_Case_Item__c bankCase=getBankCaseDetails(bankcaseId);
         System.debug('bankCase '+bankCase);
-        LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(bankCase.Id,'Bank_Case__c',bankCase.Booking__r.Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c);
+        LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(bankCase.Id,'Bank_Case_Item__c',bankCase.Booking__r.Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c);
         return SolarisbankService.fetchSepaCreditTransfer(bankCase.Booking__r.Bank_Account__r.Person_Account__r.Solarisbank_Id__c,
                                                           bankCase.Booking__r.Bank_Account__r.Solarisbank_Id__c,
                                                           bankCase.Booking__r.Transaction_Id__c,apiCallDetails);
     }
     @AuraEnabled
     public static String fetchTrasnsactionDetails(string bankcaseId){
-        Bank_Case__c bankcase=getBankCaseDetails(bankcaseId);
+        Bank_Case_Item__c bankcase=getBankCaseDetails(bankcaseId);
         
-        LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(bankcase.Id,'Bank_Case__c',bankCase.Booking__r.Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c);
+        LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(bankcase.Id,'Bank_Case_Item__c',bankCase.Booking__r.Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c);
         return SolarisbankService.fetchSepaCreditTransfer(bankCase.Booking__r.Bank_Account__r.Person_Account__r.Solarisbank_Id__c, bankCase.Booking__r.Bank_Account__r.Solarisbank_Id__c, bankCase.Booking__r.Transaction_Id__c, apiCallDetails);
     }
     
     @AuraEnabled
     public static string retriveBalanceDetails(string bankcaseId){
-        Bank_Case__c bankcase=getBankCaseDetails(bankcaseId);
+        Bank_Case_Item__c bankcase=getBankCaseDetails(bankcaseId);
         
-        LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(bankcase.Id,'Bank_Case__c',bankCase.Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c);
+        LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(bankcase.Id,'Bank_Case_Item__c',bankCase.Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c);
         
         return SolarisbankService.fetchAccountBalance(bankcase.Bank_Account__r.Solarisbank_Id__c,apiCallDetails);
     }
@@ -216,13 +217,13 @@ public with sharing class BankCaseOverrideControler {
     
     
     @AuraEnabled
-    public static void changeCardStatus(Bank_Case__c bankCaseDetails,String newStatus,String reasonForChange,Boolean isJira){
+    public static void changeCardStatus(Bank_Case_Item__c bankCaseDetails,String newStatus,String reasonForChange,Boolean isJira){
         BankCaseService.initiateCardStatusChange(bankCaseDetails,newStatus,reasonForChange,isJira);
     }
     
     
     @AuraEnabled
-    public static void requestCancleTimedOrder(Bank_Case__c bankCaseDetails,String reason){
+    public static void requestCancleTimedOrder(Bank_Case_Item__c bankCaseDetails,String reason){
         BankCaseService.initiateTimedOrderCancelation(bankCaseDetails,reason);
     } 
     

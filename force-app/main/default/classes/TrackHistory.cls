@@ -1,6 +1,7 @@
-public inherited sharing  class TrackHistory {
+public without sharing  class TrackHistory {
 
     public static void captureChanges(List<Tracking_Events__e> changes){
+
         //creating map of object and schema
         Map<String,DescribeSobjectResult> objectDescriptionMap=new Map<String,DescribeSobjectResult>();
         Map<String,Map<String,DescribeFieldResult>> objectFieldsMap=new Map<String,Map<String,DescribeFieldResult>>();
@@ -21,20 +22,22 @@ public inherited sharing  class TrackHistory {
         List<History_Tracker__c> toInsertRecords=new List<History_Tracker__c>();
         //create Records
         for(Tracking_Events__e event:changes){
-            History_Tracker__c change=new History_Tracker__c();
-            change.Relation__c='On Record';
-            change.RecordTypeId=Constant.TRACK_FIELD_CHANGE_RECORDTYPE_ID;
-            change.Field__c=event.Field__c;
-            change.Object__c=event.Object__c;
-            change.Record_Id__c=event.Record_Id__c;
-            change.Old_Value__c=event.Old_Value__c;
-            change.New_Value__c=event.New_Value__c;
-            change.Record_Name__c=event.Record_Name__c;
-            change.User__c=event.User_Id__c;
-            change.Operation__c=event.Operation__c;
-            if(objectDescriptionMap.containsKey(event.Object__c)) change.Object_Label__c=objectDescriptionMap.get(event.Object__c).getLabel();
-            if(objectFieldsMap.containsKey(event.Object__c)) change.Field_Label__c=objectFieldsMap.get(event.Object__c).get(event.Field__c).getLabel();
-            toInsertRecords.add(change);
+            if(String.isNotEmpty(event.Operation__c)){
+                History_Tracker__c change=new History_Tracker__c();
+                change.Relation__c='On Record';
+                change.RecordTypeId=Constant.TRACK_FIELD_CHANGE_RECORDTYPE_ID;
+                change.Field__c=event.Field__c;
+                change.Object__c=event.Object__c;
+                change.Record_Id__c=event.Record_Id__c;
+                change.Old_Value__c=event.Old_Value__c;
+                change.New_Value__c=event.New_Value__c;
+                change.Record_Name__c=event.Record_Name__c;
+                change.User__c=event.User_Id__c;
+                change.Operation__c=event.Operation__c;
+                if(objectDescriptionMap.containsKey(event.Object__c)) change.Object_Label__c=objectDescriptionMap.get(event.Object__c).getLabel();
+                if(objectFieldsMap.containsKey(event.Object__c)) change.Field_Label__c=objectFieldsMap.get(event.Object__c).get(event.Field__c).getLabel();
+                toInsertRecords.add(change);
+            }
         }
         if(toInsertRecords.size()>0) insert toInsertRecords;
         
@@ -42,8 +45,11 @@ public inherited sharing  class TrackHistory {
     // insert changes
     public static void publishChanges(String objectName,List<sObject> newRecords){
         //check configuration
+        if(!checkTrackStatus(objectName,'Insert')) return;
+        
         List<String> fields=getFieldsToTrack(objectName);
         if(fields.size()==0) return;
+        
         List<Tracking_Events__e> toPublishRecords=new List<Tracking_Events__e>();
         for(sObject record:newRecords){
             for(String field:fields){
@@ -67,6 +73,8 @@ public inherited sharing  class TrackHistory {
     // update changes
     public static void publishChanges(String objectName,List<sObject> newRecords,Map<id,sObject> oldRecords){
         //check configuration
+        if(!checkTrackStatus(objectName,'Update')) return;
+        
         List<String> fields=getFieldsToTrack(objectName);
         if(fields.size()==0) return;
         List<Tracking_Events__e> toPublishRecords=new List<Tracking_Events__e>();
@@ -85,6 +93,7 @@ public inherited sharing  class TrackHistory {
                     e.Old_Value__c=String.valueOf(oldRecord.get(field));
                     e.User_Id__c=Userinfo.getUserId();
                     e.Operation__c='Update';
+                    System.debug('KING Event Update '+e);
                     toPublishRecords.add(e);
                 }
             }
@@ -92,9 +101,25 @@ public inherited sharing  class TrackHistory {
         if(toPublishRecords.size()>0) EventBus.publish(toPublishRecords);
     }
        
+    //unified method where update and insert can be tracked from trigger
+    public static void publishChanges(String objectApiName){
+        if (Trigger.isAfter && Trigger.isInsert)  publishChanges(objectApiName, Trigger.new);
+        else if (Trigger.isAfter &&  Trigger.isUpdate) publishChanges(objectApiName, Trigger.new,Trigger.oldMap);
+    }
+
+    private static Boolean checkTrackStatus(String objectName,String operation){
+        String query='SELECT Fields__c,Track_Insert__c,Track_Update__c FROM History_Tracker_Configuration__mdt ';
+        query += ' WHERE Object__c=:objectName AND Track_Change__c=True ';
+        if(operation=='Insert') query +=' AND Track_Insert__c = true ';
+        if(operation=='Update') query +=' AND Track_Update__c = true ';
+        List<History_Tracker_Configuration__mdt> fieldConfig=Database.query(query);
+        if(fieldConfig.size()>0) return true;
+        return false;
+    }
+    
     private static List<String> getFieldsToTrack(String ObjectName){
         //get field names that needs to be tracked
-        List<History_Tracker_Configuration__mdt> fieldConfig=[SELECT Fields__c FROM History_Tracker_Configuration__mdt WHERE Object__c=:ObjectName AND Track_Change__c=True];
+        List<History_Tracker_Configuration__mdt> fieldConfig=[SELECT Fields__c,Track_Insert__c,Track_Update__c FROM History_Tracker_Configuration__mdt WHERE Object__c=:ObjectName AND Track_Change__c=True];
         List<String> fields=new List<String>();
         if(fieldConfig.size()>0) fields=fieldConfig.get(0).Fields__c.split(',');
         return fields;

@@ -17,4 +17,15 @@ public inherited sharing class RandomUtil {
         }
         return result;
     }
+    
+    public static String randomUUID() {
+        String s = EncodingUtil.convertToHex(Crypto.generateAesKey(128));
+        String uuid=
+            s.substring(0, 8) + '-'
+            + s.substring(8, 12) + '-'
+            + s.substring(12, 16) + '-'
+            + s.substring(16, 20) + '-'
+            + s.substring(20);
+        return uuid.toLowerCase();
+    }
 }

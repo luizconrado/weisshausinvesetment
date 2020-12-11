@@ -1,5 +1,6 @@
 public with sharing class BankCaseService {
-    private static Bank_Case__c initiateBankCase(String caseId,String filedName,String recordId,String recordType){
+    
+    private static Bank_Case_Item__c initiateBankCase(String caseId,String filedName,String recordId,String recordType){
         String accountRecordTypeId = Constant.BANKCASE_ACCOUNT_RECORDTYPEID;
         String bankAccountRecordTypeId =Constant.BANKCASE_BANKACCOUNT_RECORDTYPEID;
         String cardRecordTypeId = Constant.BANKCASE_CARD_RECORDTYPEID;
@@ -8,7 +9,7 @@ public with sharing class BankCaseService {
         String standingRecordTypeId = Constant.BANKCASE_STANDINGORDER_RECORDTYPEID;
         String timedRecordTypeId = Constant.BANKCASE_TIMEDGORDER_RECORDTYPEID;
         String statementRecordTypeId =  Constant.BANKCASE_STATEMENT_RECORDTYPEID;   
-        Bank_Case__c bc=new Bank_Case__c();
+        Bank_Case_Item__c bc=new Bank_Case_Item__c();
         bc.Case__c=caseId;
         bc.put(filedName,recordId);
         switch on recordType {
@@ -51,14 +52,14 @@ public with sharing class BankCaseService {
                                                           try{                          
                                                               
                                                               
-                                                              List<Bank_Case__c> toInsertList = new List<Bank_Case__c>();
+                                                              List<Bank_Case_Item__c> toInsertList = new List<Bank_Case_Item__c>();
                                                               List<String> toInsertIds = new List<String>();
                                                               
                                                               Case caseDetails=new Case();
                                                               caseDetails.Id=caseId;
                                                               caseDetails.Type = typeI;
                                                               caseDetails.Type_II__c=typeII;
-                                                              caseDetails.Description=description;
+                                                              caseDetails.Internal_Description__c=description;
                                                               
                                                               Boolean isAccountExsists = false;
                                                               Boolean isBankExsists = false;
@@ -76,9 +77,9 @@ public with sharing class BankCaseService {
                                                               
                                                               for(String standingOrderId:standingOrdersId)  if(String.isNotBlank(standingOrderId)) isStandingExsists.put(standingOrderId,false);
                                                               
-                                                              List<Bank_Case__c> allBankCases=[SELECT Id, Case__c, Bank_Account__c, Booking__c, Reservation__c, Scheduled_Order__c, Statement__c, Card__c, Seizure__c, Identification__c, Tax_Identification__c, Is_Test__c,  Account__c 
-                                                                                               FROM Bank_Case__c WHERE Case__c=:caseId];            
-                                                              for(Bank_Case__c bCases:allBankCases){
+                                                              List<Bank_Case_Item__c> allBankCases=[SELECT Id, Case__c, Bank_Account__c, Booking__c, Reservation__c, Scheduled_Order__c, Statement__c, Card__c, Seizure__c, Identification__c, Tax_Identification__c, Is_Test__c,  Account__c 
+                                                                                               FROM Bank_Case_Item__c WHERE Case__c=:caseId];            
+                                                              for(Bank_Case_Item__c bCases:allBankCases){
                                                                   //check timed record
                                                                   if(isTimedExsists.containsKey(bCases.Scheduled_Order__c )) isTimedExsists.put(bCases.Scheduled_Order__c,true);   
                                                                   //check standing record
@@ -151,9 +152,9 @@ public with sharing class BankCaseService {
                                                       }
     //Change Card Status
     @AuraEnabled
-    public static void initiateCardStatusChange(Bank_Case__c bankCaseDetails,String newStatus,String reasonForChange,Boolean isJira){
+    public static void initiateCardStatusChange(Bank_Case_Item__c bankCaseDetails,String newStatus,String reasonForChange,Boolean isJira){
         try{
-            LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(bankCaseDetails.Id,'Bank_Case__c',bankCaseDetails.Card__r.Person_Account__r.Solarisbank_Tenent__c);
+            LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(bankCaseDetails.Id,'Bank_Case_Item__c',bankCaseDetails.Card__r.Person_Account__r.Solarisbank_Tenent__c);
             
             Boolean updateCase = false;
             bankCaseDetails.Old_Card_Status__c =bankCaseDetails.Card__r.Status__c;
@@ -211,7 +212,7 @@ public with sharing class BankCaseService {
             details.componentName='BankCaseCardStatusChange';
             details.userId=userinfo.getUserId();
             details.recordId=bankCaseDetails.Id;
-            details.objectName='Bank_Case__c';
+            details.objectName='Bank_Case_Item__c';
             details.className='BankCaseService';
             details.operation='Change Card Status';
             details.methodName='initiateCardStatusChange';
@@ -222,9 +223,9 @@ public with sharing class BankCaseService {
     
     //Cancel timed Order
     @AuraEnabled
-    public static void initiateTimedOrderCancelation(Bank_Case__c bankCaseDetails,String reason){
+    public static void initiateTimedOrderCancelation(Bank_Case_Item__c bankCaseDetails,String reason){
         try{
-            LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(bankCaseDetails.Id,'Bank_Case__c',bankCaseDetails.Scheduled_Order__r.Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c);
+            LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(bankCaseDetails.Id,'Bank_Case_Item__c',bankCaseDetails.Scheduled_Order__r.Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c);
             
             bankCaseDetails.Old_Order_Status__c = bankCaseDetails.Scheduled_Order__r.Status__c;
             String responseJSON = SolarisbankService.cancelTimedOrder(bankCaseDetails.Scheduled_Order__r.Bank_Account__r.Person_Account__r.Solarisbank_Id__c, bankCaseDetails.Scheduled_Order__r.Bank_Account__r.Solarisbank_Id__c, bankCaseDetails.Scheduled_Order__r.Solarisbank_Id__c,apiCallDetails);
@@ -246,7 +247,7 @@ public with sharing class BankCaseService {
             details.componentName='BankCaseTimedOrderCancle';
             details.userId=userinfo.getUserId();
             details.recordId=bankCaseDetails.Id;
-            details.objectName='Bank_Case__c';
+            details.objectName='Bank_Case_Item__c';
             details.className='BankCaseService';
             details.operation='Cancle Timed Order';
             details.methodName='initiateTimedOrderCancelation';
@@ -254,4 +255,5 @@ public with sharing class BankCaseService {
             throw new AuraHandledException('Please contact your System admin.And provide '+index+' id to resolve issue.');
         }
     } 
+
 }

@@ -37,4 +37,38 @@ public class LogServiceTest {
         LogService.LogApiCall(call);
         Test.stopTest();
     }
+    
+    @isTest
+    static void testLogingTriggers(){
+        Account a=TestDataFactory.getPersonAccount(true);
+        Bank_Account__c bc=TestDataFactory.getBankAccount(a.Id,true);
+        Case c=TestDataFactory.getBankCase(a.Id,true);
+        Bank_Case_Item__c bankCase=TestDataFactory.getBankAccountBankCase(c.Id,false);
+        bankCase.Account__c=a.Id;
+        insert bankCase;
+        
+        Identification__c ident=new Identification__c();
+        ident.Account__c =a.Id;
+        insert ident;
+        
+        Scheduled_Order__c sc=new Scheduled_Order__c();
+        sc.Bank_Account__c =bc.Id;
+        insert sc;
+        
+        Tax_Identification__c ti=new Tax_Identification__c();
+        ti.Account__c=a.id;
+        insert ti;
+        
+        Card__c card=new Card__c();
+        card.Person_Account__c=a.Id;
+            card.Bank_Account__c=bc.Id;
+        insert card;
+        
+        Booking__c book=new Booking__c();
+        book.Bank_Account__c =bc.Id;
+        insert book;
+        
+        
+        
+    }
 }

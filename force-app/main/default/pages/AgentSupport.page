@@ -1,8 +1,7 @@
 <apex:page showHeader="false" sidebar="false">
-    <meta name="viewport" content="width=device-width,inital-scale=1.0,user-scalable=false"/>
-    <script type='text/javascript' src='https://c.la2-c2-cdg.salesforceliveagent.com/content/g/js/49.0/deployment.js'>
+    <meta name="viewport" content="width=device-width"/>
+    <script type='text/javascript' src='https://c.la2-c2-cdg.salesforceliveagent.com/content/g/js/50.0/deployment.js'>
     </script>
-    
     <style>
         
         *{
@@ -26,7 +25,7 @@
         }
         .chat iframe{
             width:100%;
-            height:calc(90vh - 2rem);
+            height:calc(97vh - 2.8rem);
         }
         .hide{
             display: none;
@@ -46,7 +45,7 @@
             display:none;
         }
         .header-logo{
-            background:url("https://support.weisshausinvestment.com/file-asset/WeisshausLogo_Final");
+            background:url("https://support.weisshausinvestment.com/file-asset/croppedWeisshausLogo_Final");
             height: 2rem;
             background-size: contain;
             background-repeat: no-repeat;
@@ -127,11 +126,6 @@
             liveagent.showWhenOnline('5735I000000gQ4O', document.getElementById('chatonline'));
             liveagent.showWhenOffline('5735I000000gQ4O', document.getElementById('liveagent_button_offline_5735I000000gQ4O'));
         });
-
-       
-            
-
-
     
         window.addEventListener("load", function(event) {
             const queryString = window.location.search;
@@ -197,14 +191,15 @@
             
             if (!window._laq) { window._laq = []; }
            
+            
             liveagent.init('https://d.la2-c2-cdg.salesforceliveagent.com/chat', '5725I000000gPtx', '00D5I000002GOw0');
-
+            
             liveagent.addCustomDetail('FirstName', fname || '',true);
             liveagent.addCustomDetail('LastName',  name,true);
             liveagent.addCustomDetail('Email', email || '',true);
             
             liveagent.addCustomDetail('Last_Name__c', name || '',false).saveToTranscript('Last_Name__c');
-            liveagent.addCustomDetail('First_Name__c', name || '',false).saveToTranscript('First_Name__c');
+            liveagent.addCustomDetail('First_Name__c', fname || '',false).saveToTranscript('First_Name__c');
             liveagent.addCustomDetail('Email__c', email || '',false).saveToTranscript('Email__c');
             liveagent.addCustomDetail('Chat_Origin__c',origin,false).saveToTranscript('Chat_Origin__c');
             
@@ -249,6 +244,7 @@
 
         }
         
+        
     </script>
     <div id="chatonline"></div>
    
@@ -271,13 +267,13 @@
                 <span>Connect with our executives.</span>
             </div>
             <div class="form-element--input">
-                <input type="text" id="form_fname" name="name" placeholder="First Name"/>
+                <input type="text" id="form_fname" autocomplete="given-name" name="name" placeholder="First Name"/>
             </div>
             <div class="form-element--input">
-                <input type="text" id="form_lname" name="name" placeholder="Last Name"/>
+                <input type="text" id="form_lname" autocomplete="family-name"  name="name" placeholder="Last Name"/>
             </div>
             <div class="form-element--input">
-                <input type="email" id="form_email" name="email" placeholder="E-Mail"/>
+                <input type="email" id="form_email" autocomplete="email" name="email" placeholder="E-Mail"/>
             </div>
             <div class="form-element--button">
                 <button type="button" id="start_chat">Start Chat</button>    

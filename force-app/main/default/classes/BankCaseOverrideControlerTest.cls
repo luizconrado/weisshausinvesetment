@@ -23,7 +23,7 @@ public class BankCaseOverrideControlerTest {
         Reservation__c res=TestDataFactory.getReservation(bankAccountDetails.Id,true);
         
         Case caseDetails=TestDataFactory.getBankCase(accountDetails.Id,true);
-        Bank_Case__c cardBankCaseDetails=TestDataFactory.getCardBankCase(caseDetails.Id,false);
+        Bank_Case_Item__c cardBankCaseDetails=TestDataFactory.getCardBankCase(caseDetails.Id,false);
         cardBankCaseDetails.Card__c=cardDetails.Id;
         insert cardBankCaseDetails;
         
@@ -51,7 +51,7 @@ public class BankCaseOverrideControlerTest {
         Reservation__c res=TestDataFactory.getReservation(bankAccountDetails.Id,true);
         
         Case caseDetails=TestDataFactory.getBankCase(accountDetails.Id,true);
-        Bank_Case__c cardBankCaseDetails=TestDataFactory.getBookingBankCase(caseDetails.Id,false);
+        Bank_Case_Item__c cardBankCaseDetails=TestDataFactory.getBookingBankCase(caseDetails.Id,false);
         cardBankCaseDetails.Booking__c=booking.id;
         insert cardBankCaseDetails;
         Test.startTest();
@@ -71,7 +71,7 @@ public class BankCaseOverrideControlerTest {
         Reservation__c res=TestDataFactory.getReservation(bankAccountDetails.Id,true);
         
         Case caseDetails=TestDataFactory.getBankCase(accountDetails.Id,true);
-        Bank_Case__c cardBankCaseDetails=TestDataFactory.getBankAccountBankCase(caseDetails.Id,false);
+        Bank_Case_Item__c cardBankCaseDetails=TestDataFactory.getBankAccountBankCase(caseDetails.Id,false);
         cardBankCaseDetails.Bank_Account__c=bankAccountDetails.id;
         insert cardBankCaseDetails;
         Test.startTest();
@@ -91,7 +91,7 @@ public class BankCaseOverrideControlerTest {
         Reservation__c res=TestDataFactory.getReservation(bankAccountDetails.Id,true);
         
         Case caseDetails=TestDataFactory.getBankCase(accountDetails.Id,true);
-        Bank_Case__c cardBankCaseDetails=TestDataFactory.getBankAccountBankCase(caseDetails.Id,false);
+        Bank_Case_Item__c cardBankCaseDetails=TestDataFactory.getBankAccountBankCase(caseDetails.Id,false);
         cardBankCaseDetails.Bank_Account__c=bankAccountDetails.id;
         insert cardBankCaseDetails;
         
@@ -118,7 +118,7 @@ public class BankCaseOverrideControlerTest {
         Reservation__c res=TestDataFactory.getReservation(bankAccountDetails.Id,true);
         
         Case caseDetails=TestDataFactory.getBankCase(accountDetails.Id,true);
-        Bank_Case__c cardBankCaseDetails=TestDataFactory.getBankAccountBankCase(caseDetails.Id,false);
+        Bank_Case_Item__c cardBankCaseDetails=TestDataFactory.getBankAccountBankCase(caseDetails.Id,false);
         cardBankCaseDetails.Bank_Account__c=bankAccountDetails.id;
         insert cardBankCaseDetails;
         
@@ -145,7 +145,7 @@ public class BankCaseOverrideControlerTest {
         Reservation__c res=TestDataFactory.getReservation(bankAccountDetails.Id,true);
         
         Case caseDetails=TestDataFactory.getBankCase(accountDetails.Id,true);
-        Bank_Case__c cardBankCaseDetails=TestDataFactory.getBookingBankCase(caseDetails.Id,false);
+        Bank_Case_Item__c cardBankCaseDetails=TestDataFactory.getBookingBankCase(caseDetails.Id,false);
         cardBankCaseDetails.Booking__c=booking.id;
         insert cardBankCaseDetails;
         

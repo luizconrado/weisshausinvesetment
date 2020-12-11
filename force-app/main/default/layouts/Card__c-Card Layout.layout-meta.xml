@@ -97,7 +97,7 @@
         <fields>NAME</fields>
         <fields>RECORDTYPE</fields>
         <fields>CREATED_DATE</fields>
-        <relatedList>Bank_Case__c.Card__c</relatedList>
+        <relatedList>Bank_Case_Item__c.Card__c</relatedList>
         <sortField>CREATED_DATE</sortField>
         <sortOrder>Asc</sortOrder>
     </relatedLists>

@@ -83,7 +83,7 @@
     </layoutSections>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>Bank_Case__c.Tax_Identification__c</relatedList>
+        <relatedList>Bank_Case_Item__c.Tax_Identification__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

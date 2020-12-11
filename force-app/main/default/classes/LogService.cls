@@ -3,14 +3,14 @@ public inherited  sharing class LogService {
     public static void LogApiCall(ApiCallDetails details){
         Log_Event__e e=New Log_Event__e();
         e.Type__c='Integeration';
-        String index=RandomUtil.randomString(8);
+        String index=RandomUtil.randomUUID();
         details.index = index;
         details.operation='REST Call';
         e.Body__c=JSON.serialize(details);
         EventBus.publish(e);
     }
     public static String logError(LogMetadata details){
-        String index=RandomUtil.randomString(8);
+        String index=RandomUtil.randomUUID();
         if(details.error!=null){
              System.debug('ERROR => '+details.error.getStackTraceString());
             System.debug('ERROR TYPE => '+details.error.getMessage());

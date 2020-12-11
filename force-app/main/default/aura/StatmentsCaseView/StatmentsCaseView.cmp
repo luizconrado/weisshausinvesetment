@@ -32,9 +32,10 @@
         
         <div class="slds-col slds-box slds-grid fix-width-col slds-grid_vertical slds-grow-none">
             <div class="slds-col half-width slds-p-top_small slds-grow-none">
+                <lightning:button variant="{!v.isRange?'brand-outline':'brand'}" value="period" label="Period" title="Period" onclick="{! c.handleTypeSelection }"/>
+              
                 <lightning:button variant="{!v.isRange?'brand':'brand-outline'}" value="range" label="Range" title="Range" onclick="{! c.handleTypeSelection }"/>
                 
-                <lightning:button variant="{!v.isRange?'brand-outline':'brand'}" value="period" label="Period" title="Period" onclick="{! c.handleTypeSelection }"/>
                 
             </div>
             <aura:if isTrue="{!v.isRange}">

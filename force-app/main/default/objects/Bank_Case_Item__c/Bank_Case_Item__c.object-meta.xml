@@ -155,13 +155,13 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
-    <label>Bank Case</label>
+    <label>Bank Case Item</label>
     <nameField>
-        <displayFormat>Bank Case-{00000}</displayFormat>
-        <label>Bank Case Number</label>
+        <displayFormat>Bank Case Item-{00000}</displayFormat>
+        <label>Bank Case Item Number</label>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Bank Cases</pluralLabel>
+    <pluralLabel>Bank Case Items</pluralLabel>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>

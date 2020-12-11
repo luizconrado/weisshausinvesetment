@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Tax_Identification__c</fullName>
+    <fullName>Card__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <label>Tax Identification</label>
-    <referenceTo>Tax_Identification__c</referenceTo>
-    <relationshipLabel>Bank Cases</relationshipLabel>
+    <label>Card</label>
+    <referenceTo>Card__c</referenceTo>
     <relationshipName>Bank_Cases</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>

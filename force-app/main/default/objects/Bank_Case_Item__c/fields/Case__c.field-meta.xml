@@ -4,8 +4,8 @@
     <externalId>false</externalId>
     <label>Case</label>
     <referenceTo>Case</referenceTo>
-    <relationshipLabel>Bank Cases</relationshipLabel>
-    <relationshipName>Bank_Cases</relationshipName>
+    <relationshipLabel>Bank Case Items</relationshipLabel>
+    <relationshipName>Bank_Case_Items</relationshipName>
     <relationshipOrder>0</relationshipOrder>
     <reparentableMasterDetail>false</reparentableMasterDetail>
     <trackTrending>false</trackTrending>

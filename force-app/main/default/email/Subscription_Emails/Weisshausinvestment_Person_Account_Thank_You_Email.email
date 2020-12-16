@@ -379,8 +379,8 @@
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td class="content-block">
-                                
-                                  <table width="23%">
+
+                                    <table width="23%">
                                         <tr>
                                             <td>
                                                 <img width="200"
@@ -405,7 +405,8 @@
                                         <br>
                                         <p>Sehr geehrte(r) {!Account.Salutation} {!Account.LastName},</p>
                                         <p>
-                                            Sie haben sich erfolgreich zu unserem {!Account.ProductInterest__pc} angemeldet.
+                                            Sie haben sich erfolgreich zu unserem {!Account.ProductInterest__pc}
+                                            angemeldet.
                                         </p>
                                         <p>Bei Fragen zu unserem {!Account.ProductInterest__pc} oder unseren Produkten,
                                             melden Sie sich einfach bei uns unter
@@ -416,7 +417,7 @@
                                         <p>Mit freundlichen Grüßen,</p>
                                         <p>Ihr EV Smart Money Holding Team</p>
 
-                                        
+
                             </td>
                         </tr>
                     </table>
@@ -432,12 +433,16 @@
         <table role="presentation" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td class="content-block">
-                    <p class="apple-link">Sie erhalten diese E-Mail, weil {!Account.PersonEmail} auf www.ev-smartmoney.de registriert ist. Diese E-Mail wurde automatisiert versandt. Bitte antworten Sie nicht direkt auf diese E-Mail.
-
- 
-Bei Fragen oder Feedback, wenden Sie sich an unseren Kundenservice unter: +49 3074395959</p>
+                    <p class="apple-link">
+                        Sie erhalten diese E-Mail, weil {!Account.PersonEmail} auf www.ev-smartmoney.de registriert ist.
+                        Diese E-Mail wurde automatisiert versandt. Bitte antworten Sie nicht direkt auf diese E-Mail.
+                        Wenn Sie Fragen oder Rückmeldungen haben, sind wir unter folgender Telefonnummer gerne für Sie
+                        da : +49 30 74395959 (Mo-Fr: 9-18 Uhr)
+                    </p>
                     <br>
-                    <p class="apple-link">Copyright &#169; 2020 EV Smart Money Holding GmbH | Klaus-Groth-Straße 3, 14050 Berlin | Charlottenburg District Court | HRB 215045 | 
+                    <p class="apple-link">
+                        Copyright &#169; 2020 EV Smart Money Holding GmbH (E&V Konto) EV Smart Money GmbH (Wealth) |
+                        Klaus-Groth-Straße 3, 14050 Berlin, Germany. |
                         <a class="confirm"
                             href="{!$Label.siteUrl}/s/unsubscribe?email={!Account.PersonEmail}&product={!Account.ProductInterest__pc}">
                             abmelden

@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Simple Transactional Email</title>
+    <title>Weisshaus Lead Email Thank You</title>
     <style>
         /* -------------------------------------
             GLOBAL RESETS
@@ -368,7 +368,7 @@
 </head>
 
 <body class="">
-    <span class="preheader">Überprüfen Sie das E-Mail-Konto für das Newsletter-Abonnement.</span>
+    <span class="preheader"></span>
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
         <tr>
             <td class="container">
@@ -379,8 +379,15 @@
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td class="content-block">
-                                    <img
-                                        src="https://weisshausinvestment--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000cWLT&oid=00D5I000002GOw0" />
+                                    <table width="23%">
+                                        <tr>
+                                            <td>
+                                                <img width="200"
+                                                    style="text-align: right; width: 207px; border: 0; text-decoration:none; vertical-align: baseline;"
+                                                    src="https://weisshausinvestment--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000cWLT&oid=00D5I000002GOw0" />
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </td>
                             </tr>
                         </table>
@@ -395,11 +402,9 @@
                                 <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <br>
-                                        <p>Hallo Kunde</p>
-                                        <p>You have unsubscribed {!Account.ProductInterest__pc} successfully.</p>
-                                        <br>
-                                        <p>Prost,</p>
-                                        <p>Ihr EV Smart Money Holding Team</p>
+                                        <p>Sehr geehrte</p>
+
+                                        <p>Ihr E&V Smart Money Team</p>
                             </td>
                         </tr>
                     </table>
@@ -416,19 +421,17 @@
             <tr>
                 <td class="content-block">
                     <p class="apple-link">
-                        Sie erhalten diese E-Mail, weil {!Account.PersonEmail} auf www.ev-smartmoney.de registriert ist.
-                        Diese E-Mail wurde automatisiert versandt. Bitte antworten Sie nicht direkt auf diese E-Mail.
-                        Wenn Sie Fragen oder Rückmeldungen haben, sind wir unter folgender Telefonnummer gerne für Sie
-                        da : +49 30 74395959 (Mo-Fr: 9-18 Uhr)
+                        Sie erhalten diese E-Mail,www.ev-smartmoney.de registriert ist. Diese E-Mail wurde automatisiert
+                        versandt. Bitte antworten Sie nicht direkt auf diese E-Mail. Wenn Sie Fragen oder Rückmeldungen
+                        haben, sind wir unter folgender Telefonnummer gerne für Sie da:
+                        +49 30 74395959 (Mo-Fr: 9-18 Uhr)
                     </p>
                     <br>
-                    <p class="apple-link">
-                        Copyright &#169; 2020 EV Smart Money Holding GmbH (E&V Konto) EV Smart Money GmbH (Wealth) |
+                    <p class="apple-link">Copyright &#169; 2020 EV Smart Money Holding GmbH (E&V Konto) EV Smart Money
+                        GmbH (Wealth) |
                         Klaus-Groth-Straße 3, 14050 Berlin, Germany.
                     </p>
                 </td>
-
-
             </tr>
         </table>
     </div>

@@ -1,18 +1,21 @@
 <style type='text/css'>
-    * {
-        font-family: "Helvetica Neue", Helvetica, sans-serif;
+    .embeddedServiceHelpButton {
+        font-family: "HelveticaNeue", "Helvetica", "Arial", sans-serif;
     }
+
 
     .embeddedServiceSidebar.layout-docked .dockableContainer {
         border-radius: 4px 4px 0 0;
     }
 
     .embeddedServiceSidebarFeature button {
-        background-color: #EB0A0A;
+        background-color: #FF0A0A;
     }
 
     .sidebarHeader h2 {
-        color: white;
+        color: #444444;
+        font-size: 20px;
+
     }
 
     .sidebarHeader button {
@@ -35,23 +38,34 @@
         font-family: inherit;
     }
 
+    .embeddedServiceSidebarButton:focus {
+        background-color: #FF0A0A !important;
+    }
 
 
+    .embeddedServiceSidebarMinimizedDefaultUI .embeddedServiceIcon,
     .embeddedServiceHelpButton .embeddedServiceIcon {
-        width: 20px;
-        margin: auto;
+        display: none !important;
+    }
+
+    .embeddedServiceHelpButton .helpButton {
+        top: 200px;
+        right: -210px;
+        width: 190px;
+        height: 80px;
+        transition: right 0.2s ease-out !important;
     }
 
     .embeddedServiceHelpButton .helpButton .uiButton {
-        background-color: #EB0A0A;
-        min-width: 0;
-        border-radius: 4px;
-        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-
+        background-color: #FF0A0A;
+        border-radius: 5px 0 0 5px !important;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 16px 18px 0 rgba(0, 0, 0, 0.13), 0 4px 6px 0 rgba(0, 0, 0, 0.16);
     }
 
     .embeddedServiceHelpButton .helpButton .uiButton:hover {
-        background-color: #B30000;
+        background-color: #FF0A0A;
 
     }
 
@@ -65,66 +79,179 @@
         background-color: rgb(0, 0, 0, 0);
     }
 
-    .minimizeButton:hover:before,
-    .minimizeButton:hover {
-        border-radius: 2px !important;
+    .embeddedServiceHelpButton .helpButtonLabel {
+        text-align: left;
+        font-size: 18px;
+        padding: 10px 18px;
+        text-transform: none;
+        font-weight: 500;
     }
+
+    .minimizeButton:hover:before,
+    .minimizeButton:hover,
+    .minimizeButton:focus,
+    .minimizeButton:active,
+    .closeButton:hover:before,
+    .closeButton:hover,
+    .closeButton:focus,
+    .closeButton:active {
+        background-color: #FFFFFF !important;
+    }
+
+
 
     .embeddedServiceSidebarForm span {
         text-transform: none;
     }
 
     .embeddedServiceSidebarForm .uiButton {
-        background-color: #EB0A0A;
+        background-color: #FF0A0A;
         border-radius: 4px;
     }
 
     .embeddedServiceSidebarForm .uiButton:hover {
-        background-color: #B30000;
+        background-color: #FF0A0A;
     }
+
+    .embeddedServiceHelpButton .uiButton .helpButtonLabel .message {
+        white-space: normal;
+
+    }
+
 
     .embeddedServiceSidebarMinimizedDefaultUI.helpButton {
-        bottom: 12px;
-        max-width: 44px;
-        padding: 0px;
-        min-width: 44px;
-        width: 44px;
-    }
-
-    .embeddedServiceSidebarMinimizedDefaultUI .content {
-        margin-left: 9px;
-        padding: 0px;
+        border-radius: 5px 0 0 5px !important;
+        top: 200px;
+        right: 0px;
+        width: 190px;
+        height: 80px;
+        box-shadow: 0 16px 18px 0 rgba(0, 0, 0, 0.13), 0 4px 6px 0 rgba(0, 0, 0, 0.16);
+        background-color: #FF0A0A;
     }
 
 
-    @media only screen and (min-width: 48em) {
-        .embeddedServiceHelpButton .helpButton {
-            bottom: 12px;
+    .embeddedServiceSidebarMinimizedDefaultUI .message {
+        white-space: normal !important;
+        text-align: left;
+        text-transform: none;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .embeddedServiceSidebarMinimizedDefaultUI.minimizedContainer:hover,
+    .embeddedServiceSidebarMinimizedDefaultUI.minimizedContainer:focus {
+        background-color: #FF0A0A;
+        border-radius: 0;
+    }
+
+    .embeddedServiceSidebarFormField.offline-info {
+        text-align: left;
+        margin-top: 12px;
+        font-size: smaller;
+    }
+
+    .sidebarBody .uiInput input {
+        border-radius: 0 !important;
+    }
+
+    .dialogState .dialogIcon circle {
+        fill: gray !important;
+    }
+
+    .dialogButtonContainer .dialogButton {
+        text-transform: none;
+    }
+
+
+    @media (max-width: 640px) {
+        .EmbeddedServiceHelpButton {
+            max-width: 130px !important;
+            bottom: 200px !important;
         }
 
-        .embeddedServiceHelpButton .helpButton .uiButton {
-            border-radius: 4px;
+        .EmbeddedServiceHelpButton .helpButtonLabel {
+            font-size: 12px;
         }
 
-        .embeddedServiceHelpButton .helpButton .uiButton:hover::before,
-        .embeddedServiceHelpButton .helpButton .uiButton:focus::before {
-            border-radius: 4px;
+        .EmbeddedServiceHelpButton .flatButton {
+            min-width: 130px !important;
         }
     }
 </style>
+<script>
+    window.addEventListener('DOMContentLoaded', fetchElements);
+    function fetchElements() {
+        let headerElement = document.querySelector(".block-chat_header");
+        if (headerElement) {
+            let observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        let chatbutton = document.querySelector('.helpButton');
+                        if (chatbutton) {
 
+                            chatbutton.style.right = '-210px '
+                        }
+                        else
+                            initAgain()
+                    }
+                    else {
+                        let chatbutton1 = document.querySelector('.helpButton');
+                        if (chatbutton1) {
+
+                            chatbutton1.style.right = '0px'
+                        }
+                        else {
+                            initAgain()
+                        }
+
+                    }
+                });
+            });
+            observer.observe(headerElement);
+        }
+    }
+    let inInit = false;
+    function initAgain() {
+        if (!inInit)
+            setTimeout(() => {
+                inInit = true;
+                setOfflineInfoText();
+                fetchElements()
+            }, 3000);
+    }
+    function setOfflineInfoText() {
+
+        let chatbutton = document.querySelector('.embeddedServiceHelpButton');
+        let config = { attributes: true, childList: true, characterData: true }
+        let observer = new MutationObserver((mutations) => {
+            let embeddedServiceLiveAgentStateOfflineSupportDefaultUI = document.querySelector(".embeddedServiceLiveAgentStateOfflineSupportDefaultUI");
+            if (embeddedServiceLiveAgentStateOfflineSupportDefaultUI) {
+                let fieldList = embeddedServiceLiveAgentStateOfflineSupportDefaultUI.querySelector('.fieldList');
+                let infoExsists = embeddedServiceLiveAgentStateOfflineSupportDefaultUI.querySelector('.offline-info');
+                let infoTextDiv = document.createElement('DIV');
+                infoTextDiv.setAttribute('class', 'embeddedServiceSidebarFormField offline-info');
+                infoTextDiv.innerText = 'Bitte geben Sie Ihre E-Mail-Adresse und Ihr Thema. Einer unserer Mitarbeiter wird sich in Kürze mit Ihnen in Verbindung setzen';
+                fieldList.appendChild(infoTextDiv);
+
+            }
+        });
+        observer.observe(chatbutton, config);
+
+    }
+
+</script>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
     var initESW = function (gslbBaseURL) {
         embedded_svc.settings.displayHelpButton = true; //Or false
         embedded_svc.settings.language = 'de'; //For example, enter 'en' or 'en-US'
 
-        embedded_svc.settings.defaultMinimizedText = ' '; //(Defaults to Chat with an Expert)
-        embedded_svc.settings.disabledMinimizedText = ' '; //(Defaults to Agent Offline)
+        embedded_svc.settings.defaultMinimizedText = 'Nehmen Sie Kontakt auf '; //(Defaults to Chat with an Expert)
+        embedded_svc.settings.disabledMinimizedText = 'Nehmen Sie Kontakt auf '; //(Defaults to Agent Offline)
 
-        embedded_svc.settings.loadingText = '.....'; //(Defaults to Loading)
+        embedded_svc.settings.loadingText = 'Nehmen Sie Kontakt auf'; //(Defaults to Loading)
 
-        embedded_svc.settings.offlineSupportMinimizedText = ' '; //(Defaults to Contact Us)
+        embedded_svc.settings.offlineSupportMinimizedText = 'Nehmen Sie Kontakt auf'; //(Defaults to Contact Us)
 
         let Origin = window.location.origin || window.location.href || 'unknown';
         embedded_svc.settings.extraPrechatFormDetails = [
@@ -155,6 +282,28 @@
             }
         ];
 
+        embedded_svc.settings.extraPrechatInfo = [{
+            "entityFieldMaps": [{
+                "doCreate": false,
+                "doFind": false,
+                "fieldName": "LastName",
+                "isExactMatch": false,
+                "label": "Nachname"
+            }, {
+                "doCreate": false,
+                "doFind": false,
+                "fieldName": "FirstName",
+                "isExactMatch": false,
+                "label": "Vorname"
+            }, {
+                "doCreate": false,
+                "doFind": true,
+                "fieldName": "Email",
+                "isExactMatch": true,
+                "label": "E-Mail"
+            }],
+            "entityName": "Contact"
+        }];
 
         //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
@@ -171,16 +320,16 @@
         embedded_svc.settings.entryFeature = 'LiveAgent';
 
         embedded_svc.init(
-            'https://weisshausinvestment--dev.my.salesforce.com',
-            'https://dev-weisshausinvestment.cs101.force.com/support',
+            'https://weisshausinvestment.my.salesforce.com',
+            'https://support.weisshausinvestment.com/',
             gslbBaseURL,
-            '00D1X0000008dzV',
+            '00D5I000002GOw0',
             'Web_Support',
             {
-                baseLiveAgentContentURL: 'https://c.la1-c1cs-cdg.salesforceliveagent.com/content',
+                baseLiveAgentContentURL: 'https://c.la2-c2-cdg.salesforceliveagent.com/content',
                 deploymentId: '5725I000000gPtx',
                 buttonId: '5735I000000gQ4O',
-                baseLiveAgentURL: 'https://d.la1-c1cs-cdg.salesforceliveagent.com/chat',
+                baseLiveAgentURL: 'https://d.la2-c2-cdg.salesforceliveagent.com/chat',
                 eswLiveAgentDevName: 'Web_Support',
                 isOfflineSupportEnabled: true
             }
@@ -189,7 +338,7 @@
 
     if (!window.embedded_svc) {
         var s = document.createElement('script');
-        s.setAttribute('src', 'https://weisshausinvestment--dev.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+        s.setAttribute('src', 'https://weisshausinvestment.my.salesforce.com/embeddedservice/5.0/esw.min.js');
         s.onload = function () {
             initESW(null);
         };

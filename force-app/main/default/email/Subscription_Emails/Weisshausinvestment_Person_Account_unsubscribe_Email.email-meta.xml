@@ -5,6 +5,19 @@
     <name>Weisshausinvestment Person Account unsubscribe  Email</name>
     <style>none</style>
     <subject>Unsubscribe</subject>
+    <textOnly>Hallo Kunde
+
+You have unsubscribed {!Account.ProductInterest__pc} successfully.
+
+
+Prost,
+
+Ihr EV Smart Money Holding Team
+
+Sie erhalten diese E-Mail, weil {!Account.PersonEmail} auf www.ev-smartmoney.de registriert ist. Diese E-Mail wurde automatisiert versandt. Bitte antworten Sie nicht direkt auf diese E-Mail. Wenn Sie Fragen oder Rückmeldungen haben, sind wir unter folgender Telefonnummer gerne für Sie da : +49 30 74395959 (Mo-Fr: 9-18 Uhr)
+
+
+Copyright © 2020 EV Smart Money Holding GmbH (E&amp;V Konto) EV Smart Money GmbH (Wealth) | Klaus-Groth-Straße 3, 14050 Berlin, Germany.</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

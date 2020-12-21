@@ -9,5 +9,10 @@
     <columns>CORE.USERS.FIRST_NAME</columns>
     <columns>CORE.USERS.LAST_NAME</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>CONTACT.IS_PERSON_ACCOUNT</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
     <label>All Contacts</label>
 </ListView>

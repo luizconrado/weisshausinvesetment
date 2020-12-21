@@ -119,9 +119,9 @@
                 <label>Payment request</label>
             </value>
             <value>
-                <fullName>Direct Debit return</fullName>
+                <fullName>Direct Debit Return</fullName>
                 <default>false</default>
-                <label>Direct Debit return</label>
+                <label>Direct Debit Return</label>
             </value>
             <value>
                 <fullName>Payment investigation</fullName>
@@ -163,6 +163,26 @@
                 <default>false</default>
                 <label>Bank Data Request</label>
             </value>
+            <value>
+                <fullName>Verification Message Issue</fullName>
+                <default>false</default>
+                <label>Verification Message Issue</label>
+            </value>
+            <value>
+                <fullName>General Tech Issue</fullName>
+                <default>false</default>
+                <label>General Tech Issue</label>
+            </value>
+            <value>
+                <fullName>Access Request</fullName>
+                <default>false</default>
+                <label>Access Request</label>
+            </value>
+            <value>
+                <fullName>Access Deletion</fullName>
+                <default>false</default>
+                <label>Access Deletion</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Seizures</controllingFieldValue>
@@ -182,7 +202,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Payment</controllingFieldValue>
-            <valueName>Direct Debit return</valueName>
+            <valueName>Direct Debit Return</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Payment</controllingFieldValue>
@@ -196,6 +216,22 @@
             <controllingFieldValue>Complaints</controllingFieldValue>
             <controllingFieldValue>Other</controllingFieldValue>
             <valueName>User Complaint</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Tech</controllingFieldValue>
+            <valueName>Verification Message Issue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Tech</controllingFieldValue>
+            <valueName>General Tech Issue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Tech</controllingFieldValue>
+            <valueName>Access Request</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Tech</controllingFieldValue>
+            <valueName>Access Deletion</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Card Management</controllingFieldValue>

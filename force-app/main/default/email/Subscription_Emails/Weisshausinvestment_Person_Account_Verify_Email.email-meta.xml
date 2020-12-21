@@ -5,6 +5,25 @@
     <name>Weisshausinvestment Person Account Verify Email</name>
     <style>none</style>
     <subject>Überprüfen Sie das E-Mail-Konto</subject>
+    <textOnly>Sehr geehrte Kundin / Sehr geehrter Kunde,
+
+vielen Dank für Ihr Interesse an unserer EV Smart Money Holding Plattform.
+
+Bitte bestätigen Sie Ihre E-mail Adresse ({!Account.PersonEmail}) unter folgendem Link - Vielen Dank!
+ 
+Kopieren Sie einfach den folgenden Link und fügen Sie ihn in Ihren Browser ein:
+
+{!$Label.siteUrl}/s/verifyemailaccount?email={!Account.PersonEmail}∏uct={!Account.ProductInterest_Encode__pc}
+
+
+Mit freundlichen Grüßen,
+
+Ihr EV Smart Money Holding Team
+
+Sie erhalten diese E-Mail, weil {!Account.PersonEmail} auf www.ev-smartmoney.de registriert ist. Diese E-Mail wurde automatisiert versandt. Bitte antworten Sie nicht direkt auf diese E-Mail. Wenn Sie Fragen oder Rückmeldungen haben, sind wir unter folgender Telefonnummer gerne für Sie da : +49 30 74395959 (Mo-Fr: 9-18 Uhr)
+
+
+Copyright © 2020 EV Smart Money Holding GmbH (E&amp;V Konto) EV Smart Money GmbH (Wealth) | Klaus-Groth-Straße 3, 14050 Berlin, Germany. |  abmelden</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

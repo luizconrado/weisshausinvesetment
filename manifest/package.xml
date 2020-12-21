@@ -484,7 +484,7 @@
 		<members>Account.Standard_Account</members>
 		<members>Account.WebLeads</members>
 		<members>Bank_Case__c.Account</members>
-		<members>Bank_Case__c.Bank_Account</members>`
+		<members>Bank_Case__c.Bank_Account</members>
 		<members>Bank_Case__c.Booking</members>
 		<members>Bank_Case__c.Card</members>
 		<members>Bank_Case__c.Reservation</members>

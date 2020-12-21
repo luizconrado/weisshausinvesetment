@@ -10,11 +10,8 @@ public inherited sharing class MailUtility {
     private static String getOWAId(){
         Email_Configuration__c config = Email_Configuration__c.getOrgDefaults();
         String displayname=config.Organization_Wide_Address__c;
-        System.debug('displayname '+displayname);
-        if(String.isEmpty(displayname)) displayname='Support';
-        System.debug('displayname '+displayname);
-
-        List<OrgWideEmailAddress>  addresses=[SELECT Id, DisplayName, Address FROM OrgWideEmailAddress where DisplayName=:displayname ];
+        if(String.isEmpty(displayname)) displayname='support@weisshausinvestment.com';
+        List<OrgWideEmailAddress>  addresses=[SELECT Id, DisplayName, Address FROM OrgWideEmailAddress where Address=:displayname ];
         return (addresses.size()>0)?addresses.get(0).Id:'';
     }
     

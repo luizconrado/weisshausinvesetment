@@ -15,6 +15,14 @@
         <value xsi:type="xsd:boolean">true</value>
     </values>
     <values>
+        <field>Track_Insert__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Track_Update__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
         <field>Track_View__c</field>
         <value xsi:type="xsd:boolean">true</value>
     </values>

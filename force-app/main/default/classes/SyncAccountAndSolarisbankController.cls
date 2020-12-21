@@ -1,11 +1,17 @@
 public class SyncAccountAndSolarisbankController {
     
+    private static Decimal convertCentsToEuro(Decimal amount){
+        Decimal decimalNumber = amount;
+        Decimal result = decimalNumber.divide(100, 2);
+        return result;
+    }
+    
     @AuraEnabled 
     public static void startSyncWithBank(String sfAccountId){
         Account sfAccount=[SELECT Id, LastName, FirstName, Salutation, MiddleName,Gender__pc,PersonEmail,Phone,PersonTitle,Type,
                            ShippingStreet, ShippingCity, ShippingState, ShippingPostalCode, ShippingCountry ,
                            BillingStreet, BillingCity, BillingState, BillingPostalCode, BillingCountry,Solarisbank_Id__c,Solarisbank_Tenent__c,
-                           Tax_Assessment__c,Marital_Status__c,Terms_Conditions_Signed_At__c ,Flagged_By_Compliance__c,Own_Economic_Interest_Signed_At__c ,
+                           Completed_Name__c,Tax_Assessment__c,Marital_Status__c,Terms_Conditions_Signed_At__c ,Flagged_By_Compliance__c,Own_Economic_Interest_Signed_At__c ,
                            Birth_Name__c, Birth_City__c, Birth_Country__c,Employment_Status__c,Fatca_Relevant__c ,Fatca_Crs_Confirmed_At__c, Business_Purpose__c, Industry_Key__c 
                            FROM Account WHERE id=:sfAccountId LIMIT 1];
         LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(sfAccount.Id,'Account',sfAccount.Solarisbank_Tenent__c);
@@ -66,8 +72,9 @@ public class SyncAccountAndSolarisbankController {
             sfAccount.Salutation = personDetails.salutation;
             sfAccount.Gender__pc=(personDetails.salutation=='MR')?'Male':'Female';
             sfAccount.FirstName = personDetails.first_name;
-            sfAccount.Type = 'Coustomer';
-            if(personDetails.last_name!=null)sfAccount.LastName = personDetails.last_name;
+            sfAccount.Type = 'Customer';
+            sfAccount.LastName = personDetails.last_name;
+            sfAccount.Completed_Name__c = personDetails.first_name+' '+ personDetails.last_name;
             if(personDetails.address != null)  sfAccount.BillingStreet =  personDetails.address.line_1;
             if(personDetails.address != null) sfAccount.BillingPostalCode = personDetails.address.postal_code;
             if(personDetails.address != null) sfAccount.BillingCity = personDetails.address.city;
@@ -95,9 +102,9 @@ public class SyncAccountAndSolarisbankController {
             sfAccount.Business_Purpose__c = personDetails.business_purpose;
             sfAccount.Industry = personDetails.industry;
             sfAccount.Industry_Key__c = personDetails.industry_key;
-            //if(String.isNotBlank(personDetails.terms_conditions_signed_at)) sfAccount.Terms_Conditions_Signed_At__c =DateTime.valueOf(personDetails.terms_conditions_signed_at.replace('T',' '));
+            if(String.isNotBlank(personDetails.terms_conditions_signed_at)) sfAccount.Terms_Conditions_Signed_At__c =DateTime.valueOf(personDetails.terms_conditions_signed_at.replace('T',' '));
             if(personDetails.flagged_by_compliance!=null)sfAccount.Flagged_By_Compliance__c =personDetails.flagged_by_compliance;
-            //if(String.isNotBlank(personDetails.own_economic_interest_signed_at )) sfAccount.Own_Economic_Interest_Signed_At__c  =DateTime.valueOf(personDetails.own_economic_interest_signed_at.replace('T',' '));
+            if(String.isNotBlank(personDetails.own_economic_interest_signed_at )) sfAccount.Own_Economic_Interest_Signed_At__c  =DateTime.valueOf(personDetails.own_economic_interest_signed_at.replace('T',' '));
             update sfAccount;
             
             //bank
@@ -136,8 +143,10 @@ public class SyncAccountAndSolarisbankController {
                                                  }
             } 
             System.debug('cardsList'+cardsList.size());
+            
             //card
             for(SolarisbankCardWrapper cards:cardsList){
+                  System.debug('cards '+cards);
                 if(bankCardMap.containsKey(cards.id)){
                     Card__c card=bankCardMap.get(cards.id);
                     card.Status__c=cards.status;
@@ -185,8 +194,9 @@ public class SyncAccountAndSolarisbankController {
                     taxId.Solarisbank_Id__c=taxIdentification.id;
                     taxId.Primary__c=taxIdentification.primary;
                     taxId.Reason_No_Tin__c=taxIdentification.reason_no_tin;
+                    taxId.Identification_Number__c=taxIdentification.number_Z;
                     taxId.Reason_Description__c=taxIdentification.reason_description;
-                    taxId.Name=taxIdentification.number_Z;
+                    taxId.Name=taxIdentification.country+taxIdentification.number_Z;
                     toInsertTaxIdentification.add(taxId);
                 }
             }
@@ -201,7 +211,7 @@ public class SyncAccountAndSolarisbankController {
                     ident.Reference__c=identification.reference;
                     ident.URL__c=identification.url;
                     ident.Status__c=identification.status;
-                    //if(identification.completed_at != null) ident.Completed_At__c=DateTime.parse(identification.completed_at.replace('T',' '));
+                    if(identification.completed_at != null) ident.Completed_At__c=DateTime.valueOf(identification.completed_at.replace('T',' '));
                     ident.Method__c=identification.method;
                     ident.Failure_Reason__c=identification.failure_reason;
                     ident.Identification_Id__c=identification.identification_id;
@@ -216,7 +226,7 @@ public class SyncAccountAndSolarisbankController {
                     ident.Reference__c=identification.reference;
                     ident.URL__c=identification.url;
                     ident.Status__c=identification.status;
-                    //if(identification.completed_at != null) ident.Completed_At__c=DateTime.parse(identification.completed_at.replace('T',' '));
+                    if(identification.completed_at != null) ident.Completed_At__c=DateTime.valueOf(identification.completed_at.replace('T',' '));
                     ident.Method__c=identification.method;
                     ident.Failure_Reason__c=identification.failure_reason;
                     ident.Identification_Id__c=identification.identification_id;
@@ -231,7 +241,7 @@ public class SyncAccountAndSolarisbankController {
                     ident.Reference__c=identification.reference;
                     ident.URL__c=identification.url;
                     ident.Status__c=identification.status;
-                    //if(identification.completed_at != null) ident.Completed_At__c=DateTime.parse(identification.completed_at.replace('T',' '));
+                    if(identification.completed_at != null) ident.Completed_At__c=DateTime.valueOf(identification.completed_at.replace('T',' '));
                     ident.Method__c=identification.method;
                     ident.Failure_Reason__c=identification.failure_reason;
                     ident.Identification_Id__c=identification.identification_id;
@@ -246,7 +256,7 @@ public class SyncAccountAndSolarisbankController {
                     ident.Reference__c=identification.reference;
                     ident.URL__c=identification.url;
                     ident.Status__c=identification.status;
-                    //if(identification.completed_at != null) ident.Completed_At__c=DateTime.parse(identification.completed_at.replace('T',' '));
+                    if(identification.completed_at != null) ident.Completed_At__c=DateTime.valueOf(identification.completed_at.replace('T',' '));
                     ident.Method__c=identification.method;
                     ident.Failure_Reason__c=identification.failure_reason;
                     ident.Identification_Id__c=identification.identification_id;
@@ -323,7 +333,10 @@ public class SyncAccountAndSolarisbankController {
                 book.Valuta_Date__c=DATE.valueOf(booking.valuta_date);
                 book.Booking_Date__c=DATE.valueOf(booking.booking_date);
                 book.Booking_Type__c=booking.booking_type;
-                book.Amount__c=booking.amount.value;
+                
+                
+              
+                book.Amount__c=convertCentsToEuro(booking.amount.value);
                 book.Unit__c=booking.amount.unit;
                 book.Description__c=booking.description;
                 book.Recipient_BIC__c=booking.recipient_bic;
@@ -349,7 +362,7 @@ public class SyncAccountAndSolarisbankController {
                 if(booking.valuta_date!=null)book.Valuta_Date__c=DATE.valueOf(booking.valuta_date);
                 if(booking.booking_date!=null)book.Booking_Date__c=DATE.valueOf(booking.booking_date);
                 book.Booking_Type__c=booking.booking_type;
-                if(booking.amount!=null)book.Amount__c=booking.amount.value;
+                if(booking.amount!=null)book.Amount__c= convertCentsToEuro(booking.amount.value);
                 if(booking.amount!=null)book.Unit__c=booking.amount.unit;
                 book.Description__c=booking.description;
                 book.Recipient_BIC__c=booking.recipient_bic;
@@ -375,7 +388,7 @@ public class SyncAccountAndSolarisbankController {
         for(SolarisbankReservationWrapper reservation:reservations){
             if(reservationsMap.containsKey(reservation.id)){
                 Reservation__c book=reservationsMap.get(reservation.id);
-                if(reservation.amount!=null)book.Amount__c=reservation.amount.value;
+                if(reservation.amount!=null)book.Amount__c=convertCentsToEuro(reservation.amount.value);
                if(reservation.amount!=null) book.Unit__c=reservation.amount.unit;
                 book.Reservation_Type__c=reservation.reservation_type;
                 book.Reference__c=reservation.reference;
@@ -392,7 +405,7 @@ public class SyncAccountAndSolarisbankController {
                 Reservation__c book=new Reservation__c();
                 book.Bank_Account__c=bankAccount.id;
                 book.Solarisbank_Id__c=reservation.id;
-               if(reservation.amount!=null) book.Amount__c=reservation.amount.value;
+               if(reservation.amount!=null) book.Amount__c=convertCentsToEuro(reservation.amount.value);
                if(reservation.amount!=null) book.Unit__c=reservation.amount.unit;
                 
                 book.Reservation_Type__c=reservation.reservation_type;
@@ -419,7 +432,7 @@ public class SyncAccountAndSolarisbankController {
                 od.Recipient_Name__c=order.recipient_name;
                 od.Recipient_BIC__c=order.recipient_bic;
                 od.Reference__c=order.reference;
-                if(order.amount!=null)od.Amount__c=order.amount.value;
+                if(order.amount!=null)od.Amount__c=convertCentsToEuro(order.amount.value);
                 if(order.amount!=null)od.Unit__c=order.amount.unit;
                 od.Description__c=order.description;
                 if(String.isNotEmpty(order.first_execution_date))od.First_Execution_Date__c=Date.valueOf(order.first_execution_date);
@@ -442,7 +455,7 @@ public class SyncAccountAndSolarisbankController {
                 od.Recipient_Name__c=order.recipient_name;
                 od.Recipient_BIC__c=order.recipient_bic;
                 od.Reference__c=order.reference;
-                if(order.amount!=null)od.Amount__c=order.amount.value;
+                if(order.amount!=null)od.Amount__c=convertCentsToEuro(order.amount.value);
                 if(order.amount!=null)od.Unit__c=order.amount.unit;
                 od.Description__c=order.description;
                 if(String.isNotEmpty(order.first_execution_date))od.First_Execution_Date__c=Date.valueOf(order.first_execution_date);
@@ -463,7 +476,7 @@ public class SyncAccountAndSolarisbankController {
                 if(order.execute_at!=null) od.Execute_At__c = Date.valueOf(order.execute_at);
                 if(order.executed_at!=null) od.Executed_At__c= Date.valueOf(order.executed_at);
                 od.Reference__c=order.scheduled_transaction.reference;
-                if(order.scheduled_transaction!=null)od.Amount__c=order.scheduled_transaction.amount.value;
+                if(order.scheduled_transaction!=null)od.Amount__c=convertCentsToEuro(order.scheduled_transaction.amount.value);
                 if(order.scheduled_transaction!=null)od.Unit__c=order.scheduled_transaction.amount.unit;
                 if(order.scheduled_transaction!=null)od.Description__c=order.scheduled_transaction.description;
                 if(order.scheduled_transaction!=null)od.Recipient_IBAN__c=order.scheduled_transaction.recipient_iban;
@@ -485,7 +498,7 @@ public class SyncAccountAndSolarisbankController {
                 if(order.execute_at!=null) od.Execute_At__c = Date.valueOf(order.execute_at);
                 if(order.executed_at!=null) od.Executed_At__c= Date.valueOf(order.executed_at);
                  if(order.scheduled_transaction!=null)od.Reference__c=order.scheduled_transaction.reference;
-                if(order.scheduled_transaction!=null)od.Amount__c=order.scheduled_transaction.amount.value;
+                if(order.scheduled_transaction!=null)od.Amount__c=convertCentsToEuro(order.scheduled_transaction.amount.value);
                if(order.scheduled_transaction!=null) od.Unit__c=order.scheduled_transaction.amount.unit;
                 if(order.scheduled_transaction!=null)od.Description__c=order.scheduled_transaction.description;
                 if(order.scheduled_transaction!=null)od.Recipient_IBAN__c=order.scheduled_transaction.recipient_iban;

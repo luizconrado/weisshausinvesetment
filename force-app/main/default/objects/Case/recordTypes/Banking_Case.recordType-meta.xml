@@ -84,9 +84,21 @@
             <fullName>Seizures</fullName>
             <default>false</default>
         </values>
+        <values>
+            <fullName>Tech</fullName>
+            <default>false</default>
+        </values>
     </picklistValues>
     <picklistValues>
         <picklist>Type_II__c</picklist>
+        <values>
+            <fullName>Access Deletion</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Access Request</fullName>
+            <default>false</default>
+        </values>
         <values>
             <fullName>Account Statement</fullName>
             <default>false</default>
@@ -128,11 +140,15 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Direct Debit return</fullName>
+            <fullName>Direct Debit Return</fullName>
             <default>false</default>
         </values>
         <values>
             <fullName>Fraudulent Transaction Monitoring</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Tech Issue</fullName>
             <default>false</default>
         </values>
         <values>
@@ -205,6 +221,10 @@
         </values>
         <values>
             <fullName>User Complaint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Verification Message Issue</fullName>
             <default>false</default>
         </values>
     </picklistValues>

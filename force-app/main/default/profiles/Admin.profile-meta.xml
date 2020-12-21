@@ -37,6 +37,14 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>BankingService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>BankingServiceTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CampaignTriggerHandler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -564,101 +572,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Bank_Case__c.Account__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Bank_Case__c.Action__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Bank_Case__c.Api_Error__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Bank_Case__c.Bank_Account__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Bank_Case__c.Booking__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Bank_Case__c.Card__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Bank_Case__c.Description__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Bank_Case__c.Identification__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Bank_Case__c.Is_Test__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Bank_Case__c.New_Card_Status__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Bank_Case__c.New_Order_Status__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Bank_Case__c.Old_Card_Status__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Bank_Case__c.Old_Order_Status__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Bank_Case__c.Record__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Bank_Case__c.Reservation__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Bank_Case__c.Scheduled_Order__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Bank_Case__c.Seizure__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Bank_Case__c.Statement__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Bank_Case__c.Tax_Identification__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Booking__c.Amount__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -874,6 +787,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Case.Email_Honorific__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.Internal_Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Case.IsClosedOnCreate</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -975,11 +898,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Case_Verification__c.Phone_Verified__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Contact.Accepted_Terms_and_Conditions__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1149,6 +1067,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Contact.Subscription_Terms_and_Conditions__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Contact.Title</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1165,6 +1088,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>History_Tracker_Configuration__mdt.Track_Change__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>History_Tracker_Configuration__mdt.Track_Insert__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>History_Tracker_Configuration__mdt.Track_Update__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2150,41 +2083,6 @@
         <layout>Bank_Account__c-Bank Account Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Bank_Case__c-Bank Account Layout</layout>
-        <recordType>Bank_Case__c.Bank_Account</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Bank_Case__c-Bank Case Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Bank_Case__c-Booking Layout</layout>
-        <recordType>Bank_Case__c.Booking</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Bank_Case__c-Card Layout</layout>
-        <recordType>Bank_Case__c.Card</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Bank_Case__c-Person Account Layout</layout>
-        <recordType>Bank_Case__c.Account</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Bank_Case__c-Reservation Layout</layout>
-        <recordType>Bank_Case__c.Reservation</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Bank_Case__c-Standing Order</layout>
-        <recordType>Bank_Case__c.Standing_Order</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Bank_Case__c-Statement</layout>
-        <recordType>Bank_Case__c.Statement</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Bank_Case__c-Timed Order</layout>
-        <recordType>Bank_Case__c.Timed_Order</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
         <layout>Booking__c-Booking Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -2271,6 +2169,10 @@
         <layout>Lead-Lead Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Lead-Lead Layout</layout>
+        <recordType>Lead.Default</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Lead-WebLeads</layout>
         <recordType>Lead.WebLeads</recordType>
     </layoutAssignments>
@@ -2355,15 +2257,6 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
         <object>Bank_Account__c</object>
-        <viewAllRecords>true</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
-        <allowCreate>true</allowCreate>
-        <allowDelete>true</allowDelete>
-        <allowEdit>true</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>true</modifyAllRecords>
-        <object>Bank_Case__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -2643,51 +2536,6 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Account.WebLeads</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>true</default>
-        <recordType>Bank_Case__c.Account</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Bank_Case__c.Bank_Account</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Bank_Case__c.Booking</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Bank_Case__c.Card</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Bank_Case__c.Reservation</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Bank_Case__c.Standing_Order</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Bank_Case__c.Statement</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Bank_Case__c.Timed_Order</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
         <default>true</default>
         <personAccountDefault>true</personAccountDefault>
         <recordType>Campaign.Standard_Campaign</recordType>
@@ -2716,7 +2564,7 @@
     <recordTypeVisibilities>
         <default>true</default>
         <personAccountDefault>true</personAccountDefault>
-        <recordType>Contact.WebLeads</recordType>
+        <recordType>Contact.Default</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
@@ -2754,7 +2602,7 @@
     <recordTypeVisibilities>
         <default>true</default>
         <personAccountDefault>true</personAccountDefault>
-        <recordType>Lead.WebLeads</recordType>
+        <recordType>Lead.Default</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>

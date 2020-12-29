@@ -11,9 +11,35 @@ import successMsg from '@salesforce/label/c.from_success_msg';
 import errorMsg from '@salesforce/label/c.form_error_msg';
 import warrningMsg from '@salesforce/label/c.form_warrning_msg';
 
+//labels
+import VerifyAccountText from '@salesforce/label/c.VerifyAccountText';
+import VerifiedAccountText from '@salesforce/label/c.VerifiedAccountText';
+import TermsAndConditionsText from '@salesforce/label/c.TermsAndConditionsText';
+import VerifyButtonText from '@salesforce/label/c.VerifyButtonText';
+import SalutationText from '@salesforce/label/c.SalutationText';
+import FirstName from '@salesforce/label/c.FirstName';
+import Surname from '@salesforce/label/c.Surname';
+import EmailAddress from '@salesforce/label/c.EmailAddress';
+import PhoneNumber from '@salesforce/label/c.PhoneNumber';
+
+
+
+
 
 export default class VerifyEmailAccount extends LightningElement {
-    @api subscribedtext = 'Danke fürs Abonnieren';
+    //depricated
+    @api subscribedtext;
+    //labels
+    verifyAccountHeaderText = VerifyAccountText;
+    subscribedHeadertext = VerifiedAccountText;
+    acceptTermsAndConditionsText = TermsAndConditionsText;
+    verifyText = VerifyButtonText;
+    placeholderSalutationText = SalutationText;
+    firstNameText = FirstName;
+    surnameText = Surname;
+    phoneNumberText = PhoneNumber;
+    emailAddressText = EmailAddress;
+
     parameters = {};
     salutation;
     firstName;
@@ -67,7 +93,7 @@ export default class VerifyEmailAccount extends LightningElement {
         return params;
     }
 
-    salutationsList = [
+    salutationsList_de = [
         { label: 'Herr', value: 'Herr' },
         { label: 'Frau', value: 'Frau' },
         { label: 'Herr Dr.', value: 'Herr Dr.' },
@@ -77,7 +103,7 @@ export default class VerifyEmailAccount extends LightningElement {
     ];
 
     get salutationOptions() {
-        return this.salutationsList;
+        return this.salutationsList_de;
     }
 
     handlePhoneChange(event) {
@@ -105,7 +131,6 @@ export default class VerifyEmailAccount extends LightningElement {
 
         checkLeadOnLoad(params)
             .then(result => {
-                console.log(JSON.stringify(result));
                 this.leadId = result.leadId;
                 this.showForm = result.showForm;
                 if (this.showForm == false) {

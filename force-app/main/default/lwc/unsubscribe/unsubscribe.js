@@ -6,8 +6,31 @@ import allOptions from '@salesforce/apex/LeadService.getUnsubscribeOptions';
 import errorMsg from '@salesforce/label/c.form_error_msg';
 import successUnsubscribeMessage from '@salesforce/label/c.from_successUnsubscribe_msg';
 
+
+import UnsubscribeLabelText from '@salesforce/label/c.Unsubscribe';
+import ReasonForUnsubscribeText from '@salesforce/label/c.ReasonForUnsubscribeText';
+import ChooseOption from '@salesforce/label/c.ChooseOption';
+import UnsubscribedText from '@salesforce/label/c.UnsubscribeText';
+import SignOut from '@salesforce/label/c.SignOut';
+import NichtOffenlegen from '@salesforce/label/c.UnsubscribeOption1';
+import NichtInteressiert from '@salesforce/label/c.UnsubscribeOption2';
+import Andere from '@salesforce/label/c.UnsubscribeOption3';
+
+
+
+
+
 export default class Unsubscribe extends LightningElement {
-    @api unsubscribedtext = 'Wir bedauern, Sie verloren zu haben';
+    //depricated
+    @api unsubscribedtext = '';
+
+    //labels
+    unsubscribeText = UnsubscribeLabelText;
+    reasonForUnsubscribeText = ReasonForUnsubscribeText;
+    requiredFieldText = ChooseOption;
+    headerUnsubscribedtext = UnsubscribedText
+    signOutText = SignOut;
+
     parameters;
     emailAddress;
     rendered = false;
@@ -27,7 +50,18 @@ export default class Unsubscribe extends LightningElement {
         } else if (data) {
             let reasonOptions = [];
             for (let value in data) {
-                reasonOptions.push({ value: value, label: data[value] });
+                let lable = value;
+                if (lable == 'Nicht Offenlegen') {
+                    lable = NichtOffenlegen;
+                }
+                else if (lable == 'Nicht Interessiert') {
+                    lable = NichtInteressiert;
+                }
+                else if (lable == 'Andere') {
+                    lable = Andere;
+                }
+
+                reasonOptions.push({ value: data[value], label: lable });
             }
 
             this.reasonOptions = reasonOptions;

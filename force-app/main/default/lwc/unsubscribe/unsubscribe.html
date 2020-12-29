@@ -1,7 +1,3 @@
-<!--
- - Created by prasad on 11.06.20.
- -->
-
 <!-- Verify Email Account -->
 <template>
     <!-- Loader START-->
@@ -12,13 +8,13 @@
     </template>
     <!-- Loader END-->
 
-    <article class="slds-card" style="margin-top: 5rem;">
+    <article style="margin-top: 5rem;">
         <div class="slds-card__header" if:true={showform}>
             <lightning-layout>
 
                 <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
                     <div class="header-font">
-                        Ausloggen {productname}
+                        {unsubscribeText} {productname}
                     </div>
 
                 </lightning-layout-item>
@@ -31,8 +27,8 @@
                 <lightning-layout-item padding="around-small" size="12">
                     <div class="inputDesign set-max-width">
                         <lightning-combobox class="GrundField" name="Grund" variant="label-hidden" value={reason}
-                            placeholder="Grund für die Abmeldung" options={reasonOptions}
-                            message-when-value-missing="Wähle eine Option" required onchange={handleResonChange}>
+                            placeholder={reasonForUnsubscribeText} options={reasonOptions}
+                            message-when-value-missing={requiredFieldText} required onchange={handleResonChange}>
                         </lightning-combobox>
                     </div>
                 </lightning-layout-item>
@@ -43,7 +39,7 @@
 
                 <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
                     <div class="header-font">
-                        <span>{unsubscribedtext}</span>
+                        <span>{headerUnsubscribedtext}</span>
                     </div>
 
 
@@ -60,7 +56,7 @@
 
                 <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
                     <div class="set-max-width">
-                        <button class="slds-button primaryButton" onclick={handleOptout}>Abmelden</button>
+                        <button class="slds-button primaryButton" onclick={handleOptout}>{signOutText}</button>
 
                     </div>
                 </lightning-layout-item>

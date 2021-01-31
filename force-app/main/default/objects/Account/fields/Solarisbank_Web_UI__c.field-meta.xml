@@ -5,6 +5,7 @@
     <formula>IF( !ISBLANK(Solarisbank_Id__c ) , HYPERLINK(&apos;https://webui-ng.solarisbank.de/#/persons/&apos;+Solarisbank_Id__c , &apos;Open Solarisbank Web UI&apos;), &apos;&apos;)</formula>
     <label>Solarisbank Web UI</label>
     <required>false</required>
+    <trackHistory>false</trackHistory>
     <type>Text</type>
     <unique>false</unique>
 </CustomField>

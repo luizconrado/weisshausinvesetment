@@ -23,7 +23,6 @@ public class TestDataFactory {
     public static Contact getContact(Boolean doInsert){
         Contact c=new Contact();
         c.LastName=RandomUtil.randomString(6);
-        c.Newsletter__c='Subscribed';
         if(doInsert) insert c;
         return c;
     }
@@ -156,7 +155,7 @@ public class TestDataFactory {
         Lead lead = new Lead();
         
         lead.Email = RandomUtil.randomString(3)+'@'+RandomUtil.randomString(4)+'.com';
-        lead.ProductInterest__c = 'Newsletter';
+        
         lead.State = 'New';
         lead.LastName = RandomUtil.randomString(4);
         lead.LeadSource = 'Website';
@@ -171,7 +170,7 @@ public class TestDataFactory {
         
         Account account = new Account();
         account.PersonEmail= RandomUtil.randomString(3)+'@'+RandomUtil.randomString(4)+'.com';
-        account.ProductInterest__pc = 'Newsletter';
+        
         account.LastName = RandomUtil.randomString(4);
         account.RecordTypeId = recordtypeid;
         account.Solarisbank_Id__c='0652225cebcd3bec2c95ea8c461fe146cacc';
@@ -201,6 +200,23 @@ public class TestDataFactory {
 		c.AccountId=accountid;
         if(doInsert) insert c;
         return c;
+    }
+    
+    public static Subscription__c getNewsletterSubscription(String accountId,String contactId,Boolean doInsert){
+        return generateSubscription(accountId,contactId,'Newsletter',Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID,doInsert);
+    }
+    
+    private static Subscription__c generateSubscription(String accountId,String contactId,String subType,String recordTypeId,Boolean doInsert){
+        Subscription__c newSubscriptionProduct=new Subscription__c();
+        newSubscriptionProduct.Subscription_Status__c='Subscribed';
+        newSubscriptionProduct.Type__c=subType;//'';
+        newSubscriptionProduct.Account__c=accountId;
+        
+        newSubscriptionProduct.Send_Mail__c=false;
+        newSubscriptionProduct.recordTypeId=recordTypeId;
+        newSubscriptionProduct.Contact__c=contactId;
+        if(doinsert) insert newSubscriptionProduct;
+        return newSubscriptionProduct;
     }
 
 }

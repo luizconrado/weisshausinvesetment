@@ -1,3 +1,7 @@
+<!--
+ - Created by prasad on 11.06.20.
+ -->
+
 <!-- Verify Email Account -->
 <template>
     <!-- Loader START-->
@@ -8,7 +12,7 @@
     </template>
     <!-- Loader END-->
 
-    <article style="margin-top: 5rem;">
+    <article class="" style="margin-top: 5rem;">
         <div class="slds-card__header ">
             <lightning-layout if:true={showForm}>
 
@@ -49,8 +53,9 @@
 
                 <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
                     <div class="inputDesign set-max-width">
-                        <lightning-input type="text" variant="label-hidden" placeholder={firstNameText}
-                            value={firstName} onchange={handleFirstNameChange}></lightning-input>
+                        <lightning-input type="text" pattern="[a-zA-Z][a-zA-Z0-9\s]*" required="true"
+                            variant="label-hidden" placeholder={firstNameText} value={firstName}
+                            onchange={handleFirstNameChange}></lightning-input>
                     </div>
                 </lightning-layout-item>
 
@@ -60,7 +65,8 @@
 
                 <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
                     <div class="inputDesign set-max-width">
-                        <lightning-input type="text" variant="label-hidden" placeholder={surnameText} value={lastName}
+                        <lightning-input type="text" pattern="[a-zA-Z][a-zA-Z0-9\s]*" required="true"
+                            variant="label-hidden" placeholder={surnameText} value={lastName}
                             onchange={handleLastNameChange} label=""></lightning-input>
                     </div>
                 </lightning-layout-item>

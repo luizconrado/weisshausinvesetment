@@ -22,7 +22,7 @@
         <label>Article Details</label>
         <layoutColumns>
             <layoutItems>
-                <field>Answer__c</field>
+                <field>Information__c</field>
             </layoutItems>
         </layoutColumns>
         <style>OneColumn</style>

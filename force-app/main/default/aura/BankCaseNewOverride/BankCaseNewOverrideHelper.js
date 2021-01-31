@@ -3,11 +3,8 @@
         let _helper = this;
         name = name.replace(/[\[\]]/g, "\\$&");
         var url = window.location.href;
-        console.log('url',url)
         var regex = new RegExp("[?&]" + name + "(=1\.([^&#]*)|&|#|$)");
-        console.log('regex',regex)
         var results = regex.exec(url);
-        console.log('results',results)
         if (!results) {
             let alternateExtraction = _helper.getParameterByNameOverride(url,name);
             if(alternateExtraction) return decodeURIComponent(alternateExtraction.replace(/\+/g, " "));
@@ -241,7 +238,6 @@
         let sfStandingOrderIds = selectedStandingOrders.map(to => to.Id) || [];
         let sfCaseId = caseDetails.Id;
         let stamentId = selectedStatementInfo.Id || '';
-        console.log('sfTimedOrderIds',sfTimedOrderIds)
         component.set('v.loading',true);
         _helper.callApex(component,'createBankCases',function(response){
             let state = response.getState();
@@ -254,8 +250,12 @@
             }
             else if (state === "ERROR") {
                 let errors = response.getError();
+                let message='';
+                if(errors.length>0){
+                    message=errors[0].message;
+                }
                 console.error(JSON.stringify(errors));
-                _helper.showToast('Error Save','Error in saving case details please try again.','error');
+                _helper.showToast('Error',message,'error');
 
             }
             component.set('v.loading',false);

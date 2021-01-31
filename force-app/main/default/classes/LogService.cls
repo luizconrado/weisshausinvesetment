@@ -15,6 +15,7 @@ public inherited  sharing class LogService {
              System.debug('ERROR => '+details.error.getStackTraceString());
             System.debug('ERROR TYPE => '+details.error.getMessage());
             details.stacktrace=details.error.getStackTraceString();
+            details.errorMessage=details.error.getMessage();
             details.error=null;
            
         }
@@ -40,6 +41,7 @@ public inherited  sharing class LogService {
                 log.Object_Name__c=details.objectName;
                 log.Record_Id__c=details.recordId;
                 log.Log_Number__c=details.index;
+                log.Request_Body__c=details.requestBody;
                 log.Endpoint__c=details.url;
                 log.Response_Status_Code__c =details.responseCode;
             }
@@ -53,6 +55,7 @@ public inherited  sharing class LogService {
                 log.Log_Number__c=details.index;
                 log.Stack_Trace__c=details.stacktrace;
                 log.Class_Name__c=details.className;
+                log.Message__c=details.errorMessage;
                 log.Method_Name__c=details.methodName;
                 log.Component_Name__c=details.componentName;
                 
@@ -70,6 +73,7 @@ public inherited  sharing class LogService {
         @AuraEnabled public String operation{set;get;}
         @AuraEnabled public String objectName{set;get;}
         @AuraEnabled public String url{set;get;}
+        @AuraEnabled public String requestBody{set;get;}
         @AuraEnabled public Integer responseCode{set;get;}
         
         public ApiCallDetails(String recordId,String objectName,String sbTenent){
@@ -90,6 +94,7 @@ public inherited  sharing class LogService {
         public String index{set;get;}
         public String componentName{set;get;}
         public String stacktrace{set;get;}
+        public String errorMessage{set;get;}
         public Exception error{set;get;}
     }
 

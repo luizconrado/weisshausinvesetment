@@ -41,14 +41,14 @@ public class webLeadRestServiceTest {
         req.httpMethod = 'GET';
         req.addHeader('Content-Type', 'application/json');
         req.params.put('fields[email][value]', a.PersonEmail);
-        req.params.put('fields[productInterested][value]', 'Product A');
+        req.params.put('fields[productInterested][value]', 'Newsletter');
         req.headers.put('User-Agent', 'crome;https://weisshaus1.com');
         
         RestContext.request = req;
         webLeadRestService.doPost();    
         
-        Account conformLeadUpdate=[Select id,ProductInterest__pc from Account LIMIT 1 ];
-        System.assert(conformLeadUpdate.ProductInterest__pc=='Product A');
+        Account conformLeadUpdate=[Select id,(Select id,Source__c,Type__c,Subscription_Status__c from Subscriptions__r) from Account LIMIT 1 ];
+        System.assert(conformLeadUpdate.Subscriptions__r.size()>0);
         Test.stopTest();
     }
     
@@ -57,6 +57,8 @@ public class webLeadRestServiceTest {
         Account a=TestDataFactory.getPersonAccount(false);
         a.Origin__pc='weisshaus';
         insert a;
+         List<Contact> c=[SELECT id,LastName FROM Contact WHERE  AccountId=:a.Id AND Account.ispersonaccount=true];
+        Subscription__c newSubscriptionProduct=TestDataFactory.getNewsletterSubscription(a.Id,c.get(0).Id,true); 
         Test.startTest();
         String baseUrl = URL.getSalesforceBaseUrl().toExternalForm();
         RestRequest req = new RestRequest(); 
@@ -72,9 +74,9 @@ public class webLeadRestServiceTest {
         
         RestContext.request = req;
         webLeadRestService.doPost();    
-        Account conformAccount=[SELECT ProductInterest__pc FROM Account LIMIT 1];
-        System.assert(conformAccount.ProductInterest__pc=='Newsletter');
-     
+        
+        Account conformLeadUpdate=[Select id,(Select id,Source__c,Type__c,Subscription_Status__c from Subscriptions__r) from Account LIMIT 1 ];
+        System.assert(conformLeadUpdate.Subscriptions__r.size()>0);
         Test.stopTest();
     }
     

@@ -10,76 +10,77 @@ global without sharing  class webLeadRestService {
         Map<String, String> headersMap = req.headers;
 
         String userAgent =(headersMap.get('User-Agent')!=null) ? headersMap.get('User-Agent') : '';
-        String productInterest = req.params.get('fields[productInterested][value]');
+        String productInterest = req.params.get('fields[productInterested][value]').replace('+',' ');
         String email = req.params.get('fields[email][value]');
         String company = req.params.get('fields[websiteSource][value]');
         String website = (String.isNotEmpty(userAgent) && userAgent.contains(';')) ? userAgent.split(';').get(1):'';
-        System.debug('headersMap '+headersMap);
-        System.debug('req.params '+req.params);
+        String origin=company;
+        if(website!=null && String.isNotEmpty(website) && website.contains('www.')) origin=website.substringBetween('://www.', '.');
+        else if(website!=null && String.isNotEmpty(website) ) origin=website.substringBetween('://', '.');
         
-        Account accountLead=new Account();
-        accountLead.PersonEmail = email;
-        accountLead.ProductInterest__pc=productInterest.replace('+',' ');
-        accountLead.LastName = '[Not Provided]';
-        accountLead.Type ='Prospect';
-        accountLead.Website=website;
-        accountLead.RecordTypeId=Constant.PERSON_ACCOUNT_RECORDTYPEID;
-        
-        if(accountLead.Website!=null && String.isNotEmpty(accountLead.Website) && website.contains('www.')) accountLead.Origin__pc=website.substringBetween('://www.', '.');
-           
-        else if(accountLead.Website!=null && String.isNotEmpty(accountLead.Website) ) accountLead.Origin__pc=website.substringBetween('://', '.');
+      
           
+        verifyAndCreateAccount(email,productInterest,origin,website);
         
-        accountDupeMerge(accountLead);
         
         res.statusCode = 200;
     }
     
-    /*
-     * Description: called from webhook to check and update exsisting accounts
-     * email:sends verify account email as external user
-	*/
-    private static void accountDupeMerge(Account accountLeadRec) {
-        Map<String, String> productCodeAPIMap = Constant.PRODUCT_CONFIGURATION;
-        List<String> personAccountFields=new List<String>();
-        for(String apiName:productCodeAPIMap.values()) personAccountFields.add(apiname.replace('__c','__pc'));
-        String email=accountLeadRec.PersonEmail;
-        String accountQuery = 'SELECT Id,Phone ,LastName, FirstName, MiddleName, Suffix ,Last_Email_Sent_Date__pc,Origin__pc,PersonEmail,Gender__pc,ProductInterest__pc,'+String.join(personAccountFields,',')+' FROM Account WHERE PersonEmail =:email';
-        List<Account> existingAccounts = Database.query(accountQuery);
-        
-        //Update Account
-        if(existingAccounts.size()>0){
-            Account accountMaster=existingAccounts.get(0);
-            String fieldApi=productCodeAPIMap.get(accountLeadRec.ProductInterest__pc).replace('__c','__pc');
-            //updataing product status on person account account 
-            if (accountMaster.get(fieldApi) == null 
-                || accountMaster.get(fieldApi) == 'Not Subscribed'  || accountMaster.get(fieldApi) == 'Unsubscribed'   || accountMaster.get(fieldApi) == 'Confirmation Resent') {
-                    accountMaster.put(fieldApi, 'Awaiting Confirmation');
-                    accountMaster.Last_Email_Sent_Date__pc=Date.today();
-            } 
-            accountMaster.put('ProductInterest__pc', accountLeadRec.ProductInterest__pc);
-            update accountMaster;
-            sendVerificationEmail(accountMaster.Id);
-        }
-        //New Account
-        else{
-            
-            //updatating product status 
-            if (accountLeadRec.get(productCodeAPIMap.get(accountLeadRec.ProductInterest__pc).replace('__c','__pc')) == null  || accountLeadRec.get(productCodeAPIMap.get(accountLeadRec.ProductInterest__pc).replace('__c','__pc')) == 'Not Subscribed'   || accountLeadRec.get(productCodeAPIMap.get(accountLeadRec.ProductInterest__pc).replace('__c','__pc')) == 'Unsubscribed'  || accountLeadRec.get(productCodeAPIMap.get(accountLeadRec.ProductInterest__pc).replace('__c','__pc')) == 'Confirmation Resent') {
-                accountLeadRec.put(productCodeAPIMap.get(accountLeadRec.ProductInterest__pc).replace('__c','__pc'), 'Awaiting Confirmation');
-                accountLeadRec.Last_Email_Sent_Date__pc=Date.today();
+    
+    private static void verifyAndCreateAccount(String email,String subProductName,String origin,String website){
+        List<Account> accountDetails=[SELECT id,(Select id,Source__c,Type__c,Subscription_Status__c from Subscriptions__r WHERE Type__c=:subProductName AND RecordTypeId=:Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID LIMIT 1) 
+                                      FROM Account WHERE PersonEmail=:email AND RecordTypeId=:Constant.PERSON_ACCOUNT_RECORDTYPEID];
+        //exsisitng account
+        if(accountDetails.size()>0){
+            //already subscribed
+            if(accountDetails.get(0).Subscriptions__r.size()>0){
+                Subscription__c subscriptionProduct=accountDetails.get(0).Subscriptions__r.get(0);
+                //if subscribed not sending mail
+                if(subscriptionProduct.Subscription_Status__c=='Subscribed'){}
+                else{
+                    subscriptionProduct.Subscription_Status__c='Awaiting Confirmation';   
+                    subscriptionProduct.Send_Mail__c=true;
+                    update subscriptionProduct;
+                }
+                
+                
             }
-            insert accountLeadRec;
-            sendVerificationEmail(accountLeadRec.Id);
-
+            //new subscription
+            else{
+                List<Contact> c=[SELECT id,LastName FROM Contact WHERE  AccountId=:accountDetails.get(0).Id AND Account.ispersonaccount=true];
+                Subscription__c newSubscriptionProduct=new Subscription__c();
+                newSubscriptionProduct.Subscription_Status__c='Awaiting Confirmation';
+                newSubscriptionProduct.Type__c=subProductName;
+                newSubscriptionProduct.Account__c=accountDetails.get(0).Id;
+                newSubscriptionProduct.Source__c=website;
+                newSubscriptionProduct.Send_Mail__c=true;
+                newSubscriptionProduct.recordTypeId=Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID;
+                newSubscriptionProduct.Contact__c=(c.size()>0)?c.get(0).Id:'';
+                insert newSubscriptionProduct;
+            }
+            
+            
         }
-        
+        //new account
+        else{
+            Account accountLead=new Account();
+            accountLead.PersonEmail = email;
+            accountLead.LastName = '[Not Provided]';
+            accountLead.Type ='Prospect';
+            accountLead.AccountSource='Website';
+            accountLead.RecordTypeId=Constant.PERSON_ACCOUNT_RECORDTYPEID;
+            accountLead.Origin__pc=origin;
+            insert accountLead;
+            List<Contact> c=[SELECT id,LastName FROM Contact WHERE AccountId=:accountLead.Id AND Account.ispersonaccount=true];
+            Subscription__c newSubscriptionProduct=new Subscription__c();
+            newSubscriptionProduct.Subscription_Status__c='Awaiting Confirmation';
+            newSubscriptionProduct.Type__c=subProductName;
+            newSubscriptionProduct.Source__c=website;
+            newSubscriptionProduct.Account__c=accountLead.Id;
+            newSubscriptionProduct.Contact__c=(c.size()>0)?c.get(0).Id:'';
+            newSubscriptionProduct.Send_Mail__c=true;
+            insert newSubscriptionProduct;
+        }
     }
-    
-    //helpers
-    private static void sendVerificationEmail(String accountId){
-        Contact personContact=[SELECT id,Email FROM Contact WHERE AccountId=:accountId AND Account.ispersonaccount=true];
-        MailUtility.sendAccountHtmlEmail(personContact.Id, accountId, Constant.ACCOUNT_VERIFY_EMAIL_TEMPLATE, personContact.Email);
-    }
-    
+  
 }

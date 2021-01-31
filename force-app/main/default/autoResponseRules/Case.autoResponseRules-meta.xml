@@ -2,7 +2,23 @@
 <AutoResponseRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <autoResponseRule>
         <fullName>New Case</fullName>
-        <active>false</active>
+        <active>true</active>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email,Web,Phone,Chat</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Contact.Preferred_Language__c</field>
+                <operation>equals</operation>
+                <value>en_US</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>support@ev-smartmoney.com</senderEmail>
+            <senderName>Support</senderName>
+            <template>Case_Email_Templates/Case_Auto_Response_EN</template>
+        </ruleEntry>
         <ruleEntry>
             <criteriaItems>
                 <field>Case.Origin</field>

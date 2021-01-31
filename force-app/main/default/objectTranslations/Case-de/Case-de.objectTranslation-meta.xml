@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <quickActions>
+        <label><!-- Attach Bank Case Item --></label>
+        <name>Attach_Bank_Case_Item</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Attach File --></label>
+        <name>Attach_File</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewChildCase --></label>
+        <name>NewChildCase</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Email --></label>
+        <name>SendEmail</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Start Jira Ticket --></label>
+        <name>Start_Jira_Ticket</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Verify User Identity --></label>
+        <name>Verify_User_Identity</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- Banking Case --></label>
+        <name>Banking_Case</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- E&amp;V Konto App Case --></label>
+        <name>E_V_Konto_App_Case</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- General Questions --></label>
+        <name>General_Questions</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Investment Case --></label>
+        <name>Investment_Case</name>
+    </recordTypes>
+</CustomObjectTranslation>

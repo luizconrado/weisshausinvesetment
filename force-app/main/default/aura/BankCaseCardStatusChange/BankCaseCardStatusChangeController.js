@@ -32,9 +32,7 @@
                 let isUnBlock = data.Card__r.Status__c === 'BLOCKED'
                 let isClose = (data.Card__r.Status__c === 'INACTIVE' || data.Card__r.Status__c === 'ACTIVE' || data.Card__r.Status__c === 'BLOCKED') ? true : false;
                 let isJira = (data.Card__r.Status__c === 'BLOCKED_BY_SOLARIS' ||data.Card__r.Status__c === 'ACTIVATION_BLOCKED_BY_SOLARIS' || data.Card__r.Status__c === 'CLOSED_BY_SOLARIS')?true:false;
-                if (isJira){
-                    isUnBlock = true;
-                }
+                
                 
                 let statusTypes = [
                     { 
@@ -61,7 +59,6 @@
                         value:'Close',
                         selected:false
                     });
-                  console.log('statusTypes',statusTypes)
                 component.set('v.statusTypes',statusTypes);
                 component.set('v.createJira',isJira);
                 component.set('v.statusType','');
@@ -103,13 +100,7 @@
             if (state === "SUCCESS") {
                 $A.get("e.force:closeQuickAction").fire();
                 $A.get('e.force:refreshView').fire();
-                if(createJira){
-                	helper.showToast('Success.','Jira Ticket Processed Successfully.','success');    
-                }
-                else{
-                    helper.showToast('Success.','Status Changed successfully.','success');
-                }
-                
+                helper.showToast('Success.','Status Changed successfully.','success');
             }
             else if (state === "ERROR") {
                 let errors = response.getError();

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type_II__c</fullName>
+    <externalId>false</externalId>
+    <label>Type II</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Type__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>Banking_Case_Sub_Types</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Other Requests</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Tech</controllingFieldValue>
+            <valueName>Verification Message Issue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Tech</controllingFieldValue>
+            <valueName>General Tech Issue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Tech</controllingFieldValue>
+            <valueName>Access Request</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Tech</controllingFieldValue>
+            <valueName>Access Deletion</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Account Management</controllingFieldValue>
+            <valueName>Closure Request</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Account Management</controllingFieldValue>
+            <valueName>Account Statement</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Account Management</controllingFieldValue>
+            <valueName>Account Confirmation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Master Data Management</controllingFieldValue>
+            <valueName>Tax ID Input</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Master Data Management</controllingFieldValue>
+            <valueName>Phone Change (Without access)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Master Data Management</controllingFieldValue>
+            <valueName>Nationality Change</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Master Data Management</controllingFieldValue>
+            <valueName>Name Change</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Master Data Management</controllingFieldValue>
+            <valueName>Birthdate Change</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Master Data Management</controllingFieldValue>
+            <valueName>Birth City Change</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Identification</controllingFieldValue>
+            <valueName>Identification Creation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Identification</controllingFieldValue>
+            <valueName>Identification Issues</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Identification</controllingFieldValue>
+            <valueName>Identification Complaints</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Payment</controllingFieldValue>
+            <valueName>Payment Request</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Payment</controllingFieldValue>
+            <valueName>Direct Debit Return</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Payment</controllingFieldValue>
+            <valueName>Incoming Payment investigation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Payment</controllingFieldValue>
+            <valueName>Payment Recall</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Payment</controllingFieldValue>
+            <valueName>Outgoing Payment investigation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Card Management</controllingFieldValue>
+            <valueName>Card Issue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Card Management</controllingFieldValue>
+            <valueName>Partner Card Block</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Card Management</controllingFieldValue>
+            <valueName>Card Chargeback</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Card Management</controllingFieldValue>
+            <valueName>Card Return/Delivery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Card Management</controllingFieldValue>
+            <valueName>Fraudulent Transaction Monitoring</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Card Management</controllingFieldValue>
+            <valueName>Card Decline</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Card Management</controllingFieldValue>
+            <valueName>Partner Card Unblock</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Card Management</controllingFieldValue>
+            <valueName>Partner Card Closure</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Card Management</controllingFieldValue>
+            <valueName>Bank Card Block</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Complaints</controllingFieldValue>
+            <valueName>User Complaint</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>GDPR</controllingFieldValue>
+            <valueName>Information Request</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>GDPR</controllingFieldValue>
+            <valueName>Bank Data Deletion</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>GDPR</controllingFieldValue>
+            <valueName>Bank Data Request</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>AML</controllingFieldValue>
+            <valueName>Investigation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Seizures</controllingFieldValue>
+            <valueName>Seizure Information Request</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Seizures</controllingFieldValue>
+            <valueName>Seizures Payout</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Seizures</controllingFieldValue>
+            <valueName>P-Konto</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

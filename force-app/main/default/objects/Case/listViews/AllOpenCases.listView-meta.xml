@@ -3,17 +3,34 @@
     <fullName>AllOpenCases</fullName>
     <columns>CASES.CASE_NUMBER</columns>
     <columns>NAME</columns>
+    <columns>CASES.EMAIL</columns>
     <columns>CASES.SUBJECT</columns>
     <columns>CASES.STATUS</columns>
     <columns>CASES.PRIORITY</columns>
-    <columns>CASES.ORIGIN</columns>
     <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
     <columns>CORE.USERS.ALIAS</columns>
+    <columns>CASES.RECORDTYPE</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>CASES.CLOSED</field>
         <operation>equals</operation>
         <value>0</value>
     </filters>
+    <filters>
+        <field>CASES.EMAIL</field>
+        <operation>notContain</operation>
+        <value>statuspage,globalratings,aoneapps</value>
+    </filters>
+    <filters>
+        <field>CASES.EMAIL</field>
+        <operation>notContain</operation>
+        <value>solarisbank,microsoft,salesforce,google</value>
+    </filters>
+    <filters>
+        <field>CASES.EMAIL</field>
+        <operation>notEqual</operation>
+        <value>support@weisshausinvestment.com</value>
+    </filters>
     <label>All Open Cases</label>
+    <language>en_US</language>
 </ListView>

@@ -2,14 +2,24 @@
 	onRender : function(component, event, helper) {
         if(component.get('v.isRender')) return;
         component.set('v.isRender',true);
+        let caseId;
+        const pageReference = component.get("v.pageReference");
+        if(pageReference && pageReference.state){
+            if(pageReference.state.c__recordId){
+                caseId=pageReference.state.c__recordId;
+            }
+        }
         let value = helper.getParameterByName(component , event, 'inContextOfRef');
         if(!value){
             //fail safe redundent code if render method is called befor url is loaded
             window.setTimeout(
                 $A.getCallback(function() {
                     value = helper.getParameterByName(component , event, 'inContextOfRef');
-                    let context = JSON.parse(window.atob(value));
-                    let caseId=context.attributes.recordId;
+                    if(!caseId){
+                        let context = JSON.parse(window.atob(value));
+                        caseId=context.attributes.recordId;
+                    }
+                  
                     helper.callApex(component,'getBankCaseTypes',function (response) {
                         let state = response.getState();
                         let data = response.getReturnValue();
@@ -21,7 +31,6 @@
                                     selected:false
                                 }
                             });
-                             console.log('caseTypes',caseTypes)
                             component.set('v.caseTypes',caseTypes);
                             component.set('v.typeLoaded',true);
                             helper.retriveCaseDetails(component,caseId);
@@ -29,7 +38,7 @@
                         }
                         else if (state === "ERROR") {
                             let errors = response.getError();
-                            console.log(errors);
+                            console.error(JSON.stringify(errors));
                         }
                     });
                     helper.callApex(component,'getCaseIITypes',function (response){
@@ -48,8 +57,10 @@
             );
         }
         else{
-            let context = JSON.parse(window.atob(value));
-            let caseId=context.attributes.recordId;
+            if(!caseId){
+                let context = JSON.parse(window.atob(value));
+                caseId=context.attributes.recordId;
+            }
             helper.callApex(component,'getBankCaseTypes',function (response) {
                 let state = response.getState();
                 let data = response.getReturnValue();
@@ -61,7 +72,6 @@
                             selected:false
                         }
                     });
-                    console.log('caseTypes',caseTypes)
                     component.set('v.caseTypes',caseTypes);
                     component.set('v.typeLoaded',true);
                     helper.retriveCaseDetails(component,caseId);
@@ -69,7 +79,7 @@
                 }
                 else if (state === "ERROR") {
                     let errors = response.getError();
-                    console.log(errors);
+                    console.error(JSON.stringify(errors));
                 }
             });
             helper.callApex(component,'getCaseIITypes',function (response){

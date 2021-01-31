@@ -1,8 +1,8 @@
 import { LightningElement, wire, api } from 'lwc';
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
-import unsubscribeFromProduct from '@salesforce/apex/LeadService.updateLeadToUnSubscribed';
-import checkUnsubscribedStatus from '@salesforce/apex/LeadService.checkUnsubscribedStatus';
-import allOptions from '@salesforce/apex/LeadService.getUnsubscribeOptions';
+import unsubscribeFromProduct from '@salesforce/apex/SubscriptionService.updateSubscriptionToUnSubscribed';
+import checkUnsubscribedStatus from '@salesforce/apex/SubscriptionService.checkUnsubscribedStatus';
+import allOptions from '@salesforce/apex/SubscriptionService.getUnsubscribeOptions';
 import errorMsg from '@salesforce/label/c.form_error_msg';
 import successUnsubscribeMessage from '@salesforce/label/c.from_successUnsubscribe_msg';
 
@@ -79,7 +79,7 @@ export default class Unsubscribe extends LightningElement {
         }).then(data => {
             if (data === false) {
                 this.showform = false;
-                setTimeout(() => location.href = 'https://www.weisshausinvestment.com/', 4000);
+                setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 4000);
             }
 
         })
@@ -135,7 +135,7 @@ export default class Unsubscribe extends LightningElement {
             .then(result => {
                 this.showToast('Success', successUnsubscribeMessage, 'success');
                 this.loaded = false;
-                setTimeout(() => location.href = 'https://www.weisshausinvestment.com/', 4000);
+                setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 4000);
             })
         then(error => {
             this.showToast('Error', errorMsg, 'error');

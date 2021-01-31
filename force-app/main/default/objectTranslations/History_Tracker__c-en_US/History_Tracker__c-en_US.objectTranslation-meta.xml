@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>History Tracker</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>History Tracker</value>
+    </caseValues>
+    <layouts>
+        <layout>Field History Tracker Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Record Information --></label>
+            <section>Record Information</section>
+        </sections>
+        <sections>
+            <label><!-- Value --></label>
+            <section>Value</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <description><!-- Track Field  Changes --></description>
+        <label><!-- Field History --></label>
+        <name>Field_History</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Usage Tracker --></label>
+        <name>Usage_Tracker</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

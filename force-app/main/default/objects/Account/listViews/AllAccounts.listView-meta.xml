@@ -6,6 +6,7 @@
     <columns>PC_EMAIL</columns>
     <columns>ACCOUNT.TYPE</columns>
     <columns>CORE.USERS.ALIAS</columns>
+    <columns>ACCOUNT.CREATED_DATE</columns>
     <filterScope>Everything</filterScope>
     <label>All Accounts</label>
 </ListView>

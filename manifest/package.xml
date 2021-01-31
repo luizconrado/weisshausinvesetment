@@ -9,6 +9,10 @@
 		<name>ApexComponent</name>
 	</types>
 	<types>
+		<members>apexEmailNotifications</members>
+		<name>ApexEmailNotifications</name>
+	</types>
+	<types>
 		<members>*</members>
 		<name>ApexPage</name>
 	</types>
@@ -17,17 +21,80 @@
 		<name>ApexTrigger</name>
 	</types>
 	<types>
+		<members>*</members>
+		<name>AppMenu</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>ApprovalProcess</name>
+	</types>
+	<types>
+		<members>Lead.Lead Owner Assignment</members>
+		<name>AssignmentRule</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>AssignmentRules</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>AuraDefinitionBundle</name>
+	</types>
+	<types>
+		<members>Case.New Case</members>
+		<name>AutoResponseRule</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>AutoResponseRules</name>
+	</types>
+	<types>
+		<members>Case.Banking Case</members>
+		<members>Case.Default</members>
+		<members>Lead.Default</members>
+		<members>Lead.WebLeads</members>
+		<members>Opportunity.Default</members>
+		<name>BusinessProcess</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>Certificate</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>Community</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>CompactLayout</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>CorsWhitelistOrigin</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>CspTrustedSite</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>CustomApplication</name>
+	</types>
+	<types>
+		<members>Account.Account_Source_Detail__c</members>
+		<members>Account.Account_Source_Group_ID__c</members>
+		<members>Account.Auth0_ID__c</members>
 		<members>Account.Birth_City__c</members>
 		<members>Account.Birth_Country__c</members>
 		<members>Account.Birth_Name__c</members>
 		<members>Account.Business_Purpose__c</members>
-		<members>Account.Completed_Name__c</members>
 		<members>Account.Employment_Status__c</members>
 		<members>Account.Fatca_Crs_Confirmed_At__c</members>
 		<members>Account.Fatca_Relevant__c</members>
 		<members>Account.Flagged_By_Compliance__c</members>
 		<members>Account.Industry_Key__c</members>
 		<members>Account.Is_Test__c</members>
+		<members>Account.Legal_Name__c</members>
 		<members>Account.Marital_Status__c</members>
 		<members>Account.Nationality__c</members>
 		<members>Account.Own_Economic_Interest_Signed_At__c</members>
@@ -43,26 +110,26 @@
 		<members>Bank_Account__c.Solarisbank_Id__c</members>
 		<members>Bank_Account__c.Status__c</members>
 		<members>Bank_Account__c.Type__c</members>
-		<members>Bank_Case__c.Account__c</members>
-		<members>Bank_Case__c.Action__c</members>
-		<members>Bank_Case__c.Api_Error__c</members>
-		<members>Bank_Case__c.Bank_Account__c</members>
-		<members>Bank_Case__c.Booking__c</members>
-		<members>Bank_Case__c.Card__c</members>
-		<members>Bank_Case__c.Case__c</members>
-		<members>Bank_Case__c.Description__c</members>
-		<members>Bank_Case__c.Identification__c</members>
-		<members>Bank_Case__c.Is_Test__c</members>
-		<members>Bank_Case__c.New_Card_Status__c</members>
-		<members>Bank_Case__c.New_Order_Status__c</members>
-		<members>Bank_Case__c.Old_Card_Status__c</members>
-		<members>Bank_Case__c.Old_Order_Status__c</members>
-		<members>Bank_Case__c.Record__c</members>
-		<members>Bank_Case__c.Reservation__c</members>
-		<members>Bank_Case__c.Scheduled_Order__c</members>
-		<members>Bank_Case__c.Seizure__c</members>
-		<members>Bank_Case__c.Statement__c</members>
-		<members>Bank_Case__c.Tax_Identification__c</members>
+		<members>Bank_Case_Item__c.Account__c</members>
+		<members>Bank_Case_Item__c.Action__c</members>
+		<members>Bank_Case_Item__c.Api_Error__c</members>
+		<members>Bank_Case_Item__c.Bank_Account__c</members>
+		<members>Bank_Case_Item__c.Booking__c</members>
+		<members>Bank_Case_Item__c.Card__c</members>
+		<members>Bank_Case_Item__c.Case__c</members>
+		<members>Bank_Case_Item__c.Description__c</members>
+		<members>Bank_Case_Item__c.Identification__c</members>
+		<members>Bank_Case_Item__c.Is_Test__c</members>
+		<members>Bank_Case_Item__c.New_Card_Status__c</members>
+		<members>Bank_Case_Item__c.New_Order_Status__c</members>
+		<members>Bank_Case_Item__c.Old_Card_Status__c</members>
+		<members>Bank_Case_Item__c.Old_Order_Status__c</members>
+		<members>Bank_Case_Item__c.Record__c</members>
+		<members>Bank_Case_Item__c.Reservation__c</members>
+		<members>Bank_Case_Item__c.Scheduled_Order__c</members>
+		<members>Bank_Case_Item__c.Seizure__c</members>
+		<members>Bank_Case_Item__c.Statement__c</members>
+		<members>Bank_Case_Item__c.Tax_Identification__c</members>
 		<members>Booking__c.Amount__c</members>
 		<members>Booking__c.Bank_Account__c</members>
 		<members>Booking__c.Booking_Date__c</members>
@@ -92,7 +159,6 @@
 		<members>Booking__c.Unit__c</members>
 		<members>Booking__c.Valuta_Date__c</members>
 		<members>Campaign.Product__c</members>
-		<members>Campaign.Products__c</members>
 		<members>Card__c.Bank_Account__c</members>
 		<members>Card__c.Expiration_Date__c</members>
 		<members>Card__c.Is_Test__c</members>
@@ -101,6 +167,8 @@
 		<members>Card__c.Solarisbank_Id__c</members>
 		<members>Card__c.Status__c</members>
 		<members>Card__c.Type__c</members>
+		<members>Case.Email_Honorific__c</members>
+		<members>Case.Internal_Description__c</members>
 		<members>Case.Is_Test__c</members>
 		<members>Case.JIRA_Description__c</members>
 		<members>Case.Type_II__c</members>
@@ -109,27 +177,23 @@
 		<members>Case_Verification__c.Case__c</members>
 		<members>Case_Verification__c.Name_Verified__c</members>
 		<members>Case_Verification__c.Phone_Verified__c</members>
-		<members>Contact.Accepted_Terms_and_Conditions__c</members>
+		<members>Contact.Email_Honorific__c</members>
 		<members>Contact.Gender__c</members>
-		<members>Contact.Languages__c</members>
-		<members>Contact.Last_Email_Sent_Date__c</members>
 		<members>Contact.Level__c</members>
-		<members>Contact.Newsletter__c</members>
 		<members>Contact.Origin__c</members>
-		<members>Contact.ProductInterest_Encode__c</members>
-		<members>Contact.ProductInterest__c</members>
-		<members>Contact.Product_A__c</members>
-		<members>Contact.Product_B__c</members>
-		<members>Contact.Product_C__c</members>
-		<members>Contact.Product_D__c</members>
-		<members>Contact.Reason_For_Unsubscribing__c</members>
-		<members>Email_Configuration__c.Organization_Wide_Address__c</members>
-		<members>Email_Configuration__c.Send_Subscribed_Email__c</members>
-		<members>Email_Configuration__c.Send_Unsubscribed_Email__c</members>
-		<members>Email_Configuration__c.Send_Verification_Email__c</members>
+		<members>Contact.Preferred_Language_Code__c</members>
+		<members>Contact.Preferred_Language__c</members>
+		<members>ContentVersion.Type__c</members>
+		<members>File_Type_Option__mdt.Active__c</members>
+		<members>File_Type_Option__mdt.Object_Name__c</members>
+		<members>File_Type_Option__mdt.Prefix_Field_Name__c</members>
+		<members>File_Type_Option__mdt.Record_Type_Name__c</members>
+		<members>File_Type_Option__mdt.Types__c</members>
 		<members>History_Tracker_Configuration__mdt.Fields__c</members>
 		<members>History_Tracker_Configuration__mdt.Object__c</members>
 		<members>History_Tracker_Configuration__mdt.Track_Change__c</members>
+		<members>History_Tracker_Configuration__mdt.Track_Insert__c</members>
+		<members>History_Tracker_Configuration__mdt.Track_Update__c</members>
 		<members>History_Tracker_Configuration__mdt.Track_View__c</members>
 		<members>History_Tracker__c.Field_Label__c</members>
 		<members>History_Tracker__c.Field__c</members>
@@ -162,22 +226,11 @@
 		<members>Identification__c.State__c</members>
 		<members>Identification__c.Status__c</members>
 		<members>Identification__c.URL__c</members>
-		<members>Knowledge__kav.Answer__c</members>
+		<members>Knowledge__kav.Information__c</members>
 		<members>Knowledge__kav.Question__c</members>
-		<members>Lead.Accepted_Terms_and_Conditions__c</members>
-		<members>Lead.Activation_Number__c</members>
+		<members>Knowledge__kav.Type_II__c</members>
+		<members>Knowledge__kav.Type__c</members>
 		<members>Lead.Gender__c</members>
-		<members>Lead.Last_Email_Sent_Date__c</members>
-		<members>Lead.Lead_Origin__c</members>
-		<members>Lead.Newsletter__c</members>
-		<members>Lead.Primary__c</members>
-		<members>Lead.ProductInterest_Encode__c</members>
-		<members>Lead.ProductInterest__c</members>
-		<members>Lead.Product_A__c</members>
-		<members>Lead.Product_B__c</members>
-		<members>Lead.Product_C__c</members>
-		<members>Lead.Product_D__c</members>
-		<members>Lead.Reason_For_Unsubscribing__c</members>
 		<members>LiveChatTranscript.Chat_Origin__c</members>
 		<members>LiveChatTranscript.Email__c</members>
 		<members>LiveChatTranscript.First_Name__c</members>
@@ -188,11 +241,13 @@
 		<members>Log__c.Component_Name__c</members>
 		<members>Log__c.Endpoint__c</members>
 		<members>Log__c.Log_Number__c</members>
+		<members>Log__c.Message__c</members>
 		<members>Log__c.Method_Name__c</members>
 		<members>Log__c.Object_Name__c</members>
 		<members>Log__c.Operation__c</members>
 		<members>Log__c.Record_Id__c</members>
 		<members>Log__c.Record__c</members>
+		<members>Log__c.Request_Body__c</members>
 		<members>Log__c.Response_Status_Code__c</members>
 		<members>Log__c.Stack_Trace__c</members>
 		<members>Log__c.User__c</members>
@@ -294,8 +349,16 @@
 		<members>Statement__c.Statement_Period_End_Date__c</members>
 		<members>Statement__c.Statement_Period_Start_Date__c</members>
 		<members>Statement__c.Unit__c</members>
-		<members>Subscription_Product_Configuration__mdt.Code__c</members>
-		<members>Subscription_Product_Configuration__mdt.Field_API__c</members>
+		<members>Subscription__c.Account__c</members>
+		<members>Subscription__c.Contact__c</members>
+		<members>Subscription__c.Is_Test__c</members>
+		<members>Subscription__c.Reason_For_Unsubscribing__c</members>
+		<members>Subscription__c.Send_Mail__c</members>
+		<members>Subscription__c.Source__c</members>
+		<members>Subscription__c.Subscription_Status__c</members>
+		<members>Subscription__c.Subscription_Terms_and_Conditions__c</members>
+		<members>Subscription__c.Type_Encoded__c</members>
+		<members>Subscription__c.Type__c</members>
 		<members>Tax_Identification__c.Account__c</members>
 		<members>Tax_Identification__c.Country__c</members>
 		<members>Tax_Identification__c.Identification_Number__c</members>
@@ -316,10 +379,38 @@
 		<name>CustomField</name>
 	</types>
 	<types>
+		<members>Available</members>
+		<members>Back</members>
+		<members>Balance</members>
+		<members>Case_Jira_AttachmentRequired_validation</members>
+		<members>Case_Jira_Knowledge_validation</members>
+		<members>Case_Jira_bankcaseitems_validation</members>
+		<members>Case_Jira_fileuploaded</members>
+		<members>Case_Jira_fileversion_validation</members>
+		<members>ChooseOption</members>
+		<members>Close</members>
+		<members>EmailAddress</members>
+		<members>FirstName</members>
+		<members>Next</members>
+		<members>PhoneNumber</members>
 		<members>Privacy_Web_Link</members>
-		<members>Send_Subscribed_Email</members>
-		<members>Send_Verification_Email</members>
+		<members>ReasonForUnsubscribeText</members>
+		<members>SalutationText</members>
+		<members>Save</members>
+		<members>SignOut</members>
+		<members>Surname</members>
+		<members>TermsAndConditionsText</members>
 		<members>Track_History_Exclusion</members>
+		<members>Unsubscribe</members>
+		<members>UnsubscribeOption1</members>
+		<members>UnsubscribeOption2</members>
+		<members>UnsubscribeOption3</members>
+		<members>UnsubscribeText</members>
+		<members>VerifiedAccountText</members>
+		<members>VerifyAccountText</members>
+		<members>VerifyButtonText</members>
+		<members>WissehouseWebsite_Url</members>
+		<members>community_uri</members>
 		<members>form_error_msg</members>
 		<members>form_warrning_msg</members>
 		<members>from_successUnsubscribe_msg</members>
@@ -339,106 +430,154 @@
 	<types>
 		<members>Account</members>
 		<members>Account</members>
+		<members>AccountContactRole</members>
+		<members>Activity</members>
+		<members>AuthorizationForm</members>
+		<members>AuthorizationFormConsent</members>
+		<members>AuthorizationFormDataUse</members>
+		<members>AuthorizationFormText</members>
 		<members>Bank_Account__c</members>
-		<members>Bank_Case__c</members>
+		<members>Bank_Case_Item__c</members>
 		<members>Booking__c</members>
+		<members>Campaign</members>
 		<members>CampaignMember</members>
 		<members>Card__c</members>
 		<members>Case</members>
+		<members>CaseContactRole</members>
 		<members>Case_Verification__c</members>
 		<members>Contact</members>
-		<members>Email_Configuration__c</members>
+		<members>ContentVersion</members>
+		<members>Contract</members>
+		<members>EmailMessage</members>
+		<members>Event</members>
+		<members>FeedItem</members>
+		<members>File_Type_Option__mdt</members>
 		<members>History_Tracker_Configuration__mdt</members>
 		<members>History_Tracker__c</members>
 		<members>Identification_Attempt__c</members>
 		<members>Identification__c</members>
+		<members>Image</members>
+		<members>Individual</members>
 		<members>Knowledge__kav</members>
 		<members>Lead</members>
+		<members>LinkedArticle</members>
+		<members>LiveAgentSession</members>
+		<members>LiveChatTranscript</members>
+		<members>LiveChatTranscriptEvent</members>
+		<members>LiveChatTranscriptSkill</members>
+		<members>LiveChatVisitor</members>
 		<members>Log_Event__e</members>
 		<members>Log__c</members>
+		<members>Opportunity</members>
+		<members>OpportunityCompetitor</members>
+		<members>OpportunityContactRole</members>
+		<members>OpportunityLineItem</members>
+		<members>Order</members>
+		<members>OrderItem</members>
+		<members>PartyConsent</members>
+		<members>PersonAccount</members>
+		<members>Pricebook2</members>
+		<members>PricebookEntry</members>
+		<members>Product2</members>
+		<members>QuickText</members>
+		<members>Quote</members>
+		<members>QuoteLineItem</members>
 		<members>Reservation__c</members>
 		<members>Scheduled_Order__c</members>
+		<members>Scorecard</members>
 		<members>Seizure__c</members>
 		<members>Solarisbank_Api_Config__mdt</members>
 		<members>Statement__c</members>
-		<members>Subscription_Product_Configuration__mdt</members>
+		<members>Subscription__c</members>
+		<members>Task</members>
 		<members>Tax_Identification__c</members>
 		<members>Tracking_Events__e</members>
 		<members>Trigger_Setting__mdt</members>
+		<members>User</members>
 		<name>CustomObject</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>CustomObjectTranslation</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>CustomPermission</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>CustomSite</name>
 	</types>
 	<types>
 		<members>*</members>
 		<name>CustomTab</name>
 	</types>
 	<types>
-		<members>Subscription_Emails/Weisshausinvestment_Lead_Thank_You_Email</members>
-		<members>Subscription_Emails/Weisshausinvestment_Lead_Verify_Email</members>
-		<members>Subscription_Emails/Weisshausinvestment_Lead_unsubscribe_Email</members>
-		<members>Subscription_Emails/Weisshausinvestment_Person_Account_Thank_You_Email</members>
-		<members>Subscription_Emails/Weisshausinvestment_Person_Account_Verify_Email</members>
-		<members>Subscription_Emails/Weisshausinvestment_Person_Account_unsubscribe_Email</members>
+		<members>Sales_and_Marketing_Dashboards/AdoptionDashboard</members>
+		<members>Sales_and_Marketing_Dashboards/Best_Practice_Leads_Dashboard</members>
+		<members>Sales_and_Marketing_Dashboards/Best_Practices_Dashboard6</members>
+		<members>Service_Dashboards/Agent_Supervisor_Overview</members>
+		<members>Service_Dashboards/Service_Exec_Overview</members>
+		<members>Service_Dashboards/Service_KPIs</members>
+		<name>Dashboard</name>
+	</types>
+	<types>
+		<members>SalesTools/Documentation_for_Salesforce_com_Sample_Dashboards.pdf</members>
+		<members>Salesforce_Branding_Resources/Honeyview_Weisshaus_Logo_transperesntl_png.png</members>
+		<members>SharedDocuments/Engelvoelkers_Fotter_Logo.jpg</members>
+		<members>SharedDocuments/Engelvoelkers_Logo.png</members>
+		<members>SharedDocuments/Weisshausinvestment_Logo.png</members>
+		<members>SharedDocuments/Weisshausinvestment_Logo_SSmall.png</members>
+		<members>SharedDocuments/White_Color.jpg</members>
+		<name>Document</name>
+	</types>
+	<types>
+		<members>Case_Email_Templates/Case_Auto_Response</members>
+		<members>Case_Email_Templates/Case_Auto_Response_EN</members>
+		<members>Case_Email_Templates/Case_Default_Email_Template</members>
+		<members>Subscription_Emails/Weisshausinvestment_Subscription_Thank_You_Email_DE</members>
+		<members>Subscription_Emails/Weisshausinvestment_Subscription_Thank_You_Email_EN</members>
+		<members>Subscription_Emails/Weisshausinvestment_Subscription_Verify_Email_DE</members>
+		<members>Subscription_Emails/Weisshausinvestment_Subscription_Verify_Email_EN</members>
+		<members>Subscription_Emails/Weisshausinvestment_Subscription_unsubscribe_Email_DE</members>
+		<members>Subscription_Emails/Weisshausinvestment_Subscription_unsubscribe_Email_EN</members>
+		<members>unfiled$public/App_Survey_Template_1609924408840</members>
+		<members>unfiled$public/App_Survey_Template_V2_1611717854722</members>
+		<members>unfiled$public/Default_Template_1608578020380</members>
+		<members>unfiled$public/Engage_template_1610726047118</members>
+		<members>unfiled$public/Onboarding_incomplete_template_1610727260404</members>
 		<name>EmailTemplate</name>
 	</types>
 	<types>
-		<members>Bank_Account_Record_Page</members>
-		<members>Chat_Transcript_Record_Page</members>
-		<members>Custom_Account_Record_Page</members>
-		<members>Custom_Case_Record_Page</members>
-		<members>Identification_Record_Page</members>
+		<members>Web_Support</members>
+		<name>EmbeddedServiceLiveAgent</name>
+	</types>
+	<types>
+		<members>*</members>
 		<name>FlexiPage</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>Flow</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>FlowDefinition</name>
 	</types>
 	<types>
 		<members>*</members>
 		<name>GlobalValueSet</name>
 	</types>
 	<types>
-		<members>Account-Account Layout</members>
-		<members>Asset-Asset Layout</members>
-		<members>Bank_Account__c-Bank Account Layout</members>
-		<members>Bank_Case__c-Bank Account Layout</members>
-		<members>Bank_Case__c-Bank Case Layout</members>
-		<members>Bank_Case__c-Booking Layout</members>
-		<members>Bank_Case__c-Card Layout</members>
-		<members>Bank_Case__c-Person Account Layout</members>
-		<members>Bank_Case__c-Reservation Layout</members>
-		<members>Bank_Case__c-Standing Order</members>
-		<members>Bank_Case__c-Statement</members>
-		<members>Bank_Case__c-Timed Order</members>
-		<members>Booking__c-Booking Layout</members>
-		<members>Campaign-Campaign Layout</members>
-		<members>CampaignMember-Campaign Member Page Layout</members>
-		<members>Card__c-Card Layout</members>
-		<members>Case-Banking Card Management</members>
-		<members>Case-Case Layout</members>
-		<members>CaseClose-Close Case Layout</members>
-		<members>Case_Verification__c-Case Verification Layout</members>
-		<members>History_Tracker_Configuration__mdt-Filed History Tracker Layout</members>
-		<members>History_Tracker__c-Field History Tracker Layout</members>
-		<members>Idea-Idea Layout</members>
-		<members>Identification_Attempt__c-Identification Attempt Layout</members>
-		<members>Identification__c-Video Identification Layout</members>
-		<members>Identification__c-eSigning Page Layout</members>
-		<members>Knowledge__kav-Guest User FAQ Layout</members>
-		<members>Knowledge__kav-Knowledge Layout</members>
-		<members>Knowledge__kav-Lightning Knowledge FAQ Layout</members>
-		<members>Lead-Lead Layout</members>
-		<members>Lead-WebLeads</members>
-		<members>LiveChatTranscript-Chat Transcript Layout</members>
-		<members>Log__c-Debug Log</members>
-		<members>Log__c-Integration Log</members>
-		<members>Log__c-Log Layout</members>
-		<members>Opportunity-Opportunity Layout</members>
-		<members>PersonAccount-Person Account Layout</members>
-		<members>Reservation__c-Reservation Layout</members>
-		<members>Scheduled_Order__c-Persons Timed Order Layout</members>
-		<members>Scheduled_Order__c-Standing Order Layout</members>
-		<members>Seizure__c-Seizure Layout</members>
-		<members>Solarisbank_Api_Config__mdt-Solarisbank Api Config Layout</members>
-		<members>Statement__c-Statement Layout</members>
-		<members>Subscription_Product_Configuration__mdt-Subscription Product Configuration Layout</members>
-		<members>Tax_Identification__c-Tax Identification Layout</members>
-		<members>Trigger_Setting__mdt-Trigger Setting Layout</members>
+		<members>*</members>
+		<name>GlobalValueSetTranslation</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>Group</name>
+	</types>
+	<types>
+		<members>*</members>
 		<name>Layout</name>
 	</types>
 	<types>
@@ -446,51 +585,154 @@
 		<name>LightningComponentBundle</name>
 	</types>
 	<types>
+		<members>*</members>
+		<name>LightningExperienceTheme</name>
+	</types>
+	<types>
 		<members>Account.AllAccounts</members>
+		<members>Account.E_V_Konto_Customers</members>
+		<members>Account.MyAccounts</members>
+		<members>Activity.MyActivities</members>
+		<members>Activity.MyDelegatedActivities</members>
+		<members>Activity.MyTeamsActivities</members>
+		<members>Activity.TodaysTasks</members>
+		<members>Activity.UpcomingEvents</members>
+		<members>Asset.AllAssets</members>
+		<members>AuthorizationForm.All_AuthorizationForms</members>
+		<members>AuthorizationFormConsent.All_AuthorizationFormConsents</members>
+		<members>AuthorizationFormDataUse.All_AuthorizationFormDataUses</members>
+		<members>AuthorizationFormText.All_AuthorizationFormText</members>
+		<members>Campaign.AllActiveCampaigns</members>
+		<members>Campaign.MyActiveCampaigns</members>
+		<members>Campaign.Org_Campaign_Hierarchy</members>
+		<members>CampaignInfluence.CampaignInfluence</members>
+		<members>Case.AllOpenCases</members>
+		<members>Case.All_Cases</members>
+		<members>Case.All_Information_Cases</members>
+		<members>Case.Customer_Support_Email_Case</members>
+		<members>Case.MyCases</members>
+		<members>Case.MyOpenCases</members>
+		<members>Case.Salesforce_Support_Case</members>
+		<members>CollaborationGroup.All_ChatterGroups</members>
+		<members>CommSubscription.All_CommSubscriptions</members>
+		<members>CommSubscriptionChannelType.All_CommSubscriptionChannelTypes</members>
+		<members>CommSubscriptionConsent.All_CommSubscriptionConsents</members>
+		<members>CommSubscriptionTiming.All_CommSubscriptionTimings</members>
+		<members>Contact.AllContacts</members>
+		<members>Contact.MyContacts</members>
+		<members>Contact.Person_Account_Contacts</members>
+		<members>ContactPointConsent.All_ContactPointConsents</members>
+		<members>ContactPointTypeConsent.All_ContactPointTypeConsents</members>
+		<members>ContactRequest.My_ContactRequests</members>
+		<members>Contract.AllActivatedContracts</members>
+		<members>Contract.AllContracts</members>
+		<members>Contract.AllDraftContracts</members>
+		<members>Contract.AllInApprovalContracts</members>
+		<members>Contract.MyActivatedContracts</members>
+		<members>Contract.MyDraftContracts</members>
+		<members>Contract.MyInApprovalContracts</members>
+		<members>DataUseLegalBasis.All_DataUseLegalBases</members>
+		<members>DataUsePurpose.All_DataUsePurposes</members>
+		<members>DelegatedAccount.All_External_Managed_Accounts</members>
+		<members>DelegatedAccount.My_External_Managed_Accounts</members>
+		<members>EngagementChannelType.All_EngagementChannelTypes</members>
+		<members>Event.MyRecentEvents</members>
+		<members>Event.MyTeamsRecentEvents</members>
+		<members>Event.MyTeamsUpcomingEvents</members>
+		<members>Event.MyUpcomingEvents</members>
+		<members>Event.TodaysAgenda</members>
 		<members>History_Tracker_Configuration__mdt.All</members>
 		<members>History_Tracker__c.All</members>
+		<members>Idea.Ideas_Last_7_Days</members>
+		<members>Knowledge__kav.All_Knowledge_Records</members>
+		<members>Knowledge__kav.archived_articles</members>
+		<members>Knowledge__kav.draft_articles</members>
+		<members>Knowledge__kav.published_articles</members>
+		<members>Lead.AllOpenLeads</members>
+		<members>Lead.TodaysLeads</members>
+		<members>Lead.WebLeads_Queue_Lead</members>
+		<members>LiveChatTranscript.All_Chat_Transcripts</members>
+		<members>LiveChatTranscript.Web_Support_LiveChatTranscript</members>
+		<members>LocationTrustMeasure.AllLocationTrustMeasures</members>
 		<members>Log__c.Debug</members>
 		<members>Log__c.Integeration</members>
+		<members>Opportunity.AllOpportunities</members>
+		<members>Opportunity.ClosingNextMonth</members>
+		<members>Opportunity.ClosingThisMonth</members>
+		<members>Opportunity.Default_Opportunity_Pipeline</members>
+		<members>Opportunity.MyOpportunities</members>
+		<members>Opportunity.NewThisWeek</members>
+		<members>Opportunity.Won</members>
+		<members>Order.AllActivatedOrders</members>
+		<members>Order.AllDraftOrders</members>
+		<members>Order.AllOrders</members>
+		<members>PartyConsent.All_PartyConsents</members>
+		<members>Pricebook2.All_Price_Books</members>
+		<members>Product2.AllProducts</members>
+		<members>Quote.mine</members>
+		<members>Recommendation.All_Recommendations</members>
+		<members>Scorecard.AllScorecards</members>
+		<members>Scorecard.MyScorecards</members>
+		<members>SocialPersona.AllSocialPersonas</members>
+		<members>SocialPost.AllSocialPosts</members>
+		<members>Solution.AllReviewedSolutions</members>
+		<members>Solution.AllUnreviewedSolutions</members>
+		<members>Task.CompletedTasks</members>
+		<members>Task.DelegatedTasks</members>
+		<members>Task.OpenTasks</members>
+		<members>Task.OverdueTasks</members>
+		<members>Task.RecurringTasks</members>
+		<members>Task.TodaysTasks</members>
+		<members>Task.UnscheduledTasks</members>
+		<members>User.ActiveUsers</members>
+		<members>User.AdminUsers</members>
+		<members>User.AllUsers</members>
 		<name>ListView</name>
 	</types>
 	<types>
-		<members>Case_Banking_Case</members>
-		<members>Default_Opportunity</members>
+		<members>*</members>
+		<name>LiveChatAgentConfig</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>LiveChatButton</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>LiveChatDeployment</name>
+	</types>
+	<types>
+		<members>*</members>
 		<name>PathAssistant</name>
 	</types>
 	<types>
-		<members>Admin</members>
-		<members>Business Development</members>
-		<members>Business Development Admin</members>
-		<members>Legal Compliance</members>
-		<members>Legal Compliance Admin</members>
+		<members>*</members>
+		<name>PermissionSet</name>
+	</types>
+	<types>
+		<members>*</members>
 		<name>Profile</name>
 	</types>
 	<types>
-		<members>Account.Resend_Confirmation_Email</members>
-		<members>Account.Sync_Solarisbank</members>
-		<members>Bank_Account__c.Sync_Solarisbank</members>
-		<members>Bank_Case__c.Cancel_Time_Order</members>
-		<members>Bank_Case__c.Change_Card_Status</members>
-		<members>Bank_Case__c.Check_Balance</members>
-		<members>Bank_Case__c.Transaction_Details</members>
-		<members>Campaign.Sync_Members</members>
-		<members>Case.Verify_User_Identity</members>
-		<members>Lead.Resend_Confirmation_Email</members>
+		<members>*</members>
+		<name>Queue</name>
+	</types>
+	<types>
+		<members>*</members>
 		<name>QuickAction</name>
 	</types>
 	<types>
 		<members>Account.PersonAccount</members>
 		<members>Account.Standard_Account</members>
 		<members>Account.WebLeads</members>
-		<members>Bank_Case__c.Account</members>
-		<members>Bank_Case__c.Bank_Account</members>
-		<members>Bank_Case__c.Booking</members>
-		<members>Bank_Case__c.Card</members>
-		<members>Bank_Case__c.Reservation</members>
-		<members>Bank_Case__c.Standing_Order</members>
-		<members>Bank_Case__c.Statement</members>
-		<members>Bank_Case__c.Timed_Order</members>
+		<members>Bank_Case_Item__c.Account</members>
+		<members>Bank_Case_Item__c.Bank_Account</members>
+		<members>Bank_Case_Item__c.Booking</members>
+		<members>Bank_Case_Item__c.Card</members>
+		<members>Bank_Case_Item__c.Reservation</members>
+		<members>Bank_Case_Item__c.Standing_Order</members>
+		<members>Bank_Case_Item__c.Statement</members>
+		<members>Bank_Case_Item__c.Timed_Order</members>
 		<members>Campaign.Standard_Campaign</members>
 		<members>Case.Banking_Case</members>
 		<members>Case.E_V_Konto_App_Case</members>
@@ -504,6 +746,8 @@
 		<members>Identification__c.Video_Identification</members>
 		<members>Identification__c.eSigning</members>
 		<members>Knowledge__kav.FAQ</members>
+		<members>Knowledge__kav.Solarisbank</members>
+		<members>Lead.Default</members>
 		<members>Lead.WebLeads</members>
 		<members>Log__c.Debug</members>
 		<members>Log__c.Integration</members>
@@ -512,11 +756,127 @@
 		<members>Scheduled_Order__c.Timed_Order</members>
 		<members>Statement__c.BANK_STATEMENTS</members>
 		<members>Statement__c.STATEMENT_OF_ACCOUNTS</members>
+		<members>Subscription__c.Default</members>
 		<name>RecordType</name>
+	</types>
+	<types>
+		<members>Solarisbank_Production</members>
+		<members>Solarisbank_Sandbox</members>
+		<name>RemoteSiteSetting</name>
+	</types>
+	<types>
+		<members>DashboardReportsAdoption/UsageActivitiesCompleted</members>
+		<members>Sales_Marketing_Reports/Closed_Lost_by_Reason</members>
+		<members>Sales_Marketing_Reports/Closed_Won_80_This_Q_by_Owner</members>
+		<members>Sales_Marketing_Reports/Closed_Won_This_Q_by_Owner</members>
+		<members>Sales_Marketing_Reports/Closed_Won_This_Q_by_Type</members>
+		<members>Sales_Marketing_Reports/Closed_Won_by_Type</members>
+		<members>Sales_Marketing_Reports/Conversion_Rate</members>
+		<members>Sales_Marketing_Reports/Hot_Leads_w_o_Activity_96_Hours</members>
+		<members>Sales_Marketing_Reports/Leads_Converted_All_Time</members>
+		<members>Sales_Marketing_Reports/Leads_Converted_Current_FQ2</members>
+		<members>Sales_Marketing_Reports/Leads_Converted_by_FQ</members>
+		<members>Sales_Marketing_Reports/Leads_Created_Current_FQ</members>
+		<members>Sales_Marketing_Reports/Open_Oppties_This_Q</members>
+		<members>Sales_Marketing_Reports/Open_Oppties_This_Q_No_Acti_Last_96hrs</members>
+		<members>Sales_Marketing_Reports/Pipeline_Report_This_Q</members>
+		<members>Sales_Marketing_Reports/Win_Ratio</members>
+		<members>Sales_and_Marketing_Reports/Activities_by_Salesperson</members>
+		<members>Sales_and_Marketing_Reports/CampaignROIbyCampaignType</members>
+		<members>Sales_and_Marketing_Reports/CampaignsbyROI</members>
+		<members>Sales_and_Marketing_Reports/Closed_Deals_leader_board</members>
+		<members>Sales_and_Marketing_Reports/Closed_opportunity</members>
+		<members>Sales_and_Marketing_Reports/Leads_by_Industry</members>
+		<members>Sales_and_Marketing_Reports/LeadsbySource</members>
+		<members>Sales_and_Marketing_Reports/Marketing_Exec_Amount_per_Camp</members>
+		<members>Sales_and_Marketing_Reports/Marketing_Exec_Conversion_Rate</members>
+		<members>Sales_and_Marketing_Reports/Marketing_Exec_Converted_Amount</members>
+		<members>Sales_and_Marketing_Reports/Marketing_Exec_Converted_and_Won_Amount</members>
+		<members>Sales_and_Marketing_Reports/Marketing_Exec_Converted_by_Month</members>
+		<members>Sales_and_Marketing_Reports/Marketing_Exec_Lead_Trends_by_Status</members>
+		<members>Sales_and_Marketing_Reports/Marketing_Exec_Leads_Converted</members>
+		<members>Sales_and_Marketing_Reports/Marketing_Exec_Leads_by_Campaigns</members>
+		<members>Sales_and_Marketing_Reports/Marketing_Exec_of_Leads</members>
+		<members>Sales_and_Marketing_Reports/OpportunityProductPipeline</members>
+		<members>Sales_and_Marketing_Reports/SP_Current_Month_Open_Pipeline</members>
+		<members>Sales_and_Marketing_Reports/Sales_Exec</members>
+		<members>Sales_and_Marketing_Reports/Sales_Exec_Bookings_Trend</members>
+		<members>Sales_and_Marketing_Reports/Sales_Exec_Closed_Deals_QTD</members>
+		<members>Sales_and_Marketing_Reports/Sales_Exec_Lost_Deals</members>
+		<members>Sales_and_Marketing_Reports/Sales_Exec_Open_Deals</members>
+		<members>Sales_and_Marketing_Reports/Sales_Exec_Open_Pipeline</members>
+		<members>Sales_and_Marketing_Reports/Sales_Exec_Open_Pipeline_next_90_days</members>
+		<members>Sales_and_Marketing_Reports/Sales_Exec_Top_Closed_Deals</members>
+		<members>Sales_and_Marketing_Reports/Sales_Manager_Closed_Deals</members>
+		<members>Sales_and_Marketing_Reports/Sales_Manager_Open_Opportunities</members>
+		<members>Sales_and_Marketing_Reports/Sales_Manager_Open_Pipeline</members>
+		<members>Sales_and_Marketing_Reports/Sales_Manager_Pipeline_Next_90_days</members>
+		<members>Sales_and_Marketing_Reports/Sales_Person_Activities_Completed</members>
+		<members>Sales_and_Marketing_Reports/Sales_Person_Activity</members>
+		<members>Sales_and_Marketing_Reports/Sales_Person_MTD_Sales</members>
+		<members>Sales_and_Marketing_Reports/Sales_Person_Open_Pipeline_by_stage</members>
+		<members>Service_Dashboards_Reports/Age_of_Cases_Currently_Open_by_Type</members>
+		<members>Service_Dashboards_Reports/Aged_Cases_by_Account</members>
+		<members>Service_Dashboards_Reports/Aged_Cases_by_Agent</members>
+		<members>Service_Dashboards_Reports/Average_Case_Resolution_Time_1</members>
+		<members>Service_Dashboards_Reports/Average_Case_Resolution_Time_MTD</members>
+		<members>Service_Dashboards_Reports/Avg_Case_Resolution_Time_MTD_by_Agen</members>
+		<members>Service_Dashboards_Reports/Case_Resolution_Time_MTD_by_Origin</members>
+		<members>Service_Dashboards_Reports/Cases_Closed_MTD</members>
+		<members>Service_Dashboards_Reports/Cases_Closed_MTD_by_Agent</members>
+		<members>Service_Dashboards_Reports/Cases_Created_MTD</members>
+		<members>Service_Dashboards_Reports/Cases_Currently_Open</members>
+		<members>Service_Dashboards_Reports/Cases_Currently_Open_by_Account</members>
+		<members>Service_Dashboards_Reports/Cases_Currently_Open_by_Agent</members>
+		<members>Service_Dashboards_Reports/Cases_Currently_Open_by_Origin</members>
+		<members>Service_Dashboards_Reports/Cases_Currently_Open_by_Priority</members>
+		<members>Service_Dashboards_Reports/Cases_Currently_Open_by_Type</members>
+		<members>Service_Dashboards_Reports/Cases_by_Origin</members>
+		<members>Service_Dashboards_Reports/Cases_by_Origin_and_Open_Status</members>
+		<members>Service_Dashboards_Reports/Cases_by_Priority</members>
+		<members>Service_Dashboards_Reports/Cases_by_Type_and_Open_Status</members>
+		<members>Service_Dashboards_Reports/High_Priority_Open_Cases_by_Account</members>
+		<members>Service_Dashboards_Reports/Top_10_Cases_by_Age</members>
+		<members>Service_Dashboards_Reports/Trend_of_Case_Resolution_Time</members>
+		<members>Service_Dashboards_Reports/Trend_of_Cases_Closed</members>
+		<members>Service_Dashboards_Reports/Trend_of_Cases_Created</members>
+		<members>unfiled$public/Delete_ASAP_Customers_to_Invite_Alpha_ijt</members>
+		<members>unfiled$public/Newsletter_Campaign_Members_Yvy</members>
+		<members>unfiled$public/Opportunity_Amount_by_Stage_Sample</members>
+		<members>unfiled$public/flow_screen_prebuilt_report</members>
+		<name>Report</name>
 	</types>
 	<types>
 		<members>*</members>
 		<name>Role</name>
 	</types>
-	<version>49.0</version>
+	<types>
+		<members>*</members>
+		<name>Skill</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>StandardValueSetTranslation</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>StaticResource</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>Translations</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>Workflow</name>
+	</types>
+	<types>
+		<members>Subscription__c.Thank_You_Subscription_DE</members>
+		<members>Subscription__c.Thank_You_Subscription_EN</members>
+		<members>Subscription__c.Unsubscribe_Subscription_EN</members>
+		<members>Subscription__c.Verify_Subscription_DE</members>
+		<members>Subscription__c.Verify_Subscription_EN</members>
+		<name>WorkflowAlert</name>
+	</types>
+	<version>50.0</version>
 </Package>

@@ -47,6 +47,7 @@ public without sharing  class TrackHistory {
         //check configuration
         if(!checkTrackStatus(objectName,'Insert')) return;
         
+        //get fields to track
         List<String> fields=getFieldsToTrack(objectName);
         if(fields.size()==0) return;
         

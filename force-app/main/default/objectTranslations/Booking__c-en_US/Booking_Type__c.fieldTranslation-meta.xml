@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Booking Type --></label>
+    <name>Booking_Type__c</name>
+    <picklistValues>
+        <masterLabel>Cancellation Booking</masterLabel>
+        <translation><!-- Cancellation Booking --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation Card Transaction</masterLabel>
+        <translation><!-- Cancellation Card Transaction --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation Card Transaction Direct</masterLabel>
+        <translation><!-- Cancellation Card Transaction Direct --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation Charge Card</masterLabel>
+        <translation><!-- Cancellation Charge Card --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation Charge Dunning</masterLabel>
+        <translation><!-- Cancellation Charge Dunning --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation Charge Sepa Direct Debit Return</masterLabel>
+        <translation><!-- Cancellation Charge Sepa Direct Debit Return --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation Crypto Exchange</masterLabel>
+        <translation><!-- Cancellation Crypto Exchange --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation Currency Exchange Partner</masterLabel>
+        <translation><!-- Cancellation Currency Exchange Partner --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation Direct Debit</masterLabel>
+        <translation><!-- Cancellation Direct Debit --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation Double Booking</masterLabel>
+        <translation><!-- Cancellation Double Booking --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation Interest Accrued</masterLabel>
+        <translation><!-- Cancellation Interest Accrued --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation Interest Annuity</masterLabel>
+        <translation><!-- Cancellation Interest Annuity --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation Interest Loan</masterLabel>
+        <translation><!-- Cancellation Interest Loan --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation Internal Transfer</masterLabel>
+        <translation><!-- Cancellation Internal Transfer --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation International Credit Transfer</masterLabel>
+        <translation><!-- Cancellation International Credit Transfer --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation Loan Payout</masterLabel>
+        <translation><!-- Cancellation Loan Payout --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation Rebooking</masterLabel>
+        <translation><!-- Cancellation Rebooking --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation Rebooking Interest</masterLabel>
+        <translation><!-- Cancellation Rebooking Interest --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation Sepa Credit Transfer Return</masterLabel>
+        <translation><!-- Cancellation Sepa Credit Transfer Return --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation Sepa Direct Debit</masterLabel>
+        <translation><!-- Cancellation Sepa Direct Debit --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation Sepa Direct Debit Return</masterLabel>
+        <translation><!-- Cancellation Sepa Direct Debit Return --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation Transfer Annuity</masterLabel>
+        <translation><!-- Cancellation Transfer Annuity --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Card Transaction</masterLabel>
+        <translation><!-- Card Transaction --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Card Transaction Direct</masterLabel>
+        <translation><!-- Card Transaction Direct --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Charge Account Management</masterLabel>
+        <translation><!-- Charge Account Management --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Charge Card</masterLabel>
+        <translation><!-- Charge Card --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Charge Dunning</masterLabel>
+        <translation><!-- Charge Dunning --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Charge Sepa Direct Debit Return</masterLabel>
+        <translation><!-- Charge Sepa Direct Debit Return --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Credit Transfer Cancellation</masterLabel>
+        <translation><!-- Credit Transfer Cancellation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Crypto Exchange</masterLabel>
+        <translation><!-- Crypto Exchange --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Currency Exchange Partner</masterLabel>
+        <translation><!-- Currency Exchange Partner --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Direct Debit</masterLabel>
+        <translation><!-- Direct Debit --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Foreign Payment</masterLabel>
+        <translation><!-- Foreign Payment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Interest Accrued</masterLabel>
+        <translation><!-- Interest Accrued --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Interest Annuity</masterLabel>
+        <translation><!-- Interest Annuity --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Interest Loan</masterLabel>
+        <translation><!-- Interest Loan --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Internal Transfer</masterLabel>
+        <translation><!-- Internal Transfer --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>International Credit Transfer</masterLabel>
+        <translation><!-- International Credit Transfer --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Loan Payout</masterLabel>
+        <translation><!-- Loan Payout --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Other</masterLabel>
+        <translation><!-- Other --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rebooking</masterLabel>
+        <translation><!-- Rebooking --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rebooking Interest</masterLabel>
+        <translation><!-- Rebooking Interest --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sepa Credit Transfer</masterLabel>
+        <translation><!-- Sepa Credit Transfer --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sepa Credit Transfer Return</masterLabel>
+        <translation><!-- Sepa Credit Transfer Return --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sepa Direct Debit</masterLabel>
+        <translation><!-- Sepa Direct Debit --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sepa Direct Debit Return</masterLabel>
+        <translation><!-- Sepa Direct Debit Return --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Transfer Annuity</masterLabel>
+        <translation><!-- Transfer Annuity --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Fields__c</field>
-        <value xsi:type="xsd:string">Accepted_Terms_and_Conditions__c, Activation_Number__c, Gender__c, Lead_Origin__c, Newsletter__c, Primary__c, ProductInterest__c, Product_A__c, Product_B__c, Product_C__c, Product_D__c, Reason_For_Unsubscribing__c, Last_Email_Sent_Date__c</value>
+        <value xsi:type="xsd:string">LastName</value>
     </values>
     <values>
         <field>Object__c</field>

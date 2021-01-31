@@ -276,6 +276,7 @@ public inherited  sharing class SolarisbankService {
         String statement_uri=STATEMENT_OF_ACCOUNT.replace(':account_id', accountId);
         HttpResponse response=RestService.post(HOST_URL+statement_uri,headers,body);
         details.url=HOST_URL+statement_uri;
+        details.requestBody=body;
         details.responseCode=response.getStatusCode();
         LogService.LogApiCall(details);
         return response.getBody();
@@ -305,6 +306,7 @@ public inherited  sharing class SolarisbankService {
         String statement_uri=BANK_STATEMENT.replace(':account_id', accountId);
         HttpResponse response=RestService.post(HOST_URL+statement_uri,headers,body);
         details.url=HOST_URL+statement_uri;
+        details.requestBody=body;
         details.responseCode=response.getStatusCode();
         LogService.LogApiCall(details);
         return response.getBody();

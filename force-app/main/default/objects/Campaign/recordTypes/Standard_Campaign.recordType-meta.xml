@@ -27,29 +27,6 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>Products__c</picklist>
-        <values>
-            <fullName>Newsletter</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Product A</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Product B</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Product C</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Product D</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
         <picklist>Status</picklist>
         <values>
             <fullName>Aborted</fullName>

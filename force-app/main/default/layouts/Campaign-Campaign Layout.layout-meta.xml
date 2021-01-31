@@ -287,12 +287,15 @@
     </relatedContent>
     <relatedLists>
         <fields>MEMBER_TYPE</fields>
-        <fields>STATUS</fields>
-        <fields>FIRST_NAME</fields>
-        <fields>LAST_NAME</fields>
-        <fields>TITLE</fields>
+        <fields>FULL_NAME</fields>
         <fields>COMPANY</fields>
+        <fields>STATUS</fields>
+        <fields>EMAIL</fields>
+        <fields>MOBILE</fields>
+        <fields>PHONE</fields>
         <relatedList>RelatedCampaignMemberList</relatedList>
+        <sortField>FULL_NAME</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>LABEL</fields>
@@ -301,16 +304,6 @@
         <fields>LASTMODIFIEDDATE</fields>
         <fields>LASTMODIFIEDBY</fields>
         <relatedList>RelatedCampaignMemberStatusList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>OPPORTUNITY.NAME</fields>
-        <fields>CONTACT.NAME</fields>
-        <fields>REVENUE_SHARE</fields>
-        <fields>OPPORTUNITY.AMOUNT</fields>
-        <fields>OPPORTUNITY.STAGE_NAME</fields>
-        <fields>OPPORTUNITY.CLOSE_DATE</fields>
-        <fields>CORE.USERS.FULL_NAME</fields>
-        <relatedList>RelatedCampaignInfluence2CampaignList</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>CAMPAIGN.NAME</fields>

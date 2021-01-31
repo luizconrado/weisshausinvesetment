@@ -4,4 +4,210 @@
     <active>true</active>
     <description>This can be used for simple question and answer articles</description>
     <label>FAQ</label>
+    <picklistValues>
+        <picklist>Type_II__c</picklist>
+        <values>
+            <fullName>Access Deletion</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Access Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Account Confirmation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Account Statement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bank Card Block</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bank Data Deletion</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bank Data Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Birth City Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Birthdate Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Card Chargeback</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Card Decline</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Card Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Card Return%2FDelivery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closure Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Direct Debit Return</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fraudulent Transaction Monitoring</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Tech Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Identification Complaints</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Identification Creation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Identification Issues</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Incoming Payment investigation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Information Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Investigation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Name Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nationality Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Requests</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outgoing Payment investigation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>P-Konto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner Card Block</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner Card Closure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner Card Unblock</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payment Recall</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payment Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone Change %28Without access%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seizure Information Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seizures Payout</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tax ID Input</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>User Complaint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Verification Message Issue</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type__c</picklist>
+        <values>
+            <fullName>AML</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Account Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Card Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Complaints</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GDPR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Identification</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Master Data Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seizures</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tech</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
 </RecordType>

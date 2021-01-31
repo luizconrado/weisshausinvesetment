@@ -1,0 +1,421 @@
+<aura:component  controller="BankingService" implements="force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global" >
+    <lightning:workspaceAPI aura:id="workspace"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <aura:handler name='init' value='{!this}' action='{!c.onInit}' />
+    
+    <aura:html tag="style">
+        .cuf-content {
+        padding: 0 0rem !important;
+        }
+        .slds-p-around--medium {
+        padding: 0rem !important;
+        }       
+        .slds-modal__content{
+        height:unset !important;
+        max-height:unset !important;
+        }
+    </aura:html>
+    
+    
+    
+    <aura:attribute type="Object"  name="caseDetails"  />
+    <aura:attribute type="Object"  name="articleDetails"  />
+    
+    <aura:attribute type="String" name="subject"/>
+    <aura:attribute type="String" name="body"/>
+     
+    <aura:attribute type="List" name="fileTypes"/>
+    <aura:attribute type="List" name="fileVersions"/>
+    <aura:attribute type="List" name="caseTypes"/>
+    <aura:attribute type="Object" name="caseIITypes"/>
+    <aura:attribute type="List" name="caseDependentTypes" />
+    
+    <aura:attribute type="String" name="currentStep" default="1"/>
+    <aura:attribute type="String" name="selectedType"/>
+    <aura:attribute type="String" name="selectedTypeII"/>
+    <aura:attribute type="String" name="header"/>
+    <aura:attribute type="String"  name="selectedItemId"  />
+    <aura:attribute type="String"  name="selectedFileType"  />
+    <aura:attribute type="String"  name="enterdFileType"  />
+ 
+
+    
+    <aura:attribute type="List" name="pathSteps"/>
+    <aura:attribute type="List"  name="caseItemList"  />
+    <aura:attribute type="List"  name="BookingsItemList"  />
+ 
+    <aura:attribute type="boolean" name="typeLoaded" default="false"/>
+    <aura:attribute type="boolean" name="subTypeLoaded" default="false"/>
+    <aura:attribute type="boolean"  name="loading" default="false"/>
+    <aura:attribute type="boolean" name="isClose" default="true"/>
+    <aura:attribute type="boolean" name="isSave" default="false"/>
+    <aura:attribute type="boolean" name="isCompactLayout" default="false"/>
+    <aura:attribute type="boolean" name="isCaseItemsAttached" default="true"/>
+    <div>
+        <section class="slds-fade-in-open slds-modal_medium">
+            <div>
+                <header class="modal-header   slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Jira ticket</h2>
+                    <p class="slds-m-top_x-small">
+                        <div class="align-center slds-grid slds-gutters">
+                            <div class="slds-col ">
+                                <lightning:progressIndicator currentStep="{!v.currentStep}">
+                                    <lightning:progressStep label="Select Case Type" value="1"/>
+                                    <lightning:progressStep label="Verify Process" value="2"/>
+                                    <lightning:progressStep label="Jira Description" value="3"/>
+                                    <lightning:progressStep label="Upload File" value="4"/>
+                                </lightning:progressIndicator>
+                            </div>
+                        </div>
+                        <h2 class="block-header ">{!v.header}</h2>
+                    </p>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium slds-is-relative"  id="modal-content-id-1">
+                    <aura:if isTrue="{!v.loading}">
+                        <lightning:spinner alternativeText="Loading" size="medium" />
+                    </aura:if>
+                    <aura:if isTrue="{!v.currentStep=='1'}">
+                        <aura:if isTrue="{!!v.isCaseItemsAttached}">
+                            <div class="content-center">
+                                <div class="slds-notify_toast slds-theme_warning" role="status">
+                                    <span class="slds-assistive-text">warning</span>
+                                    <span class="slds-icon_container slds-icon-utility-warning slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+                                        <lightning:icon iconName="utility:warning" alternativeText="warning" size="small" title="warning" />
+                                    </span>
+                                    <div class="slds-notify__content">
+                                        <h2 class="slds-text-heading_small ">{!$Label.c.Case_Jira_bankcaseitems_validation}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </aura:if>
+                        <div class="slds-col" >
+                            <div class="slds-col slds-m-bottom_small">
+                                <lightning:select label="Select Type" name="type"  required="true" value="{!v.selectedType}" onchange="{! c.onTypeSelect }">
+                                    <aura:iteration items="{!v.caseTypes}" var="option">
+                                        <option text="{!option.label}" value="{!option.value}" selected="{!option.selected}"/>
+                                    </aura:iteration>
+                                </lightning:select>
+                            </div>
+                            <div class="slds-col slds-m-bottom_small">
+                                <lightning:select label="Select Sub Type"  required="true"  name="subType" value="{!v.selectedTypeII}" onchange="{! c.onTypeIISelect }">
+                                    <aura:iteration items="{!v.caseDependentTypes}" var="option">
+                                        <option text="{!option.label}" value="{!option.value}" selected="{!option.selected}"/>
+                                    </aura:iteration>
+                                </lightning:select>
+                            </div>
+                        </div>
+                    </aura:if>
+                    <aura:if isTrue="{!v.currentStep=='2'}">
+                        <div class="slds-scrollable">
+                            <aura:if isTrue="{! or(
+                                             v.selectedTypeII=='Direct Debit Return',
+                                             or(v.selectedTypeII=='Payment Recall',or(v.selectedTypeII=='Outgoing Payment investigation',v.selectedTypeII=='Incoming Payment investigation'))
+                                             )}">
+                                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+                                    <thead>
+                                        <tr class="slds-line-height_reset">
+                                            <th class="" scope="col">        
+                                                Selected
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Booking Date" data-id="Booking_Date__c">
+                                                    Booking Date
+                                                </div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Description" data-id="Description__c">
+                                                    Description
+                                                </div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Amount" data-id="Amount__c">
+                                                    Amount
+                                                </div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Recipient IBAN" data-id="Recipient_IBAN__c">
+                                                    Recipient IBAN
+                                                </div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Recipient IBAN" data-id="Recipient_Name__c">
+                                                    Recipient Name
+                                                </div>
+                                            </th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <aura:iteration items="{!v.BookingsItemList}" var="item">
+                                            <tr class="slds-hint-parent">
+                                                
+                                                <th data-label="Select Booking" scope="row">
+                                                    <lightning:input checked="{!item.selected}" disabled="{!!item.valid}" onchange="{!c.onBookingSelect}"
+                                                                     type="checkbox" label="" name="{!item.id}">
+                                                    </lightning:input>
+                                                </th>
+                                                
+                                                <td data-label="Booking Date">
+                                                    <div class="{! join(' ',
+                                                                !item.valid?'red-text':'',
+                                                                'slds-truncate')}" title="{!!item.valid?item.title:''}">
+                                                        {!item.date}
+                                                    </div>
+                                                </td>
+                                                <td data-label="Description">
+                                                    <div class="slds-truncate" title="{!item.description}">{!item.description}
+                                                    </div>
+                                                </td>
+                                                <td data-label="Amount">
+                                                    <div class="slds-truncate" title="{!item.amount}">{!item.amount}</div>
+                                                </td>
+                                                <td data-label="Recipient IBAN">
+                                                    <div class="slds-truncate" title="{!item.recipent_iban}">
+                                                        {!item.recipent_iban}</div>
+                                                </td>
+                                                <td data-label="Recipient Name">
+                                                    <div class="slds-truncate" title="{!item.recipent_name}">
+                                                        {!item.recipent_name}</div>
+                                                </td>
+                                            </tr>
+                                        </aura:iteration>
+                                    </tbody>
+                                </table>
+                            </aura:if>
+                            <aura:if isTrue="{! or(
+                                             v.selectedTypeII=='Card Chargeback',v.selectedTypeII =='Card Decline')}">
+                                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+                                    <thead>
+                                        <tr class="slds-line-height_reset">
+                                            <th class="" scope="col">        
+                                                Selected
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Booking Date" data-id="Booking_Date__c">
+                                                    Booking Date
+                                                </div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Description" data-id="Description__c">
+                                                    Description
+                                                </div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Amount" data-id="Amount__c">
+                                                    Amount
+                                                </div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Recipient IBAN" data-id="Recipient_IBAN__c">
+                                                    Recipient IBAN
+                                                </div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Recipient IBAN" data-id="Recipient_Name__c">
+                                                    Recipient Name
+                                                </div>
+                                            </th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <aura:iteration items="{!v.BookingsItemList}" var="item">
+                                            <tr class="slds-hint-parent">
+                                                
+                                                <th data-label="Select Booking" scope="row">
+                                                    <lightning:input checked="{!item.selected}" disabled="{!!item.valid}" onchange="{!c.onCaseBookingSelect}"
+                                                                     type="checkbox" label="" name="{!item.id}">
+                                                    </lightning:input>
+                                                </th>
+                                                
+                                                <td data-label="Booking Date">
+                                                    <div class="{! join(' ',
+                                                                !item.valid?'red-text':'',
+                                                                'slds-truncate')}" title="{!!item.valid?item.title:''}">
+                                                        {!item.date}
+                                                    </div>
+                                                </td>
+                                                <td data-label="Description">
+                                                    <div class="slds-truncate" title="{!item.description}">{!item.description}
+                                                    </div>
+                                                </td>
+                                                <td data-label="Amount">
+                                                    <div class="slds-truncate" title="{!item.amount}">{!item.amount}</div>
+                                                </td>
+                                                <td data-label="Recipient IBAN">
+                                                    <div class="slds-truncate" title="{!item.recipent_iban}">
+                                                        {!item.recipent_iban}</div>
+                                                </td>
+                                                <td data-label="Recipient Name">
+                                                    <div class="slds-truncate" title="{!item.recipent_name}">
+                                                        {!item.recipent_name}</div>
+                                                </td>
+                                            </tr>
+                                        </aura:iteration>
+                                    </tbody>
+                                </table>
+                            </aura:if>
+                        </div>
+                        <aura:if isTrue="{!v.articleDetails}">
+                            <div class="slds-grid slds-grid_vertical">
+                                <div class="slds-grid slds-col">
+                                    <div class="slds-col">
+                                        <lightning:input  name="Title" label="Title" readonly="true" value="{!v.articleDetails.Title}" />
+                                    </div>
+                                    <div class="slds-col">
+                                        <lightning:input  name="ArticleNumber" label="Article Number" readonly="true" value="{!v.articleDetails.ArticleNumber}" />
+                                    </div>
+                                </div>
+                                <div class="slds-col">
+                                    <lightning:input  name="Summary" label="Summary" readonly="true" value="{!v.articleDetails.Summary}" />
+                                    
+                                </div>
+                                <div class="slds-col">
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" for="Information">Information</label>
+                                        <div class="slds-form-element__control">
+                                            <lightning:formattedRichText value="{!v.articleDetails.Information__c}"/>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div aura:id="end-reached"></div>
+                            </div>
+                            <aura:set attribute="else">
+                                <div class="content-center">
+                                    <div class="slds-notify_toast slds-theme_warning" role="status">
+                                        <span class="slds-assistive-text">warning</span>
+                                        <span class="slds-icon_container slds-icon-utility-warning slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+                                            <lightning:icon iconName="utility:warning" alternativeText="warning" size="small" title="warning" />
+                                        </span>
+                                        <div class="slds-notify__content">
+                                            <h2 class="slds-text-heading_small ">{!$Label.c.Case_Jira_Knowledge_validation}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                 
+                            </aura:set>
+                        </aura:if>
+                    </aura:if>
+                    <aura:if isTrue="{!v.currentStep=='3'}">
+                        <lightning:input name="subject" value="{!v.subject}" label="Subject" />
+                        <lightning:textarea name="body"  value="{!v.body}" label="Description" />
+                        
+                       
+                        
+                    </aura:if>
+                    <aura:if isTrue="{!v.currentStep=='4'}">
+                        
+                        <div class="slds-scrollable">
+                            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                <thead>
+                                    <tr class="slds-line-height_reset">
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Option"></div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="File Name">File Name</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Uploade Date">Uploade Date</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Uploade By">Uploade By</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Type">Type</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Extension">Extension</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Version">Version</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <aura:iteration items="{!v.fileVersions}" var="doc">
+                                        <tr class="slds-hint-parent">
+                                            <th>
+                                                <lightning:buttonMenu variant="bare" alternativeText="Show menu"  onselect="{! c.onFileOptionsSelect }">
+                                                    
+                                                    <lightning:menuItem value="{!doc.ContentDocumentId+'_upload'}" label="Upload New Version"/>
+                                                    <aura:if isTrue="{!doc.versions.length>0}">
+                                                        <lightning:menuItem value="{!doc.ContentDocumentId+'_expand'}" label="{!doc.expaned==true?'Hide Versions':'Show More Versions'}"/>
+                                                    </aura:if>
+                                                </lightning:buttonMenu>
+                                                
+                                            </th>
+                                            <th data-label="File Name" scope="row">
+                                                <div class="slds-truncate" title="{!doc.Title}">
+                                                    <a   target="_blank"  href="{!'/'+doc.Id}" tabindex="-1">{!doc.Title}</a>
+                                                </div>
+                                            </th>
+                                            <td data-label="Uploade Date">
+                                                <div class="slds-truncate" title="{!doc.ContentModifiedDate}">{!doc.ContentModifiedDate}</div>
+                                            </td>
+                                            <td data-label="Uploade By">
+                                                <div class="slds-truncate" title="{!doc.ContentModifiedBy.Name}">{!doc.ContentModifiedBy.Name}</div>
+                                            </td>
+                                            <td data-label="Type">
+                                                <div class="slds-truncate" title="{!doc.Type__c}">{!doc.Type__c}</div>
+                                            </td>
+                                            <td data-label="Extension">
+                                                <div class="slds-truncate" title="{!doc.FileExtension}">{!doc.FileExtension}</div>
+                                            </td>
+                                            <td data-label="Version">
+                                                <div class="slds-truncate" title="{!doc.VersionNumber}">{!doc.VersionNumber}</div>
+                                            </td>
+                                            
+                                        </tr>
+                                        <aura:if isTrue="{!doc.expaned}">
+                                            <aura:iteration items="{!doc.versions}" var="doc">
+                                                <tr style="background:#a21a0e12" class="slds-hint-parent">
+                                                    <th>
+                                                        
+                                                        
+                                                    </th>
+                                                    <th data-label="File Name" scope="row">
+                                                        <div class="slds-truncate slds-p-left_medium" title="{!doc.Title}">
+                                                            <a   target="_blank"  href="{!'/'+doc.Id}" tabindex="-1">{!doc.Title}</a>
+                                                        </div>
+                                                    </th>
+                                                    <td data-label="Uploade Date">
+                                                        <div class="slds-truncate" title="{!doc.ContentModifiedDate}">{!doc.ContentModifiedDate}</div>
+                                                    </td>
+                                                    <td data-label="Uploade By">
+                                                        <div class="slds-truncate" title="{!doc.ContentModifiedBy.Name}">{!doc.ContentModifiedBy.Name}</div>
+                                                    </td>
+                                                    <td data-label="Type">
+                                                        <div class="slds-truncate" title="{!doc.Type__c}">{!doc.Type__c}</div>
+                                                    </td>
+                                                    <td data-label="Extension">
+                                                        <div class="slds-truncate" title="{!doc.FileExtension}">{!doc.FileExtension}</div>
+                                                    </td>
+                                                    <td data-label="Version">
+                                                        <div class="slds-truncate" title="{!doc.VersionNumber}">{!doc.VersionNumber}</div>
+                                                    </td>
+                                                    
+                                                </tr>
+                                            </aura:iteration>
+                                        </aura:if>
+                                    </aura:iteration>
+                                </tbody>
+                            </table>
+                        </div>
+                    </aura:if>
+                </div>
+            </div>
+            <footer class="modal-footer slds-modal__footer inline-footer"> 
+                <lightning:button disabled="{!v.loading}" variant="brand-outline" value="back" name="back" label="{!v.isClose?$Label.c.Close:$Label.c.Back}" title="Back" onclick="{! c.onBack }"/>
+                <aura:if isTrue="{!v.currentStep=='4'}">
+                    <lightning:button label="Save and upload more files" variant="brand" title="Save and upload more files" onclick="{! c.handleAttachFile }"/>
+                </aura:if>
+                <lightning:button disabled="{!v.loading}" variant="brand" value="next" name="next" label="{!v.isSave?$Label.c.Save:$Label.c.Next}" title="Next" onclick="{! c.onNext }"/>
+            </footer>
+            
+        </section>
+    </div>
+</aura:component>

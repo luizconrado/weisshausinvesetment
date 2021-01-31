@@ -5,14 +5,17 @@
     <name>Case Default Email Template</name>
     <style>none</style>
     <subject>Case</subject>
-    <textOnly>Sehr geehrte
+    <textOnly>Sehr geehrte Kundin / Sehr geehrter Kunde,
+
+Mit freundlichen Grüßen,
 
 Ihr EV Smart Money Holding Team
 
-Sie erhalten diese E-Mail,www.ev-smartmoney.de registriert ist. Diese E-Mail wurde automatisiert versandt. Bitte antworten Sie nicht direkt auf diese E-Mail. Bei Fragen oder Feedback, wenden Sie sich an unseren Kundenservice unter: +49 3074395959
+Sie erhalten diese E-Mail, da Ihre E-Mail-Adresse auf support@ev-smartmoney.com registriert ist.
 
+Wenn Sie Fragen oder Rückmeldungen haben sind wir per E-Mail unter support@ev-smartmoney.com oder unter folgender Telefonnummer gerne für Sie da: +49 30 74395959 (Mo-Fr: 9-18 Uhr)
 
-Copyright © 2020 EV Smart Money Holding GmbH | Klaus-Groth-Straße 3, 14050 Berlin | Charlottenburg District Court | HRB 215045</textOnly>
+Copyright © 2020 EV Smart Money Holding GmbH | HRB 215045 B | Amtsgericht Charlottenburg | Lizenzpartner der Engel &amp; Völkers Marken GmbH &amp; Co. KG | Klaus-Groth-Straße 3, 14050 Berlin, Germany. | Geschäftsführung: Dr. Kyros Khadjavi</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

@@ -5,9 +5,9 @@
     <label>Industry Key</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
     <type>Picklist</type>
     <valueSet>
-        <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
@@ -149,6 +149,11 @@
                 <fullName>ECONOMICALLY_DEPENDENT_INDIVIDUALS</fullName>
                 <default>false</default>
                 <label>Economically Dependent Individuals</label>
+            </value>
+            <value>
+                <fullName>OTHER_PERSONAL_SERVICE_ACTIVITIES</fullName>
+                <default>false</default>
+                <label>Other Personal Service Activities</label>
             </value>
         </valueSetDefinition>
     </valueSet>

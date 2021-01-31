@@ -20,10 +20,12 @@ public class TrackHistoryTest {
         List<String> fields=new List<String>();
         for(String key:SchemaUtil.getAllObjectFields('Account').keySet()) fields.add(key);
         List<Account> a=Database.query('Select '+String.join(fields,',')+' FROM Account');
-        a.get(0).newsletter__pc='subscribed';
+        a.get(0).LastName='subscribed';
         TrackHistory.publishChanges('Account', a);
+        update a;
         Account clone=(Account)JSON.deserialize(JSON.serialize(a.get(0)),Account.class);
-        clone.newsletter__pc='unsubscribed';
+        clone.LastName='unsubscribed';
+       	
         Map<Id,Account> olda=new Map<Id,Account>(new List<Account>{clone});
         
         TrackHistory.publishChanges('Account',a,olda);
@@ -46,6 +48,31 @@ public class TrackHistoryTest {
         Test.stopTest();
         List<History_Tracker__c> newRecords=[SELECT id FROM History_Tracker__c];
         System.assert(newRecords.size()==1);
+    }
+    
+    @isTest
+    static void objectTrackingPart1Test(){
+        Test.startTest();
+        Lead l=TestDataFactory.getWebLead(true);
+        Campaign c=TestDataFactory.getStandardCampaign(true);
+        Account a=TestDataFactory.getPersonAccount(true);
+        Case cc=TestDataFactory.getStandardCase(a.Id,true);
+        Opportunity o=TestDataFactory.getStandardOpportunity(a.Id,true);
+        Subscription__c sub=TestDataFactory.getNewsletterSubscription(a.Id,[SELECT id FROM Contact LIMIT 1].Id ,true);
+        Bank_Case_Item__c cardItemCase=TestDataFactory.getCardBankCase(cc.Id,true);
+        sub.Subscription_Status__c='Unsubscribed'; 
+        o.Name='Test';
+        c.Name='Newsletter';
+        cc.Subject='How are you';
+        a.LastName='Test';
+        
+        update sub;
+        update a;
+        update o;
+        update cc;
+        update l;
+        update c;
+        Test.stopTest();
     }
     
 }

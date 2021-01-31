@@ -4,13 +4,12 @@
     <name>Web Support</name>
     <queueMembers>
         <users>
-            <user>salesforce@weisshausinvestment.com.dev</user>
+            <user>andre.bruns@weisshausinvestment.com</user>
+            <user>syed.furqan@weisshausinvestment.com</user>
+            <user>salesforce@weisshausinvestment.com</user>
         </users>
     </queueMembers>
     <queueRoutingConfig>Web_Support</queueRoutingConfig>
-    <queueSobject>
-        <sobjectType>Case</sobjectType>
-    </queueSobject>
     <queueSobject>
         <sobjectType>LiveChatTranscript</sobjectType>
     </queueSobject>

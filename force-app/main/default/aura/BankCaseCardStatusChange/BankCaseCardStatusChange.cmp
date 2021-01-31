@@ -75,8 +75,8 @@
                 
                 <lightning:button label="Cancel" title="Cancel" onclick="{! c.close }"/>
                 
-                <lightning:button variant="brand" label="{! v.createJira?'Process JIRA Ticket Information':'Change Status'}" 
-                                  title="{! v.createJira?'Process JIRA Ticket Information':'Change Status'}"
+                <lightning:button variant="brand" disabled="{!v.createJira}" label="{! v.createJira?'SB JIRA Ticket Required':'Change Status'}" 
+                                  title="{! v.createJira?'SB JIRA Ticket Required':'Change Status'}"
                                   onclick="{! c.changeStatus }" />
                 
             </footer>

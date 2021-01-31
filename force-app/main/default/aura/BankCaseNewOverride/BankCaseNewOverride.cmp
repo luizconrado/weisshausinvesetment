@@ -1,4 +1,4 @@
-<aura:component controller="BankCaseOverrideControler" implements="flexipage:availableForRecordHome,force:hasRecordId,lightning:actionOverride" access="global"  >
+<aura:component controller="BankCaseOverrideControler" implements="lightning:isUrlAddressable,flexipage:availableForRecordHome,force:hasRecordId,lightning:actionOverride" access="global"  >
     <lightning:workspaceAPI aura:id="workspace"/>
     <lightning:notificationsLibrary aura:id="notifLib"/>
 
@@ -6,6 +6,7 @@
 
     <aura:handler name='render' value='{!this}' action='{!c.onRender}' />
     
+     
     <aura:attribute type="String" name="header" default="Select Case Type"/>
     <aura:attribute type="String" name="currentStep" default="selectType"/>
     <aura:attribute type="boolean" name="isSave" default="false"/>

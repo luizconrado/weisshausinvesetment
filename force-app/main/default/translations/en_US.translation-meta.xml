@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Translations xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customApplications>
+        <label><!-- Lead Generation --></label>
+        <name>Lead_Generation</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Relationship Management --></label>
+        <name>Relationship_Management</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Sales Leadership --></label>
+        <name>Sales_Leadership</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Sales Operations --></label>
+        <name>Sales_Operations</name>
+    </customApplications>
+    <customLabels>
+        <label><!-- Available --></label>
+        <name>Available</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Back --></label>
+        <name>Back</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Balance --></label>
+        <name>Balance</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Case_Jira_AttachmentRequired_validation --></label>
+        <name>Case_Jira_AttachmentRequired_validation</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Case_Jira_Knowledge_validation --></label>
+        <name>Case_Jira_Knowledge_validation</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Case_Jira_bankcaseitems_validation --></label>
+        <name>Case_Jira_bankcaseitems_validation</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Case_Jira_fileuploaded --></label>
+        <name>Case_Jira_fileuploaded</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Case_Jira_fileversion_validation --></label>
+        <name>Case_Jira_fileversion_validation</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ChooseOption --></label>
+        <name>ChooseOption</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Close --></label>
+        <name>Close</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EmailAddress --></label>
+        <name>EmailAddress</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- FirstName --></label>
+        <name>FirstName</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Next --></label>
+        <name>Next</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- PhoneNumber --></label>
+        <name>PhoneNumber</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Privacy Web Link --></label>
+        <name>Privacy_Web_Link</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ReasonForUnsubscribeText --></label>
+        <name>ReasonForUnsubscribeText</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- SalutationText --></label>
+        <name>SalutationText</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Save --></label>
+        <name>Save</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- SignOut --></label>
+        <name>SignOut</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Surname --></label>
+        <name>Surname</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- TermsAndConditionsText --></label>
+        <name>TermsAndConditionsText</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Track History Exclusion --></label>
+        <name>Track_History_Exclusion</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unsubscribe --></label>
+        <name>Unsubscribe</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- UnsubscribeOption1 --></label>
+        <name>UnsubscribeOption1</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- UnsubscribeOption2 --></label>
+        <name>UnsubscribeOption2</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- UnsubscribeOption3 --></label>
+        <name>UnsubscribeOption3</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- UnsubscribeText --></label>
+        <name>UnsubscribeText</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- VerifiedAccountText --></label>
+        <name>VerifiedAccountText</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- VerifyAccountText --></label>
+        <name>VerifyAccountText</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- VerifyButtonText --></label>
+        <name>VerifyButtonText</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- WissehouseWebsite_Url --></label>
+        <name>WissehouseWebsite_Url</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- community_uri --></label>
+        <name>community_uri</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- form_error_msg --></label>
+        <name>form_error_msg</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- form_warrning_msg --></label>
+        <name>form_warrning_msg</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- from_successUnsubscribe_msg --></label>
+        <name>from_successUnsubscribe_msg</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- from_success_msg --></label>
+        <name>from_success_msg</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- performLeadDuplicateCheck --></label>
+        <name>performLeadDuplicateCheck</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- siteUrl --></label>
+        <name>siteUrl</name>
+    </customLabels>
+    <customTabs>
+        <label><!-- Usage Dashboard --></label>
+        <name>Usage_Dashboard</name>
+    </customTabs>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Subscription_Emails</fullName>
+    </flowDefinitions>
+    <quickActions>
+        <label><!-- Follow Up --></label>
+        <name>Follow_Up</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Guest Community Case --></label>
+        <name>GuestCommunityCase</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- LogACall --></label>
+        <name>LogACall</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewAccount --></label>
+        <name>NewAccount</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- New Case --></label>
+        <name>NewCase</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- New Community Case --></label>
+        <name>NewCommunityCase</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- New Contact --></label>
+        <name>NewContact</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewEvent --></label>
+        <name>NewEvent</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewGroup --></label>
+        <name>NewGroup</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewLead --></label>
+        <name>NewLead</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewOpportunity --></label>
+        <name>NewOpportunity</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewTask --></label>
+        <name>NewTask</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- SendEmail --></label>
+        <name>SendEmail</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Snapins_Case_OfflineCaseQuickAction_08h5I000000fySh_1593076679111 --></label>
+        <name>Snapins_Case_OfflineCaseQuickAction_08h5I000000fySh_1593076679111</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Snapins_Case_PrechatQuickAction_08h5I000000fySh_1603913485101 --></label>
+        <name>Snapins_Case_PrechatQuickAction_08h5I000000fySh_1603913485101</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Snapins_Contact_PrechatQuickAction_08h5I000000fySh_1603913484965 --></label>
+        <name>Snapins_Contact_PrechatQuickAction_08h5I000000fySh_1603913484965</name>
+    </quickActions>
+</Translations>

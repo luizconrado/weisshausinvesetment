@@ -191,13 +191,6 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>Lead_Origin__c</picklist>
-        <values>
-            <fullName>weisshausinvestment</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
         <picklist>Name</picklist>
         <values>
             <fullName>Dr%2E</fullName>
@@ -221,155 +214,6 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>Newsletter__c</picklist>
-        <values>
-            <fullName>Awaiting Confirmation</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Confirmation Resent</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Not Subscribed</fullName>
-            <default>true</default>
-        </values>
-        <values>
-            <fullName>Subscribed</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Unsubscribed</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>Primary__c</picklist>
-        <values>
-            <fullName>No</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Yes</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>ProductInterest__c</picklist>
-        <values>
-            <fullName>Newsletter</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Product A</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Product B</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Product C</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Product D</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>Product_A__c</picklist>
-        <values>
-            <fullName>Awaiting Confirmation</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Confirmation Resent</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Not Subscribed</fullName>
-            <default>true</default>
-        </values>
-        <values>
-            <fullName>Subscribed</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Unsubscribed</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>Product_B__c</picklist>
-        <values>
-            <fullName>Awaiting Confirmation</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Confirmation Resent</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Not Subscribed</fullName>
-            <default>true</default>
-        </values>
-        <values>
-            <fullName>Subscribed</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Unsubscribed</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>Product_C__c</picklist>
-        <values>
-            <fullName>Awaiting Confirmation</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Confirmation Resent</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Not Subscribed</fullName>
-            <default>true</default>
-        </values>
-        <values>
-            <fullName>Subscribed</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Unsubscribed</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>Product_D__c</picklist>
-        <values>
-            <fullName>Awaiting Confirmation</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Confirmation Resent</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Not Subscribed</fullName>
-            <default>true</default>
-        </values>
-        <values>
-            <fullName>Subscribed</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Unsubscribed</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
         <picklist>Rating</picklist>
         <values>
             <fullName>Cold</fullName>
@@ -381,21 +225,6 @@
         </values>
         <values>
             <fullName>Warm</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>Reason_For_Unsubscribing__c</picklist>
-        <values>
-            <fullName>Andere</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Nicht Interessiert</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Nicht Offenlegen</fullName>
             <default>false</default>
         </values>
     </picklistValues>

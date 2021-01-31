@@ -1,4 +1,4 @@
-public inherited sharing class Constant {
+public inherited sharing class Constant { 
     //LEAD
     public static final String DEFAULT_LEAD_RECORDTYPEID{private set;get{
         if(DEFAULT_LEAD_RECORDTYPEID==null)DEFAULT_LEAD_RECORDTYPEID=SchemaUtil.getRecordTypeId('Default', 'Lead');
@@ -101,28 +101,13 @@ public inherited sharing class Constant {
         return BANKCASE_STATEMENT_RECORDTYPEID;
     }}
     
-    //METADATA
-    public static final Map<String, String> PRODUCT_CONFIGURATION{private set;get{
-        if(PRODUCT_CONFIGURATION==null)PRODUCT_CONFIGURATION=Util.getProductMetaDataConfiguration();
-        return PRODUCT_CONFIGURATION;
-    }}
-    
-    
-    // EMAIL TEMPLATE
-    
-    public static final ID ACCOUNT_VERIFY_EMAIL_TEMPLATE{private set;get{
-        if(ACCOUNT_VERIFY_EMAIL_TEMPLATE==null) ACCOUNT_VERIFY_EMAIL_TEMPLATE=[SELECT id,name,developername FROM emailtemplate WHERE developername ='Weisshausinvestment_Person_Account_Verify_Email'].Id;
-        return ACCOUNT_VERIFY_EMAIL_TEMPLATE;
+    //Subscription
+    public static final String SUBSCRIPTION_DEFAULT_RECORDTYPEID{private set;get{
+        if(SUBSCRIPTION_DEFAULT_RECORDTYPEID==null)SUBSCRIPTION_DEFAULT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Default', 'Subscription__c');
+        return SUBSCRIPTION_DEFAULT_RECORDTYPEID;
     }}
      
-    public static final ID ACCOUNT_UNSUBSCRIBE_EMAIL_TEMPLATE{private set;get{
-        if(ACCOUNT_UNSUBSCRIBE_EMAIL_TEMPLATE==null) ACCOUNT_UNSUBSCRIBE_EMAIL_TEMPLATE=[SELECT id,name,developername FROM emailtemplate WHERE developername ='Weisshausinvestment_Person_Account_unsubscribe_Email'].Id;
-        return ACCOUNT_UNSUBSCRIBE_EMAIL_TEMPLATE;
-    }}
-     
-    public static final ID ACCOUNT_SUBSCRIBED_EMAIL_TEMPLATE{private set;get{
-        if(ACCOUNT_SUBSCRIBED_EMAIL_TEMPLATE==null) ACCOUNT_SUBSCRIBED_EMAIL_TEMPLATE=[SELECT id,name,developername FROM emailtemplate WHERE developername ='Weisshausinvestment_Person_Account_Thank_You_Email'].Id;
-        return ACCOUNT_SUBSCRIBED_EMAIL_TEMPLATE;
-    }}
+    
+    
     
 }

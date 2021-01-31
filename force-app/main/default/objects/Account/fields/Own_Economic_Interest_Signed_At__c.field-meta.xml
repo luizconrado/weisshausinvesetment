@@ -5,5 +5,6 @@
     <label>Own Economic Interest Signed At</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
     <type>DateTime</type>
 </CustomField>

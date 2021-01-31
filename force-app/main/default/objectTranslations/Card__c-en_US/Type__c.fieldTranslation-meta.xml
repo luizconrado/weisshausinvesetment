@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Type --></label>
+    <name>Type__c</name>
+    <picklistValues>
+        <masterLabel>Mastercard Business Debit</masterLabel>
+        <translation><!-- Mastercard Business Debit --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mastercard Debit</masterLabel>
+        <translation><!-- Mastercard Debit --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Visa Business Debit</masterLabel>
+        <translation><!-- Visa Business Debit --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Visa Debit</masterLabel>
+        <translation><!-- Visa Debit --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

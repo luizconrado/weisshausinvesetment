@@ -4,7 +4,8 @@
     <fields>CaseNumber</fields>
     <fields>AccountId</fields>
     <fields>Origin</fields>
-    <fields>Reason</fields>
+    <fields>Priority</fields>
+    <fields>Status</fields>
     <fields>RecordTypeId</fields>
     <label>Default</label>
 </CompactLayout>

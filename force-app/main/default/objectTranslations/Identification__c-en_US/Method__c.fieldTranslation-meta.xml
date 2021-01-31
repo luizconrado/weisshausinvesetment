@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Method --></label>
+    <name>Method__c</name>
+    <picklistValues>
+        <masterLabel>IDnow</masterLabel>
+        <translation><!-- IDnow --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>POSTIDENT</masterLabel>
+        <translation><!-- POSTIDENT --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

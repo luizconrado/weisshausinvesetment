@@ -4,8 +4,8 @@
 
 import { LightningElement, api } from 'lwc';
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
-import updateLead from '@salesforce/apex/LeadService.updateLeadWithConfirmation';
-import checkLeadOnLoad from '@salesforce/apex/LeadService.checkAndUpdateLeadOnload';
+import updateLead from '@salesforce/apex/SubscriptionService.updateSubscriptionWithConfirmation';
+import checkLeadOnLoad from '@salesforce/apex/SubscriptionService.checkAndUpdateSubscriptionOnload';
 import privacyWebLink from '@salesforce/label/c.Privacy_Web_Link';
 import successMsg from '@salesforce/label/c.from_success_msg';
 import errorMsg from '@salesforce/label/c.form_error_msg';
@@ -134,7 +134,7 @@ export default class VerifyEmailAccount extends LightningElement {
                 this.leadId = result.leadId;
                 this.showForm = result.showForm;
                 if (this.showForm == false) {
-                    setTimeout(() => location.href = 'https://www.weisshausinvestment.com/', 5000);
+                    setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 5000);
                 }
             })
             .catch(error => {
@@ -161,7 +161,7 @@ export default class VerifyEmailAccount extends LightningElement {
                 .then(result => {
                     this.showToast('Success', successMsg, 'success');
                     this.loaded = false;
-                    setTimeout(() => location.href = 'https://www.weisshausinvestment.com/', 2000);
+                    setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 2000);
                 })
                 .catch(error => {
                     this.showToast('Error', errorMsg, 'error');
@@ -175,9 +175,11 @@ export default class VerifyEmailAccount extends LightningElement {
     }
 
     checkFieldValidity() {
-        return [...this.template.querySelectorAll('lightning-input,lightning-combobox')]
+        let elements = this.template.querySelectorAll('lightning-input,lightning-combobox');
+        return [...elements]
             .reduce((validSoFar, inputCmp) => {
                 inputCmp.reportValidity();
+
                 return validSoFar && inputCmp.checkValidity();
             }, true);
     }

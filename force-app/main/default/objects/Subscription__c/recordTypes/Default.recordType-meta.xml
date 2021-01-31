@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Default</fullName>
+    <active>true</active>
+    <label>Default</label>
+    <picklistValues>
+        <picklist>Reason_For_Unsubscribing__c</picklist>
+        <values>
+            <fullName>Andere</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nicht Interessiert</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nicht Offenlegen</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Subscription_Status__c</picklist>
+        <values>
+            <fullName>Awaiting Confirmation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Confirmation Resent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Subscribed</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Subscribed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unsubscribed</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type__c</picklist>
+        <values>
+            <fullName>Newsletter</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

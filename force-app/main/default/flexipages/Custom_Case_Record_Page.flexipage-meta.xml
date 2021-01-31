@@ -17,7 +17,20 @@
                             </visibilityRule>
                         </valueListItems>
                         <valueListItems>
+                            <value>Case.Start_Jira_Ticket</value>
+                            <visibilityRule>
+                                <criteria>
+                                    <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Banking_Case</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                        <valueListItems>
                             <value>Edit</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Case.Attach_File</value>
                         </valueListItems>
                         <valueListItems>
                             <value>Delete</value>
@@ -57,6 +70,11 @@
                     <value>linear</value>
                 </componentInstanceProperties>
                 <componentName>runtime_sales_pathassistant:pathAssistant</componentName>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>Log_Usage</componentName>
             </componentInstance>
         </itemInstances>
         <name>header</name>
@@ -174,6 +192,19 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>recordActionDeployment</name>
+                    <value>BankingCase</value>
+                </componentInstanceProperties>
+                <componentName>lbpm:actionList</componentName>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-680ede6f-5341-4331-82c7-1e1f188db22b</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>active</name>
                     <value>true</value>
                 </componentInstanceProperties>
@@ -184,6 +215,19 @@
                 <componentInstanceProperties>
                     <name>title</name>
                     <value>Standard.Tab.knowledge</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-680ede6f-5341-4331-82c7-1e1f188db22b</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Recommendations</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
             </componentInstance>

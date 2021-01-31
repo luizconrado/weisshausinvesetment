@@ -10,6 +10,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Alpha Test</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Customer Event</fullName>
             <default>false</default>
         </values>
@@ -43,6 +47,25 @@
         </values>
         <values>
             <fullName>Website</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Account_Source_Detail__c</picklist>
+        <values>
+            <fullName>E%26V Friends</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finleap</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finleap Connect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Friends %26 Family</fullName>
             <default>false</default>
         </values>
     </picklistValues>

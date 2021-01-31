@@ -9,12 +9,68 @@
         <value>Available</value>
     </labels>
     <labels>
+        <fullName>Back</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Back</shortDescription>
+        <value>Back</value>
+    </labels>
+    <labels>
         <fullName>Balance</fullName>
         <categories>ComponentUI</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Balance</shortDescription>
         <value>Balance</value>
+    </labels>
+    <labels>
+        <fullName>Case_Jira_AttachmentRequired_validation</fullName>
+        <categories>ComponentUI</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case_Jira_AttachmentRequired_validation</shortDescription>
+        <value>Attachment Required</value>
+    </labels>
+    <labels>
+        <fullName>Case_Jira_Knowledge_validation</fullName>
+        <categories>ComponentUI</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case_Jira_Knowledge_validation</shortDescription>
+        <value>No Knowledge Article was found, please contact your system admin for further details.</value>
+    </labels>
+    <labels>
+        <fullName>Case_Jira_bankcaseitems_validation</fullName>
+        <categories>ComponentUI</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case_Jira_bankcaseitems_validation</shortDescription>
+        <value>Please check bank case items are linked to case</value>
+    </labels>
+    <labels>
+        <fullName>Case_Jira_fileuploaded</fullName>
+        <categories>ComponentUI</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case_Jira_fileuploaded</shortDescription>
+        <value>File Uploaded and attached.</value>
+    </labels>
+    <labels>
+        <fullName>Case_Jira_fileversion_validation</fullName>
+        <categories>ComponentUI</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case_Jira_fileversion_validation</shortDescription>
+        <value>File version already exist in system. Upload New Version</value>
+    </labels>
+    <labels>
+        <fullName>ChooseOption</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ChooseOption</shortDescription>
+        <value>Choose an option</value>
     </labels>
     <labels>
         <fullName>Close</fullName>
@@ -25,11 +81,90 @@
         <value>Close</value>
     </labels>
     <labels>
+        <fullName>EmailAddress</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EmailAddress</shortDescription>
+        <value>(prefilled e-mail)</value>
+    </labels>
+    <labels>
+        <fullName>FirstName</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FirstName</shortDescription>
+        <value>First Name</value>
+    </labels>
+    <labels>
+        <fullName>Next</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Next</shortDescription>
+        <value>Next</value>
+    </labels>
+    <labels>
+        <fullName>PhoneNumber</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PhoneNumber</shortDescription>
+        <value>Phone number</value>
+    </labels>
+    <labels>
         <fullName>Privacy_Web_Link</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Privacy Web Link</shortDescription>
         <value>https://www.weisshausinvestment.com/datenschutz/</value>
+    </labels>
+    <labels>
+        <fullName>ReasonForUnsubscribeText</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ReasonForUnsubscribeText</shortDescription>
+        <value>Reason for unsubscribing</value>
+    </labels>
+    <labels>
+        <fullName>SalutationText</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SalutationText</shortDescription>
+        <value>Select salutation</value>
+    </labels>
+    <labels>
+        <fullName>Save</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Save</shortDescription>
+        <value>Save</value>
+    </labels>
+    <labels>
+        <fullName>SignOut</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SignOut</shortDescription>
+        <value>Sign out</value>
+    </labels>
+    <labels>
+        <fullName>Surname</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Surname</shortDescription>
+        <value>Surname</value>
+    </labels>
+    <labels>
+        <fullName>TermsAndConditionsText</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TermsAndConditionsText</shortDescription>
+        <value>I accept the terms and conditions</value>
     </labels>
     <labels>
         <fullName>Track_History_Exclusion</fullName>
@@ -38,6 +173,72 @@
         <protected>false</protected>
         <shortDescription>Track History Exclusion</shortDescription>
         <value>admin@salesforce.com</value>
+    </labels>
+    <labels>
+        <fullName>Unsubscribe</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Unsubscribe</shortDescription>
+        <value>Unsubscribe</value>
+    </labels>
+    <labels>
+        <fullName>UnsubscribeOption1</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UnsubscribeOption1</shortDescription>
+        <value>Don&apos;t disclose</value>
+    </labels>
+    <labels>
+        <fullName>UnsubscribeOption2</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UnsubscribeOption2</shortDescription>
+        <value>Not interested</value>
+    </labels>
+    <labels>
+        <fullName>UnsubscribeOption3</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UnsubscribeOption3</shortDescription>
+        <value>Other</value>
+    </labels>
+    <labels>
+        <fullName>UnsubscribeText</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UnsubscribeText</shortDescription>
+        <value>We&apos;re sorry to have lost you</value>
+    </labels>
+    <labels>
+        <fullName>VerifiedAccountText</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>VerifiedAccountText</shortDescription>
+        <value>Your email address has been successfully verified!
+
+Thank you very much!</value>
+    </labels>
+    <labels>
+        <fullName>VerifyAccountText</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>VerifyAccountText</shortDescription>
+        <value>Verify email account</value>
+    </labels>
+    <labels>
+        <fullName>VerifyButtonText</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>VerifyButtonText</shortDescription>
+        <value>Verify account</value>
     </labels>
     <labels>
         <fullName>WissehouseWebsite_Url</fullName>
@@ -61,7 +262,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>form_error_msg</shortDescription>
-        <value>Scheint ein technisches Problem zu sein, bitte versuchen Sie es später noch einmal. Entschuldigung für die Unannehmlichkeiten.</value>
+        <value>Seems to be a technical problem, please try again later. Sorry for the inconvenience.</value>
     </labels>
     <labels>
         <fullName>form_warrning_msg</fullName>
@@ -69,7 +270,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>form_warrning_msg</shortDescription>
-        <value>Bitte prüfen Sie die Felder.</value>
+        <value>Please check the fields.</value>
     </labels>
     <labels>
         <fullName>from_successUnsubscribe_msg</fullName>
@@ -77,7 +278,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>from_successUnsubscribe_msg</shortDescription>
-        <value>erfolgreich von der Liste abgemeldet</value>
+        <value>Successfully unsubscribed from the list.</value>
     </labels>
     <labels>
         <fullName>from_success_msg</fullName>
@@ -85,7 +286,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>from_success_msg</shortDescription>
-        <value>Sie haben Ihre E-Mail-Adresse erfolgreich verifiziert.</value>
+        <value>You have successfully verified your email address.</value>
     </labels>
     <labels>
         <fullName>performLeadDuplicateCheck</fullName>
@@ -99,6 +300,6 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>siteUrl</shortDescription>
-        <value>https://support.weisshausinvestment.com/</value>
+        <value>https://support.weisshausinvestment.com</value>
     </labels>
 </CustomLabels>

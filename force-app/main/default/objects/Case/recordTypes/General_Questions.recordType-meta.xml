@@ -3,7 +3,7 @@
     <fullName>General_Questions</fullName>
     <active>true</active>
     <businessProcess>Default</businessProcess>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayoutAssignment>Default</compactLayoutAssignment>
     <label>General Questions</label>
     <picklistValues>
         <picklist>Origin</picklist>
@@ -17,6 +17,10 @@
         </values>
         <values>
             <fullName>Phone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Web</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -72,15 +76,15 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Card Delivery</fullName>
+            <fullName>Card Decline</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Card Information Request</fullName>
+            <fullName>Card Issue</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Card Transaction</fullName>
+            <fullName>Card Return%2FDelivery</fullName>
             <default>false</default>
         </values>
         <values>
@@ -112,6 +116,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Incoming Payment investigation</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Information Request</fullName>
             <default>false</default>
         </values>
@@ -140,15 +148,11 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Payment investigation</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Payment request</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Phone Chang%28Without access%29</fullName>
+            <fullName>Phone Change %28Without access%29</fullName>
             <default>false</default>
         </values>
         <values>
@@ -161,10 +165,6 @@
         </values>
         <values>
             <fullName>Tax ID Input</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Update Details</fullName>
             <default>false</default>
         </values>
         <values>

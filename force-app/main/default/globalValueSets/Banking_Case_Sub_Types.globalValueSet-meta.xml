@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Card Issue</fullName>
+        <default>false</default>
+        <label>Card Issue</label>
+    </customValue>
+    <customValue>
+        <fullName>Partner Card Block</fullName>
+        <default>false</default>
+        <label>Partner Card Block</label>
+    </customValue>
+    <customValue>
+        <fullName>Card Chargeback</fullName>
+        <default>false</default>
+        <label>Card Chargeback</label>
+    </customValue>
+    <customValue>
+        <fullName>Card Return/Delivery</fullName>
+        <default>false</default>
+        <label>Card Return/Delivery</label>
+    </customValue>
+    <customValue>
+        <fullName>Fraudulent Transaction Monitoring</fullName>
+        <default>false</default>
+        <label>Fraudulent Transaction Monitoring</label>
+    </customValue>
+    <customValue>
+        <fullName>Card Decline</fullName>
+        <default>false</default>
+        <label>Card Decline</label>
+    </customValue>
+    <customValue>
+        <fullName>Partner Card Unblock</fullName>
+        <default>false</default>
+        <label>Partner Card Unblock</label>
+    </customValue>
+    <customValue>
+        <fullName>Partner Card Closure</fullName>
+        <default>false</default>
+        <label>Partner Card Closure</label>
+    </customValue>
+    <customValue>
+        <fullName>Closure Request</fullName>
+        <default>false</default>
+        <label>Closure Request</label>
+    </customValue>
+    <customValue>
+        <fullName>Account Statement</fullName>
+        <default>false</default>
+        <label>Account Statement</label>
+    </customValue>
+    <customValue>
+        <fullName>Account Confirmation</fullName>
+        <default>false</default>
+        <label>Account Confirmation</label>
+    </customValue>
+    <customValue>
+        <fullName>Tax ID Input</fullName>
+        <default>false</default>
+        <label>Tax ID Input</label>
+    </customValue>
+    <customValue>
+        <fullName>Phone Change (Without access)</fullName>
+        <default>false</default>
+        <label>Phone Change (Without access)</label>
+    </customValue>
+    <customValue>
+        <fullName>Identification Creation</fullName>
+        <default>false</default>
+        <label>Identification Creation</label>
+    </customValue>
+    <customValue>
+        <fullName>Identification Issues</fullName>
+        <default>false</default>
+        <label>Identification Issues</label>
+    </customValue>
+    <customValue>
+        <fullName>Identification Complaints</fullName>
+        <default>false</default>
+        <label>Identification Complaints</label>
+    </customValue>
+    <customValue>
+        <fullName>Investigation</fullName>
+        <default>false</default>
+        <label>Investigation</label>
+    </customValue>
+    <customValue>
+        <fullName>User Complaint</fullName>
+        <default>false</default>
+        <label>User Complaint</label>
+    </customValue>
+    <customValue>
+        <fullName>Payment Request</fullName>
+        <default>false</default>
+        <label>Payment Request</label>
+    </customValue>
+    <customValue>
+        <fullName>Direct Debit Return</fullName>
+        <default>false</default>
+        <label>Direct Debit Return</label>
+    </customValue>
+    <customValue>
+        <fullName>Incoming Payment investigation</fullName>
+        <default>false</default>
+        <label>Incoming Payment investigation</label>
+    </customValue>
+    <customValue>
+        <fullName>Payment Recall</fullName>
+        <default>false</default>
+        <label>Payment Recall</label>
+    </customValue>
+    <customValue>
+        <fullName>Seizure Information Request</fullName>
+        <default>false</default>
+        <label>Seizure Information Request</label>
+    </customValue>
+    <customValue>
+        <fullName>Seizures Payout</fullName>
+        <default>false</default>
+        <label>Seizures Payout</label>
+    </customValue>
+    <customValue>
+        <fullName>P-Konto</fullName>
+        <default>false</default>
+        <label>P-Konto</label>
+    </customValue>
+    <customValue>
+        <fullName>Information Request</fullName>
+        <default>false</default>
+        <label>Information Request</label>
+    </customValue>
+    <customValue>
+        <fullName>Bank Data Deletion</fullName>
+        <default>false</default>
+        <label>Bank Data Deletion</label>
+    </customValue>
+    <customValue>
+        <fullName>Bank Data Request</fullName>
+        <default>false</default>
+        <label>Bank Data Request</label>
+    </customValue>
+    <customValue>
+        <fullName>Verification Message Issue</fullName>
+        <default>false</default>
+        <label>Verification Message Issue</label>
+    </customValue>
+    <customValue>
+        <fullName>General Tech Issue</fullName>
+        <default>false</default>
+        <label>General Tech Issue</label>
+    </customValue>
+    <customValue>
+        <fullName>Access Request</fullName>
+        <default>false</default>
+        <label>Access Request</label>
+    </customValue>
+    <customValue>
+        <fullName>Access Deletion</fullName>
+        <default>false</default>
+        <label>Access Deletion</label>
+    </customValue>
+    <customValue>
+        <fullName>Nationality Change</fullName>
+        <default>false</default>
+        <label>Nationality Change</label>
+    </customValue>
+    <customValue>
+        <fullName>Name Change</fullName>
+        <default>false</default>
+        <label>Name Change</label>
+    </customValue>
+    <customValue>
+        <fullName>Birthdate Change</fullName>
+        <default>false</default>
+        <label>Birthdate Change</label>
+    </customValue>
+    <customValue>
+        <fullName>Birth City Change</fullName>
+        <default>false</default>
+        <label>Birth City Change</label>
+    </customValue>
+    <customValue>
+        <fullName>Other Requests</fullName>
+        <default>false</default>
+        <label>Other Requests</label>
+    </customValue>
+    <customValue>
+        <fullName>Outgoing Payment investigation</fullName>
+        <default>false</default>
+        <label>Outgoing Payment investigation</label>
+    </customValue>
+    <customValue>
+        <fullName>Bank Card Block</fullName>
+        <default>false</default>
+        <label>Bank Card Block</label>
+    </customValue>
+    <customValue>
+        <fullName>Closure Info</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Closure Info</label>
+    </customValue>
+    <customValue>
+        <fullName>Update Details</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Update Details</label>
+    </customValue>
+    <masterLabel>Banking Case Sub Types</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

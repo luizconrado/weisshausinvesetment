@@ -8,10 +8,11 @@ public class SyncAccountAndSolarisbankController {
     
     @AuraEnabled 
     public static void startSyncWithBank(String sfAccountId){
+
         Account sfAccount=[SELECT Id, LastName, FirstName, Salutation, MiddleName,Gender__pc,PersonEmail,Phone,PersonTitle,Type,
                            ShippingStreet, ShippingCity, ShippingState, ShippingPostalCode, ShippingCountry ,
                            BillingStreet, BillingCity, BillingState, BillingPostalCode, BillingCountry,Solarisbank_Id__c,Solarisbank_Tenent__c,
-                           Completed_Name__c,Tax_Assessment__c,Marital_Status__c,Terms_Conditions_Signed_At__c ,Flagged_By_Compliance__c,Own_Economic_Interest_Signed_At__c ,
+                           Legal_Name__c,Tax_Assessment__c,Marital_Status__c,Terms_Conditions_Signed_At__c ,Flagged_By_Compliance__c,Own_Economic_Interest_Signed_At__c ,
                            Birth_Name__c, Birth_City__c, Birth_Country__c,Employment_Status__c,Fatca_Relevant__c ,Fatca_Crs_Confirmed_At__c, Business_Purpose__c, Industry_Key__c 
                            FROM Account WHERE id=:sfAccountId LIMIT 1];
         LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(sfAccount.Id,'Account',sfAccount.Solarisbank_Tenent__c);
@@ -69,12 +70,13 @@ public class SyncAccountAndSolarisbankController {
             String taxIdenityJson=SolarisbankService.fetchAllTaxIdentificationAttempts(sfAccount.Solarisbank_Id__c,apiCallDetails);
             List<SolarisBankTaxIdentificationWrapper> taxIdentificationList=SolarisBankTaxIdentificationWrapper.parseList(taxIdenityJson);
             //operation
-            sfAccount.Salutation = personDetails.salutation;
+            if(sfAccount.Salutation==null)sfAccount.Salutation = personDetails.salutation;
             sfAccount.Gender__pc=(personDetails.salutation=='MR')?'Male':'Female';
-            sfAccount.FirstName = personDetails.first_name;
-            sfAccount.Type = 'Customer';
-            sfAccount.LastName = personDetails.last_name;
-            sfAccount.Completed_Name__c = personDetails.first_name+' '+ personDetails.last_name;
+            if(sfAccount.FirstName==null)sfAccount.FirstName = personDetails.first_name;
+            if(sfAccount.Type==null) sfAccount.Type = 'Customer';
+            
+            if(sfAccount.LastName==null)sfAccount.LastName = personDetails.last_name;
+            sfAccount.Legal_Name__c = personDetails.first_name+' '+ personDetails.last_name;
             if(personDetails.address != null)  sfAccount.BillingStreet =  personDetails.address.line_1;
             if(personDetails.address != null) sfAccount.BillingPostalCode = personDetails.address.postal_code;
             if(personDetails.address != null) sfAccount.BillingCity = personDetails.address.city;
@@ -513,6 +515,7 @@ public class SyncAccountAndSolarisbankController {
         
         if(toInsertOrder.size()>0 && !Test.isRunningTest() ) insert  toInsertOrder;
         if(toUpdateOrder.size()>0 && !Test.isRunningTest() ) update toUpdateOrder;
+
     }
     
     

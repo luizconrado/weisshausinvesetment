@@ -5,7 +5,7 @@
     <label>Type II</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>false</trackHistory>
+    <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
@@ -14,9 +14,9 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Card Information Request</fullName>
+                <fullName>Card Issue</fullName>
                 <default>false</default>
-                <label>Card Information Request</label>
+                <label>Card Issue</label>
             </value>
             <value>
                 <fullName>Partner Card Block</fullName>
@@ -29,9 +29,9 @@
                 <label>Card Chargeback</label>
             </value>
             <value>
-                <fullName>Card Delivery</fullName>
+                <fullName>Card Return/Delivery</fullName>
                 <default>false</default>
-                <label>Card Delivery</label>
+                <label>Card Return/Delivery</label>
             </value>
             <value>
                 <fullName>Fraudulent Transaction Monitoring</fullName>
@@ -39,9 +39,9 @@
                 <label>Fraudulent Transaction Monitoring</label>
             </value>
             <value>
-                <fullName>Card Transaction</fullName>
+                <fullName>Card Decline</fullName>
                 <default>false</default>
-                <label>Card Transaction</label>
+                <label>Card Decline</label>
             </value>
             <value>
                 <fullName>Partner Card Unblock</fullName>
@@ -79,14 +79,9 @@
                 <label>Tax ID Input</label>
             </value>
             <value>
-                <fullName>Update Details</fullName>
+                <fullName>Phone Change (Without access)</fullName>
                 <default>false</default>
-                <label>Update Details</label>
-            </value>
-            <value>
-                <fullName>Phone Chang(Without access)</fullName>
-                <default>false</default>
-                <label>Phone Chang(Without access)</label>
+                <label>Phone Change (Without access)</label>
             </value>
             <value>
                 <fullName>Identification creation</fullName>
@@ -124,9 +119,9 @@
                 <label>Direct Debit Return</label>
             </value>
             <value>
-                <fullName>Payment investigation</fullName>
+                <fullName>Incoming Payment investigation</fullName>
                 <default>false</default>
-                <label>Payment investigation</label>
+                <label>Incoming Payment investigation</label>
             </value>
             <value>
                 <fullName>Payment Recall</fullName>
@@ -183,6 +178,47 @@
                 <default>false</default>
                 <label>Access Deletion</label>
             </value>
+            <value>
+                <fullName>Birth City Change</fullName>
+                <default>false</default>
+                <label>Birth City Change</label>
+            </value>
+            <value>
+                <fullName>Birthdate Change</fullName>
+                <default>false</default>
+                <label>Birthdate Change</label>
+            </value>
+            <value>
+                <fullName>Name Change</fullName>
+                <default>false</default>
+                <label>Name Change</label>
+            </value>
+            <value>
+                <fullName>Nationality Change</fullName>
+                <default>false</default>
+                <label>Nationality Change</label>
+            </value>
+            <value>
+                <fullName>Other Requests</fullName>
+                <default>false</default>
+                <label>Other Requests</label>
+            </value>
+            <value>
+                <fullName>Outgoing Payment investigation</fullName>
+                <default>false</default>
+                <label>Outgoing Payment investigation</label>
+            </value>
+            <value>
+                <fullName>Bank Card Block</fullName>
+                <default>false</default>
+                <label>Bank Card Block</label>
+            </value>
+            <value>
+                <fullName>Update Details</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Update Details</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Seizures</controllingFieldValue>
@@ -206,15 +242,18 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Payment</controllingFieldValue>
-            <valueName>Payment investigation</valueName>
+            <valueName>Incoming Payment investigation</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Payment</controllingFieldValue>
             <valueName>Payment Recall</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Payment</controllingFieldValue>
+            <valueName>Outgoing Payment investigation</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Complaints</controllingFieldValue>
-            <controllingFieldValue>Other</controllingFieldValue>
             <valueName>User Complaint</valueName>
         </valueSettings>
         <valueSettings>
@@ -234,8 +273,12 @@
             <valueName>Access Deletion</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Other Requests</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Card Management</controllingFieldValue>
-            <valueName>Card Information Request</valueName>
+            <valueName>Card Issue</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Card Management</controllingFieldValue>
@@ -247,7 +290,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Card Management</controllingFieldValue>
-            <valueName>Card Delivery</valueName>
+            <valueName>Card Return/Delivery</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Card Management</controllingFieldValue>
@@ -255,7 +298,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Card Management</controllingFieldValue>
-            <valueName>Card Transaction</valueName>
+            <valueName>Card Decline</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Card Management</controllingFieldValue>
@@ -264,6 +307,10 @@
         <valueSettings>
             <controllingFieldValue>Card Management</controllingFieldValue>
             <valueName>Partner Card Closure</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Card Management</controllingFieldValue>
+            <valueName>Bank Card Block</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Account Management</controllingFieldValue>
@@ -287,11 +334,23 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Master Data Management</controllingFieldValue>
-            <valueName>Update Details</valueName>
+            <valueName>Phone Change (Without access)</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Master Data Management</controllingFieldValue>
-            <valueName>Phone Chang(Without access)</valueName>
+            <valueName>Birth City Change</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Master Data Management</controllingFieldValue>
+            <valueName>Birthdate Change</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Master Data Management</controllingFieldValue>
+            <valueName>Name Change</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Master Data Management</controllingFieldValue>
+            <valueName>Nationality Change</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Identification</controllingFieldValue>

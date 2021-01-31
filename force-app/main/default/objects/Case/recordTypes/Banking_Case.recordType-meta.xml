@@ -108,6 +108,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Bank Card Block</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Bank Data Deletion</fullName>
             <default>false</default>
         </values>
@@ -116,19 +120,27 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Birth City Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Birthdate Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Card Chargeback</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Card Delivery</fullName>
+            <fullName>Card Decline</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Card Information Request</fullName>
+            <fullName>Card Issue</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Card Transaction</fullName>
+            <fullName>Card Return%2FDelivery</fullName>
             <default>false</default>
         </values>
         <values>
@@ -164,11 +176,31 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Incoming Payment investigation</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Information Request</fullName>
             <default>false</default>
         </values>
         <values>
             <fullName>Investigation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Name Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nationality Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Requests</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outgoing Payment investigation</fullName>
             <default>false</default>
         </values>
         <values>
@@ -192,15 +224,11 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Payment investigation</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Payment request</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Phone Chang%28Without access%29</fullName>
+            <fullName>Phone Change %28Without access%29</fullName>
             <default>false</default>
         </values>
         <values>
@@ -213,10 +241,6 @@
         </values>
         <values>
             <fullName>Tax ID Input</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Update Details</fullName>
             <default>false</default>
         </values>
         <values>

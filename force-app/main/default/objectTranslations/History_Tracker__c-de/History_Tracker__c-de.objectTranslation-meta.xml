@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value>History Tracker</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value>History Tracker</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value><!-- History Tracker --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value><!-- History Tracker --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value><!-- History Tracker --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value><!-- History Tracker --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value><!-- History Tracker --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value><!-- History Tracker --></value>
+    </caseValues>
+    <gender>Neuter</gender>
+    <layouts>
+        <layout>Field History Tracker Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Record Information --></label>
+            <section>Record Information</section>
+        </sections>
+        <sections>
+            <label><!-- Value --></label>
+            <section>Value</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel><!-- Tracking Number --></nameFieldLabel>
+    <recordTypes>
+        <description><!-- Track Field  Changes --></description>
+        <label><!-- Field History --></label>
+        <name>Field_History</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Usage Tracker --></label>
+        <name>Usage_Tracker</name>
+    </recordTypes>
+</CustomObjectTranslation>

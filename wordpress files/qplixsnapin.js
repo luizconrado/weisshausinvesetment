@@ -78,17 +78,17 @@ var initESW = function (gslbBaseURL) {
     embedded_svc.settings.entryFeature = "LiveAgent";
 
     embedded_svc.init(
-        "https://weisshausinvestment--dev.my.salesforce.com",
-        "https://dev-weisshausinvestment.cs101.force.com/support",
+        'https://ev-smartmoney.my.salesforce.com',
+        'https://support.ev-smartmoney.com/',
         gslbBaseURL,
-        "00D1X0000008dzV",
+        "00D5I000002GOw0",
         "Web_Support",
         {
-            baseLiveAgentContentURL:
-                "https://c.la1-c1cs-cdg.salesforceliveagent.com/content",
+            baseLiveAgentContentURL: 'https://c.la2-c2-cdg.salesforceliveagent.com/content',
+
             deploymentId: "5725I000000gPtx",
             buttonId: "5735I000000gQ4O",
-            baseLiveAgentURL: "https://d.la1-c1cs-cdg.salesforceliveagent.com/chat",
+            baseLiveAgentURL: 'https://d.la2-c2-cdg.salesforceliveagent.com/chat',
             eswLiveAgentDevName: "Web_Support",
             isOfflineSupportEnabled: true,
         }
@@ -97,10 +97,8 @@ var initESW = function (gslbBaseURL) {
 
 if (!window.embedded_svc) {
     var s = document.createElement("script");
-    s.setAttribute(
-        "src",
-        "https://weisshausinvestment--dev.my.salesforce.com/embeddedservice/5.0/esw.min.js"
-    );
+    s.setAttribute('src', 'https://ev-smartmoney.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+
     s.onload = function () {
         initESW(null);
     };

@@ -320,8 +320,8 @@
         embedded_svc.settings.entryFeature = 'LiveAgent';
 
         embedded_svc.init(
-            'https://weisshausinvestment.my.salesforce.com',
-            'https://support.weisshausinvestment.com/',
+            'https://ev-smartmoney.my.salesforce.com',
+            'https://support.ev-smartmoney.com/',
             gslbBaseURL,
             '00D5I000002GOw0',
             'Web_Support',
@@ -338,7 +338,7 @@
 
     if (!window.embedded_svc) {
         var s = document.createElement('script');
-        s.setAttribute('src', 'https://weisshausinvestment.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+        s.setAttribute('src', 'https://ev-smartmoney.my.salesforce.com/embeddedservice/5.0/esw.min.js');
         s.onload = function () {
             initESW(null);
         };

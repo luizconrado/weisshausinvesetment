@@ -47,6 +47,7 @@ public with sharing class BankingService {
     
     @AuraEnabled
     public static List<ContentVersion> retriveContentVersionList(String caseRecordId){
+        //retrive all files linked to case record
         List<ContentDocumentLink> link=[SELECT ContentDocumentId FROM ContentDocumentLink WHERE LinkedEntityId=:caseRecordId];
         List<String> contentDocumentIds=new List<String>();
         For(ContentDocumentLink doc:link) contentDocumentIds.add(doc.ContentDocumentId);

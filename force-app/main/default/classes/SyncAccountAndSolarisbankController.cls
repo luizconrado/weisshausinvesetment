@@ -9,6 +9,7 @@ public class SyncAccountAndSolarisbankController {
     @AuraEnabled 
     public static void startSyncWithBank(String sfAccountId){
 
+        
         Account sfAccount=[SELECT Id, LastName, FirstName, Salutation, MiddleName,Gender__pc,PersonEmail,Phone,PersonTitle,Type,
                            ShippingStreet, ShippingCity, ShippingState, ShippingPostalCode, ShippingCountry ,
                            BillingStreet, BillingCity, BillingState, BillingPostalCode, BillingCountry,Solarisbank_Id__c,Solarisbank_Tenent__c,
@@ -23,7 +24,7 @@ public class SyncAccountAndSolarisbankController {
         
         List<Bank_Account__c> toInsertBankAccounts=new List<Bank_Account__c>();
         List<Bank_Account__c> toUpdateBankAccounts=new List<Bank_Account__c>();
-        
+        //getting exsisting card details
         Map<String,Card__c> bankCardMap=new Map<String,Card__c>();
         for(Card__c card:[SELECT Id, Type__c, Status__c, Expiration_Date__c, Person_Account__c, 
                           Bank_Account__c, Name_On_Card__c, Solarisbank_Id__c, Name  
@@ -31,6 +32,7 @@ public class SyncAccountAndSolarisbankController {
         List<Card__c> toInsertBankCards=new List<Card__c>();
         List<Card__c> toUpdateBankCards=new List<Card__c>();
         
+        //getting exsisitng tax identification details
         Map<String,Tax_Identification__c> taxIdentificationMap=new Map<String,Tax_Identification__c>();
         for(Tax_Identification__c taxIdentification:[SELECT Id, Account__c, Country__c, Solarisbank_Id__c, Primary__c, Reason_No_Tin__c, Reason_Description__c 
                                                      FROM Tax_Identification__c 
@@ -38,7 +40,7 @@ public class SyncAccountAndSolarisbankController {
         List<Tax_Identification__c> toInsertTaxIdentification=new List<Tax_Identification__c>();
         List<Tax_Identification__c> toUpdateTaxIdentification=new List<Tax_Identification__c>();
         
-        
+        //getting exsisiting identification
         Map<String,Identification__c> personIdentificationMap=new Map<String,Identification__c>();
         for(Identification__c personIdent:[SELECT Id, Account__c, Solarisbank_Id__c, Is_Test__c, Reference__c, URL__c, Status__c, Completed_At__c, Method__c, Failure_Reason__c, Identification_Id__c, State__c 
                                                   FROM Identification__c
@@ -46,27 +48,29 @@ public class SyncAccountAndSolarisbankController {
         List<Identification__c> toInsertperIdentification=new List<Identification__c>();
         List<Identification__c> toUpdateperIdentification=new List<Identification__c>();
        
+        //checking if solaribank id exsisitngs
         if(String.isNotEmpty(sfAccount.Solarisbank_Id__c)){
             //calls
+            //fetching person account details
             String personJson=SolarisbankService.fetchPersonDetails(sfAccount.Solarisbank_Id__c,apiCallDetails);
             SolarisbankPersonWrapper personDetails=SolarisbankPersonWrapper.parse(personJson);
             if(personDetails.last_name == null) return ;
+            //fetching phone number
             String phoneJson=SolarisbankService.fetchPersonPhoneNumber(sfAccount.Solarisbank_Id__c,apiCallDetails);
             Map<String,Object> phoneJsonMap=(Map<String,Object>) JSON.deserializeUntyped(phoneJson);
-            
+            //fetching all bank accouunts
             String banksJson=SolarisbankService.fetchAllBankAccounts(sfAccount.Solarisbank_Id__c,apiCallDetails);
             List<SolarisbankBankAccountWrapper> banksList=SolarisbankBankAccountWrapper.parseList(banksJson);
-            
+            //fetching all cards
             String cardsJson=SolarisbankService.fetchAllCards(sfAccount.Solarisbank_Id__c,apiCallDetails);
             List<SolarisbankCardWrapper> cardsList=SolarisbankCardWrapper.parseList(cardsJson);
-            
+            //fetching all identification
             String identityJson=SolarisbankService.fetchAllIdentificationAttempts(sfAccount.Solarisbank_Id__c,apiCallDetails);
             List<SolarisBankIdentificationWrapper> indentificationList=SolarisBankIdentificationWrapper.parseList(identityJson);
-            
+            //fetching all signing
             String esigningJson=SolarisbankService.fetchAllESigningAttempts(sfAccount.Solarisbank_Id__c,apiCallDetails);
             List<SolarisBankIdentificationWrapper> esigningList=new List<SolarisBankIdentificationWrapper>();//SolarisBankIdentificationWrapper.parseList(esigningJson);
-            
-             
+			//fetching all tax identification            
             String taxIdenityJson=SolarisbankService.fetchAllTaxIdentificationAttempts(sfAccount.Solarisbank_Id__c,apiCallDetails);
             List<SolarisBankTaxIdentificationWrapper> taxIdentificationList=SolarisBankTaxIdentificationWrapper.parseList(taxIdenityJson);
             //operation
@@ -144,8 +148,7 @@ public class SyncAccountAndSolarisbankController {
                                                      bankAccountMap.put(bankAccount.Solarisbank_Id__c,bankAccount);
                                                  }
             } 
-            System.debug('cardsList'+cardsList.size());
-            
+             
             //card
             for(SolarisbankCardWrapper cards:cardsList){
                   System.debug('cards '+cards);
@@ -284,16 +287,19 @@ public class SyncAccountAndSolarisbankController {
         Bank_Account__c bankAccount=[SELECT Id,Person_Account__r.Solarisbank_Tenent__c, Solarisbank_Id__c, Person_Account__c,Person_Account__r.Solarisbank_Id__c FROM Bank_Account__c Where id=:sfBankAccountId];
         LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(bankAccount.Id,'Bank_Account__c',bankAccount.Person_Account__r.Solarisbank_Tenent__c);
 
+        //fetching all bookings
         String bookingsResponse = SolarisbankService.fetchBankAccountBookings(bankAccount.Solarisbank_Id__c, '1', '', '', '',apiCallDetails);
         List<SolarisbankBookingsWrapper> bookings=(List<SolarisbankBookingsWrapper>) SolarisbankBookingsWrapper.parseList(bookingsResponse);
         
-      
+      	//fetching all reservations
         String reservationsResponse = SolarisbankService.fetchBankAccountReservations(bankAccount.Solarisbank_Id__c, '1', '', '', '',apiCallDetails);
         List<SolarisbankReservationWrapper> reservations = (List<SolarisbankReservationWrapper>) SolarisbankReservationWrapper.parseList(reservationsResponse);
         
+        //fetching all timed orders
         String timedOrderResponse =  SolarisbankService.fetchBankTimedOrders(bankAccount.Person_Account__r.Solarisbank_Id__c, bankAccount.Solarisbank_Id__c,apiCallDetails);
       	List<SolarisbankTimedOrderWrapper> timedOrders = (List<SolarisbankTimedOrderWrapper>) SolarisbankTimedOrderWrapper.parseList(timedOrderResponse);
         
+        //fetching all standing orders
         String standingOrderResponse=SolarisbankService.fetchBankStandingOrders(bankAccount.Person_Account__r.Solarisbank_Id__c, bankAccount.Solarisbank_Id__c,apiCallDetails);
         List<SolarisbankStandingOrderWrapper> standingOrders=(List<SolarisbankStandingOrderWrapper>) SolarisbankStandingOrderWrapper.parseList(standingOrderResponse);
 
@@ -386,7 +392,7 @@ public class SyncAccountAndSolarisbankController {
         if(toInsertBookings.size()>0  && !Test.isRunningTest()) insert toInsertBookings;
       
          
-        //bookings
+        //reservations
         for(SolarisbankReservationWrapper reservation:reservations){
             if(reservationsMap.containsKey(reservation.id)){
                 Reservation__c book=reservationsMap.get(reservation.id);

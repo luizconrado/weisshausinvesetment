@@ -1,12 +1,12 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
-    <aura:handler name='init' value='{!this}' action='{!c.onInit}'/>
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    <aura:handler name='init' value='{!this}' action='{!c.onInit}' />
     <aura:attribute type="String" name="footerlogo" />
     <div class="wrapper">
         <div class="community-footer">
             <div class="community-footer__column">
                 <div class="community-footer__column--item">
                     <h4>
-                        Weißhaus Investment
+                        Engel &amp; Völkers Smart Money
                     </h4>
                 </div>
                 <div class="community-footer__column--item">
@@ -24,7 +24,7 @@
                         Karriere
                     </a>
                 </div>
-                
+
                 <div class="community-footer__column--item">
                     <a href="https://support.weisshausinvestment.com/">
                         Unterstützung
@@ -60,17 +60,17 @@
                     </h4>
                 </div>
                 <div class="community-footer__column--item divider">
-                    
+
                 </div>
                 <div class="community-footer__column--item">
                     <a href="https://www.google.com/maps/place/Hardenbergstra%C3%9Fe+32,+10623+Berlin/data=!4m2!3m1!1s0x47a850fdf51b3449:0x5465c8f77a8f122?sa=X&amp;ved=2ahUKEwirnpSDnvznAhVGMewKHaA3AaUQ8gEwAHoECAwQAQ"
-                       target="_blank">
+                        target="_blank">
                         Klaus-Groth-Straße 3, 14050 Berlin
                     </a>
                 </div>
                 <div class="community-footer__column--item">
-                    <a href="mailto:contact@weisshausinvestment.com" target="_blank">
-                        contact@weisshausinvestment.com
+                    <a href="mailto:contact@ev-smartmoney.de" target="_blank">
+                        contact@ev-smartmoney.de
                     </a>
                 </div>
                 <div class="community-footer__column--item">
@@ -92,12 +92,10 @@
                     <a>Montag - Freitag: 09.00 - 18.00 Uhr</a>
                 </div>
             </div>
-            
+
         </div>
         <div class="community-fotter-image">
-            <img width="100" height="20"
-                 src="{!v.footerlogo}"
-                 class="attachment-thumbnail size-thumbnail" alt="">
+            <img width="100" height="20" src="{!v.footerlogo}" class="attachment-thumbnail size-thumbnail" alt="">
             </img>
         </div>
     </div>

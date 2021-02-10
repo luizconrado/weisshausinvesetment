@@ -173,6 +173,19 @@ public class BankCaseOverrideControlerTest {
         BankCaseOverrideControler.logVarification(cv);
     }
     
+    @isTest
+    static void testcreateNewIdentification(){
+        Test.setMock(HttpCalloutMock.class, new SolarisBankIdentificationWrapper.MockResponse());
+        Account a=TestDataFactory.getPersonAccount(true);
+        Case c=TestDataFactory.getBankCase(a.Id,true);
+        Bank_Case_Item__c bci=TestDataFactory.getAccountBankCase(c.Id,false);
+        bci.Account__c=a.Id;
+        insert bci;
+        Test.startTest();
+        BankCaseOverrideControler.createNewIdentification(bci.id,'EN');
+        Test.stopTest();
+    }
+    
    
     
 }

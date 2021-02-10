@@ -31,7 +31,7 @@
         let periodFilter=component.get('v.periodFilter');
         let yearFilter=component.get('v.yearFilter');
         let quaterFilter=component.get('v.quaterFilter');
-        
+        if(!bankAccountDetails) return;
         if(periodFilter=='MONTHLY' && quaterFilter > 13){
             helper.showToast('Enter Valid Year','Please enter valid month','warning');
             return;

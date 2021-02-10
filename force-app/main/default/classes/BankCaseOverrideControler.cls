@@ -200,7 +200,27 @@ public with sharing class BankCaseOverrideControler {
         insert statement;
         return statement.Id+'________'+completeStatmentJSON;
     }  
-    
+    @AuraEnabled
+    public static string createNewIdentification(String recordId,String languageCode){
+        Bank_Case_Item__c bankAccountDetails=[SELECT Id,Action__c, Account__c,Identification__c,Account__r.Solarisbank_Id__c,Account__r.Solarisbank_Tenent__c FROM Bank_Case_Item__c WHERE id=:recordId];
+        LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(recordId,'Bank_Case_Item__c',bankAccountDetails.Account__r.Solarisbank_Tenent__c);
+        String requestBody='{"method": "idnow","language": "'+languageCode+'"}';
+        String res=SolarisbankService.createNewIdentificationAttempt(bankAccountDetails.Account__r.Solarisbank_Id__c,requestBody,apiCallDetails);
+        SolarisBankIdentificationWrapper response=SolarisBankIdentificationWrapper.parse(res);
+        if(String.isNotEmpty(response.id)){
+            Identification__c newIdentification=new Identification__c();
+            newIdentification.Solarisbank_Id__c=response.id;      
+            newIdentification.Account__c=bankAccountDetails.Account__c;
+            newIdentification.RecordTypeId=Constant.IDENTIFIACTION_VIDEO_IDENTIFICATION_RECORDTYPEID;
+            insert newIdentification; 
+            
+            bankAccountDetails.Identification__c=newIdentification.Id;
+            bankAccountDetails.Action__c='New Person Identification';
+            update bankAccountDetails;
+            return newIdentification.Id;
+        }
+      return res;
+    } 
     /////////////////////////////
     //Operations
     ////////////////////////////

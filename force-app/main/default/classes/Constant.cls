@@ -106,6 +106,13 @@ public inherited sharing class Constant {
         if(SUBSCRIPTION_DEFAULT_RECORDTYPEID==null)SUBSCRIPTION_DEFAULT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Default', 'Subscription__c');
         return SUBSCRIPTION_DEFAULT_RECORDTYPEID;
     }}
+    
+    //IDENTIFIACTION
+    public static final String IDENTIFIACTION_VIDEO_IDENTIFICATION_RECORDTYPEID{
+        private set;get{
+        if(IDENTIFIACTION_VIDEO_IDENTIFICATION_RECORDTYPEID==null)IDENTIFIACTION_VIDEO_IDENTIFICATION_RECORDTYPEID=SchemaUtil.getRecordTypeId('Video_Identification', 'Identification__c');
+        return IDENTIFIACTION_VIDEO_IDENTIFICATION_RECORDTYPEID;
+        }}
      
     
     

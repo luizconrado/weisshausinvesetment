@@ -19,3 +19,28 @@ configure default file types avilable by record type for each object that is avi
 
 ### Trigger Settings
 Activate or deactive trigger
+
+
+# Changes
+Apex
+BankCaseOverrideControler
+SolarisbankService
+SolarisBankIdentificationWrapper
+BankingService
+RestService
+Constant
+TestDataFactory
+
+ConstantTest
+BankCaseOverrideControlerTest
+SolarisbankServiceTest
+BankingServiceTest
+
+
+Lighitng
+CaseJiraButton
+BankCaseCreateNewIdentificationAttempt
+IdentificationFetchInformation
+BankCaseNewOverride
+CardsCaseView
+StatmentsCaseView

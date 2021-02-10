@@ -2,6 +2,7 @@
     onInit : function(component, event, helper) {
         let selectedCard=component.get('v.selectedCard');
         let bankAccountDetails=component.get('v.bankAccountDetails');
+        if(!bankAccountDetails) return;
         component.set('v.loading',true);
         helper.callApex(component,'getAllBankCards',function(response){
             let state = response.getState();

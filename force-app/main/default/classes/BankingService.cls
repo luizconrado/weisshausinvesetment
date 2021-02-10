@@ -92,5 +92,32 @@ public with sharing class BankingService {
         }  
         
     }
+    ///////////////
+    //API
+    //////////////
      
+    @AuraEnabled
+    public static string retriveBankBalanceDetails(string bankAccountId){
+        Bank_Account__c bankAccountDetails=[SELECT id,Solarisbank_Id__c,Person_Account__r.Solarisbank_Tenent__c FROM Bank_Account__c WHERE id=:bankAccountId];
+        
+        LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(bankAccountDetails.Id,'Bank_Account__c',bankAccountDetails.Person_Account__r.Solarisbank_Tenent__c);
+        
+        return SolarisbankService.fetchAccountBalance(bankAccountDetails.Solarisbank_Id__c,apiCallDetails);
+    }
+    
+    @AuraEnabled
+    public static void retriveIdentificationDetailsAndUpdate(String identifiactionId){
+        Identification__c identRecord=[SELECT id,URL__c,Status__c,Completed_At__c,Reference__c,Account__r.Solarisbank_Tenent__c,Solarisbank_Id__c,Account__r.Solarisbank_Id__c FROM Identification__c WHERE id=:identifiactionId];
+        LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(identRecord.Id,'Identification__c',identRecord.Account__r.Solarisbank_Tenent__c);
+ 		String responseString=SolarisbankService.fetchIdentificationRequestDetails(identRecord.Account__r.Solarisbank_Id__c,identRecord.Solarisbank_Id__c,apiCallDetails);
+        String identifiactionStatusString=SolarisbankService.fetchIdentificationDetails(identRecord.Account__r.Solarisbank_Id__c,identRecord.Solarisbank_Id__c,apiCallDetails);
+        SolarisBankIdentificationWrapper response=SolarisBankIdentificationWrapper.parse(responseString);
+        SolarisBankIdentificationWrapper identifiactionStatus=SolarisBankIdentificationWrapper.parse(identifiactionStatusString);
+		if(String.isNotEmpty(identifiactionStatus.completed_at)) identRecord.Completed_At__c=DateTime.valueOf(identifiactionStatus.completed_at.replace('T',' '));
+        if(String.isNotEmpty(identifiactionStatus.status)) identRecord.Status__c=identifiactionStatus.status;
+        if(String.isNotEmpty(response.url)) identRecord.URL__c=response.url;
+        if(String.isNotEmpty(response.reference)) identRecord.Reference__c=response.reference;
+        update identRecord;
+        
+    }
 }

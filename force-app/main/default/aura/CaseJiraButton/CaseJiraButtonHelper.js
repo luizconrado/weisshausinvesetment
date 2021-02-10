@@ -143,6 +143,7 @@
         if (caseIITypes[type]) {
             types.push(...caseIITypes[type].map(function (subtype) {
                 if(subtype=='Identification Creation' || subtype=='Information Request'){}
+                else if(subtype=='Compliance investigation' || subtype=='Phone change investigation'){}
                 else if(subtype=='Card Return/Delivery' || subtype=='Partner Card Unblock' || subtype=='Partner Card Closure' || subtype=='Partner Card Block' || subtype=='Fraudulent Transaction Monitoring'){}
                     else
                         return {
@@ -173,48 +174,52 @@
         let _helper = this;
         let selectedType = component.get('v.selectedType');
         component.set('v.loading', true);
-        
-        if (selectedType == 'Account Management') {
+        selectedType=selectedType.toUpperCase();
+        if (selectedType == 'Account Management'.toUpperCase()) {
             if(nextStep=='2')_helper.jiraProcessForAccountManagment(component, false);
             if(nextStep=='3')_helper.jiraProcessForAccountManagment(component,true);
          }
-        else if (selectedType == 'Tech') {
+        else if (selectedType == 'Tech'.toUpperCase()) {
             if(nextStep=='2')_helper.jiraProcessForTech(component, false);
             if(nextStep=='3')_helper.jiraProcessForTech(component,true);
         }
-            else if (selectedType == 'Master Data Management') {
+            else if (selectedType == 'Master Data Management'.toUpperCase()) {
                 if(nextStep=='2') _helper.jiraProcessForMDM(component, false);
                 if(nextStep=='3')_helper.jiraProcessForMDM(component,true);
             }
-                else if (selectedType == 'Identification') {
+                else if (selectedType == 'Identification'.toUpperCase()) {
                     if(nextStep=='2')_helper.jiraProcessForIdentification(component, false);
                     if(nextStep=='3')_helper.jiraProcessForIdentification(component,true);
                 }
-                    else if(selectedType=='Complaints'){
+                    else if(selectedType=='Complaints'.toUpperCase()){
                         if(nextStep=='2')_helper.jiraProcessForComplaints(component,false);
                         if(nextStep=='3')_helper.jiraProcessForComplaints(component,true);
                     }
-                        else if(selectedType=='GDPR'){
+                        else if(selectedType=='GDPR'.toUpperCase()){
                             if(nextStep=='2')_helper.jiraProcessForGDPR(component,false);
                             if(nextStep=='3')_helper.jiraProcessForGDPR(component,true);
                             
                         }
-                            else if(selectedType=='Seizures'){
+                            else if(selectedType=='Seizures'.toUpperCase()){
                                 if(nextStep=='2')_helper.jiraProcessForSeizures(component,false);
                                 if(nextStep=='3')_helper.jiraProcessForSeizures(component,true);
                             }
-                                else if(selectedType=='Other'){
+                                else if(selectedType=='Other'.toUpperCase()){
                                     if(nextStep=='2')_helper.jiraProcessForOther(component,false);
                                     if(nextStep=='3')_helper.jiraProcessForOther(component,true);
                                 }
-                                    else if(selectedType=='Payment'){
+                                    else if(selectedType=='Payment'.toUpperCase()){
                                         if(nextStep=='2')_helper.jiraProcessForPayment(component,false);
                                         if(nextStep=='3')_helper.jiraProcessForPayment(component,true);
                                     }
-                                        else if(selectedType=='Card Management'){
+                                        else if(selectedType=='Card Management'.toUpperCase()){
                                             if(nextStep=='2')_helper.jiraProcessForCard(component,false);
                                             if(nextStep=='3')_helper.jiraProcessForCard(component,true);
                                         }
+                                            else if(selectedType=='Anti-Fraud Compliance'.toUpperCase()){
+                                                if(nextStep=='2')_helper.jiraProcessForAntiFraud(component,false);
+                                                if(nextStep=='3')_helper.jiraProcessForAntiFraud(component,true);
+                                            }
         
         
         component.set('v.loading', false);
@@ -244,6 +249,7 @@
         let _helper = this;
         
         let selectedTypeII = component.get('v.selectedTypeII');
+        selectedTypeII=selectedTypeII.toUpperCase();
         if (processSummary) {
             let caseDetails = component.get('v.caseDetails');
             let selectedItemId = component.get('v.selectedItemId');
@@ -253,19 +259,19 @@
                 let item = selectedItem[0];
                 let description = '';
                 let summary = '';
-                if (selectedTypeII === 'Account Confirmation') {
+                if (selectedTypeII === 'Account Confirmation'.toUpperCase()) {
                     summary = item.Solarisbank_Id__c + ' - ' + item.Legal_Name__c + ' - Account Confirmation';
                     description = 'Summary of issue = ' + caseDetails.Internal_Description__c;
                     description += '\n';
                     description += 'language of the statement required = ';
                 }
-                else if (selectedTypeII == 'Closure Request') {
+                else if (selectedTypeII == 'Closure Request'.toUpperCase()) {
                     summary = item.Name + ' - ' + item.Person_Account__r.Legal_Name__c + ' - Customer Wish Closure';
                     description = 'Reason of closure wish  = ' + caseDetails.Internal_Description__c;
                     description += '\n';
                     
                 }
-                    else if (selectedTypeII == 'Account Statement') {
+                    else if (selectedTypeII == 'Account Statement'.toUpperCase()) {
                         
                         summary = item.Name + ' - ' + item.Person_Account__r.Legal_Name__c + ' - Account Statement for closed account';
                         description = 'Reason for Statement  request = ' + caseDetails.Internal_Description__c;
@@ -280,17 +286,17 @@
             }
         }
         else {
-             if (selectedTypeII == 'Account Confirmation') {
+             if (selectedTypeII == 'Account Confirmation'.toUpperCase()) {
                 let caseItemList = _helper.extractBankCaseItems(component, 'Account Details');
                 component.set('v.caseItemList', caseItemList);
                 component.set('v.selectedItemId', caseItemList[0].Id);
             }
-            else if (selectedTypeII == 'Closure Request') {
+            else if (selectedTypeII == 'Closure Request'.toUpperCase()) {
                 let caseItemList = _helper.extractBankCaseItems(component, 'Bank Account Details');
                 component.set('v.caseItemList', caseItemList);
                 component.set('v.selectedItemId', caseItemList[0].Id);
             }
-                else if (selectedTypeII == 'Account Statement') {
+                else if (selectedTypeII == 'Account Statement'.toUpperCase()) {
                     let caseItemList = _helper.extractBankCaseItems(component, 'Bank Account Details');
                     component.set('v.caseItemList', caseItemList);
                     component.set('v.selectedItemId', caseItemList[0].Id);
@@ -306,19 +312,23 @@
     jiraProcessForTech: function (component, processSummary) {
         let _helper = this;
         let selectedTypeII = component.get('v.selectedTypeII');
+        selectedTypeII=selectedTypeII.toUpperCase();
         if (processSummary) {
             let summary = '';
             let description = '';
             let caseDetails = component.get('v.caseDetails');
-            if (selectedTypeII === 'Access Request') {
+            if (selectedTypeII === 'Access Request'.toUpperCase()) {
                 summary = '<User Name>' + ' - Access Request';
                 description = 'Access Required = ';
                 description += '\n';
                 description += 'User Email = ';
                 description += '\n';
+                description += 'Phone Number = ';
+                description += '\n';
                 description += 'Agent Full Name = ';
+                
             }
-            else if (selectedTypeII === 'Access Deletion') {
+            else if (selectedTypeII === 'Access Deletion'.toUpperCase()) {
                 summary = '<User Name>' + ' - Access Deletion';
                 description = 'Access Remove Request = ';
                 description += '\n';
@@ -332,7 +342,7 @@
                     let selectedItem = caseItemList.filter(item => item.Id === selectedItemId);
                     if (selectedItem.length > 0) {
                         let item = selectedItem[0];
-                        if (selectedTypeII === 'Verification Message Issue') {
+                        if (selectedTypeII === 'Verification Message Issue'.toUpperCase()) {
                             summary = item.Solarisbank_Id__c + ' - ' + item.Legal_Name__c + ' - TAN';
                             description = 'Reason For Issue = ' + caseDetails.Internal_Description__c;
                             description += '\n';
@@ -347,7 +357,7 @@
                             description += 'Phone Network Provider  = ';
                             
                         }
-                        else if (selectedTypeII == 'General Tech Issue') {
+                        else if (selectedTypeII == 'General Tech Issue'.toUpperCase()) {
                             summary = item.Solarisbank_Id__c + ' - ' + item.Legal_Name__c + ' - Tech Issue';
                             description = 'Summary of issue = ' + caseDetails.Internal_Description__c;
                             
@@ -360,20 +370,20 @@
             component.set('v.body', description);
         }
         else {
-             if (selectedTypeII === 'Verification Message Issue') {
+             if (selectedTypeII === 'Verification Message Issue'.toUpperCase()) {
                 let caseItemList = _helper.extractBankCaseItems(component, 'Account Details');
                 component.set('v.caseItemList', caseItemList);
                 component.set('v.selectedItemId', caseItemList[0].Id);
             }
-            else if (selectedTypeII == 'General Tech Issue') {
+            else if (selectedTypeII == 'General Tech Issue'.toUpperCase()) {
                  let caseItemList = _helper.extractBankCaseItems(component, 'Account Details');
                 component.set('v.caseItemList', caseItemList);
                 component.set('v.selectedItemId', caseItemList[0].Id);
             }
-                else if (selectedTypeII == 'Access Request') {
+                else if (selectedTypeII == 'Access Request'.toUpperCase()) {
                     component.set('v.caseItemList', []);
                 }
-                    else if (selectedTypeII == 'Access Deletion') {
+                    else if (selectedTypeII == 'Access Deletion'.toUpperCase()) {
                         component.set('v.caseItemList', []);
                     }
             
@@ -382,6 +392,7 @@
     jiraProcessForMDM: function (component, processSummary) {
         let _helper = this;
         let selectedTypeII = component.get('v.selectedTypeII');
+        selectedTypeII=selectedTypeII.toUpperCase();
         if (processSummary) {
             let caseDetails = component.get('v.caseDetails');
             let selectedItemId = component.get('v.selectedItemId');
@@ -391,31 +402,31 @@
             let description = '';
             if (selectedItem.length > 0) {
                 let item = selectedItem[0];
-                if (selectedTypeII === 'Tax ID Input') {
+                if (selectedTypeII === 'Tax ID Input'.toUpperCase()) {
                     summary = item.Solarisbank_Id__c + ' - ' + item.Legal_Name__c + ' - TaxID change';
                     description = 'request to unblock account (if account is blocked)'
                 }
-                else if (selectedTypeII == 'Nationality Change') {
+                else if (selectedTypeII == 'Nationality Change'.toUpperCase()) {
                     summary = item.Solarisbank_Id__c + ' - ' + item.Legal_Name__c + ' - Nationality change';
                     description = 'Reason For Change = ' + caseDetails.Internal_Description__c;
                     
                 }
-                    else if (selectedTypeII == 'Name Change') {
+                    else if (selectedTypeII == 'Name Change'.toUpperCase()) {
                         summary = item.Solarisbank_Id__c + ' - ' + item.Legal_Name__c + ' - Name change';
                         description = 'Reason For Change = ' + caseDetails.Internal_Description__c;
                         description+='\n';
                         description += 'Attachment: scan / picture of a valid document that proves a new name';
                     }
-                        else if (selectedTypeII == 'Birthdate Change') {
+                        else if (selectedTypeII == 'Birthdate Change'.toUpperCase()) {
                             summary = item.Solarisbank_Id__c + ' - ' + item.Legal_Name__c + ' - Birthdate change';
                             description = 'Reason For Change = ' + caseDetails.Internal_Description__c;
                         }
-                            else if (selectedTypeII == 'Birth City Change') {
+                            else if (selectedTypeII == 'Birth City Change'.toUpperCase()) {
                                 summary = item.Solarisbank_Id__c + ' - ' + item.Legal_Name__c + ' - Birth city change';
                                 description = 'Reason For Change = ' + caseDetails.Internal_Description__c;
                             }
                 
-                                else if (selectedTypeII == 'Phone Change (Without access)') {
+                                else if (selectedTypeII == 'Phone Change (Without access)'.toUpperCase()) {
                                     summary = item.Solarisbank_Id__c + ' - ' + item.Legal_Name__c + ' - Phone change';
                                     description = 'Reason For Change = ' + caseDetails.Internal_Description__c;
                                     
@@ -425,32 +436,32 @@
             component.set('v.body', description);
         }
         else {
-             if (selectedTypeII === 'Tax ID Input') {
+             if (selectedTypeII === 'Tax ID Input'.toUpperCase()) {
                 let caseItemList = _helper.extractBankCaseItems(component, 'Account Details');
                 component.set('v.caseItemList', caseItemList);
                 component.set('v.selectedItemId', caseItemList[0].Id);
             }
-            else if (selectedTypeII == 'Nationality Change') {
+            else if (selectedTypeII == 'Nationality Change'.toUpperCase()) {
                 let caseItemList = _helper.extractBankCaseItems(component, 'Account Details');
                 component.set('v.caseItemList', caseItemList);
                 component.set('v.selectedItemId', caseItemList[0].Id);
             }
-                else if (selectedTypeII == 'Name Change') {
+                else if (selectedTypeII == 'Name Change'.toUpperCase()) {
                      let caseItemList = _helper.extractBankCaseItems(component, 'Account Details');
                     component.set('v.caseItemList', caseItemList);
                     component.set('v.selectedItemId', caseItemList[0].Id);
                 }
-                    else if (selectedTypeII == 'Birthdate Change') {
+                    else if (selectedTypeII == 'Birthdate Change'.toUpperCase()) {
                         let caseItemList = _helper.extractBankCaseItems(component, 'Account Details');
                         component.set('v.caseItemList', caseItemList);
                         component.set('v.selectedItemId', caseItemList[0].Id);
                     }
-                        else if (selectedTypeII == 'Birth City Change') {
+                        else if (selectedTypeII == 'Birth City Change'.toUpperCase()) {
                             let caseItemList = _helper.extractBankCaseItems(component, 'Account Details');
                             component.set('v.caseItemList', caseItemList);
                             component.set('v.selectedItemId', caseItemList[0].Id);
                         }
-                            else if (selectedTypeII == 'Phone Change (Without access)') {
+                            else if (selectedTypeII == 'Phone Change (Without access)'.toUpperCase()) {
                                  let caseItemList = _helper.extractBankCaseItems(component, 'Account Details');
                                 component.set('v.caseItemList', caseItemList);
                                 component.set('v.selectedItemId', caseItemList[0].Id);
@@ -461,6 +472,7 @@
     jiraProcessForIdentification: function (component, processSummary) {
         let _helper = this;
         let selectedTypeII = component.get('v.selectedTypeII');
+        selectedTypeII=selectedTypeII.toUpperCase();
         if (processSummary) {
             let caseDetails = component.get('v.caseDetails');
             let selectedItemId = component.get('v.selectedItemId');
@@ -470,14 +482,14 @@
             let description = '';
             if (selectedItem.length > 0) {
                 let item = selectedItem[0];
-                if (selectedTypeII === 'Identification Issues') {
+                if (selectedTypeII === 'Identification Issues'.toUpperCase()) {
                     summary = item.Solarisbank_Id__c + ' - ' + item.Legal_Name__c + ' - Identification Issues';
                     description = 'Description of the problem = ' + caseDetails.Internal_Description__c;
                     description += '\n';
                     description += 'Identification ID or Reference =';
                     
                 }
-                else if (selectedTypeII == 'Identification Complaints') {
+                else if (selectedTypeII == 'Identification Complaints'.toUpperCase()) {
                     summary = item.Solarisbank_Id__c + ' - ' + item.Legal_Name__c + ' - Identification Complaints';
                     description = 'Description of the problem = ' + caseDetails.Internal_Description__c;
                     description += '\n';
@@ -490,12 +502,12 @@
             component.set('v.body', description);
         }
         else {
-             if (selectedTypeII === 'Identification Issues') {
+             if (selectedTypeII === 'Identification Issues'.toUpperCase()) {
                 let caseItemList = _helper.extractBankCaseItems(component, 'Account Details');
                 component.set('v.caseItemList', caseItemList);
                 component.set('v.selectedItemId', caseItemList[0].Id);
             }
-            else if (selectedTypeII == 'Identification Complaints') {
+            else if (selectedTypeII == 'Identification Complaints'.toUpperCase()) {
                 let caseItemList = _helper.extractBankCaseItems(component, 'Account Details');
                 component.set('v.caseItemList', caseItemList);
                 component.set('v.selectedItemId', caseItemList[0].Id);
@@ -507,6 +519,7 @@
     jiraProcessForComplaints:function (component, processSummary){
         let _helper = this;
         let selectedTypeII = component.get('v.selectedTypeII');
+        selectedTypeII=selectedTypeII.toUpperCase();
         if (processSummary) {
             let caseDetails = component.get('v.caseDetails');
             let selectedItemId = component.get('v.selectedItemId');
@@ -516,7 +529,7 @@
             let description = '';
             if (selectedItem.length > 0) {
                 let item = selectedItem[0];
-                if (selectedTypeII === 'User Complaint') {
+                if (selectedTypeII === 'User Complaint'.toUpperCase()) {
                     summary = item.Solarisbank_Id__c + ' - ' + item.Legal_Name__c + ' - User Complaints';
                     description = 'Description of the problem = ' + caseDetails.Internal_Description__c;
                     description += '\n';
@@ -528,7 +541,7 @@
             component.set('v.body', description);
         }
         else{
-             if (selectedTypeII === 'User Complaint') {
+             if (selectedTypeII === 'User Complaint'.toUpperCase()) {
                  let caseItemList = _helper.extractBankCaseItems(component, 'Account Details');
                 component.set('v.caseItemList', caseItemList);
                 component.set('v.selectedItemId', caseItemList[0].Id);
@@ -539,6 +552,7 @@
     jiraProcessForGDPR:function (component, processSummary){
         let _helper = this;
         let selectedTypeII = component.get('v.selectedTypeII');
+        selectedTypeII=selectedTypeII.toUpperCase();
         if (processSummary) {
             let caseDetails = component.get('v.caseDetails');
             let selectedItemId = component.get('v.selectedItemId');
@@ -548,12 +562,12 @@
             let description = '';
             if (selectedItem.length > 0) {
                 let item = selectedItem[0];
-                if (selectedTypeII === 'Bank Data Deletion') {
+                if (selectedTypeII === 'Bank Data Deletion'.toUpperCase()) {
                     summary = item.Solarisbank_Id__c + ' - ' + item.Legal_Name__c + ' - GDPR Deletion';
                     description = 'Details of the request = ' + caseDetails.Internal_Description__c;
                     description += '\n';
                 } 
-                if (selectedTypeII === 'Bank Data Request') {
+                if (selectedTypeII === 'Bank Data Request'.toUpperCase()) {
                     summary = item.Solarisbank_Id__c + ' - ' + item.Legal_Name__c + ' - GDPR Data Request';
                     description = ' User Email address = ';
                     description += '\n';
@@ -564,12 +578,12 @@
             component.set('v.body', description);
         }
         else{
-             if (selectedTypeII === 'Bank Data Deletion') {
+             if (selectedTypeII === 'Bank Data Deletion'.toUpperCase()) {
                 let caseItemList = _helper.extractBankCaseItems(component, 'Account Details');
                 component.set('v.caseItemList', caseItemList);
                 component.set('v.selectedItemId', caseItemList[0].Id);
             }
-            else if (selectedTypeII === 'Bank Data Request') {
+            else if (selectedTypeII === 'Bank Data Request'.toUpperCase()) {
                 let caseItemList = _helper.extractBankCaseItems(component, 'Account Details');
                 component.set('v.caseItemList', caseItemList);
                 component.set('v.selectedItemId', caseItemList[0].Id);
@@ -580,6 +594,7 @@
     jiraProcessForSeizures:function (component, processSummary){
         let _helper = this;
         let selectedTypeII = component.get('v.selectedTypeII');
+        selectedTypeII=selectedTypeII.toUpperCase();
         if (processSummary) {
             let caseDetails = component.get('v.caseDetails');
             let selectedItemId = component.get('v.selectedItemId');
@@ -589,19 +604,18 @@
             let description = '';
             if (selectedItem.length > 0) {
                 let item = selectedItem[0];
-                if (selectedTypeII === 'Seizure Information Request') {
+                if (selectedTypeII === 'Seizure Information Request'.toUpperCase()) {
                     summary = item.Name + ' - ' + item.Person_Account__r.Legal_Name__c + ' - Seizure Details';
                     description = 'Details of the request = ' + caseDetails.Internal_Description__c;
                     description += '\n';
                 } 
-                else if (selectedTypeII === 'Seizures Payout') {
-                    
-                    summary = item.Solarisbank_Id__c + ' - ' + item.Person_Account__r.Legal_Name__c + ' - Seizure Payout';
+                else if (selectedTypeII === 'Seizures Payout'.toUpperCase()) {
+                    summary = item.Name + ' - ' + item.Person_Account__r.Legal_Name__c + ' - Seizure Payout';
                     description = 'Details of the request = ' + caseDetails.Internal_Description__c;
                     description += '\n';
                 } 
-                    else if (selectedTypeII === 'P-Konto') {
-                        summary = item.Solarisbank_Id__c + ' - ' + item.Person_Account__r.Legal_Name__c + ' - P-Konto';
+                    else if (selectedTypeII === 'P-Konto'.toUpperCase()) {
+                        summary = item.Name + ' - ' + item.Person_Account__r.Legal_Name__c + ' - P-Konto';
                         description = 'Attach P-Konto request form = ';
                     }
                 
@@ -610,17 +624,17 @@
             component.set('v.body', description);
         }
         else{
-             if (selectedTypeII === 'Seizure Information Request') {
+             if (selectedTypeII === 'Seizure Information Request'.toUpperCase()) {
                 let caseItemList = _helper.extractBankCaseItems(component, 'Bank Account Details');
                 component.set('v.caseItemList', caseItemList);
                 component.set('v.selectedItemId', caseItemList[0].Id);
             }
-            else if (selectedTypeII === 'Seizures Payout') {
+            else if (selectedTypeII === 'Seizures Payout'.toUpperCase()) {
                  let caseItemList = _helper.extractBankCaseItems(component, 'Bank Account Details');
                 component.set('v.caseItemList', caseItemList);
                 component.set('v.selectedItemId', caseItemList[0].Id);
             }
-                else if (selectedTypeII === 'P-Konto') {
+                else if (selectedTypeII === 'P-Konto'.toUpperCase()) {
                      let caseItemList = _helper.extractBankCaseItems(component, 'Bank Account Details');
                     component.set('v.caseItemList', caseItemList);
                     component.set('v.selectedItemId', caseItemList[0].Id);
@@ -631,6 +645,7 @@
     jiraProcessForOther:function (component, processSummary){
         let _helper = this;
         let selectedTypeII = component.get('v.selectedTypeII');
+        selectedTypeII=selectedTypeII.toUpperCase();
         if (processSummary) {
             let caseDetails = component.get('v.caseDetails');
             let selectedItemId = component.get('v.selectedItemId');
@@ -640,7 +655,7 @@
             let description = '';
             if (selectedItem.length > 0) {
                 let item = selectedItem[0];
-                if (selectedTypeII === 'Other Requests') {
+                if (selectedTypeII === 'Other Requests'.toUpperCase()) {
                     summary = item.Solarisbank_Id__c + ' - ' + item.Legal_Name__c + ' - Other';
                     description = 'Description of the problem = ' + caseDetails.Internal_Description__c;
                     description += '\n';
@@ -651,7 +666,39 @@
             component.set('v.body', description);
         }
         else{
-             if (selectedTypeII === 'Other Requests') {
+             if (selectedTypeII === 'Other Requests'.toUpperCase()) {
+                let caseItemList = _helper.extractBankCaseItems(component, 'Account Details');
+                component.set('v.caseItemList', caseItemList);
+                component.set('v.selectedItemId', caseItemList[0].Id);
+            }
+            
+        }
+    },
+    jiraProcessForAntiFraud:function (component, processSummary){
+        let _helper = this;
+        let selectedTypeII = component.get('v.selectedTypeII');
+        selectedTypeII=selectedTypeII.toUpperCase();
+        if (processSummary) {
+            let caseDetails = component.get('v.caseDetails');
+            let selectedItemId = component.get('v.selectedItemId');
+            let caseItemList = component.get('v.caseItemList');
+            let selectedItem = caseItemList.filter(item => item.Id === selectedItemId);
+            let summary = '';
+            let description = '';
+            if (selectedItem.length > 0) {
+                let item = selectedItem[0];
+                if (selectedTypeII === 'Fraud victim contacting'.toUpperCase()) {
+                    summary = item.Solarisbank_Id__c + ' - ' + item.Legal_Name__c + ' - Compliance investigation';
+                    description = 'Description of the problem = ' + caseDetails.Internal_Description__c;
+                    description += '\n';
+                } 
+                
+            }
+            component.set('v.subject', summary);
+            component.set('v.body', description);
+        }
+        else{
+             if (selectedTypeII === 'Fraud victim contacting'.toUpperCase()) {
                 let caseItemList = _helper.extractBankCaseItems(component, 'Account Details');
                 component.set('v.caseItemList', caseItemList);
                 component.set('v.selectedItemId', caseItemList[0].Id);
@@ -662,6 +709,7 @@
     jiraProcessForPayment: function (component, processSummary) {
         let _helper = this;
         let selectedTypeII = component.get('v.selectedTypeII');
+        selectedTypeII=selectedTypeII.toUpperCase();
         if(processSummary){
             let caseDetails = component.get('v.caseDetails');
             let selectedItemId = component.get('v.selectedItemId');
@@ -672,7 +720,7 @@
                 let description = '';
                 let summary = '';
                 
-                if (selectedTypeII === 'Direct Debit Return') {
+                if (selectedTypeII === 'Direct Debit Return'.toUpperCase()) {
                     summary = item.Booking_Date__c + ' - ' + item.Bank_Account__r.Name + ' - ' + item.Bank_Account__r.Person_Account__r.Legal_Name__c + ' - DDR';
                     description = 'Reason For Return = ' + caseDetails.Internal_Description__c;
                     description += '\n';
@@ -686,11 +734,11 @@
                     description += '\n';
                     description += 'Recipient Name = ' + item.Recipient_Name__c;
                 }
-                else if (selectedTypeII === 'Payment Request') {
+                else if (selectedTypeII === 'Payment Request'.toUpperCase()) {
                     summary = item.Name + ' - ' + item.Person_Account__r.Legal_Name__c + ' - Payment request';
                     description = 'Reason of manual payment = ' + caseDetails.Internal_Description__c;
                 }
-                    else if (selectedTypeII == 'Incoming Payment investigation') {
+                    else if (selectedTypeII == 'Incoming Payment investigation'.toUpperCase()) {
                         summary = item.Bank_Account__r.Name + ' - ' + item.Bank_Account__r.Person_Account__r.Legal_Name__c + ' - ' + item.Booking_Date__c + '- Incoming transaction investigation';
                         description = 'Reason For Investigation = ' + caseDetails.Internal_Description__c;
                         description += '\n';
@@ -704,7 +752,7 @@
                         description += '\n';
                         description += 'Recipient Name = ' + item.Recipient_Name__c;
                     }
-                        else if (selectedTypeII == 'Outgoing Payment investigation') {
+                        else if (selectedTypeII == 'Outgoing Payment investigation'.toUpperCase()) {
                             summary = item.Bank_Account__r.Name + ' - ' + item.Bank_Account__r.Person_Account__r.Legal_Name__c + ' - ' + item.Booking_Date__c + '- Outgoing transaction investigation';
                             description = 'Reason For Investigation = ' + caseDetails.Internal_Description__c;
                             description += '\n';
@@ -718,7 +766,7 @@
                             description += '\n';
                             description += 'Recipient Name = ' + item.Recipient_Name__c;
                         }
-                            else if (selectedTypeII == 'Payment Recall') {
+                            else if (selectedTypeII == 'Payment Recall'.toUpperCase()) {
                                 summary = item.Bank_Account__r.Name + ' - ' + item.Bank_Account__r.Person_Account__r.Legal_Name__c + ' - ' + item.Booking_Date__c + '- SCT Recall';
                                 description = 'Reason For Recall = ' + caseDetails.Internal_Description__c;
                                 description += '\n';
@@ -741,13 +789,13 @@
             }
         }
         else{
-             if (selectedTypeII === 'Payment Request') {
+             if (selectedTypeII === 'Payment Request'.toUpperCase()) {
                  let caseItemList = _helper.extractBankCaseItems(component, 'Bank Account Details');
                 component.set('v.caseItemList', caseItemList);
                 component.set('v.selectedItemId', caseItemList[0].Id);
                 
             }
-            else if (selectedTypeII === 'Direct Debit Return') {
+            else if (selectedTypeII === 'Direct Debit Return'.toUpperCase()) {
                 let caseItemList = _helper.extractBankCaseItems(component, 'Booking Details');
                 let BookingsItemList = [];
                 caseItemList.forEach(function (item) {
@@ -774,7 +822,7 @@
                 component.set('v.BookingsItemList', BookingsItemList)
                 
             }
-                else if (selectedTypeII == 'Incoming Payment investigation') {
+                else if (selectedTypeII == 'Incoming Payment investigation'.toUpperCase()) {
                      let caseItemList = _helper.extractBankCaseItems(component, 'Booking Details');
                     let BookingsItemList = [];
                     caseItemList.forEach(function (item) {
@@ -800,7 +848,7 @@
                     component.set('v.caseItemList', caseItemList);
                     component.set('v.BookingsItemList', BookingsItemList);
                 }
-                    else if (selectedTypeII == 'Outgoing Payment investigation') {
+                    else if (selectedTypeII == 'Outgoing Payment investigation'.toUpperCase()) {
                         let caseItemList = _helper.extractBankCaseItems(component, 'Booking Details');
                         let BookingsItemList = [];
                         caseItemList.forEach(function (item) {
@@ -826,7 +874,7 @@
                         component.set('v.caseItemList', caseItemList);
                         component.set('v.BookingsItemList', BookingsItemList);
                     }
-                        else if (selectedTypeII == 'Payment Recall') {
+                        else if (selectedTypeII == 'Payment Recall'.toUpperCase()) {
                             let caseItemList = _helper.extractBankCaseItems(component, 'Booking Details');
                             let BookingsItemList = [];
                             caseItemList.forEach(function (item) {
@@ -857,6 +905,7 @@
     jiraProcessForCard: function (component, processSummary) {
         let _helper = this;
         let selectedTypeII = component.get('v.selectedTypeII');
+        selectedTypeII.toUpperCase();
         if(processSummary){
             let caseDetails = component.get('v.caseDetails');
             let selectedItemId = component.get('v.selectedItemId');
@@ -867,17 +916,17 @@
                 let item = selectedItem[0];
                 let summary = '';
                 let description = '';
-                if(selectedTypeII=='Bank Card Block'){
+                if(selectedTypeII=='Bank Card Block'.toUpperCase()){
                     summary = item.Solarisbank_Id__c + ' - ' + item.Person_Account__r.Legal_Name__c + ' - Card Block';
                     description = 'Details of the request = ' + caseDetails.Internal_Description__c;
                     description += '\n';
                 }
-                else if(selectedTypeII=='Card Issue'){
+                else if(selectedTypeII=='Card Issue'.toUpperCase()){
                     summary = item.Solarisbank_Id__c + ' - ' + item.Person_Account__r.Legal_Name__c + ' - Card Issue';
                     description = 'Details of the request = ' + caseDetails.Internal_Description__c;
                     description += '\n';
                 }
-                    else if(selectedTypeII=='Card Chargeback'){
+                    else if(selectedTypeII=='Card Chargeback'.toUpperCase()){
                         let selectedBookings=caseBookingsItemList.filter(book=>book.selected);
                         summary = item.Solarisbank_Id__c + ' - ' + item.Person_Account__r.Legal_Name__c + ' - Card Chargeback';
                         description = 'Details of the request = ' + caseDetails.Internal_Description__c;
@@ -900,7 +949,7 @@
                         });
                         
                     }
-                        else if(selectedTypeII=='Card Decline'){
+                        else if(selectedTypeII=='Card Decline'.toUpperCase()){
                             console.log('caseBookingsItemList',caseBookingsItemList)
                             let selectedBookings=caseBookingsItemList.filter(book=>book.selected);
                             console.log('selectedBookings',selectedBookings)
@@ -930,7 +979,7 @@
             }
         }
         else{
-             if(selectedTypeII=='Card Chargeback'){
+             if(selectedTypeII=='Card Chargeback'.toUpperCase()){
                  let caseItemList = _helper.extractBankCaseItems(component, 'Card Details');
                 let bookingsItemList = _helper.extractBankCaseItems(component, 'Booking Details');
                 let transactions = [];
@@ -957,7 +1006,7 @@
                 component.set('v.selectedItemId', caseItemList[0].Id);
                 component.set('v.BookingsItemList', transactions)
             }
-            else if(selectedTypeII=='Card Decline'){
+            else if(selectedTypeII=='Card Decline'.toUpperCase()){
                  let caseItemList = _helper.extractBankCaseItems(component, 'Card Details');
                 let bookingsItemList = _helper.extractBankCaseItems(component, 'Booking Details');
                 let transactions = [];
@@ -984,17 +1033,17 @@
                 component.set('v.selectedItemId', caseItemList[0].Id);
                 component.set('v.BookingsItemList', transactions)
             }
-                else if(selectedTypeII=='Bank Card Block'){
+                else if(selectedTypeII=='Bank Card Block'.toUpperCase()){
                      let caseItemList = _helper.extractBankCaseItems(component, 'Card Details');
                     component.set('v.caseItemList', caseItemList);
                     component.set('v.selectedItemId', caseItemList[0].Id);
                 }
-                    else if(selectedTypeII=='Card Issue'){
+                    else if(selectedTypeII=='Card Issue'.toUpperCase()){
                          let caseItemList = _helper.extractBankCaseItems(component, 'Card Details');
                         component.set('v.caseItemList', caseItemList);
                         component.set('v.selectedItemId', caseItemList[0].Id);
                     }
-                        else if(selectedTypeII=='Card Return/Delivery'){
+                        else if(selectedTypeII=='Card Return/Delivery'.toUpperCase()){
                             let caseItemList = _helper.extractBankCaseItems(component, 'Card Details');
                             component.set('v.caseItemList', caseItemList);
                             component.set('v.selectedItemId', caseItemList[0].Id);

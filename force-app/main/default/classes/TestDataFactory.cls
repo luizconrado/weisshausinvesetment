@@ -48,7 +48,9 @@ public class TestDataFactory {
     public static Bank_Account__c getBankAccount(String accountId,Boolean doInsert){
         return generateBankAccount(accountId,doInsert);
     }
-    
+    public static Bank_Case_Item__c getAccountBankCase(String caseId,Boolean doInsert){
+        return generateBankCase(Constant.BANKCASE_ACCOUNT_RECORDTYPEID,caseId,doInsert);
+    }
     public static Bank_Case_Item__c getCardBankCase(String caseId,Boolean doInsert){
         return generateBankCase(Constant.BANKCASE_CARD_RECORDTYPEID,caseId,doInsert);
     }
@@ -93,6 +95,10 @@ public class TestDataFactory {
     public static Scheduled_Order__c getStandingOrder(String bankaccountId,Boolean doInsert){
         
             return generateScheduledOrder(Constant.STANDING_SCHEDULEDORDER_RECORDTYPEID,bankaccountId,doInsert);
+    }
+    
+    public static Identification__c getVideoIdentification(String accountId,Boolean doInsert){
+        return genrateIdentification(accountId,Constant.IDENTIFIACTION_VIDEO_IDENTIFICATION_RECORDTYPEID,doInsert);
     }
     
     /*
@@ -217,6 +223,15 @@ public class TestDataFactory {
         newSubscriptionProduct.Contact__c=contactId;
         if(doinsert) insert newSubscriptionProduct;
         return newSubscriptionProduct;
+    }
+    
+    private static Identification__c genrateIdentification(String accountId,String recordTypeId,Boolean doInsert){
+        Identification__c newIdentification=new Identification__c();
+        newIdentification.Solarisbank_Id__c='testcardeaea2acad1bcf119a9c0cfcboo';      
+        newIdentification.Account__c=accountId;
+        newIdentification.RecordTypeId=recordTypeId;
+        if(doInsert) insert newIdentification; 
+        return newIdentification;
     }
 
 }

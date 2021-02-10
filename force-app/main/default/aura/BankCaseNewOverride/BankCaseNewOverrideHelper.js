@@ -130,6 +130,8 @@
                 
                 break;
             case 'selectBank':
+                let personBanks=component.get('v.personBanks');
+				if(personBanks.length==0 || !personBanks) return false;
                 let selectedBank=component.get('v.selectedBank');
                 if(!selectedBank){
                     _helper.showToast('Bank Missing','Select Bank Account','warning');

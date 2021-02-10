@@ -12,6 +12,7 @@
             component.set('v.isCompactLayout',data);
         })
         let bankAccountDetails=component.get('v.bankAccountDetails');
+        if(!bankAccountDetails) return;
         helper.fetchAllRecords(component,bankAccountDetails.Id,new Date(dateFilterStart),new Date(dateFilterEnd),null);
     },
     getRecords:function(component, event, helper) {

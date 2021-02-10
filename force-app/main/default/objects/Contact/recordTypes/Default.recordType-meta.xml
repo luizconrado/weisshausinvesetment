@@ -6,6 +6,10 @@
     <picklistValues>
         <picklist>Gender__c</picklist>
         <values>
+            <fullName>Diverse</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Female</fullName>
             <default>false</default>
         </values>

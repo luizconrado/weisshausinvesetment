@@ -1,7 +1,7 @@
 @isTest
 public class BankCaseServiceTest {
     
-    @isTest
+    @isTest 
     static void testchangeCardStatusToJira(){
         Test.setMock(HttpCalloutMock.class, new SolarisbankCardWrapper.MockResponse());
         Account accountDetails=TestDataFactory.getPersonAccount(true);
@@ -119,7 +119,7 @@ public class BankCaseServiceTest {
         Scheduled_Order__c tOrder=TestDataFactory.getTimedOrder(bankAccountDetails.Id,true);
         Scheduled_Order__c sOrder=TestDataFactory.getStandingOrder(bankAccountDetails.Id,true);
         Reservation__c res=TestDataFactory.getReservation(bankAccountDetails.Id,true);
-        
+        Identification__c ident=TestDataFactory.getVideoIdentification(accountDetails.Id,True);
         Case caseDetails=TestDataFactory.getBankCase(accountDetails.Id,true);
         Statement__c state=New Statement__c();
         state.Bank_Account__c=bankAccountDetails.id;
@@ -129,11 +129,11 @@ public class BankCaseServiceTest {
         BankCaseOverrideControler.createBankCases(caseDetails.Id,caseDetails.Type,caseDetails.Type_II__c,caseDetails.Description, 
                                                   bankAccountDetails.Id,cardDetails.Id,accountDetails.Id,
                                                   new List<String>{booking.Id},new List<String>{res.Id},
-                                                  new List<String>{tOrder.Id},new List<String>{sOrder.Id},state.id);
+                                                  new List<String>{tOrder.Id},new List<String>{sOrder.Id},state.id,new List<String>{ident.Id});
          BankCaseOverrideControler.createBankCases(caseDetails.Id,caseDetails.Type,caseDetails.Type_II__c,caseDetails.Description, 
                                                   bankAccountDetails.Id,cardDetails.Id,accountDetails.Id,
                                                   new List<String>{booking.Id},new List<String>{res.Id},
-                                                  new List<String>{tOrder.Id},new List<String>{sOrder.Id},state.Id);
+                                                  new List<String>{tOrder.Id},new List<String>{sOrder.Id},state.Id,new List<String>{ident.Id});
         Test.stopTest();
     }
     @isTest
@@ -145,6 +145,7 @@ public class BankCaseServiceTest {
         Scheduled_Order__c tOrder=TestDataFactory.getTimedOrder(bankAccountDetails.Id,true);
         Scheduled_Order__c sOrder=TestDataFactory.getStandingOrder(bankAccountDetails.Id,true);
         Reservation__c res=TestDataFactory.getReservation(bankAccountDetails.Id,true);
+        Identification__c ident=TestDataFactory.getVideoIdentification(accountDetails.Id,True);
         
         Case caseDetails=TestDataFactory.getBankCase(accountDetails.Id,true);
         Test.startTest();
@@ -153,7 +154,7 @@ public class BankCaseServiceTest {
                                                   bankAccountDetails.Id,cardDetails.Id,accountDetails.Id,
                                                  
                                                   new List<String>{tOrder.Id}, new List<String>{booking.Id},new List<String>{res.Id},
-                                                  new List<String>{sOrder.Id},'');
+                                                  new List<String>{sOrder.Id},'',new List<String>{ident.Id});
         }catch(Exception e){}
         Test.stopTest();
     }

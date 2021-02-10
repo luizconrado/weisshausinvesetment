@@ -27,6 +27,7 @@
     <aura:attribute type="List" name="selectedReservations"/>
     <aura:attribute type="List" name="selectedTimedOrders"/>
     <aura:attribute type="List" name="selectedStandingOrders"/>
+    <aura:attribute type="List" name="selectedIdentList"/>
     
     <aura:attribute type="String" name="selectedType"/>
     <aura:attribute type="String" name="selectedTypeII"/>
@@ -157,6 +158,12 @@
                                  <c:StatmentsCaseView caseRecordId="{!v.caseDetails.Id}" selectedStatementInfo="{!v.selectedStatementInfo}" bankAccountDetails="{!v.selectedBank}"/>
 
                             </lightning:tab>
+                            <lightning:tab label="Person Identifications">
+                                 <c:IdentificationCaseView  selectedIdentList="{!v.selectedIdentList}" personAccountId="{!v.caseDetails.AccountId}"/>
+
+                            </lightning:tab>
+                            
+                            
                         </lightning:tabset>
                     </aura:if>
                     <aura:if isTrue="{!v.currentStep=='createRecord'}">
@@ -267,6 +274,20 @@
                                         </p>
                                     </lightning:card>
                                 </div>
+                            </aura:if>
+                            <aura:if isTrue="{!v.selectedIdentList}">
+                                <aura:iteration items="{!v.selectedIdentList}" var="identification">
+                                    <div class="card-details slds-m-around_x-small">
+                                        <lightning:card variant="Narrow" title="Identification">
+                                            <p class="slds-p-horizontal_small">
+                                                <ul>
+                                                    <li>Ref : {!identification.Reference__c }</li>
+                                                    <li>Status : {!identification.Status__c } </li>
+                                                </ul>
+                                            </p>
+                                        </lightning:card>
+                                    </div>
+                                </aura:iteration>
                             </aura:if>
                         </div>
                     </aura:if>

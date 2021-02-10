@@ -4,7 +4,7 @@
             let data = response.getReturnValue();
             component.set('v.isCompactLayout',data);
         })
-          component.set('v.loading',true);
+        component.set('v.loading',true);
         helper.callApex(component,'retriveBankBalanceDetails',function(response){
             let state = response.getState();
             let data = response.getReturnValue();

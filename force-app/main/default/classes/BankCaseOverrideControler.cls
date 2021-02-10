@@ -80,6 +80,11 @@ public with sharing class BankCaseOverrideControler {
         return [SELECT Id, Type__c, Status__c, Expiration_Date__c, Person_Account__c, Bank_Account__c, Name_On_Card__c, Solarisbank_Id__c, Name 
                 FROM Card__c WHERE Bank_Account__c=:sfBankAccountId ORDER By Expiration_Date__c desc];
     }
+     @AuraEnabled
+    public static List<Identification__c> getAllIdentifications(String sfAccountId){
+        return [SELECT Id, Name, RecordTypeId,RecordType.Name, Account__c, Completed_At__c, Failure_Reason__c,  Method__c, Reference__c, Solarisbank_Id__c, State__c, Status__c, URL__c 
+                FROM Identification__c WHERE Account__c=:sfAccountId ORDER By Completed_At__c desc];
+    }
     
     /////////////////////////////
     //Dynamic Query
@@ -200,7 +205,38 @@ public with sharing class BankCaseOverrideControler {
         insert statement;
         return statement.Id+'________'+completeStatmentJSON;
     }  
-    
+    @AuraEnabled
+    public static string createNewIdentification(String recordId,String languageCode){
+        Bank_Case_Item__c bankAccountDetails=[SELECT Id,Case__c,Action__c, Account__c,Identification__c,Account__r.Solarisbank_Id__c,Account__r.Solarisbank_Tenent__c FROM Bank_Case_Item__c WHERE id=:recordId];
+        LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(recordId,'Bank_Case_Item__c',bankAccountDetails.Account__r.Solarisbank_Tenent__c);
+        String requestBody='{"method": "idnow","language": "'+languageCode+'"}';
+        String res=SolarisbankService.createNewIdentificationAttempt(bankAccountDetails.Account__r.Solarisbank_Id__c,requestBody,apiCallDetails);
+        SolarisBankIdentificationWrapper response=SolarisBankIdentificationWrapper.parse(res);
+        if(String.isNotEmpty(response.id)){
+            LogService.ApiCallDetails apiCallDetailsForIdent =  new LogService.ApiCallDetails(recordId,'Bank_Case_Item__c',bankAccountDetails.Account__r.Solarisbank_Tenent__c);
+            String responseString=SolarisbankService.fetchIdentificationRequestDetails(bankAccountDetails.Account__r.Solarisbank_Id__c,response.id,apiCallDetailsForIdent);
+            SolarisBankIdentificationWrapper identResponse=SolarisBankIdentificationWrapper.parse(responseString);
+
+            Identification__c newIdentification=new Identification__c();
+            newIdentification.Solarisbank_Id__c=response.id;      
+            newIdentification.Account__c=bankAccountDetails.Account__c;
+            newIdentification.RecordTypeId=Constant.IDENTIFIACTION_VIDEO_IDENTIFICATION_RECORDTYPEID;
+            if(String.isNotEmpty(identResponse.url)) newIdentification.URL__c=identResponse.url;
+            if(String.isNotEmpty(identResponse.reference)) newIdentification.Reference__c=identResponse.reference;
+            insert newIdentification; 
+            bankAccountDetails.Identification__c=newIdentification.Id;
+            bankAccountDetails.Action__c='New Person Identification';
+            update bankAccountDetails;
+            Bank_Case_Item__c newbankCaseItem=new Bank_Case_Item__c();
+            newbankCaseItem.Case__c=bankAccountDetails.Case__c;
+            newbankCaseItem.Identification__c=newIdentification.id;
+            newbankCaseItem.recordTypeId=Constant.BANKCASE_IDENTIFICATION_RECORDTYPEID;
+            insert newbankCaseItem;
+            
+            return newIdentification.Id;
+        }
+      return res;
+    } 
     /////////////////////////////
     //Operations
     ////////////////////////////
@@ -208,10 +244,10 @@ public with sharing class BankCaseOverrideControler {
     public static List<String> createBankCases(String caseId,String typeI,String typeII,String description, 
                                                String bankId,String cardId,String accountId,
                                                List<String> bookingsId,List<String> reservationsId,
-                                               List<String> timedOrdersId,List<String> standingOrdersId,String statementId){
+                                               List<String> timedOrdersId,List<String> standingOrdersId,String statementId,List<String> idententificationsIds){
                                                    return  BankCaseService.createBankCasesRecords(caseId,typeI,typeII,description,
                                                                                                   bankId,cardId,accountId,bookingsId,reservationsId,
-                                                                                                  timedOrdersId,standingOrdersId,statementId);
+                                                                                                  timedOrdersId,standingOrdersId,statementId,idententificationsIds);
                                                }
     
     

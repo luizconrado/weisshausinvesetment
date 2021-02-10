@@ -20,6 +20,11 @@
                 <default>false</default>
                 <label>Female</label>
             </value>
+            <value>
+                <fullName>Diverse</fullName>
+                <default>false</default>
+                <label>Diverse</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

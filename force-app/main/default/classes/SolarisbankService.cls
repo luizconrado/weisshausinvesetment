@@ -37,7 +37,12 @@ public inherited  sharing class SolarisbankService {
     private static final String GET_ALL_TIMED_BOOKINGS='/v1/persons/:person_id/accounts/:account_id/timed_orders';
     private static final String CANCEL_TIMED_BOOKING='/v1/persons/:person_id/accounts/:account_id/timed_orders/:id/cancel';
     private static final String GET_ALL_STANDING_ORDERS='/v1/persons/:person_id/accounts/:account_id/standing_orders';
-    
+    private static final String GET_IDENTIFICATION_REQUEST_DETAILS='/v1/persons/:person_id/identifications/:id/request';
+    private static final String GET_IDENTIFICATION_DETAILS='/v1/persons/:person_id/identifications/:id';
+
+
+
+
     
     private static  String AUTH{private set;get{
         if(AUTH==null) AUTH= EncodingUtil.base64Encode(Blob.valueOf(CLIENT_ID+':'+CLIENT_SECRET));
@@ -101,6 +106,8 @@ public inherited  sharing class SolarisbankService {
         details.url=HOST_URL+bookingUri;
         HttpResponse response=RestService.get(HOST_URL+bookingUri,headers);
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+        
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -118,10 +125,12 @@ public inherited  sharing class SolarisbankService {
         details.url=HOST_URL+reservationUri;
         HttpResponse response=RestService.get(HOST_URL+reservationUri,headers);
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
-    
+    //retrives bank account asocciated cards
     public static String fetchAccountCard(String cardId,LogService.ApiCallDetails details){
         
         Map<String,String> headers=getHeaders(details.sbTenent);
@@ -129,6 +138,8 @@ public inherited  sharing class SolarisbankService {
         details.url=HOST_URL+card_uri;
         HttpResponse response=RestService.get(HOST_URL+card_uri,headers);
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -140,6 +151,8 @@ public inherited  sharing class SolarisbankService {
         details.url=HOST_URL+seapUri;
         HttpResponse response=RestService.get(HOST_URL+seapUri,headers);
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -151,6 +164,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+seapUri,headers);
         details.url=HOST_URL+seapUri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -163,6 +178,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+timedUri,headers);
         details.url=HOST_URL+timedUri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -174,6 +191,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+timedUri,headers);
         details.url=HOST_URL+timedUri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -186,6 +205,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+person_uri,headers);
         details.url=HOST_URL+person_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -196,6 +217,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+person_uri,headers);
         details.url=HOST_URL+person_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -205,6 +228,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+person_uri,headers);
         details.url=HOST_URL+person_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -215,9 +240,39 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+person_uri,headers);
         details.url=HOST_URL+person_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
+    public static String fetchIdentificationRequestDetails(String solarisPersonId,String solarisIdentificationId,LogService.ApiCallDetails details){
+        Map<String,String> headers=getHeaders(details.sbTenent);
+        
+        String person_uri=GET_IDENTIFICATION_REQUEST_DETAILS.replace(':person_id', solarisPersonId);
+        person_uri=person_uri.replace(':id', solarisIdentificationId);
+        HttpResponse response=RestService.patch(HOST_URL+person_uri,headers);
+        details.url=HOST_URL+person_uri;
+        details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
+        LogService.LogApiCall(details);
+        return response.getBody();
+    }
+    public static String fetchIdentificationDetails(String solarisPersonId,String solarisIdentificationId,LogService.ApiCallDetails details){
+        Map<String,String> headers=getHeaders(details.sbTenent);
+        
+        String person_uri=GET_IDENTIFICATION_DETAILS.replace(':person_id', solarisPersonId);
+        person_uri=person_uri.replace(':id', solarisIdentificationId);
+        HttpResponse response=RestService.patch(HOST_URL+person_uri,headers);
+        details.url=HOST_URL+person_uri;
+        details.responseCode=response.getStatusCode();
+         if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
+        LogService.LogApiCall(details);
+        return response.getBody();
+    }
+    
+    
     public static String fetchAllESigningAttempts(String solarisPersonId,LogService.ApiCallDetails details){
         Map<String,String> headers=getHeaders(details.sbTenent);
         
@@ -225,6 +280,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+person_uri,headers);
         details.url=HOST_URL+person_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -235,6 +292,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+person_uri,headers);
         details.url=HOST_URL+person_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -245,6 +304,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+person_uri,headers);
         details.url=HOST_URL+person_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -255,32 +316,12 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+balance_uri,headers);
         details.url=HOST_URL+balance_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
     
-    ///////////////////////////
-    // Operation
-    //////////////////////////
-    /*    create bank statement of account
-* 		@body
-*    	{
-*			"interval": "QUARTERLY",
-*			"year": "2020",
-*			"period": "2"
-*		}
-*/
-    public static String createBankStatementByPeriod(String accountId,String body,LogService.ApiCallDetails details){
-        Map<String,String> headers=getHeaders(details.sbTenent);
-        
-        String statement_uri=STATEMENT_OF_ACCOUNT.replace(':account_id', accountId);
-        HttpResponse response=RestService.post(HOST_URL+statement_uri,headers,body);
-        details.url=HOST_URL+statement_uri;
-        details.requestBody=body;
-        details.responseCode=response.getStatusCode();
-        LogService.LogApiCall(details);
-        return response.getBody();
-    }
     //retreive statement of account
     public static String fetchBankStatementByPeriod(String accountId,String statementId,LogService.ApiCallDetails details){
         Map<String,String> headers=getHeaders(details.sbTenent);
@@ -289,25 +330,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+statement_uri,headers);
         details.url=HOST_URL+statement_uri;
         details.responseCode=response.getStatusCode();
-        LogService.LogApiCall(details);
-        return response.getBody();
-    }
-    
-    /*    create bank statement of account
-* 		@body
-*    	{
-*  			"start_date": "2020-01-15",
-*  			"end_date": "2020-06-23"
-*		}
-*/
-    public static String createBankStatementByRange(String accountId,String body,LogService.ApiCallDetails details){
-        Map<String,String> headers=getHeaders(details.sbTenent);
-        
-        String statement_uri=BANK_STATEMENT.replace(':account_id', accountId);
-        HttpResponse response=RestService.post(HOST_URL+statement_uri,headers,body);
-        details.url=HOST_URL+statement_uri;
-        details.requestBody=body;
-        details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -319,10 +343,58 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+statement_uri,headers);
         details.url=HOST_URL+statement_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
-    
+  
+    ///////////////////////////
+    // Operation
+    //////////////////////////
+    /*    create bank statement of account
+    * 		@body
+    *    	{
+    *			"interval": "QUARTERLY",
+    *			"year": "2020",
+    *			"period": "2"
+    *		}
+    */
+    public static String createBankStatementByPeriod(String accountId,String body,LogService.ApiCallDetails details){
+        Map<String,String> headers=getHeaders(details.sbTenent);
+        
+        String statement_uri=STATEMENT_OF_ACCOUNT.replace(':account_id', accountId);
+        HttpResponse response=RestService.post(HOST_URL+statement_uri,headers,body);
+        details.url=HOST_URL+statement_uri;
+        details.requestBody=body;
+        details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
+        LogService.LogApiCall(details);
+        return response.getBody();
+    }
+     
+    /*    create bank statement of account
+    * 		@body
+    *    	{
+    *  			"start_date": "2020-01-15",
+    *  			"end_date": "2020-06-23"
+    *		}
+    */
+    public static String createBankStatementByRange(String accountId,String body,LogService.ApiCallDetails details){
+        Map<String,String> headers=getHeaders(details.sbTenent);
+        
+        String statement_uri=BANK_STATEMENT.replace(':account_id', accountId);
+        HttpResponse response=RestService.post(HOST_URL+statement_uri,headers,body);
+        details.url=HOST_URL+statement_uri;
+        details.requestBody=body;
+        details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
+        LogService.LogApiCall(details);
+        return response.getBody();
+    }
+   
     public static String blockAccountCard(String cardId,LogService.ApiCallDetails details){
         Map<String,String> headers=getHeaders(details.sbTenent);
         
@@ -330,6 +402,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.post(HOST_URL+block_uri,headers,'');
         details.url=HOST_URL+block_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -341,6 +415,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.post(HOST_URL+block_uri,headers,'');
         details.url=HOST_URL+block_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -352,6 +428,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.post(HOST_URL+block_uri,headers,'');
         details.url=HOST_URL+block_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -363,10 +441,30 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.patch(HOST_URL+cancel_url,headers);
         details.url=HOST_URL+cancel_url;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
-    
+      	/*    create  new identification request
+        * 		@body
+        *    	{
+        * 		  "method": "idnow",
+        * 		  "language": "EN"
+        * 		}
+        */
+    public static String createNewIdentificationAttempt(String solarisPersonId,String body,LogService.ApiCallDetails details){
+        Map<String,String> headers=getHeaders(details.sbTenent);
+        String person_uri=GET_ALL_IDENTIFICATION_ATTEPMTS.replace(':person_id', solarisPersonId);
+        HttpResponse response=RestService.post(HOST_URL+person_uri,headers,body);
+        details.url=HOST_URL+person_uri;
+        details.requestBody=body;
+        details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
+        LogService.LogApiCall(details);
+        return response.getBody();
+    }
     public class CardResponse{
         @AuraEnabled public String status{set;get;}
         @AuraEnabled public List<CardResponse> errors{set;get;}

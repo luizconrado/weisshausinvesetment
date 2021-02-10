@@ -12,6 +12,7 @@
             component.set('v.isCompactLayout',data);
         })
         let bankAccountDetails=component.get('v.bankAccountDetails');
+        if(!bankAccountDetails) return;
         helper.fetchBookings(component,bankAccountDetails.Id,new Date(dateFilterStart),new Date(dateFilterEnd),null);
     },
     inputChangeHandler : function(component, event, helper) {

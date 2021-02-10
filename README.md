@@ -19,3 +19,4 @@ configure default file types avilable by record type for each object that is avi
 
 ### Trigger Settings
 Activate or deactive trigger
+

@@ -9,9 +9,11 @@ public class UploadFileControllerTest {
     static void testgetOptions(){
         Account a=TestDataFactory.getPersonAccount(true);
         Case c=TestDataFactory.getBankCase(a.Id,true);
+        ContentVersion file=[SELECT Id, ContentDocumentId FROM ContentVersion LIMIT 1];
         Test.startTest();
         UploadFileController.getOptions('Case',c.Id);
         UploadFileController.retriveTagedVersions('Case',c.Id,'Tag');
+        UploadFileController.tagVersionFiles('Case',c.Id,'Tag',new List<String> {file.ContentDocumentId});
         Test.stopTest();
     }
 

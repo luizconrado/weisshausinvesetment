@@ -9,6 +9,8 @@ public class SyncCampaignMembersControllerTest {
         Campaign c=TestDataFactory.getStandardCampaign(true);
         Contact con=TestDataFactory.getContact(true);
         Account acc2=TestDataFactory.getPersonAccount(true);
+        Lead le=TestDataFactory.getWebLead(true);
+        TestDataFactory.getLeadCampaignMember(c.Id,le.Id,true);
         List<Contact> contact2=[SELECT id,LastName FROM Contact WHERE  AccountId=:acc2.Id AND Account.ispersonaccount=true];
         
         Subscription__c newSubscriptionProduct2=TestDataFactory.getNewsletterSubscription(acc.Id,contact2.get(0).Id,true);

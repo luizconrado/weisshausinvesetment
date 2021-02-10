@@ -47,9 +47,7 @@ public inherited sharing class SchemaUtil {
         //Get dependent field controlling field 
         Schema.sObjectField controllerField = dependentFieldResult.getController();
         //Check controlling field is not null
-        if(controllerField == null){
-            return null;
-        } 
+        if(controllerField == null)  return null;
         //Get controlling field result
         Schema.DescribeFieldResult controllerFieldResult = controllerField.getDescribe();
         //Get controlling field picklist values if controlling field is not a checkbox

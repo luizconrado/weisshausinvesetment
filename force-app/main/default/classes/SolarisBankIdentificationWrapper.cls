@@ -1,5 +1,5 @@
 public class SolarisBankIdentificationWrapper {
-    @AuraEnabled public String id;
+    @AuraEnabled public String id; 
     @AuraEnabled public String reference;
     @AuraEnabled public String url;
     @AuraEnabled public String status;
@@ -8,11 +8,16 @@ public class SolarisBankIdentificationWrapper {
     @AuraEnabled public String method;
     @AuraEnabled public String identification_id;
     @AuraEnabled public String failure_reason;
-    
-    
+    @AuraEnabled public String language;
+     
      @AuraEnabled 
      public static List<SolarisBankIdentificationWrapper> parseList(String json) {
         return (List<SolarisBankIdentificationWrapper>) System.JSON.deserialize(json, List<SolarisBankIdentificationWrapper>.class);
+    }
+
+     @AuraEnabled 
+     public static SolarisBankIdentificationWrapper parse(String json) {
+        return (SolarisBankIdentificationWrapper) System.JSON.deserialize(json, SolarisBankIdentificationWrapper.class);
     }
     
        
@@ -23,7 +28,7 @@ public class SolarisBankIdentificationWrapper {
             data.id='asdasd';
             data.reference='asdasd';
             data.url='www.google.com';
-            data.status='asdasd';
+            data.status='successful';
             data.state='asdasd';
             data.completed_at='2016-09-14T18:18:28.000Z';
             data.method='idnow';
@@ -38,8 +43,13 @@ public class SolarisBankIdentificationWrapper {
             resp.setStatusCode(200); 
             
             resp.setStatus('success'); 
-           
-            resp.setBody(JSON.serialize(dataList)); 
+            if(req.getMethod()=='POST' || req.getMethod()=='PATCH'){
+                resp.setBody(JSON.serialize(data)); 
+            }
+            else{
+            	resp.setBody(JSON.serialize(dataList));     
+            }
+            
             
             return resp; 
             

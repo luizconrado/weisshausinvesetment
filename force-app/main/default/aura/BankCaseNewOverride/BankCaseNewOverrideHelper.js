@@ -130,6 +130,8 @@
                 
                 break;
             case 'selectBank':
+                let personBanks=component.get('v.personBanks');
+				if(personBanks.length==0 || !personBanks) return false;
                 let selectedBank=component.get('v.selectedBank');
                 if(!selectedBank){
                     _helper.showToast('Bank Missing','Select Bank Account','warning');
@@ -227,6 +229,7 @@
         let selectedReservations = component.get('v.selectedReservations') || [];
         let selectedTimedOrders = component.get('v.selectedTimedOrders') || [];
         let selectedStandingOrders = component.get('v.selectedStandingOrders') || [];
+        let selectedIdententifications = component.get('v.selectedIdentList') || [];
         
         
         let sfAccountId = caseDetails.AccountId || '';
@@ -236,6 +239,7 @@
         let sfRervationIds = selectedReservations.map(res => res.Id) || [];
         let sfTimedOrderIds = selectedTimedOrders.map(to => to.Id) || [];
         let sfStandingOrderIds = selectedStandingOrders.map(to => to.Id) || [];
+        let sfIdententificationsIds=selectedIdententifications.map(to => to.Id) || [];
         let sfCaseId = caseDetails.Id;
         let stamentId = selectedStatementInfo.Id || '';
         component.set('v.loading',true);
@@ -271,7 +275,8 @@
             reservationsId:sfRervationIds,
             timedOrdersId:sfTimedOrderIds,
             standingOrdersId:sfStandingOrderIds,
-            statementId:stamentId
+            statementId:stamentId,
+            idententificationsIds:sfIdententificationsIds
         });
         
         

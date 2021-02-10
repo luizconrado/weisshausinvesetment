@@ -87,6 +87,13 @@ public class SolarisbankServiceTest {
         String response=SolarisbankService.fetchAllIdentificationAttempts('solarisPersonId',details);
         SolarisBankIdentificationWrapper.parseList(response);
     }
+    @isTest
+    static void testcreateNewIdentificationAttempt(){
+        Test.setMock(HttpCalloutMock.class, new SolarisBankIdentificationWrapper.MockResponse());
+        LogService.ApiCallDetails details=new LogService.ApiCallDetails(userinfo.getUserId(),'Identification__C','Sandbox');
+        String response=SolarisbankService.createNewIdentificationAttempt('solarisPersonId','{}',details);
+        SolarisBankIdentificationWrapper.parse(response);
+    }
     
     @isTest
     static void testfetchAllESigningAttempts(){

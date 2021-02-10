@@ -49,6 +49,12 @@ public class TrackHistoryTest {
         List<History_Tracker__c> newRecords=[SELECT id FROM History_Tracker__c];
         System.assert(newRecords.size()==1);
     }
+    @isTest 
+    static void testlogUsageEntry(){
+        Account  a=[select Id,Name FROM Account LIMIT 1];
+        TrackHistory.logUsageEntry(a.id,'Account'); 
+
+    }
     
     @isTest
     static void objectTrackingPart1Test(){

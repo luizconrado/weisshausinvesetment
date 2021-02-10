@@ -47,7 +47,7 @@
         </div>
         <footer class="modal-footer slds-modal__footer">
             <lightning:button label="Close" title="Close" onclick="{! c.close }"/>
-            <lightning:button label="Create New Attempt" title="Create New Attempt" onclick="{! c.save }"/>
+            <lightning:button variant="brand" label="Create Identification Process" title="Create Identification Process" onclick="{! c.save }"/>
         </footer>
         
     </section>

@@ -8,7 +8,8 @@ public with sharing class BankCaseService {
         String reservationRecordTypeId =  Constant.BANKCASE_RESERVATION_RECORDTYPEID;
         String standingRecordTypeId = Constant.BANKCASE_STANDINGORDER_RECORDTYPEID;
         String timedRecordTypeId = Constant.BANKCASE_TIMEDGORDER_RECORDTYPEID;
-        String statementRecordTypeId =  Constant.BANKCASE_STATEMENT_RECORDTYPEID;   
+        String statementRecordTypeId =  Constant.BANKCASE_STATEMENT_RECORDTYPEID; 
+        String identificationRecordTypeId=Constant.BANKCASE_IDENTIFICATION_RECORDTYPEID;
         Bank_Case_Item__c bc=new Bank_Case_Item__c();
         bc.Case__c=caseId;
         bc.put(filedName,recordId);
@@ -39,6 +40,10 @@ public with sharing class BankCaseService {
             when 'Reservation__c' {
                 bc.RecordTypeId = reservationRecordTypeId;
             }
+            when 'Identification__c' {
+                bc.RecordTypeId = identificationRecordTypeId;
+            }
+            
         }
         return bc;
     }
@@ -48,7 +53,7 @@ public with sharing class BankCaseService {
     public static List<String> createBankCasesRecords(String caseId,String typeI,String typeII,String description, 
                                                       String bankId,String cardId,String accountId,
                                                       List<String> bookingsId,List<String> reservationsId,
-                                                      List<String> timedOrdersId,List<String> standingOrdersId,String statementId){
+                                                      List<String> timedOrdersId,List<String> standingOrdersId,String statementId,List<String> idententificationsIds){
                                                           try{                          
                                                               
                                                               
@@ -68,6 +73,7 @@ public with sharing class BankCaseService {
                                                               Map<String,Boolean> isReservationExsists = new Map<String,Boolean>();
                                                               Map<String,Boolean> isTimedExsists = new Map<String,Boolean>();
                                                               Map<String,Boolean> isStandingExsists = new Map<String,Boolean>();
+                                                              Map<String,Boolean> isIdentificationExsists = new Map<String,Boolean>();
                                                               
                                                               for(String bookingId:bookingsId)   if(String.isNotBlank(bookingId)) isBookingExsists.put(bookingId,false);
                                                               
@@ -76,6 +82,9 @@ public with sharing class BankCaseService {
                                                               for(String timedOrderId:timedOrdersId)   if(String.isNotBlank(timedOrderId)) isTimedExsists.put(timedOrderId,false);
                                                               
                                                               for(String standingOrderId:standingOrdersId)  if(String.isNotBlank(standingOrderId)) isStandingExsists.put(standingOrderId,false);
+                                                              
+                                                              for(String idententificationsId:idententificationsIds)  if(String.isNotBlank(idententificationsId)) isIdentificationExsists.put(idententificationsId,false);
+
                                                               
                                                               List<Bank_Case_Item__c> allBankCases=[SELECT Id, Case__c, Bank_Account__c, Booking__c, Reservation__c, Scheduled_Order__c, Statement__c, Card__c, Seizure__c, Identification__c, Tax_Identification__c, Is_Test__c,  Account__c 
                                                                                                FROM Bank_Case_Item__c WHERE Case__c=:caseId];            
@@ -97,8 +106,8 @@ public with sharing class BankCaseService {
                                                                   
                                                                   //check reservation record
                                                                   if(isReservationExsists.containsKey(bCases.Reservation__c )) isReservationExsists.put(bCases.Reservation__c,true);  
-                                                                  
-                                                                  
+                                                                  //checking identification records
+                                                                  if(isIdentificationExsists.containsKey(bCases.Identification__c )) isIdentificationExsists.put(bCases.Identification__c,true);  
                                                               }
                                                               
                                                               if(!isAccountExsists && String.isNotBlank(accountId)) toInsertList.add(initiateBankCase(caseId,'Account__c',accountId,''));
@@ -129,6 +138,12 @@ public with sharing class BankCaseService {
                                                                       toInsertList.add(initiateBankCase(caseId,'Scheduled_Order__c',standingOrder,'STANDING_ORDER'));
                                                                   }
                                                               }
+                                                               for(String identification:isIdentificationExsists.keySet()){
+                                                                  if(String.isNotBlank(identification) && !isIdentificationExsists.get(identification)){
+                                                                      toInsertList.add(initiateBankCase(caseId,'Identification__c',identification,''));
+                                                                  }
+                                                              }
+                                                              
                                                               
                                                               
                                                               update caseDetails;

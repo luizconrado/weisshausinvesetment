@@ -106,6 +106,8 @@ public inherited  sharing class SolarisbankService {
         details.url=HOST_URL+bookingUri;
         HttpResponse response=RestService.get(HOST_URL+bookingUri,headers);
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+        
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -123,6 +125,8 @@ public inherited  sharing class SolarisbankService {
         details.url=HOST_URL+reservationUri;
         HttpResponse response=RestService.get(HOST_URL+reservationUri,headers);
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -134,6 +138,8 @@ public inherited  sharing class SolarisbankService {
         details.url=HOST_URL+card_uri;
         HttpResponse response=RestService.get(HOST_URL+card_uri,headers);
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -145,6 +151,8 @@ public inherited  sharing class SolarisbankService {
         details.url=HOST_URL+seapUri;
         HttpResponse response=RestService.get(HOST_URL+seapUri,headers);
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -156,6 +164,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+seapUri,headers);
         details.url=HOST_URL+seapUri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -168,6 +178,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+timedUri,headers);
         details.url=HOST_URL+timedUri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -179,6 +191,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+timedUri,headers);
         details.url=HOST_URL+timedUri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -191,6 +205,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+person_uri,headers);
         details.url=HOST_URL+person_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -201,6 +217,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+person_uri,headers);
         details.url=HOST_URL+person_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -210,6 +228,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+person_uri,headers);
         details.url=HOST_URL+person_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -220,6 +240,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+person_uri,headers);
         details.url=HOST_URL+person_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -231,10 +253,12 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.patch(HOST_URL+person_uri,headers);
         details.url=HOST_URL+person_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
-     public static String fetchIdentificationDetails(String solarisPersonId,String solarisIdentificationId,LogService.ApiCallDetails details){
+    public static String fetchIdentificationDetails(String solarisPersonId,String solarisIdentificationId,LogService.ApiCallDetails details){
         Map<String,String> headers=getHeaders(details.sbTenent);
         
         String person_uri=GET_IDENTIFICATION_DETAILS.replace(':person_id', solarisPersonId);
@@ -242,6 +266,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.patch(HOST_URL+person_uri,headers);
         details.url=HOST_URL+person_uri;
         details.responseCode=response.getStatusCode();
+         if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -254,6 +280,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+person_uri,headers);
         details.url=HOST_URL+person_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -264,6 +292,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+person_uri,headers);
         details.url=HOST_URL+person_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -274,6 +304,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+person_uri,headers);
         details.url=HOST_URL+person_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -284,6 +316,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+balance_uri,headers);
         details.url=HOST_URL+balance_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -296,6 +330,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+statement_uri,headers);
         details.url=HOST_URL+statement_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -307,6 +343,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.get(HOST_URL+statement_uri,headers);
         details.url=HOST_URL+statement_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -330,6 +368,8 @@ public inherited  sharing class SolarisbankService {
         details.url=HOST_URL+statement_uri;
         details.requestBody=body;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -349,6 +389,8 @@ public inherited  sharing class SolarisbankService {
         details.url=HOST_URL+statement_uri;
         details.requestBody=body;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -360,6 +402,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.post(HOST_URL+block_uri,headers,'');
         details.url=HOST_URL+block_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -371,6 +415,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.post(HOST_URL+block_uri,headers,'');
         details.url=HOST_URL+block_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -382,6 +428,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.post(HOST_URL+block_uri,headers,'');
         details.url=HOST_URL+block_uri;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -393,6 +441,8 @@ public inherited  sharing class SolarisbankService {
         HttpResponse response=RestService.patch(HOST_URL+cancel_url,headers);
         details.url=HOST_URL+cancel_url;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }
@@ -410,6 +460,8 @@ public inherited  sharing class SolarisbankService {
         details.url=HOST_URL+person_uri;
         details.requestBody=body;
         details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+
         LogService.LogApiCall(details);
         return response.getBody();
     }

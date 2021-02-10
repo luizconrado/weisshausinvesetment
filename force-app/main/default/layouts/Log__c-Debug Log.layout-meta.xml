@@ -46,6 +46,10 @@
                 <behavior>Edit</behavior>
                 <field>Stack_Trace__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Message__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

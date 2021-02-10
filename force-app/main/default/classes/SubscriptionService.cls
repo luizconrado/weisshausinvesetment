@@ -129,7 +129,7 @@ public without sharing class SubscriptionService {
 	*/
     @AuraEnabled(cacheable=true)
     public static Map<String,String> getUnsubscribeOptions(){
-        Map<String,PicklistEntry[]> allPicklistValues=SchemaUtil.getObjectPicklistFileds(SchemaUtil.getSobjectType('Contact'));
+        Map<String,PicklistEntry[]> allPicklistValues=SchemaUtil.getObjectPicklistFileds(SchemaUtil.getSobjectType('Subscription__c'));
         Map<String,String> values=new Map<String,String>();
         for(PicklistEntry entry:allPicklistValues.get('Reason_For_Unsubscribing__c')){
             values.put(entry.getValue(),entry.getLabel());

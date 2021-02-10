@@ -100,6 +100,12 @@ public inherited sharing class Constant {
         if(BANKCASE_STATEMENT_RECORDTYPEID==null)BANKCASE_STATEMENT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Statement', 'Bank_Case_Item__c');
         return BANKCASE_STATEMENT_RECORDTYPEID;
     }}
+    public static final String BANKCASE_IDENTIFICATION_RECORDTYPEID{private set;get{
+        if(BANKCASE_IDENTIFICATION_RECORDTYPEID==null)BANKCASE_IDENTIFICATION_RECORDTYPEID=SchemaUtil.getRecordTypeId('Identification', 'Bank_Case_Item__c');
+        return BANKCASE_IDENTIFICATION_RECORDTYPEID;
+    }}
+    
+    
     
     //Subscription
     public static final String SUBSCRIPTION_DEFAULT_RECORDTYPEID{private set;get{

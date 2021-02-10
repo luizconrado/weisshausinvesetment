@@ -57,8 +57,10 @@ public class webLeadRestServiceTest {
         Account a=TestDataFactory.getPersonAccount(false);
         a.Origin__pc='weisshaus';
         insert a;
-         List<Contact> c=[SELECT id,LastName FROM Contact WHERE  AccountId=:a.Id AND Account.ispersonaccount=true];
-        Subscription__c newSubscriptionProduct=TestDataFactory.getNewsletterSubscription(a.Id,c.get(0).Id,true); 
+        List<Contact> c=[SELECT id,LastName FROM Contact WHERE  AccountId=:a.Id AND Account.ispersonaccount=true];
+        Subscription__c newSubscriptionProduct=TestDataFactory.getNewsletterSubscription(a.Id,c.get(0).Id,false);
+        newSubscriptionProduct.Subscription_Status__c='Awaiting Confirmation';
+        insert newSubscriptionProduct;
         Test.startTest();
         String baseUrl = URL.getSalesforceBaseUrl().toExternalForm();
         RestRequest req = new RestRequest(); 

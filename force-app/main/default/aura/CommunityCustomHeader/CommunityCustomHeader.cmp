@@ -11,6 +11,7 @@
                     </img>
                 </a>
             </div>
+            <!--
             <div class="community-header__item navigation desktop">
                 <div class="community-header__item-nav">
                     <a href="{!$Label.c.WissehouseWebsite_Url+'/about-us'}"> Über uns</a>
@@ -23,6 +24,7 @@
                 </div>
                 
             </div>
+ 			-->
             <div class="mobile community-header__item navigation ">
                 <button class="toggle-button" id="nav-toggle">
                     <span class="toggle-button__bar"></span>
@@ -30,7 +32,7 @@
                     <span class="toggle-button__bar"></span>
                 </button>
             </div>
-            
+           
         </div>
         <div class="toggle community-header-popup">
             <div class="community-header-backdrop"></div>
@@ -38,6 +40,7 @@
                 <div id="nav-popup" class="community-header-widget__item-nav align-right">
                     X 
                 </div>
+                <!--
                 <div class="community-header-widget__item-nav">
                     <a href="{!$Label.c.WissehouseWebsite_Url+'/about-us'}"> Über uns</a>
                 </div>
@@ -47,7 +50,7 @@
                 <div class="community-header-widget__item-nav">
                     <a href="{!$Label.c.WissehouseWebsite_Url+'/karriere'}"> Karriere</a>
                 </div>
-                
+                -->
             </div>
         </div>
     </div>

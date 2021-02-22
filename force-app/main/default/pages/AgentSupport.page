@@ -2,13 +2,14 @@
     <meta name="viewport" content="width=device-width" />
 
     <!-- Production-->
-    <!--
-	<script type='text/javascript' src='https://c.la2-c2-cdg.salesforceliveagent.com/content/g/js/50.0/deployment.js'>
+
+    <script type='text/javascript' src='https://c.la2-c2-cdg.salesforceliveagent.com/content/g/js/50.0/deployment.js'>
     </script>
-	-->
-    <!--QA01-->
+
+    <!--QA01
     <script type='text/javascript' src='https://c.la1-c1cs-cdg.salesforceliveagent.com/content/g/js/50.0/deployment.js'>
     </script>
+    -->
 
     <style>
         * {
@@ -60,7 +61,7 @@
         }
 
         .header-logo {
-            background: url("https://support.weisshausinvestment.com/file-asset/croppedWeisshausLogo_Final");
+            background: url("https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000cWLT&amp;oid=00D5I000002GOw0");
             height: 2rem;
             background-size: contain;
             background-repeat: no-repeat;
@@ -147,16 +148,15 @@
 
         window.addEventListener("load", function (event) {
             const queryString = window.location.search;
-            const urlParams = new URLSearchParams(queryString);
-
-            if (urlParams.get('email')) {
-                email = urlParams.get('email');
+            const urlParams = parse_query_string(queryString);
+            if (urlParams['email']) {
+                email = urlParams['email'];
             }
-            if (urlParams.get('lname')) {
-                name = urlParams.get('lname');
+            if (urlParams['lname']) {
+                name = urlParams['lname'];
             }
-            if (urlParams.get('fname')) {
-                fname = urlParams.get('fname');
+            if (urlParams['fname']) {
+                fname = urlParams['fname'];
             }
             if (name && email && fname) {
                 startchat();
@@ -201,6 +201,20 @@
                 }
             });
         });
+        function parse_query_string(query) {
+            query = query.indexOf('?') == '0' ? query.substring(1) : query;
+
+            var vars = query.split("&");
+            var query_string = {};
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                var key = decodeURIComponent(pair[0]);
+                var value = decodeURIComponent(pair[1]);
+                query_string[key] = decodeURIComponent(value);
+            }
+            return query_string;
+        }
+
         function startchat() {
             showchat();
             hideform();
@@ -211,9 +225,9 @@
 
 
             //Production            
-            //liveagent.init('https://d.la2-c2-cdg.salesforceliveagent.com/chat', '5725I000000gPtx', '00D5I000002GOw0');
+            liveagent.init('https://d.la2-c2-cdg.salesforceliveagent.com/chat', '5725I000000gPtx', '00D5I000002GOw0');
             //QA01
-            liveagent.init('https://d.la1-c1cs-cdg.salesforceliveagent.com/chat', '5725I000000gPtx', '00D1X0000008bc7');
+            //liveagent.init('https://d.la1-c1cs-cdg.salesforceliveagent.com/chat', '5725I000000gPtx', '00D1X0000008bc7');
 
 
             liveagent.addCustomDetail('FirstName', fname || '', true);

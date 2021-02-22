@@ -10,7 +10,7 @@ public class SyncAccountAndSolarisbankController {
     public static void startSyncWithBank(String sfAccountId){
 
         
-        Account sfAccount=[SELECT Id, LastName, FirstName, Salutation, MiddleName,Gender__pc,PersonEmail,Phone,PersonTitle,Type,
+        Account sfAccount=[SELECT Id,Description, LastName, FirstName, Salutation, MiddleName,Gender__pc,PersonEmail,Phone,PersonTitle,Type,
                            ShippingStreet, ShippingCity, ShippingState, ShippingPostalCode, ShippingCountry ,
                            BillingStreet, BillingCity, BillingState, BillingPostalCode, BillingCountry,Solarisbank_Id__c,Solarisbank_Tenent__c,
                            Legal_Name__c,Tax_Assessment__c,Marital_Status__c,Terms_Conditions_Signed_At__c ,Flagged_By_Compliance__c,Own_Economic_Interest_Signed_At__c ,
@@ -92,6 +92,7 @@ public class SyncAccountAndSolarisbankController {
             if(personDetails.contact_address != null) sfAccount.ShippingCountry =  personDetails.contact_address.country;
             if(personDetails.contact_address != null) sfAccount.ShippingState =  personDetails.contact_address.state;
             sfAccount.PersonEmail=personDetails.email;
+            
             sfAccount.PersonMobilePhone  = personDetails.mobile_number;
             if(phoneJsonMap.containsKey('number'))  sfAccount.Phone=(String)phoneJsonMap.get('number');
             if(personDetails.birth_date!=null) sfAccount.PersonBirthdate = Date.valueOf(personDetails.birth_date);
@@ -100,7 +101,7 @@ public class SyncAccountAndSolarisbankController {
             sfAccount.Birth_Country__c =personDetails.birth_country;
             sfAccount.Nationality__c  = personDetails.nationality;
             sfAccount.Employment_Status__c = personDetails.employment_status;
-            sfAccount.PersonTitle = personDetails.job_title;
+            if(personDetails.title!=null) sfAccount.PersonTitle = personDetails.title;
             if(personDetails.tax_information!=null) sfAccount.Tax_Assessment__c= personDetails.tax_information.tax_assessment;
             if(personDetails.tax_information!=null) sfAccount.Marital_Status__c=  personDetails.tax_information.marital_status;
             if(personDetails.fatca_relevant!=null) sfAccount.Fatca_Relevant__c =personDetails.fatca_relevant;

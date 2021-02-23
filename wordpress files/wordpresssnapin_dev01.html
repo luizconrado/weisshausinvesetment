@@ -179,6 +179,8 @@
     }
 </style>
 <script>
+    let inInit = false;
+    const changeEvent = new Event('change');
     window.addEventListener('DOMContentLoaded', fetchElements);
     function fetchElements() {
         let headerElement = document.querySelector(".block-chat_header");
@@ -210,34 +212,45 @@
             observer.observe(headerElement);
         }
     }
-    let inInit = false;
     function initAgain() {
         if (!inInit)
             setTimeout(() => {
                 inInit = true;
-                fetchElements()
+                fetchElements();
+                alterSummaryInput();
             }, 3000);
     }
-    function setSummaryLabel() {
-
+    function alterSummaryInput() {
         let chatbutton = document.querySelector('.embeddedServiceHelpButton');
-        let config = { attributes: true, childList: true, characterData: true }
+        let config = { attributes: true, childList: true, characterData: false }
         let observer = new MutationObserver((mutations) => {
 
-            let labelElement = document.querySelector('[for=Chat_Description__c]');
-            console.log('labelElement', labelElement)
-            if (labelElement) {
-                labelElement.innerHTML = '<span>Ihre Nachricht an uns</span>';
+            let textElement = document.querySelector('#Chat_Description__c');
+
+            console.log('textElement', textElement)
+            if (textElement) {
+                textElement.style.display = 'none';
+                let textAreaElement = document.createElement('textarea');
+                textAreaElement.addEventListener('keyup', _copyValueToChatDisc);
+                textAreaElement.setAttribute('class', 'slds-style-inputtext input');
+                textAreaElement.setAttribute('maxlength', '255');
+                textAreaElement.setAttribute('style', 'min-height:70px');
+                textElement.insertAdjacentElement('afterend', textAreaElement);
             }
 
 
         });
-        observer.observe(chatbutton, config);
+        if (chatbutton) observer.observe(chatbutton, config);
 
 
 
     }
+    function _copyValueToChatDisc(e) {
+        let textElement = document.querySelector('#Chat_Description__c');
+        textElement.value = e.srcElement.value;
 
+        textElement.dispatchEvent(changeEvent);
+    }
 </script>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>

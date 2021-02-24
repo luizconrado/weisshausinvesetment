@@ -4,13 +4,9 @@
     <isExposed>true</isExposed>
     <masterLabel>Top Articles</masterLabel>
     <targets>
-        <target>lightning__Tab</target>
+         
         <target>lightningCommunity__Page</target>
         <target>lightningCommunity__Default</target>
     </targets>
-    <targetConfigs>
-        <targetConfig targets="lightningCommunity__Default">
-            <property name="title" type="String" default="Häufig gesuchte FAQ"/>
-        </targetConfig>
-    </targetConfigs>
+     
 </LightningComponentBundle>

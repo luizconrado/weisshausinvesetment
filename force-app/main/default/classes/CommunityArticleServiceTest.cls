@@ -3,6 +3,6 @@ public class CommunityArticleServiceTest {
 
     @isTest
     static void getTopArticlestest(){
-        CommunityArticleService.getTopArticles();
+        CommunityArticleService.getTopArticles('en_US');
     }
 }

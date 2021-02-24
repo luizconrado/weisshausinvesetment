@@ -5,15 +5,9 @@
     <isExposed>true</isExposed>
     <masterLabel>Contact Support</masterLabel>
     <targets>
-        <target>lightning__Tab</target>
+       
         <target>lightningCommunity__Page</target>
         <target>lightningCommunity__Default</target>
     </targets>
-    <targetConfigs>
-        <targetConfig targets="lightningCommunity__Default">
-            <property name="title" type="String" default="Kontakt Unterstützung"/>
-            <property name="description" type="String" default="Reichen Sie einen Fall ein und Ihr Support-Experte wird sich bald bei Ihnen melden."/>
-            <property name="buttonLabel" type="String" default="Einen Fall erstellen"/>
-        </targetConfig>
-    </targetConfigs>
+     
 </LightningComponentBundle>

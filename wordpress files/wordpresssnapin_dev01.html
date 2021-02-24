@@ -180,6 +180,7 @@
 </style>
 <script>
     let inInit = false;
+    let buttonListner = false;
     const changeEvent = new Event('change');
     window.addEventListener('DOMContentLoaded', fetchElements);
     function fetchElements() {
@@ -190,7 +191,6 @@
                     if (entry.isIntersecting) {
                         let chatbutton = document.querySelector('.helpButton');
                         if (chatbutton) {
-
                             chatbutton.style.right = '-210px '
                         }
                         else
@@ -199,7 +199,7 @@
                     else {
                         let chatbutton1 = document.querySelector('.helpButton');
                         if (chatbutton1) {
-
+                            attachListners();
                             chatbutton1.style.right = '0px'
                         }
                         else {
@@ -217,8 +217,39 @@
             setTimeout(() => {
                 inInit = true;
                 fetchElements();
-                alterSummaryInput();
+
+                //changeOfflineUi();
+                //alterSummaryInput();
             }, 3000);
+    }
+    function attachListners() {
+        if (!buttonListner) {
+            let helpButton = document.querySelector('.helpButton');
+            if (helpButton) {
+                helpButton.addEventListener('click', changeOfflineUi);
+                buttonListner = true;
+            }
+        }
+
+    }
+    function changeOfflineUi() {
+
+        let chatbutton = document.querySelector('.embeddedServiceHelpButton');
+        let config = { attributes: true, childList: true, characterData: false }
+        let observer = new MutationObserver((mutations) => {
+
+            let uiElement = document.querySelector('.offlineSupportUI');
+            console.log('uiEleemnt', uiElement)
+            if (uiElement) {
+                uiElement.innerHTML = '';
+                uiElement.append(_createOfflineForm());
+            }
+
+
+        });
+        if (chatbutton) observer.observe(chatbutton, config);
+
+
     }
     function alterSummaryInput() {
         let chatbutton = document.querySelector('.embeddedServiceHelpButton');
@@ -246,10 +277,72 @@
 
     }
     function _copyValueToChatDisc(e) {
+
         let textElement = document.querySelector('#Chat_Description__c');
         textElement.value = e.srcElement.value;
 
         textElement.dispatchEvent(changeEvent);
+    }
+    function _createOfflineForm() {
+        let featureBody = document.createElement('div');
+        featureBody.setAttribute('class', 'featureBody embeddedServiceSidebarFeature');
+
+        let stateBody = document.createElement('div');
+        stateBody.setAttribute('class', 'stateBody embeddedServiceSidebarState embeddedServiceSidebarDialogState');
+
+        let dialogState = document.createElement('div');
+        dialogState.setAttribute('class', 'dialogState');
+        dialogState.setAttribute('role', 'alert');
+
+        let dialogTextContainer = document.createElement('div');
+        dialogTextContainer.setAttribute('class', 'dialogTextContainer');
+
+        let dialogIcon = document.createElement('span');
+        dialogIcon.setAttribute('class', 'dialogIcon large embeddedServiceIcon');
+
+        let dialogTextTitle = document.createElement('h3');
+        dialogTextTitle.setAttribute('id', 'dialogTextTitle');
+
+
+        let dialogTextBody = document.createElement('div');
+        dialogTextTitle.setAttribute('id', 'dialogTextBody');
+        dialogTextTitle.setAttribute('aria-live', 'polite');
+
+        let uiOutputRichText = document.createElement('div');
+        dialogTextTitle.setAttribute('class', 'uiOutputRichText');
+        dialogTextTitle.setAttribute('dir', 'ltr');
+        dialogTextTitle.innerText = 'Please go to our website to raise a case';
+
+
+        let dialogButtonContainer = document.createElement('div');
+        dialogButtonContainer.setAttribute('class', 'dialogButtonContainer');
+
+        let dialogButton = document.createElement('button');
+        dialogButton.setAttribute('class', 'dialogButton uiButton--default uiButton embeddedServiceSidebarButton');
+        dialogButton.setAttribute('type', 'button');
+        dialogButton.setAttribute('aria-live', 'off');
+        dialogButton.onclick = () => { window.open("https://support.ev-smartmoney.com/s/contactsupport?language=de", "_blank"); }
+
+        let bBody = document.createElement('span');
+        bBody.setAttribute('class', 'label bBody');
+        bBody.setAttribute('dir', 'ltr');
+        bBody.innerText = 'Open Form';
+
+        dialogButton.append(bBody);
+        dialogButtonContainer.append(dialogButton)
+
+        dialogTextBody.append(uiOutputRichText);
+
+        dialogTextContainer.append(dialogIcon);
+        dialogTextContainer.append(dialogTextTitle);
+        dialogTextContainer.append(dialogTextBody);
+
+        dialogState.append(dialogTextContainer)
+        dialogState.append(dialogButtonContainer)
+
+        stateBody.append(dialogState);
+        featureBody.append(stateBody);
+        return featureBody;
     }
 </script>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>

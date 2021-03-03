@@ -32,6 +32,10 @@ public inherited sharing class Constant {
         if(BANKINGCASE_CASE_RECORDTYPEID==null)BANKINGCASE_CASE_RECORDTYPEID=SchemaUtil.getRecordTypeId('Banking_Case', 'Case');
         return BANKINGCASE_CASE_RECORDTYPEID;
     }}
+    public static final String EVKONTOAPPCASE_CASE_RECORDTYPEID{private set;get{
+        if(EVKONTOAPPCASE_CASE_RECORDTYPEID==null)EVKONTOAPPCASE_CASE_RECORDTYPEID=SchemaUtil.getRecordTypeId('E_V_Konto_App_Case', 'Case');
+        return EVKONTOAPPCASE_CASE_RECORDTYPEID;
+    }}
     //CAMPAIGN
     public static final String STANDARD_CAMPAIGN_RECORDTYPEID{private set;get{
         if(STANDARD_CAMPAIGN_RECORDTYPEID==null)STANDARD_CAMPAIGN_RECORDTYPEID=SchemaUtil.getRecordTypeId('Standard_Campaign', 'Campaign');

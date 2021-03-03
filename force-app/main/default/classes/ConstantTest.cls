@@ -25,6 +25,11 @@ private class ConstantTest {
         System.assert(String.isNotEmpty(Constant.BANKCASE_TIMEDGORDER_RECORDTYPEID));
         System.assert(String.isNotEmpty(Constant.BANKCASE_STATEMENT_RECORDTYPEID));
         System.assert(String.isNotEmpty(Constant.BANKINGCASE_CASE_RECORDTYPEID));
+        System.assert(String.isNotEmpty(Constant.BANKCASE_IDENTIFICATION_RECORDTYPEID));
+        
+        System.assert(String.isNotEmpty(Constant.EVKONTOAPPCASE_CASE_RECORDTYPEID));
+        
+        
 
         
         System.assert(String.isNotEmpty(Constant.STATEMENT_OF_ACCOUNTS_RECORDTYPEID));

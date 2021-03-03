@@ -16,9 +16,17 @@ public class TestDataFactory {
      public static Case getBankCase(String accountId,Boolean doInsert){
         return generateCase(Constant.BANKINGCASE_CASE_RECORDTYPEID, accountid, doInsert);
     }
+     public static Case getEVKontoCase(String accountId,Boolean doInsert){
+        return generateCase(Constant.EVKONTOAPPCASE_CASE_RECORDTYPEID, accountid, doInsert);
+    }
     public static Campaign getStandardCampaign(Boolean doInsert){
         return generateCampaing(Constant.STANDARD_CAMPAIGN_RECORDTYPEID,doInsert);
     }    
+    public static Contentversion getContentVersion(Boolean doInsert){
+        Contentversion cv=new Contentversion(Title = 'ABC',Type__c='Draft', PathOnClient = 'test', VersionData = EncodingUtil.base64Decode('Unit Test Attachment Body'));
+        if(doInsert) insert cv;
+        return  cv;
+    }
     
     public static Contact getContact(Boolean doInsert){
         Contact c=new Contact();

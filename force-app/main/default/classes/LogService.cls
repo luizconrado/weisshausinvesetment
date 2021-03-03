@@ -44,6 +44,7 @@ public inherited  sharing class LogService {
                 log.Request_Body__c=details.requestBody;
                 log.Endpoint__c=details.url;
                 log.Response_Status_Code__c =details.responseCode;
+                log.Response_Body__c=details.responseBody;
             }
             else if(event.Type__c=='Debug'){
                 LogMetadata details = (LogMetadata) JSON.deserialize(event.Body__c, LogMetadata.class);
@@ -75,6 +76,7 @@ public inherited  sharing class LogService {
         @AuraEnabled public String url{set;get;}
         @AuraEnabled public String requestBody{set;get;}
         @AuraEnabled public Integer responseCode{set;get;}
+        @AuraEnabled public String responseBody{set;get;}
         
         public ApiCallDetails(String recordId,String objectName,String sbTenent){
             userId = userinfo.getUserId();
@@ -96,6 +98,21 @@ public inherited  sharing class LogService {
         public String stacktrace{set;get;}
         public String errorMessage{set;get;}
         public Exception error{set;get;}
+        public LogMetadata(){}
+        public void addMetadataInfo(String userId,String className,String methodName,String componentName,String operation){
+            this.userId=userId;
+            this.className=className;
+            this.methodName=methodName;
+            this.componentName=componentName;
+            this.operation=operation;
+        }
+        public void addRecordInfo(String objectName,String recordId){
+            this.objectName=objectName;
+            this.recordId=recordId;
+        }
+        public void addError(Exception error){
+            this.error=error;
+        }
     }
 
 }

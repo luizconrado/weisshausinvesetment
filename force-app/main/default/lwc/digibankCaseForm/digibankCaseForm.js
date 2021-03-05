@@ -5,9 +5,56 @@ import retiveCaseRecordTypeId from '@salesforce/apex/DigibankCaseFormController.
 import createCase from '@salesforce/apex/DigibankCaseFormController.createNewEVKnotoCase';
 import createAttachment from '@salesforce/apex/DigibankCaseFormController.attachFilesToCase';
 
+import DigibankCaseForm_Title from '@salesforce/label/c.DigibankCaseForm_Title';
+import DigibankCaseForm_Thankyou from '@salesforce/label/c.DigibankCaseForm_Thankyou';
+import DigibankCaseForm_EmailField from '@salesforce/label/c.DigibankCaseForm_EmailField';
+import DigibankCaseForm_SubjectField from '@salesforce/label/c.DigibankCaseForm_SubjectField';
+import DigibankCaseForm_IssueField from '@salesforce/label/c.DigibankCaseForm_IssueField';
+import DigibankCaseForm_OccurenceField from '@salesforce/label/c.DigibankCaseForm_OccurenceField';
+import DigibankCaseForm_StepsField from '@salesforce/label/c.DigibankCaseForm_StepsField';
+import DigibankCaseForm_ExpectedField from '@salesforce/label/c.DigibankCaseForm_ExpectedField';
+import DigibankCaseForm_ActualField from '@salesforce/label/c.DigibankCaseForm_ActualField';
+import DigibankCaseForm_ModalField from '@salesforce/label/c.DigibankCaseForm_ModalField';
+import DigibankCaseForm_ModalFieldHelp from '@salesforce/label/c.DigibankCaseForm_ModalFieldHelp';
+import DigibankCaseForm_OSField from '@salesforce/label/c.DigibankCaseForm_OSField';
+import DigibankCaseForm_PhoneVersionField from '@salesforce/label/c.DigibankCaseForm_PhoneVersionField';
+import DigibankCaseForm_VerField from '@salesforce/label/c.DigibankCaseForm_VerField';
+import DigibankCaseForm_FileField from '@salesforce/label/c.DigibankCaseForm_FileField';
+import DigibankCaseForm_SubmitButton from '@salesforce/label/c.DigibankCaseForm_SubmitButton';
+import DigibankCaseForm_SubjectFieldHelp from '@salesforce/label/c.DigibankCaseForm_SubjectFieldHelp';
+import DigibankCaseForm_StepsFieldHelp from '@salesforce/label/c.DigibankCaseForm_StepsFieldHelp';
+import DigibankCaseForm_IssueFieldHelp from '@salesforce/label/c.DigibankCaseForm_IssueFieldHelp';
+import DigibankCaseForm_ExpectedFieldHelp from '@salesforce/label/c.DigibankCaseForm_ExpectedFieldHelp';
+import DigibankCaseForm_ActualFieldHelp from '@salesforce/label/c.DigibankCaseForm_ActualFieldHelp';
+
+
+
 export default class DigibankCaseForm extends LightningElement {
     showForm = true;
     loaded = false;
+
+    //labels
+    title = DigibankCaseForm_Title;
+    title_thankYou = DigibankCaseForm_Thankyou;
+    emailFieldLabel = DigibankCaseForm_EmailField;
+    subjectFieldLabel = DigibankCaseForm_SubjectField;
+    subjectFieldHelp = DigibankCaseForm_SubjectFieldHelp;
+    issueExprencingFieldLabel = DigibankCaseForm_IssueField;
+    issueExprencingFieldHelp = DigibankCaseForm_IssueFieldHelp
+    occurenceTimeFieldLabel = DigibankCaseForm_OccurenceField;
+    setpsToRepFieldLabel = DigibankCaseForm_StepsField;
+    setpsToRepFieldHelp = DigibankCaseForm_StepsFieldHelp;
+    expectedResultFieldLabel = DigibankCaseForm_ExpectedField;
+    expectedResultFieldHelp = DigibankCaseForm_ExpectedFieldHelp;
+    actualResultFieldLabel = DigibankCaseForm_ActualField;
+    actualResultFieldHelp = DigibankCaseForm_ActualFieldHelp;
+    mobileModalFieldLable = DigibankCaseForm_ModalField;
+    mobileModalFieldHelp = DigibankCaseForm_ModalFieldHelp;
+    mobileOsFieldLabel = DigibankCaseForm_OSField;
+    mobileOsVersionFieldLable = DigibankCaseForm_PhoneVersionField;
+    appVerFieldLabel = DigibankCaseForm_VerField;
+    fileUploadFieldLabel = DigibankCaseForm_FileField;
+    submitButtonLabel = DigibankCaseForm_SubmitButton;
 
     //picklist
     typeOptions = [];
@@ -80,7 +127,7 @@ export default class DigibankCaseForm extends LightningElement {
         }
         .inputDesign .slds-textarea{
             border-radius: 0px;
-            height:86px;
+            height:90px;
         }
         .dateTimeInput .slds-form-element{
             width:100%
@@ -97,6 +144,9 @@ export default class DigibankCaseForm extends LightningElement {
         if (this.rendered) return;
         this.applyStyle();
         let d = new Date();
+
+        console.log(d.toISOString())
+        console.log(d.getTimezoneOffset())
         this.OccurrenceOfIssue = d.toISOString();
 
         this.rendered = true;

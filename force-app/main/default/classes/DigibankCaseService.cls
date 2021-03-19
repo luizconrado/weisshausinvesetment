@@ -3,7 +3,7 @@ public with sharing class DigibankCaseService {
     @AuraEnabled
     public static void prepareBugInfoBody(String caseId){
         List<Case> casesDetails=[SELECT Internal_Description__c ,Id,Subject,Description,Occurrence_Of_Issue__c,Expected_Result__c,Actual_Result__c,
-                                 Phone_OS__c,Phone_Model__c,Phone_Operating_System_Version__c,App_Version__c
+                                 Phone_OS__c,Phone_Model__c,App_Version__c
                                  FROM Case WHERE Id=:caseId];
         System.debug(casesDetails.size());
         if(casesDetails.size()>0){

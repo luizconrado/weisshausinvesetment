@@ -107,7 +107,7 @@ export default class DigibankCaseForm extends LightningElement {
                 return { label: v.label, value: v.value }
             });
 
-            this.phoneOsVersionMasterOptions = data.picklistFieldValues.Phone_Operating_System_Version__c;
+            this.phoneOsVersionMasterOptions = data.picklistFieldValues.OS_Version__c;
 
             let appVersionOptionsDetials = data.picklistFieldValues.App_Version__c;
             this.appVersionOptions = appVersionOptionsDetials.values.map(v => {
@@ -221,7 +221,7 @@ export default class DigibankCaseForm extends LightningElement {
             caseObject.Actual_Result__c = this.actualResult;
             caseObject.Phone_OS__c = this.phoneOs;
             caseObject.Phone_Model__c = this.phoneModel;
-            caseObject.Phone_Operating_System_Version__c = this.phoneVersion;
+            caseObject.OS_Version__c = this.phoneVersion;
             caseObject.App_Version__c = this.appVersion;
 
 

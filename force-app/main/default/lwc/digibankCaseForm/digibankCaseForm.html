@@ -3,7 +3,7 @@
     <!-- Loader START-->
     <template if:true={loaded}>
         <div class="spinnerHolder">
-            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
         </div>
     </template>
     <!-- Loader END-->
@@ -128,7 +128,13 @@
                             onuploadfinished={handleUploadFinished} file-field-name="Type__c"
                             file-field-value="Digibank Form File" multiple>
                         </lightning-file-upload>
-
+                        <ul>
+                            <template for:each={contentVersionNames} for:item="itm">
+                                <li key={itm}>
+                                    {itm}
+                                </li>
+                            </template>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -141,7 +147,7 @@
 
                 <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
                     <div class="set-max-width">
-                        <button class="slds-button primaryButton" onclick={handleSave}>
+                        <button disabled={loaded} class="slds-button primaryButton" onclick={handleSave}>
                             {submitButtonLabel}
                         </button>
 

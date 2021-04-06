@@ -77,6 +77,7 @@ export default class DigibankCaseForm extends LightningElement {
     //support
     evKontoCaseRecordTypeId = '';
     contentVersionIds = [];
+    contentVersionNames = [];
     newCaseId;
 
     @wire(retiveCaseRecordTypeId)
@@ -183,7 +184,23 @@ export default class DigibankCaseForm extends LightningElement {
         // Get the list of uploaded files
         const uploadedFiles = event.detail.files;
 
-        this.contentVersionIds = uploadedFiles.map(f => f.contentVersionId)
+        //
+        let fileIds = uploadedFiles.map(f => f.contentVersionId);
+        let fileNames = uploadedFiles.map(f => f.name);
+
+        if (this.contentVersionIds.length > 0) {
+            this.contentVersionIds.push(...fileIds);
+        }
+        else {
+            this.contentVersionIds = fileIds;
+        }
+        if (this.contentVersionNames.length > 0) {
+            this.contentVersionNames.push(...fileNames);
+        }
+        else {
+            this.contentVersionNames = fileNames;
+        }
+
 
         console.log("No. of files uploaded : ", this.contentVersionIds, uploadedFiles);
     }
@@ -207,13 +224,13 @@ export default class DigibankCaseForm extends LightningElement {
             caseObject.Origin = 'Web';
             caseObject.SuppliedEmail = this.email;
             caseObject.Subject = this.subject;
-            caseObject.Description = `
-            What issue are you Experiencing?
-            ${this.issueExperiencing}
-            
-            Steps to Reproduce
-            ${this.stepstoReproduce}
-            `;
+            caseObject.Description = 'What issue are you Experiencing?';
+            caseObject.Description += '\n';
+            caseObject.Description += this.issueExperiencing;
+            caseObject.Description += '\n';
+            caseObject.Description += '\n';
+            caseObject.Description += 'Steps to Reproduce';
+            caseObject.Description += this.stepstoReproduce;
             caseObject.Type = 'Bug';
             caseObject.Phone_Model__c = this.phoneModel
             caseObject.Occurrence_Of_Issue__c = this.OccurrenceOfIssue;

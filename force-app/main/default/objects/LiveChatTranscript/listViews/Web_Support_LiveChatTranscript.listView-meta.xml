@@ -5,6 +5,6 @@
     <label>Web Support</label>
     <queue>Web_Support</queue>
     <sharedTo>
-        <allInternalUsers/>
+        <allInternalUsers></allInternalUsers>
     </sharedTo>
 </ListView>

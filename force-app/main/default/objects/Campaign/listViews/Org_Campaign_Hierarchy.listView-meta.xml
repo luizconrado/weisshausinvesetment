@@ -7,6 +7,7 @@
     <columns>CAMPAIGN.STATUS</columns>
     <columns>CAMPAIGN.START_DATE</columns>
     <columns>CAMPAIGN.END_DATE</columns>
+    <columns>CAMPAIGN.CREATED_DATE</columns>
     <filterScope>Everything</filterScope>
-    <label>Org_Campaign_Hierarchy</label>
+    <label>All Campaigns</label>
 </ListView>

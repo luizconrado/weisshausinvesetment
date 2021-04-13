@@ -1,21 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
-    <label><!-- Action --></label>
+    <label></label>
     <name>Action__c</name>
     <picklistValues>
         <masterLabel>Block Card</masterLabel>
-        <translation><!-- Block Card --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Cancel Timed Order</masterLabel>
-        <translation><!-- Cancel Timed Order --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Close Card</masterLabel>
-        <translation><!-- Close Card --></translation>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>New Card</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>New Person Identification</masterLabel>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Unblock Card</masterLabel>
-        <translation><!-- Unblock Card --></translation>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Update Person Details</masterLabel>
+        <translation></translation>
     </picklistValues>
 </CustomFieldTranslation>

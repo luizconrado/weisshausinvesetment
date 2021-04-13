@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
-    <label><!-- Relation --></label>
+    <label></label>
     <name>Relation__c</name>
     <picklistValues>
         <masterLabel>Child Object</masterLabel>
-        <translation><!-- Child Object --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>On Record</masterLabel>
-        <translation><!-- On Record --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Parent Object</masterLabel>
-        <translation><!-- Parent Object --></translation>
+        <translation></translation>
     </picklistValues>
 </CustomFieldTranslation>

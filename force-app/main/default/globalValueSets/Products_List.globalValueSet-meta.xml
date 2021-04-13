@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>Product A</fullName>
-        <default>false</default>
-        <label>Product A</label>
-    </customValue>
-    <customValue>
-        <fullName>Product B</fullName>
-        <default>false</default>
-        <label>Product B</label>
-    </customValue>
-    <customValue>
         <fullName>Product C</fullName>
         <default>false</default>
         <label>Product C</label>
-    </customValue>
-    <customValue>
-        <fullName>Product D</fullName>
-        <default>false</default>
-        <label>Product D</label>
     </customValue>
     <customValue>
         <fullName>Newsletter</fullName>

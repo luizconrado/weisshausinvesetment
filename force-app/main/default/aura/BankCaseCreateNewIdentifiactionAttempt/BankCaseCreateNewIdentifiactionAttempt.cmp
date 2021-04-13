@@ -1,5 +1,6 @@
 <aura:component controller="BankCaseOverrideControler" implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global"  >
     <lightning:workspaceAPI aura:id="workspace"/>
+      <aura:handler name='init' value='{!this}' action='{!c.onInit}' />
     <lightning:notificationsLibrary aura:id="notifLib"/>
      <aura:html tag="style">
         .cuf-content {

@@ -11,23 +11,23 @@
     <layouts>
         <layout>Seizure Layout</layout>
         <sections>
-            <label><!-- Creditor --></label>
+            <label></label>
             <section>Creditor</section>
         </sections>
         <sections>
-            <label><!-- Creditor Representative --></label>
+            <label></label>
             <section>Creditor Representative</section>
         </sections>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
         <sections>
-            <label><!-- Debtor --></label>
+            <label></label>
             <section>Debtor</section>
         </sections>
         <sections>
-            <label><!-- Transactional Details --></label>
+            <label></label>
             <section>Transactional Details</section>
         </sections>
     </layouts>

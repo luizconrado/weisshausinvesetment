@@ -18,11 +18,6 @@
         <domainName>support.ev-smartmoney.com</domainName>
         <primary>false</primary>
     </customWebAddresses>
-    <customWebAddresses>
-        <certificate>weisshaus_support_domain</certificate>
-        <domainName>support.weisshausinvestment.com</domainName>
-        <primary>true</primary>
-    </customWebAddresses>
     <enableAuraRequests>true</enableAuraRequests>
     <favoriteIcon>CommunityFavIcon</favoriteIcon>
     <fileNotFoundPage>FileNotFound</fileNotFoundPage>
@@ -33,8 +28,8 @@
     <referrerPolicyOriginWhenCrossOrigin>true</referrerPolicyOriginWhenCrossOrigin>
     <requireHttps>true</requireHttps>
     <selfRegPage>CommunitiesSelfReg</selfRegPage>
-    <siteAdmin>salesforce@weisshausinvestment.com</siteAdmin>
-    <siteGuestRecordDefaultOwner>salesforce@weisshausinvestment.com</siteGuestRecordDefaultOwner>
+    <siteAdmin>salesforce@ev-smartmoney.com</siteAdmin>
+    <siteGuestRecordDefaultOwner>salesforce@ev-smartmoney.com</siteGuestRecordDefaultOwner>
     <siteType>ChatterNetwork</siteType>
     <subdomain>evsmartmoney</subdomain>
     <urlPathPrefix>support</urlPathPrefix>

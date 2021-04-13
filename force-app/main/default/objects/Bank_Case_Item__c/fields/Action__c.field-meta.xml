@@ -30,6 +30,21 @@
                 <default>false</default>
                 <label>Cancel Timed Order</label>
             </value>
+            <value>
+                <fullName>New Person Identification</fullName>
+                <default>false</default>
+                <label>New Person Identification</label>
+            </value>
+            <value>
+                <fullName>New Card</fullName>
+                <default>false</default>
+                <label>New Card</label>
+            </value>
+            <value>
+                <fullName>Update Person Details</fullName>
+                <default>false</default>
+                <label>Update Person Details</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

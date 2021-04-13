@@ -14,15 +14,15 @@
     <layouts>
         <layout>Filed History Tracker Layout</layout>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
         <sections>
-            <label><!-- Operations --></label>
+            <label></label>
             <section>Operations</section>
         </sections>
         <sections>
-            <label><!-- Track --></label>
+            <label></label>
             <section>Track</section>
         </sections>
     </layouts>

@@ -11,39 +11,39 @@
     <layouts>
         <layout>Debug Log</layout>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
         <sections>
-            <label><!-- Debug Details --></label>
+            <label></label>
             <section>Debug Details</section>
         </sections>
         <sections>
-            <label><!-- Record Details --></label>
+            <label></label>
             <section>Record Details</section>
         </sections>
     </layouts>
     <layouts>
         <layout>Integration Log</layout>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
         <sections>
-            <label><!-- Integration Details --></label>
+            <label></label>
             <section>Integration Details</section>
         </sections>
         <sections>
-            <label><!-- Record Details --></label>
+            <label></label>
             <section>Record Details</section>
         </sections>
     </layouts>
     <recordTypes>
-        <label><!-- Debug --></label>
+        <label></label>
         <name>Debug</name>
     </recordTypes>
     <recordTypes>
-        <label><!-- Integration --></label>
+        <label></label>
         <name>Integration</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>

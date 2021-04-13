@@ -905,7 +905,7 @@
     jiraProcessForCard: function (component, processSummary) {
         let _helper = this;
         let selectedTypeII = component.get('v.selectedTypeII');
-        selectedTypeII.toUpperCase();
+        selectedTypeII=selectedTypeII.toUpperCase();
         if(processSummary){
             let caseDetails = component.get('v.caseDetails');
             let selectedItemId = component.get('v.selectedItemId');

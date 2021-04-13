@@ -1,6 +1,7 @@
 <aura:component controller="BankCaseOverrideControler" implements="lightning:isUrlAddressable,flexipage:availableForRecordHome,force:hasRecordId,lightning:actionOverride" access="global"  >
     <lightning:workspaceAPI aura:id="workspace"/>
     <lightning:notificationsLibrary aura:id="notifLib"/>
+    <lightning:navigation aura:id="navService"/>
 
     <aura:attribute type="boolean" name="isRender" default="false"/>
 

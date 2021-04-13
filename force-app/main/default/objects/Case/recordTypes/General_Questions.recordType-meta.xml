@@ -6,6 +6,52 @@
     <compactLayoutAssignment>Default</compactLayoutAssignment>
     <label>General Questions</label>
     <picklistValues>
+        <picklist>App_Version__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>OS_Version__c</picklist>
+        <values>
+            <fullName>Android 10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Android 11</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Android 9</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>iOS 13</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>iOS 14</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>iOS 14%2E2%2Ex</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>iOS 14%2E3%2Ex</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>iOS 14%2E4%2Ex</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>iOS 15</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Origin</picklist>
         <values>
             <fullName>Chat</fullName>
@@ -21,6 +67,17 @@
         </values>
         <values>
             <fullName>Web</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Phone_OS__c</picklist>
+        <values>
+            <fullName>Android</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>iOS</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -47,6 +104,17 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Reported__c</picklist>
+        <values>
+            <fullName>Digibank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solaribank</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Type</picklist>
         <values>
             <fullName>Other</fullName>
@@ -56,11 +124,11 @@
     <picklistValues>
         <picklist>Type_II__c</picklist>
         <values>
-            <fullName>Account Statement</fullName>
+            <fullName>Account Confirmation</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Account confirmation</fullName>
+            <fullName>Account Statement</fullName>
             <default>false</default>
         </values>
         <values>
@@ -108,11 +176,11 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Identification Issues</fullName>
+            <fullName>Identification Creation</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Identification creation</fullName>
+            <fullName>Identification Issues</fullName>
             <default>false</default>
         </values>
         <values>
@@ -148,7 +216,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Payment request</fullName>
+            <fullName>Payment Request</fullName>
             <default>false</default>
         </values>
         <values>

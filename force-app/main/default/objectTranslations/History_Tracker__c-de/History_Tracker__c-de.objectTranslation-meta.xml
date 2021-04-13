@@ -13,57 +13,57 @@
     <caseValues>
         <caseType>Accusative</caseType>
         <plural>false</plural>
-        <value><!-- History Tracker --></value>
+        <value></value>
     </caseValues>
     <caseValues>
         <caseType>Accusative</caseType>
         <plural>true</plural>
-        <value><!-- History Tracker --></value>
+        <value></value>
     </caseValues>
     <caseValues>
         <caseType>Genitive</caseType>
         <plural>false</plural>
-        <value><!-- History Tracker --></value>
+        <value></value>
     </caseValues>
     <caseValues>
         <caseType>Genitive</caseType>
         <plural>true</plural>
-        <value><!-- History Tracker --></value>
+        <value></value>
     </caseValues>
     <caseValues>
         <caseType>Dative</caseType>
         <plural>false</plural>
-        <value><!-- History Tracker --></value>
+        <value></value>
     </caseValues>
     <caseValues>
         <caseType>Dative</caseType>
         <plural>true</plural>
-        <value><!-- History Tracker --></value>
+        <value></value>
     </caseValues>
     <gender>Neuter</gender>
     <layouts>
         <layout>Field History Tracker Layout</layout>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
         <sections>
-            <label><!-- Record Information --></label>
+            <label></label>
             <section>Record Information</section>
         </sections>
         <sections>
-            <label><!-- Value --></label>
+            <label></label>
             <section>Value</section>
         </sections>
     </layouts>
-    <nameFieldLabel><!-- Tracking Number --></nameFieldLabel>
+    <nameFieldLabel></nameFieldLabel>
     <recordTypes>
-        <description><!-- Track Field  Changes --></description>
-        <label><!-- Field History --></label>
+        <description></description>
+        <label></label>
         <name>Field_History</name>
     </recordTypes>
     <recordTypes>
-        <label><!-- Usage Tracker --></label>
+        <label></label>
         <name>Usage_Tracker</name>
     </recordTypes>
 </CustomObjectTranslation>

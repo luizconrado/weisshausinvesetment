@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
-    <label><!-- Failure Reason --></label>
+    <label></label>
     <name>Failure_Reason__c</name>
     <picklistValues>
         <masterLabel>Tech Lighting</masterLabel>
-        <translation><!-- Tech Lighting --></translation>
+        <translation></translation>
     </picklistValues>
 </CustomFieldTranslation>

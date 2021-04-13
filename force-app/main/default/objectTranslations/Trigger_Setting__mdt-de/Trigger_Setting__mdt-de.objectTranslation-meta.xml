@@ -14,11 +14,11 @@
     <layouts>
         <layout>Trigger Setting Layout</layout>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
         <sections>
-            <label><!-- Status --></label>
+            <label></label>
             <section>Status</section>
         </sections>
     </layouts>

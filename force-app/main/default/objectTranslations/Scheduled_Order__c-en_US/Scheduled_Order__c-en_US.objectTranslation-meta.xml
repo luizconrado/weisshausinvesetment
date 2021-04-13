@@ -11,39 +11,39 @@
     <layouts>
         <layout>Persons Timed Order Layout</layout>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
         <sections>
-            <label><!-- Details --></label>
+            <label></label>
             <section>Details</section>
         </sections>
         <sections>
-            <label><!-- Transactional Details --></label>
+            <label></label>
             <section>Transactional Details</section>
         </sections>
     </layouts>
     <layouts>
         <layout>Standing Order Layout</layout>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
         <sections>
-            <label><!-- Details --></label>
+            <label></label>
             <section>Details</section>
         </sections>
         <sections>
-            <label><!-- Transactional Details --></label>
+            <label></label>
             <section>Transactional Details</section>
         </sections>
     </layouts>
     <recordTypes>
-        <label><!-- Standing Order --></label>
+        <label></label>
         <name>Standing_Order</name>
     </recordTypes>
     <recordTypes>
-        <label><!-- Timed Order --></label>
+        <label></label>
         <name>Timed_Order</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>

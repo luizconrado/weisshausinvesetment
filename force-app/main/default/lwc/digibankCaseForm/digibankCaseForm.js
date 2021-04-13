@@ -130,6 +130,11 @@ export default class DigibankCaseForm extends LightningElement {
             border-radius: 0px;
             height:90px;
         }
+
+        .inputDesign.textarea_large  .slds-textarea{
+            height: 113px;
+        }
+        
         .dateTimeInput .slds-form-element{
             width:100%
         }`;

@@ -3,8 +3,8 @@ public inherited  sharing class RestService {
     public static HttpResponse get(String endpoint,Map<String,String> headers){
         return call('GET',endpoint,headers,'');
     }  
-    public static HttpResponse patch(String endpoint,Map<String,String> headers){
-        return call('PATCH',endpoint,headers,'');
+    public static HttpResponse patch(String endpoint,Map<String,String> headers,String body){
+        return call('PATCH',endpoint,headers,body);
     } 
     
     public static HttpResponse post(String endpoint,Map<String,String> headers,String body){

@@ -5,9 +5,9 @@
     <name>Customer Support Email</name>
     <queueMembers>
         <users>
-            <user>andre.bruns@weisshausinvestment.com</user>
-            <user>richard.bellviure@weisshausinvestment.com</user>
-            <user>salesforce@weisshausinvestment.com</user>
+            <user>andre.bruns@ev-smartmoney.com</user>
+            <user>richard.bellviure@ev-smartmoney.com</user>
+            <user>salesforce@ev-smartmoney.com</user>
         </users>
     </queueMembers>
     <queueSobject>

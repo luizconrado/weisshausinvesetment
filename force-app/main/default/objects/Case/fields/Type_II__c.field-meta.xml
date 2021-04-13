@@ -69,9 +69,9 @@
                 <label>Closure Info</label>
             </value>
             <value>
-                <fullName>Account confirmation</fullName>
+                <fullName>Account Confirmation</fullName>
                 <default>false</default>
-                <label>Account confirmation</label>
+                <label>Account Confirmation</label>
             </value>
             <value>
                 <fullName>Tax ID Input</fullName>
@@ -84,9 +84,9 @@
                 <label>Phone Change (Without access)</label>
             </value>
             <value>
-                <fullName>Identification creation</fullName>
+                <fullName>Identification Creation</fullName>
                 <default>false</default>
-                <label>Identification creation</label>
+                <label>Identification Creation</label>
             </value>
             <value>
                 <fullName>Identification Issues</fullName>
@@ -109,9 +109,9 @@
                 <label>User Complaint</label>
             </value>
             <value>
-                <fullName>Payment request</fullName>
+                <fullName>Payment Request</fullName>
                 <default>false</default>
-                <label>Payment request</label>
+                <label>Payment Request</label>
             </value>
             <value>
                 <fullName>Direct Debit Return</fullName>
@@ -214,6 +214,21 @@
                 <label>Bank Card Block</label>
             </value>
             <value>
+                <fullName>Fraud victim contacting</fullName>
+                <default>false</default>
+                <label>Fraud victim contacting</label>
+            </value>
+            <value>
+                <fullName>Compliance investigation</fullName>
+                <default>false</default>
+                <label>Compliance investigation</label>
+            </value>
+            <value>
+                <fullName>Phone change investigation</fullName>
+                <default>false</default>
+                <label>Phone change investigation</label>
+            </value>
+            <value>
                 <fullName>Update Details</fullName>
                 <default>false</default>
                 <isActive>false</isActive>
@@ -234,7 +249,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Payment</controllingFieldValue>
-            <valueName>Payment request</valueName>
+            <valueName>Payment Request</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Payment</controllingFieldValue>
@@ -275,6 +290,18 @@
         <valueSettings>
             <controllingFieldValue>Other</controllingFieldValue>
             <valueName>Other Requests</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Anti-Fraud Compliance</controllingFieldValue>
+            <valueName>Fraud victim contacting</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Anti-Fraud Compliance</controllingFieldValue>
+            <valueName>Compliance investigation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Anti-Fraud Compliance</controllingFieldValue>
+            <valueName>Phone change investigation</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Card Management</controllingFieldValue>
@@ -326,7 +353,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Account Management</controllingFieldValue>
-            <valueName>Account confirmation</valueName>
+            <valueName>Account Confirmation</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Master Data Management</controllingFieldValue>
@@ -354,7 +381,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Identification</controllingFieldValue>
-            <valueName>Identification creation</valueName>
+            <valueName>Identification Creation</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Identification</controllingFieldValue>

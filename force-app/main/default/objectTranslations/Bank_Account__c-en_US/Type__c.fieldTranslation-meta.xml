@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
-    <label><!-- Type --></label>
+    <label></label>
     <name>Type__c</name>
     <picklistValues>
         <masterLabel>Call Money</masterLabel>
-        <translation><!-- Call Money --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Checking Business</masterLabel>
-        <translation><!-- Checking Business --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Checking Personal</masterLabel>
-        <translation><!-- Checking Personal --></translation>
+        <translation></translation>
     </picklistValues>
 </CustomFieldTranslation>

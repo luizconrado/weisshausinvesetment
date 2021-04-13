@@ -57,12 +57,128 @@
         <name>Close</name>
     </customLabels>
     <customLabels>
+        <label><!-- ContactButton_Description --></label>
+        <name>ContactButton_Description</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ContactButton_Title --></label>
+        <name>ContactButton_Title</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ContactButton_buttonLabel --></label>
+        <name>ContactButton_buttonLabel</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ContactSupport_ButtonLabel --></label>
+        <name>ContactSupport_ButtonLabel</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ContactSupport_Description --></label>
+        <name>ContactSupport_Description</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ContactSupport_Title --></label>
+        <name>ContactSupport_Title</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankCaseForm_ActualField --></label>
+        <name>DigibankCaseForm_ActualField</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankCaseForm_ActualFieldHelp --></label>
+        <name>DigibankCaseForm_ActualFieldHelp</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankCaseForm_EmailField --></label>
+        <name>DigibankCaseForm_EmailField</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankCaseForm_ExpectedField --></label>
+        <name>DigibankCaseForm_ExpectedField</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankCaseForm_ExpectedFieldHelp --></label>
+        <name>DigibankCaseForm_ExpectedFieldHelp</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankCaseForm_FileField --></label>
+        <name>DigibankCaseForm_FileField</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankCaseForm_IssueField --></label>
+        <name>DigibankCaseForm_IssueField</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankCaseForm_IssueFieldHelp --></label>
+        <name>DigibankCaseForm_IssueFieldHelp</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankCaseForm_ModalField --></label>
+        <name>DigibankCaseForm_ModalField</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankCaseForm_ModalFieldHelp --></label>
+        <name>DigibankCaseForm_ModalFieldHelp</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankCaseForm_OSField --></label>
+        <name>DigibankCaseForm_OSField</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankCaseForm_OccurenceField --></label>
+        <name>DigibankCaseForm_OccurenceField</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankCaseForm_PhoneVersionField --></label>
+        <name>DigibankCaseForm_PhoneVersionField</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankCaseForm_StepsField --></label>
+        <name>DigibankCaseForm_StepsField</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankCaseForm_StepsFieldHelp --></label>
+        <name>DigibankCaseForm_StepsFieldHelp</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankCaseForm_SubjectField --></label>
+        <name>DigibankCaseForm_SubjectField</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankCaseForm_SubjectFieldHelp --></label>
+        <name>DigibankCaseForm_SubjectFieldHelp</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankCaseForm_SubmitButton --></label>
+        <name>DigibankCaseForm_SubmitButton</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankCaseForm_Thankyou --></label>
+        <name>DigibankCaseForm_Thankyou</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankCaseForm_Title --></label>
+        <name>DigibankCaseForm_Title</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankCaseForm_VerField --></label>
+        <name>DigibankCaseForm_VerField</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankSupport_Email --></label>
+        <name>DigibankSupport_Email</name>
+    </customLabels>
+    <customLabels>
         <label><!-- EmailAddress --></label>
         <name>EmailAddress</name>
     </customLabels>
     <customLabels>
         <label><!-- FirstName --></label>
         <name>FirstName</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- GoogleMapApiToken --></label>
+        <name>GoogleMapApiToken</name>
     </customLabels>
     <customLabels>
         <label><!-- Next --></label>
@@ -99,6 +215,10 @@
     <customLabels>
         <label><!-- TermsAndConditionsText --></label>
         <name>TermsAndConditionsText</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- TopArticle_Title --></label>
+        <name>TopArticle_Title</name>
     </customLabels>
     <customLabels>
         <label><!-- Track History Exclusion --></label>

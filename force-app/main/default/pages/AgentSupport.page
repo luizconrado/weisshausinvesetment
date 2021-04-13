@@ -2,10 +2,10 @@
     <meta name="viewport" content="width=device-width" />
 
     <!-- Production-->
-
-    <script type='text/javascript' src='https://c.la2-c2-cdg.salesforceliveagent.com/content/g/js/50.0/deployment.js'>
+     
+	<script type='text/javascript' src='https://c.la2-c2-cdg.salesforceliveagent.com/content/g/js/50.0/deployment.js'>
     </script>
-
+	
     <!--QA01
     <script type='text/javascript' src='https://c.la1-c1cs-cdg.salesforceliveagent.com/content/g/js/50.0/deployment.js'>
     </script>
@@ -149,7 +149,7 @@
         window.addEventListener("load", function (event) {
             const queryString = window.location.search;
             const urlParams = parse_query_string(queryString);
-            if (urlParams['email']) {
+	        if (urlParams['email']) {
                 email = urlParams['email'];
             }
             if (urlParams['lname']) {
@@ -201,19 +201,19 @@
                 }
             });
         });
-        function parse_query_string(query) {
-            query = query.indexOf('?') == '0' ? query.substring(1) : query;
+    function parse_query_string(query) {
+        query = query.indexOf('?') == '0' ? query.substring(1) : query;
 
-            var vars = query.split("&");
-            var query_string = {};
-            for (var i = 0; i < vars.length; i++) {
-                var pair = vars[i].split("=");
-                var key = decodeURIComponent(pair[0]);
-                var value = decodeURIComponent(pair[1]);
-                query_string[key] = decodeURIComponent(value);
-            }
-            return query_string;
+        var vars = query.split("&");
+        var query_string = {};
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            var key = decodeURIComponent(pair[0]);
+            var value = decodeURIComponent(pair[1]);
+            query_string[key]=decodeURIComponent(value);
         }
+        return query_string;
+    }
 
         function startchat() {
             showchat();

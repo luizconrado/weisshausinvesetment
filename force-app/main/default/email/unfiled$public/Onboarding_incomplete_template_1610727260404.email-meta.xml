@@ -5,7 +5,7 @@
     <name>Onboarding incomplete template</name>
     <relatedEntityType>Account</relatedEntityType>
     <style>none</style>
-    <subject>Engel &amp; Völkers Smart Money: Bitte schließen Sie die App-Registrierung ab</subject>
+    <subject>E&amp;V Smart Money: Bitte schließen Sie Ihre Registrierung ab</subject>
     <type>custom</type>
     <uiType>SFX</uiType>
 </EmailTemplate>

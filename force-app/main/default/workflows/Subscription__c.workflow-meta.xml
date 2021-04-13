@@ -8,7 +8,7 @@
             <field>Contact__c</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>support@weisshausinvestment.com</senderAddress>
+        <senderAddress>support@ev-smartmoney.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Subscription_Emails/Weisshausinvestment_Subscription_Thank_You_Email_DE</template>
     </alerts>
@@ -20,7 +20,7 @@
             <field>Contact__c</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>support@weisshausinvestment.com</senderAddress>
+        <senderAddress>support@ev-smartmoney.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Subscription_Emails/Weisshausinvestment_Subscription_Thank_You_Email_EN</template>
     </alerts>
@@ -32,7 +32,7 @@
             <field>Contact__c</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>support@weisshausinvestment.com</senderAddress>
+        <senderAddress>support@ev-smartmoney.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Subscription_Emails/Weisshausinvestment_Subscription_unsubscribe_Email_EN</template>
     </alerts>
@@ -44,7 +44,7 @@
             <field>Contact__c</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>support@weisshausinvestment.com</senderAddress>
+        <senderAddress>support@ev-smartmoney.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Subscription_Emails/Weisshausinvestment_Subscription_Verify_Email_DE</template>
     </alerts>
@@ -56,7 +56,7 @@
             <field>Contact__c</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>support@weisshausinvestment.com</senderAddress>
+        <senderAddress>support@ev-smartmoney.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Subscription_Emails/Weisshausinvestment_Subscription_Verify_Email_EN</template>
     </alerts>

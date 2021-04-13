@@ -63,7 +63,15 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Compliance investigation</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Direct Debit Return</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fraud victim contacting</fullName>
             <default>false</default>
         </values>
         <values>
@@ -143,6 +151,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Phone change investigation</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Seizure Information Request</fullName>
             <default>false</default>
         </values>
@@ -171,6 +183,10 @@
         </values>
         <values>
             <fullName>Account Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Anti-Fraud Compliance</fullName>
             <default>false</default>
         </values>
         <values>

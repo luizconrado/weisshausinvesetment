@@ -53,7 +53,19 @@
     <picklistValues>
         <picklist>Account_Source_Detail__c</picklist>
         <values>
+            <fullName>E%26V Ambassadors</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>E%26V Friends</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>E%26V SM Employees</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>E%26V SM Investor</fullName>
             <default>false</default>
         </values>
         <values>
@@ -66,6 +78,10 @@
         </values>
         <values>
             <fullName>Friends %26 Family</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solarisbank</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -136,6 +152,10 @@
     </picklistValues>
     <picklistValues>
         <picklist>Gender__pc</picklist>
+        <values>
+            <fullName>Diverse</fullName>
+            <default>false</default>
+        </values>
         <values>
             <fullName>Female</fullName>
             <default>false</default>

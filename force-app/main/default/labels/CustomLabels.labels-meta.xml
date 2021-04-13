@@ -81,6 +81,234 @@
         <value>Close</value>
     </labels>
     <labels>
+        <fullName>ContactButton_Description</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ContactButton_Description</shortDescription>
+        <value>Chat with our experts and solve your problems in real time.</value>
+    </labels>
+    <labels>
+        <fullName>ContactButton_Title</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ContactButton_Title</shortDescription>
+        <value>Start a chat</value>
+    </labels>
+    <labels>
+        <fullName>ContactButton_buttonLabel</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ContactButton_buttonLabel</shortDescription>
+        <value>Start chat</value>
+    </labels>
+    <labels>
+        <fullName>ContactSupport_ButtonLabel</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ContactSupport_ButtonLabel</shortDescription>
+        <value>Create a case</value>
+    </labels>
+    <labels>
+        <fullName>ContactSupport_Description</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ContactSupport_Description</shortDescription>
+        <value>Submit a case and your support professional will be in touch soon.</value>
+    </labels>
+    <labels>
+        <fullName>ContactSupport_Title</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ContactSupport_Title</shortDescription>
+        <value>Contact support</value>
+    </labels>
+    <labels>
+        <fullName>DigibankCaseForm_ActualField</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankCaseForm_ActualField</shortDescription>
+        <value>Actual Result</value>
+    </labels>
+    <labels>
+        <fullName>DigibankCaseForm_ActualFieldHelp</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankCaseForm_ActualFieldHelp</shortDescription>
+        <value>Example: I cannot Log In and an error message appears to me.</value>
+    </labels>
+    <labels>
+        <fullName>DigibankCaseForm_EmailField</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankCaseForm_EmailField</shortDescription>
+        <value>User Email Address</value>
+    </labels>
+    <labels>
+        <fullName>DigibankCaseForm_ExpectedField</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankCaseForm_ExpectedField</shortDescription>
+        <value>Expected Result</value>
+    </labels>
+    <labels>
+        <fullName>DigibankCaseForm_ExpectedFieldHelp</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankCaseForm_ExpectedFieldHelp</shortDescription>
+        <value>Example: I should be able to access my account data.</value>
+    </labels>
+    <labels>
+        <fullName>DigibankCaseForm_FileField</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankCaseForm_FileField</shortDescription>
+        <value>Upload Images or Video</value>
+    </labels>
+    <labels>
+        <fullName>DigibankCaseForm_IssueField</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankCaseForm_IssueField</shortDescription>
+        <value>What issue are you Experiencing?</value>
+    </labels>
+    <labels>
+        <fullName>DigibankCaseForm_IssueFieldHelp</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankCaseForm_IssueFieldHelp</shortDescription>
+        <value>Example: I can not Log In to the app.</value>
+    </labels>
+    <labels>
+        <fullName>DigibankCaseForm_ModalField</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankCaseForm_ModalField</shortDescription>
+        <value>Phone Model</value>
+    </labels>
+    <labels>
+        <fullName>DigibankCaseForm_ModalFieldHelp</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankCaseForm_ModalFieldHelp</shortDescription>
+        <value>Example: iphone 12</value>
+    </labels>
+    <labels>
+        <fullName>DigibankCaseForm_OSField</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankCaseForm_OSField</shortDescription>
+        <value>Phone OS (iOS or Android)</value>
+    </labels>
+    <labels>
+        <fullName>DigibankCaseForm_OccurenceField</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankCaseForm_OccurenceField</shortDescription>
+        <value>Occurrence of issue (time and date)</value>
+    </labels>
+    <labels>
+        <fullName>DigibankCaseForm_PhoneVersionField</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankCaseForm_PhoneVersionField</shortDescription>
+        <value>Phone Operating System Version #</value>
+    </labels>
+    <labels>
+        <fullName>DigibankCaseForm_StepsField</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankCaseForm_StepsField</shortDescription>
+        <value>Steps to Reproduce</value>
+    </labels>
+    <labels>
+        <fullName>DigibankCaseForm_StepsFieldHelp</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankCaseForm_StepsFieldHelp</shortDescription>
+        <value>Example:
+1. Open the app
+2. Add my email
+3. Add my password
+4. Click in the Sign-In button</value>
+    </labels>
+    <labels>
+        <fullName>DigibankCaseForm_SubjectField</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankCaseForm_SubjectField</shortDescription>
+        <value>Subject</value>
+    </labels>
+    <labels>
+        <fullName>DigibankCaseForm_SubjectFieldHelp</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankCaseForm_SubjectFieldHelp</shortDescription>
+        <value>Example: Log In issue</value>
+    </labels>
+    <labels>
+        <fullName>DigibankCaseForm_SubmitButton</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankCaseForm_SubmitButton</shortDescription>
+        <value>Submit case</value>
+    </labels>
+    <labels>
+        <fullName>DigibankCaseForm_Thankyou</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankCaseForm_Thankyou</shortDescription>
+        <value>Thank you for reporting.</value>
+    </labels>
+    <labels>
+        <fullName>DigibankCaseForm_Title</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankCaseForm_Title</shortDescription>
+        <value>E&amp;V Konto Support Form</value>
+    </labels>
+    <labels>
+        <fullName>DigibankCaseForm_VerField</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankCaseForm_VerField</shortDescription>
+        <value>App Version #</value>
+    </labels>
+    <labels>
+        <fullName>DigibankSupport_Email</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DigibankSupport_Email</shortDescription>
+        <value>digibank-support@finleap.com</value>
+    </labels>
+    <labels>
         <fullName>EmailAddress</fullName>
         <categories>Generic</categories>
         <language>en_US</language>
@@ -95,6 +323,14 @@
         <protected>false</protected>
         <shortDescription>FirstName</shortDescription>
         <value>First Name</value>
+    </labels>
+    <labels>
+        <fullName>GoogleMapApiToken</fullName>
+        <categories>Token</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GoogleMapApiToken</shortDescription>
+        <value>AIzaSyBySgXVJWx13cvmAY1Ra0c5g90rVjwROCo</value>
     </labels>
     <labels>
         <fullName>Next</fullName>
@@ -161,10 +397,19 @@
     </labels>
     <labels>
         <fullName>TermsAndConditionsText</fullName>
+        <categories>LWCcomponent</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>TermsAndConditionsText</shortDescription>
         <value>I accept the terms and conditions</value>
+    </labels>
+    <labels>
+        <fullName>TopArticle_Title</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TopArticle_Title</shortDescription>
+        <value>Frequently searched FAQ</value>
     </labels>
     <labels>
         <fullName>Track_History_Exclusion</fullName>
@@ -246,7 +491,7 @@ Thank you very much!</value>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>WissehouseWebsite_Url</shortDescription>
-        <value>https://weisshausinve0.wpengine.com</value>
+        <value>https://www.ev-smartmoney.com</value>
     </labels>
     <labels>
         <fullName>community_uri</fullName>
@@ -300,6 +545,6 @@ Thank you very much!</value>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>siteUrl</shortDescription>
-        <value>https://support.weisshausinvestment.com</value>
+        <value>https://support.ev-smartmoney.com</value>
     </labels>
 </CustomLabels>

@@ -1,8 +1,36 @@
+.THIS .community-language_container{
+    padding:0 120px;
+    display: flex;
+    justify-content: space-between;
+    background:white;
+    margin-top: .15em;
+}
+
+.THIS .community-language_switcher{
+    vertical-align: middle;
+    height: 36px;
+    line-height: 36px;
+}
+.THIS .community-language_switcher select{
+    border:0;
+     
+}
+.THIS .community-language_switcher select:focus{
+    outline:0;
+     
+}
+
+.THIS .community-language_container .slds-select_container::before,
+.THIS .community-language_container .slds-select_container::after{
+    color:#EB0A0A;
+}
+
 .THIS .community-header {
     display: flex;
     border-bottom: 3px solid #EB0A0A;
     padding-bottom: 10px;
-    padding-top: 38px;
+    background:white;
+    /*padding-top: 38px;*/
     padding-left: 120px;
     padding-right: 120px;
     justify-content: space-between;
@@ -81,7 +109,7 @@
 
 .THIS .community-header-widget {
     margin: 0;
-    z-index:1000;
+    z-index:2000;
     height: 100vh;
     width: 35vw;
     display: flex;

@@ -55,6 +55,8 @@ public without sharing class SubscriptionService {
             if(accountRec.Subscriptions__r.size()>0){
                 Subscription__c subscription=accountRec.Subscriptions__r.get(0);
                 subscription.Send_Mail__c=true;
+                subscription.Subscription_Terms_and_Conditions__c=true;
+                subscription.Subscription_Status__c='Subscribed';
                 update subscription;
             }
            

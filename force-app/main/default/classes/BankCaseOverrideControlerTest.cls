@@ -10,6 +10,7 @@ public class BankCaseOverrideControlerTest {
         BankCaseOverrideControler.getCardStatusTypes();
         BankCaseOverrideControler.getScheludedOrderTypes();
         BankCaseOverrideControler.checkIsCompactLayout();
+        BankCaseOverrideControler.getAccountPicklistValues();
     }
     
     @isTest
@@ -39,6 +40,13 @@ public class BankCaseOverrideControlerTest {
         BankCaseOverrideControler.getAllIdentifications(accountDetails.Id);
         
         
+    }
+    
+    @isTest
+    static void testGoogleApi(){
+        Test.setMock(HttpCalloutMock.class, new SolarisbankCardWrapper.MockResponse());
+        BankCaseOverrideControler.callGoogleMapSearchApi('Just So You Know','test');
+        BankCaseOverrideControler.callGoogleMapsDetailsApi('Furqan Wrote this all','test');
     }
     
     @isTest
@@ -174,19 +182,8 @@ public class BankCaseOverrideControlerTest {
         cv.Case__c=caseDetails.Id;
         BankCaseOverrideControler.logVarification(cv);
     }
-    
-    @isTest
-    static void testcreateNewIdentification(){
-        Test.setMock(HttpCalloutMock.class, new SolarisBankIdentificationWrapper.MockResponse());
-        Account a=TestDataFactory.getPersonAccount(true);
-        Case c=TestDataFactory.getBankCase(a.Id,true);
-        Bank_Case_Item__c bci=TestDataFactory.getAccountBankCase(c.Id,false);
-        bci.Account__c=a.Id;
-        insert bci;
-        Test.startTest();
-        BankCaseOverrideControler.createNewIdentification(bci.id,'EN');
-        Test.stopTest();
-    }
+   
+   
     
    
     

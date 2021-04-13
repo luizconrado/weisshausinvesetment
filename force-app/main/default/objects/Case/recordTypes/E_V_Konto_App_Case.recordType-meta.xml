@@ -2,9 +2,115 @@
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>E_V_Konto_App_Case</fullName>
     <active>true</active>
-    <businessProcess>Default</businessProcess>
+    <businessProcess>E V Konto Case</businessProcess>
     <compactLayoutAssignment>Default</compactLayoutAssignment>
     <label>E&amp;V Konto App Case</label>
+    <picklistValues>
+        <picklist>App_Version__c</picklist>
+        <values>
+            <fullName>0%2E99</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%2E1%2Ex</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%2E2%2Ex</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%2E4%2Ex</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%2E5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%2E5%2E1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%2E5%2E2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%2E5%2E3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%2E5%2E4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%2E5%2E5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%2E5%2E6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%2E6%2E0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%2E7%2E0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%2E8%2E0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%2E9%2E0</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>OS_Version__c</picklist>
+        <values>
+            <fullName>Android 10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Android 11</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Android 9</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>iOS 13</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>iOS 14</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>iOS 14%2E2%2Ex</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>iOS 14%2E3%2Ex</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>iOS 14%2E4%2Ex</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>iOS 15</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
     <picklistValues>
         <picklist>Origin</picklist>
         <values>
@@ -17,6 +123,17 @@
         </values>
         <values>
             <fullName>Phone</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Phone_OS__c</picklist>
+        <values>
+            <fullName>Android</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>iOS</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -43,7 +160,22 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Reported__c</picklist>
+        <values>
+            <fullName>Digibank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solaribank</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Type</picklist>
+        <values>
+            <fullName>Bug</fullName>
+            <default>false</default>
+        </values>
         <values>
             <fullName>Other</fullName>
             <default>false</default>
@@ -52,11 +184,11 @@
     <picklistValues>
         <picklist>Type_II__c</picklist>
         <values>
-            <fullName>Account Statement</fullName>
+            <fullName>Account Confirmation</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Account confirmation</fullName>
+            <fullName>Account Statement</fullName>
             <default>false</default>
         </values>
         <values>
@@ -104,11 +236,11 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Identification Issues</fullName>
+            <fullName>Identification Creation</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Identification creation</fullName>
+            <fullName>Identification Issues</fullName>
             <default>false</default>
         </values>
         <values>
@@ -144,7 +276,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Payment request</fullName>
+            <fullName>Payment Request</fullName>
             <default>false</default>
         </values>
         <values>

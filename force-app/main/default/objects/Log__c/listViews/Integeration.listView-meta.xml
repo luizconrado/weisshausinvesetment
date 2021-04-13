@@ -6,6 +6,7 @@
     <columns>User__c</columns>
     <columns>Record__c</columns>
     <columns>Response_Status_Code__c</columns>
+    <columns>Endpoint__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>RECORDTYPE</field>

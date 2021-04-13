@@ -64,6 +64,11 @@
                 <default>false</default>
                 <label>Other</label>
             </value>
+            <value>
+                <fullName>Anti-Fraud Compliance</fullName>
+                <default>false</default>
+                <label>Anti-Fraud Compliance</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

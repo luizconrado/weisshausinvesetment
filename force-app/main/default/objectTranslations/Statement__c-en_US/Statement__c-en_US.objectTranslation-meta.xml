@@ -11,22 +11,22 @@
     <layouts>
         <layout>Statement Layout</layout>
         <sections>
-            <label><!-- Balance Details --></label>
+            <label></label>
             <section>Balance Details</section>
         </sections>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
     </layouts>
     <recordTypes>
-        <description><!-- Kontoauszug in German --></description>
-        <label><!-- Bank Statements --></label>
+        <description></description>
+        <label></label>
         <name>BANK_STATEMENTS</name>
     </recordTypes>
     <recordTypes>
-        <description><!-- Rechnungsabschluss in German --></description>
-        <label><!-- Statement Of Accounts --></label>
+        <description></description>
+        <label></label>
         <name>STATEMENT_OF_ACCOUNTS</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>

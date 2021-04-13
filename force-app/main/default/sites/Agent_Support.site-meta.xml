@@ -24,8 +24,8 @@
     <masterLabel>Agent Support</masterLabel>
     <referrerPolicyOriginWhenCrossOrigin>true</referrerPolicyOriginWhenCrossOrigin>
     <requireHttps>true</requireHttps>
-    <siteAdmin>salesforce@weisshausinvestment.com</siteAdmin>
-    <siteGuestRecordDefaultOwner>salesforce@weisshausinvestment.com</siteGuestRecordDefaultOwner>
+    <siteAdmin>salesforce@ev-smartmoney.com</siteAdmin>
+    <siteGuestRecordDefaultOwner>salesforce@ev-smartmoney.com</siteGuestRecordDefaultOwner>
     <siteTemplate>SiteTemplate</siteTemplate>
     <siteType>Visualforce</siteType>
     <subdomain>ev-smartmoney</subdomain>

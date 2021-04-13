@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
-    <label><!-- Creditor Representative State --></label>
+    <label></label>
     <name>Creditor_Representative_State__c</name>
     <picklistValues>
         <masterLabel>BE</masterLabel>
-        <translation><!-- BE --></translation>
+        <translation></translation>
     </picklistValues>
 </CustomFieldTranslation>

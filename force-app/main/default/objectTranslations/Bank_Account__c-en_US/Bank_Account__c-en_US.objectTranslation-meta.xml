@@ -11,16 +11,16 @@
     <layouts>
         <layout>Bank Account Layout</layout>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
     </layouts>
     <quickActions>
-        <label><!-- Check Balance --></label>
+        <label></label>
         <name>Check_Balance</name>
     </quickActions>
     <quickActions>
-        <label><!-- Sync Solarisbank --></label>
+        <label></label>
         <name>Sync_Solarisbank</name>
     </quickActions>
     <startsWith>Consonant</startsWith>

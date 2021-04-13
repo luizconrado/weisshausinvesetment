@@ -30,6 +30,18 @@
             <valueName>Access Deletion</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Anti-Fraud Compliance</controllingFieldValue>
+            <valueName>Fraud victim contacting</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Anti-Fraud Compliance</controllingFieldValue>
+            <valueName>Compliance investigation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Anti-Fraud Compliance</controllingFieldValue>
+            <valueName>Phone change investigation</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Account Management</controllingFieldValue>
             <valueName>Closure Request</valueName>
         </valueSettings>

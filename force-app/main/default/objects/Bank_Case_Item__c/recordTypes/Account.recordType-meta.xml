@@ -14,7 +14,15 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>New Person Identification</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Unblock</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Update Person Details</fullName>
             <default>false</default>
         </values>
     </picklistValues>

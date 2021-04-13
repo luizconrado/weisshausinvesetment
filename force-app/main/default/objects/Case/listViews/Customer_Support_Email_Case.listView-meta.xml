@@ -5,6 +5,6 @@
     <label>Customer Support Email</label>
     <queue>Customer_Support_Email</queue>
     <sharedTo>
-        <allInternalUsers/>
+        <allInternalUsers></allInternalUsers>
     </sharedTo>
 </ListView>

@@ -8,5 +8,20 @@
         <plural>true</plural>
         <value>Solarisbank Api Config</value>
     </caseValues>
+    <layouts>
+        <layout>Solarisbank Api Config Layout</layout>
+        <sections>
+            <label></label>
+            <section>Credentials</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Urls</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

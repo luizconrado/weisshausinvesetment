@@ -57,12 +57,132 @@
         <name>Close</name>
     </customLabels>
     <customLabels>
+        <label>Chatten Sie mit unseren Experten und lösen Sie Ihre Probleme in Echtzeit.</label>
+        <name>ContactButton_Description</name>
+    </customLabels>
+    <customLabels>
+        <label>Einen Chat beginnen</label>
+        <name>ContactButton_Title</name>
+    </customLabels>
+    <customLabels>
+        <label>Chat starten</label>
+        <name>ContactButton_buttonLabel</name>
+    </customLabels>
+    <customLabels>
+        <label>Einen Fall erstellen</label>
+        <name>ContactSupport_ButtonLabel</name>
+    </customLabels>
+    <customLabels>
+        <label>Reichen Sie einen Fall ein und Ihr Support-Experte wird sich bald bei Ihnen melden.</label>
+        <name>ContactSupport_Description</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontakt Unterstützung</label>
+        <name>ContactSupport_Title</name>
+    </customLabels>
+    <customLabels>
+        <label>Tatsächliche Ergebnis</label>
+        <name>DigibankCaseForm_ActualField</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel: Ich kann mich nicht anmelden und es erscheint mir eine Fehlermeldung.</label>
+        <name>DigibankCaseForm_ActualFieldHelp</name>
+    </customLabels>
+    <customLabels>
+        <label>Benutzer-E-Mail-Adresse</label>
+        <name>DigibankCaseForm_EmailField</name>
+    </customLabels>
+    <customLabels>
+        <label>Erwartetes Ergebnis</label>
+        <name>DigibankCaseForm_ExpectedField</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel: Ich sollte auf meine Kontodaten zugreifen können.</label>
+        <name>DigibankCaseForm_ExpectedFieldHelp</name>
+    </customLabels>
+    <customLabels>
+        <label>Dateien hochladen</label>
+        <name>DigibankCaseForm_FileField</name>
+    </customLabels>
+    <customLabels>
+        <label>Welches Problem haben Sie?</label>
+        <name>DigibankCaseForm_IssueField</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel: Ich kann mich nicht bei der App anmelden.</label>
+        <name>DigibankCaseForm_IssueFieldHelp</name>
+    </customLabels>
+    <customLabels>
+        <label>Handy-Modell</label>
+        <name>DigibankCaseForm_ModalField</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel: iphone 12</label>
+        <name>DigibankCaseForm_ModalFieldHelp</name>
+    </customLabels>
+    <customLabels>
+        <label>Telefon Betriebssystem (iOS oder Android)</label>
+        <name>DigibankCaseForm_OSField</name>
+    </customLabels>
+    <customLabels>
+        <label>Auftreten der Ausgabe (Uhrzeit und Datum)</label>
+        <name>DigibankCaseForm_OccurenceField</name>
+    </customLabels>
+    <customLabels>
+        <label>Telefonbetriebssystem Versionsnummer</label>
+        <name>DigibankCaseForm_PhoneVersionField</name>
+    </customLabels>
+    <customLabels>
+        <label>Schritte zum Reproduzieren</label>
+        <name>DigibankCaseForm_StepsField</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel:
+1. Öffnen Sie die App
+2. Fügen Sie meine E-Mail hinzu
+3. Fügen Sie mein Passwort hinzu
+4. Klicken Sie auf die Schaltfläche Anmelden</label>
+        <name>DigibankCaseForm_StepsFieldHelp</name>
+    </customLabels>
+    <customLabels>
+        <label>Gegenstand</label>
+        <name>DigibankCaseForm_SubjectField</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel: Anmeldeproblem</label>
+        <name>DigibankCaseForm_SubjectFieldHelp</name>
+    </customLabels>
+    <customLabels>
+        <label>Fall einreichen</label>
+        <name>DigibankCaseForm_SubmitButton</name>
+    </customLabels>
+    <customLabels>
+        <label>Vielen Dank für die Berichterstattung.</label>
+        <name>DigibankCaseForm_Thankyou</name>
+    </customLabels>
+    <customLabels>
+        <label>E&amp;V Konto Support-Formular</label>
+        <name>DigibankCaseForm_Title</name>
+    </customLabels>
+    <customLabels>
+        <label>App Version #</label>
+        <name>DigibankCaseForm_VerField</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DigibankSupport_Email --></label>
+        <name>DigibankSupport_Email</name>
+    </customLabels>
+    <customLabels>
         <label>(prefilled e-mail)</label>
         <name>EmailAddress</name>
     </customLabels>
     <customLabels>
         <label>Vorname</label>
         <name>FirstName</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- GoogleMapApiToken --></label>
+        <name>GoogleMapApiToken</name>
     </customLabels>
     <customLabels>
         <label><!-- Next --></label>
@@ -99,6 +219,10 @@
     <customLabels>
         <label>Ich bestätige die Allgemeinen Nutzungsbedingungen</label>
         <name>TermsAndConditionsText</name>
+    </customLabels>
+    <customLabels>
+        <label>Häufig gesuchte FAQ</label>
+        <name>TopArticle_Title</name>
     </customLabels>
     <customLabels>
         <label><!-- Track History Exclusion --></label>

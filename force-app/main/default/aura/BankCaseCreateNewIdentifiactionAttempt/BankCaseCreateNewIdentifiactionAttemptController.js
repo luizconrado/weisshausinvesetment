@@ -1,5 +1,28 @@
 ({
-   
+    onInit:function(component,event,helper){
+        helper.callApex(component,'getBankCaseDetails',function(response){
+            let state = response.getState();
+            let data = response.getReturnValue();
+            if (state === "SUCCESS") {
+                console.log('data',data)
+                if(data.Account__r.Preferred_Language__pc=='de'){
+                	component.set('v.selectedType','DE');    
+                }
+                else if(data.Account__r.Preferred_Language__pc=='en_US'){
+                	component.set('v.selectedType','EN');    
+                }
+                
+                
+                
+            }
+            else if (state === "ERROR") {
+            }
+            component.set('v.loader',false);
+        },{
+            recordId:component.get('v.recordId')
+        });
+        
+    },
     save : function(component, event, helper) {
         component.set('v.loading',true);
        

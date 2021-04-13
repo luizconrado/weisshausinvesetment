@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
-    <label><!-- Reservation Type --></label>
+    <label></label>
     <name>Reservation_Type__c</name>
     <picklistValues>
         <masterLabel>Card Authorization</masterLabel>
-        <translation><!-- Card Authorization --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Sepa Credit Transfer</masterLabel>
-        <translation><!-- Sepa Credit Transfer --></translation>
+        <translation></translation>
     </picklistValues>
 </CustomFieldTranslation>

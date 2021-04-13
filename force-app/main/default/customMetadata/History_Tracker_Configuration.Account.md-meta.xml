@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Fields__c</field>
-        <value xsi:type="xsd:string">LastName</value>
+        <value xsi:type="xsd:string">LastName,Account_Source_Detail__c,Auth0_ID__c,Legal_Name__c,Preferred_Language__pc,Solarisbank_Id__c</value>
     </values>
     <values>
         <field>Object__c</field>

@@ -1,0 +1,450 @@
+<aura:component controller="AccountSolarisbankAdminPanalController" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="source" type="string"  />
+    <aura:attribute name="isCompactLayout" type="boolean" default="false"/>
+    <aura:attribute name="recordData" type="Object"  />
+    <aura:attribute name="recordDataOrignal" type="Object"  />
+    
+    <aura:handler name='init' value='{!this}' action='{!c.onInit}' />
+
+    <aura:attribute name="sessionToken" type="String" />
+
+    <aura:attribute name="loading" type="Boolean" default="false"  />
+    <aura:attribute name="isOpen" type="Boolean" default="false"  />
+    <aura:attribute name="isAccountUpdate" type="Boolean" default="false"  />
+    <aura:attribute name="isNewIdentification" type="Boolean" default="false"  />
+    <aura:attribute name="isNewCard" type="Boolean" default="false"  />
+    <aura:attribute name="isChangeStatus" type="Boolean" default="false"  />
+    <aura:attribute name="isCancleOrder" type="Boolean" default="false"  />
+    <aura:attribute name="isAdditionalAddress" type="Boolean" default="false"  />
+    <aura:attribute name="isAddressChange" type="Boolean" default="false"  />
+    <aura:attribute name="isCloseBankAccount" type="Boolean" default="false"  />
+    
+    
+    <!--function valirables-->
+    <aura:attribute name="selectedIdNowType" type="String"  default="DE"/>
+    <aura:attribute name="cardfName" type="String"  />
+    <aura:attribute name="cardlName" type="String"  />
+    <aura:attribute name="cardtypeSelected" type="String"  default="VISA_DEBIT"/>
+    <aura:attribute name="cardstatusTypes" type="List" />
+    <aura:attribute name="cardstatusType" type="String"  />
+    <aura:attribute name="cardChangeReason" type="String"  />
+    <aura:attribute name="accounttitleValues" type="List" default="[
+                                                            {label:'Dr',value:'DR'},
+                                                            {label:'Prof',value:'PROF'},
+                                                            {label:'Prof Dr',value:'PROF_DR'},
+                                                            {label:'Magister',value:'MAGISTER'},
+                                                            ]"   />
+    <aura:attribute name="accountsalutationValues" type="List" default="[
+                                                            {label:'Mr',value:'MR'},
+                                                            {label:'Ms',value:'MS'} 
+                                                            ]" />
+    <aura:attribute name="maritalStatusValues" type="List"  />
+    <aura:attribute name="predictions" type="List"  />
+    <aura:attribute name="addressline2" type="String"  />
+    <aura:attribute name="accountDetailsChanged" type="Object"  />
+    <aura:attribute name="tanRequestResponse" type="Object"  />
+    <aura:attribute name="tannumber" type="Integer" />
+    <aura:attribute name="closeReasonValues" type="List"  />
+    <aura:attribute name="closeReasonSelected" type="String"  />
+    
+    <lightning:card  title="Solarisbank Actions" iconName="standard:account" >
+        <aura:set attribute="actions">
+            <aura:if isTrue="{!v.source=='Account'}">
+                <lightning:buttonMenu menuAlignment="right" alternativeText="Show menu" onselect="{!c.handleSelect}">
+                    <lightning:menuItem value="Update_Person_Details" label="Update Person Details" />
+                    <lightning:menuItem value="New_Person_Identification" label="New Person Identification" />
+                </lightning:buttonMenu>
+            </aura:if>
+            <aura:if isTrue="{!v.source=='Bank Account'}">
+                <lightning:buttonMenu menuAlignment="right" alternativeText="Show menu" onselect="{!c.handleSelect}">
+                    <lightning:menuItem value="Create_New_Card" label="Order New Card" />
+                    <lightning:menuItem value="Close_Bank_Account" label="Close Bank Account" />
+                    
+                </lightning:buttonMenu>
+            </aura:if>
+            <aura:if isTrue="{!v.source=='Card'}">
+                <lightning:buttonMenu menuAlignment="right" alternativeText="Show menu" onselect="{!c.handleSelect}">
+                    <lightning:menuItem value="Change_Card_Status" label="Change Card Status" />
+                </lightning:buttonMenu>
+            </aura:if>
+        </aura:set>
+        <aura:if isTrue="{!v.loading}">
+            <lightning:spinner alternativeText="Loading" size="medium" />
+        </aura:if>
+    </lightning:card>
+    <aura:if isTrue="{!v.isOpen}">
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_medium" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button onclick="{! c.handleClose }" class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                        X
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
+                        
+                        <aura:if isTrue="{!v.isAccountUpdate}">
+                            Update User Details
+                        </aura:if>
+                        <aura:if isTrue="{!v.isNewIdentification}">
+                            Request new Idnow
+                        </aura:if>
+                        <aura:if isTrue="{!v.isNewCard}">
+                            Order new card
+                        </aura:if>
+                        <aura:if isTrue="{!v.isChangeStatus}">
+                            Update card status
+                        </aura:if>
+                        <aura:if isTrue="{!v.isCancleOrder}">
+                            Cancle Timed Order
+                        </aura:if>
+                        <aura:if isTrue="{!v.isCloseBankAccount}">
+                        	Record Account Closer
+                        </aura:if>
+                    </h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <aura:if isTrue="{!v.loading}">
+                        <lightning:spinner alternativeText="Loading" size="medium" />
+                    </aura:if>
+                    <aura:if isTrue="{!v.isAccountUpdate}">
+                        <aura:if isTrue="{!v.isAddressChange}">
+                           <lightning:input name="Tan" required="true" label="Tan Number" value="{!v.tannumber}" type="number"/>
+                            <div class="slds-grid slds-grid_vertical">
+                                <div class="slds-grid slds-col">
+                                    <aura:if isTrue="{!v.accountDetailsChanged.title}">
+                                        <div class="slds-col slds-form__item  form-grid-padding  slds-size_1-of-2">
+                                            <div class="{! join(' ', 
+                                                        'slds-form-element slds-form-element_readonly',
+                                                        v.isCompactLayout? 'slds-form-element_horizontal' : 'slds-form-element_stacked'
+                                                        )}">
+                                                <span class="slds-form-element__label">Title</span>
+                                                <div class="slds-form-element__control">
+                                                    <div class="slds-form-element__static">
+                                                        {!v.accountDetailsChanged.title}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.accountDetailsChanged.salutation}">
+                                        <div class="slds-col slds-form__item  form-grid-padding slds-size_1-of-2">
+                                            <div class="{! join(' ', 
+                                                        'slds-form-element slds-form-element_readonly',
+                                                        v.isCompactLayout? 'slds-form-element_horizontal' : 'slds-form-element_stacked'
+                                                        )}">
+                                                <span class="slds-form-element__label">Salutation</span>
+                                                <div class="slds-form-element__control">
+                                                    <div class="slds-form-element__static">
+                                                        {!v.accountDetailsChanged.salutation}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </aura:if>
+                                </div>
+                                
+                                
+                                
+                                
+                                <aura:if isTrue="{!v.accountDetailsChanged.address}">
+                                    <div class="slds-grid slds-col">
+                                        <aura:if isTrue="{!v.accountDetailsChanged.address.line_1}">
+                                            <div class="slds-col slds-form__item  form-grid-padding  slds-size_1-of-2">
+                                                <div class="{! join(' ', 
+                                                            'slds-form-element slds-form-element_readonly',
+                                                            v.isCompactLayout? 'slds-form-element_horizontal' : 'slds-form-element_stacked'
+                                                            )}">
+                                                    <span class="slds-form-element__label">Street</span>
+                                                    <div class="slds-form-element__control">
+                                                        <div class="slds-form-element__static">
+                                                            {!v.accountDetailsChanged.address.line_1}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </aura:if>
+                                        <aura:if isTrue="{!v.accountDetailsChanged.address.line_2}">
+                                            <div class="slds-col slds-form__item  form-grid-padding  slds-size_1-of-2">
+                                                <div class="{! join(' ', 
+                                                            'slds-form-element slds-form-element_readonly',
+                                                            v.isCompactLayout? 'slds-form-element_horizontal' : 'slds-form-element_stacked'
+                                                            )}">
+                                                    <span class="slds-form-element__label">Street 2</span>
+                                                    <div class="slds-form-element__control">
+                                                        <div class="slds-form-element__static">
+                                                            {!v.accountDetailsChanged.address.line_2}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </aura:if>
+                                        
+                                    </div>
+                                    <div class="slds-grid slds-col">
+                                        <aura:if isTrue="{!v.accountDetailsChanged.address.city}">
+                                            <div class="slds-col slds-form__item  form-grid-padding slds-size_1-of-2">
+                                                <div class="{! join(' ', 
+                                                            'slds-form-element slds-form-element_readonly',
+                                                            v.isCompactLayout? 'slds-form-element_horizontal' : 'slds-form-element_stacked'
+                                                            )}">
+                                                    <span class="slds-form-element__label">City</span>
+                                                    <div class="slds-form-element__control">
+                                                        <div class="slds-form-element__static">
+                                                            {!v.accountDetailsChanged.address.city}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </aura:if>
+                                        <aura:if isTrue="{!v.accountDetailsChanged.address.state}">
+                                            <div class="slds-col slds-form__item  form-grid-padding slds-size_1-of-2">
+                                                <div class="{! join(' ', 
+                                                            'slds-form-element slds-form-element_readonly',
+                                                            v.isCompactLayout? 'slds-form-element_horizontal' : 'slds-form-element_stacked'
+                                                            )}">
+                                                    <span class="slds-form-element__label">State</span>
+                                                    <div class="slds-form-element__control">
+                                                        <div class="slds-form-element__static">
+                                                            {!v.accountDetailsChanged.address.state}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </aura:if>
+                                        
+                                    </div>
+                                    <div class="slds-grid slds-col">
+                                        <aura:if isTrue="{!v.accountDetailsChanged.address.country}">
+                                            <div class="slds-col slds-form__item  form-grid-padding  slds-size_1-of-2">
+                                                <aura:if isTrue="{!v.accountDetailsChanged.address.country}">
+                                                    
+                                                    <div class="{! join(' ', 
+                                                                'slds-form-element slds-form-element_readonly',
+                                                                v.isCompactLayout? 'slds-form-element_horizontal' : 'slds-form-element_stacked'
+                                                                )}">
+                                                        <span class="slds-form-element__label">Country</span>
+                                                        <div class="slds-form-element__control">
+                                                            <div class="slds-form-element__static">
+                                                                {!v.accountDetailsChanged.address.country}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </aura:if>
+                                            </div>
+                                        </aura:if>
+                                        <aura:if isTrue="{!v.accountDetailsChanged.address.postal_code}">
+                                            <div class="slds-col slds-form__item  form-grid-padding slds-size_1-of-2">
+                                                <aura:if isTrue="{!v.accountDetailsChanged.address.postal_code}">
+                                                    <div class="{! join(' ', 
+                                                                'slds-form-element slds-form-element_readonly',
+                                                                v.isCompactLayout? 'slds-form-element_horizontal' : 'slds-form-element_stacked'
+                                                                )}">
+                                                        <span class="slds-form-element__label">PostalCode</span>
+                                                        <div class="slds-form-element__control">
+                                                            <div class="slds-form-element__static">
+                                                                {!v.accountDetailsChanged.address.postal_code}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </aura:if>
+                                            </div>
+                                        </aura:if>
+                                    </div>
+                                </aura:if>
+                                <div class="slds-grid slds-col">
+                                    <aura:if isTrue="{!v.accountDetailsChanged.tax_information}">
+                                        <div class="slds-col slds-form__item  form-grid-padding slds-size_1-of-2">
+                                            <div class="{! join(' ', 
+                                                        'slds-form-element slds-form-element_readonly',
+                                                        v.isCompactLayout? 'slds-form-element_horizontal' : 'slds-form-element_stacked'
+                                                        )}">
+                                                <span class="slds-form-element__label">Marital Status</span>
+                                                <div class="slds-form-element__control">
+                                                    <div class="slds-form-element__static">
+                                                        {!v.accountDetailsChanged.tax_information.marital_status}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </aura:if>
+                                </div>
+                                
+                            </div>
+                            <aura:set attribute="else">
+                               
+                                <div class="slds-grid slds-grid_vertical">
+                                    <div class="slds-grid slds-col">
+                                        <div class="slds-col form-grid-padding slds-medium-size_1-of-2 slds-small-size_1-of-1">
+                                            <lightning:select label="Title" name="PersonTitle"    value="{!v.recordData.PersonTitle}" >
+                                                <option text="" value=""/>
+                                                <aura:iteration items="{!v.accounttitleValues}" var="option">
+                                                    <option text="{!option.label}" value="{!option.value}"/>
+                                                </aura:iteration>
+                                            </lightning:select>
+                                        </div>
+                                        <div class="slds-col form-grid-padding slds-medium-size_1-of-2 slds-small-size_1-of-1">
+                                            
+                                            <lightning:select label="Salutation" name="Salutation"    value="{!v.recordData.Salutation}" >
+                                                <option text="{!v.recordData.Salutation}" value="{!v.recordData.Salutation}"/>
+                                                <aura:iteration items="{!v.accountsalutationValues}" var="option">
+                                                    <option text="{!option.label}" value="{!option.value}"/>
+                                                </aura:iteration>
+                                            </lightning:select>
+                                        </div>
+                                    </div>
+                                    <div class="slds-grid slds-col">
+                                        <div class="slds-col form-grid-padding slds-medium-size_1-of-1 slds-small-size_1-of-1">
+                                            
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label" for="combobox-id-2">Relate To</label>
+                                                <div class="slds-form-element__control">
+                                                    <div class="slds-combobox_container">
+                                                        <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open" aria-expanded="true" aria-haspopup="listbox" role="combobox">
+                                                            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                                                                <div onkeyup="{! c.searchGoogleAddress }">
+                                                                    <lightning:input
+                                                                                     aura:id="addressChange"
+                                                                                     name="searchAdress"
+                                                                                     label="Search Address" 
+                                                                                     type="search"
+                                                                                     />
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            <aura:if isTrue="{!v.predictions.length > 0}">		 
+                                                                <div id="searchAdressList" class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" role="listbox">
+                                                                    <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                                        <aura:iteration items="{!v.predictions}" var="prediction">
+                                                                            <li  role="presentation" class="slds-listbox__item">
+                                                                                <div name="{!prediction.place_id}" id="{!prediction.place_id}"  onclick="{!c.searchWithDetailsApi}" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                                                                    <span class="slds-media__figure slds-listbox__option-icon">
+                                                                                        <lightning:icon iconName="action:map" alternativeText="loaction" title="loaction" size="x-small" />                         
+                                                                                    </span>
+                                                                                    <span class="slds-media__body">
+                                                                                        <span class="slds-listbox__option-text slds-listbox__option-text_entity">{!prediction.description}</span>
+                                                                                        <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">{!prediction.description}</span>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </li>
+                                                                        </aura:iteration>
+                                                                    </ul>
+                                                                </div>
+                                                            </aura:if>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-grid slds-col">
+                                        <div class="slds-col form-grid-padding slds-medium-size_1-of-2 slds-small-size_1-of-1">
+                                            <lightning:input disabled="false" name="BillingStreet" label="Street" value="{!v.recordData.BillingStreet}" />
+                                            <p class="click" onclick="{!c.toggleLine2}">Add additional address info</p>
+                                        </div>
+                                        <div class="slds-col form-grid-padding slds-medium-size_1-of-4 slds-small-size_1-of-1">
+                                            <lightning:input disabled="false" name="BillingCity" label="City" value="{!v.recordData.BillingCity}"/>
+                                            <p>&nbsp;</p>
+                                        </div>
+                                        <div class="slds-col form-grid-padding slds-medium-size_1-of-4 slds-small-size_1-of-1">
+                                            <lightning:input disabled="false" name="BillingPostalCode" label="PostalCode" value="{!v.recordData.BillingPostalCode}"/>
+                                            <p>&nbsp;</p>
+                                        </div>
+                                    </div>
+                                    <aura:if isTrue="{!v.isAdditionalAddress}">
+                                        <div class="slds-grid slds-col">
+                                            <div class="slds-col form-grid-padding slds-medium-size_1-of-1 slds-small-size_1-of-1">
+                                                <lightning:input disabled="false" name="line2" label="Additional Street Details" value="{!v.addressline2}" />
+                                            </div>
+                                        </div>
+                                    </aura:if>
+                                    <div class="slds-grid slds-col">
+                                        <div class="slds-col form-grid-padding slds-medium-size_1-of-2 slds-small-size_1-of-1">
+                                            <lightning:input disabled="false" name="BillingCountry" label="Country" value="{!v.recordData.BillingCountry }"/>
+                                        </div>
+                                        <div class="slds-col form-grid-padding slds-medium-size_1-of-2 slds-small-size_1-of-1">
+                                            <lightning:select label="Marital Status" name="Marital_Status__c"    value="{!v.recordData.Marital_Status__c}" >
+                                                <option text="" value=""/>
+                                                <aura:iteration items="{!v.maritalStatusValues}" var="option">
+                                                    <option text="{!option.label}" value="{!option.value}"/>
+                                                </aura:iteration>
+                                            </lightning:select>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </aura:set>
+                        </aura:if>
+                    </aura:if>
+                    <aura:if isTrue="{!v.isNewIdentification}">
+                        
+                        <div class="slds-grid slds-grid_vertical">
+                            <div class="slds-grid slds-col">
+                                <div class="slds-col">
+                                    <lightning:select label="Select Language" name="type"   value="{!v.selectedIdNowType}">
+                                        <option text="German" value="DE" />
+                                        <option text="English" value="EN" />
+                                    </lightning:select>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </aura:if>
+                    <aura:if isTrue="{!v.isNewCard}">
+                       
+                         <div class="slds-grid slds-grid_vertical">
+                                <div class="slds-grid slds-col">
+                                    <div class="slds-col form-grid-padding  slds-size_1-of-2">
+                                        <lightning:input name="firstName" label="First Name" value="{!v.cardfName}" required="true"/>
+                                    </div>
+                                    <div class="slds-col form-grid-padding  slds-size_1-of-2">
+                                        <lightning:input name="lastName" label="Last Name" value="{!v.cardlName}" required="true"/>
+                                    </div>
+                                    
+                                </div>
+                                <div class="slds-col">
+                                    <div class="slds-col form-grid-padding  slds-size_1-of-1">
+                                        <lightning:select label="Type" name="type"  required="true" disabled="true" value="{!v.cardtypeSelected}" >
+                                            <option text="Visa Debit" value="VISA_DEBIT" />
+                                            <option text="Visa Business Debit" value="VISA_BUSINESS_DEBIT"/>
+                                        </lightning:select>
+                                    </div>
+                                </div>
+                            </div>
+                    </aura:if>
+                    <aura:if isTrue="{!v.isChangeStatus}">
+                        <div class="slds-col">
+                            <lightning:select label="New Status" name="type"  required="true" value="{!v.cardstatusType}">
+                                <aura:iteration items="{!v.cardstatusTypes}" var="option">
+                                    <option text="{!option.label}" value="{!option.value}" selected="{!option.selected}"/>
+                                </aura:iteration>
+                            </lightning:select>
+                        </div>
+                        <div class="slds-col">
+                            <lightning:textarea required="true" name="input2" label="Reason for status change." value="{!v.cardChangeReason}"/>
+                        </div>
+                    </aura:if>
+                    <aura:if isTrue="{!v.isCancleOrder}">
+                        Cancle Timed Order
+                    </aura:if>
+                    <aura:if isTrue="{!v.isCloseBankAccount}">
+                        <lightning:select label="Closure Reason" name="type"  required="true" value="{!v.closeReasonSelected}">
+                            <aura:iteration items="{!v.closeReasonValues}" var="option">
+                                <option text="{!option.label}" value="{!option.value}" selected="{!option.selected}"/>
+                            </aura:iteration>
+                        </lightning:select>
+                    </aura:if>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button label="Close" title="Close" onclick="{! c.handleClose }"/>
+                    <aura:if isTrue="{! v.isAccountUpdate}">
+                        <lightning:button variant="brand-outline" disabled="{!v.loading}" label="Request TAN" title="Request TAN" onclick="{! c.requestTan}"/>
+                        
+                    </aura:if>
+                    <lightning:button variant="brand" disabled="{!v.loading}" label="Save" title="Save" onclick="{! c.handleSave }"/>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

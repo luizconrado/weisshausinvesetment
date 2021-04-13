@@ -11,60 +11,64 @@
     <layouts>
         <layout>Guest User FAQ Layout</layout>
         <sections>
-            <label><!-- Article Details --></label>
+            <label></label>
             <section>Article Details</section>
         </sections>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
         <sections>
-            <label><!-- Properties --></label>
+            <label></label>
             <section>Properties</section>
         </sections>
     </layouts>
     <layouts>
         <layout>Lightning Knowledge FAQ Layout</layout>
         <sections>
-            <label><!-- Article Details --></label>
+            <label></label>
             <section>Article Details</section>
         </sections>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
+            <section>Category</section>
+        </sections>
+        <sections>
+            <label></label>
             <section>Custom Links</section>
         </sections>
         <sections>
-            <label><!-- Properties --></label>
+            <label></label>
             <section>Properties</section>
         </sections>
     </layouts>
     <layouts>
         <layout>Solarisbank Layout</layout>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
         <sections>
-            <label><!-- Information --></label>
+            <label></label>
             <section>Information</section>
         </sections>
         <sections>
-            <label><!-- Publish Info --></label>
+            <label></label>
             <section>Publish Info</section>
         </sections>
         <sections>
-            <label><!-- System Info --></label>
+            <label></label>
             <section>System Info</section>
         </sections>
     </layouts>
     <recordTypes>
-        <description><!-- This can be used for simple question and answer articles --></description>
-        <label><!-- FAQ --></label>
+        <description></description>
+        <label></label>
         <name>FAQ</name>
     </recordTypes>
     <recordTypes>
-        <description><!-- Customer Support Processes Description --></description>
-        <label><!-- Solarisbank --></label>
+        <description></description>
+        <label></label>
         <name>Solarisbank</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>

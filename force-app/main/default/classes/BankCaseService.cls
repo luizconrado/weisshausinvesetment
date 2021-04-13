@@ -84,10 +84,10 @@ public with sharing class BankCaseService {
                                                               for(String standingOrderId:standingOrdersId)  if(String.isNotBlank(standingOrderId)) isStandingExsists.put(standingOrderId,false);
                                                               
                                                               for(String idententificationsId:idententificationsIds)  if(String.isNotBlank(idententificationsId)) isIdentificationExsists.put(idententificationsId,false);
-
+                                                              
                                                               
                                                               List<Bank_Case_Item__c> allBankCases=[SELECT Id, Case__c, Bank_Account__c, Booking__c, Reservation__c, Scheduled_Order__c, Statement__c, Card__c, Seizure__c, Identification__c, Tax_Identification__c, Is_Test__c,  Account__c 
-                                                                                               FROM Bank_Case_Item__c WHERE Case__c=:caseId];            
+                                                                                                    FROM Bank_Case_Item__c WHERE Case__c=:caseId];            
                                                               for(Bank_Case_Item__c bCases:allBankCases){
                                                                   //check timed record
                                                                   if(isTimedExsists.containsKey(bCases.Scheduled_Order__c )) isTimedExsists.put(bCases.Scheduled_Order__c,true);   
@@ -138,7 +138,7 @@ public with sharing class BankCaseService {
                                                                       toInsertList.add(initiateBankCase(caseId,'Scheduled_Order__c',standingOrder,'STANDING_ORDER'));
                                                                   }
                                                               }
-                                                               for(String identification:isIdentificationExsists.keySet()){
+                                                              for(String identification:isIdentificationExsists.keySet()){
                                                                   if(String.isNotBlank(identification) && !isIdentificationExsists.get(identification)){
                                                                       toInsertList.add(initiateBankCase(caseId,'Identification__c',identification,''));
                                                                   }
@@ -151,17 +151,7 @@ public with sharing class BankCaseService {
                                                               return toInsertIds;
                                                           }
                                                           catch(Exception e){
-                                                              LogService.LogMetadata details=new LogService.LogMetadata();
-                                                              details.error=e;
-                                                              details.componentName='BankCaseNewOverride';
-                                                              details.userId=userinfo.getUserId();
-                                                              details.recordId=caseId;
-                                                              details.objectName='Case';
-                                                              details.className='BankCaseService';
-                                                              details.operation='Create New Bank Case';
-                                                              details.methodName='createBankCasesRecords';
-                                                            
-                                                              String index = LogService.logError(details);
+                                                              String index = logError(e,caseId,'Case','BankCaseNewOverride','createBankCasesRecords','Create New Bank Case');
                                                               throw new AuraHandledException('Please contact your System admin.And provide '+index+' id to resolve issue.');
                                                           }
                                                       }
@@ -222,17 +212,9 @@ public with sharing class BankCaseService {
             update bankCaseDetails;
         }
         catch(Exception e){
-            LogService.LogMetadata details=new LogService.LogMetadata();
-            details.error=e;
-            details.componentName='BankCaseCardStatusChange';
-            details.userId=userinfo.getUserId();
-            details.recordId=bankCaseDetails.Id;
-            details.objectName='Bank_Case_Item__c';
-            details.className='BankCaseService';
-            details.operation='Change Card Status';
-            details.methodName='initiateCardStatusChange';
-            String index = LogService.logError(details);
+            String index = logError(e,bankCaseDetails.Id,'Bank_Case_Item__c','BankCaseCardStatusChange','initiateCardStatusChange','Change Card Status');
             throw new AuraHandledException('Please contact your System admin.And provide '+index+' id to resolve issue.');
+            
         }        
     }
     
@@ -257,18 +239,208 @@ public with sharing class BankCaseService {
             update  bankCaseDetails;
         }
         catch(Exception e){
-            LogService.LogMetadata details=new LogService.LogMetadata();
-            details.error=e;
-            details.componentName='BankCaseTimedOrderCancle';
-            details.userId=userinfo.getUserId();
-            details.recordId=bankCaseDetails.Id;
-            details.objectName='Bank_Case_Item__c';
-            details.className='BankCaseService';
-            details.operation='Cancle Timed Order';
-            details.methodName='initiateTimedOrderCancelation';
-            String index = LogService.logError(details);
+            String index = logError(e,bankCaseDetails.Id,'Bank_Case_Item__c','BankCaseTimedOrderCancle','initiateTimedOrderCancelation','Cancle Timed Order');
             throw new AuraHandledException('Please contact your System admin.And provide '+index+' id to resolve issue.');
         }
     } 
-
+    
+    //create new identification
+    public static string createNewIdentification(String recordId,String languageCode){
+        try{
+            Bank_Case_Item__c bankAccountDetails=[SELECT Id,Case__c,Action__c, Account__c,Identification__c,Account__r.Solarisbank_Id__c,Account__r.Solarisbank_Tenent__c FROM Bank_Case_Item__c WHERE id=:recordId];
+            LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(recordId,'Bank_Case_Item__c',bankAccountDetails.Account__r.Solarisbank_Tenent__c);
+            String requestBody='{"method": "idnow","language": "'+languageCode+'"}';
+            String res=SolarisbankService.createNewIdentificationAttempt(bankAccountDetails.Account__r.Solarisbank_Id__c,requestBody,apiCallDetails);
+            SolarisBankIdentificationWrapper response=SolarisBankIdentificationWrapper.parse(res);
+            if(String.isNotEmpty(response.id)){
+                LogService.ApiCallDetails apiCallDetailsForIdent =  new LogService.ApiCallDetails(recordId,'Bank_Case_Item__c',bankAccountDetails.Account__r.Solarisbank_Tenent__c);
+                String responseString=SolarisbankService.fetchIdentificationRequestDetails(bankAccountDetails.Account__r.Solarisbank_Id__c,response.id,apiCallDetailsForIdent);
+                SolarisBankIdentificationWrapper identResponse=SolarisBankIdentificationWrapper.parse(responseString);
+                
+                Identification__c newIdentification=new Identification__c();
+                newIdentification.Solarisbank_Id__c=response.id;      
+                newIdentification.Method__c='IDnow';
+                newIdentification.Account__c=bankAccountDetails.Account__c;
+                newIdentification.RecordTypeId=Constant.IDENTIFIACTION_VIDEO_IDENTIFICATION_RECORDTYPEID;
+                if(String.isNotEmpty(identResponse.url)) newIdentification.URL__c=identResponse.url;
+                if(String.isNotEmpty(identResponse.reference)) newIdentification.Reference__c=identResponse.reference;
+                insert newIdentification; 
+                bankAccountDetails.Identification__c=newIdentification.Id;
+                
+                bankAccountDetails.Action__c='New Person Identification';
+                update bankAccountDetails;
+                Bank_Case_Item__c newbankCaseItem=new Bank_Case_Item__c();
+                newbankCaseItem.Case__c=bankAccountDetails.Case__c;
+                newbankCaseItem.Identification__c=newIdentification.id;
+                newbankCaseItem.recordTypeId=Constant.BANKCASE_IDENTIFICATION_RECORDTYPEID;
+                insert newbankCaseItem;
+                
+                return newIdentification.Id;
+            }
+            return res;
+        }
+        catch(Exception e){
+            String index = logError(e,recordId,'Bank_Case_Item__c','BankCaseCreateNewIdentificationAttempt','createNewIdentification','Request New Idnow');
+            throw new AuraHandledException('Please contact your System admin.And provide '+index+' id to resolve issue.');
+        }
+    } 
+    
+    //request details change
+    public static SolarisbankCRPRequestWrapper intitatePersonDetailsChangeTanRequest(String recordId,String requestChangebody){
+        try{
+            List<Change_Request_Log__c> changeRequestList=new List<Change_Request_Log__c>();
+            Bank_Case_Item__c bankAccountDetails=[SELECT Id,Case__c,Description__c,Action__c, Account__c,Identification__c,Account__r.Solarisbank_Id__c,Account__r.Solarisbank_Tenent__c FROM Bank_Case_Item__c WHERE id=:recordId];
+            LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(recordId,'Bank_Case_Item__c',bankAccountDetails.Account__r.Solarisbank_Tenent__c);
+            
+            String responseString= SolarisbankService.updateCustomerData(bankAccountDetails.Account__r.Solarisbank_Id__c,requestChangebody,apiCallDetails);
+            
+            SolarisbankCRPRequestWrapper tanUrlResponse=SolarisbankCRPRequestWrapper.parse(responseString);
+            
+            if(tanUrlResponse.errors!=null && tanUrlResponse.errors.size()>0){
+                Change_Request_Log__c changeRequestLog=new Change_Request_Log__c();
+                changeRequestLog.Solarisbank_Id__c=tanUrlResponse.id;
+                changeRequestLog.Object_Name__c='Bank_Case_Item__c';
+                changeRequestLog.Record_Id__c=recordId;
+                changeRequestLog.Status__c='FAILED';
+                changeRequestLog.Description__c=tanUrlResponse.errors.get(0).title +' : '+tanUrlResponse.errors.get(0).detail;
+                changeRequestList.add(changeRequestLog);
+                insert changeRequestList;
+                return tanUrlResponse;
+            }
+            else{
+                Change_Request_Log__c changeRequestLog=new Change_Request_Log__c();
+                changeRequestLog.Solarisbank_Id__c=tanUrlResponse.id;
+                changeRequestLog.Object_Name__c='Bank_Case_Item__c';
+                changeRequestLog.Record_Id__c=recordId;
+                changeRequestLog.Status__c=tanUrlResponse.status;
+                changeRequestLog.Updated_At__c=tanUrlResponse.updated_at;
+                changeRequestLog.URL__c=tanUrlResponse.url;
+                changeRequestList.add(changeRequestLog);
+            }
+            
+            
+            String crpResponseString = SolarisbankService.initiateCRPRequest(tanUrlResponse.url,bankAccountDetails.Account__r.Solarisbank_Id__c,apiCallDetails);
+            SolarisbankCRPRequestWrapper crpResponse=SolarisbankCRPRequestWrapper.parse(crpResponseString);
+            
+            Change_Request_Log__c crpRequestLog=new Change_Request_Log__c();
+            crpRequestLog.Solarisbank_Id__c=crpResponse.id;
+            crpRequestLog.Object_Name__c='Bank_Case_Item__c';
+            crpRequestLog.Record_Id__c=recordId;
+            crpRequestLog.Status__c=crpResponse.status;
+            crpRequestLog.Updated_At__c=crpResponse.updated_at;
+            crpRequestLog.URL__c=tanUrlResponse.url.replace('/authorize', '/confirm');
+            changeRequestList.add(crpRequestLog);
+            bankAccountDetails.Action__c='Update Person Details';
+            bankAccountDetails.Description__c='Request to change '+requestChangebody;
+            update bankAccountDetails;
+            insert changeRequestList;
+            return tanUrlResponse;
+        }
+        catch(Exception e){
+            String index = logError(e,recordId,'Bank_Case_Item__c','BankCaseUpdatePersonDetails','intitatePersonDetailsChangeTanRequest','CRP for Person Details');
+            AuraHandledException exp=new AuraHandledException('Please contact your System admin.And provide '+index+' id to resolve issue.');
+            exp.setMessage(e.getMessage());
+            throw exp;
+            
+        }
+        
+    }
+    
+    //accept crp otp and conform request
+    public static String confirmPersonDetailsChangeTanRequest(String recordId,String tanurl,String otp){
+        try{
+            List<Change_Request_Log__c> changeRequestList=new List<Change_Request_Log__c>();
+            Bank_Case_Item__c bankAccountDetails=[SELECT Description__c,Id,Case__c,Action__c, Account__c,Identification__c,Account__r.Solarisbank_Id__c,Account__r.Solarisbank_Tenent__c FROM Bank_Case_Item__c WHERE id=:recordId];
+            LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(recordId,'Bank_Case_Item__c',bankAccountDetails.Account__r.Solarisbank_Tenent__c);
+            String responseString = SolarisbankService.confirmCRPRequest(tanurl,bankAccountDetails.Account__r.Solarisbank_Id__c,otp,apiCallDetails);
+            SolarisbankCRPRequestWrapper tanUrlResponse=SolarisbankCRPRequestWrapper.parse(responseString);
+            
+            Change_Request_Log__c crpRequestLog=new Change_Request_Log__c();
+            if(tanUrlResponse.errors!=null && tanUrlResponse.errors.size()>0){
+                crpRequestLog.Solarisbank_Id__c=tanUrlResponse.errors.get(0).id;
+                crpRequestLog.Object_Name__c='Bank_Case_Item__c';
+                crpRequestLog.Record_Id__c=recordId;
+                crpRequestLog.Status__c='FAILED';
+                crpRequestLog.Description__c=tanUrlResponse.errors.get(0).title +' : '+tanUrlResponse.errors.get(0).detail;
+                
+            }
+            else{
+                crpRequestLog.Solarisbank_Id__c=tanUrlResponse.id;
+                crpRequestLog.Object_Name__c='Bank_Case_Item__c';
+                crpRequestLog.Record_Id__c=recordId;
+                crpRequestLog.Status__c=tanUrlResponse.status;
+                crpRequestLog.Updated_At__c=tanUrlResponse.updated_at;
+                crpRequestLog.URL__c=tanUrlResponse.url;
+                AccountService.syncPersonDetailsWithSB(bankAccountDetails.Account__c);
+            }
+            
+            
+            
+            insert crpRequestLog;
+            return responseString;
+        }
+        catch(Exception e){
+            
+            String index = logError(e,recordId,'Bank_Case_Item__c','BankCaseUpdatePersonDetails','confirmPersonDetailsChangeTanRequest','Accept CRP for Person Details');
+            throw new AuraHandledException('Please contact your System admin.And provide '+index+' id to resolve issue.');
+        }
+    }
+    
+      @AuraEnabled
+    public static String requestCreateNewCard(String bankCaseId,String body){
+        try{
+            
+            Map<String,Object> cardRequestBody=(Map<String,Object>) JSON.deserializeUntyped(body);
+            Bank_Case_Item__c bankAccountDetails=[SELECT Id,Case__c,Description__c,Bank_Account__r.Person_Account__r.FirstName ,Bank_Account__r.Person_Account__r.LastName,Bank_Account__c,Bank_Account__r.Status__c,Bank_Account__r.Solarisbank_Id__c,Bank_Account__r.Person_Account__r.Solarisbank_Id__c,Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c   FROM Bank_Case_Item__c WHERE id=:bankCaseId];
+            LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(bankCaseId,'Bank_Case_Item__c',bankAccountDetails.Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c);
+            String res=SolarisbankService.requestNewCard(bankAccountDetails.Bank_Account__r.Person_Account__r.Solarisbank_Id__c, bankAccountDetails.Bank_Account__r.Solarisbank_Id__c, body,apiCallDetails);
+            SolarisbankService.CardResponse bankAccount=(SolarisbankService.CardResponse) JSON.deserialize(res, SolarisbankService.CardResponse.class);
+            if(bankAccount.errors!=null){
+                return res;
+            }
+            
+            bankAccountDetails.Action__c='New Card';
+            bankAccountDetails.Description__c='Request for new card with refrence '+((String) cardRequestBody.get('reference'));
+            
+            Card__c newCard=new Card__c();
+            newCard.Status__c=bankAccount.status;
+            newCard.Type__c=(String) cardRequestBody.get('type');
+            newCard.Name_On_Card__c =(String) cardRequestBody.get('line_1');
+            newCard.Person_Account__c=bankAccountDetails.Bank_Account__r.Person_Account__c;
+            newCard.Bank_Account__c=bankAccountDetails.Bank_Account__c;
+            newCard.Solarisbank_Id__c=bankAccount.id;
+            insert newCard;
+            
+            Bank_Case_Item__c newbankCaseItem=new Bank_Case_Item__c();
+            newbankCaseItem.Case__c=bankAccountDetails.Case__c;
+            newbankCaseItem.Card__c=newCard.id;
+            newbankCaseItem.recordTypeId=Constant.BANKCASE_CARD_RECORDTYPEID;
+            
+            bankAccountDetails.Card__c=newCard.id;
+            
+            insert newbankCaseItem;
+            update bankAccountDetails;
+            
+            return res;
+        }
+        catch(Exception e){
+            String index = logError(e,bankCaseId,'Bank_Case_Item__c','BankCaseRequestNewCard','requestCreateNewCard','Request For New Card');
+            AuraHandledException exp=new AuraHandledException('Please contact your System admin.And provide '+index+' id to resolve issue.');
+            exp.setMessage(e.getMessage());
+            throw exp;
+        }
+    }
+    
+    //helper
+    private static String logError(Exception e,String recordID,String objectName,String componentName,String methodName,String operation){
+        LogService.LogMetadata details=new LogService.LogMetadata();
+        details.addError(e);
+        details.addRecordInfo(objectName,recordId);
+        details.addMetadataInfo(userinfo.getUserId(),'BankCaseService', methodName, componentName, operation);
+        return LogService.logError(details);
+    }
+    
+   
+    
+    
 }

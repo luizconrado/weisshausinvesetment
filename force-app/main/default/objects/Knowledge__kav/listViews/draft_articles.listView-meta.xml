@@ -3,6 +3,7 @@
     <fullName>draft_articles</fullName>
     <columns>TITLE</columns>
     <columns>ABSTRACT</columns>
+    <columns>Information__c</columns>
     <columns>ARTICLE_NUMBER</columns>
     <columns>LANGUAGE</columns>
     <columns>Type__c</columns>

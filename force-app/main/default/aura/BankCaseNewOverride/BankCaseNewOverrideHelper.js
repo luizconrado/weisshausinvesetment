@@ -188,13 +188,32 @@
             }); 
         })
     },
-    closeSubTab:function(component){
+     closeSubTab:function(component,recordId){
         let workspaceAPI = component.find("workspace");
-        workspaceAPI.isConsoleNavigation().then(function(){
-            workspaceAPI.getFocusedTabInfo().then(function(response) {
-                let focusedTabId = response.tabId;
-                workspaceAPI.closeTab({tabId:focusedTabId});
-            });
+        workspaceAPI.isConsoleNavigation().then(function(result){
+            if(result){
+                workspaceAPI.getFocusedTabInfo().then(function(response) {
+                    let focusedTabId = response.tabId;
+                    workspaceAPI.closeTab({tabId:focusedTabId});
+                });
+            }
+            else{
+                if(recordId){
+                    let navService = component.find("navService");
+                    let pageReference={
+                        type: 'standard__recordPage',
+                        attributes: {
+                            objectApiName: 'Case',
+                            actionName: 'view',
+                            recordId:recordId
+                        }
+                    }
+                    navService.navigate(pageReference);
+                }
+                
+            }
+            
+            
         })
     },
     setHeader:function(component){
@@ -249,7 +268,7 @@
             if (state === "SUCCESS") {
                 let recordIds = data;
                 _helper.showToast('Success','Bank Case Records Created.','success');
-                _helper.closeSubTab(component);
+                _helper.closeSubTab(component,sfCaseId);
                 
             }
             else if (state === "ERROR") {

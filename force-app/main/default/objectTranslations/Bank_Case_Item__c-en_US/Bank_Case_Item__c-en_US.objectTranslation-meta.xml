@@ -11,156 +11,183 @@
     <layouts>
         <layout>Bank Account Layout</layout>
         <sections>
-            <label><!-- Additional Details --></label>
+            <label></label>
             <section>Additional Details</section>
         </sections>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
     </layouts>
     <layouts>
         <layout>Bank Case Layout</layout>
         <sections>
-            <label><!-- Additional Details --></label>
+            <label></label>
             <section>Additional Details</section>
         </sections>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
         <sections>
-            <label><!-- Identification --></label>
+            <label></label>
             <section>Identification</section>
         </sections>
         <sections>
-            <label><!-- Transaction --></label>
+            <label></label>
             <section>Transaction</section>
         </sections>
     </layouts>
     <layouts>
         <layout>Booking Layout</layout>
         <sections>
-            <label><!-- Additional Details --></label>
+            <label></label>
             <section>Additional Details</section>
         </sections>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
     </layouts>
     <layouts>
         <layout>Card Layout</layout>
         <sections>
-            <label><!-- Additional Details --></label>
+            <label></label>
             <section>Additional Details</section>
         </sections>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Identification Layout</layout>
+        <sections>
+            <label></label>
+            <section>Additional Details</section>
+        </sections>
+        <sections>
+            <label></label>
             <section>Custom Links</section>
         </sections>
     </layouts>
     <layouts>
         <layout>Person Account Layout</layout>
         <sections>
-            <label><!-- Additional Details --></label>
+            <label></label>
             <section>Additional Details</section>
         </sections>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
     </layouts>
     <layouts>
         <layout>Reservation Layout</layout>
         <sections>
-            <label><!-- Additional Details --></label>
+            <label></label>
             <section>Additional Details</section>
         </sections>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
     </layouts>
     <layouts>
         <layout>Standing Order</layout>
         <sections>
-            <label><!-- Additional Details --></label>
+            <label></label>
             <section>Additional Details</section>
         </sections>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
     </layouts>
     <layouts>
         <layout>Statement</layout>
         <sections>
-            <label><!-- Additional Details --></label>
+            <label></label>
             <section>Additional Details</section>
         </sections>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
     </layouts>
     <layouts>
         <layout>Timed Order</layout>
         <sections>
-            <label><!-- Additional Details --></label>
+            <label></label>
             <section>Additional Details</section>
         </sections>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
     </layouts>
     <quickActions>
-        <label><!-- Cancel Time Order --></label>
+        <label></label>
         <name>Cancel_Time_Order</name>
     </quickActions>
     <quickActions>
-        <label><!-- Change Card Status --></label>
+        <label></label>
         <name>Change_Card_Status</name>
     </quickActions>
     <quickActions>
-        <label><!-- Check Balance --></label>
+        <label></label>
         <name>Check_Balance</name>
     </quickActions>
     <quickActions>
-        <label><!-- Transaction Details --></label>
+        <label></label>
+        <name>New_Person_Identification</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Request_New_Card</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
         <name>Transaction_Details</name>
     </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Update_Person_Details</name>
+    </quickActions>
     <recordTypes>
-        <label><!-- Account --></label>
+        <label></label>
         <name>Account</name>
     </recordTypes>
     <recordTypes>
-        <label><!-- Bank Account --></label>
+        <label></label>
         <name>Bank_Account</name>
     </recordTypes>
     <recordTypes>
-        <label><!-- Booking --></label>
+        <label></label>
         <name>Booking</name>
     </recordTypes>
     <recordTypes>
-        <label><!-- Card --></label>
+        <label></label>
         <name>Card</name>
     </recordTypes>
     <recordTypes>
-        <label><!-- Reservation --></label>
+        <label></label>
+        <name>Identification</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
         <name>Reservation</name>
     </recordTypes>
     <recordTypes>
-        <label><!-- Standing Order --></label>
+        <label></label>
         <name>Standing_Order</name>
     </recordTypes>
     <recordTypes>
-        <label><!-- Statement --></label>
+        <label></label>
         <name>Statement</name>
     </recordTypes>
     <recordTypes>
-        <label><!-- Timed Order --></label>
+        <label></label>
         <name>Timed_Order</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>

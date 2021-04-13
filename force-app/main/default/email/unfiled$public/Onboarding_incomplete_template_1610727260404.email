@@ -11,29 +11,17 @@
 </div>
 
 <div style="line-height: 1.4;box-sizing: border-box;padding: 20px;font-size: 14px;background: #ffffff;border-radius: 3px;width: 100%;">
-<p>Sehr geehrte/r [Anrede],<br />
+<p>{{{Recipient.Email_Honorific__c}}},<br />
 <br />
-wir freuen uns sehr, Sie f&uuml;r einen Test unserer E&amp;V Konto-App gewonnen zu haben. Mit der App erhalten Sie Zugang zu Ihrem EV Konto sowie eine kostenlose Debitkarte.&nbsp;<br />
+vielen Dank f&uuml;r den Download unserer E&amp;V Konto App. Sie sind nur noch wenige Schritte von der vollst&auml;ndigen Einrichtung entfernt!<br />
 <br />
-Uns ist aufgefallen, dass Sie den Registrierungsprozess bisher nicht vollst&auml;ndig abgeschlossen haben. F&uuml;r die Weiterentwicklung unseres Angebotes ist das Feedback unserer Nutzer essentiell. Wir bitten Sie daher, die Registrierung zeitnah abzuschlie&szlig;en. Daf&uuml;r m&ouml;chten wir uns schon an dieser Stelle herzlich bei Ihnen bedanken!&nbsp;<br />
+Mit Engel &amp; V&ouml;lkers Smart Money erhalten Sie im ersten Schritt ein Bankkonto, das Engel &amp; V&ouml;lkers Konto, und eine VISA Debit-Karte, die Engel &amp; V&ouml;lkers Private Card. Konto und Karte werden bequem &uuml;ber die E&amp;V Konto App verwaltet. Die klassischen Funktionen f&uuml;r den Zahlungsverkehr, &Uuml;berweisungen und internationale Bargeldabhebungen sowie die Kontof&uuml;hrung per App sind alle kostenlos! Ihre Kundendaten werden selbstverst&auml;ndlich streng vertraulich und diskret behandelt.<br />
 <br />
-Im Zuge des App-Tests m&ouml;chten wir Sie bitten die grundlegenden App-Funktionen zu nutzen und zu pr&uuml;fen. Diese betreffen<br />
-1. den Anmeldeprozess,<br />
-2. ein- und ausgehende &Uuml;berweisungen sowie die<br />
-3. Bestellung und Nutzung der Engel &amp; V&ouml;lkers-Debitkarte.<br />
+Unsere App wird kontinuierlich um neue Funktion erweitert. Entdecken Sie die Vielfalt der bisher angebotenen M&ouml;glichkeiten und Funktionen noch heute.<br />
+&nbsp;<br />
+Sollten Sie Schwierigkeiten bei der Kontoeinrichtung oder der Nutzung der App haben, k&ouml;nnen Sie sich jederzeit per E-Mail unter&nbsp;<a href="mailto:support@ev-smartmoney.com" target="_blank">support@ev-smartmoney.com</a>&nbsp;oder telefonisch unter: +49 30 743 959 59 (Mo.-Fr. 9-18 Uhr) an uns wenden. Wir helfen Ihnen gerne weiter!<br />
 <br />
-Ihre Hinweise zu unserer App, Ihre Kritik und gerne auch Ihr Lob k&ouml;nnen Sie in einer eigens entwickelten Umfrage detailliert dokumentieren, welche wir Ihnen demn&auml;chst an Ihre hinterlegte E-Mail-Adresse senden werden.<br />
-<br />
-<b>Probleme beim Test oder der vollst&auml;ndigen Registrierung? Hier gibt es Hilfe!</b><br />
-<br />
-Bei Fragen oder Problemen w&auml;hrend der Registrierung oder dar&uuml;ber hinaus k&ouml;nnen Sie uns innerhalb unserer B&uuml;rozeiten erreichen. Diese sind von Montag bis Freitag jeweils von 9 bis 18 Uhr. Wir helfen Ihnen dann sehr gerne weiter!<br />
-<br />
-Nutzen Sie f&uuml;r die Kontaktaufnahme mit uns bitte unsere E-Mail-Adresse support@ev-smartmoney.com oder rufen Sie uns an unter +49 30 743 959 59.&nbsp;<br />
-Wir k&uuml;mmern uns umgehend um Ihr Anliegen.<br />
-<br />
-Wir bedanken uns erneut herzlich f&uuml;r Ihre Mithilfe und Unterst&uuml;tzung!<br />
-<br />
-Mit freundlichen Gr&uuml;&szlig;en&nbsp;<br />
+Mit freundlichen Gr&uuml;&szlig;en<br />
 <br />
 Ihr Engel &amp; V&ouml;lkers Smart Money Team</p>
 </div>

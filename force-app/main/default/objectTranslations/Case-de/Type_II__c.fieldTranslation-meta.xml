@@ -1,165 +1,177 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
-    <label><!-- Type II --></label>
+    <label></label>
     <name>Type_II__c</name>
     <picklistValues>
         <masterLabel>Access Deletion</masterLabel>
-        <translation><!-- Access Deletion --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Access Request</masterLabel>
-        <translation><!-- Access Request --></translation>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Account Confirmation</masterLabel>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Account Statement</masterLabel>
-        <translation><!-- Account Statement --></translation>
-    </picklistValues>
-    <picklistValues>
-        <masterLabel>Account confirmation</masterLabel>
-        <translation><!-- Account confirmation --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Bank Card Block</masterLabel>
-        <translation><!-- Bank Card Block --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Bank Data Deletion</masterLabel>
-        <translation><!-- Bank Data Deletion --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Bank Data Request</masterLabel>
-        <translation><!-- Bank Data Request --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Birth City Change</masterLabel>
-        <translation><!-- Birth City Change --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Birthdate Change</masterLabel>
-        <translation><!-- Birthdate Change --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Card Chargeback</masterLabel>
-        <translation><!-- Card Chargeback --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Card Decline</masterLabel>
-        <translation><!-- Card Decline --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Card Issue</masterLabel>
-        <translation><!-- Card Issue --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Card Return/Delivery</masterLabel>
-        <translation><!-- Card Return/Delivery --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Closure Info</masterLabel>
-        <translation><!-- Closure Info --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Closure Request</masterLabel>
-        <translation><!-- Closure Request --></translation>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Compliance investigation</masterLabel>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Direct Debit Return</masterLabel>
-        <translation><!-- Direct Debit Return --></translation>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Fraud victim contacting</masterLabel>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Fraudulent Transaction Monitoring</masterLabel>
-        <translation><!-- Fraudulent Transaction Monitoring --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>General Tech Issue</masterLabel>
-        <translation><!-- General Tech Issue --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Identification Complaints</masterLabel>
-        <translation><!-- Identification Complaints --></translation>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Identification Creation</masterLabel>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Identification Issues</masterLabel>
-        <translation><!-- Identification Issues --></translation>
-    </picklistValues>
-    <picklistValues>
-        <masterLabel>Identification creation</masterLabel>
-        <translation><!-- Identification creation --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Incoming Payment investigation</masterLabel>
-        <translation><!-- Incoming Payment investigation --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Information Request</masterLabel>
-        <translation><!-- Information Request --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Investigation</masterLabel>
-        <translation><!-- Investigation --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Name Change</masterLabel>
-        <translation><!-- Name Change --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Nationality Change</masterLabel>
-        <translation><!-- Nationality Change --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Other Requests</masterLabel>
-        <translation><!-- Other Requests --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Outgoing Payment investigation</masterLabel>
-        <translation><!-- Outgoing Payment investigation --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>P-Konto</masterLabel>
-        <translation><!-- P-Konto --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Partner Card Block</masterLabel>
-        <translation><!-- Partner Card Block --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Partner Card Closure</masterLabel>
-        <translation><!-- Partner Card Closure --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Partner Card Unblock</masterLabel>
-        <translation><!-- Partner Card Unblock --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Payment Recall</masterLabel>
-        <translation><!-- Payment Recall --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
-        <masterLabel>Payment request</masterLabel>
-        <translation><!-- Payment request --></translation>
+        <masterLabel>Payment Request</masterLabel>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Phone Change (Without access)</masterLabel>
-        <translation><!-- Phone Change (Without access) --></translation>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Phone change investigation</masterLabel>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Seizure Information Request</masterLabel>
-        <translation><!-- Seizure Information Request --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Seizures Payout</masterLabel>
-        <translation><!-- Seizures Payout --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Tax ID Input</masterLabel>
-        <translation><!-- Tax ID Input --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>User Complaint</masterLabel>
-        <translation><!-- User Complaint --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Verification Message Issue</masterLabel>
-        <translation><!-- Verification Message Issue --></translation>
+        <translation></translation>
     </picklistValues>
 </CustomFieldTranslation>

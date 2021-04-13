@@ -5,6 +5,6 @@
     <label>Salesforce Support</label>
     <queue>Salesforce_Support</queue>
     <sharedTo>
-        <allInternalUsers/>
+        <allInternalUsers></allInternalUsers>
     </sharedTo>
 </ListView>

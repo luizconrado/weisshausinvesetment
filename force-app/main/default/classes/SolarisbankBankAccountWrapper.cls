@@ -3,12 +3,17 @@ public class SolarisbankBankAccountWrapper {
     public String iban {get;set;} 
     public String bic {get;set;} 
     public String type_Z {get;set;} // in json: type
+    
     public String locking_status {get;set;} 
     public List<String> locking_reasons {get;set;} 
     public String person_id {get;set;} 
     public String status {get;set;} 
-    public Object closure_reasons {get;set;} 
-    
+    public String closure_reasons {get;set;} 
+    public Date technical_closure_date {get;set;} 
+    public Date legal_closure_date {get;set;} 
+    public Boolean error{set;get;}
+      
+    //{"errors":[{"id":"76885565-5da2-4def-a155-96955e97f1d0","status":403,"code":"unauthorized_action","title":"Unauthorized Action","detail":"Action 'solaris_account_closure_request#create' is not allowed"}]}
     public SolarisbankBankAccountWrapper(){}
     public SolarisbankBankAccountWrapper(JSONParser  parser) {
         while (parser.nextToken() != System.JSONToken.END_OBJECT) {
@@ -32,8 +37,19 @@ public class SolarisbankBankAccountWrapper {
                     } else if (text == 'status') {
                         status = parser.getText();
                     } else if (text == 'closure_reasons') {
-                        closure_reasons = parser.readValueAs(Object.class);
-                    } else {
+                        closure_reasons = parser.getText();
+                    }
+                    else if (text == 'technical_closure_date') {
+                        technical_closure_date = Date.valueOf(parser.getText());
+                    }
+                    else if (text == 'legal_closure_date') {
+                        legal_closure_date = Date.valueOf(parser.getText());
+                    }
+                    else if(text=='errors'){
+                        error=true;
+                    }
+                    else {
+                       	
                         System.debug(LoggingLevel.WARN, 'JSON2Apex consuming unrecognized property: '+text);
                         consumeObject(parser);
                     }
@@ -60,17 +76,30 @@ public class SolarisbankBankAccountWrapper {
         }
     }
     
-    
+    public class Errors {
+        @AuraEnabled public String id {get;set;} 
+        @AuraEnabled public String title {get;set;} 
+        @AuraEnabled public String detail {get;set;} 
+        @AuraEnabled public List<Errors> errors{get;set;}
+
+    }
+    public static Errors parseError(String jsonString){
+        return  (Errors) System.JSON.deserialize(jsonString, Errors.Class);
+    }
     public static List<SolarisbankBankAccountWrapper> parseList(String json) {
         System.JSONParser parser = System.JSON.createParser(json);
         return arrayOfSolarisbankBankAccountWrapper(parser);
+    }
+    public static SolarisbankBankAccountWrapper parse(String json) {
+        System.JSONParser parser = System.JSON.createParser(json);
+        return objectOfSolarisbankBankAccountWrapper(parser);
     }
     
     public static void consumeObject(System.JSONParser parser) {
         Integer depth = 0;
         do {
             System.JSONToken curr = parser.getCurrentToken();
-            if (curr == System.JSONToken.START_OBJECT || 
+             if (curr == System.JSONToken.START_OBJECT || 
                 curr == System.JSONToken.START_ARRAY) {
                     depth++;
                 } else if (curr == System.JSONToken.END_OBJECT ||
@@ -90,6 +119,11 @@ public class SolarisbankBankAccountWrapper {
         return res;
     }
     
+     private static SolarisbankBankAccountWrapper objectOfSolarisbankBankAccountWrapper(System.JSONParser p) {
+        List<SolarisbankBankAccountWrapper> res = new List<SolarisbankBankAccountWrapper>();
+        if (p.getCurrentToken() == null) p.nextToken();
+        return new SolarisbankBankAccountWrapper(p);
+    }
     
     
     private static List<String> arrayOfString(System.JSONParser p) {

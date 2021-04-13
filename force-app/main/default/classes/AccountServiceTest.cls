@@ -2,20 +2,21 @@
 public class AccountServiceTest {
     
     @isTest
-    static void sendEmailToAccountTest(){
-        Account a=TestDataFactory.getPersonAccount(true);
+    static void testcreateNewIdentification(){
+        Test.setMock(HttpCalloutMock.class, new SolarisBankIdentificationWrapper.MockResponse());
+        Account a=TestDataFactory.getPersonAccount(true); 
+        
         Test.startTest();
-        AccountService.sendEmailToAccount(a.Id,JSON.serialize(New Map<String,Boolean>{
-            'newsletter'=>true,
-                'productA'=>true
-                }));
+        AccountService.createNewIdentification(a.id,'EN');
         Test.stopTest();
     }
     
     @isTest
-    static void getLastEmailToAccountInfoTest(){
-        
+    static void testsyncPersonDetailsWithSB(){
+        Test.setMock(HttpCalloutMock.class, new SolarisbankPersonWrapper.MockResponse());
         Account a=TestDataFactory.getPersonAccount(true);
-        AccountService.getLastEmailToAccountInfo(a.Id);
+        Test.startTest();
+        AccountService.syncPersonDetailsWithSB(a.Id);
+        Test.stopTest();
     }
 }

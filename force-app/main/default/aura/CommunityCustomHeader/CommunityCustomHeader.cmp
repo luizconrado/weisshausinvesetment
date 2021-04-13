@@ -1,7 +1,20 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes">
-     <aura:handler name='init' value='{!this}' action='{!c.onInit}'/>
+    <aura:handler name='init' value='{!this}' action='{!c.onInit}'/>
     <aura:attribute name="headerLogo" type="String"/>
+    <aura:attribute name="langSelected" type="String" default="de"/>
     <div class="wrapper">
+        <div class="community-language_container">
+            <div class="community-language_switcher">
+            </div>
+            <div class="community-language_switcher">
+                <select name="lang" id="lang" onchange="{!c.changeLanguage}" value="{!v.langSelected }">
+                    <option value="de" selected="{! v.langSelected=='de'?true:false}">German</option>
+                    <option value="en_US" selected="{! v.langSelected=='en_US'?true:false}">English</option>
+                </select>
+                
+                 
+            </div>
+        </div>
         <div class="community-header">
             <div class="community-header__item wrap-item"></div>
             <div class="community-header__item">
@@ -11,9 +24,9 @@
                     </img>
                 </a>
             </div>
-            <!--
+            
             <div class="community-header__item navigation desktop">
-                <div class="community-header__item-nav">
+              <!--  <div class="community-header__item-nav">
                     <a href="{!$Label.c.WissehouseWebsite_Url+'/about-us'}"> Über uns</a>
                 </div>
                 <div class="community-header__item-nav">
@@ -22,9 +35,9 @@
                 <div class="community-header__item-nav">
                     <a href="{!$Label.c.WissehouseWebsite_Url+'/karriere'}"> Karriere</a>
                 </div>
-                
+                -->
             </div>
- 			-->
+            
             <div class="mobile community-header__item navigation ">
                 <button class="toggle-button" id="nav-toggle">
                     <span class="toggle-button__bar"></span>
@@ -32,7 +45,7 @@
                     <span class="toggle-button__bar"></span>
                 </button>
             </div>
-           
+            
         </div>
         <div class="toggle community-header-popup">
             <div class="community-header-backdrop"></div>

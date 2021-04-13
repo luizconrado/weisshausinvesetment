@@ -1,49 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
-    <label><!-- Type --></label>
+    <label></label>
     <name>Type__c</name>
     <picklistValues>
         <masterLabel>AML</masterLabel>
-        <translation><!-- AML --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Account Management</masterLabel>
-        <translation><!-- Account Management --></translation>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Anti-Fraud Compliance</masterLabel>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Card Management</masterLabel>
-        <translation><!-- Card Management --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Complaints</masterLabel>
-        <translation><!-- Complaints --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>GDPR</masterLabel>
-        <translation><!-- GDPR --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Identification</masterLabel>
-        <translation><!-- Identification --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Master Data Management</masterLabel>
-        <translation><!-- Master Data Management --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Other</masterLabel>
-        <translation><!-- Other --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Payment</masterLabel>
-        <translation><!-- Payment --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Seizures</masterLabel>
-        <translation><!-- Seizures --></translation>
+        <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Tech</masterLabel>
-        <translation><!-- Tech --></translation>
+        <translation></translation>
     </picklistValues>
 </CustomFieldTranslation>

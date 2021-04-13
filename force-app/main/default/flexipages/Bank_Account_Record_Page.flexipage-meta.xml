@@ -122,6 +122,22 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>source</name>
+                    <value>Bank Account</value>
+                </componentInstanceProperties>
+                <componentName>AccountSolarisbankAdminPanal</componentName>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$User.Profile.Name}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>System Administrator</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>tabs</name>
                     <value>Facet-39a226ad-889c-402d-9996-0b1354d7fed4</value>
                 </componentInstanceProperties>

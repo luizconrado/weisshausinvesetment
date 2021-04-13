@@ -34,6 +34,20 @@ public with sharing class BankCaseOverrideControler {
     public static Boolean checkIsCompactLayout() {
         return Salesforce.isCompactLayout;
     }
+     @auraEnabled(cacheable=true)
+    public static Map<String,Map<String,String>> getAccountPicklistValues(){
+        Map<String,PicklistEntry[]> picklistValues = SchemaUtil.getObjectPicklistFileds(SchemaUtil.getSobjectType('Account'));
+        Map<String,Map<String,String>> fieldAndValuesMap=new Map<String,Map<String,String>>();
+        for(String field:picklistValues.keySet()){
+            if(!fieldAndValuesMap.containsKey(field)) fieldAndValuesMap.put(field,new Map<String,String>());
+            for(PicklistEntry entry:picklistValues.get(field)){
+                if(entry.isActive()) {
+                    fieldAndValuesMap.get(field).put(entry.getValue(),entry.getLabel());
+                }
+            }
+        }
+        return fieldAndValuesMap;
+    }
     /////////////////////////////
     //Querys
     ////////////////////////////
@@ -58,13 +72,18 @@ public with sharing class BankCaseOverrideControler {
     public static Bank_Case_Item__c getBankCaseDetails(String recordId){
         return [SELECT Id, Case__c, Statement__c, 
                 Reservation__c,Reservation__r.Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c,
+                Bank_Account__r.Person_Account__r.FirstName ,Bank_Account__r.Person_Account__r.LastName,Bank_Account__r.Person_Account__r.Employment_Status__c,
                 Booking__c,Booking__r.Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c,Booking__r.Bank_Account__r.Person_Account__r.Solarisbank_Id__c,Booking__r.Bank_Account__r.Solarisbank_Id__c,Booking__r.Transaction_Id__c,
                 Card__c,Card__r.Status__c,Card__r.Solarisbank_Id__c,Card__r.Person_Account__r.Name,Card__r.Person_Account__r.Solarisbank_Tenent__c,
                 Scheduled_Order__c,Scheduled_Order__r.Status__c,Scheduled_Order__r.Solarisbank_Id__c,
                 Scheduled_Order__r.Bank_Account__r.Solarisbank_Id__c,Scheduled_Order__r.Bank_Account__r.Person_Account__r.Solarisbank_Id__c,Scheduled_Order__r.Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c,
-                Bank_Account__c,Bank_Account__r.Solarisbank_Id__c,Bank_Account__r.Person_Account__r.Solarisbank_Id__c,Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c,
-                Seizure__c, Identification__c, Tax_Identification__c, Is_Test__c,  Account__c 
-                FROM Bank_Case_Item__c WHERE Id=:recordId];            
+                Bank_Account__c,Bank_Account__r.Status__c,Bank_Account__r.Solarisbank_Id__c,Bank_Account__r.Person_Account__r.Solarisbank_Id__c,Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c,
+                Seizure__c, Identification__c, Tax_Identification__c, Is_Test__c,  Account__c,Account__r.Marital_Status__c,
+                Account__r.PersonTitle,Account__r.Salutation,Account__r.Employment_Status__c,Account__r.Business_Purpose__c,
+                Account__r.Industry,Account__r.Industry_Key__c,Account__r.Solarisbank_Id__c,Account__r.Solarisbank_Tenent__c,
+                Account__r.BillingStreet,Account__r.BillingPostalCode,Account__r.BillingCity,Account__r.BillingCountry,Account__r.BillingState,
+                Account__r.Preferred_Language__pc
+                FROM Bank_Case_Item__c WHERE Id=:recordId];                   
     }
     
     @AuraEnabled
@@ -147,6 +166,17 @@ public with sharing class BankCaseOverrideControler {
     //Api Calls
     ////////////////////////////
     @AuraEnabled
+    public static String callGoogleMapSearchApi(String searchText,String sessionToken){
+        HttpResponse response=RestService.get('https://maps.googleapis.com/maps/api/place/autocomplete/json?input='+EncodingUtil.urlEncode(searchText, 'UTF-8')+'&sessiontoken='+sessionToken.trim()+'&key='+System.label.GoogleMapApiToken, new Map<String,String>());
+        return response.getBody();
+          
+    }
+    @AuraEnabled
+    public static String callGoogleMapsDetailsApi(String placeId,String sessionToken){
+        HttpResponse response=RestService.get('https://maps.googleapis.com/maps/api/place/details/json?place_id='+placeId.trim()+'&sessiontoken='+sessionToken.trim()+'&key='+System.label.GoogleMapApiToken, new Map<String,String>());
+        return response.getBody();
+    }
+    @AuraEnabled
     public static String requestTransactionDetails(String recordId,Bank_Account__c bankAccountDetails,String transactionId){
         
         LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(recordId,'Case',bankAccountDetails.Person_Account__r.Solarisbank_Tenent__c);
@@ -157,8 +187,7 @@ public with sharing class BankCaseOverrideControler {
     public static String retriveTransactionDetails(String bankcaseId){
         
         Bank_Case_Item__c bankCase=getBankCaseDetails(bankcaseId);
-        System.debug('bankCase '+bankCase);
-        LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(bankCase.Id,'Bank_Case_Item__c',bankCase.Booking__r.Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c);
+         LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(bankCase.Id,'Bank_Case_Item__c',bankCase.Booking__r.Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c);
         return SolarisbankService.fetchSepaCreditTransfer(bankCase.Booking__r.Bank_Account__r.Person_Account__r.Solarisbank_Id__c,
                                                           bankCase.Booking__r.Bank_Account__r.Solarisbank_Id__c,
                                                           bankCase.Booking__r.Transaction_Id__c,apiCallDetails);
@@ -205,41 +234,30 @@ public with sharing class BankCaseOverrideControler {
         insert statement;
         return statement.Id+'________'+completeStatmentJSON;
     }  
-    @AuraEnabled
-    public static string createNewIdentification(String recordId,String languageCode){
-        Bank_Case_Item__c bankAccountDetails=[SELECT Id,Case__c,Action__c, Account__c,Identification__c,Account__r.Solarisbank_Id__c,Account__r.Solarisbank_Tenent__c FROM Bank_Case_Item__c WHERE id=:recordId];
-        LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(recordId,'Bank_Case_Item__c',bankAccountDetails.Account__r.Solarisbank_Tenent__c);
-        String requestBody='{"method": "idnow","language": "'+languageCode+'"}';
-        String res=SolarisbankService.createNewIdentificationAttempt(bankAccountDetails.Account__r.Solarisbank_Id__c,requestBody,apiCallDetails);
-        SolarisBankIdentificationWrapper response=SolarisBankIdentificationWrapper.parse(res);
-        if(String.isNotEmpty(response.id)){
-            LogService.ApiCallDetails apiCallDetailsForIdent =  new LogService.ApiCallDetails(recordId,'Bank_Case_Item__c',bankAccountDetails.Account__r.Solarisbank_Tenent__c);
-            String responseString=SolarisbankService.fetchIdentificationRequestDetails(bankAccountDetails.Account__r.Solarisbank_Id__c,response.id,apiCallDetailsForIdent);
-            SolarisBankIdentificationWrapper identResponse=SolarisBankIdentificationWrapper.parse(responseString);
-
-            Identification__c newIdentification=new Identification__c();
-            newIdentification.Solarisbank_Id__c=response.id;      
-            newIdentification.Account__c=bankAccountDetails.Account__c;
-            newIdentification.RecordTypeId=Constant.IDENTIFIACTION_VIDEO_IDENTIFICATION_RECORDTYPEID;
-            if(String.isNotEmpty(identResponse.url)) newIdentification.URL__c=identResponse.url;
-            if(String.isNotEmpty(identResponse.reference)) newIdentification.Reference__c=identResponse.reference;
-            insert newIdentification; 
-            bankAccountDetails.Identification__c=newIdentification.Id;
-            bankAccountDetails.Action__c='New Person Identification';
-            update bankAccountDetails;
-            Bank_Case_Item__c newbankCaseItem=new Bank_Case_Item__c();
-            newbankCaseItem.Case__c=bankAccountDetails.Case__c;
-            newbankCaseItem.Identification__c=newIdentification.id;
-            newbankCaseItem.recordTypeId=Constant.BANKCASE_IDENTIFICATION_RECORDTYPEID;
-            insert newbankCaseItem;
-            
-            return newIdentification.Id;
-        }
-      return res;
-    } 
+   
     /////////////////////////////
     //Operations
     ////////////////////////////
+    
+    @AuraEnabled
+    public static string createNewIdentification(String recordId,String languageCode){
+        return BankCaseService.createNewIdentification(recordId,languageCode);
+    } 
+    
+    @AuraEnabled
+    public static SolarisbankCRPRequestWrapper intitatePersonDetailsChangeTanRequest(String recordId,String requestChangebody){
+       return BankCaseService.intitatePersonDetailsChangeTanRequest(recordId,requestChangebody);
+        
+    }
+    
+    @AuraEnabled
+    public static String confirmPersonDetailsChangeTanRequest(String recordId,String tanurl,String otp){
+        return BankCaseService.confirmPersonDetailsChangeTanRequest(recordId,tanurl,otp);
+        
+    }
+    
+    
+    
     @AuraEnabled
     public static List<String> createBankCases(String caseId,String typeI,String typeII,String description, 
                                                String bankId,String cardId,String accountId,
@@ -263,6 +281,10 @@ public with sharing class BankCaseOverrideControler {
         BankCaseService.initiateTimedOrderCancelation(bankCaseDetails,reason);
     } 
     
+    @AuraEnabled
+    public static String requestCreateNewCard(String bankCaseId,String body){
+       return BankCaseService.requestCreateNewCard(bankCaseId,body);
+    }
     
     /////////////////////////////
     //DML

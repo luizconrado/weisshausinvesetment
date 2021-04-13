@@ -196,16 +196,31 @@
         <label>Bank Card Block</label>
     </customValue>
     <customValue>
-        <fullName>Closure Info</fullName>
+        <fullName>Fraud victim contacting</fullName>
         <default>false</default>
-        <isActive>false</isActive>
-        <label>Closure Info</label>
+        <label>Fraud victim contacting</label>
+    </customValue>
+    <customValue>
+        <fullName>Compliance investigation</fullName>
+        <default>false</default>
+        <label>Compliance investigation</label>
+    </customValue>
+    <customValue>
+        <fullName>Phone change investigation</fullName>
+        <default>false</default>
+        <label>Phone change investigation</label>
     </customValue>
     <customValue>
         <fullName>Update Details</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>Update Details</label>
+    </customValue>
+    <customValue>
+        <fullName>Closure Info</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Closure Info</label>
     </customValue>
     <masterLabel>Banking Case Sub Types</masterLabel>
     <sorted>false</sorted>

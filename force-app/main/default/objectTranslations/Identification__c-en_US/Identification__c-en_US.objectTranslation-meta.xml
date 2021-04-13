@@ -11,23 +11,27 @@
     <layouts>
         <layout>Video Identification Layout</layout>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
     </layouts>
     <layouts>
         <layout>eSigning Page Layout</layout>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
     </layouts>
+    <quickActions>
+        <label></label>
+        <name>Sync_Identifiaction</name>
+    </quickActions>
     <recordTypes>
-        <label><!-- Video Identification --></label>
+        <label></label>
         <name>Video_Identification</name>
     </recordTypes>
     <recordTypes>
-        <label><!-- eSigning --></label>
+        <label></label>
         <name>eSigning</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>

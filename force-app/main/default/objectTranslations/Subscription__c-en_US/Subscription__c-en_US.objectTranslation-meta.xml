@@ -11,20 +11,20 @@
     <layouts>
         <layout>Subscription Layout</layout>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label></label>
             <section>Custom Links</section>
         </sections>
         <sections>
-            <label><!-- Subscription Info --></label>
+            <label></label>
             <section>Subscription Info</section>
         </sections>
     </layouts>
     <quickActions>
-        <label><!-- Resend Confirmation Email --></label>
+        <label></label>
         <name>Resend_Confirmation_Email</name>
     </quickActions>
     <recordTypes>
-        <label><!-- Default --></label>
+        <label></label>
         <name>Default</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>

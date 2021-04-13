@@ -68,7 +68,7 @@ public class SyncAccountAndSolarisbankController {
             String identityJson=SolarisbankService.fetchAllIdentificationAttempts(sfAccount.Solarisbank_Id__c,apiCallDetails);
             List<SolarisBankIdentificationWrapper> indentificationList=SolarisBankIdentificationWrapper.parseList(identityJson);
             //fetching all signing
-            String esigningJson=SolarisbankService.fetchAllESigningAttempts(sfAccount.Solarisbank_Id__c,apiCallDetails);
+            //String esigningJson=SolarisbankService.fetchAllESigningAttempts(sfAccount.Solarisbank_Id__c,apiCallDetails);
             List<SolarisBankIdentificationWrapper> esigningList=new List<SolarisBankIdentificationWrapper>();//SolarisBankIdentificationWrapper.parseList(esigningJson);
 			//fetching all tax identification            
             String taxIdenityJson=SolarisbankService.fetchAllTaxIdentificationAttempts(sfAccount.Solarisbank_Id__c,apiCallDetails);

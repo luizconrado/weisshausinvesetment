@@ -414,6 +414,21 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Onboarding_Status__c</picklist>
+        <values>
+            <fullName>New Partner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Onboarded</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prospect</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Ownership</picklist>
         <values>
             <fullName>Other</fullName>

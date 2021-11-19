@@ -160,6 +160,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.Onboarding_Status__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Account.Own_Economic_Interest_Signed_At__c</field>
         <readable>true</readable>
@@ -2792,6 +2797,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Log__c.Stack_Trace__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Log__c.Status__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>

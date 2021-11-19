@@ -1,21 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Translations xmlns="http://soap.sforce.com/2006/04/metadata">
-    <customApplications>
-        <label><!-- Lead Generation --></label>
-        <name>Lead_Generation</name>
-    </customApplications>
-    <customApplications>
-        <label><!-- Relationship Management --></label>
-        <name>Relationship_Management</name>
-    </customApplications>
-    <customApplications>
-        <label><!-- Sales Leadership --></label>
-        <name>Sales_Leadership</name>
-    </customApplications>
-    <customApplications>
-        <label><!-- Sales Operations --></label>
-        <name>Sales_Operations</name>
-    </customApplications>
     <customLabels>
         <label><!-- AgentReferalForm_AccountQuestion --></label>
         <name>AgentReferalForm_AccountQuestion</name>

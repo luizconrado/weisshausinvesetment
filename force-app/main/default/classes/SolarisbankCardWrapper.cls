@@ -129,24 +129,24 @@ public class SolarisbankCardWrapper {
             resp.setStatus('success'); 
            
             
-            if(req.getEndpoint()=='https://api.solaris-sandbox.de/v1/cards/testcardeaea2acad1bcf119a9c0cfcboo/block'){
-                data.status='BLOCKED';
-                resp.setBody(JSON.serialize(data)); 
-                
-            }
-            else if(req.getEndpoint()=='https://api.solaris-sandbox.de/v1/cards/testcardeaea2acad1bcf119a9c0cfcboo'){
-                data.status='BLOCKED';
-                resp.setBody(JSON.serialize(data)); 
-                
-                
-            }
-            else if(req.getEndpoint()=='https://api.solaris-sandbox.de/v1/cards/testcardeaea2acad1bcf119a9c0cfcboo/Unblock'){
+           
+           
+            if(req.getEndpoint().contains('Unblock')){
                 resp.setBody('{"errors":[{"detail":"testing"}]}'); 
                 
                 
             }
-            
-            
+            else if(req.getEndpoint().contains('block')){
+                data.status='BLOCKED';
+                resp.setBody(JSON.serialize(data)); 
+                
+            }
+            else if(req.getEndpoint().startsWith('https://api.solaris-sandbox.de/v1/cards/testcardeaea2acad1bcf119')){
+                data.status='BLOCKED';
+                resp.setBody(JSON.serialize(data)); 
+                
+                
+            }
             else{
                 resp.setBody(JSON.serialize(dataList)); 
             }

@@ -35,8 +35,11 @@ public inherited sharing class SchemaUtil {
         return picklistValues;
     }
     public static DescribeSobjectResult getSobjectType(String objectApiName){
-        Schema.DescribeSobjectResult[] results = Schema.describeSObjects(new String[] { objectApiName });
-        return results[0];
+        Schema.DescribeSobjectResult[] results = null;
+        try{
+        results=Schema.describeSObjects(new String[] { objectApiName });
+        }catch(Exception e){}
+        return (results!=null)?results[0]:null;
     }
     
     //Pass dependent field parameter e.g.: Account.YourDependentField__c

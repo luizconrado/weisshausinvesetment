@@ -1,23 +1,35 @@
 public class TestDataFactory {
-     
+    
     public static Lead getWebLead(Boolean doInsert){
         return generateLead(Constant.DEFAULT_LEAD_RECORDTYPEID,doInsert);
     }
     public static Account getPersonAccount(Boolean doInsert){
         return generateAccount(Constant.PERSON_ACCOUNT_RECORDTYPEID, doInsert);
     }
-  
+    public static Account getBusinessAccount(Boolean doInsert){	
+        Account businessAccount=new Account();	
+        businessAccount.Name=RandomUtil.randomString(8);	
+        businessAccount.RecordTypeId=Constant.ACCOUNT_BUSINESS_ACCOUNT_RECORDTYPEID;	
+        if(doInsert) insert businessAccount;	
+        return businessAccount;	
+    }  
     public static Opportunity getStandardOpportunity(String accountId,Boolean doInsert){
         return generateOpportunity(Constant.STANDARD_OPPORTUNITY_RECORDTYPEID,accountId,doInsert);
+    }
+    public static Opportunity getOpportunityFullSale(String accountId,Boolean doInsert){
+        return generateOpportunity(Constant.OPPORTUNITY_RE_FULLSALE_RECORDTYPEID,accountId,doInsert);
     }
     public static Case getStandardCase(String accountId,Boolean doInsert){
         return generateCase(Constant.STANDARD_CASE_RECORDTYPEID, accountid, doInsert);
     }
-     public static Case getBankCase(String accountId,Boolean doInsert){
+    public static Case getBankCase(String accountId,Boolean doInsert){
         return generateCase(Constant.BANKINGCASE_CASE_RECORDTYPEID, accountid, doInsert);
     }
-     public static Case getEVKontoCase(String accountId,Boolean doInsert){
+    public static Case getEVKontoCase(String accountId,Boolean doInsert){
         return generateCase(Constant.EVKONTOAPPCASE_CASE_RECORDTYPEID, accountid, doInsert);
+    }
+    public static Case getCaseInvestment(String accountId,Boolean doInsert){
+        return generateCase(Constant.INVESTMENTCASE_CASE_RECORDTYPEID, accountid, doInsert);
     }
     public static Campaign getStandardCampaign(Boolean doInsert){
         return generateCampaing(Constant.STANDARD_CAMPAIGN_RECORDTYPEID,doInsert);
@@ -42,7 +54,7 @@ public class TestDataFactory {
         cm.Status='Sent';
         if(doInsert) insert cm;
         return cm;
-            
+        
     }
     public static CampaignMember getContactCampaignMember(String campaignId,String contactId,Boolean doInsert){
         CampaignMember cm=new CampaignMember();
@@ -51,7 +63,7 @@ public class TestDataFactory {
         cm.Status='Sent';
         if(doInsert) insert cm;
         return cm;
-            
+        
     }
     public static Bank_Account__c getBankAccount(String accountId,Boolean doInsert){
         return generateBankAccount(accountId,doInsert);
@@ -68,10 +80,10 @@ public class TestDataFactory {
     public static Bank_Case_Item__c getBankAccountBankCase(String caseId,Boolean doInsert){
         return generateBankCase(Constant.BANKCASE_BANKACCOUNT_RECORDTYPEID,caseId,doInsert);
     }
-     public static Bank_Case_Item__c getTimedOrderBankCase(String caseId,Boolean doInsert){
+    public static Bank_Case_Item__c getTimedOrderBankCase(String caseId,Boolean doInsert){
         return generateBankCase(Constant.BANKCASE_TIMEDGORDER_RECORDTYPEID,caseId,doInsert);
     }
-
+    
     
     
     public static Card__c getCard(String accountId,String bankId,Boolean doInsert){
@@ -80,15 +92,15 @@ public class TestDataFactory {
         card.Name_On_Card__c='NAME1 NAME2 SURNAME';
         card.Person_Account__c=accountId;
         card.Bank_Account__c=bankId;
-        card.Solarisbank_Id__c='testcardeaea2acad1bcf119a9c0cfcboo';
-
+        card.Solarisbank_Id__c='testcardeaea2acad1bcf119a9c0cfc'+RandomUtil.randomString(3);
+        
         if(doInsert) insert card;
         return card;
     }
     public static Reservation__c getReservation(String bankId,Boolean doInsert){
         Reservation__c res=new Reservation__c();
         res.Bank_Account__c=bankId;
-        res.Solarisbank_Id__c='088434f167eaea2acad1bcf119a9c0cfcboo';
+        res.Solarisbank_Id__c='088434f167eaea2acad1bcf119a9c0cfc'+RandomUtil.randomString(3);
         if(doInsert) insert res;
         return res;
     }
@@ -98,26 +110,62 @@ public class TestDataFactory {
     }
     
     public static Scheduled_Order__c getTimedOrder(String bankaccountId,Boolean doInsert){
-            return generateScheduledOrder(Constant.TIMED_SCHEDULEDORDER_RECORDTYPEID,bankaccountId,doInsert);
+        return generateScheduledOrder(Constant.TIMED_SCHEDULEDORDER_RECORDTYPEID,bankaccountId,doInsert);
     }
     public static Scheduled_Order__c getStandingOrder(String bankaccountId,Boolean doInsert){
         
-            return generateScheduledOrder(Constant.STANDING_SCHEDULEDORDER_RECORDTYPEID,bankaccountId,doInsert);
+        return generateScheduledOrder(Constant.STANDING_SCHEDULEDORDER_RECORDTYPEID,bankaccountId,doInsert);
     }
     
     public static Identification__c getVideoIdentification(String accountId,Boolean doInsert){
         return genrateIdentification(accountId,Constant.IDENTIFIACTION_VIDEO_IDENTIFICATION_RECORDTYPEID,doInsert);
     }
     
+    
+    public static Asset getAssetRealEstate(String accountId,String contactId,Boolean doInsert){
+        return generateAsset(accountId,contactId,Constant.ASSET_REAL_ESTATE_RECORDTYPEID,doInsert);
+    }
+    
+    public static Asset_Link__c getAssetLink(String assetId,Boolean doInsert){
+        return generateAssetLink(assetId,Constant.ASSET_LINK_IMAGE_RECORDTYPEID,doInsert);
+    }
+    public static user getUser(String profileName){	
+        Profile p = [SELECT Id FROM Profile WHERE Name=:profileName]; 	
+        User u = new User(Alias = 'standt', Email=profileName+'@evsmertmoney.com', 	
+                          EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US', 	
+                          LocaleSidKey='en_US', ProfileId = p.Id, 	
+                          TimeZoneSidKey='America/Los_Angeles', UserName=profileName+'@evsmertmoney.com');	
+        insert u;	
+        return u;	
+        
+    }
+    public static Evaluation__c getAssetEvaluation(String assetId,Boolean doInsert){
+        return generateEvaluation(assetId,doInsert);
+    }
+    
+    public static Solarisbank__c getSolarisBank(String accountId,Boolean doInsert){
+        Solarisbank__c sb=new Solarisbank__c();
+        sb.Account__c=accountId;
+        sb.Name=RandomUtil.randomString(8);
+        sb.Solarisbank_Id__c='testcardeaea2acad1bcf119a9c0cfc'+RandomUtil.randomString(3);
+        if(doInsert) insert sb;
+        return sb;
+    }
+    public static Knowledge__kav getKnowledgeFAQRecord(Boolean doInsert){
+        return generateKnowledgeRecord(Constant.KNOWLEDGE_FAQ_RECORDTYPEID,doInsert);
+    }
+    public static Knowledge__kav getKnowledgeSBRecord(Boolean doInsert){
+        return generateKnowledgeRecord(Constant.KNOWLEDGE_SOLARISBANK_RECORDTYPEID,doInsert);
+    }
     /*
-    Generators
-	*/
+Generators
+*/
     
     private static Booking__c generateBooking(String bankaccountId,Boolean doInsert){
         Booking__c book=new Booking__c();
         book.Bank_Account__c=bankaccountId;
-        book.Solarisbank_Id__c='088434f167eaea2acad1bcf119a9c0cfcboo';
-        book.Transaction_Id__c='088434f167eaea2acad1bcf119a9c0cfcboo';
+        book.Solarisbank_Id__c='088434f167eaea2acad1bcf119a9c0cfc'+RandomUtil.randomString(3);
+        book.Transaction_Id__c='088434f167eaea2acad1bcf119a9c0cfc'+RandomUtil.randomString(3);
         if(doInsert) insert book;
         return book;
     }
@@ -126,7 +174,7 @@ public class TestDataFactory {
         Scheduled_Order__c order=new Scheduled_Order__c();
         order.recordTypeId=recordTypeId;
         order.Bank_Account__c=bankaccountId;
-        order.Solarisbank_Id__c='088434f167eaea2acad1bcf119a9c0cfcboo';
+        order.Solarisbank_Id__c='088434f167eaea2acad1bcf119a9c0cfc'+RandomUtil.randomString(3);
         if(doInsert) insert order;
         return order;
     }
@@ -145,11 +193,11 @@ public class TestDataFactory {
         ba.Name='DE98110101002528376528';
         ba.BIC__c='SOBKDEBBXXX';
         ba.Status__c='Active';
-        ba.Solarisbank_Id__c='0652225cebcd3bec2c95ea8c461fe146cacc';
+        ba.Solarisbank_Id__c='0652225cebcd3bec2c95ea8c461fe146c'+RandomUtil.randomString(3);
         if(doInsert ) insert ba;
         return ba;
     }
-        
+    
     private static Campaign generateCampaing(String recordTypeId,Boolean doInsert){
         Campaign c=new Campaign();
         c.Name=RandomUtil.randomString(3);
@@ -164,7 +212,7 @@ public class TestDataFactory {
     
     
     private static Lead generateLead(String recordtypeid,Boolean doInsert){
-       
+        
         
         Lead lead = new Lead();
         
@@ -184,10 +232,10 @@ public class TestDataFactory {
         
         Account account = new Account();
         account.PersonEmail= RandomUtil.randomString(3)+'@'+RandomUtil.randomString(4)+'.com';
-        
+        account.Auth0_ID__c='auth0|'+RandomUtil.randomString(6);
         account.LastName = RandomUtil.randomString(4);
         account.RecordTypeId = recordtypeid;
-        account.Solarisbank_Id__c='0652225cebcd3bec2c95ea8c461fe146cacc';
+        account.Solarisbank_Id__c='0652225cebcd3bec2c95ea8c461fe'+RandomUtil.randomString(6);
         account.Solarisbank_Tenent__c='Sandbox'; 
         if(doInsert) insert account;
         return account;
@@ -211,7 +259,7 @@ public class TestDataFactory {
         c.RecordTypeId=recordTypeId;
         c.Status='New';
         c.Origin='Web';
-		c.AccountId=accountid;
+        c.AccountId=accountid;
         if(doInsert) insert c;
         return c;
     }
@@ -235,11 +283,60 @@ public class TestDataFactory {
     
     private static Identification__c genrateIdentification(String accountId,String recordTypeId,Boolean doInsert){
         Identification__c newIdentification=new Identification__c();
-        newIdentification.Solarisbank_Id__c='testcardeaea2acad1bcf119a9c0cfcboo';      
+        newIdentification.Solarisbank_Id__c='testcardeaea2acad1bcf119a9c0cfc'+RandomUtil.randomString(3);      
         newIdentification.Account__c=accountId;
         newIdentification.RecordTypeId=recordTypeId;
         if(doInsert) insert newIdentification; 
         return newIdentification;
     }
-
+    
+    private static Asset generateAsset(String accountId,String contactId,String recordTypeId,Boolean doInsert){
+        Asset assetObject=new Asset();
+        assetObject.Name=RandomUtil.randomString(6);
+        assetObject.Is_Deleted_By_Customer__c=false;
+        assetObject.Asset_Id__c=RandomUtil.randomString(8);
+        assetObject.contactId=contactId;
+        assetObject.AccountId=accountId;
+        assetObject.RecordTypeId=recordTypeId;
+        if(doInsert) insert assetObject;
+        return assetObject;
+    }
+    
+    private static Asset_Link__c generateAssetLink(String assetId,String recordTypeId,Boolean doInsert){
+        Asset_Link__c link=new Asset_Link__c();
+        link.Asset__c=assetId;
+        link.Image_Url__c='www.ev-smartmoney.com';
+        link.RecordTypeId=recordTypeId;
+        if(doInsert) insert link;
+        return link;
+    }
+    
+    private static Evaluation__c generateEvaluation(string assetId,Boolean doInsert){
+        Evaluation__c eval=new Evaluation__c();
+        eval.Asset__c=assetId;
+        eval.Date__c=Date.today();
+        eval.Value__c=RandomUtil.randomNumber(100000);
+        if(doInsert) insert eval;
+        return eval;
+    }
+    
+    
+    private static Knowledge__kav generateKnowledgeRecord(String recordTypeId,Boolean doInsert){	
+        Knowledge__kav km=new Knowledge__kav();	
+        km.Title= RandomUtil.randomString(60);	
+        km.RecordTypeId=recordTypeId;	
+        km.Summary=RandomUtil.randomString(60);	
+        km.Information__c=RandomUtil.randomString(60);	
+        if(doInsert) insert km;	
+        return km;	
+    }
+    //Rest helper	
+    public static RestRequest setRestRequest(String endpoint,String method){	
+        RestRequest req = new RestRequest(); 	
+        req.requestURI = endpoint; 	
+        req.httpMethod = method;	
+        req.addHeader('Content-Type', 'application/json');	
+        return req;	
+    }
+    
 }

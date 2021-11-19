@@ -26,6 +26,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Intranet Website</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Other</fullName>
             <default>false</default>
         </values>
@@ -42,6 +46,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Wealth Web App</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Webinar</fullName>
             <default>false</default>
         </values>
@@ -54,6 +62,10 @@
         <picklist>Account_Source_Detail__c</picklist>
         <values>
             <fullName>E%26V Ambassadors</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>E%26V Brokers</fullName>
             <default>false</default>
         </values>
         <values>
@@ -81,7 +93,54 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Referral Code Website</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Solarisbank</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Age__pc</picklist>
+        <values>
+            <fullName>01-10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>11-20</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>21-30</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>31-40</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>41-50</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>51-60</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>61-70</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>71-80</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>81-90</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>91-99</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -96,6 +155,17 @@
         <picklist>Birth_Country__c</picklist>
         <values>
             <fullName>DE</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Deletion_Request_Source__c</picklist>
+        <values>
+            <fullName>Bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -555,6 +625,10 @@
     <picklistValues>
         <picklist>Origin__pc</picklist>
         <values>
+            <fullName>Referral Code Website</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>weisshausinvestment</fullName>
             <default>false</default>
         </values>
@@ -638,6 +712,10 @@
         </values>
         <values>
             <fullName>Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>E%26V Broker</fullName>
             <default>false</default>
         </values>
         <values>

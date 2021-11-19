@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Case_Owner</fullName>
+    <active>true</active>
+    <description>Current User must be case owner to edit case</description>
+    <errorConditionFormula>AND(
+  NOT(ISNEW())  ,
+IF(OwnerId != $User.Id ,true , false),
+NOT(CONTAINS($Label.Users_Exclusion,$User.Username))
+
+)</errorConditionFormula>
+    <errorMessage>Accept case before editing</errorMessage>
+</ValidationRule>

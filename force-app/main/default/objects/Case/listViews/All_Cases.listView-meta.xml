@@ -9,6 +9,21 @@
     <columns>CASES.CREATED_DATE</columns>
     <columns>CORE.USERS.ALIAS</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>CASES.EMAIL</field>
+        <operation>notContain</operation>
+        <value>statuspage,globalratings,aoneapps</value>
+    </filters>
+    <filters>
+        <field>CASES.EMAIL</field>
+        <operation>notContain</operation>
+        <value>solarisbank,microsoft,salesforce,google</value>
+    </filters>
+    <filters>
+        <field>CASES.EMAIL</field>
+        <operation>notEqual</operation>
+        <value>support@weisshausinvestment.com</value>
+    </filters>
     <label>All Cases</label>
     <language>en_US</language>
 </ListView>

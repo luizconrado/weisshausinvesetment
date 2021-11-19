@@ -66,6 +66,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Wealth Web App</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Webinar</fullName>
             <default>false</default>
         </values>

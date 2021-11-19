@@ -11,23 +11,23 @@
 </div>
 <div style="line-height: 1.4;box-sizing: border-box;padding: 20px;font-size: 14px;background: #ffffff;border-radius: 3px;width: 100%;">&nbsp;
 <br />
-                                        <p>{!Case.Email_Honorific__c},</p>
-                                        <p>
+                                        <p style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande">{!Case.Email_Honorific__c},</p>
+                                        <p style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande">
                                             Vielen Dank für Ihre E-Mail.
                                         </p>
-                                        <p>
+                                        <p style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande">
                                             Ihre Anfrage ist nun automatisch mit der Fallnummer:
                                             <b>{!Case.CaseNumber}</b> in unserem System hinterlegt.
                                         </p>
-                                        <p>
+                                        <p style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande">
                                             Sollten Sie in der Zwischenzeit Rückfragen haben oder möchten Sie uns
                                             weitere Informationen zukommen lassen, können Sie einfach, mit Angabe Ihrer
                                             persönlichen Fallnummer, auf diese E-Mail antworten.
                                         </p>
-                                        <p>
+                                        <p style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande">
                                             Vielen Dank für Ihr Vertrauen!
                                         </p>
-                                        <p>
+                                        <p style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande">
                                         <p>Ihr Engel & Völkers Smart Money Team</p>
 </div>
 

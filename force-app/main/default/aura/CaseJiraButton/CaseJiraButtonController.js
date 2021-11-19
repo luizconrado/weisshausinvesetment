@@ -5,8 +5,13 @@
             let data = response.getReturnValue();
             component.set('v.isCompactLayout',data);
         })
+        helper.callApex(component,'retriveDefaultTemplatHtml',function(response){
+            let data = response.getReturnValue();
+            component.set('v.defaultTemplateHtml',data);
+            
+        })
         component.set('v.loading',true);
-         helper.callApex(component,'getBankCaseTypes',function (response) {
+        helper.callApex(component,'getBankCaseTypes',function (response) {
             let state = response.getState();
             let data = response.getReturnValue();
             if (state === "SUCCESS") {
@@ -107,6 +112,9 @@
         }        
     },
     handleAttachFile:function(component, event, helper){
+        component.set('v.isAttachPopup',true);
+        /*
+        return ;
         let pgRef= {    
             "type": "standard__component",
             "attributes": {
@@ -118,7 +126,8 @@
             }
         }
         let workspaceAPI = component.find("workspace");
-        workspaceAPI.isConsoleNavigation().then(function(){
+        workspaceAPI.isConsoleNavigation().then(function(isConsole){
+            if(isConsole){
             workspaceAPI.getFocusedTabInfo().then(function(response) {
                 let focusedTabId = response.tabId;
                 helper.save(component);
@@ -134,9 +143,16 @@
                 });
             })
             .catch(function(error) {
-                console.error('onInit',error);
+                console.error('handleAttachFile',error);
             }); 
+            }
+            else{
+                let navService = component.find("navService");
+                navService.navigate(pgRef);
+            }
+            
         })
+        */
         
     },
     onBack:function(component, event, helper) {
@@ -189,9 +205,29 @@
         }
         else if(currentStep=='4'){
             helper.save(component);
-        }
+        } 
     },
     close:function(component, event, helper) {
         helper.closepopup(component);
     },
+    onAttachPopUpClose:function(component,event,helper){
+        let isAttachPopup=component.get("v.isAttachPopup")
+        if(isAttachPopup) return;
+        
+        helper.checkFileVersion(component);
+        
+    },
+    contentPreviewHandler:function(component, event, helper) {
+       let contentSelectedTabId=component.get("v.contentSelectedTabId")
+       let body=component.get('v.body');
+       let defaultTemplateHtml=component.get('v.defaultTemplateHtml');
+       if(contentSelectedTabId=='preview'){
+           let previewHtml=defaultTemplateHtml.START;
+           previewHtml+=body.replace(/\n/g,'<br/>')
+           previewHtml+=defaultTemplateHtml.END;
+           component.set('v.previewContent',previewHtml)
+       }
+        
+        
+    }
 })

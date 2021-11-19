@@ -3,7 +3,7 @@
     <aura:attribute name="isCompactLayout" type="boolean" default="false"/>
     <aura:attribute name="recordData" type="Object"  />
     <aura:attribute name="recordDataOrignal" type="Object"  />
-    
+    <aura:handler event="force:refreshView" action="{!c.refreshRecordDetails}"/>
     <aura:handler name='init' value='{!this}' action='{!c.onInit}' />
 
     <aura:attribute name="sessionToken" type="String" />
@@ -11,6 +11,7 @@
     <aura:attribute name="loading" type="Boolean" default="false"  />
     <aura:attribute name="isOpen" type="Boolean" default="false"  />
     <aura:attribute name="isAccountUpdate" type="Boolean" default="false"  />
+    <aura:attribute name="requestTan" type="Boolean" default="true"  />
     <aura:attribute name="isNewIdentification" type="Boolean" default="false"  />
     <aura:attribute name="isNewCard" type="Boolean" default="false"  />
     <aura:attribute name="isChangeStatus" type="Boolean" default="false"  />
@@ -68,9 +69,12 @@
                 </lightning:buttonMenu>
             </aura:if>
         </aura:set>
+        <p>
         <aura:if isTrue="{!v.loading}">
             <lightning:spinner alternativeText="Loading" size="medium" />
         </aura:if>
+            &nbsp;
+        </p>
     </lightning:card>
     <aura:if isTrue="{!v.isOpen}">
         <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_medium" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
@@ -393,16 +397,23 @@
                     <aura:if isTrue="{!v.isNewCard}">
                        
                          <div class="slds-grid slds-grid_vertical">
-                                <div class="slds-grid slds-col">
-                                    <div class="slds-col form-grid-padding  slds-size_1-of-2">
-                                        <lightning:input name="firstName" label="First Name" value="{!v.cardfName}" required="true"/>
-                                    </div>
-                                    <div class="slds-col form-grid-padding  slds-size_1-of-2">
-                                        <lightning:input name="lastName" label="Last Name" value="{!v.cardlName}" required="true"/>
-                                    </div>
-                                    
-                                </div>
-                                <div class="slds-col">
+                             <div class="slds-grid slds-col">
+                                 <div class="slds-col form-grid-padding  slds-size_1-of-2">
+                                     <lightning:input name="firstName" label="First Name" value="{!v.cardfName}" required="true"/>
+                                 </div>
+                                 <div class="slds-col form-grid-padding  slds-size_1-of-2">
+                                     <lightning:input name="lastName" label="Last Name" value="{!v.cardlName}" required="true"/>
+                                 </div>
+                                 
+                             </div>
+                             <div class="slds-col">
+                                 <div class="slds-col form-grid-padding  slds-size_1-of-1">
+                                     <lightning:select disabled="true" label="Purpose" name="purpose"    >
+                                         <option text="Primary" value="primary" />
+                                     </lightning:select>
+                                 </div>
+                             </div>
+                             <div class="slds-col">
                                     <div class="slds-col form-grid-padding  slds-size_1-of-1">
                                         <lightning:select label="Type" name="type"  required="true" disabled="true" value="{!v.cardtypeSelected}" >
                                             <option text="Visa Debit" value="VISA_DEBIT" />
@@ -436,12 +447,18 @@
                     </aura:if>
                 </div>
                 <footer class="slds-modal__footer">
-                    <lightning:button label="Close" title="Close" onclick="{! c.handleClose }"/>
-                    <aura:if isTrue="{! v.isAccountUpdate}">
-                        <lightning:button variant="brand-outline" disabled="{!v.loading}" label="Request TAN" title="Request TAN" onclick="{! c.requestTan}"/>
-                        
+                    <lightning:button label="Close" title="Close" onclick="{! c.handleClose }"/> 
+                    <aura:if isTrue="{!v.isAccountUpdate}">
+                        <aura:if isTrue="{!v.requestTan}">
+                            <lightning:button variant="brand-outline" disabled="{!v.loading}" label="Request TAN" title="Request TAN" onclick="{! c.requestTan}"/>
+                        </aura:if>
+                        <aura:if isTrue="{!!v.requestTan}">
+                            <lightning:button variant="brand" disabled="{!v.loading}" label="Save" title="Save" onclick="{! c.handleSave }"/>
+                        </aura:if>
+                        <aura:set attribute="else">
+                            <lightning:button variant="brand" disabled="{!v.loading}" label="Save" title="Save" onclick="{! c.handleSave }"/>
+                        </aura:set>
                     </aura:if>
-                    <lightning:button variant="brand" disabled="{!v.loading}" label="Save" title="Save" onclick="{! c.handleSave }"/>
                 </footer>
             </div>
         </section>

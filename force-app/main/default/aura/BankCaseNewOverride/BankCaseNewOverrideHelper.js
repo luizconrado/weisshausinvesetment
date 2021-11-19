@@ -252,15 +252,15 @@
         
         
         let sfAccountId = caseDetails.AccountId || '';
-        let sfBankId = selectedBank.Id || '';
-        let sfCardId = selectedCard.Id || '';
+        let sfBankId = (selectedBank)?selectedBank.Id : '';
+        let sfCardId = (selectedCard)?selectedCard.Id : '';
         let sfBookingIds = selectedBookings.map(book=>book.Id) || [];
         let sfRervationIds = selectedReservations.map(res => res.Id) || [];
         let sfTimedOrderIds = selectedTimedOrders.map(to => to.Id) || [];
         let sfStandingOrderIds = selectedStandingOrders.map(to => to.Id) || [];
         let sfIdententificationsIds=selectedIdententifications.map(to => to.Id) || [];
         let sfCaseId = caseDetails.Id;
-        let stamentId = selectedStatementInfo.Id || '';
+        let stamentId = (selectedStatementInfo)?selectedStatementInfo.Id : '';
         component.set('v.loading',true);
         _helper.callApex(component,'createBankCases',function(response){
             let state = response.getState();

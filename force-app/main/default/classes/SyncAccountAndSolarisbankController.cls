@@ -1,5 +1,6 @@
-public class SyncAccountAndSolarisbankController {
+public without sharing  class SyncAccountAndSolarisbankController {
     
+    @testVisible
     private static Decimal convertCentsToEuro(Decimal amount){
         Decimal decimalNumber = amount;
         Decimal result = decimalNumber.divide(100, 2);
@@ -123,7 +124,8 @@ public class SyncAccountAndSolarisbankController {
                     bank.Name=bankAccount.iban;
                     bank.Type__c=bankAccount.type_Z;
                     bank.Status__c=bankAccount.locking_status;
-                    bank.Closure_Reasons__c=String.join(bankAccount.locking_reasons, ',');
+                    bank.Purpose__c=bankAccount.purpose;
+                    if(bankAccount.locking_reasons!=null)bank.Closure_Reasons__c=String.join(bankAccount.locking_reasons, ',');
                     toUpdateBankAccounts.add(bank);
                 }
                 else{
@@ -133,6 +135,7 @@ public class SyncAccountAndSolarisbankController {
                     bank.BIC__c=bankAccount.bic;
                     bank.Name=bankAccount.iban;
                     bank.Type__c=bankAccount.type_Z;
+                    bank.Purpose__c=bankAccount.purpose;
                     bank.Status__c=bankAccount.locking_status;
                     if(bankAccount.locking_reasons!=null)bank.Closure_Reasons__c=String.join(bankAccount.locking_reasons, ',');
                     toInsertBankAccounts.add(bank);
@@ -523,6 +526,63 @@ public class SyncAccountAndSolarisbankController {
         if(toInsertOrder.size()>0 && !Test.isRunningTest() ) insert  toInsertOrder;
         if(toUpdateOrder.size()>0 && !Test.isRunningTest() ) update toUpdateOrder;
 
+    }
+    
+    @AuraEnabled 
+    public static void startSyncWithAuthO(String sfAccountId){
+        Account sfAccount=[SELECT Id,Auth0_ID__c,Origin__pc,Solarisbank_Id__c,Solarisbank_Tenent__c,Invitation_Code__pc,PersonEmail,Email_Verified__pc,Preferred_Language__pc,FirstName, LastName     FROM Account WHERE id=:sfAccountId LIMIT 1];
+        if(sfAccount.Auth0_ID__c==null) return;
+       
+        LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(sfAccount.Id,'Account',sfAccount.Solarisbank_Tenent__c);
+        String personJson=Auth0Service.fetchUserDetails(sfAccount.Auth0_ID__c,apiCallDetails);
+        Auth0Wrapper personDetails=Auth0Wrapper.parse(personJson);
+        
+        if(personDetails.given_name!=null)sfAccount.FirstName=personDetails.given_name;
+        if(personDetails.family_name!=null) sfAccount.LastName=personDetails.family_name;
+        if(personDetails.email_verified!=null) sfAccount.Email_Verified__pc=personDetails.email_verified;
+        if(personDetails.email!=null) sfAccount.PersonEmail=personDetails.email;
+        if(personDetails.user_metadata!=null){
+            if(personDetails.user_metadata.person_id!=null && sfAccount.Solarisbank_Id__c==null) sfAccount.Solarisbank_Id__c=personDetails.user_metadata.person_id;
+            if(personDetails.user_metadata.invitation_code!=null && sfAccount.Invitation_Code__pc ==null) sfAccount.Invitation_Code__pc =personDetails.user_metadata.invitation_code;
+            if(personDetails.user_metadata.language!=null && sfAccount.Preferred_Language__pc==null) {
+                if(personDetails.user_metadata.language.contains('de'))sfAccount.Preferred_Language__pc='de';
+                else if (personDetails.user_metadata.language.contains('en'))sfAccount.Preferred_Language__pc='en_US';
+            }
+            
+        } 
+        if(personDetails.app_metadata!=null && personDetails.app_metadata.source_application!=null){
+            if(sfAccount.Origin__pc==null) sfAccount.Origin__pc=personDetails.app_metadata.source_application;
+            else if(!sfAccount.Origin__pc.contains(personDetails.app_metadata.source_application)){
+                sfAccount.Origin__pc+=';'+personDetails.app_metadata.source_application;
+            } 
+        }
+       
+        update sfAccount;
+        
+        List<Solarisbank__c> sbList=[SELECT id,Name,Email__c,Term_Deposit_Enabled_At__c,Solarisbank_Id__c,Is_Term_Deposit_Enabled__c FROM Solarisbank__c WHERE Account__c=:sfAccount.Id];
+        Solarisbank__c sbDetails=new Solarisbank__c();
+        if(sbList.size()==0){
+            
+			sbDetails.Account__c=sfAccount.Id;
+            sbDetails.Name=personDetails.given_name+' '+personDetails.family_name;
+            sbDetails.Email__c=personDetails.email;
+            if(personDetails.user_metadata!=null){
+                if( personDetails.user_metadata.term_deposit_enabled!=null) sbDetails.Is_Term_Deposit_Enabled__c=personDetails.user_metadata.term_deposit_enabled;
+                if(personDetails.user_metadata.person_id!=null  ) sbDetails.Solarisbank_Id__c=personDetails.user_metadata.person_id; 
+            }
+           insert sbDetails;
+        }
+        else{
+            sbDetails=sbList.get(0);
+            sbDetails.Name=personDetails.given_name+' '+personDetails.family_name;
+            sbDetails.Email__c=personDetails.email;
+            if(personDetails.user_metadata!=null){
+                if( personDetails.user_metadata.term_deposit_enabled!=null) sbDetails.Is_Term_Deposit_Enabled__c=personDetails.user_metadata.term_deposit_enabled;
+                if(sbDetails.Term_Deposit_Enabled_At__c==null && sbDetails.Is_Term_Deposit_Enabled__c==true)sbDetails.Term_Deposit_Enabled_At__c=DateTime.now();
+                if(personDetails.user_metadata.person_id!=null  ) sbDetails.Solarisbank_Id__c=personDetails.user_metadata.person_id; 
+            }
+            update sbDetails;
+        }
     }
     
     

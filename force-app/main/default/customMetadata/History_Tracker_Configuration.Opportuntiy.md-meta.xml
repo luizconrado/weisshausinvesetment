@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Fields__c</field>
-        <value xsi:type="xsd:string">Name</value>
+        <value xsi:type="xsd:string">AccountId, RecordTypeId, Name, Description, StageName, Amount, Probability, CloseDate, Type, NextStep, LeadSource, IsClosed, IsWon, CampaignId,  OwnerId, CreatedDate, CreatedById, LastModifiedDate, LastModifiedById,  ContactId, ContractId, Budget_Confirmed__c, Discovery_Completed__c, ROI_Analysis_Completed__c, Is_Test__c, Loss_Reason__c, Asset__c</value>
     </values>
     <values>
         <field>Object__c</field>

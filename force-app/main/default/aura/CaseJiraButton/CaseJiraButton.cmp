@@ -2,7 +2,9 @@
     <lightning:workspaceAPI aura:id="workspace"/>
     <lightning:notificationsLibrary aura:id="notifLib"/>
     <aura:handler name='init' value='{!this}' action='{!c.onInit}' />
-    
+    <aura:handler name='change' value='{!v.isAttachPopup}' action='{!c.onAttachPopUpClose}'/>
+    <lightning:navigation aura:id="navService"/>
+
     <aura:html tag="style">
         .cuf-content {
         padding: 0 0rem !important;
@@ -20,9 +22,11 @@
     
     <aura:attribute type="Object"  name="caseDetails"  />
     <aura:attribute type="Object"  name="articleDetails"  />
+    <aura:attribute type="Object"  name="defaultTemplateHtml"  />
     
     <aura:attribute type="String" name="subject"/>
     <aura:attribute type="String" name="body"/>
+    <aura:attribute type="String" name="previewContent"/>
      
     <aura:attribute type="List" name="fileTypes"/>
     <aura:attribute type="List" name="fileVersions"/>
@@ -37,7 +41,7 @@
     <aura:attribute type="String"  name="selectedItemId"  />
     <aura:attribute type="String"  name="selectedFileType"  />
     <aura:attribute type="String"  name="enterdFileType"  />
- 
+    <aura:attribute type="String"  name="contentSelectedTabId"  />
 
     
     <aura:attribute type="List" name="pathSteps"/>
@@ -51,6 +55,7 @@
     <aura:attribute type="boolean" name="isSave" default="false"/>
     <aura:attribute type="boolean" name="isCompactLayout" default="false"/>
     <aura:attribute type="boolean" name="isCaseItemsAttached" default="true"/>
+    <aura:attribute type="boolean" name="isAttachPopup" default="false"/>
     <div>
         <section class="slds-fade-in-open slds-modal_medium">
             <div>
@@ -64,10 +69,15 @@
                                     <lightning:progressStep label="Verify Process" value="2"/>
                                     <lightning:progressStep label="Jira Description" value="3"/>
                                     <lightning:progressStep label="Upload File" value="4"/>
-                                </lightning:progressIndicator>
+                                 </lightning:progressIndicator>
                             </div>
                         </div>
                         <h2 class="block-header ">{!v.header}</h2>
+                    </p>
+                    <p>
+                        <aura:if isTrue="{!v.currentStep=='4'}">
+                         	Please select files that you want to attach to support mail.
+                        </aura:if>
                     </p>
                 </header>
                 <div class="slds-modal__content slds-p-around_medium slds-is-relative"  id="modal-content-id-1">
@@ -300,18 +310,61 @@
                         </aura:if>
                     </aura:if>
                     <aura:if isTrue="{!v.currentStep=='3'}">
-                        <lightning:input name="subject" value="{!v.subject}" label="Subject" />
-                        <lightning:textarea name="body"  value="{!v.body}" label="Description" />
-                        
+                      
+                        <lightning:tabset variant="scoped" selectedTabId="{!v.contentSelectedTabId}" onselect="{!c.contentPreviewHandler}">
+                            <lightning:tab id="content" label="Subject And Description">
+                                <lightning:input name="subject" value="{!v.subject}" label="Subject"  />
+                                <lightning:textarea name="body"  value="{!v.body}" label="Description" />
+                            </lightning:tab>
+                            <lightning:tab id="preview" label="Preview" >
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-col form-grid-padding  slds-size_1-of-1">
+                                        <div class="{! join(' ', 
+                                                    'slds-form-element slds-form-element_readonly',
+                                                    v.isCompactLayout? 'slds-form-element_horizontal' : 'slds-form-element_stacked'
+                                                    )}">
+                                            <span class="slds-form-element__label">Subject</span>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-form-element__static">
+                                                    {!v.subject}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col form-grid-padding slds-size_1-of-1">
+                                        <div class="{! join(' ', 
+                                                    'slds-form-element slds-form-element_readonly',
+                                                    v.isCompactLayout? 'slds-form-element_horizontal' : 'slds-form-element_stacked'
+                                                    )}">
+                                            <span class="slds-form-element__label">To Address</span>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-form-element__static">
+                                                    {!$Label.c.Case_Jira_SupportEmail}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                             
+                                <div class="form-grid-padding slds-scrollable">
+                                    <div class="min-width-medium">
+                                        <lightning:formattedRichText label="body" value="{!v.previewContent}"/>
+                                    </div>
+                                </div>
+                            </lightning:tab>
+                        </lightning:tabset>
                        
                         
                     </aura:if>
                     <aura:if isTrue="{!v.currentStep=='4'}">
                         
-                        <div class="slds-scrollable">
+                        <div class="slds-scrollable min-height-medium">
                             <table class="slds-table slds-table_cell-buffer slds-table_bordered">
                                 <thead>
                                     <tr class="slds-line-height_reset">
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Select"></div>
+                                        </th>
                                         <th class="" scope="col">
                                             <div class="slds-truncate" title="Option"></div>
                                         </th>
@@ -338,7 +391,10 @@
                                 <tbody>
                                     <aura:iteration items="{!v.fileVersions}" var="doc">
                                         <tr class="slds-hint-parent">
-                                            <th>
+                                            <th data-label="Select">
+                                                <lightning:input type="checkbox" variant="label-hidden"  name="{!doc.Id}" checked="{!doc.selected}"/>
+                                            </th>
+                                            <th data-label="Option">
                                                 <lightning:buttonMenu variant="bare" alternativeText="Show menu"  onselect="{! c.onFileOptionsSelect }">
                                                     
                                                     <lightning:menuItem value="{!doc.ContentDocumentId+'_upload'}" label="Upload New Version"/>
@@ -373,10 +429,14 @@
                                         <aura:if isTrue="{!doc.expaned}">
                                             <aura:iteration items="{!doc.versions}" var="doc">
                                                 <tr style="background:#a21a0e12" class="slds-hint-parent">
-                                                    <th>
+                                                    <td>
                                                         
                                                         
-                                                    </th>
+                                                    </td>
+                                                    <td>
+                                                        
+                                                        
+                                                    </td>
                                                     <th data-label="File Name" scope="row">
                                                         <div class="slds-truncate slds-p-left_medium" title="{!doc.Title}">
                                                             <a   target="_blank"  href="{!'/'+doc.Id}" tabindex="-1">{!doc.Title}</a>
@@ -411,11 +471,19 @@
             <footer class="modal-footer slds-modal__footer inline-footer"> 
                 <lightning:button disabled="{!v.loading}" variant="brand-outline" value="back" name="back" label="{!v.isClose?$Label.c.Close:$Label.c.Back}" title="Back" onclick="{! c.onBack }"/>
                 <aura:if isTrue="{!v.currentStep=='4'}">
-                    <lightning:button label="Save and upload more files" variant="brand" title="Save and upload more files" onclick="{! c.handleAttachFile }"/>
+                    <lightning:button label="Upload more files" variant="brand" title="Upload more files" onclick="{! c.handleAttachFile }"/>
                 </aura:if>
-                <lightning:button disabled="{!v.loading}" variant="brand" value="next" name="next" label="{!v.isSave?$Label.c.Save:$Label.c.Next}" title="Next" onclick="{! c.onNext }"/>
-            </footer>
+                <lightning:button disabled="{!v.loading}" variant="brand" value="next" name="next" label="{!v.isSave?'Send mail and close':$Label.c.Next}" title="Next" onclick="{! c.onNext }"/>
+             </footer>
             
         </section>
     </div>
+    <aura:if isTrue="{!v.isAttachPopup}">
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_medium" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container">
+                <c:UploadFileAction recordId="{!v.recordId}" isPopup="{!v.isAttachPopup}" sObjectName="Case"/>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
 </aura:component>

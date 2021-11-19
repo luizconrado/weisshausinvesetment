@@ -17,6 +17,165 @@
         <name>Sales_Operations</name>
     </customApplications>
     <customLabels>
+        <label>Sie haben noch kein E&amp;V Konto?</label>
+        <name>AgentReferalForm_AccountQuestion</name>
+    </customLabels>
+    <customLabels>
+        <label>Hier können Sie Ihre Kontoeröffnung starten und von Ihren Weiterempfehlungen profitieren.</label>
+        <name>AgentReferalForm_AccountQuestionDescription</name>
+    </customLabels>
+    <customLabels>
+        <label>E-Mail Adresse bestätigen</label>
+        <name>AgentReferalForm_AppStep1</name>
+    </customLabels>
+    <customLabels>
+        <label>Laden Sie die App herunter</label>
+        <name>AgentReferalForm_AppStep2</name>
+    </customLabels>
+    <customLabels>
+        <label>Bestätigen Sie Ihre Identität</label>
+        <name>AgentReferalForm_AppStep23</name>
+    </customLabels>
+    <customLabels>
+        <label>Verwalten Sie Ihr Vermögen</label>
+        <name>AgentReferalForm_AppStep4</name>
+    </customLabels>
+    <customLabels>
+        <label>Für die Auszahlung Ihrer Zuführungsprovision benötigen wir Ihre Bankverbindung. Die Angabe ist auch nachträglich möglich.</label>
+        <name>AgentReferalForm_BankDisclamier</name>
+    </customLabels>
+    <customLabels>
+        <label>Telefonnummer (optional)</label>
+        <name>AgentReferalForm_ContactPhoneNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>Link kopieren</label>
+        <name>AgentReferalForm_CopyLink</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_Description --></label>
+        <name>AgentReferalForm_Description</name>
+    </customLabels>
+    <customLabels>
+        <label>Haben Sie bereits ein E&amp;V Konto?</label>
+        <name>AgentReferalForm_EVCustomerQuestion</name>
+    </customLabels>
+    <customLabels>
+        <label>Leider ist etwas schiefgelaufen. Bitte kontaktieren Sie den Support unter folgender E-Mail-Adresse: partnermanagement@ev-smartmoney.com</label>
+        <name>AgentReferalForm_ErrorTitle</name>
+    </customLabels>
+    <customLabels>
+        <label>Link generieren</label>
+        <name>AgentReferalForm_GenerateLink</name>
+    </customLabels>
+    <customLabels>
+        <label>3 Schritte für Ihre Weiterempfehlung</label>
+        <name>AgentReferalForm_HeaderText</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie haben noch kein E&amp;V Konto?</label>
+        <name>AgentReferalForm_IsCustomerQuestion</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Link wurde erfolgreich kopiert</label>
+        <name>AgentReferalForm_LINKCOPIED</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie haben noch kein E&amp;V Konto?</label>
+        <name>AgentReferalForm_OpenAccount</name>
+    </customLabels>
+    <customLabels>
+        <label>Empfehlungscode</label>
+        <name>AgentReferalForm_ReferalCode</name>
+    </customLabels>
+    <customLabels>
+        <label>Empfehlungslink</label>
+        <name>AgentReferalForm_ReferalLink</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie können auch den Empfehlungscode kopieren und weiter versenden.</label>
+        <name>AgentReferalForm_ReferalLinkDescription</name>
+    </customLabels>
+    <customLabels>
+        <label>Kunden werben und profitieren</label>
+        <name>AgentReferalForm_STEP3</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellen Sie Ihr Konto</label>
+        <name>AgentReferalForm_STEP3BUTTONTEXT</name>
+    </customLabels>
+    <customLabels>
+        <label>Durch Ihren personalisierten Einladungscode und -link ist eine direkte Zuordnung der durch Sie zugeführten Kunden möglich. Sichern Sie sich jetzt dauerhaften Kundenschutz und einen Zuführungsbonus von 250€ für jeden Kunden der binnen eines Jahres nach Kontoeröffnung ein Investmentprodukt abschließt.</label>
+        <name>AgentReferalForm_Step3Description</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Zuführungsbonus wird Immobilienberatern auf Ihrem persönlichen E&amp;V Konto gutgeschrieben, Lizenzpartnern auf dem bei der Registrierung hinterlegten Bankkonto.</label>
+        <name>AgentReferalForm_Step3Description2</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie haben noch kein E&amp;V Konto?</label>
+        <name>AgentReferalForm_Step3Description3</name>
+    </customLabels>
+    <customLabels>
+        <label>Bitte registrieren Sie sich, um im Anschluss Ihren persönlichen Empfehlungslink zu erhalten.</label>
+        <name>AgentReferalForm_SubTitle</name>
+    </customLabels>
+    <customLabels>
+        <label>Wir haben Ihnen eine E-Mail mit allen nötigen Informationen geschickt. Ihren Empfehlungslink und -Code können Sie dort jederzeit abrufen. Nutzen Sie für eine einfache Weiterempfehlung den beigefügten Begleittext.</label>
+        <name>AgentReferalForm_SuccessSubTitle</name>
+    </customLabels>
+    <customLabels>
+        <label>Empfehlungslink teilen</label>
+        <name>AgentReferalForm_SuccessTitle</name>
+    </customLabels>
+    <customLabels>
+        <label>Hiermit bestätige ich den Abschluss der Zuführungsvereinbarung mit meinem zuständigen Lizenzpartner abgestimmt zu haben</label>
+        <name>AgentReferalForm_TC2TEXT</name>
+    </customLabels>
+    <customLabels>
+        <label>Ich bestätige, die</label>
+        <name>AgentReferalForm_TCTEXT</name>
+    </customLabels>
+    <customLabels>
+        <label>Zuführungsbedingungen</label>
+        <name>AgentReferalForm_TCTEXT2</name>
+    </customLabels>
+    <customLabels>
+        <label>und die</label>
+        <name>AgentReferalForm_TCTEXT3</name>
+    </customLabels>
+    <customLabels>
+        <label>Datenschutzerklärung</label>
+        <name>AgentReferalForm_TCTEXT4</name>
+    </customLabels>
+    <customLabels>
+        <label>der EV Smart Money Holding 
+GmbH gelesen und verstanden zu haben und erkläre 
+mein Einverständnis dazu.</label>
+        <name>AgentReferalForm_TCTEXT5</name>
+    </customLabels>
+    <customLabels>
+        <label>Empfehlungslink generieren</label>
+        <name>AgentReferalForm_Title</name>
+    </customLabels>
+    <customLabels>
+        <label>E-Mail-Adresse
+Kontaktperson</label>
+        <name>AgentReferalForm_UserEmail</name>
+    </customLabels>
+    <customLabels>
+        <label>Vorname Kontaktperson</label>
+        <name>AgentReferalForm_UserNameLabel</name>
+    </customLabels>
+    <customLabels>
+        <label>Nachname Kontaktperson</label>
+        <name>AgentReferalForm_UserNameLabel2</name>
+    </customLabels>
+    <customLabels>
+        <label>Telefonnummer Kontaktperson</label>
+        <name>AgentReferalForm_UserPhoneLabel</name>
+    </customLabels>
+    <customLabels>
         <label><!-- Available --></label>
         <name>Available</name>
     </customLabels>
@@ -29,12 +188,20 @@
         <name>Balance</name>
     </customLabels>
     <customLabels>
+        <label>Bankinstitut</label>
+        <name>Banking_Institution</name>
+    </customLabels>
+    <customLabels>
         <label><!-- Case_Jira_AttachmentRequired_validation --></label>
         <name>Case_Jira_AttachmentRequired_validation</name>
     </customLabels>
     <customLabels>
         <label><!-- Case_Jira_Knowledge_validation --></label>
         <name>Case_Jira_Knowledge_validation</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Case_Jira_SupportEmail --></label>
+        <name>Case_Jira_SupportEmail</name>
     </customLabels>
     <customLabels>
         <label><!-- Case_Jira_bankcaseitems_validation --></label>
@@ -55,6 +222,14 @@
     <customLabels>
         <label><!-- Close --></label>
         <name>Close</name>
+    </customLabels>
+    <customLabels>
+        <label>Firma</label>
+        <name>Company</name>
+    </customLabels>
+    <customLabels>
+        <label>Firmenname</label>
+        <name>Company_name</name>
     </customLabels>
     <customLabels>
         <label>Chatten Sie mit unseren Experten und lösen Sie Ihre Probleme in Echtzeit.</label>
@@ -79,6 +254,10 @@
     <customLabels>
         <label>Kontakt Unterstützung</label>
         <name>ContactSupport_Title</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Data Protection Link --></label>
+        <name>Data_Protection_Link</name>
     </customLabels>
     <customLabels>
         <label>Tatsächliche Ergebnis</label>
@@ -173,8 +352,112 @@
         <name>DigibankSupport_Email</name>
     </customLabels>
     <customLabels>
+        <label>Einzahlungskonto fehlt</label>
+        <name>EarlyTerminationForm_AccountMissingError</name>
+    </customLabels>
+    <customLabels>
+        <label>Authentifizierungstoken</label>
+        <name>EarlyTerminationForm_Authtunticate</name>
+    </customLabels>
+    <customLabels>
+        <label>Token-Nummer</label>
+        <name>EarlyTerminationForm_AuthtunticateLabel</name>
+    </customLabels>
+    <customLabels>
+        <label>Buchung fehlt</label>
+        <name>EarlyTerminationForm_BookingMissing</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontakt ev-smartmoney</label>
+        <name>EarlyTerminationForm_ContactEV</name>
+    </customLabels>
+    <customLabels>
+        <label>Kundenname fehlt</label>
+        <name>EarlyTerminationForm_CustomerMissingError</name>
+    </customLabels>
+    <customLabels>
+        <label>Kundenname</label>
+        <name>EarlyTerminationForm_CustomerName</name>
+    </customLabels>
+    <customLabels>
+        <label>Einzahlungskonto</label>
+        <name>EarlyTerminationForm_DepositAccount</name>
+    </customLabels>
+    <customLabels>
+        <label>Ungültige Steuernummer</label>
+        <name>EarlyTerminationForm_InvaidTaxId</name>
+    </customLabels>
+    <customLabels>
+        <label>Ungültige Kundendaten</label>
+        <name>EarlyTerminationForm_Invalid</name>
+    </customLabels>
+    <customLabels>
+        <label>Ungültiger Kriegsstatus</label>
+        <name>EarlyTerminationForm_InvalidMartialStatus</name>
+    </customLabels>
+    <customLabels>
+        <label>Ungültiges Token, bitte versuchen Sie es erneut</label>
+        <name>EarlyTerminationForm_InvalidToken</name>
+    </customLabels>
+    <customLabels>
+        <label>Adresse wie Ehepartner</label>
+        <name>EarlyTerminationForm_IsSpouseAddress</name>
+    </customLabels>
+    <customLabels>
+        <label>Keine Buchung für Girokonto</label>
+        <name>EarlyTerminationForm_NoBooking</name>
+    </customLabels>
+    <customLabels>
+        <label>Kündigungsgrund</label>
+        <name>EarlyTerminationForm_ReasonForTermination</name>
+    </customLabels>
+    <customLabels>
+        <label>Startdatum auswählen</label>
+        <name>EarlyTerminationForm_SelectStartDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Vollständige Adresse des Ehepartners</label>
+        <name>EarlyTerminationForm_SpouseAddress</name>
+    </customLabels>
+    <customLabels>
+        <label>Vollständiger Name des Ehepartners</label>
+        <name>EarlyTerminationForm_SpouseName</name>
+    </customLabels>
+    <customLabels>
+        <label>Geburtsdatum des Ehepartners</label>
+        <name>EarlyTerminationForm_SpuseBirthDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Steuernummer des Ehepartners</label>
+        <name>EarlyTerminationForm_SpuseTaxId</name>
+    </customLabels>
+    <customLabels>
+        <label>Stornierungsdatum</label>
+        <name>EarlyTerminationForm_StartDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Formular zur vorzeitigen Kündigung</label>
+        <name>EarlyTerminationForm_Success</name>
+    </customLabels>
+    <customLabels>
+        <label>Anfrage erfolgreich übermittelt</label>
+        <name>EarlyTerminationForm_SuccessTitle</name>
+    </customLabels>
+    <customLabels>
+        <label>Steuer ID</label>
+        <name>EarlyTerminationForm_TaxId</name>
+    </customLabels>
+    <customLabels>
         <label>(prefilled e-mail)</label>
         <name>EmailAddress</name>
+    </customLabels>
+    <customLabels>
+        <label>E-Mail-Addresse</label>
+        <name>Email_Address</name>
+    </customLabels>
+    <customLabels>
+        <label>Endtermin</label>
+        <name>End_Date</name>
     </customLabels>
     <customLabels>
         <label>Vorname</label>
@@ -185,8 +468,28 @@
         <name>GoogleMapApiToken</name>
     </customLabels>
     <customLabels>
+        <label>Lizenzpartner</label>
+        <name>License_partner</name>
+    </customLabels>
+    <customLabels>
+        <label>Familienstand</label>
+        <name>Martial_Status</name>
+    </customLabels>
+    <customLabels>
+        <label>Natürliche Person</label>
+        <name>Natural_person</name>
+    </customLabels>
+    <customLabels>
         <label><!-- Next --></label>
         <name>Next</name>
+    </customLabels>
+    <customLabels>
+        <label>Nein</label>
+        <name>No</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Org Domain --></label>
+        <name>Org_Domain</name>
     </customLabels>
     <customLabels>
         <label>Telefonnummer</label>
@@ -195,6 +498,10 @@
     <customLabels>
         <label><!-- Privacy Web Link --></label>
         <name>Privacy_Web_Link</name>
+    </customLabels>
+    <customLabels>
+        <label>Immobilienberater</label>
+        <name>Real_estate_advisor</name>
     </customLabels>
     <customLabels>
         <label>Grund für die Abmeldung</label>
@@ -213,8 +520,28 @@
         <name>SignOut</name>
     </customLabels>
     <customLabels>
+        <label>Startdatum</label>
+        <name>Start_Date</name>
+    </customLabels>
+    <customLabels>
+        <label>Schritt</label>
+        <name>Step</name>
+    </customLabels>
+    <customLabels>
         <label>Nachname</label>
         <name>Surname</name>
+    </customLabels>
+    <customLabels>
+        <label>Ungültige Kundendaten</label>
+        <name>TermDepositTaxExemptionOrderForm_InvalidTitle</name>
+    </customLabels>
+    <customLabels>
+        <label>Anfrage erfolgreich abgeschlossen</label>
+        <name>TermDepositTaxExemptionOrderForm_SuccessTitle</name>
+    </customLabels>
+    <customLabels>
+        <label>Bestellformular zur Steuerbefreiung für Festgelder</label>
+        <name>TermDepositTaxExemptionOrderForm_Title</name>
     </customLabels>
     <customLabels>
         <label>Ich bestätige die Allgemeinen Nutzungsbedingungen</label>
@@ -249,6 +576,10 @@
         <name>UnsubscribeText</name>
     </customLabels>
     <customLabels>
+        <label><!-- Users Exclusion --></label>
+        <name>Users_Exclusion</name>
+    </customLabels>
+    <customLabels>
         <label>Ihre E-Mail-Adresse ist erfolgreich verifiziert!
 
 Vielen Dank!</label>
@@ -267,8 +598,16 @@ Vielen Dank!</label>
         <name>WissehouseWebsite_Url</name>
     </customLabels>
     <customLabels>
+        <label>Ja</label>
+        <name>Yes</name>
+    </customLabels>
+    <customLabels>
         <label><!-- community_uri --></label>
         <name>community_uri</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- evsmartmoney_URL --></label>
+        <name>evsmartmoney_URL</name>
     </customLabels>
     <customLabels>
         <label>Scheint ein technisches Problem zu sein, bitte versuchen Sie es später noch einmal. Entschuldigung für die Unannehmlichkeiten.</label>
@@ -298,6 +637,14 @@ Vielen Dank!</label>
         <label><!-- Usage Dashboard --></label>
         <name>Usage_Dashboard</name>
     </customTabs>
+    <flowDefinitions>
+        <flows/>
+        <fullName>New_Case_Customer_Mail</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>RE_Opportunity_Notification</fullName>
+    </flowDefinitions>
     <flowDefinitions>
         <flows/>
         <fullName>Subscription_Emails</fullName>
@@ -366,4 +713,30 @@ Vielen Dank!</label>
         <label><!-- Snapins_Contact_PrechatQuickAction_08h5I000000fySh_1603913484965 --></label>
         <name>Snapins_Contact_PrechatQuickAction_08h5I000000fySh_1603913484965</name>
     </quickActions>
+    <reportTypes>
+        <description><!-- Accounts with Bank Accounts --></description>
+        <label><!-- Accounts with Bank Accounts --></label>
+        <name>Accounts_with_Bank_Accounts</name>
+        <sections>
+            <label><!-- Accounts --></label>
+            <name>Accounts</name>
+        </sections>
+        <sections>
+            <label><!-- Bank Accounts --></label>
+            <name>Bank Accounts</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Bildschirm-Flows --></description>
+        <label><!-- Bildschirm-Flows --></label>
+        <name>screen_flows_prebuilt_crt</name>
+        <sections>
+            <label><!-- Flow-Interviewprotokolle --></label>
+            <name>Flow-Interviewprotokolle</name>
+        </sections>
+        <sections>
+            <label><!-- Flow-Interviewprotokolleinträge --></label>
+            <name>Flow-Interviewprotokolleinträge</name>
+        </sections>
+    </reportTypes>
 </Translations>

@@ -1,5 +1,9 @@
 public with Sharing class AccountService {
     
+    @AuraEnabled
+    public static List<Account> getRecordDetails(String recordId){
+        return [SELECT id,Preferred_Language__pc FROM Account WHERE id=:recordId];
+    }
     
     @AuraEnabled
     public static String createNewIdentification(String recordId,String languageCode){
@@ -76,7 +80,7 @@ public with Sharing class AccountService {
             if(personDetails.birth_country!=null && sfAccount.Birth_Country__c  != personDetails.birth_country) sfAccount.Birth_Country__c =personDetails.birth_country;
             if(personDetails.nationality!=null && sfAccount.Nationality__c  != personDetails.nationality)sfAccount.Nationality__c  = personDetails.nationality;
             if(personDetails.employment_status!=null && sfAccount.Employment_Status__c  != personDetails.employment_status)sfAccount.Employment_Status__c = personDetails.employment_status;
-            if(personDetails.title!=null && sfAccount.PersonTitle != personDetails.title) sfAccount.PersonTitle = personDetails.title;
+            if( sfAccount.PersonTitle != personDetails.title) sfAccount.PersonTitle = personDetails.title;
             if(personDetails.tax_information!=null && sfAccount.Tax_Assessment__c!= personDetails.tax_information.tax_assessment) sfAccount.Tax_Assessment__c= personDetails.tax_information.tax_assessment;
             if(personDetails.tax_information!=null && sfAccount.Marital_Status__c!=  personDetails.tax_information.marital_status) sfAccount.Marital_Status__c=  personDetails.tax_information.marital_status;
             if(personDetails.fatca_relevant!=null && sfAccount.Fatca_Relevant__c !=personDetails.fatca_relevant) sfAccount.Fatca_Relevant__c =personDetails.fatca_relevant;

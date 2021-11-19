@@ -7,6 +7,7 @@ public class BankingServiceTest {
         BankingService.checkIsCompactLayout();
         BankingService.getBankCaseTypes();
         BankingService.getCaseIITypes();
+        BankingService.retriveDefaultTemplatHtml();
     }
     @isTest
     static void testupdateJiraInformationNegative(){
@@ -14,7 +15,7 @@ public class BankingServiceTest {
         Case c=TestDataFactory.getBankCase(a.id,true);
         try{
             Test.startTest();
-            BankingService.updateJiraInformation('c.Id','String subject','String discription');
+            BankingService.updateJiraInformation('c.Id','String subject','String discription',new List<String>{});
             
             Test.stopTest();
         }catch(Exception e){}
@@ -27,7 +28,7 @@ public class BankingServiceTest {
         BankingService.retriveProcessKnowlodge('MDM','ACS');
          
 		Test.startTest();
-        BankingService.updateJiraInformation(c.Id,'String subject','String discription');
+        BankingService.updateJiraInformation(c.Id,'String subject','String discription',new List<String>{});
         BankingService.retriveContentVersionList(c.Id);
         Case cc=[SELECT JIRA_Description__c  FROM CASE LIMIT 1];
         System.assert(cc.JIRA_Description__c !=null);

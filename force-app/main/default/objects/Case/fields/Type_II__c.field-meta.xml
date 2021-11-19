@@ -229,6 +229,71 @@
                 <label>Phone change investigation</label>
             </value>
             <value>
+                <fullName>Address Change</fullName>
+                <default>false</default>
+                <label>Address Change</label>
+            </value>
+            <value>
+                <fullName>General information</fullName>
+                <default>false</default>
+                <label>General information</label>
+            </value>
+            <value>
+                <fullName>Cannot generate code</fullName>
+                <default>false</default>
+                <label>Cannot generate code</label>
+            </value>
+            <value>
+                <fullName>Invalid code</fullName>
+                <default>false</default>
+                <label>Invalid code</label>
+            </value>
+            <value>
+                <fullName>Forgotten code</fullName>
+                <default>false</default>
+                <label>Forgotten code</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Commission Status</fullName>
+                <default>false</default>
+                <label>Commission Status</label>
+            </value>
+            <value>
+                <fullName>Bonus</fullName>
+                <default>false</default>
+                <label>Bonus</label>
+            </value>
+            <value>
+                <fullName>Festgeld</fullName>
+                <default>false</default>
+                <label>Festgeld</label>
+            </value>
+            <value>
+                <fullName>Request</fullName>
+                <default>false</default>
+                <label>Request</label>
+            </value>
+            <value>
+                <fullName>General complaint</fullName>
+                <default>false</default>
+                <label>General complaint</label>
+            </value>
+            <value>
+                <fullName>Early Termination</fullName>
+                <default>false</default>
+                <label>Early Termination</label>
+            </value>
+            <value>
+                <fullName>Tax Exemption Order</fullName>
+                <default>false</default>
+                <label>Tax Exemption Order</label>
+            </value>
+            <value>
                 <fullName>Update Details</fullName>
                 <default>false</default>
                 <isActive>false</isActive>
@@ -246,6 +311,21 @@
         <valueSettings>
             <controllingFieldValue>Seizures</controllingFieldValue>
             <valueName>P-Konto</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Information</controllingFieldValue>
+            <controllingFieldValue>Marketing assets</controllingFieldValue>
+            <controllingFieldValue>Code generation</controllingFieldValue>
+            <controllingFieldValue>Commission</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Information</controllingFieldValue>
+            <valueName>Bonus</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Information</controllingFieldValue>
+            <valueName>Festgeld</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Payment</controllingFieldValue>
@@ -268,8 +348,16 @@
             <valueName>Outgoing Payment investigation</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Marketing assets</controllingFieldValue>
+            <valueName>Request</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Complaints</controllingFieldValue>
             <valueName>User Complaint</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer complaint</controllingFieldValue>
+            <valueName>General complaint</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Tech</controllingFieldValue>
@@ -288,8 +376,12 @@
             <valueName>Access Deletion</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Other</controllingFieldValue>
-            <valueName>Other Requests</valueName>
+            <controllingFieldValue>Term Deposit</controllingFieldValue>
+            <valueName>Early Termination</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Term Deposit</controllingFieldValue>
+            <valueName>Tax Exemption Order</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Anti-Fraud Compliance</controllingFieldValue>
@@ -302,6 +394,14 @@
         <valueSettings>
             <controllingFieldValue>Anti-Fraud Compliance</controllingFieldValue>
             <valueName>Phone change investigation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>General Information</controllingFieldValue>
+            <valueName>General information</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Other Requests</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Card Management</controllingFieldValue>
@@ -380,6 +480,10 @@
             <valueName>Nationality Change</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Master Data Management</controllingFieldValue>
+            <valueName>Address Change</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Identification</controllingFieldValue>
             <valueName>Identification Creation</valueName>
         </valueSettings>
@@ -396,6 +500,18 @@
             <valueName>Investigation</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Code generation</controllingFieldValue>
+            <valueName>Cannot generate code</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Code generation</controllingFieldValue>
+            <valueName>Invalid code</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Code generation</controllingFieldValue>
+            <valueName>Forgotten code</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>GDPR</controllingFieldValue>
             <valueName>Information Request</valueName>
         </valueSettings>
@@ -406,6 +522,10 @@
         <valueSettings>
             <controllingFieldValue>GDPR</controllingFieldValue>
             <valueName>Bank Data Request</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commission</controllingFieldValue>
+            <valueName>Commission Status</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>

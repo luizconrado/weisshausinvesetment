@@ -1,0 +1,262 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title
+        style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; line-height: 22px;">
+        E&V Referal Code</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body
+    style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; line-height: 22px;margin: 0;">
+
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td>
+
+                <table align="center" border="0" cellpadding="0" cellspacing="0" width="650"
+                    style="border-collapse: collapse; border: 1px solid black;">
+                    <!--header-->
+                    <tr>
+                        <td
+                            style="padding: 32px 20px 18px 20px;border-bottom: solid 3px #eb0a0a;width: 100%;background: #ffffff;">
+                            <table style="table-layout: fixed ; width: 100%;background: #ffffff;">
+                                <tr>
+                                    <!--image-->
+                                    <td align="center">
+                                        <a href="https://www.ev-smartmoney.com">
+                                            <img src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000cWLT&oid=00D5I000002GOw0"
+                                                class="logo" width="190">
+                                        </a>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <!--image 1-->
+                    <tr>
+                        <td>
+
+                            <img width="100%"
+                                src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000fGVP&oid=00D5I000002GOw0" />
+                        </td>
+                    </tr>
+                    <!--main-->
+                    <tr>
+                        <td style="padding: 0px 24px; ">
+                            <table border="0" cellpadding="0" cellspacing="0"
+                                style="width:100%;border-collapse: collapse;">
+
+                                <tr>
+                                    <td>
+                                        <p style="
+font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 32px;
+letter-spacing: 0em;
+text-align: left;
+color: #777777;
+padding-top:40px;
+margin:0;
+">
+                                            {!Contact.Email_Honorific__c},
+
+                                        </p>
+                                        <p style="
+font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 32px;
+letter-spacing: 0em;
+text-align: left;
+color: #777777;
+">
+
+                                            herzlich willkommen bei Engel & Völkers Smart Money!
+                                        </p>
+                                        <p style="
+font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 32px;
+letter-spacing: 0em;
+text-align: left;
+color: #777777;
+">
+
+                                            Ihr Konto wurde erfolgreich eingerichtet. Entdecken Sie das volle Potenzial
+                                            Ihrer E&V Smart Money App in drei einfachen Schritten.
+
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="margin-top: 40px; margin-bottom:40px">
+                                        <img width="100%"
+                                        src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000fJXE&oid=00D5I000002GOw0" />
+                                        
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        
+
+                                        <ul style="padding-inline-start:10px">
+                                            <li>
+                                                <p
+                                                    style="margin:32px 0;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #777777;">
+
+ 
+                                                    Mit der E&V Private Card, unserer kostenlosen Visa-Debitkarte, können Sie mobil und sicher bezahlen. Bestellen Sie Ihre Karte einfach in der E&V Smart Money App unter dem Menüpunkt ”Karte” und nutzen Sie alle Banking-Funktionen, wie zum Beispiel Apple Pay.
+
+                                                    
+                                                    
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p
+                                                    style="margin:32px 0;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #777777;">
+                                                    Unsere App bietet Ihnen eine effiziente und detaillierte Verwaltung Ihrer Finanzen. Weisen Sie jeder Immobilie ein eigenes Unterkonto zu und verschaffen Sie sich mehr Transparenz über die Ausgaben und Einkünfte Ihrer Immobilien.
+
+
+
+
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p
+                                                    style="margin:32px 0;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #777777;">
+                                                    Ihre Immobilie ist Teil Ihres Vermögens. Fügen Sie Ihre Immobilien der E&V Smart Money App hinzu und erfahren Sie alle drei Monate, wie viel Ihre Immobilie wert ist, wie sich Preise entwickelt haben und wohin sie sich derzeit bewegen.                                                
+
+
+
+
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>
+                                        <p style="
+font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 22px;
+letter-spacing: 0em;
+text-align: left;
+color: #777777;
+margin-bottom: 0;
+">
+Ihre E&V Smart Money App wird in den kommenden Monaten um zahlreiche Funktionen und Services erweitert. Seien Sie gespannt!
+
+
+                                        </p>
+
+                                        <p style="
+font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 22px;
+letter-spacing: 0em;
+text-align: left;
+color: #777777;
+margin-bottom: 0;
+">
+Sollten Sie Fragen oder Feedback zu unserem Angebot haben, schreiben Sie uns gerne eine E-Mail an support@ev-smartmoney.com oder rufen Sie uns an unter +49 30 74395959. Sie erreichen unseren Kundenservice werktags von 9:00 - 18:00 Uhr. 
+
+
+                                        </p>
+                                     
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p style="
+font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 22px;
+letter-spacing: 0em;
+text-align: left;
+color: #777777;
+margin-bottom: 0;
+">
+                                            Viele Grüße
+                                        </p>
+                                        <p style="
+margin-top: 0;
+font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 22px;
+letter-spacing: 0em;
+text-align: left;
+color: #777777;
+margin-bottom:40px;
+">
+                                            Ihr E&V Smart Money Team
+                                        </p>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                    <!--footer-->
+                    <tr>
+                        <td bgcolor="#f0f0f0" style="padding: 10px 24px;">
+                            <table border="0" cellpadding="0" cellspacing="0"
+                                style="width:100%;border-collapse: collapse;">
+                                <tr>
+                                    <td style="text-align:center;background-color: #f0f0f0;font-size: 14px;font-style: normal;font-weight: 400;letter-spacing: 0px;color: #444444;"
+                                        align="center">
+                                        <p
+                                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;">
+
+                                            Sie erhalten diese E-Mail, da Ihre E-Mail-Adresse auf www.ev-smartmoney.com
+                                            registriert ist.
+                                            Wenn Sie Fragen oder Rückmeldungen haben sind wir per E-Mail unter
+                                            support@ev-smartmoney.com oder unter folgender Telefonnummer gerne für Sie
+                                            da: +49 30 74395959 (Mo-Fr: 9-18 Uhr)
+
+                                        </p>
+                                        <br>
+                                        <p
+                                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;">
+                                            Copyright &#169; EV Smart Money Holding GmbH | HRB 215045 B | Amtsgericht
+                                            Charlottenburg | Lizenzpartner der Engel & Völkers Marken GmbH & Co. KG |
+                                            Klaus-Groth-Straße 3, 14050 Berlin, Deutschland. | Geschäftsführung: Dr.
+                                            Kyros
+                                            Khadjavi
+                                        </p>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

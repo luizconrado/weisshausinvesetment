@@ -353,7 +353,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Privacy Web Link</shortDescription>
-        <value>https://www.weisshausinvestment.com/datenschutz/</value>
+        <value>https://www.ev-smartmoney.com/de/zufuehrung</value>
     </labels>
     <labels>
         <fullName>ReasonForUnsubscribeText</fullName>
@@ -546,5 +546,679 @@ Thank you very much!</value>
         <protected>false</protected>
         <shortDescription>siteUrl</shortDescription>
         <value>https://support.ev-smartmoney.com</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_AccountQuestion</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_AccountQuestion</shortDescription>
+        <value>You don&apos;t have an E&amp;V account yet?</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_AccountQuestionDescription</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_AccountQuestionDescription</shortDescription>
+        <value>Here you can start your account opening and benefit from our recommendations.</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_AppStep1</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_AppStep1</shortDescription>
+        <value>Confirm email address</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_AppStep2</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_AppStep2</shortDescription>
+        <value>Download the app</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_AppStep23</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_AppStep23</shortDescription>
+        <value>Confirm your identity</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_AppStep4</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_AppStep4</shortDescription>
+        <value>Manage your wealth</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_BankDisclamier</fullName>
+        <categories>LWCComponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_BankDisclamier</shortDescription>
+        <value>We need your bank details for the payment of your contribution commission. It is also possible to specify this at a later date.</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_ContactPhoneNumber</fullName>
+        <categories>LWCComponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_ContactPhoneNumber</shortDescription>
+        <value>Phone number (optional)</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_CopyLink</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_CopyLink</shortDescription>
+        <value>Copy link</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_Description</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_Description</shortDescription>
+        <value>Please check your email account since we also sent you the regeral link by email.
+    If you have not received an email please check your spam folder, or that your email address is
+    correct.</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_EVCustomerQuestion</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_EVCustomerQuestion</shortDescription>
+        <value>Do you have an E&amp;V account? *</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_ErrorTitle</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_ErrorTitle</shortDescription>
+        <value>Unfortunately, something went wrong. Please contact support at the following email address: partnermanagement@ev-smartmoney.com</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_GenerateLink</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_GenerateLink</shortDescription>
+        <value>Generate Link</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_HeaderText</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_HeaderText</shortDescription>
+        <value>3 steps for your recommendation</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_IsCustomerQuestion</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_IsCustomerQuestion</shortDescription>
+        <value>You don&apos;t have an E&amp;V account yet?</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_LINKCOPIED</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_LINKCOPIED</shortDescription>
+        <value>The link is copied successfully</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_OpenAccount</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_OpenAccount</shortDescription>
+        <value>You don&apos;t have an E&amp;V account yet?</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_ReferalCode</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_ReferalCode</shortDescription>
+        <value>Referral Code</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_ReferalLink</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_ReferalLink</shortDescription>
+        <value>Referral link</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_ReferalLinkDescription</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_ReferalLinkDescription</shortDescription>
+        <value>You can also copy the referral code and send it on.</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_STEP3</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_STEP3</shortDescription>
+        <value>Attract customers and benefit</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_STEP3BUTTONTEXT</fullName>
+        <categories>LWCComponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_STEP3BUTTONTEXT</shortDescription>
+        <value>Create your account</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_Step3Description</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_Step3Description</shortDescription>
+        <value>With your personalized invitation code and link, a direct assignment of the customers you referred is possible. Secure yourself permanent customer protection and a referral bonus of € 250 for every customer who concludes an investment product within one year of opening an account.</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_Step3Description2</fullName>
+        <categories>LWCComponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_Step3Description2</shortDescription>
+        <value>The referral bonus is credited to real estate consultants on your personal E&amp;V account, and to license partners on the bank account stored during registration.</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_Step3Description3</fullName>
+        <categories>LWCComponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_Step3Description3</shortDescription>
+        <value>You don&apos;t have an E&amp;V account yet?</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_SubTitle</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_SubTitle</shortDescription>
+        <value>Please register in order to receive your personal referral link.</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_SuccessSubTitle</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_SuccessSubTitle</shortDescription>
+        <value>We have sent you an email with all the necessary information. You can access your referral link and code there at any time. Use the accompanying text for a simple recommendation.</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_SuccessTitle</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_SuccessTitle</shortDescription>
+        <value>Share referral link</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_TC2TEXT</fullName>
+        <categories>LWCComponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_TC2TEXT</shortDescription>
+        <value>I hereby confirm that I have agreed the delivery agreement with my responsible license partner</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_TCTEXT</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_TCTEXT</shortDescription>
+        <value>I confirm that I have read and understood the</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_TCTEXT2</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_TCTEXT2</shortDescription>
+        <value>cooperation conditions</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_TCTEXT3</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_TCTEXT3</shortDescription>
+        <value>and the</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_TCTEXT4</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_TCTEXT4</shortDescription>
+        <value>data privacy policy</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_TCTEXT5</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_TCTEXT5</shortDescription>
+        <value>of EV Smart Money Holding GmbH and declare my consent thereto.</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_Title</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_Title</shortDescription>
+        <value>Generate referral link</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_UserEmail</fullName>
+        <categories>LWCComponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_UserEmail</shortDescription>
+        <value>Contact person E-mail address</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_UserNameLabel</fullName>
+        <categories>LWCComponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_UserNameLabel</shortDescription>
+        <value>Contact person first name</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_UserNameLabel2</fullName>
+        <categories>LWCComponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_UserNameLabel2</shortDescription>
+        <value>Contact person last name</value>
+    </labels>
+    <labels>
+        <fullName>AgentReferalForm_UserPhoneLabel</fullName>
+        <categories>LWCComponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AgentReferalForm_UserPhoneLabel</shortDescription>
+        <value>Contact person phone number</value>
+    </labels>
+    <labels>
+        <fullName>Banking_Institution</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Banking Institution</shortDescription>
+        <value>Banking institution</value>
+    </labels>
+    <labels>
+        <fullName>Case_Jira_SupportEmail</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case_Jira_SupportEmail</shortDescription>
+        <value>support@solarisbank.de</value>
+    </labels>
+    <labels>
+        <fullName>Company</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Company</shortDescription>
+        <value>Company</value>
+    </labels>
+    <labels>
+        <fullName>Company_name</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Company name</shortDescription>
+        <value>Company name</value>
+    </labels>
+    <labels>
+        <fullName>Data_Protection_Link</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Data Protection Link</shortDescription>
+        <value>https://ev-smartmoney.com/de/datenschutz</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_AccountMissingError</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_AccountMissingError</shortDescription>
+        <value>Deposit Account Missing</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_Authtunticate</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_Authtunticate</shortDescription>
+        <value>Authenticate Token</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_AuthtunticateLabel</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_AuthtunticateLabel</shortDescription>
+        <value>Token Number</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_BookingMissing</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_BookingMissing</shortDescription>
+        <value>Booking Missing</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_ContactEV</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_ContactEV</shortDescription>
+        <value>Contact ev-smartmoney</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_CustomerMissingError</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_CustomerMissingError</shortDescription>
+        <value>Customer Name Missing</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_CustomerName</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_CustomerName</shortDescription>
+        <value>Customer Name</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_DepositAccount</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_DepositAccount</shortDescription>
+        <value>Deposit Account</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_InvaidTaxId</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_InvaidTaxId</shortDescription>
+        <value>Invalid Tax Id</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_Invalid</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_Invalid</shortDescription>
+        <value>Invalid customer details</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_InvalidMartialStatus</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_InvalidMartialStatus</shortDescription>
+        <value>Invalid Martial Status</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_InvalidToken</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_InvalidToken</shortDescription>
+        <value>Invalid token please try again</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_IsSpouseAddress</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_IsSpouseAddress</shortDescription>
+        <value>Address same as spouse</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_NoBooking</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_NoBooking</shortDescription>
+        <value>No Booking for current account</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_ReasonForTermination</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_ReasonForTermination</shortDescription>
+        <value>Reason for termination</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_SelectStartDate</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_SelectStartDate</shortDescription>
+        <value>Select Start Date</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_SpouseAddress</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_SpouseAddress</shortDescription>
+        <value>Spouse Complete Address</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_SpouseName</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_SpouseName</shortDescription>
+        <value>Spouse Complete Name</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_SpuseBirthDate</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_SpuseBirthDate</shortDescription>
+        <value>Spouse Birthdate</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_SpuseTaxId</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_SpuseTaxId</shortDescription>
+        <value>Spouse Tax Id</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_StartDate</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_StartDate</shortDescription>
+        <value>Cancelation Date</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_Success</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_Success</shortDescription>
+        <value>Early Termination Form</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_SuccessTitle</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_SuccessTitle</shortDescription>
+        <value>Request submitted successfully</value>
+    </labels>
+    <labels>
+        <fullName>EarlyTerminationForm_TaxId</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EarlyTerminationForm_TaxId</shortDescription>
+        <value>Tax Id</value>
+    </labels>
+    <labels>
+        <fullName>Email_Address</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Email Address</shortDescription>
+        <value>Email Address</value>
+    </labels>
+    <labels>
+        <fullName>End_Date</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>End_Date</shortDescription>
+        <value>End Date</value>
+    </labels>
+    <labels>
+        <fullName>License_partner</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>License partner</shortDescription>
+        <value>License partner</value>
+    </labels>
+    <labels>
+        <fullName>Martial_Status</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Martial Status</shortDescription>
+        <value>Martial Status</value>
+    </labels>
+    <labels>
+        <fullName>Natural_person</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Natural person</shortDescription>
+        <value>Natural person</value>
+    </labels>
+    <labels>
+        <fullName>No</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No</shortDescription>
+        <value>No</value>
+    </labels>
+    <labels>
+        <fullName>Org_Domain</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Org Domain</shortDescription>
+        <value>ev-smartmoney</value>
+    </labels>
+    <labels>
+        <fullName>Real_estate_advisor</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Real estate advisor</shortDescription>
+        <value>Real Estate Advisor</value>
+    </labels>
+    <labels>
+        <fullName>Start_Date</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Start Date</shortDescription>
+        <value>Start Date</value>
+    </labels>
+    <labels>
+        <fullName>Step</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Step</shortDescription>
+        <value>Step</value>
+    </labels>
+    <labels>
+        <fullName>TermDepositTaxExemptionOrderForm_InvalidTitle</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TermDepositTaxExemptionOrderForm_InvalidTitle</shortDescription>
+        <value>Invalid customer details</value>
+    </labels>
+    <labels>
+        <fullName>TermDepositTaxExemptionOrderForm_SuccessTitle</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TermDepositTaxExemptionOrderForm_SuccessTitle</shortDescription>
+        <value>Request summited successfully</value>
+    </labels>
+    <labels>
+        <fullName>TermDepositTaxExemptionOrderForm_Title</fullName>
+        <categories>LWCcomponent</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TermDepositTaxExemptionOrderForm_Title</shortDescription>
+        <value>Term deposit tax exemption order form</value>
+    </labels>
+    <labels>
+        <fullName>Users_Exclusion</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Users Exclusion</shortDescription>
+        <value>salesforce@ev-smartmoney.com</value>
+    </labels>
+    <labels>
+        <fullName>Yes</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Yes</shortDescription>
+        <value>Yes</value>
+    </labels>
+    <labels>
+        <fullName>evsmartmoney_URL</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>evsmartmoney_URL</shortDescription>
+        <value>https://www.ev-smartmoney.com</value>
     </labels>
 </CustomLabels>

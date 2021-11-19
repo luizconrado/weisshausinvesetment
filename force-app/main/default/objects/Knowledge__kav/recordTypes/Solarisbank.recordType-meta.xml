@@ -5,6 +5,17 @@
     <description>Customer Support Processes Description</description>
     <label>Solarisbank</label>
     <picklistValues>
+        <picklist>Category__c</picklist>
+        <values>
+            <fullName>Banking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Type_II__c</picklist>
         <values>
             <fullName>Access Deletion</fullName>

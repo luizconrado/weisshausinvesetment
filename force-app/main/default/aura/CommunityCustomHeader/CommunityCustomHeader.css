@@ -1,5 +1,5 @@
 .THIS .community-language_container{
-    padding:0 120px;
+    padding:0 20px;
     display: flex;
     justify-content: space-between;
     background:white;
@@ -103,6 +103,7 @@
     width: 65vw;
     background: rgb(127,127,127,0.34);
     position: fixed;
+    z-index:2000;
     left: 0;
     top: 0;
 }
@@ -188,4 +189,5 @@
     .THIS .community-header__item img {
         width: 144px;
     }
+     
 }

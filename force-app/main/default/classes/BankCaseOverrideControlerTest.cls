@@ -183,7 +183,22 @@ public class BankCaseOverrideControlerTest {
         BankCaseOverrideControler.logVarification(cv);
     }
    
-   
+   @isTest
+    static void requestCreateNewCardTest(){
+        Test.setMock(HttpCalloutMock.class, new BankCaseServiceTest.MockCardResponse());
+        
+        Account a=TestDataFactory.getPersonAccount(true);
+        Bank_Account__c ba=TestDataFactory.getBankAccount(a.id,true);
+        Case c=TestDataFactory.getBankCase(a.Id,true);
+        Bank_Case_Item__c bci=TestDataFactory.getBankAccountBankCase(c.id, false);
+        bci.Bank_Account__c=ba.id;
+        insert bci;
+        
+        Test.startTest();
+        BankCaseOverrideControler.requestCreateNewCard(bci.id,'{"reference":"123","type":"VISA_DEBIT","line_1":"name on card"}');
+        
+        Test.stopTest();
+     }
     
    
     

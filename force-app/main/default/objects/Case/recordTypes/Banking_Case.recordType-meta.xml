@@ -180,6 +180,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Address Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Bank Card Block</fullName>
             <default>false</default>
         </values>

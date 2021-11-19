@@ -2,14 +2,20 @@
 public class SyncAccountAndSolarisbankControllerTest {
     
     @isTest
+    static void coverTestClass(){
+         SyncAccountAndSolarisbankController.coverTestclass();
+         SyncAccountAndSolarisbankController.convertCentsToEuro(1000);
+    }
+    @isTest
     static void teststartSyncWithBank(){
-        
-        Test.setMock(HttpCalloutMock.class, new MockResponse());
         Account a=TestDataFactory.getPersonAccount(true);
+        Test.setMock(HttpCalloutMock.class, new MockResponse(a.Solarisbank_Id__c));
+       
         Test.startTest();
-        SyncAccountAndSolarisbankController.coverTestclass();
+       
         SyncAccountAndSolarisbankController.startSyncWithBank(a.Id);
         Test.stopTest();
+        SyncAccountAndSolarisbankController.startSyncWithBank(a.Id);
     }
 
     @isTest
@@ -18,18 +24,30 @@ public class SyncAccountAndSolarisbankControllerTest {
         Account a=TestDataFactory.getPersonAccount(true);
         Bank_Account__c b= TestDataFactory.getBankAccount(a.Id, true);
         Test.startTest();
-        SyncAccountAndSolarisbankController.coverTestclass();
         SyncAccountAndSolarisbankController.startSyncWithBankAccount(b.Id);
-        
+       
         Test.stopTest();
+     }
+    @isTest
+    static void startSyncWithAuthOTest(){
+        Test.setMock(HttpCalloutMock.class, new Auth0Wrapper.MockResponse());
+        Account a=TestDataFactory.getPersonAccount(true);
+        Test.startTest();
+        SyncAccountAndSolarisbankController.startSyncWithAuthO(a.Id);
+        Test.stopTest();
+         
     }
 
     public class MockResponse implements HttpCalloutMock { 
-        
+        string sbId='0652225cebcd3bec2c95ea8c461fe146cacc';
+        public MockResponse(){}
+        public MockResponse(String solarisbankId){
+            sbId=solarisbankId;
+        }
         public HTTPResponse respond(HTTPRequest req) { 
       
             String endpoint=req.getEndpoint();
-            String body='[{"id":"0652225cebcd3bec2c95ea8c461fe146cacc"}]';
+            String body='[{"id":"'+sbId+'"}]';
             
             HttpResponse resp = new HttpResponse(); 
             
@@ -37,10 +55,10 @@ public class SyncAccountAndSolarisbankControllerTest {
             
             resp.setStatus('success'); 
             
-            if(endpoint=='https://api.solaris-sandbox.de/v1/persons/0652225cebcd3bec2c95ea8c461fe146cacc'){
+            if(endpoint.endsWith(sbId)){
                 body = '{"last_name":"apiname"}';
             }
-            else if(endpoint=='https://api.solaris-sandbox.de/v1/persons/0652225cebcd3bec2c95ea8c461fe146cacc/mobile_number'){
+            else if(endpoint.endsWith('/mobile_number')){
                 body = '{}';
             }
            

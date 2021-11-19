@@ -184,10 +184,26 @@ public class SolarisbankServiceTest {
         SolarisbankService.initiateCRPRequest( 'tanUrl', 'solarisbankPersonId',details);
     }
     @isTest
+    static void testinitiateCRPRequestError(){
+        Test.setMock(HttpCalloutMock.class, new SolarisbankCRPRequestWrapper.MockResponse(true));
+        LogService.ApiCallDetails details=new LogService.ApiCallDetails(userinfo.getUserId(),'Account','Sandbox');
+        try{
+        SolarisbankService.initiateCRPRequest( 'tanUrl', 'solarisbankPersonId',details);
+        }catch(exception e){}
+    }
+    @isTest
     static void testconfirmCRPRequest(){
         Test.setMock(HttpCalloutMock.class, new SolarisbankCRPRequestWrapper.MockResponse());
         LogService.ApiCallDetails details=new LogService.ApiCallDetails(userinfo.getUserId(),'Account','Sandbox');
         SolarisbankService.confirmCRPRequest( 'tanUrl', 'solarisbankPersonId', 'tanOtp',details);
+    }
+    @isTest
+    static void testconfirmCRPRequestError(){
+        Test.setMock(HttpCalloutMock.class, new SolarisbankCRPRequestWrapper.MockResponse(true));
+        LogService.ApiCallDetails details=new LogService.ApiCallDetails(userinfo.getUserId(),'Account','Sandbox');
+        try{
+        SolarisbankService.confirmCRPRequest( 'tanUrl', 'solarisbankPersonId', 'tanOtp',details);
+        }catch(Exception e){}
     }
     @isTest
     static void testrequestNewCard(){
@@ -195,11 +211,43 @@ public class SolarisbankServiceTest {
         LogService.ApiCallDetails details=new LogService.ApiCallDetails(userinfo.getUserId(),'Card__c','Sandbox');
         SolarisbankService.requestNewCard( 'solarisbankPersonId', 'solrisBankAccountId','{}',details);
     }
+     @isTest
+    static void testrequestNewCardError(){
+        Test.setMock(HttpCalloutMock.class, new SolarisbankCRPRequestWrapper.MockResponse(true));
+        LogService.ApiCallDetails details=new LogService.ApiCallDetails(userinfo.getUserId(),'Card__c','Sandbox');
+        try{
+        SolarisbankService.requestNewCard( 'solarisbankPersonId', 'solrisBankAccountId','{}',details);
+        }catch(Exception e){}
+    }
+    @isTest
+    static void teststartMFA(){
+        Test.setMock(HttpCalloutMock.class, new SolarisbankCRPRequestWrapper.MockResponse(true));
+        LogService.ApiCallDetails details=new LogService.ApiCallDetails(userinfo.getUserId(),'Account','Sandbox');
+        try{
+        SolarisbankService.startMFA( 'solarisbankPersonId',details);
+        }catch(Exception e){}
+    }
+    @isTest
+    static void teststopMFA(){
+        Test.setMock(HttpCalloutMock.class, new SolarisbankCRPRequestWrapper.MockResponse(true));
+        LogService.ApiCallDetails details=new LogService.ApiCallDetails(userinfo.getUserId(),'Account','Sandbox');
+        try{
+        SolarisbankService.stopMFA( 'mfaId','1234',details);
+        }catch(Exception e){}
+    }
     @isTest
     static void testrequestCloseAccount(){
         Test.setMock(HttpCalloutMock.class, new SolarisbankPersonWrapper.MockResponse());
         LogService.ApiCallDetails details=new LogService.ApiCallDetails(userinfo.getUserId(),'Account','Sandbox');
         SolarisbankService.requestCloseAccount('{}',details);        
+    }
+     @isTest
+    static void testrequestCloseAccountError(){
+        Test.setMock(HttpCalloutMock.class, new SolarisbankPersonWrapper.MockResponse(true));
+        LogService.ApiCallDetails details=new LogService.ApiCallDetails(userinfo.getUserId(),'Account','Sandbox');
+        try{
+        SolarisbankService.requestCloseAccount('{}',details);        
+        }catch(Exception e){}
     }
     @isTest
     static void updateCustomerDatatest(){

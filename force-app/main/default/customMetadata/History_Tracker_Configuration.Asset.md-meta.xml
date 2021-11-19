@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Asset</label>
+    <protected>false</protected>
+    <values>
+        <field>Fields__c</field>
+        <value xsi:type="xsd:string">ContactId, AccountId, CreatedDate, CreatedById, LastModifiedDate, LastModifiedById,  Name,  Status, Price, Quantity, Description,  RecordTypeId, Balcony_Available__c, Build_Year__c, City__c, Construction_Type__c, Country__c, Elevator_Available__c, Flat_Type__c, Garage_Available__c, House_Number__c, Last_Known_Price_Date__c, Last_Known_Price__c, Living_Space__c, Number_Of_Floors__c, Plot_Size__c, Post_Code__c, Property_Type__c, Street__c, Property_Image_Url__c, Asset_Id__c, Is_Deleted_By_Customer__c, Latest_Evaluation_Date__c, Latest_Evaluation_Price__c</value>
+    </values>
+    <values>
+        <field>Object__c</field>
+        <value xsi:type="xsd:string">Asset</value>
+    </values>
+    <values>
+        <field>Track_Change__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Track_Insert__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Track_Update__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Track_View__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+</CustomMetadata>

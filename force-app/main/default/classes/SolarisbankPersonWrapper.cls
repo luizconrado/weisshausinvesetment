@@ -46,7 +46,11 @@ public class SolarisbankPersonWrapper {
     }
     
     public class MockResponse implements HttpCalloutMock { 
-        
+         Boolean isError=false;
+         public MockResponse(){} 
+         public MockResponse(Boolean isError){
+             this.isError=isError;
+         }
         public HTTPResponse respond(HTTPRequest req) { 
             SolarisbankPersonWrapper data=new SolarisbankPersonWrapper();
             
@@ -76,10 +80,17 @@ public class SolarisbankPersonWrapper {
             
             
             HttpResponse resp = new HttpResponse(); 
+            if(isError){
+                resp.setStatusCode(400); 
+                
+                resp.setStatus('Error'); 
+            }
+            else{
+                resp.setStatusCode(200); 
+                
+                resp.setStatus('OK'); 
+            }
             
-            resp.setStatusCode(200); 
-            
-            resp.setStatus('success'); 
             
             resp.setBody(JSON.serialize(data)); 
             

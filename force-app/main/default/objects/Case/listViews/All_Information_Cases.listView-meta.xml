@@ -26,4 +26,7 @@
     </filters>
     <label>All Information Cases</label>
     <language>en_US</language>
+    <sharedTo>
+        <group>Information_Case_Access</group>
+    </sharedTo>
 </ListView>

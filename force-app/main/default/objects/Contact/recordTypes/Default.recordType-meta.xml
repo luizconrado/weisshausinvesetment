@@ -4,10 +4,53 @@
     <active>true</active>
     <label>Default</label>
     <picklistValues>
+        <picklist>Age__c</picklist>
+        <values>
+            <fullName>01-10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>11-20</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>21-30</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>31-40</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>41-50</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>51-60</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>61-70</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>71-80</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>81-90</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>91-99</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Gender__c</picklist>
         <values>
             <fullName>Diverse</fullName>
-            <default>false</default>
+            <default>true</default>
         </values>
         <values>
             <fullName>Female</fullName>
@@ -54,6 +97,10 @@
         </values>
         <values>
             <fullName>Trade Show</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wealth Web App</fullName>
             <default>false</default>
         </values>
         <values>

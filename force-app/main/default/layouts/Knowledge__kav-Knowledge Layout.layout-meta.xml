@@ -10,6 +10,9 @@
                 <field>CurrencyIsoCode</field>
             </layoutItems>
             <layoutItems>
+                <field>Type_II__c</field>
+            </layoutItems>
+            <layoutItems>
                 <field>Title</field>
             </layoutItems>
             <layoutItems>
@@ -20,8 +23,10 @@
     </layoutSections>
     <layoutSections>
         <customLabel>false</customLabel>
-        <detailHeading>false</detailHeading>
-        <editHeading>false</editHeading>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <layoutColumns/>
+        <layoutColumns/>
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>

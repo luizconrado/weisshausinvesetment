@@ -19,6 +19,10 @@
         <translation></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>Address Change</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Bank Card Block</masterLabel>
         <translation></translation>
     </picklistValues>
@@ -36,6 +40,14 @@
     </picklistValues>
     <picklistValues>
         <masterLabel>Birthdate Change</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bonus</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cannot generate code</masterLabel>
         <translation></translation>
     </picklistValues>
     <picklistValues>
@@ -63,11 +75,27 @@
         <translation></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>Commission Status</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Compliance investigation</masterLabel>
         <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Direct Debit Return</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Early Termination</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Festgeld</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Forgotten code</masterLabel>
         <translation></translation>
     </picklistValues>
     <picklistValues>
@@ -80,6 +108,14 @@
     </picklistValues>
     <picklistValues>
         <masterLabel>General Tech Issue</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>General complaint</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>General information</masterLabel>
         <translation></translation>
     </picklistValues>
     <picklistValues>
@@ -103,6 +139,10 @@
         <translation></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>Invalid code</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Investigation</masterLabel>
         <translation></translation>
     </picklistValues>
@@ -112,6 +152,10 @@
     </picklistValues>
     <picklistValues>
         <masterLabel>Nationality Change</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Other</masterLabel>
         <translation></translation>
     </picklistValues>
     <picklistValues>
@@ -155,11 +199,19 @@
         <translation></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>Request</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Seizure Information Request</masterLabel>
         <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Seizures Payout</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tax Exemption Order</masterLabel>
         <translation></translation>
     </picklistValues>
     <picklistValues>

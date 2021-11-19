@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Fields__c</field>
-        <value xsi:type="xsd:string">LastName,Account_Source_Detail__c,Auth0_ID__c,Legal_Name__c,Preferred_Language__pc,Solarisbank_Id__c</value>
+        <value xsi:type="xsd:string">Name, LastName, FirstName, Salutation, MiddleName, Suffix, Type, BillingStreet, BillingCity, BillingState, BillingPostalCode, BillingCountry, ShippingStreet, ShippingCity, ShippingState, ShippingPostalCode, ShippingCountry, Phone, Fax, AccountNumber, Website, PhotoUrl, Industry, AnnualRevenue, NumberOfEmployees, Description, Rating, Site, CreatedDate, CreatedById, LastModifiedDate, LastModifiedById, PersonContactId, IsPersonAccount, PersonMailingStreet, PersonMailingCity, PersonMailingState, PersonMailingPostalCode, PersonMailingCountry,PersonEmail, PersonTitle, PersonBirthdate, AccountSource, Birth_City__c, Birth_Country__c, Birth_Name__c, Business_Purpose__c, Employment_Status__c, Fatca_Crs_Confirmed_At__c, Fatca_Relevant__c, Flagged_By_Compliance__c, Industry_Key__c, Is_Test__c, Marital_Status__c, Nationality__c, Own_Economic_Interest_Signed_At__c, Solarisbank_Id__c, Solarisbank_Web_UI__c, Tax_Assessment__c, Terms_Conditions_Signed_At__c, Legal_Name__c, Solarisbank_Tenent__c, Auth0_ID__c, Account_Source_Detail__c, Level__pc, Preferred_Language__pc, Gender__pc, Origin__pc, Email_Honorific__pc, Preferred_Language_Code__pc, Account_Source_Group_ID__pc, Mobile_Opt_Out__pc, Phone_Opt_Out__pc</value>
     </values>
     <values>
         <field>Object__c</field>

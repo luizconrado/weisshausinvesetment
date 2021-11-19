@@ -12,12 +12,24 @@
         <layout>Bank Account Layout</layout>
         <sections>
             <label></label>
+            <section>Closure</section>
+        </sections>
+        <sections>
+            <label></label>
             <section>Custom Links</section>
         </sections>
     </layouts>
     <quickActions>
         <label></label>
         <name>Check_Balance</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Generate_Early_Termination_Order_Link</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Generate_Tax_Exemption_Order_Link</name>
     </quickActions>
     <quickActions>
         <label></label>

@@ -22,84 +22,11 @@
                     return {value:value,label:data.Closure_Reasons__c[value]};
                 }));
             });
-        helper.callApex(component,'getRecordDetails',function(result){
-            let status=result.getState();
-            let data=result.getReturnValue();
-            console.log(status)
-            console.log(data)
-            if (status === "SUCCESS") {
-                if(data.length>0){
-                    component.set('v.recordData',data[0])
-                    component.set('v.recordDataOrignal',Object.freeze(JSON.parse(JSON.stringify(data[0]))))
-                    
-                    if(data[0].Person_Account__r){
-                        component.set('v.cardfName',data[0].Person_Account__r.FirstName);
-                        component.set('v.cardlName',data[0].Person_Account__r.LastName);
-                    }
-                    if(data[0].Preferred_Language__pc){
-                        if(data[0].Preferred_Language__pc=='de'){
-                            component.set('v.selectedIdNowType','DE');    
-                        }
-                        else if(data[0].Preferred_Language__pc=='en_US'){
-                            component.set('v.selectedIdNowType','EN');    
-                        }
-                    }
-                    if(data[0].Person_Account__r && data[0].Person_Account__r.Employment_Status__c){
-                        if(data[0].Person_Account__r.Employment_Status__c=='FREELANCER' || data[0].Person_Account__r.Employment_Status__c=='SELF_EMPLOYED'){
-                            component.set('v.cardtypeSelected','VISA_BUSINESS_DEBIT');
-                        }
-                        else{
-                            component.set('v.cardtypeSelected','VISA_DEBIT');
-                        }
-                        
-                    }
-                    if(data[0].Status__c){
-                        let isBlock = (data[0].Status__c === 'ACTIVE' )?true:false;
-                        let isUnBlock = data[0].Status__c === 'BLOCKED'
-                        let isClose = (data[0].Status__c === 'INACTIVE' || data[0].Status__c === 'ACTIVE' || data[0].Status__c === 'BLOCKED' || data[0].Status__c === 'PROCESSING') ? true : false;
-                        let isJira = (data[0].Status__c === 'BLOCKED_BY_SOLARIS' ||data[0].Status__c === 'ACTIVATION_BLOCKED_BY_SOLARIS' || data[0].Status__c === 'CLOSED_BY_SOLARIS')?true:false;
-                        
-                        let statusTypes = [
-                            { 
-                                label:'',
-                                value:'',
-                                selected:true
-                            }
-                        ];
-                        if(isBlock)
-                            statusTypes.push({ 
-                                label:'Block',
-                                value:'Block',
-                                selected:false
-                            });
-                        if(isUnBlock)
-                            statusTypes.push({ 
-                                label:'Unblock',
-                                value:'Unblock',
-                                selected:false
-                            });
-                        if(isClose)
-                            statusTypes.push({ 
-                                label:'Close',
-                                value:'Close',
-                                selected:false
-                            });
-                        if(isJira){
-                            statusTypes.push({ 
-                                label:'No Actions avilabel for this card',
-                                value:'',
-                                selected:false
-                            });
-                        }
-                        component.set('v.cardstatusTypes',statusTypes);
-                    }
-                    
-                }
-                
-            }
-        },{
-            recordId:component.get('v.recordId') 
-        })
+       helper.retriveRecordDetails(component);
+    },
+    refreshRecordDetails:function(component,event,helper){
+               helper.retriveRecordDetails(component);
+
     },
     handleSelect : function(component, event, helper) {
         let selectedMenuItemValue = event.getParam("value");
@@ -236,7 +163,17 @@
             let isAddressChange=component.get('v.isAddressChange');
             if(!isAddressChange) helper._findChangeAndPrepareAccountChangeJson(component);
             let accountDetailsChanged=component.get('v.accountDetailsChanged');
-            if(accountDetailsChanged.title ||
+            if(accountDetailsChanged.address){
+                if(accountDetailsChanged.address.line_1 && accountDetailsChanged.address.line_1.length>=35){
+                    helper.showToast('Warrning','Street 1 cannot be more then 35 char','warning');
+                    return;
+                }
+                if(accountDetailsChanged.address.line_2 && accountDetailsChanged.address.line_2.length>=35){
+                    helper.showToast('Warrning','Street 2 cannot be more then 35 char','warning');
+                    return;
+                }
+            }
+            if(accountDetailsChanged.title!=undefined ||
                accountDetailsChanged.salutation ||
                accountDetailsChanged.address ||
                accountDetailsChanged.tax_information
@@ -250,18 +187,21 @@
                     if (state === "SUCCESS") {
                         console.log('result',data)
                         if(data.errors){
-                            helper.showToast('Error',JSON.stringify(data.errors[0]),'error');
+                            helper.showToast('Error',JSON.stringify(data.errors[0].detail),'error');
+                            helper.close(component);
                             return;
                         }
+                        component.set('v.requestTan',false);
                         component.set('v.loading',false);
                         component.set('v.tanRequestResponse',data);
                     }
                     else if (state === "ERROR") {
                         let errors = response.getError();
-                        let errMsg='Please Contact system admin.If probelem Continues';
+                        let errMsg='Please Contact system admin.If probelem Continues'; 
                         if(errors[0] && errors[0].message)  errMsg=errors[0].message;
                         helper.showToast('Error',errMsg,'Error');
                         console.error(JSON.stringify(errors));
+                        helper.close(component);
                         
                     }
                 },{

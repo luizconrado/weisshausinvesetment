@@ -3,4 +3,23 @@
     <fullName>Integration</fullName>
     <active>true</active>
     <label>Integration</label>
+    <picklistValues>
+        <picklist>Call__c</picklist>
+        <values>
+            <fullName>DELETE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GET</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PATCH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>POST</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
 </RecordType>

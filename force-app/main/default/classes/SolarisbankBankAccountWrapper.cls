@@ -3,7 +3,7 @@ public class SolarisbankBankAccountWrapper {
     public String iban {get;set;} 
     public String bic {get;set;} 
     public String type_Z {get;set;} // in json: type
-    
+    public String purpose{get;set;}
     public String locking_status {get;set;} 
     public List<String> locking_reasons {get;set;} 
     public String person_id {get;set;} 
@@ -20,7 +20,7 @@ public class SolarisbankBankAccountWrapper {
             if (parser.getCurrentToken() == System.JSONToken.FIELD_NAME) {
                 String text = parser.getText();
                 if (parser.nextToken() != System.JSONToken.VALUE_NULL) {
-                    if (text == 'id') {
+                    if (text == 'id' ) {
                         id = parser.getText();
                     } else if (text == 'iban') {
                         iban = parser.getText();
@@ -44,6 +44,9 @@ public class SolarisbankBankAccountWrapper {
                     }
                     else if (text == 'legal_closure_date') {
                         legal_closure_date = Date.valueOf(parser.getText());
+                    }
+                    else if(text=='purpose'){
+                        purpose=parser.getText();
                     }
                     else if(text=='errors'){
                         error=true;
@@ -99,13 +102,8 @@ public class SolarisbankBankAccountWrapper {
         Integer depth = 0;
         do {
             System.JSONToken curr = parser.getCurrentToken();
-             if (curr == System.JSONToken.START_OBJECT || 
-                curr == System.JSONToken.START_ARRAY) {
-                    depth++;
-                } else if (curr == System.JSONToken.END_OBJECT ||
-                           curr == System.JSONToken.END_ARRAY) {
-                               depth--;
-                           }
+            if (curr == System.JSONToken.START_OBJECT || curr == System.JSONToken.START_ARRAY) { depth++; } 
+            else if (curr == System.JSONToken.END_OBJECT || curr == System.JSONToken.END_ARRAY) { depth--; }
         } while (depth > 0 && parser.nextToken() != null);
     }
     
@@ -113,9 +111,7 @@ public class SolarisbankBankAccountWrapper {
     private static List<SolarisbankBankAccountWrapper> arrayOfSolarisbankBankAccountWrapper(System.JSONParser p) {
         List<SolarisbankBankAccountWrapper> res = new List<SolarisbankBankAccountWrapper>();
         if (p.getCurrentToken() == null) p.nextToken();
-        while (p.nextToken() != System.JSONToken.END_ARRAY) {
-            res.add(new SolarisbankBankAccountWrapper(p));
-        }
+        while (p.nextToken() != System.JSONToken.END_ARRAY)  res.add(new SolarisbankBankAccountWrapper(p));
         return res;
     }
     
@@ -129,9 +125,7 @@ public class SolarisbankBankAccountWrapper {
     private static List<String> arrayOfString(System.JSONParser p) {
         List<String> res = new List<String>();
         if (p.getCurrentToken() == null) p.nextToken();
-        while (p.nextToken() != System.JSONToken.END_ARRAY) {
-            res.add(p.getText());
-        }
+        while (p.nextToken() != System.JSONToken.END_ARRAY) res.add(p.getText());
         return res;
     }
     
@@ -143,9 +137,7 @@ public class SolarisbankBankAccountWrapper {
     private static List<Locking_reasons> arrayOfLocking_reasons(System.JSONParser p) {
         List<Locking_reasons> res = new List<Locking_reasons>();
         if (p.getCurrentToken() == null) p.nextToken();
-        while (p.nextToken() != System.JSONToken.END_ARRAY) {
-            res.add(new Locking_reasons(p));
-        }
+        while (p.nextToken() != System.JSONToken.END_ARRAY) res.add(new Locking_reasons(p));
         return res;
     }
     
@@ -164,7 +156,10 @@ public class SolarisbankBankAccountWrapper {
             data.person_id='asd';
             data.status='asd';
             data.locking_reasons=reasons;
-          
+            data.purpose='Other';
+          	data.closure_reasons='Other';
+            data.technical_closure_date=Date.today();
+			data.legal_closure_date=Date.today();	
             
             List<SolarisbankBankAccountWrapper> dataList=new List<SolarisbankBankAccountWrapper>();
             dataList.add(data);

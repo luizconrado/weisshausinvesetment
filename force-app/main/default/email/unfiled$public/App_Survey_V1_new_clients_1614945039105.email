@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html style="overflow-y: hidden;">
+<head>
+	<title></title>
+</head>
+<body style="margin: 0px; height: auto; min-height: auto;">
+<div style="background-color: #f6f6f6;font-family: sans-serif;">
+<div style="display: block;margin: 0 auto !important;max-width: 580px;padding: 10px;width: 580px;">
+<div style="box-sizing: border-box;background: url(https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000dP6n&oid=00D5I000002GOw0&lastMod=1611845345000) repeat;display: block;margin: 0 auto;max-width: 580px;padding: 10px;">
+<div style="text-align: center;padding-bottom: 10px;padding-top: 10px;"><img src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000cWLT&oid=00D5I000002GOw0&lastMod=1609923772000" style="text-align: right; width: 207px; border: 0; text-decoration:none; vertical-align: baseline;" width="200" /></div>
+</div>
+
+<div style="line-height: 1.4;box-sizing: border-box;padding: 20px;font-size: 14px;background: #ffffff;border-radius: 3px;width: 100%;">
+<p>{{{Recipient.Email_Honorific__c}}},</p>
+
+<p>nachdem Sie unsere E&amp;V Konto App nun exklusiv testen und nutzen konnten, sind wir auf Ihre Meinung gespannt und freuen uns sehr, Ihnen heute die erste Umfrage bereitstellen zu k&ouml;nnen.<br />
+<br />
+Nur durch Ihr unabh&auml;ngiges Feedback k&ouml;nnen wir uns und die Funktionen der E&amp;V Konto App kontinuierlich verbessern und etwaige auftretende Fehler beseitigen.<br />
+<br />
+Das Ausf&uuml;llen unseres Fragebogens wird etwa 5 bis 10 Minuten dauern und ist selbstverst&auml;ndlich freiwillig.<br />
+<br />
+Um mit der Umfrage zu starten, klicken Sie bitte den folgenden Button</p>
+
+<p><a href="https://ev-smartmoney.typeform.com/to/m2bSKV5g#sguid={{{Recipient.Account_Source_Group_ID__c}}}" style="color:rgb(255,255,255);background:rgb(235,10,10);display:inline-block;padding:10px 24px;border-radius:4px;text-decoration-line:none">Umfrage starten</a></p>
+
+<p>Sollten Schwierigkeiten beim Ausf&uuml;llen auftreten oder Sie Fragen zur Umfrage haben, k&ouml;nnen Sie sich jederzeit per E-Mail unter&nbsp;<a href="mailto:support@ev-smartmoney.com" target="_blank">support@ev-smartmoney.com</a>&nbsp;oder telefonisch unter: +49 30 743 959 59 (Mo.-Fr. 9-18 Uhr) an uns wenden. Wir helfen Ihnen gerne weiter!<br />
+<br />
+Sie haben Ihre pers&ouml;nliche Engel &amp; V&ouml;lkers Private Card noch nicht bestellt? Einfach die App starten und im unteren Bereich unter dem Men&uuml;punkt &quot;Karte&quot; schnell und unkompliziert anfordern!<br />
+<br />
+Wir danken Ihnen f&uuml;r Ihre Unterst&uuml;tzung.<br />
+<br />
+Mit freundlichen Gr&uuml;&szlig;en<br />
+<br />
+Ihr Engel &amp; V&ouml;lkers Smart Money Team&nbsp;</p>
+</div>
+
+<div style="line-height: 1.4;padding-bottom: 10px;padding-top: 10px;color: #999999;font-size: 12px;text-align: center;">
+<p>Sie erhalten diese E-Mail, da Ihre E-Mail-Adresse auf <a href="mailto:support@ev-smartmoney.com" style="color: inherit !important; font-family: inherit !important; font-size: inherit !important; font-weight: inherit !important; line-height: inherit !important; text-decoration: none !important;" target="_blank">support@ev-smartmoney.com</a> registriert ist.</p>
+
+<p>Wenn Sie Fragen oder R&uuml;ckmeldungen haben sind wir per E-Mail unter <a href="mailto:support@ev-smartmoney.com" style="color: inherit !important; font-family: inherit !important; font-size: inherit !important; font-weight: inherit !important; line-height: inherit !important; text-decoration: none !important;" target="_blank">support@ev-smartmoney.com</a> oder unter folgender Telefonnummer gerne f&uuml;r Sie da: +49 30 74395959 (Mo-Fr: 9-18 Uhr)</p>
+
+<p>Copyright &copy; 2020 EV Smart Money Holding GmbH | HRB 215045 B | Amtsgericht Charlottenburg | Lizenzpartner der Engel &amp; V&ouml;lkers Marken GmbH &amp; Co. KG | Klaus-Groth-Stra&szlig;e 3, 14050 Berlin, Germany. | Gesch&auml;ftsf&uuml;hrung: Dr. Kyros Khadjavi</p>
+</div>
+</div>
+</div>
+</body>
+</html>

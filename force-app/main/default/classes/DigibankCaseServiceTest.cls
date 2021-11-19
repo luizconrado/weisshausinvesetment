@@ -1,12 +1,17 @@
 @isTest
-public class DigibankCaseServiceTest {
-    
+public class DigibankCaseServiceTest { 
+    @isTest
+    static void constantsTest(){
+        DigibankCaseService.retriveDefaultTemplatHtml();
+        DigibankCaseService.checkIsCompactLayout();
+    }
     @isTest
     static void fetchBugBodyTest(){
         Account a=TestDataFactory.getPersonAccount(true);
         Case c=TestDataFactory.getEVKontoCase(a.Id,true);
         Test.startTest();
         DigibankCaseService.fetchBugBody(c.Id);
+        
         Test.stopTest();
         
     }
@@ -27,10 +32,5 @@ public class DigibankCaseServiceTest {
         Test.stopTest();
     }
     
-    @isTest
-    static void logEmailErrorTest(){
-        Account a=TestDataFactory.getPersonAccount(true);
-        Case c=TestDataFactory.getEVKontoCase(a.Id,true);
-        DigibankCaseService.logEmailError(c.Id,'mail Failed');
-    }
+   
 }

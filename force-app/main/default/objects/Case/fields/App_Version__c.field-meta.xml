@@ -13,14 +13,24 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>1.9.0</fullName>
+                <fullName>1.20.0</fullName>
                 <default>false</default>
-                <label>1.9.0</label>
+                <label>1.20.0</label>
             </value>
             <value>
-                <fullName>1.8.0</fullName>
-                <default>true</default>
-                <label>1.8.0</label>
+                <fullName>1.18.0</fullName>
+                <default>false</default>
+                <label>1.18.0</label>
+            </value>
+            <value>
+                <fullName>1.19.0</fullName>
+                <default>false</default>
+                <label>1.19.0</label>
+            </value>
+            <value>
+                <fullName>1.17.0</fullName>
+                <default>false</default>
+                <label>1.17.0</label>
             </value>
             <value>
                 <fullName>1.7.0</fullName>
@@ -91,6 +101,18 @@
                 <fullName>0.99</fullName>
                 <default>false</default>
                 <label>0.99</label>
+            </value>
+            <value>
+                <fullName>1.8.0</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>1.8.0</label>
+            </value>
+            <value>
+                <fullName>1.9.0</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>1.9.0</label>
             </value>
         </valueSetDefinition>
     </valueSet>

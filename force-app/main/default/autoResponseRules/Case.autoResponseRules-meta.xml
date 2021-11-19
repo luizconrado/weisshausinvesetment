@@ -5,14 +5,25 @@
         <active>true</active>
         <ruleEntry>
             <criteriaItems>
-                <field>Case.Origin</field>
+                <field>Case.RecordTypeId</field>
                 <operation>equals</operation>
-                <value>Email,Web,Phone,Chat</value>
+                <value>Partner Management</value>
             </criteriaItems>
+            <notifyCcRecipients>true</notifyCcRecipients>
+            <senderEmail>no-reply@ev-smartmoney.com</senderEmail>
+            <senderName>E&amp;V Smart Money</senderName>
+            <template>Case_Email_Templates/Case_Partner_Auto_Response</template>
+        </ruleEntry>
+        <ruleEntry>
             <criteriaItems>
                 <field>Contact.Preferred_Language__c</field>
                 <operation>equals</operation>
                 <value>en_US</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>notEqual</operation>
+                <value>Partner Management</value>
             </criteriaItems>
             <notifyCcRecipients>false</notifyCcRecipients>
             <replyToEmail>support@ev-smartmoney.com</replyToEmail>
@@ -21,11 +32,6 @@
             <template>Case_Email_Templates/Case_Auto_Response_EN</template>
         </ruleEntry>
         <ruleEntry>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Email,Phone,Web,Chat</value>
-            </criteriaItems>
             <notifyCcRecipients>false</notifyCcRecipients>
             <replyToEmail>support@ev-smartmoney.com</replyToEmail>
             <senderEmail>no-reply@ev-smartmoney.com</senderEmail>

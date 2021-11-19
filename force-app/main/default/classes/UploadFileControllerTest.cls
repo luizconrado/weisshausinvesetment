@@ -14,6 +14,7 @@ public class UploadFileControllerTest {
         UploadFileController.getOptions('Case',c.Id);
         UploadFileController.retriveTagedVersions('Case',c.Id,'Tag');
         UploadFileController.tagVersionFiles('Case',c.Id,'Tag',new List<String> {file.ContentDocumentId});
+        UploadFileController.getOptions('Lead',c.Id);
         Test.stopTest();
     }
 

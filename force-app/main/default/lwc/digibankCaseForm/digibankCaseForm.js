@@ -235,6 +235,7 @@ export default class DigibankCaseForm extends LightningElement {
             caseObject.Description += '\n';
             caseObject.Description += '\n';
             caseObject.Description += 'Steps to Reproduce';
+            caseObject.Description += '\n';
             caseObject.Description += this.stepstoReproduce;
             caseObject.Type = 'Bug';
             caseObject.Phone_Model__c = this.phoneModel

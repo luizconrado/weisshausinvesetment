@@ -14,18 +14,40 @@
 		helper.getOptions(component);
 	},
 	onCancle : function(component, event, helper) {
-        let isSubTab=component.get('v.isSubTab',true);
+        let isSubTab=component.get('v.isSubTab');
+        let isPopup=component.get('v.isPopup');
+        let recordId=component.get('v.recordId')
         if(isSubTab){
             let workspaceAPI = component.find("workspace");
-            workspaceAPI.isConsoleNavigation().then(function(){
-                workspaceAPI.getFocusedTabInfo().then(function(response) {
-                    let focusedTabId = response.tabId;
-                    workspaceAPI.closeTab({tabId:focusedTabId});
-                });
+            workspaceAPI.isConsoleNavigation().then(function(isConsole){
+                if(isConsole){
+                    workspaceAPI.getFocusedTabInfo().then(function(response) {
+                        let focusedTabId = response.tabId;
+                        workspaceAPI.closeTab({tabId:focusedTabId});
+                    });    
+                }
+                else{
+                    let navService = component.find("navService");
+                    let pageReference={
+                        type: 'standard__recordPage',
+                        attributes: {
+                            objectApiName: 'Case',
+                            actionName: 'view',
+                            recordId:recordId
+                        }
+                    }
+                    navService.navigate(pageReference);
+                }
+                
             })
         }
+        else if(isPopup){
+            component.set('v.isPopup',false)
+        }
+        else{
+                $A.get("e.force:closeQuickAction").fire();
+         }
         
-        $A.get("e.force:closeQuickAction").fire();
         
 	},
     onAddMore: function(component, event, helper){

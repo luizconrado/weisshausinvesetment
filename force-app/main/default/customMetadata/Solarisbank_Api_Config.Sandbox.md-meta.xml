@@ -36,7 +36,11 @@
     </values>
     <values>
         <field>Host_Url__c</field>
-        <value xsi:type="xsd:string">https://api.solaris-sandbox.de</value>
+        <value xsi:type="xsd:string">https://kucitn6z3j.execute-api.eu-central-1.amazonaws.com/dev</value>
+    </values>
+    <values>
+        <field>Proxy_API_Key__c</field>
+        <value xsi:type="xsd:string">Cequxv5z7PMQJ5iNv7wRrMoX6VqdhDe2</value>
     </values>
     <values>
         <field>Reservation_URI__c</field>

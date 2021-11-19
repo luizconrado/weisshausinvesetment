@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Fields__c</field>
-        <value xsi:type="xsd:string">Name</value>
+        <value xsi:type="xsd:string">CreatedDate,Name, CreatedById, LastModifiedDate, LastModifiedById,Bank_Account__c, Expiration_Date__c, Is_Test__c, Name_On_Card__c, Person_Account__c, Solarisbank_Id__c, Type__c, Status__c</value>
     </values>
     <values>
         <field>Object__c</field>

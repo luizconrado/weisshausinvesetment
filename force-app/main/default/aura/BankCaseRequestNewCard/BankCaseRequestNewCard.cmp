@@ -67,6 +67,8 @@
                         </div>
                                                 
                     </div>
+                    
+                    
                     <div class="slds-col">
                         <div class="slds-col form-grid-padding  slds-size_1-of-1">
                                  <lightning:select disabled="true" label="Type" name="type"  required="true" value="{!v.typeSelected}" >

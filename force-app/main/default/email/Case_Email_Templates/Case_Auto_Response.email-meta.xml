@@ -4,7 +4,7 @@
     <encodingKey>ISO-8859-1</encodingKey>
     <name>Case Auto Response</name>
     <style>none</style>
-    <subject>New Case {!Case.CaseNumber} [ {!Case.Thread_Id} ]</subject>
+    <subject>Neuer Fall {!Case.CaseNumber}  [ {!Case.Thread_Id} ]</subject>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

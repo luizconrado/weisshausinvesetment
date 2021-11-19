@@ -14,4 +14,8 @@
         <masterLabel>Checking Personal</masterLabel>
         <translation></translation>
     </picklistValues>
+    <picklistValues>
+        <masterLabel>Term Deposit</masterLabel>
+        <translation></translation>
+    </picklistValues>
 </CustomFieldTranslation>

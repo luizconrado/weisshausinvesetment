@@ -3,7 +3,7 @@ public class UploadFileController {
     
     private static File_Type_Option__mdt getConfigurations(String objectName,String recordId){
         String recordTypeName='';
-        String query='SELECT id,recordType.DeveloperName FROM case WHERE id=:recordId';
+        String query='SELECT id,recordType.DeveloperName FROM '+objectName+' WHERE id=:recordId';
         List<Sobject> records=Database.query(query);   
         if(records.size()>0){
             Map<String,Object> recordMap=(Map<String,Object>) JSON.deserializeUntyped(JSON.serialize(records.get(0)));

@@ -1,0 +1,417 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title
+        style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; line-height: 22px;">
+        E&V SmartMoney Newsletter Juni 2021</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body
+    style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; line-height: 22px;margin: 0;">
+
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td>
+
+                <table align="center" border="0" cellpadding="0" cellspacing="0" width="650"
+                    style="border-collapse: collapse; border: 1px solid black;">
+                    <!--header-->
+                    <tr>
+                        <td
+                            style="padding: 32px 20px 18px 20px;border-bottom: solid 3px #eb0a0a;width: 100%;background-color: #ffffff;">
+                            <table style="table-layout: fixed ; width: 100%;">
+                                <tr>
+                                    <!--image-->
+                                    <td align="left">
+                                        <a href="https://www.ev-smartmoney.com">
+                                            <img src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000cWLT&oid=00D5I000002GOw0"
+                                                alt="logo" class="logo" width="190">
+                                        </a>
+                                    </td>
+                                    <!--month-->
+                                    <td align="left" style=" vertical-align: bottom;">
+                                        <p
+                                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 16px;color: #777777;text-align: right;margin: 0;">
+                                            Juni 2021
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <!--main-->
+                    <tr>
+                        <td style="padding: 0px 24px; ">
+                            <table border="0" cellpadding="0" cellspacing="0"
+                                style="width:100%;border-collapse: collapse;">
+                                <!--main page heading-->
+                                <tr>
+
+                                    <td>
+                                        <h4
+                                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;font-size: 16px;color: #141414;font-weight: 500;margin-top: 32px;margin-bottom: 0px;">
+                                            {!Contact.Email_Honorific__c},
+                                        </h4>
+                                        <br>
+                                        <p
+                                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
+                                            ein bequemes und sicheres Investment - das wollen wir unseren Kunden bieten.
+                                            Daher haben wir mit zahlreichen Pilotkunden unser erstes Anlageangebot
+                                            getestet. Was es damit auf sich hat und welche Rolle hierbei unsere Partner
+                                            und ihre hohen Sicherheitsstandards spielen, möchten wir Ihnen heute zeigen.
+                                        </p>
+                                    </td>
+                                </tr>
+
+                                <!--section 1 start-->
+                                <!--line-->
+                                <tr>
+
+                                    <td height="72">
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <hr style=" border: none;
+                                       border-top: 1px solid #eb0a0a;
+                                       color: #eb0a0a;
+                                       overflow: visible;
+                                       margin:auto;
+                                       height:1px;
+                                       width:170px;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="72">
+
+                                    </td>
+                                </tr>
+                                <!--image 1-->
+                                <tr>
+                                    <td>
+                                        <img width="100%"
+                                            src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000e9E5&oid=00D5I000002GOw0" />
+                                    </td>
+                                </tr>
+                                <!--image description-->
+                                <tr>
+                                    <td>
+                                        <h3
+                                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;margin-top: 56px;margin-bottom: 32px;line-height: 33px;text-align: center;font-weight: 400;font-size: 18px;color: #141414;">
+                                            Unser erstes Anlageangebot im Test - Die Immobilienanleihe
+
+                                        </h3>
+
+                                        <ul>
+                                            <li>
+                                                <p
+                                                    style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
+
+
+                                                    Unsere Immobilienanleihe wird ein festverzinstes Wertpapier mit
+                                                    vorgegebener Laufzeit sein, welches durch Grundschulden und
+                                                    Mietforderungen hochgradig besichert ist.
+
+
+
+
+
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p
+                                                    style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
+                                                    Damit Sie Ihr Investment bequem abwickeln können, haben wir den
+                                                    mobilen Abschlussprozess der Immobilienanleihe mit Pilotkunden
+                                                    getestet. Unsere Tester zeigten sich sehr interessiert an dem
+                                                    Produkt und zufrieden mit der Benutzeroberfläche. Es wurde der
+                                                    Wunsch nach einem noch schnelleren Kaufprozess geäußert - darauf
+                                                    liegt nun unser Fokus.
+
+
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <!--section 1 end-->
+                                <!--section 2 start-->
+                                <!--line-->
+                                <tr>
+                                    <td height="72">
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <hr style=" border: none;
+                                       border-top: 1px solid #eb0a0a;
+                                       color: #eb0a0a;
+                                       overflow: visible;
+                                       margin:auto;
+                                       height:1px;
+                                       width:170px;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="72">
+
+                                    </td>
+                                </tr>
+                                <!--image 2-->
+                                <tr>
+                                    <td>
+                                        <img width="100%"
+                                            src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000e9EA&oid=00D5I000002GOw0" />
+                                    </td>
+                                </tr>
+                                <!--image description-->
+                                <tr>
+                                    <td>
+                                        <h3
+                                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;margin-top: 56px;margin-bottom: 32px;line-height: 33px;text-align: center;font-weight: 400;font-size: 18px;color: #141414;">
+                                            Immobilie verkaufen und Zeit gewinnen - Unser Festgeldkonto
+                                        </h3>
+                                        <ul>
+                                            <li>
+                                                <p
+                                                    style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
+
+                                                    Besonders nach dem Verkauf einer Immobilie benötigt man Zeit, um
+                                                    neue Investitionen zu planen. Doch diese Zeit kostet Sie Geld.
+                                                    Entweder weil Ihr Erlös ungenutzt auf einem Bankkonto liegt oder
+                                                    dort sogar von Verwahrentgelten belastet wird.
+
+
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p
+                                                    style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
+                                                    Auch hier haben wir an einer Lösung gearbeitet. Unser Festgeldkonto
+                                                    verschafft Ihnen zukünftig eine feste Rendite für Ihren
+                                                    Verkaufserlös. Während des dreimonatigen Anlagezeitraums haben Sie
+                                                    ausreichend Zeit, neue Investitionen zu planen. Das Festgeldangebot
+                                                    wird mobil abschließbar sein und ist ein exklusives Angebot für die
+                                                    Verkaufskunden von Engel & Völkers.
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <!--section 2 end-->
+                                <!--section 3 start-->
+                                <!--line-->
+                                <tr>
+                                    <td height="72">
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <hr style=" border: none;
+                                        border-top: 1px solid #eb0a0a;
+                                        color: #eb0a0a;
+                                        overflow: visible;
+                                        margin:auto;
+                                        height:1px;
+                                        width:170px;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="72">
+
+                                    </td>
+                                </tr>
+                                <!--image 3-->
+                                <tr>
+                                    <td>
+                                        <img width="100%"
+                                            src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000e9EF&oid=00D5I000002GOw0" />
+                                    </td>
+                                </tr>
+                                <!--image description-->
+                                <tr>
+                                    <td>
+                                        <h3
+                                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;margin-top: 56px;margin-bottom: 32px;line-height: 33px;text-align: center;font-weight: 400;font-size: 18px;color: #141414;">
+                                            Ihre Sicherheit liegt uns am Herzen!
+                                        </h3>
+                                        <ul>
+                                            <li>
+                                                <p
+                                                    style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
+
+                                                    Als Dienstleister im Bereich Online-Banking und -Investment ist es
+                                                    uns ein persönliches Anliegen, dass Ihr Vermögen und Ihre Daten
+                                                    jederzeit sicher sind. Deshalb arbeiten wir nur mit zertifizierten
+                                                    und etablierten Partnern zusammen.
+
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p
+                                                    style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
+                                                    Die Solarisbank, unser Partner in Sachen Banking, ist als
+                                                    Banking-as-a-Service Dienstleister darauf spezialisiert, uns die
+                                                    Infrastruktur bereitzustellen, die wir benötigen um Ihnen ein
+                                                    modernes Bankerlebnis bieten zu können.
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p
+                                                    style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
+                                                    Als Institut mit Vollbanklizenz wird die Solarisbank von der
+                                                    Bundesanstalt für Finanzdienstleistungsaufsicht (BaFin)
+                                                    beaufsichtigt. Darüber hinaus ist sie Mitglied des deutschen
+                                                    Einlagensicherungsfonds, damit ist Ihr Kontoguthaben bis zu einer
+                                                    Höhe von 100.000 € abgesichert.
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p
+                                                    style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
+                                                    Für die Kontrolle und Verwahrung von Anlagen, wie zum Beispiel der
+                                                    geplanten Immobilienanleihe, haben wir einen etablierten deutschen
+                                                    Partner mit jahrelanger Erfahrung ausgesucht. Unser Depotbankpartner
+                                                    arbeitet seit Jahrzehnten zuverlässig im Bereich Investmentfonds und
+                                                    handelt als professionelle und vertrauenswürdige Verwahrstelle nur
+                                                    in Ihrem Interesse. </p>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <!--section 3 end-->
+                                <!--line-->
+                                <tr>
+                                    <td height="72">
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <hr style=" border: none;
+                                        border-top: 1px solid #eb0a0a;
+                                        color: #eb0a0a;
+                                        overflow: visible;
+                                        margin:auto;
+                                        height:1px;
+                                        width:170px;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="72">
+
+                                    </td>
+                                </tr>
+                                <!--signiture-->
+                                <tr>
+                                    <td>
+
+                                        <p
+                                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;font-size: 14px;color: #444444;">
+                                            Sollten Sie Fragen bezüglich unserer Produktentwicklung und Partner haben,
+                                            schreiben Sie uns einfach eine E-Mail oder rufen Sie uns direkt an. Sie
+                                            erreichen uns von 9 Uhr bis 18 Uhr (Mo.-Fr.) unter +49 30 743 959 59. Gerne
+                                            registrieren wir Sie auch für kommende Produkttests. Wir freuen uns über Ihr
+                                            Engagement und hoffen, Sie bald persönlich kennenzulernen.
+
+
+
+                                            <br>
+                                            <br>
+                                            <br>
+                                            Herzliche Grüße,
+                                            <br>
+
+                                        <p
+                                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;font-size: 14px;color: #444444;">
+                                            Ihr
+                                            <br>
+                                            Dr. Kyros Khadjavi CEO
+
+                                            <br>
+                                            Philipp Schemel CCO
+
+                                        </p>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <!--app links-->
+                                <tr>
+                                    <td>
+                                        <div style="text-align: center;margin-top: 32px;margin-bottom: 40px;">
+                                            <div
+                                                style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; line-height: 22px;display: inline-block;margin-left: 40px;margin-right: 40px;margin-top: 10px;margin-bottom: 10px;">
+                                                <a href="https://apps.apple.com/de/app/e-v-konto/id1508366285?l=en"
+                                                    target="_blank"
+                                                    style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; line-height: 22px;">
+                                                    <img src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000djAg&oid=00D5I000002GOw0 "
+                                                        alt="Apple App Store Link">
+                                                </a>
+                                            </div>
+                                            <div
+                                                style="display: inline-block;margin-left: 40px;margin-right: 40px;margin-top: 10px;margin-bottom: 10px;">
+                                                <a href="https://play.google.com/store/apps/details?id=com.weisshausinvestment.banking"
+                                                    target="_blank"
+                                                    style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; line-height: 22px;">
+                                                    <img alt="Google Play Store Link"
+                                                        src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000djAb&oid=00D5I000002GOw0">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <!--footer-->
+                    <tr>
+                        <td bgcolor="#f0f0f0" style="padding: 10px 24px;">
+                            <table border="0" cellpadding="0" cellspacing="0"
+                                style="width:100%;border-collapse: collapse;">
+                                <tr>
+                                    <td style="text-align:center;background-color: #f0f0f0;font-size: 14px;font-style: normal;font-weight: 400;letter-spacing: 0px;color: #444444;"
+                                        align="center">
+                                        <p
+                                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;">
+
+                                            Sie erhalten diese E-Mail, da Ihre E-Mail-Adresse auf www.ev-smartmoney.com
+                                            registriert ist.
+                                            Wenn Sie Fragen oder Rückmeldungen haben sind wir per E-Mail unter
+                                            support@ev-smartmoney.com oder unter folgender Telefonnummer gerne für Sie
+                                            da: +49 30 74395959 (Mo-Fr: 9-18 Uhr)
+
+                                        </p>
+                                        <br>
+                                        <p
+                                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;">
+                                            Copyright &#169; EV Smart Money Holding GmbH | HRB 215045 B | Amtsgericht
+                                            Charlottenburg | Lizenzpartner der Engel & Völkers Marken GmbH & Co. KG |
+                                            Klaus-Groth-Straße 3, 14050 Berlin, Germany. | Geschäftsführung: Dr. Kyros
+                                            Khadjavi |
+                                            <a style="text-align:center;background-color: #f0f0f0;font-size: 14px;font-style: normal;font-weight: 400;letter-spacing: 0px;color: #444444;"
+                                                href="{!$Label.siteUrl}/s/unsubscribe?email={!Account.PersonEmail}&product=Newsletter&language={!Account.Preferred_Language_Code__pc}">
+                                                abmelden
+                                            </a>
+                                        </p>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<aura:component controller="OpportuntiyRealEstateService" implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global" >
+   <aura:handler name='init' value='{!this}' action='{!c.onInit}' /> 
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <aura:html tag="style">
+        .cuf-content {
+        padding: 0 0rem !important;
+        }
+        .slds-p-around--medium {
+        padding: 0rem !important;
+        }       
+        .slds-modal__content{
+        height:unset !important;
+        max-height:unset !important;
+        }
+    </aura:html>
+    <aura:attribute type="boolean" name="loading" default="false"/>
+    <aura:attribute type="String" name="status" default="false"/>
+    
+    <aura:attribute type="boolean" name="isDisabled" default="false"/>
+    
+    <section>
+        <header class="modal-header  slds-modal__header">
+            <button onclick="{!c.closeAction}" class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                X
+                <span class="slds-assistive-text">Close</span>
+            </button>
+            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Toggle Term Deposit</h2>
+        </header>
+        <div class="slds-modal__content slds-is-relative slds-p-around_medium" id="modal-content-id-1">
+            
+            <aura:if isTrue="{!v.isDisabled}">
+               
+                <div>
+                    <div class="ev-toast slds-theme_info" role="status">
+                        <div class="slds-notify__content">
+                            <h2 class="slds-text-heading_small ev-gradient">
+                                Term Deposit is enabled for customer.
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            
+            </aura:if>
+            <aura:if isTrue="{!v.loading}">
+                <lightning:spinner alternativeText="Loading" size="small" />
+                <aura:set attribute="else">
+                    <lightning:select disabled="{!v.isDisabled}" aura:id="field" label="Term Deposite Status" name="termDeposite"  value="{!v.status}">
+                        <option value="false">False</option>
+                        <option value="true">True</option>
+                    </lightning:select>
+                </aura:set>
+            </aura:if>
+            
+        </div>
+        <footer class="modal-footer  slds-modal__footer">
+            <lightning:button disabled="{!v.loading}" label="Close" title="Close" onclick="{! c.closeAction }"/>
+            <lightning:button disabled="{!v.isDisabled}" onclick="{!c.toggle}" variant="brand" label="Toggle" title="Toggle"  />
+        </footer>
+    </section>
+</aura:component>

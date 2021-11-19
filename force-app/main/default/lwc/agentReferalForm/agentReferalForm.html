@@ -1,0 +1,360 @@
+<template>
+
+    <article class="slds-is-relative">
+        <template if:true={loaded}>
+            <div class="spinnerHolder">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+        </template>
+        <div class="ev-agent_referal-header">
+            <div class="ev-agent_referal-header_heading">
+                {HEADERSTEPTEXT}
+            </div>
+            <div class="ev-agent_referal-header_points">
+                <div class="ev-agent_referal-header_point">
+                    <img src={numberOneIcon}> {pagetitle}
+                </div>
+                <div class="ev-agent_referal-header_point">
+                    <img src={numberTwoIcon}> {SUCESSHEADERTEXT}
+                </div>
+                <div class="ev-agent_referal-header_point">
+                    <img src={numberThreeIcon}> {STEP3TEXT}
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="slds-grid slds-wrap slds-p-around_large  max-page-width reverse-direction_mobile">
+            <div if:true={showStep1}
+                class="slds-col slds-grid  slds-grid_vertical slds-small-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 ">
+                <div class="slds-col ev-verticle-align_center-mobile">
+                    <div class="header-step ev-padding-top_large-x">
+                        {STEPTEXT} 1
+                    </div>
+                    <div class="header-title ev-padding-top_small-x">
+                        {pagetitle}
+                    </div>
+                    <div class="header-subtitle ev-padding-top_medium">
+                        {pageSubtitle}
+                    </div>
+
+
+                </div>
+
+
+                <div class="slds-col ev-padding-top_medium">
+                    <div class="inputDesign   ">
+                        <lightning-radio-group variant="label-hidden" name="customerTypeSelected"
+                            label="customerTypeSelected" options={customerTypes} value={customerTypeSelected}
+                            type="radio" onchange={handleRadioValueChange}> </lightning-radio-group>
+                    </div>
+                </div>
+
+
+
+                <div class="slds-col slds-grid    slds-grid_vertical-align-end" if:false={isPersonAccount}>
+                    <div class="slds-col  slds-size_1-of-1   ev-padding-top_small">
+                        <div class="inputDesign slds-is-relative ">
+                            <lightning-input name="companyName" required="true" label={companyNameTitle}
+                                onchange={handleValueChange} value={companyName} onkeyup={handleSearchField}>
+                            </lightning-input>
+                            <ul class="drop_down_container" if:true={isCustomerSearch}>
+                                <template for:each={accountList} for:item="accObj" for:index="index">
+                                    <li class="drop_down_item" key={accObj.Id} onclick={handleAccountSelected}
+                                        id={accObj.Id}> {accObj.Name}</li>
+                                </template>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="slds-col ev-padding-top_medium">
+                    <div class="inputDesign   ">
+                        <lightning-combobox name="salutation" value={salutation} label={placeholderSalutationText}
+                            options={salutationOptions} onchange={handleValueChange} required="true">
+                        </lightning-combobox>
+                    </div>
+                </div>
+                <div class="slds-col slds-grid   slds-grid_vertical-align-start ">
+                    <div class="slds-col  slds-size_1-of-2  ev-padding-top_small">
+                        <div class="inputDesign  form-space-right">
+                            <lightning-input type="text" pattern="[a-zA-ZäöüÄÖÜßéóáíú][a-zA-Z0-9äöüÄÖÜßéóáíú\s]*"
+                                name="firstName" required="true" label={firstNameText} value={firstName}
+                                onchange={handleValueChange}>
+                            </lightning-input>
+
+                        </div>
+                    </div>
+                    <div class="slds-col  slds-size_1-of-2 ev-padding-top_small">
+                        <div class="inputDesign form-space-left ">
+                            <lightning-input type="text" pattern="[a-zA-ZäöüÄÖÜß][a-zA-Z0-9äöüÄÖÜß\s]*" name="lastName"
+                                required="true" label={surnameText} value={lastName} onchange={handleValueChange}>
+                            </lightning-input>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slds-col slds-medium-size_1-of-1 ev-padding-top_small">
+                    <div class="inputDesign  ">
+                        <lightning-input type="email" name="emailAddress" required="true" label={emailAddressText}
+                            onchange={handleValueChange} value={emailAddress}>
+                        </lightning-input>
+                    </div>
+                </div>
+
+                <div class="slds-col slds-grid    slds-grid_vertical-align-start">
+                    <div class="slds-col    ev-padding-top_small">
+                        <div class="inputDesign  form-space-right">
+                            <lightning-input type="tel" label={phoneNumberText} onchange={handleValueChange}
+                                pattern="^[+]{1}[0-9]{8,}$" placeholder="+49" value={phoneNumber} name="phoneNumber">
+                            </lightning-input>
+                        </div>
+                    </div>
+                    <div class="slds-col  slds-size_1-of-2 ev-padding-top_small" if:true={isPersonAccount}>
+                        <div class="inputDesign form-space-left ">
+                            <lightning-combobox name="isCustomer" value={isCustomer} label={isCusomterLabel}
+                                options={isCustomerOptions} onchange={handleValueChange} required="true">
+                            </lightning-combobox>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slds-col slds-grid    slds-grid_vertical-align-end" if:true={isPersonAccount}>
+                    <div class="slds-col  slds-size_1-of-1   ev-padding-top_small">
+                        <div class="inputDesign slds-is-relative ">
+                            <lightning-input name="companyName" label={personBusinessAccountLabel}
+                                onchange={handleValueChange} value={companyName} onkeyup={handleSearchField}>
+                            </lightning-input>
+                            <ul class="drop_down_container" if:true={isCustomerSearch}>
+                                <template for:each={accountList} for:item="accObj" for:index="index">
+                                    <li class="drop_down_item" key={accObj.Id} onclick={handleAccountSelected}
+                                        id={accObj.Id}> {accObj.Name}</li>
+                                </template>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="slds-col slds-medium-size_1-of-1 ev-padding-top_medium" if:true={isPersonAccount}>
+                    <div class="inputDesign slds-grid ">
+                        <lightning-input class="tc-checkbox" type="checkbox" required="true" variant="label-hidden"
+                            name="isPersonAccountAccept" value={isPersonAccountAccept}
+                            onchange={handleCheckboxValueChange}>
+                        </lightning-input>
+                        <span>
+                            {personTCAcceptText}
+
+
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="slds-col slds-medium-size_1-of-1 ev-padding-top_medium" if:false={isPersonAccount}>
+                    {BANKDATA_DISCLAIMER}
+                </div>
+
+
+                <div class="slds-col slds-grid   slds-grid_vertical-align-start " if:false={isPersonAccount}>
+                    <div class="slds-col  slds-size_1-of-2  ev-padding-top_small">
+                        <div class="inputDesign  form-space-right">
+                            <lightning-input type="text" pattern="[a-zA-ZäöüÄÖÜßéóáíú][a-zA-Z0-9äöüÄÖÜßéóáíú\s]*"
+                                name="bankName" label={bankNameTitle} value={bankName} onchange={handleValueChange}>
+                            </lightning-input>
+
+                        </div>
+                    </div>
+                    <div class="slds-col  slds-size_1-of-2 ev-padding-top_small">
+                        <div class="inputDesign form-space-left ">
+                            <lightning-input type="text"
+                                pattern="[DE]{2}[0-9]{2}(?:[ ]?[0-9]{4}){4}(?!(?:[ ]?[0-9]){3})(?:[ ]?[0-9]{1,2})?"
+                                name="customerIban" label="IBAN" value={customerIban} onchange={handleValueChange}
+                                placeholder="DEXX XXXX XXXX XXXX XXXX XX">
+                            </lightning-input>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slds-col slds-medium-size_1-of-1 ev-padding-top_medium">
+                    <div class="inputDesign slds-grid tc-link">
+                        <lightning-input class="tc-checkbox" type="checkbox" required="true" variant="label-hidden"
+                            name="isPrivacyLink" value={isPrivacyLink} onchange={handleCheckboxValueChange}>
+                        </lightning-input>
+                        <span> {acceptTermsAndConditionsTextStart}
+                            <a href={privacyLink} style="color:#6b6d70;"
+                                target="_blank">&nbsp;{acceptTermsAndConditionsTextDeliveryCondition}&nbsp;</a>
+                            {acceptTermsAndConditionsTextand}
+                            <a href={dataProtectionLink} style="color:#6b6d70;" target="_blank">
+                                &nbsp;{acceptTermsAndConditionsTextDataProdtection}&nbsp;
+                            </a>
+                            {acceptTermsAndConditionsTextEnd}
+                        </span>
+                    </div>
+                </div>
+                <div class="slds-col slds-medium-size_1-of-1 ev-padding-top_large-x ev-verticle-align_center-mobile">
+
+                    <button class="slds-button primaryButton" onclick={handleSave}>
+                        {GENERATELINKBUTTON}
+                    </button>
+
+
+
+                </div>
+            </div>
+            <div if:true={showStep1} class="slds-col slds-medium-size_1-of-1 slds-large-size_1-of-2 info-image">
+                <img src={imageUrlLanding} />
+            </div>
+
+            <div if:true={showStep2}
+                class="slds-col slds-grid  slds-grid_vertical slds-medium-size_1-of-1 slds-large-size_1-of-2 ev-verticle-align_center-mobile">
+                <div class="slds-col ">
+
+                    <div class="header-step ev-padding-top_medium-x">
+                        {STEPTEXT} 2
+                    </div>
+                    <div class="header-title ev-padding-top_small-x">
+                        {SUCESSHEADERTEXT}
+                    </div>
+                    <div class="header-subtitle ev-padding-top_medium">
+                        {SUCESSHEADERSUBTEXT}
+                    </div>
+
+                </div>
+                <div class="slds-grid slds-grid_vertical ev-margin-top_medium refreal-link_pill ">
+                    <div class="slds-col title ">{REFERALLINKTEXT}</div>
+                    <div class="link slds-col   ev-margin-top_small-x">{refrelLink}</div>
+                    <button class="slds-col slds-button ev-margin-top_small primaryButton" onclick={copyLink}>
+                        {COPYLINKTEXT}
+                    </button>
+                    <div class="slds-col copy-msg" if:true={showLinkCopyMsg}>{LINKCOPIEDTEXT}</div>
+                    <div class="slds-col ev-margin-top_medium ">{REFERALLINKDESCRIPTION}</div>
+                    <div class="slds-col ev-margin-top_medium title">{REFERALCODETEXT}</div>
+                    <div class="slds-col ev-margin-top_small-x code ">{code}</div>
+                </div>
+
+                <div class="slds-col ev-margin-top_medium refreal-instruction">
+
+                    <button class="slds-col slds-button ev-margin-top_small secondaryButton"
+                        onclick={showDownloadInstructions}>
+                        {OPENACCOUNTTEXT}
+                    </button>
+                </div>
+            </div>
+            <div if:true={showStep2} class="slds-col slds-medium-size_1-of-1 slds-large-size_1-of-2 info-image">
+                <img src={imageUrlSuccess} />
+            </div>
+            <div if:true={showStep3}
+                class="slds-col slds-grid  slds-grid_vertical slds-medium-size_1-of-1 slds-large-size_1-of-2 ev-verticle-align_center-mobile">
+                <div class="slds-col ">
+
+                    <div class="header-step ev-padding-top_large-x">
+                        {STEPTEXT} 3
+                    </div>
+                    <div class="header-title ev-padding-top_small-x">
+                        {STEP3TEXT}
+                    </div>
+                    <div class="header-subtitle ev-padding-top_medium">
+                        <p>
+                            {STEP3DESCRIPTIONTEXT}
+                        </p>
+                        <p class="ev-padding-top_small">
+                            {STEP3DESCRIPTIONTEXT2}
+                        </p>
+                        <p class="ev-padding-top_small">
+                            {STEP3DESCRIPTIONTEXT3}
+                        </p>
+                    </div>
+
+                </div>
+                <!--
+                <div class="slds-col slds-grid slds-wrap ev-margin-top_large ev-verticle-align_center-mobile">
+                    <div
+                        class="slds-col slds-grid referal_description_container slds-large-size_1-of-2 slds-medium-size_1-of-1 slds-small-size_1-of-1">
+                        <div class="slds-col slds-size_1-of-2 referal_description">
+                            <div class="icon">
+                                <img src={emailIconUrl}>
+                            </div>
+                            <div class="text ev-padding-top_small-x">{APPSTEP1TEXT}</div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 referal_description">
+                            <div class="icon"> <img src={downloadIconUrl}> </div>
+                            <div class="text ev-padding-top_small-x">{APPSTEP2TEXT}</div>
+                        </div>
+                    </div>
+                    <div
+                        class="slds-col slds-grid  referal_description_container slds-large-size_1-of-2 slds-medium-size_1-of-1 slds-small-size_1-of-1">
+                        <div class="slds-col  slds-size_1-of-2 referal_description">
+                            <div class="icon"><img src={noteIconUrl}> </div>
+                            <div class="text ev-padding-top_small-x">{APPSTEP3TEXT}</div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 referal_description">
+                            <div class="icon"><img src={pieIconUrl}></div>
+                            <div class="text ev-padding-top_small-x">{APPSTEP4TEXT} </div>
+                        </div>
+                    </div>
+                </div>
+                -->
+                <div class="slds-col ev-margin-top_large-x">
+                    <a class="slds-col slds-button ev-margin-top_small primaryButton" href={refrelLink}>
+                        {STEP3BUTTONTEXT}
+                    </a>
+                </div>
+            </div>
+            <div if:true={showStep3} class="slds-col slds-medium-size_1-of-1 slds-large-size_1-of-2 info-image_referal">
+                <img src={imageUrlRedirect} />
+            </div>
+
+            <lightning-layout if:true={showError}>
+
+                <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
+                    <div class="header-font">
+                        {ERRORTEXT}
+                    </div>
+
+                </lightning-layout-item>
+
+            </lightning-layout>
+
+        </div>
+        <!-- Not needed anymore
+        <section if:true={showisCustomerPopup} role="dialog" tabindex="-1"
+            class="slds-modal slds-fade-in-open slds-modal_x-small" aria-labelledby="Referal_modal" aria-modal="true"
+            aria-describedby="Referal_modal_content">
+            <div class="slds-modal__container 	">
+
+                <div class="slds-modal__content slds-p-around_medium" id="Referal_modal_content">
+                    <div class="popup-referal_close" onclick={hideCustomerPopup}>
+
+                        <img
+                            src="https://ev-smartmoney-c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000eV2o&oid=00D5I000002GOw0" />
+
+
+                    </div>
+                    <div class="popup-referal_header ev-padding-top_small">{ISACCOUNTQUESTION}</div>
+                    <div class="popup-referal_description ev-padding-top_large">
+                        {ISACCOUNTDESCRIPITON}
+                    </div>
+                    <div class="popup-referal_button slds-p-top_xx-large slds-p-bottom_large">
+                        <button class="slds-col slds-button ev-margin-top_small primaryButton_popup "
+                            onclick={showDownloadInstructions}>
+                            {OPENACCOUNTTEXT}
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <div if:true={showisCustomerPopup} class="slds-backdrop slds-backdrop_open"></div>
+        -->
+    </article>
+
+
+
+
+</template>

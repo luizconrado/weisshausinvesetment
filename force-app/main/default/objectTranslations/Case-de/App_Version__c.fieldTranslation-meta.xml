@@ -15,7 +15,23 @@
         <translation></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>1.17.0</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>1.18.0</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>1.19.0</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>1.2.x</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>1.20.0</masterLabel>
         <translation></translation>
     </picklistValues>
     <picklistValues>
@@ -56,14 +72,6 @@
     </picklistValues>
     <picklistValues>
         <masterLabel>1.7.0</masterLabel>
-        <translation></translation>
-    </picklistValues>
-    <picklistValues>
-        <masterLabel>1.8.0</masterLabel>
-        <translation></translation>
-    </picklistValues>
-    <picklistValues>
-        <masterLabel>1.9.0</masterLabel>
         <translation></translation>
     </picklistValues>
 </CustomFieldTranslation>

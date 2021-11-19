@@ -1,4 +1,87 @@
 ({
+    retriveRecordDetails:function(component){
+        let helper=this;
+        component.set('v.loading',true);
+        helper.callApex(component,'getRecordDetails',function(result){
+            let status=result.getState();
+            let data=result.getReturnValue();
+            console.log(status)
+            
+            if (status === "SUCCESS") {
+                if(data.length>0){
+                    component.set('v.recordData',data[0])
+                    component.set('v.recordDataOrignal',Object.freeze(JSON.parse(JSON.stringify(data[0]))))
+                    
+                    if(data[0].Person_Account__r){
+                        component.set('v.cardfName',data[0].Person_Account__r.FirstName);
+                        component.set('v.cardlName',data[0].Person_Account__r.LastName);
+                    }
+                    if(data[0].Preferred_Language__pc){
+                        if(data[0].Preferred_Language__pc=='de'){
+                            component.set('v.selectedIdNowType','DE');    
+                        }
+                        else if(data[0].Preferred_Language__pc=='en_US'){
+                            component.set('v.selectedIdNowType','EN');    
+                        }
+                    }
+                    if(data[0].Person_Account__r && data[0].Person_Account__r.Employment_Status__c){
+                        if(data[0].Person_Account__r.Employment_Status__c=='FREELANCER' || data[0].Person_Account__r.Employment_Status__c=='SELF_EMPLOYED'){
+                            component.set('v.cardtypeSelected','VISA_BUSINESS_DEBIT');
+                        }
+                        else{
+                            component.set('v.cardtypeSelected','VISA_DEBIT');
+                        }
+                        
+                    }
+                    if(data[0].Status__c){
+                        let isBlock = (data[0].Status__c === 'ACTIVE' )?true:false;
+                        let isUnBlock = data[0].Status__c === 'BLOCKED'
+                        let isClose = (data[0].Status__c === 'INACTIVE' || data[0].Status__c === 'ACTIVE' || data[0].Status__c === 'BLOCKED' || data[0].Status__c === 'PROCESSING') ? true : false;
+                        let isJira = (data[0].Status__c === 'BLOCKED_BY_SOLARIS' ||data[0].Status__c === 'ACTIVATION_BLOCKED_BY_SOLARIS' || data[0].Status__c === 'CLOSED_BY_SOLARIS')?true:false;
+                        
+                        let statusTypes = [
+                            { 
+                                label:'',
+                                value:'',
+                                selected:true
+                            }
+                        ];
+                        if(isBlock)
+                            statusTypes.push({ 
+                                label:'Block',
+                                value:'Block',
+                                selected:false
+                            });
+                        if(isUnBlock)
+                            statusTypes.push({ 
+                                label:'Unblock',
+                                value:'Unblock',
+                                selected:false
+                            });
+                        if(isClose)
+                            statusTypes.push({ 
+                                label:'Close',
+                                value:'Close',
+                                selected:false
+                            });
+                        if(isJira){
+                            statusTypes.push({ 
+                                label:'No Actions avilabel for this card',
+                                value:'',
+                                selected:false
+                            });
+                        }
+                        component.set('v.cardstatusTypes',statusTypes);
+                    }
+                    
+                }
+                
+            }
+            component.set('v.loading',false);
+        },{
+            recordId:component.get('v.recordId') 
+        })
+    },
     updateAccount:function(component){
         let helper=this;
         let tannumber=component.get('v.tannumber');
@@ -27,7 +110,8 @@
                     helper.close(component);
                 }
                 if(res.errors ){
-                    helper.showToast('Error',JSON.stringify(res.errors[0]),'error');
+                    helper.showToast('Error',JSON.stringify(res.errors[0].title),'error');
+                    helper.close(component);
                 }
                 component.set('v.loading',false);
             }
@@ -300,7 +384,8 @@
             changes.tax_information.marital_status=accountDetails.Marital_Status__c;
         }    
        component.set('v.accountDetailsChanged',changes)
-        if(changes.title ||
+     console.log('changes',changes)
+        if(changes.title!=undefined ||
            changes.salutation ||
            changes.address ||
            changes.tax_information

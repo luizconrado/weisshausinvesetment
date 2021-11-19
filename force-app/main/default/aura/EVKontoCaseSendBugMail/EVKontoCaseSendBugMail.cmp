@@ -12,9 +12,15 @@
         max-height:unset !important;
         }
     </aura:html>
+    <aura:attribute type="boolean" name="isCompactLayout" default="false"/>
     <aura:attribute type="boolean" name="loading" default="false"/>
     <aura:attribute type="String" name="bugBody" default=""/>
     <aura:attribute type="String" name="bugSubject" default="Digibank Support"/>
+    <aura:attribute type="String" name="previewContent" default="Digibank Support"/>
+    <aura:attribute type="String" name="thread_Id" default=""/>
+    <aura:attribute type="String" name="contentSelectedTabId" default=""/>
+    <aura:attribute type="Object" name="defaultTemplateHtml"/>
+
     
      <aura:handler name='init' value='{!this}' action='{!c.onInit}' />
     <section>
@@ -29,15 +35,57 @@
             <aura:if isTrue="{!v.loading}">
                 <lightning:spinner alternativeText="Loading" size="small" />
             </aura:if>
-            <lightning:input name="subject" value="{!v.bugSubject}" label="Subject" />
-
-            <div class="textArea">
-                <lightning:textarea name="body" value="{!v.bugBody}" label="Bug Body" />
-            </div>
+            <lightning:tabset variant="scoped" selectedTabId="{!v.contentSelectedTabId}" onselect="{!c.contentPreviewHandler}">
+                <lightning:tab id="content" label="Subject And Description">
+                    <lightning:input name="subject" value="{!v.bugSubject}" label="Subject" />
+                    <div class="textArea">
+                        <lightning:textarea name="body" value="{!v.bugBody}" label="Bug Body" />
+                    </div>
+                </lightning:tab>
+                <lightning:tab id="preview" label="Preview" >
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col form-grid-padding  slds-size_1-of-1">
+                            <div class="{! join(' ', 
+                                        'slds-form-element slds-form-element_readonly',
+                                        v.isCompactLayout? 'slds-form-element_horizontal' : 'slds-form-element_stacked'
+                                        )}">
+                                <span class="slds-form-element__label">Subject</span>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-form-element__static">
+                                        {!v.bugSubject}&nbsp;&nbsp;{!v.thread_Id}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col form-grid-padding slds-size_1-of-1">
+                            <div class="{! join(' ', 
+                                        'slds-form-element slds-form-element_readonly',
+                                        v.isCompactLayout? 'slds-form-element_horizontal' : 'slds-form-element_stacked'
+                                        )}">
+                                <span class="slds-form-element__label">To Address</span>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-form-element__static">
+                                        {!$Label.c.DigibankSupport_Email}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="slds-scrollable">
+                        <div class="min-width-medium">
+                            <lightning:formattedRichText label="body" value="{!v.previewContent}"/>
+                        </div>
+                    </div>
+                </lightning:tab>
+            </lightning:tabset>
+                      
+            
+           
         </div>
         <footer class="modal-footer  slds-modal__footer">
             <lightning:button disabled="{!v.loading}" label="Close" title="Close" onclick="{! c.closeAction }"/>
-            <lightning:button disabled="{!v.loading}" onclick="{!c.processInfo}" variant="brand" label="Process" title="Process"  />
+            <lightning:button disabled="{!v.loading}" onclick="{!c.processInfo}" variant="brand" label="Send Mail" title="Send Mail"  />
         </footer>
     </section>
 </aura:component>

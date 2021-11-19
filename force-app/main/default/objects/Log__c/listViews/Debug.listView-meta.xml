@@ -6,6 +6,7 @@
     <columns>Operation__c</columns>
     <columns>Record__c</columns>
     <columns>User__c</columns>
+    <columns>CREATED_DATE</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>RECORDTYPE</field>

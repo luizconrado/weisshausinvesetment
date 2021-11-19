@@ -1,8 +1,11 @@
 <aura:component  controller="UploadFileController" implements="lightning:isUrlAddressable,force:hasRecordId,force:lightningQuickActionWithoutHeader,force:hasSObjectName" >
     <lightning:workspaceAPI aura:id="workspace"/>
     <lightning:notificationsLibrary aura:id="notifLib"/>
+    <lightning:navigation aura:id="navService"/>
+
     <aura:handler name='init' value='{!this}' action='{!c.onInit}' />
     
+    <aura:attribute type="boolean"  name="isPopup" default="false"/>
     <aura:attribute type="boolean"  name="loading" default="false"/>
     <aura:attribute type="boolean"  name="isSubTab" default="false"/>
     <aura:attribute type="List"  name="fileTypes" default="[]" />

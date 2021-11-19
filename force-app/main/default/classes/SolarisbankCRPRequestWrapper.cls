@@ -4,6 +4,8 @@ public class SolarisbankCRPRequestWrapper {
     @AuraEnabled public String status; 
     @AuraEnabled public String url; 
     @AuraEnabled public DateTime updated_at; 
+    @AuraEnabled public DateTime created_at; 
+    
     @AuraEnabled public List<errorsWrapper> errors; 
    
     Public class errorsWrapper{
@@ -31,7 +33,7 @@ public class SolarisbankCRPRequestWrapper {
             data.status='SUCCESS';
             data.url='www.google.com';
             data.updated_at=Datetime.now();
-         
+            HttpResponse resp = new HttpResponse(); 
             if(isError){
                 errorsWrapper wrap=new errorsWrapper();
                 wrap.code='404';
@@ -39,14 +41,17 @@ public class SolarisbankCRPRequestWrapper {
                 wrap.detail='Error';
                 data.id='asdasd';
                 data.errors=new List<errorsWrapper>{wrap};
+                resp.setStatusCode(400); 
+                resp.setStatus('Error'); 
             }
-            
+            else{
+                resp.setStatusCode(200); 
+                resp.setStatus('OK'); 
+            }
                          
-            HttpResponse resp = new HttpResponse(); 
+           
             
-            resp.setStatusCode(200); 
             
-            resp.setStatus('success'); 
             resp.setBody(JSON.serialize(data)); 
             return resp; 
         }

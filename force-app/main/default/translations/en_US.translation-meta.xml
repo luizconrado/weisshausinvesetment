@@ -17,6 +17,162 @@
         <name>Sales_Operations</name>
     </customApplications>
     <customLabels>
+        <label><!-- AgentReferalForm_AccountQuestion --></label>
+        <name>AgentReferalForm_AccountQuestion</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_AccountQuestionDescription --></label>
+        <name>AgentReferalForm_AccountQuestionDescription</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_AppStep1 --></label>
+        <name>AgentReferalForm_AppStep1</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_AppStep2 --></label>
+        <name>AgentReferalForm_AppStep2</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_AppStep23 --></label>
+        <name>AgentReferalForm_AppStep23</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_AppStep4 --></label>
+        <name>AgentReferalForm_AppStep4</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_BankDisclamier --></label>
+        <name>AgentReferalForm_BankDisclamier</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_ContactPhoneNumber --></label>
+        <name>AgentReferalForm_ContactPhoneNumber</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_CopyLink --></label>
+        <name>AgentReferalForm_CopyLink</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_Description --></label>
+        <name>AgentReferalForm_Description</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_EVCustomerQuestion --></label>
+        <name>AgentReferalForm_EVCustomerQuestion</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_ErrorTitle --></label>
+        <name>AgentReferalForm_ErrorTitle</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_GenerateLink --></label>
+        <name>AgentReferalForm_GenerateLink</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_HeaderText --></label>
+        <name>AgentReferalForm_HeaderText</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_IsCustomerQuestion --></label>
+        <name>AgentReferalForm_IsCustomerQuestion</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_LINKCOPIED --></label>
+        <name>AgentReferalForm_LINKCOPIED</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_OpenAccount --></label>
+        <name>AgentReferalForm_OpenAccount</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_ReferalCode --></label>
+        <name>AgentReferalForm_ReferalCode</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_ReferalLink --></label>
+        <name>AgentReferalForm_ReferalLink</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_ReferalLinkDescription --></label>
+        <name>AgentReferalForm_ReferalLinkDescription</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_STEP3 --></label>
+        <name>AgentReferalForm_STEP3</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_STEP3BUTTONTEXT --></label>
+        <name>AgentReferalForm_STEP3BUTTONTEXT</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_Step3Description --></label>
+        <name>AgentReferalForm_Step3Description</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_Step3Description2 --></label>
+        <name>AgentReferalForm_Step3Description2</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_Step3Description3 --></label>
+        <name>AgentReferalForm_Step3Description3</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_SubTitle --></label>
+        <name>AgentReferalForm_SubTitle</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_SuccessSubTitle --></label>
+        <name>AgentReferalForm_SuccessSubTitle</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_SuccessTitle --></label>
+        <name>AgentReferalForm_SuccessTitle</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_TC2TEXT --></label>
+        <name>AgentReferalForm_TC2TEXT</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_TCTEXT --></label>
+        <name>AgentReferalForm_TCTEXT</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_TCTEXT2 --></label>
+        <name>AgentReferalForm_TCTEXT2</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_TCTEXT3 --></label>
+        <name>AgentReferalForm_TCTEXT3</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_TCTEXT4 --></label>
+        <name>AgentReferalForm_TCTEXT4</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_TCTEXT5 --></label>
+        <name>AgentReferalForm_TCTEXT5</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_Title --></label>
+        <name>AgentReferalForm_Title</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_UserEmail --></label>
+        <name>AgentReferalForm_UserEmail</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_UserNameLabel --></label>
+        <name>AgentReferalForm_UserNameLabel</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_UserNameLabel2 --></label>
+        <name>AgentReferalForm_UserNameLabel2</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentReferalForm_UserPhoneLabel --></label>
+        <name>AgentReferalForm_UserPhoneLabel</name>
+    </customLabels>
+    <customLabels>
         <label><!-- Available --></label>
         <name>Available</name>
     </customLabels>
@@ -29,12 +185,20 @@
         <name>Balance</name>
     </customLabels>
     <customLabels>
+        <label><!-- Banking Institution --></label>
+        <name>Banking_Institution</name>
+    </customLabels>
+    <customLabels>
         <label><!-- Case_Jira_AttachmentRequired_validation --></label>
         <name>Case_Jira_AttachmentRequired_validation</name>
     </customLabels>
     <customLabels>
         <label><!-- Case_Jira_Knowledge_validation --></label>
         <name>Case_Jira_Knowledge_validation</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Case_Jira_SupportEmail --></label>
+        <name>Case_Jira_SupportEmail</name>
     </customLabels>
     <customLabels>
         <label><!-- Case_Jira_bankcaseitems_validation --></label>
@@ -55,6 +219,14 @@
     <customLabels>
         <label><!-- Close --></label>
         <name>Close</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Company --></label>
+        <name>Company</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Company name --></label>
+        <name>Company_name</name>
     </customLabels>
     <customLabels>
         <label><!-- ContactButton_Description --></label>
@@ -79,6 +251,10 @@
     <customLabels>
         <label><!-- ContactSupport_Title --></label>
         <name>ContactSupport_Title</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Data Protection Link --></label>
+        <name>Data_Protection_Link</name>
     </customLabels>
     <customLabels>
         <label><!-- DigibankCaseForm_ActualField --></label>
@@ -169,8 +345,112 @@
         <name>DigibankSupport_Email</name>
     </customLabels>
     <customLabels>
+        <label><!-- EarlyTerminationForm_AccountMissingError --></label>
+        <name>EarlyTerminationForm_AccountMissingError</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_Authtunticate --></label>
+        <name>EarlyTerminationForm_Authtunticate</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_AuthtunticateLabel --></label>
+        <name>EarlyTerminationForm_AuthtunticateLabel</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_BookingMissing --></label>
+        <name>EarlyTerminationForm_BookingMissing</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_ContactEV --></label>
+        <name>EarlyTerminationForm_ContactEV</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_CustomerMissingError --></label>
+        <name>EarlyTerminationForm_CustomerMissingError</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_CustomerName --></label>
+        <name>EarlyTerminationForm_CustomerName</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_DepositAccount --></label>
+        <name>EarlyTerminationForm_DepositAccount</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_InvaidTaxId --></label>
+        <name>EarlyTerminationForm_InvaidTaxId</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_Invalid --></label>
+        <name>EarlyTerminationForm_Invalid</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_InvalidMartialStatus --></label>
+        <name>EarlyTerminationForm_InvalidMartialStatus</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_InvalidToken --></label>
+        <name>EarlyTerminationForm_InvalidToken</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_IsSpouseAddress --></label>
+        <name>EarlyTerminationForm_IsSpouseAddress</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_NoBooking --></label>
+        <name>EarlyTerminationForm_NoBooking</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_ReasonForTermination --></label>
+        <name>EarlyTerminationForm_ReasonForTermination</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_SelectStartDate --></label>
+        <name>EarlyTerminationForm_SelectStartDate</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_SpouseAddress --></label>
+        <name>EarlyTerminationForm_SpouseAddress</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_SpouseName --></label>
+        <name>EarlyTerminationForm_SpouseName</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_SpuseBirthDate --></label>
+        <name>EarlyTerminationForm_SpuseBirthDate</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_SpuseTaxId --></label>
+        <name>EarlyTerminationForm_SpuseTaxId</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_StartDate --></label>
+        <name>EarlyTerminationForm_StartDate</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_Success --></label>
+        <name>EarlyTerminationForm_Success</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_SuccessTitle --></label>
+        <name>EarlyTerminationForm_SuccessTitle</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EarlyTerminationForm_TaxId --></label>
+        <name>EarlyTerminationForm_TaxId</name>
+    </customLabels>
+    <customLabels>
         <label><!-- EmailAddress --></label>
         <name>EmailAddress</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Email Address --></label>
+        <name>Email_Address</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- End_Date --></label>
+        <name>End_Date</name>
     </customLabels>
     <customLabels>
         <label><!-- FirstName --></label>
@@ -181,8 +461,28 @@
         <name>GoogleMapApiToken</name>
     </customLabels>
     <customLabels>
+        <label><!-- License partner --></label>
+        <name>License_partner</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Martial Status --></label>
+        <name>Martial_Status</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Natural person --></label>
+        <name>Natural_person</name>
+    </customLabels>
+    <customLabels>
         <label><!-- Next --></label>
         <name>Next</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- No --></label>
+        <name>No</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Org Domain --></label>
+        <name>Org_Domain</name>
     </customLabels>
     <customLabels>
         <label><!-- PhoneNumber --></label>
@@ -191,6 +491,10 @@
     <customLabels>
         <label><!-- Privacy Web Link --></label>
         <name>Privacy_Web_Link</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Real estate advisor --></label>
+        <name>Real_estate_advisor</name>
     </customLabels>
     <customLabels>
         <label><!-- ReasonForUnsubscribeText --></label>
@@ -209,8 +513,28 @@
         <name>SignOut</name>
     </customLabels>
     <customLabels>
+        <label><!-- Start Date --></label>
+        <name>Start_Date</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Step --></label>
+        <name>Step</name>
+    </customLabels>
+    <customLabels>
         <label><!-- Surname --></label>
         <name>Surname</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- TermDepositTaxExemptionOrderForm_InvalidTitle --></label>
+        <name>TermDepositTaxExemptionOrderForm_InvalidTitle</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- TermDepositTaxExemptionOrderForm_SuccessTitle --></label>
+        <name>TermDepositTaxExemptionOrderForm_SuccessTitle</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- TermDepositTaxExemptionOrderForm_Title --></label>
+        <name>TermDepositTaxExemptionOrderForm_Title</name>
     </customLabels>
     <customLabels>
         <label><!-- TermsAndConditionsText --></label>
@@ -245,6 +569,10 @@
         <name>UnsubscribeText</name>
     </customLabels>
     <customLabels>
+        <label><!-- Users Exclusion --></label>
+        <name>Users_Exclusion</name>
+    </customLabels>
+    <customLabels>
         <label><!-- VerifiedAccountText --></label>
         <name>VerifiedAccountText</name>
     </customLabels>
@@ -261,8 +589,16 @@
         <name>WissehouseWebsite_Url</name>
     </customLabels>
     <customLabels>
+        <label><!-- Yes --></label>
+        <name>Yes</name>
+    </customLabels>
+    <customLabels>
         <label><!-- community_uri --></label>
         <name>community_uri</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- evsmartmoney_URL --></label>
+        <name>evsmartmoney_URL</name>
     </customLabels>
     <customLabels>
         <label><!-- form_error_msg --></label>
@@ -292,6 +628,14 @@
         <label><!-- Usage Dashboard --></label>
         <name>Usage_Dashboard</name>
     </customTabs>
+    <flowDefinitions>
+        <flows/>
+        <fullName>New_Case_Customer_Mail</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>RE_Opportunity_Notification</fullName>
+    </flowDefinitions>
     <flowDefinitions>
         <flows/>
         <fullName>Subscription_Emails</fullName>
@@ -360,4 +704,30 @@
         <label><!-- Snapins_Contact_PrechatQuickAction_08h5I000000fySh_1603913484965 --></label>
         <name>Snapins_Contact_PrechatQuickAction_08h5I000000fySh_1603913484965</name>
     </quickActions>
+    <reportTypes>
+        <description><!-- Accounts with Bank Accounts --></description>
+        <label><!-- Accounts with Bank Accounts --></label>
+        <name>Accounts_with_Bank_Accounts</name>
+        <sections>
+            <label><!-- Accounts --></label>
+            <name>Accounts</name>
+        </sections>
+        <sections>
+            <label><!-- Bank Accounts --></label>
+            <name>Bank Accounts</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Bildschirm-Flows --></description>
+        <label><!-- Bildschirm-Flows --></label>
+        <name>screen_flows_prebuilt_crt</name>
+        <sections>
+            <label><!-- Flow-Interviewprotokolle --></label>
+            <name>Flow-Interviewprotokolle</name>
+        </sections>
+        <sections>
+            <label><!-- Flow-Interviewprotokolleinträge --></label>
+            <name>Flow-Interviewprotokolleinträge</name>
+        </sections>
+    </reportTypes>
 </Translations>

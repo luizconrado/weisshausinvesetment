@@ -20,6 +20,11 @@
                 <label>E&amp;V Ambassadors</label>
             </value>
             <value>
+                <fullName>E&amp;V Brokers</fullName>
+                <default>false</default>
+                <label>E&amp;V Brokers</label>
+            </value>
+            <value>
                 <fullName>E&amp;V Friends</fullName>
                 <default>false</default>
                 <label>E&amp;V Friends</label>
@@ -48,6 +53,11 @@
                 <fullName>Friends &amp; Family</fullName>
                 <default>false</default>
                 <label>Friends &amp; Family</label>
+            </value>
+            <value>
+                <fullName>Referral Code Website</fullName>
+                <default>false</default>
+                <label>Referral Code Website</label>
             </value>
             <value>
                 <fullName>Solarisbank</fullName>
@@ -86,6 +96,14 @@
         <valueSettings>
             <controllingFieldValue>Alpha Test</controllingFieldValue>
             <valueName>Solarisbank</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Intranet Website</controllingFieldValue>
+            <valueName>E&amp;V Brokers</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Intranet Website</controllingFieldValue>
+            <valueName>Referral Code Website</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>

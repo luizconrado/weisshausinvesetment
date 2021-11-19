@@ -213,7 +213,9 @@ public with sharing class BankCaseService {
         }
         catch(Exception e){
             String index = logError(e,bankCaseDetails.Id,'Bank_Case_Item__c','BankCaseCardStatusChange','initiateCardStatusChange','Change Card Status');
-            throw new AuraHandledException('Please contact your System admin.And provide '+index+' id to resolve issue.');
+            AuraHandledException error= new AuraHandledException('Please contact your System admin.And provide '+index+' id to resolve issue.');
+            error.setMessage(error.getMessage());
+            throw error;
             
         }        
     }
@@ -299,6 +301,7 @@ public with sharing class BankCaseService {
             if(tanUrlResponse.errors!=null && tanUrlResponse.errors.size()>0){
                 Change_Request_Log__c changeRequestLog=new Change_Request_Log__c();
                 changeRequestLog.Solarisbank_Id__c=tanUrlResponse.id;
+                changeRequestLog.Operation__c='Update Account Details';
                 changeRequestLog.Object_Name__c='Bank_Case_Item__c';
                 changeRequestLog.Record_Id__c=recordId;
                 changeRequestLog.Status__c='FAILED';
@@ -311,6 +314,7 @@ public with sharing class BankCaseService {
                 Change_Request_Log__c changeRequestLog=new Change_Request_Log__c();
                 changeRequestLog.Solarisbank_Id__c=tanUrlResponse.id;
                 changeRequestLog.Object_Name__c='Bank_Case_Item__c';
+                changeRequestLog.Operation__c='Update Account Details';
                 changeRequestLog.Record_Id__c=recordId;
                 changeRequestLog.Status__c=tanUrlResponse.status;
                 changeRequestLog.Updated_At__c=tanUrlResponse.updated_at;
@@ -325,6 +329,7 @@ public with sharing class BankCaseService {
             Change_Request_Log__c crpRequestLog=new Change_Request_Log__c();
             crpRequestLog.Solarisbank_Id__c=crpResponse.id;
             crpRequestLog.Object_Name__c='Bank_Case_Item__c';
+            crpRequestLog.Operation__c='Update Account Details';
             crpRequestLog.Record_Id__c=recordId;
             crpRequestLog.Status__c=crpResponse.status;
             crpRequestLog.Updated_At__c=crpResponse.updated_at;
@@ -359,6 +364,7 @@ public with sharing class BankCaseService {
             if(tanUrlResponse.errors!=null && tanUrlResponse.errors.size()>0){
                 crpRequestLog.Solarisbank_Id__c=tanUrlResponse.errors.get(0).id;
                 crpRequestLog.Object_Name__c='Bank_Case_Item__c';
+                crpRequestLog.Operation__c='Update Account Details';
                 crpRequestLog.Record_Id__c=recordId;
                 crpRequestLog.Status__c='FAILED';
                 crpRequestLog.Description__c=tanUrlResponse.errors.get(0).title +' : '+tanUrlResponse.errors.get(0).detail;
@@ -367,6 +373,7 @@ public with sharing class BankCaseService {
             else{
                 crpRequestLog.Solarisbank_Id__c=tanUrlResponse.id;
                 crpRequestLog.Object_Name__c='Bank_Case_Item__c';
+                crpRequestLog.Operation__c='Update Account Details';
                 crpRequestLog.Record_Id__c=recordId;
                 crpRequestLog.Status__c=tanUrlResponse.status;
                 crpRequestLog.Updated_At__c=tanUrlResponse.updated_at;
@@ -425,9 +432,8 @@ public with sharing class BankCaseService {
         }
         catch(Exception e){
             String index = logError(e,bankCaseId,'Bank_Case_Item__c','BankCaseRequestNewCard','requestCreateNewCard','Request For New Card');
-            AuraHandledException exp=new AuraHandledException('Please contact your System admin.And provide '+index+' id to resolve issue.');
-            exp.setMessage(e.getMessage());
-            throw exp;
+            throw new AuraHandledException('Please contact your System admin.And provide '+index+' id to resolve issue.');
+             
         }
     }
     

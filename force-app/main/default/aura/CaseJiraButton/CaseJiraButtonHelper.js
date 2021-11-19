@@ -2,13 +2,21 @@
  
     //server calls
     save: function (component) {
+        let fileVersions=component.get('v.fileVersions');
+        let selectedVersions=fileVersions.filter(file=>file.selected).map(file=>file.Id);
         let _helper = this;
         component.set('v.loading', true);
         _helper.callApex(component, 'updateJiraInformation', function (response) {
             let state = response.getState();
             let data = response.getReturnValue();
             if (state === "SUCCESS") {
-                _helper.showToast('Success', 'Jira Description update.', 'success');
+                if(data){
+                	_helper.showToast('Success', 'Email sent successfully and case is updated.', 'success');    
+                }
+                else{
+                    _helper.showToast('Error', 'There was error in sending email, please contact your system administartor.', 'error');    
+                }
+                
                 $A.get('e.force:refreshView').fire();
                 $A.get("e.force:closeQuickAction").fire();
             }
@@ -26,7 +34,8 @@
         }, {
             caseId: component.get('v.recordId'),
             subject: component.get('v.subject'),
-            discription: component.get('v.body') 
+            discription: component.get('v.body'),
+            contentVersionsIds:selectedVersions
         });
     },
     getAllProcessDetails: function (component) {
@@ -67,11 +76,9 @@
             if (state === "SUCCESS") {
                 if (data.length > 0) {
                     let caseDetails = data[0];
-                    console.log('caseDetails',caseDetails)
-                    if(caseDetails.Bank_Case_Items__r == undefined) component.set('v.isCaseItemsAttached', false);
+                     if(caseDetails.Bank_Case_Items__r == undefined) component.set('v.isCaseItemsAttached', false);
                     
-                    console.log(caseDetails);
-                    component.set('v.caseDetails', caseDetails);
+                     component.set('v.caseDetails', caseDetails);
                     component.set('v.selectedType', caseDetails['Type']);
                     _helper.setDependentCaseTypes(component, caseDetails['Type'], caseDetails['Type_II__c']);
                     
@@ -110,6 +117,7 @@
                         files.forEach(function(file,index){
                             file.ContentModifiedDate=_helper.formatDateTime(file.ContentModifiedDate);
                             file.expaned=false;
+                            file.selected=false;
                             if(index==0){
                                 parentFile=file;
                             }
@@ -950,10 +958,8 @@
                         
                     }
                         else if(selectedTypeII=='Card Decline'.toUpperCase()){
-                            console.log('caseBookingsItemList',caseBookingsItemList)
-                            let selectedBookings=caseBookingsItemList.filter(book=>book.selected);
-                            console.log('selectedBookings',selectedBookings)
-                            summary = item.Solarisbank_Id__c + ' - ' + item.Person_Account__r.Legal_Name__c + ' - Card Decline';
+                             let selectedBookings=caseBookingsItemList.filter(book=>book.selected);
+                             summary = item.Solarisbank_Id__c + ' - ' + item.Person_Account__r.Legal_Name__c + ' - Card Decline';
                             description = 'Details of the request = ' + caseDetails.Internal_Description__c;
                             description += '\n';
                             description += '\n';
@@ -1092,8 +1098,7 @@
         
         if(nextStep=='3' && (selectedTypeII=='Direct Debit Return' || selectedTypeII=='Outgoing Payment investigation' || selectedTypeII=='Incoming Payment investigation' || selectedTypeII=='Payment Recall')){
             let selectedItemId=component.get('v.selectedItemId' );
-            console.log('selectedItemId',selectedItemId)
-            if(!selectedItemId){
+             if(!selectedItemId){
                 _helper.showToast('Booking missing', 'Please Select Booking', 'warning');
                 return;
             }

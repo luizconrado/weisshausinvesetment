@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Newsletter June 2021</name>
+    <style>none</style>
+    <subject>Smart ist: Kunden an der Produktentwicklung zu beteiligen</subject>
+    <textOnly>E&amp;V SmartMoney Newsletter Juni 2021
+
+Juni 2021
+
+{!Contact.Email_Honorific__c},
+
+Ein bequemes und sicheres Investment - das wollen wir unseren Kunden bieten. Daher haben wir mit zahlreichen Pilotkunden unser erstes Anlageangebot getestet. Was es damit auf sich hat und welche Rolle hierbei unsere Partner und ihre hohen Sicherheitsstandards spielen, möchten wir Ihnen heute zeigen.
+
+Unser erstes Anlageangebot im Test - Die Immobilienanleihe
+
+Unsere Immobilienanleihe wird ein festverzinstes Wertpapier mit vorgegebener Laufzeit sein, welches durch Grundschulden und Mietforderungen hochgradig besichert ist.
+
+Damit Sie Ihr Investment bequem abwickeln können, haben wir den mobilen Abschlussprozess der Immobilienanleihe mit Pilotkunden getestet. Unsere Tester zeigten sich sehr interessiert an dem Produkt und zufrieden mit der Benutzeroberfläche. Es wurde der Wunsch nach einem noch schnelleren Kaufprozess geäußert - darauf liegt nun unser Fokus.
+
+
+Immobilie verkaufen und Zeit gewinnen - Unser Festgeldkonto
+
+Besonders nach dem Verkauf einer Immobilie benötigt man Zeit, um neue Investitionen zu planen. Doch diese Zeit kostet Sie Geld. Entweder weil Ihr Erlös ungenutzt auf einem Bankkonto liegt oder dort sogar von Verwahrentgelten belastet wird.
+
+Auch hier haben wir an einer Lösung gearbeitet. Unser Festgeldkonto verschafft Ihnen zukünftig eine feste Rendite für Ihren Verkaufserlös. Während des dreimonatigen Anlagezeitraums haben Sie ausreichend Zeit, neue Investitionen zu planen. Das Festgeldangebot wird mobil abschließbar sein und  ist ein exklusives Angebot für die Verkaufskunden von Engel &amp; Völkers.
+
+
+Ihre Sicherheit liegt uns am Herzen!
+
+Als Dienstleister im Bereich Online-Banking und -Investment ist es uns ein persönliches Anliegen, dass Ihr Vermögen und Ihre Daten jederzeit sicher sind. Deshalb arbeiten wir nur mit zertifizierten und etablierten Partnern zusammen.
+
+Die Solarisbank, unser Partner in Sachen Banking, ist als Banking-as-a-Service Dienstleister darauf spezialisiert, uns die Infrastruktur bereitzustellen, die wir benötigen um Ihnen ein modernes Bankerlebnis bieten zu können
+
+Als Institut mit Vollbanklizenz wird die Solarisbank von der Bundesanstalt für Finanzdienstleistungsaufsicht (BaFin) beaufsichtigt. Darüber hinaus ist sie Mitglied des deutschen Einlagensicherungsfonds, damit ist Ihr Kontoguthaben bis zu einer Höhe von 100.000 € abgesichert.
+
+Für die Kontrolle und Verwahrung von Anlagen, wie zum Beispiel der geplanten Immobilienanleihe haben wir einen etablierten deutschen Partner mit jahrelanger Erfahrung ausgesucht. Unser Depotbankpartner arbeitet seit Jahrzehnten zuverlässig im Bereich Investmentfonds und handelt als professionelle und vertrauenswürdige Verwahrstelle nur in Ihrem Interesse.
+
+
+Sollten Sie Fragen bezüglich unserer Produktentwicklung und Partner haben, schreiben Sie uns einfach eine E-Mail oder rufen Sie uns direkt an. Sie erreichen uns von 9 Uhr bis 18 Uhr (Mo.-Fr.) unter +49 30 743 959 59. Gerne registrieren wir Sie auch für kommende Produkttests. Wir freuen uns über Ihr Engagement und hoffen, Sie bald persönlich kennenzulernen.
+
+
+Herzliche Grüße,
+
+Ihr
+Dr. Kyros Khadjavi CEO
+Philipp Schemel CCO
+
+
+Sie erhalten diese E-Mail, da Ihre E-Mail-Adresse auf www.ev-smartmoney.com registriert ist. Wenn Sie Fragen oder Rückmeldungen haben sind wir per E-Mail unter support@ev-smartmoney.com oder unter folgender Telefonnummer gerne für Sie da: +49 30 74395959 (Mo-Fr: 9-18 Uhr)
+
+
+Copyright © EV Smart Money Holding GmbH | HRB 215045 B | Amtsgericht Charlottenburg | Lizenzpartner der Engel &amp; Völkers Marken GmbH &amp; Co. KG | Klaus-Groth-Straße 3, 14050 Berlin, Germany. | Geschäftsführung: Dr. Kyros Khadjavi |  abmelden</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

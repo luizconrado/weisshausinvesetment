@@ -60,10 +60,6 @@
         <layout>Lightning Knowledge FAQ Layout</layout>
         <sections>
             <label></label>
-            <section>Article Details</section>
-        </sections>
-        <sections>
-            <label></label>
             <section>Category</section>
         </sections>
         <sections>
@@ -74,16 +70,20 @@
             <label></label>
             <section>Properties</section>
         </sections>
+        <sections>
+            <label></label>
+            <section>Publishing Info</section>
+        </sections>
     </layouts>
     <layouts>
         <layout>Solarisbank Layout</layout>
         <sections>
             <label></label>
-            <section>Custom Links</section>
+            <section>Category</section>
         </sections>
         <sections>
             <label></label>
-            <section>Information</section>
+            <section>Custom Links</section>
         </sections>
         <sections>
             <label></label>

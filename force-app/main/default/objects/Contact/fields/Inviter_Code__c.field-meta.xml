@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Inviter_Code__c</fullName>
+    <description>Code used by a customer to invite other customers into our platform</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Code used by a customer to invite other customers into our platform</inlineHelpText>
+    <label>Inviter Code</label>
+    <length>40</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

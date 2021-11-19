@@ -165,6 +165,21 @@
             changes.tax_information.marital_status=accountDetails.Marital_Status__c;
         }    
         
+        if(changes.address){
+            if(changes.address.line_1 && changes.address.line_1.length>=35){
+                helper.showToast('Warning','Street 1 cannot be more then 35 char','warning');
+                component.set('v.isClose',true);
+                component.set('v.currentStep','1');
+                return;
+            }
+            if(changes.address.line_2 && changes.address.line_2.length>=35){
+                helper.showToast('Warning','Street 2 cannot be more then 35 char','warning');
+                component.set('v.isClose',true);
+                component.set('v.currentStep','1');
+                return;
+            }
+            
+        }
         
         component.set('v.accountDetailsChanged',changes);
         

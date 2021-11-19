@@ -4,6 +4,7 @@
     <externalId>false</externalId>
     <label>Type</label>
     <required>false</required>
+    <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
@@ -23,6 +24,11 @@
                 <fullName>CALL_MONEY</fullName>
                 <default>false</default>
                 <label>Call Money</label>
+            </value>
+            <value>
+                <fullName>TERM_DEPOSIT</fullName>
+                <default>false</default>
+                <label>Term Deposit</label>
             </value>
         </valueSetDefinition>
     </valueSet>

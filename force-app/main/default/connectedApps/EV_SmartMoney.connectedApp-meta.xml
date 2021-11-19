@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>support@ev-smartmoeny.com</contactEmail>
+    <label>EV SmartMoney</label>
+    <oauthConfig>
+        <callbackUrl>https://ev-smartmoney.secure.force.com/</callbackUrl>
+        <consumerKey>3MVG9wEVwV0C9ejAjQ5frs.3rQFjdaQD4VCe808YJI1sRyWWajf6VKuuuQucyvCPl9y6hsfdvs3FHz.gutN8h</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <scopes>Basic</scopes>
+        <scopes>Api</scopes>
+        <scopes>Full</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

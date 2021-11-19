@@ -1,112 +1,155 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
     <aura:handler name='init' value='{!this}' action='{!c.onInit}' />
-    <aura:attribute type="String" name="footerlogo" />
-    <div >
-        <div class="divider" > </div>
-        <div class="wrapper">
-            <div class="community-wrapper">
-                <div class="community-footer">
-                    <div class="community-footer__column">
-                        <div class="community-footer__column--item">
-                            <h4>
-                                Engel &amp; Völkers Smart Money
-                            </h4>
-                        </div>
-                        <!--
-                <div class="community-footer__column-item">
-                    <a href="{!$Label.c.WissehouseWebsite_Url+'/about-us'}">
-                        Über uns
-                    </a>
-                </div>
-                <div class="community-footer__column-item">
-                    <a href="{!$Label.c.WissehouseWebsite_Url+'/presse'}">
-                        Presse
-                    </a>
-                </div>
-                <div class="community-footer__column-item">
-                    <a href="{!$Label.c.WissehouseWebsite_Url+'/karriere'}">
-                        Karriere
-                    </a>
-                </div>
+    <aura:attribute type="String" name="hostUrl"/>
     
-                <div class="community-footer__column-item">
-                    <a href="https://support.ev-smartmoney.com/">
-                        Unterstützung
-                    </a>
-                </div>
-    -->
+    <aura:attribute type="String" name="footerlogo" />
+    <aura:attribute type="String" name="emailIcon" />
+    <aura:attribute type="String" name="clockIcon" />
+    <aura:attribute type="String" name="homeIcon" /> 
+    <aura:attribute type="String" name="phoneIcon" /> 
+    
+    <div >
+        <div class="community_footer">
+            <div class="community_footer-container">
+                <div class="slds-grid slds-wrap flex-reverse">
+                    <div class="slds-col slds-size_8-of-12  align-center_mobile fotter_item_p_desktop-large">
+                        <div class="slds-grid slds-wrap flex-coloum">
+                            <div class="list_p_large_desktop align-center_mobile">
+                                <p class="community_footer_section-title">Engel &amp; Völkers Smart Money</p>
+                                <ul class="community_footer_section-list">
+                                    <li>
+                                        <a   rel="noreferrer" href="{!v.hostUrl+'/de/immobilien'}" target="_blank">
+                                            Immobilien </a>
+                                    </li>
+                                    <li>
+                                        <a  rel="noreferrer" href="{!v.hostUrl+'/de/banking'}" target="_blank">
+                                            Banking
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a   rel="noreferrer" href="{!v.hostUrl+'/de/uberuns'}" target="_blank">
+                                            Über uns
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a   rel="noreferrer" href="{!v.hostUrl+'/de/support'}" target="_blank">
+                                            Support 
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a   rel="noreferrer" href="{!v.hostUrl+'/de/news'}" target="_blank">
+                                            News 
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="slds-col  align-center_mobile">
+                                <p class="community_footer_section-title">
+                                    Vertragliche Unterlagen
+                                </p>
+                                <ul class="community_footer_section-list">
+                                    <li  >
+                                        <a   rel="noreferrer" href="{!v.hostUrl+'/de/impressum'}" target="_blank">
+                                            Impressum
+                                        </a>
+                                    </li>
+                                    <li  >
+                                        <a   rel="noreferrer" href="{!v.hostUrl+'/de/verbraucherinformationen'}" target="_blank">
+                                            Wichtige Verbraucherinformationen
+                                        </a>
+                                    </li>
+                                </ul>
+                                
+                            </div>
+                        </div>
                     </div>
-                    <div class="community-footer__column">
-                        <div class="community-footer__column--item">
-                            <h4>
-                                Vertragliche Unterlagen
-                            </h4>
-                        </div>
-                        <div class="community-footer__column--item">
-                            <a href="{!$Label.c.WissehouseWebsite_Url+'/datenschutz'}">
-                                Datenschutz
-                            </a>
-                        </div>
-                        <div class="community-footer__column--item">
-                            <a href="{!$Label.c.WissehouseWebsite_Url+'/imprint'}">
-                                Impressum
-                            </a>
-                        </div>
-                        <div class="community-footer__column--item">
-                            <a href="{!$Label.c.WissehouseWebsite_Url+'/agbs'}">
-                                AGB
-                            </a>
-                        </div>
-                    </div>
-                    <div class="community-footer__column">
-                        <div class="community-footer__column--item">
-                            <h4>
+                    <div class="slds-col  slds-col_bump-right  align-center_mobile fotter_item_p_desktop-large">
+                        <div class="text-center text-lg-start">
+                            <p class="community_footer_section-title-contact">
                                 Kontakt
-                            </h4>
+                            </p>
+                            <hr class="community_footer_section-title-contact_divider"/>
                         </div>
-                        <div class="community-footer__column--item divider">
-                            
-                        </div>
-                        <div class="community-footer__column--item">
-                            <a href="https://www.google.com/maps/place/Hardenbergstra%C3%9Fe+32,+10623+Berlin/data=!4m2!3m1!1s0x47a850fdf51b3449:0x5465c8f77a8f122?sa=X&amp;ved=2ahUKEwirnpSDnvznAhVGMewKHaA3AaUQ8gEwAHoECAwQAQ"
-                               target="_blank">
-                                Klaus-Groth-Straße 3, 14050 Berlin
-                            </a>
-                        </div>
-                        <div class="community-footer__column--item">
-                            <a href="mailto:contact@ev-smartmoney.de" target="_blank">
-                                contact@ev-smartmoney.de
-                            </a>
-                        </div>
-                        <div class="community-footer__column--item">
-                            <a href="tel:+493074395959" target="_blank">
-                                Tel: +49 3074395959
-                            </a>
-                        </div>
-                        <div class="community-footer__column--item">
-                            <a href="https://support.ev-smartmoney.com/s/">
-                                Support
-                            </a>
-                        </div>
-                        <div class="community-footer__column--item extra-padding">
-                            <h4>
-                                Kontaktzeiten
-                            </h4>
-                        </div>
-                        <div class="community-footer__column--item text-item">
-                            <a>Montag - Freitag: 09.00 - 18.00 Uhr</a>
-                        </div>
+                        <ul class="community_footer_section-title-contact_list">
+                            <li  >
+                                <img class="info-icon" src="{!v.phoneIcon}"></img>
+                                <span  >
+                                    <a href="tel:+49 3074395959">
+                                        +49 3074395959
+                                    </a>
+                                </span>
+                            </li>
+                        </ul>
+                        <ul class="community_footer_section-title-contact_list">
+                            <li  >
+                                <img class="info-icon" src="{!v.homeIcon}"></img>
+                                <span >
+                                    Klaus-Groth-Straße 3, 14050 Berlin
+                                </span>
+                            </li>
+                        </ul>
+                        <ul class="community_footer_section-title-contact_list">
+                            <li  >
+                                <img class="info-icon" src="{!v.emailIcon}"></img>
+                                <span  >
+                                    <a href="mailto:contact@ev-smartmoney.com">contact@ev-smartmoney.com</a>
+                                    
+                                </span>
+                            </li>
+                        </ul>
+                        <ul class="community_footer_section-title-contact_list">
+                            <li  >
+                                <img class="info-icon" src="{!v.clockIcon}"></img>
+                                <span  >Montag - Freitag: 09.00 - 18.00 Uhr</span>
+                            </li>
+                        </ul>
                     </div>
                     
                 </div>
-                
+                <div class="footer__container">
+                    <div class="container">
+                        <div class="footer__logo-row">
+                            <div class="footer__logo">
+                                <img src="https://www.datocms-assets.com/49780/1624878403-e-v-logo.png?auto=format" alt="Engel &amp; Völkers Logo" width="200" height="60">
+                                </img>
+                            </div>
+                            <div class="footer__logo">
+                                <img src="https://www.datocms-assets.com/49780/1624878455-e-v-capital.png?auto=format" alt="Engel &amp; Völkers Capital" width="202" height="60">
+                                </img>
+                            </div>
+                            <div class="footer__logo">
+                                <img src="https://www.datocms-assets.com/49780/1624878481-e-v-charity.png?auto=format" alt="Engel &amp; Völkers Charity" width="204" height="60">
+                                </img>
+                            </div>
+                            <div class="footer__logo">
+                                <img src="https://www.datocms-assets.com/49780/1624878513-e-v-commercial.png?auto=format" alt="Engel &amp; Völkers Commercial" width="202" height="60">
+                                </img>
+                            </div>
+                            <div class="footer__logo">
+                                <img src="https://www.datocms-assets.com/49780/1624878565-e-v-yachting.png?auto=format" alt="Engel &amp; Völkers Yachting" width="200" height="60">
+                                    
+                                </img>
+                            </div>
+                            <div class="footer__logo">
+                                <img src="https://www.datocms-assets.com/49780/1624878537-e-v-polo-school.png?auto=format" alt="Engel &amp; Völkers Polo School" width="198" height="60">
+                                </img>
+                                
+                            </div>
+                            <div class="footer__logo">
+                                <img src="https://www.datocms-assets.com/49780/1624878589-e-v-gg.png?auto=format" alt="Engel &amp; Völkers GG" width="98" height="56">
+                                </img>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="community_fotter-logo">
+                    <img src="{!v.footerlogo}" height="24">
+                    </img>
+                    
+                </div>
             </div>
         </div>
-        <div class="divider" > </div>
-
-        <div class="community-fotter-image">
-            <img width="100" height="20" src="{!v.footerlogo}" class="attachment-thumbnail size-thumbnail" alt="">
-            </img>
-        </div>
+        
+        
     </div>
 </aura:component>

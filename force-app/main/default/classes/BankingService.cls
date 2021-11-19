@@ -3,6 +3,13 @@ public with sharing class BankingService {
     //////////////
     //Constants
     ////////////////
+    @AuraEnabled(cacheable=true) 
+    public static Map<String,String> retriveDefaultTemplatHtml() {
+        return new Map<String,String>{
+            'START'=>Constant.DEFAULT_EV_TEMPLATE_START,
+                'END'=>Constant.DEFAULT_EV_TEMPLATE_END
+                };
+    }
     @AuraEnabled 
     public static Boolean checkIsCompactLayout() {
         return Salesforce.isCompactLayout;
@@ -59,9 +66,9 @@ public with sharing class BankingService {
     //DML
     //////////////
     @AuraEnabled 
-    public static void updateJiraInformation(String caseId,String subject,String discription){
+    public static Boolean updateJiraInformation(String caseId,String subject,String discription,List<String> contentVersionsIds){
         try{
-           
+           Boolean status=false;
             Case c=new Case();
             c.Id=caseId;
             String body='';
@@ -74,8 +81,11 @@ public with sharing class BankingService {
             body+='\n';
             body+=discription;
             c.JIRA_Description__c=body;
+            
+            status= MailUtill.sendEmailWithAttachment(subject,discription.replaceAll('\n','<br/>'), contentVersionsIds, System.Label.Case_Jira_SupportEmail, Constant.EV_SUPPORT_OWD_EMAIL, caseId);
+            if(status)c.status='Jira Ticket';
             update c;
-             
+            return status;
         }
         catch(Exception e){
             LogService.LogMetadata details=new LogService.LogMetadata();
@@ -109,14 +119,12 @@ public with sharing class BankingService {
     public static void retriveIdentificationDetailsAndUpdate(String identifiactionId){
         Identification__c identRecord=[SELECT id,URL__c,Status__c,Completed_At__c,Reference__c,Account__r.Solarisbank_Tenent__c,Solarisbank_Id__c,Account__r.Solarisbank_Id__c FROM Identification__c WHERE id=:identifiactionId];
         LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(identRecord.Id,'Identification__c',identRecord.Account__r.Solarisbank_Tenent__c);
- 		String responseString=SolarisbankService.fetchIdentificationRequestDetails(identRecord.Account__r.Solarisbank_Id__c,identRecord.Solarisbank_Id__c,apiCallDetails);
         String identifiactionStatusString=SolarisbankService.fetchIdentificationDetails(identRecord.Account__r.Solarisbank_Id__c,identRecord.Solarisbank_Id__c,apiCallDetails);
-        SolarisBankIdentificationWrapper response=SolarisBankIdentificationWrapper.parse(responseString);
         SolarisBankIdentificationWrapper identifiactionStatus=SolarisBankIdentificationWrapper.parse(identifiactionStatusString);
-		if(String.isNotEmpty(identifiactionStatus.completed_at)) identRecord.Completed_At__c=DateTime.valueOf(identifiactionStatus.completed_at.replace('T',' '));
+        if(String.isNotEmpty(identifiactionStatus.completed_at)) identRecord.Completed_At__c=DateTime.valueOf(identifiactionStatus.completed_at.replace('T',' '));
         if(String.isNotEmpty(identifiactionStatus.status)) identRecord.Status__c=identifiactionStatus.status;
-        if(String.isNotEmpty(response.url)) identRecord.URL__c=response.url;
-        if(String.isNotEmpty(response.reference)) identRecord.Reference__c=response.reference;
+        if(String.isNotEmpty(identifiactionStatus.url)) identRecord.URL__c=identifiactionStatus.url;
+        if(String.isNotEmpty(identifiactionStatus.reference)) identRecord.Reference__c=identifiactionStatus.reference;
         update identRecord;
         
     }

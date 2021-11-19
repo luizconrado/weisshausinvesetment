@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Fields__c</field>
-        <value xsi:type="xsd:string">Status</value>
+        <value xsi:type="xsd:string">IsDeleted, CaseNumber, ContactId, AccountId, AssetId, SourceId, BusinessHoursId, ParentId, SuppliedName, SuppliedEmail, SuppliedPhone, SuppliedCompany, Type, RecordTypeId, Status, Reason, Origin, Language, Subject, Priority, Description, IsClosed, ClosedDate, IsEscalated, CurrencyIsoCode, OwnerId, IsClosedOnCreate, CreatedDate, CreatedById, LastModifiedDate, LastModifiedById, ContactPhone, ContactMobile, ContactEmail, ContactFax, Comments, Is_Test__c, Type_II__c, JIRA_Description__c, Internal_Description__c, Email_Honorific__c, Actual_Result__c, App_Version__c, Expected_Result__c, Occurrence_Of_Issue__c, Phone_Model__c, Phone_OS__c, OS_Version__c, Reported__c, Submitted_FLC_Date__c, Thread_Id__c</value>
     </values>
     <values>
         <field>Object__c</field>

@@ -12,20 +12,20 @@
 
 <div style="line-height: 1.4;box-sizing: border-box;padding: 20px;font-size: 14px;background: #ffffff;border-radius: 3px;width: 100%;">&nbsp;
 <br />
-                                        <p>Hi {!Contact.Salutation} {!Contact.Name},</p>
-                                        <p>
+                                        <p style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande">Hi {!Contact.Salutation} {!Contact.Name},</p>
+                                        <p style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande">
                                             Thank you very much for your email.
                                         </p>
-                                        <p>
+                                        <p style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande">
                                             Your request is now automatically with the case number:
                                             <b>{!Case.CaseNumber}</b> stored in our system.
                                         </p>
-                                        <p>
+                                        <p style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande">
                                             Should you have any questions in the meantime or would you like to contact us
                                             You can simply provide further information by specifying your
                                             personal case number, reply to this e-mail.
                                         </p>
-                                        <p>
+                                        <p style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande">
                                             Thank you for your trust!
                                         </p>
                                         <p>

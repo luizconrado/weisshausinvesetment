@@ -13,6 +13,7 @@ public class AccountSolarisbankAdminPanalController {
         if(tanUrlResponse.errors!=null && tanUrlResponse.errors.size()>0){
             Change_Request_Log__c changeRequestLog=new Change_Request_Log__c();
             changeRequestLog.Solarisbank_Id__c=tanUrlResponse.id;
+            changeRequestLog.Operation__c='Update Account Details';
             changeRequestLog.Object_Name__c='Account';
             changeRequestLog.Record_Id__c=recordId;
             changeRequestLog.Status__c='FAILED';
@@ -25,6 +26,8 @@ public class AccountSolarisbankAdminPanalController {
             Change_Request_Log__c changeRequestLog=new Change_Request_Log__c();
             changeRequestLog.Solarisbank_Id__c=tanUrlResponse.id;
             changeRequestLog.Object_Name__c='Account';
+            changeRequestLog.Operation__c='Update Account Details';
+
             changeRequestLog.Record_Id__c=recordId;
             changeRequestLog.Status__c=tanUrlResponse.status;
             changeRequestLog.Updated_At__c=tanUrlResponse.updated_at;
@@ -39,6 +42,8 @@ public class AccountSolarisbankAdminPanalController {
         Change_Request_Log__c crpRequestLog=new Change_Request_Log__c();
         crpRequestLog.Solarisbank_Id__c=crpResponse.id;
         crpRequestLog.Object_Name__c='Account';
+        crpRequestLog.Operation__c='Update Account Details';
+
         crpRequestLog.Record_Id__c=recordId;
         crpRequestLog.Status__c=crpResponse.status;
         crpRequestLog.Updated_At__c=crpResponse.updated_at;
@@ -63,6 +68,7 @@ public class AccountSolarisbankAdminPanalController {
             crpRequestLog.Object_Name__c='Account';
             crpRequestLog.Record_Id__c=recordId;
             crpRequestLog.Status__c='FAILED';
+            crpRequestLog.Operation__c='Update Account Details';
             crpRequestLog.Description__c=tanUrlResponse.errors.get(0).title +' : '+tanUrlResponse.errors.get(0).detail;
             
         }
@@ -70,6 +76,7 @@ public class AccountSolarisbankAdminPanalController {
             crpRequestLog.Solarisbank_Id__c=tanUrlResponse.id;
             crpRequestLog.Object_Name__c='Account';
             crpRequestLog.Record_Id__c=recordId;
+            crpRequestLog.Operation__c='Update Account Details';
             crpRequestLog.Status__c=tanUrlResponse.status;
             crpRequestLog.Updated_At__c=tanUrlResponse.updated_at;
             crpRequestLog.URL__c=tanUrlResponse.url;

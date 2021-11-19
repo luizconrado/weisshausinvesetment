@@ -41,9 +41,11 @@ public class SolarisBankIdentificationWrapper {
             HttpResponse resp = new HttpResponse(); 
             
             resp.setStatusCode(200); 
+            resp.setStatus('success');
             
-            resp.setStatus('success'); 
-            if(req.getMethod()=='POST' || req.getMethod()=='PATCH'){
+            List<String> endpointParts=req.getEndpoint().split('/');
+             
+            if(req.getMethod()=='POST' || req.getMethod()=='PATCH' ||(endpointParts.get(endpointParts.size()-2)=='identifications') ){
                 resp.setBody(JSON.serialize(data)); 
             }
             else{

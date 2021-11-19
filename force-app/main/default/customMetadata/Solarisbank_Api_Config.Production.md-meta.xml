@@ -36,7 +36,11 @@
     </values>
     <values>
         <field>Host_Url__c</field>
-        <value xsi:type="xsd:string">https://api.solarisbank.de</value>
+        <value xsi:type="xsd:string">https://9lz6dvzy9i.execute-api.eu-central-1.amazonaws.com/prod</value>
+    </values>
+    <values>
+        <field>Proxy_API_Key__c</field>
+        <value xsi:type="xsd:string">r0NCxzUpzF3nFOd2JdJgtkKoL28vVicH</value>
     </values>
     <values>
         <field>Reservation_URI__c</field>

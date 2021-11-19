@@ -22,7 +22,7 @@
             </value>
             <value>
                 <fullName>Diverse</fullName>
-                <default>false</default>
+                <default>true</default>
                 <label>Diverse</label>
             </value>
         </valueSetDefinition>

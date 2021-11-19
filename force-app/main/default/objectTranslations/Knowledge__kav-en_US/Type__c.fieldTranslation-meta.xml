@@ -7,11 +7,23 @@
         <translation></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>Account &amp; personal Information</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Account Management</masterLabel>
         <translation></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Anti-Fraud Compliance</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>App &amp; Products</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Card</masterLabel>
         <translation></translation>
     </picklistValues>
     <picklistValues>
@@ -35,11 +47,27 @@
         <translation></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>Memberships &amp; Account Types</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Other</masterLabel>
         <translation></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>Partner</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Payment</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Payments, Transfers &amp; Withdrawals</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Security</masterLabel>
         <translation></translation>
     </picklistValues>
     <picklistValues>

@@ -7,20 +7,32 @@
         <translation></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>Account &amp; personal Information</masterLabel>
+        <translation>Konto &amp; persönliche Informationen</translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Account Management</masterLabel>
-        <translation></translation>
+        <translation>Kontoverwaltung</translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Anti-Fraud Compliance</masterLabel>
-        <translation></translation>
+        <translation>Einhaltung der Betrugsbekämpfung</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>App &amp; Products</masterLabel>
+        <translation>App &amp; Produkte</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Card</masterLabel>
+        <translation>Karte</translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Card Management</masterLabel>
-        <translation></translation>
+        <translation>Kartenverwaltung</translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Complaints</masterLabel>
-        <translation></translation>
+        <translation>Beschwerden</translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>GDPR</masterLabel>
@@ -28,26 +40,42 @@
     </picklistValues>
     <picklistValues>
         <masterLabel>Identification</masterLabel>
-        <translation></translation>
+        <translation>Identifizierung</translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Master Data Management</masterLabel>
-        <translation></translation>
+        <translation>Stammdatenverwaltung</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Memberships &amp; Account Types</masterLabel>
+        <translation>Mitgliedschaften &amp; Kontotypen</translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Other</masterLabel>
-        <translation></translation>
+        <translation>Andere</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Partner</masterLabel>
+        <translation>Partner</translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Payment</masterLabel>
-        <translation></translation>
+        <translation>Zahlung</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Payments, Transfers &amp; Withdrawals</masterLabel>
+        <translation>Zahlungen, Überweisungen und Abhebungen</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Security</masterLabel>
+        <translation>Sicherheit</translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Seizures</masterLabel>
-        <translation></translation>
+        <translation>Anfälle</translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Tech</masterLabel>
-        <translation></translation>
+        <translation>Technik</translation>
     </picklistValues>
 </CustomFieldTranslation>

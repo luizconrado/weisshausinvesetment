@@ -17,6 +17,10 @@ public class LogServiceTest {
             data.recordId=userinfo.getUserId();
             data.userId=userinfo.getUserId();
             data.error=e;
+            data.addMetadataInfo(userinfo.getUserId(),'TestClass','TestMentoid','TestComponent','Test class');
+            data.addRecordInfo('Log_Event__e',null);
+            data.addError(e);
+            data.addErrorString(e.getStackTraceString(),e.getMessage());
             Test.startTest();
             String s=LogService.logError(data);
             Test.stopTest();
@@ -28,11 +32,15 @@ public class LogServiceTest {
     }    
     @isTest
     static void testLogApiCall(){
+        LogService.ApiCallDetails x=new LogService.ApiCallDetails();
         LogService.ApiCallDetails call = new LogService.ApiCallDetails(userinfo.getUserId(),'Log_Event__e','Sandbox');
         
         call.responseCode=200;
         call.url='www.google.com';
         call.userId=userinfo.getUserId();
+        call.addMetadataInfo(userinfo.getUserId(),'Call');
+        call.addRecordInfo('Log_Event__e',null);
+        call.addApiDetails('www.evsmartmoney.com','{}','{}',200);
         Test.startTest();
         LogService.LogApiCall(call);
         Test.stopTest();

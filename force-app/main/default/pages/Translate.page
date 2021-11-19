@@ -1,0 +1,4 @@
+<apex:page controller="Translate" contentType="application/json" showHeader="false" sidebar="false" language="de" standardStylesheets="false" >
+    [<apex:repeat value="{!translatedValues}" var="val">{"language":"{!val.language}","label":"{!val.label}","value":"{!val.value}"},</apex:repeat>]
+
+</apex:page>

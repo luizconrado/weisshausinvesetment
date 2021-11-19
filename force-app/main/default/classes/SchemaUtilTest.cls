@@ -1,4 +1,5 @@
 @isTest
+
 public class SchemaUtilTest {
 
     @isTest

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+	<types>
+		<members>Account.UTM_Campaign__c</members>
+		<members>Account.UTM_Medium__c</members>
+		<members>Account.UTM_Source__c</members>
+		<members>Account.Utm_Term__c</members>
+		<members>Account.Utm_Content__c</members>
+		<name>CustomField</name>
+	</types>
+	<types>
+		<members>PersonAccount-Person Partner Account</members>
+		<members>PersonAccount-Person Account Layout</members>
+		<name>Layout</name>
+	</types>
+	<types>
+	<members>RestServiceAccountCreate</members>
+	<name>ApexClass</name>
+	</types>
+	<version>51.0</version>
+</Package>

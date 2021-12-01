@@ -558,6 +558,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Account.Invitation_Code__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Account.Inviter_Code_T_C_Date__c</field>
         <readable>false</readable>
     </fieldPermissions>

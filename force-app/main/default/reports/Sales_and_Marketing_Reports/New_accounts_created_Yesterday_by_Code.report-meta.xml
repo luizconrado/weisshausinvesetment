@@ -19,13 +19,20 @@
     <description>Shows accounts/registrations created since launch.
 Grouped by Invitation code</description>
     <filter>
-        <booleanFilter>1</booleanFilter>
+        <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
             <column>Account.Is_Test__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_SOURCE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Advertisement,Alpha Test,Customer Event,Employee Referral,Google AdWords,Intranet Website,Other,Purchased List,Trade Show,Wealth Web App,Webinar,Website</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -90,8 +90,6 @@
 		<members>*</members>
 		<name>CallCenter</name>
 	</types>
-	 
-	 
 	<types>
 		<members>*</members>
 		<name>Certificate</name>
@@ -104,7 +102,6 @@
 		<members>*</members>
 		<name>ChatterExtension</name>
 	</types>
- 
 	<types>
 		<members>*</members>
 		<name>Community</name>
@@ -915,6 +912,8 @@
 		<members>Campaign/Apple_Pay_Welcome.gif</members>
 		<members>Campaign/WelcomeEmailFeaturesList.png</members>
 		<members>Campaign/WelcomeEmailHero.png</members>
+		<members>Email_Images/Birthday_Email.png</members>
+		<members>Email_Images/Push_to_finish_Registration_email.png</members>
 		<members>Form_Images/Agent_Referral_Email_Image.png</members>
 		<members>Form_Images/Agent_Referral_Landing_Form_Image.png</members>
 		<members>Form_Images/Agent_Referral_Redirect_Form_Image.png</members>
@@ -948,6 +947,9 @@
 		<members>Newsletter_Images/Mobile_Section1.png</members>
 		<members>Newsletter_Images/Mobile_Section2.png</members>
 		<members>Newsletter_Images/Mobile_Section3.png</members>
+		<members>Newsletter_Images/Nov_2021_1.png</members>
+		<members>Newsletter_Images/Nov_2021_2.png</members>
+		<members>Newsletter_Images/Nov_2021_3.png</members>
 		<members>Salesforce_Branding_Resources/Honeyview_Weisshaus_Logo_transperesntl_png.png</members>
 		<members>SharedDocuments/Apple_App_Store_Link_Logo.png</members>
 		<members>SharedDocuments/Community_Home_Image.png</members>
@@ -977,6 +979,8 @@
 		<name>EmailServicesFunction</name>
 	</types>
 	<types>
+		<members>Account_Emails/Account_Birthday_Wish</members>
+		<members>Account_Emails/Push_to_finish_Registration_email</members>
 		<members>Account_Emails/Referral_Code_Business_User</members>
 		<members>Account_Emails/Referral_Code_Existing_User</members>
 		<members>Account_Emails/Referral_Code_New_User</members>
@@ -992,6 +996,9 @@
 		<members>Newsletter/Newsletter_March_2021</members>
 		<members>Newsletter/Newsletter_March_2021_v2</members>
 		<members>Newsletter/Newsletter_May_2021</members>
+		<members>Newsletter/Newsletter_November_2021_V1</members>
+		<members>Newsletter/Newsletter_November_2021_V2</members>
+		<members>Newsletter/Newsletter_November_2021_V3</members>
 		<members>Opportunity/Real_Estate_Opportunity_Notification</members>
 		<members>Opportunity/Real_Estate_Sale</members>
 		<members>Subscription_Emails/Weisshausinvestment_Subscription_Thank_You_Email_DE</members>
@@ -1001,10 +1008,8 @@
 		<members>Subscription_Emails/Weisshausinvestment_Subscription_unsubscribe_Email_DE</members>
 		<members>Subscription_Emails/Weisshausinvestment_Subscription_unsubscribe_Email_EN</members>
 		<members>unfiled$public/Account_Thank_you_1612608152218</members>
-		<members>unfiled$public/App_Survey_Template_1609924408840</members>
-		<members>unfiled$public/App_Survey_Template_V2_1611717854722</members>
-		<members>unfiled$public/App_Survey_V1_new_clients_1614945039105</members>
-		<members>unfiled$public/Client_Survey_E_Mail_Template_1613499624612</members>
+		<members>unfiled$public/App_Survey_3_1638172961132</members>
+		<members>unfiled$public/App_Survey_4_1638173099797</members>
 		<members>unfiled$public/CommunityChangePasswordEmailTemplate</members>
 		<members>unfiled$public/CommunityChgEmailVerNewTemplate</members>
 		<members>unfiled$public/CommunityChgEmailVerOldTemplate</members>
@@ -1017,10 +1022,6 @@
 		<members>unfiled$public/Default_Template_1608578020380</members>
 		<members>unfiled$public/E_Mail_Address_No_Account_1612606149887</members>
 		<members>unfiled$public/Engage_template_1610726047118</members>
-		<members>unfiled$public/Feedback_Invitation_engaging_more_Group_B_1616003566794</members>
-		<members>unfiled$public/Feedback_Invitation_onboarding_incomplete_Group_A_1616003350474</members>
-		<members>unfiled$public/Feedback_Invitation_onboarding_incomplete_Group_B_1616003391089</members>
-		<members>unfiled$public/Feedback_Invitation_onboarding_incomplete_Group_B_1616003627577</members>
 		<members>unfiled$public/LeadsNewassignmentnotificationSAMPLE</members>
 		<members>unfiled$public/LeadsWebtoLeademailresponseSAMPLE</members>
 		<members>unfiled$public/Onboarding_incomplete_template_1610727260404</members>
@@ -1047,7 +1048,6 @@
 		<members>unfiled$public/Sample_Reconnecting</members>
 		<members>unfiled$public/Sample_ScheduleMeeting</members>
 		<members>unfiled$public/T_C_Adjustment_Email_1613123150636</members>
-		<members>unfiled$public/test</members>
 		<name>EmailTemplate</name>
 	</types>
 	<types>
@@ -1297,7 +1297,6 @@
 		<members>*</members>
 		<name>LiveChatSensitiveDataRule</name>
 	</types>
- 
 	<types>
 		<members>Account.Standard_Account_Match_Rule_v1_0</members>
 		<members>Account.Standard_PersonAccount_Match_Rule_v1_0</members>
@@ -1309,7 +1308,6 @@
 		<members>*</members>
 		<name>MatchingRules</name>
 	</types>
-	 
 	<types>
 		<members>*</members>
 		<name>MyDomainDiscoverableLogin</name>
@@ -1325,10 +1323,6 @@
 	<types>
 		<members>*</members>
 		<name>Network</name>
-	</types>
-	<types>
-		<members>*</members>
-		<name>NetworkBranding</name>
 	</types>
 	<types>
 		<members>NotificationTypeConfig</members>

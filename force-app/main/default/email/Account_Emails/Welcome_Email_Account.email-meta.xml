@@ -4,7 +4,7 @@
     <encodingKey>UTF-8</encodingKey>
     <name>Welcome Email Account</name>
     <style>none</style>
-    <subject>Willkommen bei Engel &amp; Völkers Smart Money</subject>
+    <subject>Erste Schritte in Ihrer E&amp;V Smart Money App</subject>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

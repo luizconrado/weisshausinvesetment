@@ -256,38 +256,42 @@
                             </table>
                         </td>
                     </tr>
-                    <!--footer-->
-                    <tr>
-                        <td bgcolor="#f0f0f0" style="padding: 10px 24px;">
-                            <table border="0" cellpadding="0" cellspacing="0"
-                                style="width:100%;border-collapse: collapse;">
-                                <tr>
-                                    <td style="text-align:center;background-color: #f0f0f0;font-size: 14px;font-style: normal;font-weight: 400;letter-spacing: 0px;color: #444444;"
-                                        align="center">
-                                        <p
-                                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;">
+      <!--footer-->
+      <tr>
+        <td bgcolor="#f0f0f0" style="padding: 10px 24px;">
+            <table border="0" cellpadding="0" cellspacing="0"
+                style="width:100%;border-collapse: collapse;">
+                <tr>
+                    <td style="text-align:center;background-color: #f0f0f0;font-size: 14px;font-style: normal;font-weight: 400;letter-spacing: 0px;color: #444444;"
+                        align="center">
+                        <p
+                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;">
 
-                                            Sie erhalten diese E-Mail, da Ihre E-Mail-Adresse auf www.ev-smartmoney.com
-                                            registriert ist.
-                                            Wenn Sie Fragen oder Rückmeldungen haben sind wir per E-Mail unter
-                                            support@ev-smartmoney.com oder unter folgender Telefonnummer gerne für Sie
-                                            da: +49 30 74395959 (Mo-Fr: 9-18 Uhr)
 
-                                        </p>
-                                        <br>
-                                        <p
-                                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;">
-                                            Copyright &#169; EV Smart Money Holding GmbH | HRB 215045 B | Amtsgericht
-                                            Charlottenburg | Lizenzpartner der Engel & Völkers Marken GmbH & Co. KG |
-                                            Klaus-Groth-Straße 3, 14050 Berlin, Deutschland. | Geschäftsführung: Dr. Kyros
-                                            Khadjavi
-                                        </p>
-                                    </td>
+Wenn Sie Fragen oder Rückmeldungen haben, sind wir per E-Mail unter www.ev-smartmoney.com oder unter folgender Telefonnummer gerne für Sie da: +49 30 74395959 (Mo-Fr: 9-18 Uhr)
 
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
+
+                            
+
+
+                        </p>
+                        <br>
+                        <p
+                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;">
+
+                             Copyright &#169; 2020 EV Smart Money Holding GmbH | HRB 215045 B | Amtsgericht Charlottenburg | Lizenzpartner der Engel & Völkers Marken GmbH & Co. KG | Klaus-Groth-Straße 3, 14050 Berlin, Germany. | Geschäftsführung: Dr. Kyros Khadjavi
+
+
+                        </p>
+                    </td>
+
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+
+
 
             </td>
         </tr>

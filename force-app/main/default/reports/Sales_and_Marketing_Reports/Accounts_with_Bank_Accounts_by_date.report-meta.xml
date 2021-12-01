@@ -16,6 +16,9 @@
     <columns>
         <field>Account.Bank_Accounts__r$Type__c</field>
     </columns>
+    <columns>
+        <field>Account$Invitation_Code__c</field>
+    </columns>
     <currency>EUR</currency>
     <description>Sf accounts creates after 17 Oct 21 with bank accounts. By date
 Exclude test accounts.</description>

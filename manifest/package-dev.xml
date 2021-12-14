@@ -6,10 +6,18 @@
 		<members>Account.UTM_Source__c</members>
 		<members>Account.Utm_Term__c</members>
 		<members>Account.Utm_Content__c</members>
+		<members>Document__c.Account__c</members>
+        <members>Document__c.Document_Created_At__c</members>
+        <members>Document__c.Read_At__c</members>
+        <members>Document__c.Requested_At__c</members>
+        <members>Document__c.Status__c</members>
+        <members>Document__c.Template_Id__c</members>
+        <members>Document__c.Ticket_Number__c</members>
 		<name>CustomField</name>
 	</types>
 	<types>
 		<members>PersonAccount-Person Partner Account</members>
+		  <members>Document__c-Document Layout</members>
 		<members>PersonAccount-Person Account Layout</members>
 		<name>Layout</name>
 	</types>
@@ -17,5 +25,13 @@
 	<members>RestServiceAccountCreate</members>
 	<name>ApexClass</name>
 	</types>
+    <types>
+        <members>Document__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Document__c.RestrictEdit</members>
+        <name>ValidationRule</name>
+    </types>
 	<version>51.0</version>
 </Package>

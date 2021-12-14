@@ -37,7 +37,7 @@ global class RestServiceAccountCreate {
                                         ];
        
         
-        
+ 
         newAccount=(personAccountList.size()>0)?personAccountList.get(0):new Account();
         //upsert values
         if(newPersonAccount.FirstName!=null)newAccount.FirstName=newPersonAccount.FirstName;
@@ -46,13 +46,13 @@ global class RestServiceAccountCreate {
         if(newPersonAccount.Origin__pc!=null)newAccount.Origin__pc=newPersonAccount.Origin__pc;
         if(newPersonAccount.Invitation_Code__pc!=null && newAccount.Invitation_Code__pc==null )newAccount.Invitation_Code__pc=newPersonAccount.Invitation_Code__pc;
         //External Ids
-        if(newPersonAccount.Solarisbank_Id__c!=null) newAccount.Solarisbank_Id__c=newPersonAccount.Solarisbank_Id__c;
+        if(newPersonAccount.Solarisbank_Id__c!=null && newAccount.Solarisbank_Id__c==null) newAccount.Solarisbank_Id__c=newPersonAccount.Solarisbank_Id__c;
         if(newPersonAccount.Auth0_Id__c!=null && newAccount.Auth0_Id__c==null)newAccount.Auth0_Id__c=newPersonAccount.Auth0_Id__c;
         //Campaing Values
         if(newPersonAccount.UTM_Campaign__c!=null)newAccount.UTM_Campaign__c=newPersonAccount.UTM_Campaign__c;
         if(newPersonAccount.UTM_Medium__c!=null)newAccount.UTM_Medium__c=newPersonAccount.UTM_Medium__c;
         if(newPersonAccount.UTM_Source__c!=null)newAccount.UTM_Source__c=newPersonAccount.UTM_Source__c;
-        if(newPersonAccount.UTM_Term__c!=null)newAccount.UTM_Content__c=newPersonAccount.UTM_Content__c;
+        if(newPersonAccount.UTM_Term__c!=null)newAccount.UTM_Term__c=newPersonAccount.UTM_Term__c;
         if(newPersonAccount.UTM_Content__c!=null) newAccount.UTM_Content__c=newPersonAccount.UTM_Content__c;
         
 

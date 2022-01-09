@@ -10,8 +10,9 @@ global class RestServiceAccountAnonymize {
         RestRequest req = RestContext.request;
         
         List<String> requestParam=req.requestURI.split('/');
+        
         String accountAuth0Id=requestParam.get(requestParam.size()-1);
-        if(String.isBlank(accountAuth0Id) || requestParam.size()<4){
+        if(String.isBlank(accountAuth0Id) || !accountAuth0Id.containsIgnoreCase('auth0')){
             res.statusCode = 400;
             res.responseBody=RestResponseWrapper.setError(res.statusCode,new List<String>{'Account Id missing'});
             return;

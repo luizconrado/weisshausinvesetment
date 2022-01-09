@@ -630,6 +630,17 @@ Vielen Dank!</label>
         <fullName>RE_Opportunity_Notification</fullName>
     </flowDefinitions>
     <flowDefinitions>
+        <flows>
+            <textTemplates>
+                <name>CustomNotificationBody</name>
+            </textTemplates>
+            <textTemplates>
+                <name>NotificationTitle</name>
+            </textTemplates>
+        </flows>
+        <fullName>Seizure_Notification</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
         <flows/>
         <fullName>Subscription_Emails</fullName>
     </flowDefinitions>

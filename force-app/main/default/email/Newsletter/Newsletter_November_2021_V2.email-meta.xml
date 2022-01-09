@@ -3,9 +3,9 @@
     <available>true</available>
     <description>Registrierte Kunden OHNE Konto</description>
     <encodingKey>UTF-8</encodingKey>
-    <name>Newsletter November 2021 V2</name>
+    <name>Newsletter December 2021 V2</name>
     <style>none</style>
-    <subject>Engel &amp; Völkers Smart Money: Registrierte Kunden OHNE Konto</subject>
+    <subject>Engel &amp; Völkers Smart Money: Auf Ihre Bedürfnisse zugeschnitten</subject>
     <textOnly>{!Contact.Email_Honorific__c},
 
 am Anfang eines jeden Unternehmens steht die Idee eines Produkts. Unsere Idee: Immobilieneigentümern eine umfassende Vermögensübersicht, Banking-Services und künftig exklusive Angebote für Geldanlagen rund um Immobilien bieten. Alles in einer App.

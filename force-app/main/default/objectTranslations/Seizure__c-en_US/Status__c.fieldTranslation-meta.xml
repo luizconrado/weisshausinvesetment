@@ -6,4 +6,12 @@
         <masterLabel>Active</masterLabel>
         <translation></translation>
     </picklistValues>
+    <picklistValues>
+        <masterLabel>DELETED</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>FULFILLED</masterLabel>
+        <translation></translation>
+    </picklistValues>
 </CustomFieldTranslation>

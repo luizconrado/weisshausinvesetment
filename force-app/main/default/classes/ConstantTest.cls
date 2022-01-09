@@ -61,6 +61,8 @@ private class ConstantTest {
         System.assert(String.isNotEmpty(Constant.KNOWLEDGE_SOLARISBANK_RECORDTYPEID));
         System.assert(String.isNotEmpty(Constant.ASSET_LINK_IMAGE_RECORDTYPEID));
         
+        System.assert(String.isNotBlank(Constant.DOCUMENT_ACCOUNT_RECORDTYPEID));
+        
         System.assert(String.isNotEmpty(Constant.PERSON_PARTNER_ACCOUNT_RECORDTYPEID));
         System.assert(String.isNotEmpty(Constant.ACCOUNT_BUSINESS_ACCOUNT_RECORDTYPEID));
         System.assert(String.isNotEmpty(Constant.OPPORTUNITY_RE_VALUATION_RECORDTYPEID));

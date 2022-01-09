@@ -4,7 +4,7 @@
     <encodingKey>UTF-8</encodingKey>
     <name>Push to finish Registration email</name>
     <style>none</style>
-    <subject>Registrierung abschließen</subject>
+    <subject>E&amp;V Smart Money - Wir freuen uns auf Sie!</subject>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

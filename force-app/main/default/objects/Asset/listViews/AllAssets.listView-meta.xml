@@ -3,8 +3,20 @@
     <fullName>AllAssets</fullName>
     <columns>ASSET.NAME</columns>
     <columns>ACCOUNT.NAME</columns>
-    <columns>PRODUCT2.NAME</columns>
     <columns>ASSET.CREATED_DATE</columns>
+    <columns>ASSET.RECORDTYPE</columns>
+    <columns>Is_Deleted_By_Customer__c</columns>
+    <columns>Is_Test__c</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>Is_Test__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Is_Deleted_By_Customer__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
     <label>All Assets</label>
 </ListView>

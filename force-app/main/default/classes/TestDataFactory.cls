@@ -157,6 +157,17 @@ public class TestDataFactory {
     public static Knowledge__kav getKnowledgeSBRecord(Boolean doInsert){
         return generateKnowledgeRecord(Constant.KNOWLEDGE_SOLARISBANK_RECORDTYPEID,doInsert);
     }
+    
+    public static Document__c getDocumentForAccount(String accountId,Boolean doInsert){
+        return generateDocumentRecord(Constant.DOCUMENT_ACCOUNT_RECORDTYPEID, accountId, doInsert);
+    } 
+    public static Seizure__c getSeziure(String accountId,Boolean doInsert){
+        Seizure__c sei=new Seizure__c();
+        sei.Account__c=accountId;
+        sei.Solarisbank_Id__c='0652225cebcd3bec2c95ea8c461fe146c'+RandomUtil.randomString(3);
+        if(doInsert) insert Sei;
+        return sei;
+    }
     /*
 Generators
 */
@@ -236,7 +247,7 @@ Generators
         account.LastName = RandomUtil.randomString(4);
         account.RecordTypeId = recordtypeid;
         account.Solarisbank_Id__c='0652225cebcd3bec2c95ea8c461fe'+RandomUtil.randomString(6);
-        account.Solarisbank_Tenent__c='Sandbox'; 
+        account.Solarisbank_Tenent__c='Mobile'; 
         if(doInsert) insert account;
         return account;
     }
@@ -330,6 +341,23 @@ Generators
         if(doInsert) insert km;	
         return km;	
     }
+    
+    private static Document__c generateDocumentRecord(String docRecordTypeId,String accountId,Boolean doInsert){
+        Document__c doc=new Document__c();
+        doc.RecordTypeId=docRecordTypeId;
+        doc.Account__c=accountId;
+        doc.Status__c='Created';
+        doc.Name=RandomUtil.randomString(6);
+        doc.Ticket_Number__c=RandomUtil.randomString(6);
+        doc.Template_Id__c=RandomUtil.randomString(6);
+        doc.Version__c=String.valueOf(RandomUtil.randomNumber(10));
+        doc.Document_Created_At__c=DateTime.now();
+        if(doInsert) insert doc;
+        return doc;
+    }
+    
+    
+    
     //Rest helper	
     public static RestRequest setRestRequest(String endpoint,String method){	
         RestRequest req = new RestRequest(); 	

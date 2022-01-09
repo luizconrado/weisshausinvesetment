@@ -189,6 +189,15 @@ public inherited sharing class Constant {
         if(ASSET_REAL_ESTATE_RECORDTYPEID==null)ASSET_REAL_ESTATE_RECORDTYPEID=SchemaUtil.getRecordTypeId('Real_Estate', 'Asset');
         return ASSET_REAL_ESTATE_RECORDTYPEID;
         }}
+    
+    //Document__c
+    public static final String DOCUMENT_ACCOUNT_RECORDTYPEID{
+        private set;get{
+            if(DOCUMENT_ACCOUNT_RECORDTYPEID==null)DOCUMENT_ACCOUNT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Account_Documents', 'Document__c');
+            return DOCUMENT_ACCOUNT_RECORDTYPEID;
+        }}
+    
+    
     //EMAIL TEMPLATE
     public static final String ACCOUNT_REFREAL_EXSISTING_USER_EMAILTEMPLATE{private set;get{
         if(ACCOUNT_REFREAL_EXSISTING_USER_EMAILTEMPLATE==null) ACCOUNT_REFREAL_EXSISTING_USER_EMAILTEMPLATE=[SELECT Id, Name, DeveloperName FROM EmailTemplate WHERE DeveloperName='Referral_Code_Existing_User'].Id;

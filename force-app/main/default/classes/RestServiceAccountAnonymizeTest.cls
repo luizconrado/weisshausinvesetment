@@ -1,7 +1,21 @@
 @isTest
 public class RestServiceAccountAnonymizeTest {
 
-    
+   
+    @isTest
+    static void doDeleteAccountErrorTest(){
+        User u=TestDataFactory.getUser('Integration');
+        Test.startTest();
+        System.runAs(u){
+            RestResponse res = new RestResponse();
+            RestContext.response = res;
+            RestRequest req=TestDataFactory.setRestRequest(URL.getSalesforceBaseUrl().toExternalForm()+'/services/apexrest/Account/Anonymize/auth0','DELETE');
+            RestContext.request = req;
+            RestServiceAccountAnonymize.doDelete();
+            System.assertEquals(404,res.statusCode);
+        }
+        Test.stopTest();
+    }
     @isTest
     static void doDeleteErrorTest(){
         User u=TestDataFactory.getUser('Integration');
@@ -12,7 +26,7 @@ public class RestServiceAccountAnonymizeTest {
             RestRequest req=TestDataFactory.setRestRequest(URL.getSalesforceBaseUrl().toExternalForm()+'/services/apexrest/Account/Anonymize/','DELETE');
             RestContext.request = req;
             RestServiceAccountAnonymize.doDelete();
-            System.assertEquals(404,res.statusCode);
+            System.assertEquals(400,res.statusCode);
         }
         Test.stopTest();
     }

@@ -6,6 +6,7 @@
             <profile>Business Development Admin</profile>
         </profiles>
     </assignments>
+    <disableTransferConferenceGreeting>false</disableTransferConferenceGreeting>
     <enableAgentFileTransfer>false</enableAgentFileTransfer>
     <enableAgentSneakPeek>false</enableAgentSneakPeek>
     <enableAssistanceFlag>false</enableAssistanceFlag>

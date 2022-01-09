@@ -28,7 +28,7 @@
     <description>Shows accounts created after 17 Oct, all of them but also shows accounts  that have a Solarisbank ID.
 To be used to send the Welcome email manually.</description>
     <filter>
-        <booleanFilter>1 AND 2</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
         <criteriaItems>
             <column>Account.Is_Test__c</column>
             <columnToColumn>false</columnToColumn>
@@ -37,11 +37,18 @@ To be used to send the Welcome email manually.</description>
             <value>0</value>
         </criteriaItems>
         <criteriaItems>
-            <column>ACCOUNT_SOURCE</column>
+            <column>Account.Onboarding_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Advertisement,Alpha Test,Customer Event,Employee Referral,Google AdWords,Intranet Website,Other,Purchased List,Trade Show,Wealth Web App,Webinar,Website</value>
+            <value>,New Partner,Onboarded</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,PersonAccount.PersonAccount,PersonAccount.Person_Partner_Account</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

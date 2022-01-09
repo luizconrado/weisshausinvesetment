@@ -253,4 +253,11 @@
         </notificationChannels>
         <notificationType>voice_call_share</notificationType>
     </notificationTypeSettings>
+    <notificationTypeSettings>
+        <notificationChannels>
+            <desktopEnabled>true</desktopEnabled>
+            <mobileEnabled>false</mobileEnabled>
+        </notificationChannels>
+        <notificationType>Task_Notification</notificationType>
+    </notificationTypeSettings>
 </NotificationTypeConfig>

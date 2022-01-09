@@ -16,6 +16,7 @@
                     <value>1</value>
                 </componentInstanceProperties>
                 <componentName>force:highlightsPanel</componentName>
+                <identifier>force_highlightsPanel</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
@@ -30,6 +31,7 @@
                     <value>500</value>
                 </componentInstanceProperties>
                 <componentName>runtime_service_liveagent:chatBody</componentName>
+                <identifier>runtime_service_liveagent_chatBody</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
@@ -40,6 +42,7 @@
         <itemInstances>
             <componentInstance>
                 <componentName>runtime_service_liveagent:pastChats</componentName>
+                <identifier>runtime_service_liveagent_pastChats</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
@@ -50,6 +53,7 @@
         <itemInstances>
             <componentInstance>
                 <componentName>force:detailPanel</componentName>
+                <identifier>force_detailPanel</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -63,6 +67,7 @@
                     <value>LiveChatTranscriptEvents</value>
                 </componentInstanceProperties>
                 <componentName>force:relatedListSingleContainer</componentName>
+                <identifier>force_relatedListSingleContainer</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
@@ -85,6 +90,7 @@
                     <value>Standard.Tab.chat</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
+                <identifier>chatTab</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -98,6 +104,7 @@
                     <value>Standard.Tab.pastChats</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
+                <identifier>pastChatsTab</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -111,6 +118,7 @@
                     <value>Standard.Tab.detail</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
+                <identifier>detailTab</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
@@ -125,6 +133,7 @@
                     <value>maintabs</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tabset</componentName>
+                <identifier>flexipage_tabset</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
@@ -135,6 +144,7 @@
         <itemInstances>
             <componentInstance>
                 <componentName>forceKnowledge:articleSearchDesktop</componentName>
+                <identifier>forceKnowledge_articleSearchDesktop</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -152,6 +162,7 @@
                     <value>Contact._LightningRelatedContact</value>
                 </componentInstanceProperties>
                 <componentName>console:relatedRecord</componentName>
+                <identifier>console_relatedRecord</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -169,6 +180,7 @@
                     <value>Case._LightningUpdateCase</value>
                 </componentInstanceProperties>
                 <componentName>console:relatedRecord</componentName>
+                <identifier>console_relatedRecord2</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -182,6 +194,7 @@
                     <value>LiveChatTranscript._LightningUpdateLiveChatTranscript</value>
                 </componentInstanceProperties>
                 <componentName>console:relatedRecord</componentName>
+                <identifier>console_relatedRecord3</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>

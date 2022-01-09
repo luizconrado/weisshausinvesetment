@@ -1,0 +1,195 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title
+        style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; line-height: 22px;">
+        Happy Xmass</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body
+    style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; line-height: 22px;margin: 0;">
+
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td>
+
+                <table align="center" border="0" cellpadding="0" cellspacing="0" width="650"
+                    style="border-collapse: collapse; border: 1px solid black;">
+                    <!--header-->
+                    <tr>
+                        <td
+                            style="padding: 32px 20px 18px 20px;border-bottom: solid 3px #eb0a0a;width: 100%;background: #ffffff;">
+                            <table style="table-layout: fixed ; width: 100%;background: #ffffff;">
+                                <tr>
+                                    <!--image-->
+                                    <td align="center">
+                                        <a href="https://www.ev-smartmoney.com">
+                                            <img src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000cWLT&oid=00D5I000002GOw0"
+                                                class="logo" width="190">
+                                        </a>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <!--image 1-->
+                    <tr>
+                        <td>
+
+                            <img width="100%"
+                                src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000nj6i&oid=00D5I000002GOw0" />
+                        </td>
+                    </tr>
+                    <!--main-->
+                    <tr>
+                        <td style="padding: 0px 24px; ">
+                            <table border="0" cellpadding="0" cellspacing="0"
+                                style="width:100%;border-collapse: collapse;">
+<!--greetings-->
+                                <tr>
+                                    <td>
+                                        <p style="
+font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 22px;
+letter-spacing: 0em;
+text-align: left;
+color: #777777;
+padding-top:40px;
+margin:0;
+">
+                                            {!Contact.Email_Honorific__c},
+
+                                        </p>
+
+                                    <p></p>
+                                    </td>
+                                </tr>
+<!--body-->
+<tr>
+    <td>
+        
+       
+        <p
+            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #777777;">
+       
+            das Jahr neigt sich dem Ende – Weihnachten steht vor der Tür.
+            
+            
+        </p>
+        <p
+            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #777777;">
+            Wir möchten diese Gelegenheit nutzen, um Ihnen und Ihren Lieben fröhliche Weihnachten sowie viel Glück und Gesundheit für das kommende Jahr zu wünschen. Wir hoffen, dass Sie wohlauf sind und auf ein erfolgreiches Jahr zurückblicken können.
+            
+        </p>
+        <p
+            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #777777;">
+            Wir danken Ihnen herzlich für Ihr Vertrauen beim diesjährigen Start von E&V Smart Money und wünschen Ihnen erholsame Feiertage sowie einen guten Rutsch ins Jahr 2022! 
+   
+        </p>
+       <p>
+       </p>
+    </td>
+</tr>
+
+
+                                <!--signiture-->
+                                <tr>
+                                    <td>
+                              
+                                        <p style="
+
+font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 22px;
+letter-spacing: 0em;
+text-align: left;
+color: #777777;
+">
+
+
+       
+Mit freundlichen Grüßen
+
+                                        </p>
+                                        <p style="
+                                        
+                                        font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+                                        font-size: 14px;
+                                        font-style: normal;
+                                        font-weight: 400;
+                                        line-height: 22px;
+                                        letter-spacing: 0em;
+                                        text-align: left;
+                                        color: #777777;
+                                        margin-bottom:40px;
+                                        ">
+
+
+                                            Ihr Engel & Völkers Smart Money Team
+                                        </p>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                    <!--footer-->
+                    <tr>
+                        <td bgcolor="#f0f0f0" style="padding: 10px 24px;">
+                            <table border="0" cellpadding="0" cellspacing="0"
+                                style="width:100%;border-collapse: collapse;">
+                                <tr>
+                                    <td style="text-align:center;background-color: #f0f0f0;font-size: 14px;font-style: normal;font-weight: 400;letter-spacing: 0px;color: #444444;"
+                                        align="center">
+                                        <p
+                                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;">
+
+
+                                            Wenn Sie Fragen oder Rückmeldungen haben, sind wir per E-Mail unter
+                                            www.ev-smartmoney.com oder unter folgender Telefonnummer gerne für Sie da:
+                                            +49 30 74395959 (Mo-Fr: 9-18 Uhr)
+
+
+
+
+
+                                        </p>
+                                        <br>
+                                        <p
+                                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;">
+
+                                            Copyright &#169; 2020 EV Smart Money Holding GmbH | HRB 215045 B |
+                                            Amtsgericht Charlottenburg | Lizenzpartner der Engel & Völkers Marken GmbH &
+                                            Co. KG | Klaus-Groth-Straße 3, 14050 Berlin, Germany. | Geschäftsführung:
+                                            Dr. Kyros Khadjavi
+
+
+                                        </p>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+
+
+
+
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

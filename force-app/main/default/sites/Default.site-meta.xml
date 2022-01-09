@@ -10,9 +10,9 @@
     <authorizationRequiredPage>Unauthorized</authorizationRequiredPage>
     <bandwidthExceededPage>BandwidthExceeded</bandwidthExceededPage>
     <browserXssProtection>true</browserXssProtection>
+    <cachePublicVisualforcePagesInProxyServers>true</cachePublicVisualforcePagesInProxyServers>
     <clickjackProtectionLevel>SameOriginOnly</clickjackProtectionLevel>
     <contentSniffingProtection>true</contentSniffingProtection>
-    <cspUpgradeInsecureRequests>true</cspUpgradeInsecureRequests>
     <enableAuraRequests>true</enableAuraRequests>
     <favoriteIcon>CommunityFavIcon</favoriteIcon>
     <fileNotFoundPage>FileNotFound</fileNotFoundPage>
@@ -21,8 +21,8 @@
     <inactiveIndexPage>InMaintenance</inactiveIndexPage>
     <indexPage>Unauthorized</indexPage>
     <masterLabel>Default</masterLabel>
+    <redirectToCustomDomain>false</redirectToCustomDomain>
     <referrerPolicyOriginWhenCrossOrigin>true</referrerPolicyOriginWhenCrossOrigin>
-    <requireHttps>true</requireHttps>
     <siteAdmin>salesforce@ev-smartmoney.com</siteAdmin>
     <siteGuestRecordDefaultOwner>salesforce@ev-smartmoney.com</siteGuestRecordDefaultOwner>
     <siteTemplate>SiteTemplate</siteTemplate>

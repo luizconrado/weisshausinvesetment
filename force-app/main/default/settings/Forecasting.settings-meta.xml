@@ -80,19 +80,10 @@
     </forecastingCategoryMappings>
     <forecastingTypeSettings>
         <active>true</active>
-        <adjustmentsSettings>
-            <enableAdjustments>true</enableAdjustments>
-            <enableOwnerAdjustments>true</enableOwnerAdjustments>
-        </adjustmentsSettings>
         <displayedCategoryApiNames>closedonly</displayedCategoryApiNames>
         <displayedCategoryApiNames>commitforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>bestcaseforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>openpipeline</displayedCategoryApiNames>
-        <forecastRangeSettings>
-            <beginning>0</beginning>
-            <displaying>6</displaying>
-            <periodType>Month</periodType>
-        </forecastRangeSettings>
         <forecastedCategoryApiNames>commitonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>closedonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>openpipeline</forecastedCategoryApiNames>
@@ -254,6 +245,14 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebp</field>
+            <label>Consent To Processing Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebq</field>
+            <label>Consent To Transferring Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5I000003sC1Y</field>
             <label>Deletion Request</label>
         </opportunityListFieldsLabelMappings>
@@ -268,6 +267,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHQ</field>
             <label>Loss Reason</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebr</field>
+            <label>Request Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHP</field>
@@ -312,33 +315,24 @@
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5I000003rrZG</field>
             <field>00N5I000002RGHN</field>
+            <field>00N5I000004iebp</field>
+            <field>00N5I000004iebq</field>
             <field>00N5I000003sC1Y</field>
             <field>00N5I000002RGHO</field>
             <field>00N5I000003n8TJ</field>
             <field>00N5I000002RGHQ</field>
+            <field>00N5I000004iebr</field>
             <field>00N5I000002RGHP</field>
         </opportunityListFieldsUnselectedSettings>
         <ownerAdjustableCategoryApiNames>bestcaseforecast</ownerAdjustableCategoryApiNames>
         <ownerAdjustableCategoryApiNames>commitforecast</ownerAdjustableCategoryApiNames>
-        <quotasSettings>
-            <showQuotas>false</showQuotas>
-        </quotasSettings>
     </forecastingTypeSettings>
     <forecastingTypeSettings>
         <active>false</active>
-        <adjustmentsSettings>
-            <enableAdjustments>true</enableAdjustments>
-            <enableOwnerAdjustments>true</enableOwnerAdjustments>
-        </adjustmentsSettings>
         <displayedCategoryApiNames>closedonly</displayedCategoryApiNames>
         <displayedCategoryApiNames>commitforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>bestcaseforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>openpipeline</displayedCategoryApiNames>
-        <forecastRangeSettings>
-            <beginning>0</beginning>
-            <displaying>6</displaying>
-            <periodType>Month</periodType>
-        </forecastRangeSettings>
         <forecastedCategoryApiNames>commitonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>closedonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>openpipeline</forecastedCategoryApiNames>
@@ -500,6 +494,14 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebp</field>
+            <label>Consent To Processing Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebq</field>
+            <label>Consent To Transferring Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5I000003sC1Y</field>
             <label>Deletion Request</label>
         </opportunityListFieldsLabelMappings>
@@ -514,6 +516,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHQ</field>
             <label>Loss Reason</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebr</field>
+            <label>Request Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHP</field>
@@ -558,33 +564,24 @@
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5I000003rrZG</field>
             <field>00N5I000002RGHN</field>
+            <field>00N5I000004iebp</field>
+            <field>00N5I000004iebq</field>
             <field>00N5I000003sC1Y</field>
             <field>00N5I000002RGHO</field>
             <field>00N5I000003n8TJ</field>
             <field>00N5I000002RGHQ</field>
+            <field>00N5I000004iebr</field>
             <field>00N5I000002RGHP</field>
         </opportunityListFieldsUnselectedSettings>
         <ownerAdjustableCategoryApiNames>bestcaseforecast</ownerAdjustableCategoryApiNames>
         <ownerAdjustableCategoryApiNames>commitforecast</ownerAdjustableCategoryApiNames>
-        <quotasSettings>
-            <showQuotas>false</showQuotas>
-        </quotasSettings>
     </forecastingTypeSettings>
     <forecastingTypeSettings>
         <active>false</active>
-        <adjustmentsSettings>
-            <enableAdjustments>true</enableAdjustments>
-            <enableOwnerAdjustments>true</enableOwnerAdjustments>
-        </adjustmentsSettings>
         <displayedCategoryApiNames>closedonly</displayedCategoryApiNames>
         <displayedCategoryApiNames>commitforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>bestcaseforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>openpipeline</displayedCategoryApiNames>
-        <forecastRangeSettings>
-            <beginning>0</beginning>
-            <displaying>6</displaying>
-            <periodType>Month</periodType>
-        </forecastRangeSettings>
         <forecastedCategoryApiNames>commitonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>closedonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>openpipeline</forecastedCategoryApiNames>
@@ -750,6 +747,14 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebp</field>
+            <label>Consent To Processing Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebq</field>
+            <label>Consent To Transferring Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5I000003sC1Y</field>
             <label>Deletion Request</label>
         </opportunityListFieldsLabelMappings>
@@ -764,6 +769,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHQ</field>
             <label>Loss Reason</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebr</field>
+            <label>Request Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHP</field>
@@ -809,33 +818,24 @@
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5I000003rrZG</field>
             <field>00N5I000002RGHN</field>
+            <field>00N5I000004iebp</field>
+            <field>00N5I000004iebq</field>
             <field>00N5I000003sC1Y</field>
             <field>00N5I000002RGHO</field>
             <field>00N5I000003n8TJ</field>
             <field>00N5I000002RGHQ</field>
+            <field>00N5I000004iebr</field>
             <field>00N5I000002RGHP</field>
         </opportunityListFieldsUnselectedSettings>
         <ownerAdjustableCategoryApiNames>bestcaseforecast</ownerAdjustableCategoryApiNames>
         <ownerAdjustableCategoryApiNames>commitforecast</ownerAdjustableCategoryApiNames>
-        <quotasSettings>
-            <showQuotas>false</showQuotas>
-        </quotasSettings>
     </forecastingTypeSettings>
     <forecastingTypeSettings>
         <active>false</active>
-        <adjustmentsSettings>
-            <enableAdjustments>true</enableAdjustments>
-            <enableOwnerAdjustments>true</enableOwnerAdjustments>
-        </adjustmentsSettings>
         <displayedCategoryApiNames>closedonly</displayedCategoryApiNames>
         <displayedCategoryApiNames>commitforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>bestcaseforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>openpipeline</displayedCategoryApiNames>
-        <forecastRangeSettings>
-            <beginning>0</beginning>
-            <displaying>6</displaying>
-            <periodType>Month</periodType>
-        </forecastRangeSettings>
         <forecastedCategoryApiNames>commitonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>closedonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>openpipeline</forecastedCategoryApiNames>
@@ -997,6 +997,14 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebp</field>
+            <label>Consent To Processing Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebq</field>
+            <label>Consent To Transferring Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5I000003sC1Y</field>
             <label>Deletion Request</label>
         </opportunityListFieldsLabelMappings>
@@ -1011,6 +1019,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHQ</field>
             <label>Loss Reason</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebr</field>
+            <label>Request Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHP</field>
@@ -1055,33 +1067,24 @@
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5I000003rrZG</field>
             <field>00N5I000002RGHN</field>
+            <field>00N5I000004iebp</field>
+            <field>00N5I000004iebq</field>
             <field>00N5I000003sC1Y</field>
             <field>00N5I000002RGHO</field>
             <field>00N5I000003n8TJ</field>
             <field>00N5I000002RGHQ</field>
+            <field>00N5I000004iebr</field>
             <field>00N5I000002RGHP</field>
         </opportunityListFieldsUnselectedSettings>
         <ownerAdjustableCategoryApiNames>bestcaseforecast</ownerAdjustableCategoryApiNames>
         <ownerAdjustableCategoryApiNames>commitforecast</ownerAdjustableCategoryApiNames>
-        <quotasSettings>
-            <showQuotas>false</showQuotas>
-        </quotasSettings>
     </forecastingTypeSettings>
     <forecastingTypeSettings>
         <active>false</active>
-        <adjustmentsSettings>
-            <enableAdjustments>true</enableAdjustments>
-            <enableOwnerAdjustments>true</enableOwnerAdjustments>
-        </adjustmentsSettings>
         <displayedCategoryApiNames>closedonly</displayedCategoryApiNames>
         <displayedCategoryApiNames>commitforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>bestcaseforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>openpipeline</displayedCategoryApiNames>
-        <forecastRangeSettings>
-            <beginning>0</beginning>
-            <displaying>6</displaying>
-            <periodType>Month</periodType>
-        </forecastRangeSettings>
         <forecastedCategoryApiNames>commitonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>closedonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>openpipeline</forecastedCategoryApiNames>
@@ -1247,6 +1250,14 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebp</field>
+            <label>Consent To Processing Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebq</field>
+            <label>Consent To Transferring Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5I000003sC1Y</field>
             <label>Deletion Request</label>
         </opportunityListFieldsLabelMappings>
@@ -1261,6 +1272,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHQ</field>
             <label>Loss Reason</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebr</field>
+            <label>Request Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHP</field>
@@ -1306,33 +1321,24 @@
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5I000003rrZG</field>
             <field>00N5I000002RGHN</field>
+            <field>00N5I000004iebp</field>
+            <field>00N5I000004iebq</field>
             <field>00N5I000003sC1Y</field>
             <field>00N5I000002RGHO</field>
             <field>00N5I000003n8TJ</field>
             <field>00N5I000002RGHQ</field>
+            <field>00N5I000004iebr</field>
             <field>00N5I000002RGHP</field>
         </opportunityListFieldsUnselectedSettings>
         <ownerAdjustableCategoryApiNames>bestcaseforecast</ownerAdjustableCategoryApiNames>
         <ownerAdjustableCategoryApiNames>commitforecast</ownerAdjustableCategoryApiNames>
-        <quotasSettings>
-            <showQuotas>false</showQuotas>
-        </quotasSettings>
     </forecastingTypeSettings>
     <forecastingTypeSettings>
         <active>false</active>
-        <adjustmentsSettings>
-            <enableAdjustments>true</enableAdjustments>
-            <enableOwnerAdjustments>true</enableOwnerAdjustments>
-        </adjustmentsSettings>
         <displayedCategoryApiNames>closedonly</displayedCategoryApiNames>
         <displayedCategoryApiNames>commitforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>bestcaseforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>openpipeline</displayedCategoryApiNames>
-        <forecastRangeSettings>
-            <beginning>0</beginning>
-            <displaying>6</displaying>
-            <periodType>Month</periodType>
-        </forecastRangeSettings>
         <forecastedCategoryApiNames>commitonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>closedonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>openpipeline</forecastedCategoryApiNames>
@@ -1494,6 +1500,14 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebp</field>
+            <label>Consent To Processing Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebq</field>
+            <label>Consent To Transferring Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5I000003sC1Y</field>
             <label>Deletion Request</label>
         </opportunityListFieldsLabelMappings>
@@ -1508,6 +1522,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHQ</field>
             <label>Loss Reason</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebr</field>
+            <label>Request Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHP</field>
@@ -1552,33 +1570,24 @@
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5I000003rrZG</field>
             <field>00N5I000002RGHN</field>
+            <field>00N5I000004iebp</field>
+            <field>00N5I000004iebq</field>
             <field>00N5I000003sC1Y</field>
             <field>00N5I000002RGHO</field>
             <field>00N5I000003n8TJ</field>
             <field>00N5I000002RGHQ</field>
+            <field>00N5I000004iebr</field>
             <field>00N5I000002RGHP</field>
         </opportunityListFieldsUnselectedSettings>
         <ownerAdjustableCategoryApiNames>bestcaseforecast</ownerAdjustableCategoryApiNames>
         <ownerAdjustableCategoryApiNames>commitforecast</ownerAdjustableCategoryApiNames>
-        <quotasSettings>
-            <showQuotas>false</showQuotas>
-        </quotasSettings>
     </forecastingTypeSettings>
     <forecastingTypeSettings>
         <active>false</active>
-        <adjustmentsSettings>
-            <enableAdjustments>true</enableAdjustments>
-            <enableOwnerAdjustments>true</enableOwnerAdjustments>
-        </adjustmentsSettings>
         <displayedCategoryApiNames>closedonly</displayedCategoryApiNames>
         <displayedCategoryApiNames>commitforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>bestcaseforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>openpipeline</displayedCategoryApiNames>
-        <forecastRangeSettings>
-            <beginning>0</beginning>
-            <displaying>6</displaying>
-            <periodType>Month</periodType>
-        </forecastRangeSettings>
         <forecastedCategoryApiNames>commitonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>closedonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>openpipeline</forecastedCategoryApiNames>
@@ -1744,6 +1753,14 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebp</field>
+            <label>Consent To Processing Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebq</field>
+            <label>Consent To Transferring Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5I000003sC1Y</field>
             <label>Deletion Request</label>
         </opportunityListFieldsLabelMappings>
@@ -1758,6 +1775,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHQ</field>
             <label>Loss Reason</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebr</field>
+            <label>Request Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHP</field>
@@ -1803,33 +1824,24 @@
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5I000003rrZG</field>
             <field>00N5I000002RGHN</field>
+            <field>00N5I000004iebp</field>
+            <field>00N5I000004iebq</field>
             <field>00N5I000003sC1Y</field>
             <field>00N5I000002RGHO</field>
             <field>00N5I000003n8TJ</field>
             <field>00N5I000002RGHQ</field>
+            <field>00N5I000004iebr</field>
             <field>00N5I000002RGHP</field>
         </opportunityListFieldsUnselectedSettings>
         <ownerAdjustableCategoryApiNames>bestcaseforecast</ownerAdjustableCategoryApiNames>
         <ownerAdjustableCategoryApiNames>commitforecast</ownerAdjustableCategoryApiNames>
-        <quotasSettings>
-            <showQuotas>false</showQuotas>
-        </quotasSettings>
     </forecastingTypeSettings>
     <forecastingTypeSettings>
         <active>false</active>
-        <adjustmentsSettings>
-            <enableAdjustments>true</enableAdjustments>
-            <enableOwnerAdjustments>true</enableOwnerAdjustments>
-        </adjustmentsSettings>
         <displayedCategoryApiNames>closedonly</displayedCategoryApiNames>
         <displayedCategoryApiNames>commitforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>bestcaseforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>openpipeline</displayedCategoryApiNames>
-        <forecastRangeSettings>
-            <beginning>0</beginning>
-            <displaying>6</displaying>
-            <periodType>Month</periodType>
-        </forecastRangeSettings>
         <forecastedCategoryApiNames>commitonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>closedonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>openpipeline</forecastedCategoryApiNames>
@@ -1991,6 +2003,14 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebp</field>
+            <label>Consent To Processing Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebq</field>
+            <label>Consent To Transferring Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5I000003sC1Y</field>
             <label>Deletion Request</label>
         </opportunityListFieldsLabelMappings>
@@ -2005,6 +2025,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHQ</field>
             <label>Loss Reason</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebr</field>
+            <label>Request Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHP</field>
@@ -2049,33 +2073,24 @@
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5I000003rrZG</field>
             <field>00N5I000002RGHN</field>
+            <field>00N5I000004iebp</field>
+            <field>00N5I000004iebq</field>
             <field>00N5I000003sC1Y</field>
             <field>00N5I000002RGHO</field>
             <field>00N5I000003n8TJ</field>
             <field>00N5I000002RGHQ</field>
+            <field>00N5I000004iebr</field>
             <field>00N5I000002RGHP</field>
         </opportunityListFieldsUnselectedSettings>
         <ownerAdjustableCategoryApiNames>bestcaseforecast</ownerAdjustableCategoryApiNames>
         <ownerAdjustableCategoryApiNames>commitforecast</ownerAdjustableCategoryApiNames>
-        <quotasSettings>
-            <showQuotas>false</showQuotas>
-        </quotasSettings>
     </forecastingTypeSettings>
     <forecastingTypeSettings>
         <active>false</active>
-        <adjustmentsSettings>
-            <enableAdjustments>true</enableAdjustments>
-            <enableOwnerAdjustments>true</enableOwnerAdjustments>
-        </adjustmentsSettings>
         <displayedCategoryApiNames>closedonly</displayedCategoryApiNames>
         <displayedCategoryApiNames>commitforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>bestcaseforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>openpipeline</displayedCategoryApiNames>
-        <forecastRangeSettings>
-            <beginning>0</beginning>
-            <displaying>6</displaying>
-            <periodType>Month</periodType>
-        </forecastRangeSettings>
         <forecastedCategoryApiNames>commitonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>closedonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>openpipeline</forecastedCategoryApiNames>
@@ -2241,6 +2256,14 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebp</field>
+            <label>Consent To Processing Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebq</field>
+            <label>Consent To Transferring Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5I000003sC1Y</field>
             <label>Deletion Request</label>
         </opportunityListFieldsLabelMappings>
@@ -2255,6 +2278,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHQ</field>
             <label>Loss Reason</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebr</field>
+            <label>Request Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHP</field>
@@ -2300,33 +2327,24 @@
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5I000003rrZG</field>
             <field>00N5I000002RGHN</field>
+            <field>00N5I000004iebp</field>
+            <field>00N5I000004iebq</field>
             <field>00N5I000003sC1Y</field>
             <field>00N5I000002RGHO</field>
             <field>00N5I000003n8TJ</field>
             <field>00N5I000002RGHQ</field>
+            <field>00N5I000004iebr</field>
             <field>00N5I000002RGHP</field>
         </opportunityListFieldsUnselectedSettings>
         <ownerAdjustableCategoryApiNames>bestcaseforecast</ownerAdjustableCategoryApiNames>
         <ownerAdjustableCategoryApiNames>commitforecast</ownerAdjustableCategoryApiNames>
-        <quotasSettings>
-            <showQuotas>false</showQuotas>
-        </quotasSettings>
     </forecastingTypeSettings>
     <forecastingTypeSettings>
         <active>false</active>
-        <adjustmentsSettings>
-            <enableAdjustments>true</enableAdjustments>
-            <enableOwnerAdjustments>true</enableOwnerAdjustments>
-        </adjustmentsSettings>
         <displayedCategoryApiNames>closedonly</displayedCategoryApiNames>
         <displayedCategoryApiNames>commitforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>bestcaseforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>openpipeline</displayedCategoryApiNames>
-        <forecastRangeSettings>
-            <beginning>0</beginning>
-            <displaying>6</displaying>
-            <periodType>Month</periodType>
-        </forecastRangeSettings>
         <forecastedCategoryApiNames>commitonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>closedonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>openpipeline</forecastedCategoryApiNames>
@@ -2488,6 +2506,14 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebp</field>
+            <label>Consent To Processing Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebq</field>
+            <label>Consent To Transferring Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5I000003sC1Y</field>
             <label>Deletion Request</label>
         </opportunityListFieldsLabelMappings>
@@ -2502,6 +2528,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHQ</field>
             <label>Loss Reason</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebr</field>
+            <label>Request Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHP</field>
@@ -2546,33 +2576,24 @@
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5I000003rrZG</field>
             <field>00N5I000002RGHN</field>
+            <field>00N5I000004iebp</field>
+            <field>00N5I000004iebq</field>
             <field>00N5I000003sC1Y</field>
             <field>00N5I000002RGHO</field>
             <field>00N5I000003n8TJ</field>
             <field>00N5I000002RGHQ</field>
+            <field>00N5I000004iebr</field>
             <field>00N5I000002RGHP</field>
         </opportunityListFieldsUnselectedSettings>
         <ownerAdjustableCategoryApiNames>bestcaseforecast</ownerAdjustableCategoryApiNames>
         <ownerAdjustableCategoryApiNames>commitforecast</ownerAdjustableCategoryApiNames>
-        <quotasSettings>
-            <showQuotas>false</showQuotas>
-        </quotasSettings>
     </forecastingTypeSettings>
     <forecastingTypeSettings>
         <active>false</active>
-        <adjustmentsSettings>
-            <enableAdjustments>true</enableAdjustments>
-            <enableOwnerAdjustments>true</enableOwnerAdjustments>
-        </adjustmentsSettings>
         <displayedCategoryApiNames>closedonly</displayedCategoryApiNames>
         <displayedCategoryApiNames>commitforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>bestcaseforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>openpipeline</displayedCategoryApiNames>
-        <forecastRangeSettings>
-            <beginning>0</beginning>
-            <displaying>6</displaying>
-            <periodType>Month</periodType>
-        </forecastRangeSettings>
         <forecastedCategoryApiNames>commitonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>closedonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>openpipeline</forecastedCategoryApiNames>
@@ -2738,6 +2759,14 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebp</field>
+            <label>Consent To Processing Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebq</field>
+            <label>Consent To Transferring Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5I000003sC1Y</field>
             <label>Deletion Request</label>
         </opportunityListFieldsLabelMappings>
@@ -2752,6 +2781,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHQ</field>
             <label>Loss Reason</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebr</field>
+            <label>Request Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHP</field>
@@ -2797,33 +2830,24 @@
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5I000003rrZG</field>
             <field>00N5I000002RGHN</field>
+            <field>00N5I000004iebp</field>
+            <field>00N5I000004iebq</field>
             <field>00N5I000003sC1Y</field>
             <field>00N5I000002RGHO</field>
             <field>00N5I000003n8TJ</field>
             <field>00N5I000002RGHQ</field>
+            <field>00N5I000004iebr</field>
             <field>00N5I000002RGHP</field>
         </opportunityListFieldsUnselectedSettings>
         <ownerAdjustableCategoryApiNames>bestcaseforecast</ownerAdjustableCategoryApiNames>
         <ownerAdjustableCategoryApiNames>commitforecast</ownerAdjustableCategoryApiNames>
-        <quotasSettings>
-            <showQuotas>false</showQuotas>
-        </quotasSettings>
     </forecastingTypeSettings>
     <forecastingTypeSettings>
         <active>false</active>
-        <adjustmentsSettings>
-            <enableAdjustments>true</enableAdjustments>
-            <enableOwnerAdjustments>true</enableOwnerAdjustments>
-        </adjustmentsSettings>
         <displayedCategoryApiNames>closedonly</displayedCategoryApiNames>
         <displayedCategoryApiNames>commitforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>bestcaseforecast</displayedCategoryApiNames>
         <displayedCategoryApiNames>openpipeline</displayedCategoryApiNames>
-        <forecastRangeSettings>
-            <beginning>0</beginning>
-            <displaying>6</displaying>
-            <periodType>Month</periodType>
-        </forecastRangeSettings>
         <forecastedCategoryApiNames>commitonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>closedonly</forecastedCategoryApiNames>
         <forecastedCategoryApiNames>openpipeline</forecastedCategoryApiNames>
@@ -2985,6 +3009,14 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebp</field>
+            <label>Consent To Processing Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebq</field>
+            <label>Consent To Transferring Data</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5I000003sC1Y</field>
             <label>Deletion Request</label>
         </opportunityListFieldsLabelMappings>
@@ -2999,6 +3031,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHQ</field>
             <label>Loss Reason</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00N5I000004iebr</field>
+            <label>Request Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5I000002RGHP</field>
@@ -3043,16 +3079,28 @@
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5I000003rrZG</field>
             <field>00N5I000002RGHN</field>
+            <field>00N5I000004iebp</field>
+            <field>00N5I000004iebq</field>
             <field>00N5I000003sC1Y</field>
             <field>00N5I000002RGHO</field>
             <field>00N5I000003n8TJ</field>
             <field>00N5I000002RGHQ</field>
+            <field>00N5I000004iebr</field>
             <field>00N5I000002RGHP</field>
         </opportunityListFieldsUnselectedSettings>
         <ownerAdjustableCategoryApiNames>bestcaseforecast</ownerAdjustableCategoryApiNames>
         <ownerAdjustableCategoryApiNames>commitforecast</ownerAdjustableCategoryApiNames>
-        <quotasSettings>
-            <showQuotas>false</showQuotas>
-        </quotasSettings>
     </forecastingTypeSettings>
+    <globalAdjustmentsSettings>
+        <enableAdjustments>true</enableAdjustments>
+        <enableOwnerAdjustments>true</enableOwnerAdjustments>
+    </globalAdjustmentsSettings>
+    <globalForecastRangeSettings>
+        <beginning>0</beginning>
+        <displaying>6</displaying>
+        <periodType>Month</periodType>
+    </globalForecastRangeSettings>
+    <globalQuotasSettings>
+        <showQuotas>false</showQuotas>
+    </globalQuotasSettings>
 </ForecastingSettings>

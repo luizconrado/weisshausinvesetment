@@ -5,8 +5,8 @@
     <queueMembers>
         <users>
             <user>andre.bruns@ev-smartmoney.com</user>
-            <user>syed.furqan@ev-smartmoney.com</user>
             <user>salesforce@ev-smartmoney.com</user>
+            <user>syed.furqan@ev-smartmoney.com</user>
         </users>
     </queueMembers>
     <queueRoutingConfig>Web_Support</queueRoutingConfig>

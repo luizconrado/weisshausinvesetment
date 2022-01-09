@@ -14,6 +14,16 @@
                 <default>false</default>
                 <label>Active</label>
             </value>
+            <value>
+                <fullName>FULFILLED</fullName>
+                <default>false</default>
+                <label>FULFILLED</label>
+            </value>
+            <value>
+                <fullName>DELETED</fullName>
+                <default>false</default>
+                <label>DELETED</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

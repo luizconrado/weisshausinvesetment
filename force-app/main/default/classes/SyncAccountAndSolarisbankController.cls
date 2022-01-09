@@ -57,7 +57,10 @@ public without sharing  class SyncAccountAndSolarisbankController {
             SolarisbankPersonWrapper personDetails=SolarisbankPersonWrapper.parse(personJson);
             if(personDetails.last_name == null) return ;
             //fetching phone number
-            String phoneJson=SolarisbankService.fetchPersonPhoneNumber(sfAccount.Solarisbank_Id__c,apiCallDetails);
+            String phoneJson='{}';
+            try{
+            phoneJson=SolarisbankService.fetchPersonPhoneNumber(sfAccount.Solarisbank_Id__c,apiCallDetails);
+            }catch(Exception e){}
             Map<String,Object> phoneJsonMap=(Map<String,Object>) JSON.deserializeUntyped(phoneJson);
             //fetching all bank accouunts
             String banksJson=SolarisbankService.fetchAllBankAccounts(sfAccount.Solarisbank_Id__c,apiCallDetails);

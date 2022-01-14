@@ -51,12 +51,30 @@ public class RestServiceAccountCreateTest {
     @isTest
     static void doPatchSuccessTest(){
         User u=TestDataFactory.getUser('Integration');
-         Test.startTest();
+        Test.startTest();
         System.runAs(u){
             RestResponse res = new RestResponse();
             RestContext.response = res;
             RestRequest req=TestDataFactory.setRestRequest(URL.getSalesforceBaseUrl().toExternalForm()+'/services/apexrest/Account/Create/','PATCH');
-            req.requestBody=Blob.valueOf('{"FirstName":"FirstName","LastName":"LastName","PersonEmail":"ev@com.com"}');
+            req.requestBody=Blob.valueOf('{"FirstName":"FirstName","LastName":"LastName","PersonEmail":"ev@com.com","Origin__pc":"lightOnboarding"}');
+            RestContext.request = req;
+            RestServiceAccountCreate.doPatch();
+            System.assertEquals(201, res.statusCode);
+        }
+        Test.stopTest();
+    }
+    @isTest
+    static void doPatchSuccessExsistingAccountTest(){
+        Account a=TestDataFactory.getPersonAccount(false);
+        a.Origin__pc='integration_test';
+        insert a; 
+        User u=TestDataFactory.getUser('Integration');
+        Test.startTest();
+        System.runAs(u){
+            RestResponse res = new RestResponse();
+            RestContext.response = res;
+            RestRequest req=TestDataFactory.setRestRequest(URL.getSalesforceBaseUrl().toExternalForm()+'/services/apexrest/Account/Create/','PATCH');
+            req.requestBody=Blob.valueOf('{"FirstName":"FirstName","LastName":"LastName","PersonEmail":"'+a.PersonEmail+'","Origin__pc":"lightOnboarding"}');
             RestContext.request = req;
             RestServiceAccountCreate.doPatch();
             System.assertEquals(201, res.statusCode);

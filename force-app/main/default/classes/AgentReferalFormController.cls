@@ -34,6 +34,7 @@ public without sharing class AgentReferalFormController {
                 refralCode = exsistingPersonReferalCode;
                 if(businessAccount!=null) attachPersonToBusiness(businessAccount.id,personAccount.Id);
                 sendReferalCodeEmail(personAccount.Id,(Boolean)payloadData.get('isExsistingCustomer'),(Boolean)payloadData.get('isPersonAccount'));
+                updateAccountOrigin(personAccount);
                 return refralCode;
             }
             
@@ -80,19 +81,11 @@ public without sharing class AgentReferalFormController {
                 if(businessAccount.Business_IBAN__c!=null) businessAccount.Business_IBAN__c=(String) payloadData.get('bankIban');
                 update busineePersonAccount;
                 
-                
-               
-                   
                 //attach person account to business account
                 attachPersonToBusiness(businessAccount.id,busineePersonAccount.Id);
-                
-                
                 //send email
                 sendReferalCodeEmail(busineePersonAccount.Id,(Boolean)payloadData.get('isExsistingCustomer'),(Boolean)payloadData.get('isPersonAccount'));
-                
-                
-                
-                
+                updateAccountOrigin(busineePersonAccount);
                 return refralCode;
             }
             
@@ -130,7 +123,7 @@ public without sharing class AgentReferalFormController {
                 update busineePersonAccount;
             }
             attachPersonToBusiness(businessAccount.id,busineePersonAccount.Id);
-            
+             updateAccountOrigin(busineePersonAccount);
              
             //account to whihc email is sent
             accountDetails=busineePersonAccount; 
@@ -145,7 +138,7 @@ public without sharing class AgentReferalFormController {
     
     //retrive person details
     private static Account getPersonDetails(String email){
-        List<Account> accountDetails=[SELECT Id,Gender__pc,Invitation_Code__pc,Inviter_Code_T_C_Date__pc,Type,Phone,Salutation,PersonEmail,LastName,FirstName,Inviter_Code__pc FROM Account WHERE personEmail=:email AND isPersonAccount=true];
+        List<Account> accountDetails=[SELECT Id,Origin__pc ,Gender__pc,Invitation_Code__pc,Inviter_Code_T_C_Date__pc,Type,Phone,Salutation,PersonEmail,LastName,FirstName,Inviter_Code__pc FROM Account WHERE personEmail=:email AND isPersonAccount=true];
 		if(accountDetails.size()>0) return accountDetails.get(0);
         return null;
     }
@@ -215,6 +208,19 @@ public without sharing class AgentReferalFormController {
             linkAccountToBusiness.Roles ='Business User';
             insert linkAccountToBusiness;
         }catch(Exception e){}
+    }
+    //update origin 
+    private static void updateAccountOrigin(Account personAccount){
+        Boolean updateSource=false;
+        if(personAccount.Origin__pc!=null && !personAccount.Origin__pc.contains('Referral Code Website')){
+            personAccount.Origin__pc+=';Referral Code Website';
+            updateSource=true;
+        }
+        else if(personAccount.Origin__pc==null){
+            personAccount.Origin__pc='Referral Code Website';
+            updateSource=true;
+        }
+        if(updateSource) update personAccount;
     }
     @future
     private static void sendReferalCodeEmail(String accountId,Boolean isExsistingCustomer,Boolean isPersonAccount){

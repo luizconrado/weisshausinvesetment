@@ -33,11 +33,60 @@ public class AgentReferalFormControllerTest {
             payload+='}';
             AgentReferalFormController.fetchCustomerReferalCode(payload);
         }
-
+        
         Test.stopTest();
         
         
-     }
+    }
+    @isTest
+    static void getExstingPersonAccountCode(){
+        Account a=TestDataFactory.getPersonAccount(false);
+        a.Origin__pc='integration_test';
+        a.Inviter_Code__pc=RandomUtil.randomString(8);
+        insert a;
+        User integrationUser=TestDataFactory.getUser('Integration');
+        Test.startTest();
+        System.runAs(integrationUser){
+            String payload='{';
+            payload+='"email":"'+a.PersonEmail+'",';
+            payload+='"isPersonAccount":true,';
+            payload+='"isExsistingCustomer":true,';
+            payload+='"firstname":"test",';
+            payload+='"lastname":"user",';
+            payload+='"salutation":"Herr",';
+            payload+='"phone":"+4912345678"';
+            payload+='}';
+            AgentReferalFormController.fetchCustomerReferalCode(payload);
+        }
+        
+        Test.stopTest();
+        
+        
+    }
+    @isTest
+    static void getNewPersonAccountWithBusinessAccountCode(){
+        Account businessAccount=TestDataFactory.getBusinessAccount(True);
+        User integrationUser=TestDataFactory.getUser('Integration');
+        Test.startTest();
+        System.runAs(integrationUser){
+            String payload='{';
+            payload+='"email":"user@ev.com",';
+            payload+='"isPersonAccount":true,'; 
+            payload+='"isExsistingCustomer":true,';
+            payload+='"firstname":"test",';
+            payload+='"lastname":"user",';
+            payload+='"salutation":"Herr",'; 
+            payload+='"phone":"+4912345678",';
+            payload+='"companyId":"'+businessAccount.Id+'"';
+            
+            payload+='}';
+            AgentReferalFormController.fetchCustomerReferalCode(payload);
+        }
+        
+        Test.stopTest();
+        
+        
+    }
     @isTest
     static void getExsisitngPersonAccountCode(){
         User integrationUser=TestDataFactory.getUser('Integration');
@@ -60,11 +109,11 @@ public class AgentReferalFormControllerTest {
             String referalCode=AgentReferalFormController.fetchCustomerReferalCode(payload);
             System.assertEquals(rc.Name, referalCode);
         }
-
+        
         Test.stopTest();
         
         
-     }
+    }
     @isTest
     static void getNewBusinessAccount(){
         User integrationUser=TestDataFactory.getUser('Integration');
@@ -79,18 +128,18 @@ public class AgentReferalFormControllerTest {
             payload+='"bankName":"testCompany",';
             payload+='"bankIban":"DE1234",';
             payload+='"lastname":"user",';
-            payload+='"salutation":"Herr",';
+            payload+='"salutation":"Frau",';
             payload+='"phone":"+4912345678"';
             payload+='}';
             AgentReferalFormController.fetchCustomerReferalCode(payload);
         }
-
+        
         Test.stopTest();
     }
-     @isTest
+    @isTest
     static void getExsistingBusinessAccount(){
         User integrationUser=TestDataFactory.getUser('Integration');
-		Account a=TestDataFactory.getBusinessAccount(true);
+        Account a=TestDataFactory.getBusinessAccount(true);
         Referral_Codes__c rc=[SELECT id,NAME FROM Referral_Codes__c LIMIT 1];
         a.Inviter_Code__c=rc.Name;
         a.Inviter_Code_T_C_Date__c=DateTime.now();
@@ -113,7 +162,7 @@ public class AgentReferalFormControllerTest {
             String referalCode=AgentReferalFormController.fetchCustomerReferalCode(payload);
             System.assertEquals(rc.Name,referalCode);
         }
-
+        
         Test.stopTest();
     }
 }

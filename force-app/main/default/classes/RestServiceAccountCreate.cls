@@ -43,7 +43,10 @@ global class RestServiceAccountCreate {
         if(newPersonAccount.FirstName!=null)newAccount.FirstName=newPersonAccount.FirstName;
         if(newPersonAccount.LastName!=null)newAccount.LastName=newPersonAccount.LastName;
         if(newPersonAccount.PersonEmail!=null)newAccount.PersonEmail=newPersonAccount.PersonEmail;
-        if(newPersonAccount.Origin__pc!=null)newAccount.Origin__pc=newPersonAccount.Origin__pc;
+        if(newPersonAccount.Origin__pc!=null){
+            if(newAccount.Origin__pc==null) newAccount.Origin__pc=newPersonAccount.Origin__pc;   
+            else if(newAccount.Origin__pc!=null && !newAccount.Origin__pc.contains(newPersonAccount.Origin__pc)) newAccount.Origin__pc+=';'+newPersonAccount.Origin__pc; 
+        }
         if(newPersonAccount.Invitation_Code__pc!=null && newAccount.Invitation_Code__pc==null )newAccount.Invitation_Code__pc=newPersonAccount.Invitation_Code__pc;
         //External Ids
         if(newPersonAccount.Solarisbank_Id__c!=null && newAccount.Solarisbank_Id__c==null) newAccount.Solarisbank_Id__c=newPersonAccount.Solarisbank_Id__c;
@@ -58,7 +61,7 @@ global class RestServiceAccountCreate {
 
 
 
-        if(personAccountList.size()==0) newAccount.RecordTypeId=Constant.PERSON_PARTNER_ACCOUNT_RECORDTYPEID;
+        if(personAccountList.size()==0) newAccount.RecordTypeId=Constant.PERSON_ACCOUNT_RECORDTYPEID;
         
         
         

@@ -239,10 +239,10 @@ export default class AgentReferalForm extends LightningElement {
     applyStyle() {
         const style = document.createElement('style');
         style.innerText = `
-        .inputDesign .slds-input{
+        .inputDesign .slds-input,.inputDesign .slds-combobox__input{
             height:48px;
             border-radius: 0px;
-          
+            align-items: center;
         }`;
         //applying styles dynmicaly to shadow dom elements
         let inputs = this.template.querySelectorAll('div.inputDesign');

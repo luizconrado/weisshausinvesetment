@@ -10,7 +10,8 @@ public without sharing class TaxExemptionFormController {
     @AuraEnabled (cacheable=true) 
     public static Map<String,List<sObject>> getCustomerDetails(String sbId,String authId,String sfId){
         if(string.isBlank(sbId)) return new Map<String,List<sObject>>();
-        List<Account> accountDetails=[SELECT Id, Legal_Name__c,Marital_Status__c, Solarisbank_Id__c,
+        List<Account> accountDetails=[SELECT Id, LastName, Solarisbank_Id__c,
+                                      (SELECT id,Name,Marital_Status__c FROM Banks__r WHERE  RecordTypeId=:Constant.BANK_SOLARISBANK_RECORDTYPEID),
                                       (SELECT id,Country__c,Identification_Number__c,Name FROM Tax_Identifications__r WHERE Primary__c=true),
                                       (SELECT Id,Name,CreatedDate FROM Bank_Accounts__r  WHERE Type__c='TERM_DEPOSIT' AND Id=:sfId AND Status__c='NO_BLOCK') 
                                       FROM Account 
@@ -79,7 +80,9 @@ public without sharing class TaxExemptionFormController {
     @AuraEnabled
     public static String closeCRPFRequest(String sfId,String tanurl,String otp,String martialStatus){
         List<Change_Request_Log__c> changeRequestList=new List<Change_Request_Log__c>();
-        Account bankAccountDetails=[SELECT Id,Solarisbank_Id__c,Marital_Status__c,Solarisbank_Tenent__c FROM Account WHERE id=:sfId];
+        Account bankAccountDetails=[SELECT Id,Solarisbank_Id__c,Solarisbank_Tenent__c FROM Account WHERE id=:sfId];
+        
+        List<Bank__c> kycDetails=[SELECT id,Marital_Status__c FROM Bank__c WHERE Account__c=:sfId  AND RecordTypeId=:Constant.BANK_SOLARISBANK_RECORDTYPEID];
         LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(sfId,'Account',bankAccountDetails.Solarisbank_Tenent__c);
         String responseString = SolarisbankService.confirmCRPRequest(tanurl,bankAccountDetails.Solarisbank_Id__c,otp,apiCallDetails);
         SolarisbankCRPRequestWrapper tanUrlResponse=SolarisbankCRPRequestWrapper.parse(responseString);
@@ -102,8 +105,12 @@ public without sharing class TaxExemptionFormController {
             crpRequestLog.Status__c=tanUrlResponse.status;
             crpRequestLog.Updated_At__c=tanUrlResponse.updated_at;
             crpRequestLog.URL__c=tanUrlResponse.url;
-            bankAccountDetails.Marital_Status__c=martialStatus;
-            update bankAccountDetails;
+            if(kycDetails.size()>0){
+                kycDetails.get(0).Marital_Status__c=martialStatus;
+                update kycDetails;
+            }
+             
+            
         }
         
         insert crpRequestLog;

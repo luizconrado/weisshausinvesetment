@@ -57,6 +57,11 @@ export default class VerifyEmailAccount extends LightningElement {
             height:48px;
             border-radius: 0px;
           
+        }
+        .inputDesign  .slds-combobox__input{
+            height: 48px;
+    border-radius: 0px;
+    align-items: CENTER;
         }`;
         //applying styles dynmicaly to shadow dom elements
         let inputs = this.template.querySelectorAll('div.inputDesign');
@@ -159,7 +164,7 @@ export default class VerifyEmailAccount extends LightningElement {
 
             updateLead(params)
                 .then(result => {
-                    this.showToast('Success', successMsg, 'success');
+                    this.showEvToast(successMsg);
                     this.loaded = false;
                     setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 2000);
                 })
@@ -194,4 +199,9 @@ export default class VerifyEmailAccount extends LightningElement {
         });
         this.dispatchEvent(event);
     }
+
+    showEvToast(msg){
+        this.template.querySelector("c-ev-toast").showToast(msg);
+    }
+    
 }

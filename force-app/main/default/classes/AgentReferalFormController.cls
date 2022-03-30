@@ -79,6 +79,8 @@ public without sharing class AgentReferalFormController {
                 busineePersonAccount.Invitation_Code__pc=businessAccount.Inviter_Code__c;
                 if(businessAccount.Business_Bank__c!=null) businessAccount.Business_Bank__c=(String) payloadData.get('bankName');
                 if(businessAccount.Business_IBAN__c!=null) businessAccount.Business_IBAN__c=(String) payloadData.get('bankIban');
+                businessAccount.AccountSource='Intranet Website';
+                businessAccount.Account_Source_Detail__c='Referral Code Website';
                 update busineePersonAccount;
                 
                 //attach person account to business account
@@ -123,7 +125,7 @@ public without sharing class AgentReferalFormController {
                 update busineePersonAccount;
             }
             attachPersonToBusiness(businessAccount.id,busineePersonAccount.Id);
-             updateAccountOrigin(busineePersonAccount);
+            updateAccountOrigin(busineePersonAccount);
              
             //account to whihc email is sent
             accountDetails=busineePersonAccount; 

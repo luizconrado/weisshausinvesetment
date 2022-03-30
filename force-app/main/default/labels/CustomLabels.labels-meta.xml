@@ -1115,7 +1115,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Users Exclusion</shortDescription>
-        <value>salesforce@ev-smartmoney.com</value>
+        <value>salesforce@ev-smartmoney.com,syed.furqan@ev-smartmoney.com.qa01</value>
     </labels>
     <labels>
         <fullName>VerifiedAccountText</fullName>
@@ -1219,6 +1219,14 @@ Thank you very much!</value>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>siteUrl</shortDescription>
-        <value>https://support.ev-smartmoney.com</value>
+        <value>https://qa01-evsmartmoney.cs107.force.com/support</value>
+    </labels>
+    <labels>
+        <fullName>Account_Seizures_Notification_Text</fullName>
+        <categories>Flow</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Account Seizures Notification	Text</shortDescription>
+        <value>New Seizures is created</value>
     </labels>
 </CustomLabels>

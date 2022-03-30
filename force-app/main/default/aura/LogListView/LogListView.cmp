@@ -1,0 +1,58 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="LogsListViewController" >
+    <aura:handler name='init' value='{!this}' action='{!c.onInit}' /> 
+    
+    <aura:attribute name="logType" type="String" default="HISTORY"/>
+    <aura:attribute name="methodName" type="String" default="getHistoryLogs"/>
+    <aura:attribute name="cardTitle" type="String" default="Field History Logs"/>
+    <aura:attribute name="tableColoums" type="Object[]" />
+    <aura:attribute name="tableData" type="Object[]" />
+    <aura:attribute name="totalCount" type="String" />
+    <aura:attribute name="loading" type="Boolean" default="false" />
+    
+    
+    <lightning:card footer="Card Footer" >
+         <aura:set attribute="title">
+             {!v.cardTitle} {!v.totalCount}
+        </aura:set>
+        <div class="slds-scrollable slds-is-relative">
+            <aura:if isTrue="{!v.loading}">
+                <lightning:spinner alternativeText="Loading" size="medium" />
+            </aura:if>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-labelledby="element-with-table-label other-element-with-table-label">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <aura:iteration items="{!v.tableColoums}" var="head">
+                            <th class="" scope="col">
+                                    <div class="slds-truncate" title="{!head.title}">{!head.title}</div>    
+                            </th>
+                        </aura:iteration> 
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.tableData}" var="node">
+                        <tr class="slds-hint-parent">
+                            <aura:iteration items="{!node}" var="nodeData">
+                                <th data-label="{!nodeData.apiName}" scope="row">
+                                    <aura:if isTrue="{!nodeData.id}">
+                                        <a target="_blank" href="{!'/lightning/r/Log__c/'+nodeData.id+'/view'}" tabindex="-1">{!nodeData.value}</a>
+                                        <aura:set attribute="else">
+                                            <div class="slds-truncate" title="{!nodeData.value}">
+                                                {!nodeData.value}
+                                            </div>
+                                        </aura:set>
+                                    </aura:if>
+                                </th>
+                            </aura:iteration> 
+                        </tr>
+                    </aura:iteration>
+                  
+                </tbody>
+            </table>
+        </div>
+        <aura:set attribute="footer">
+            <lightning:button  label="Next" title="Next"  onclick="{!c.onBack}" disabled="{!v.loading}"/>
+            <lightning:button label="Prev" title="Prev" onclick="{!c.onNext}" disabled="{!v.loading}"/>
+        </aura:set>
+    </lightning:card>
+    
+</aura:component>

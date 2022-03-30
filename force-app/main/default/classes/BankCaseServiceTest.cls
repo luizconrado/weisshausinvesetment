@@ -118,7 +118,7 @@ public class BankCaseServiceTest {
         Scheduled_Order__c tOrder=TestDataFactory.getTimedOrder(bankAccountDetails.Id,true);
         Scheduled_Order__c sOrder=TestDataFactory.getStandingOrder(bankAccountDetails.Id,true);
         Reservation__c res=TestDataFactory.getReservation(bankAccountDetails.Id,true);
-        Identification__c ident=TestDataFactory.getVideoIdentification(accountDetails.Id,True);
+        KYC_Detail__c ident=TestDataFactory.getKYCVideoIdentification(accountDetails.Id,True);
         Case caseDetails=TestDataFactory.getBankCase(accountDetails.Id,true);
         Statement__c state=New Statement__c();
         state.Bank_Account__c=bankAccountDetails.id;
@@ -144,7 +144,7 @@ public class BankCaseServiceTest {
         Scheduled_Order__c tOrder=TestDataFactory.getTimedOrder(bankAccountDetails.Id,true);
         Scheduled_Order__c sOrder=TestDataFactory.getStandingOrder(bankAccountDetails.Id,true);
         Reservation__c res=TestDataFactory.getReservation(bankAccountDetails.Id,true);
-        Identification__c ident=TestDataFactory.getVideoIdentification(accountDetails.Id,True);
+        KYC_Detail__c ident=TestDataFactory.getKYCVideoIdentification(accountDetails.Id,True);
         
         Case caseDetails=TestDataFactory.getBankCase(accountDetails.Id,true);
         Test.startTest();
@@ -156,7 +156,7 @@ public class BankCaseServiceTest {
                                                   new List<String>{sOrder.Id},'',new List<String>{ident.Id});
         }catch(Exception e){}
         Test.stopTest();
-    }
+    } 
     @isTest
     static void testcreateNewIdentification(){
         Test.setMock(HttpCalloutMock.class, new SolarisBankIdentificationWrapper.MockResponse());

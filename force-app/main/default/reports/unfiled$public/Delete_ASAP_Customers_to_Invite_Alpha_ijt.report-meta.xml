@@ -28,7 +28,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>PersonAccount.PersonAccount</value>
+            <value>PersonAccount.Person_Bank_Customer</value>
         </criteriaItems>
         <criteriaItems>
             <column>PC_EMAIL</column>

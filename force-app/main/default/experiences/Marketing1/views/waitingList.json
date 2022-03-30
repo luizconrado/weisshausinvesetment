@@ -1,0 +1,96 @@
+{
+  "appPageId" : "378757ad-93f9-446d-90b1-4f54d36d4209",
+  "componentName" : "community_layout:sldsFlexibleLayout",
+  "id" : "dc957eb0-f4e5-43d2-98c7-72fc4fcde8b2",
+  "label" : "waiting List",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "backgroundImageConfig" : "",
+        "backgroundImageOverlay" : "rgba(0,0,0,0)",
+        "sectionConfig" : "{\"UUID\":\"26b9bb93-e0f5-4a51-90c4-438f618d5a41\",\"columns\":[{\"UUID\":\"c629db44-663e-4df2-8eab-29be8ca66df9\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+      },
+      "componentName" : "community_layout:section",
+      "id" : "26b9bb93-e0f5-4a51-90c4-438f618d5a41",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "headerDescription" : "Auf der Immobilien-Investment-Plattform erhalten Sie künftig Zugang zu immobilienbezogenen Anlagemöglichkeiten – Seite an Seite mit Engel & Völkers. Mit Ihrer Anmeldung informieren Sie vor dem Launch zur Verfügbarkeit unserer Investment-Produkte. ",
+            "headerText" : "Wartelistenplatz für exklusive Immobilien-Investments sichern",
+            "imageUrl" : "https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0157T000000c5vx&oid=00D5I000002GOw0",
+            "subscriptionType" : "Product Investment"
+          },
+          "componentName" : "c:waitinglist_section1",
+          "id" : "6cda441e-a8a2-49fa-a32f-0627c6b276b4",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "logoText1" : "Kurze Laufzeiten ",
+            "logoText2" : "Attraktive Verzinsung ",
+            "logoText3" : "Sicher und transparent  ",
+            "logoUrl1" : "https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0157T000000c5w7&oid=00D5I000002GOw0",
+            "logoUrl2" : "https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0157T000000c5wH&oid=00D5I000002GOw0",
+            "logoUrl3" : "https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0157T000000c5wC&oid=00D5I000002GOw0"
+          },
+          "componentName" : "c:waitinglist_logoRow",
+          "id" : "3fce8d58-a77d-4d6a-afdb-f4cc75424c5d",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : { },
+          "componentName" : "c:waitinglist_breakLine",
+          "id" : "4ea5e79b-8b31-4a7f-8c7e-a558c79b3564",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "headerDescription" : "Investieren Sie mit E&V Smart Money in exklusive Immobilien-Investments und profitieren Sie von kurzen Laufzeiten und einer attraktiven Verzinsung. Die E&V Investment-Plattform wird in wenigen Monaten gelauncht. Wir informieren Sie, sobald es losgeht. ",
+            "headerText" : "Die Plattform für smarte Investments",
+            "imageUrl" : "https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0157T000000c5w2&oid=00D5I000002GOw0"
+          },
+          "componentName" : "c:waitinglist_section2",
+          "id" : "ecd9ae64-71f6-429d-a563-4d8a3153d115",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "c629db44-663e-4df2-8eab-29be8ca66df9",
+        "regionLabel" : "Column 1",
+        "regionName" : "col1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "scopedBrandingSetId" : null,
+      "type" : "component"
+    } ],
+    "id" : "6b6c36f7-92ee-456c-a56f-88d3a001f6b6",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "pageTitle" : "waiting List",
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "community_builder:seoAssistant",
+      "id" : "782a7eef-8afe-4882-93cb-1550973fa9db",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "481f1f0a-0f7e-4382-989d-d0880ed8b08d",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "prTyMBB6aS9e9MKewrUEOp57gN3Z1s",
+  "type" : "view",
+  "viewType" : "custom-waiting-list"
+}

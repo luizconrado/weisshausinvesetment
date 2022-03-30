@@ -40,7 +40,7 @@ import EarlyTerminationForm_InvalidMartialStatus from '@salesforce/label/c.Early
 import EarlyTerminationForm_NoBooking from '@salesforce/label/c.EarlyTerminationForm_NoBooking';
 import EarlyTerminationForm_InvalidToken from '@salesforce/label/c.EarlyTerminationForm_InvalidToken';
 
-import EarlyTerminationForm_IsSpouseAddress	 from '@salesforce/label/c.EarlyTerminationForm_IsSpouseAddress'
+import EarlyTerminationForm_IsSpouseAddress from '@salesforce/label/c.EarlyTerminationForm_IsSpouseAddress'
 
 export default class TermDepositTaxExemptionOrderForm extends LightningElement {
     rendered = false;
@@ -57,7 +57,7 @@ export default class TermDepositTaxExemptionOrderForm extends LightningElement {
     INVALID_TITLE = TermDepositTaxExemptionOrderForm_InvalidTitle
     SUCCESS_TITLE = TermDepositTaxExemptionOrderForm_SuccessTitle
     CUSTOMERNAME = EarlyTerminationForm_CustomerName
-    ADDRESSSAMEASSPOUSE=EarlyTerminationForm_IsSpouseAddress;
+    ADDRESSSAMEASSPOUSE = EarlyTerminationForm_IsSpouseAddress;
     DEPOSITACCOUNT = EarlyTerminationForm_DepositAccount
     TAXID = EarlyTerminationForm_TaxId
     MARTIALSTATUS = Martial_Status
@@ -136,9 +136,9 @@ export default class TermDepositTaxExemptionOrderForm extends LightningElement {
             let bookingData = data.Booking;
             if (accountData && accountData.length > 0) {
                 let accountDetails = accountData[0];
-                this.customerName = accountDetails.Legal_Name__c;
-                this.martialStatus = accountDetails.Marital_Status__c;
-                this.orignalMartialStatus = accountDetails.Marital_Status__c;
+                this.customerName = accountDetails.LastName;
+
+                
 
                 if (this.martialStatus == 'UNKNOWN') {
                     this.martialStatus = '';
@@ -146,6 +146,12 @@ export default class TermDepositTaxExemptionOrderForm extends LightningElement {
 
                 this.toggleSpouseDetails(this.martialStatus);
                 this.accountId = accountDetails.Id;
+                if (accountDetails.Banks__r && accountDetails.Banks__r.length > 0) {
+                    this.martialStatus = accountDetails.Banks__r[0].Marital_Status__c;
+                    this.orignalMartialStatus = accountDetails.Banks__r[0].Marital_Status__c;
+                    this.customerName=accountDetails.Banks__r[0].Name;
+                }
+
                 if (accountDetails.Tax_Identifications__r && accountDetails.Tax_Identifications__r.length > 0) {
                     this.taxId = accountDetails.Tax_Identifications__r[0].Name;
                 }
@@ -199,7 +205,7 @@ export default class TermDepositTaxExemptionOrderForm extends LightningElement {
             this.martialStatusOptions = data.picklistFieldValues.Marital_Status__c.values.map(value => {
                 return { value: value.value, label: value.label }
             }).filter(value => value.value != 'UNKNOWN');
-             
+
 
 
 
@@ -274,17 +280,17 @@ export default class TermDepositTaxExemptionOrderForm extends LightningElement {
         let value = event.target.checked;
         this[name] = value;
     }
-   
+
     toggleSpouseDetails(value) {
         if (value == 'MARRIED') {
             this.askSpouseDetails = true;
-            this.maxTaxExemptionValue=1602;
-            this.exemptionAmount=1602;
+            this.maxTaxExemptionValue = 1602;
+            this.exemptionAmount = 1602;
         }
         else {
             this.askSpouseDetails = false;
-            this.maxTaxExemptionValue=801;
-            this.exemptionAmount=801;
+            this.maxTaxExemptionValue = 801;
+            this.exemptionAmount = 801;
         }
     }
 
@@ -493,7 +499,7 @@ export default class TermDepositTaxExemptionOrderForm extends LightningElement {
     }
     createCase() {
         let subject = `${this.depositAccount} - ${this.customerId} – Tax exemption order`;
-        let userEnteredAddress=(this.spouseAddress)?this.spouseAddress:'';
+        let userEnteredAddress = (this.spouseAddress) ? this.spouseAddress : '';
         let spouseAddress = '';
 
         if (this.isAddressSameAsSpouse) {
@@ -505,13 +511,13 @@ export default class TermDepositTaxExemptionOrderForm extends LightningElement {
                             ${userEnteredAddress}`;
         }
 
-        
 
-        const spouseName=(this.spouseName)?this.spouseName:'';
-        const spouseTaxId=(this.spouseTaxId)?this.spouseTaxId:'';
-        const spouseBirthDay=(this.spouseBirthDay)?this.getGermanDateValue(new Date(this.spouseBirthDay)):'';
-        const startDate=(this.startDate)?this.getGermanDateValue(new Date(this.startDate)):'';
-        const endDate=(this.endDate)?this.getGermanDateValue(new Date(this.endDate)):'';
+
+        const spouseName = (this.spouseName) ? this.spouseName : '';
+        const spouseTaxId = (this.spouseTaxId) ? this.spouseTaxId : '';
+        const spouseBirthDay = (this.spouseBirthDay) ? this.getGermanDateValue(new Date(this.spouseBirthDay)) : '';
+        const startDate = (this.startDate) ? this.getGermanDateValue(new Date(this.startDate)) : '';
+        const endDate = (this.endDate) ? this.getGermanDateValue(new Date(this.endDate)) : '';
         let description = `
         Hi  Solarisbank Team,
 

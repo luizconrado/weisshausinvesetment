@@ -7,13 +7,31 @@
             let state = response.getState();
             let data = response.getReturnValue();
             if (state === "SUCCESS") {
+                helper.callApex(component,'getSuccessKYCIdentificationRecord',function(responseKYC){
+                    let stateKYC = responseKYC.getState();
+                    let dataKYC = responseKYC.getReturnValue();
+                       
+                    if (state === "SUCCESS") {
+                      
+                        if(dataKYC.length>0){
+                            data.Account__r.Marital_Status__c=dataKYC[0].Marital_Status__c;
+                         	console.log('dataKYC',dataKYC[0].Marital_Status__c)    
+                        }
+                        
+                        
+                        component.set('v.accountDetailsOrignal',JSON.parse(JSON.stringify(data.Account__r)));
+                        component.set('v.accountDetails',data.Account__r);
+                        
+                        
+                        console.log('result',data)
+                        
+                        component.set('v.loading',false);
+                    }
+                },{
+                    "accountId":data.Account__c
+                })
                  
-                //salutationValues
-                component.set('v.accountDetailsOrignal',JSON.parse(JSON.stringify(data.Account__r)));
-                component.set('v.accountDetails',data.Account__r);
-                console.log('result',data.Account__r)
-
-                component.set('v.loading',false);
+             
                 
                 
             }

@@ -258,7 +258,14 @@ public class SolarisbankServiceTest {
     @isTest
     static void fetchIdentificationRequestDetailsTest(){
           Test.setMock(HttpCalloutMock.class, new SolarisBankIdentificationWrapper.MockResponse());
-        LogService.ApiCallDetails details=new LogService.ApiCallDetails(userinfo.getUserId(),'Identification__c','Sandbox');
+        LogService.ApiCallDetails details=new LogService.ApiCallDetails(userinfo.getUserId(),'KYC_Detail__c','Sandbox');
         SolarisbankService.fetchIdentificationRequestDetails( 'solarisPersonId', 'solarisIdentificationId',details);
     }
+    @isTest
+    static void ffetchIdentificationAttemptDetailsTest(){
+        Test.setMock(HttpCalloutMock.class, new SolarisBankIdentificationAttempt.MockResponse());
+        LogService.ApiCallDetails details=new LogService.ApiCallDetails(userinfo.getUserId(),'KYC_Detail__c','Sandbox');
+        SolarisbankService.fetchIdentificationAttemptDetails( 'solarisPersonId', 'solarisIdentificationId',details);
+    }
+    
 }

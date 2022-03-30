@@ -1,0 +1,18 @@
+<template>
+    <div class="slds-grid   flex-reverse_small-screen ev-max-width">
+        <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2  ev_section-right">
+            <div class="ev_section-header">
+                {headerText}
+            </div>
+            <div class="ev_section-header_description">
+                {headerDescription}
+            </div>
+            <div>
+                <c-waitinglist_subscription subscription-type={subscriptionType} ></c-waitinglist_subscription>
+            </div>
+        </div>
+        <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2  ">
+            <div   class="ev_section-image"></div>
+        </div>
+    </div>
+</template>

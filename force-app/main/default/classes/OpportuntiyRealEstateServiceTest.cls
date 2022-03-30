@@ -1,9 +1,8 @@
 @isTest
 public class OpportuntiyRealEstateServiceTest {
-     
-    @isTest
+     @isTest
     static void getRealEstateSaleEmailPreviewTest(){
-        Account a=TestDataFactory.getPersonAccount(true);
+      Account a=TestDataFactory.getPersonAccount(true);
         Contact c=[SELECT id FROM Contact LIMIT 1];
         Asset asset=TestDataFactory.getAssetRealEstate(a.id, c.Id,true);
         Evaluation__c eval=TestDataFactory.getAssetEvaluation(asset.Id, true);
@@ -23,7 +22,7 @@ public class OpportuntiyRealEstateServiceTest {
         System.assert(body.contains(a.LastName));
         Test.stopTest();
     }
-    
+     
     @isTest
     static void getTermDepositeStatusTest(){
         Account acc=TestDataFactory.getPersonAccount(true);
@@ -44,5 +43,6 @@ public class OpportuntiyRealEstateServiceTest {
         OpportuntiyRealEstateService.toggleTermDepostForUser(opp.id, true);
         Test.stopTest();
     }
+ 
 
 }

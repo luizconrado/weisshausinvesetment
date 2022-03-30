@@ -34,9 +34,9 @@ public with sharing class BankCaseOverrideControler {
     public static Boolean checkIsCompactLayout() {
         return Salesforce.isCompactLayout;
     }
-     @auraEnabled(cacheable=true)
-    public static Map<String,Map<String,String>> getAccountPicklistValues(){
-        Map<String,PicklistEntry[]> picklistValues = SchemaUtil.getObjectPicklistFileds(SchemaUtil.getSobjectType('Account'));
+    @auraEnabled(cacheable=true)
+    public static Map<String,Map<String,String>> getKYCPicklistValues(){
+        Map<String,PicklistEntry[]> picklistValues = SchemaUtil.getObjectPicklistFileds(SchemaUtil.getSobjectType('Bank__c'));
         Map<String,Map<String,String>> fieldAndValuesMap=new Map<String,Map<String,String>>();
         for(String field:picklistValues.keySet()){
             if(!fieldAndValuesMap.containsKey(field)) fieldAndValuesMap.put(field,new Map<String,String>());
@@ -70,7 +70,7 @@ public with sharing class BankCaseOverrideControler {
     }
     @AuraEnabled
     public static Bank_Case_Item__c getBankCaseDetails(String recordId){
-        return [SELECT Id, Case__c, Statement__c, 
+       return [SELECT Id, Case__c, Statement__c, 
                 Reservation__c,Reservation__r.Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c,
                 Bank_Account__r.Person_Account__r.FirstName ,Bank_Account__r.Person_Account__r.LastName,Bank_Account__r.Person_Account__r.Employment_Status__c,
                 Booking__c,Booking__r.Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c,Booking__r.Bank_Account__r.Person_Account__r.Solarisbank_Id__c,Booking__r.Bank_Account__r.Solarisbank_Id__c,Booking__r.Transaction_Id__c,
@@ -83,7 +83,12 @@ public with sharing class BankCaseOverrideControler {
                 Account__r.Industry,Account__r.Industry_Key__c,Account__r.Solarisbank_Id__c,Account__r.Solarisbank_Tenent__c,
                 Account__r.BillingStreet,Account__r.BillingPostalCode,Account__r.BillingCity,Account__r.BillingCountry,Account__r.BillingState,
                 Account__r.Preferred_Language__pc
-                FROM Bank_Case_Item__c WHERE Id=:recordId];                   
+                FROM Bank_Case_Item__c WHERE Id=:recordId];        
+        
+    }
+    @AuraEnabled
+    public static List<Bank__c> getSuccessKYCIdentificationRecord(String accountId){
+        return [SELECT id,Employment_Status__c,Marital_Status__c FROM Bank__c WHERE Account__c=:accountId  AND RecordTypeId=:Constant.BANK_SOLARISBANK_RECORDTYPEID];
     }
     
     @AuraEnabled
@@ -99,12 +104,12 @@ public with sharing class BankCaseOverrideControler {
         return [SELECT Id, Type__c, Status__c, Expiration_Date__c, Person_Account__c, Bank_Account__c, Name_On_Card__c, Solarisbank_Id__c, Name 
                 FROM Card__c WHERE Bank_Account__c=:sfBankAccountId ORDER By Expiration_Date__c desc];
     }
-     @AuraEnabled
-    public static List<Identification__c> getAllIdentifications(String sfAccountId){
-        return [SELECT Id, Name, RecordTypeId,RecordType.Name, Account__c, Completed_At__c, Failure_Reason__c,  Method__c, Reference__c, Solarisbank_Id__c, State__c, Status__c, URL__c 
-                FROM Identification__c WHERE Account__c=:sfAccountId ORDER By Completed_At__c desc];
+    @AuraEnabled
+    public static List<KYC_Detail__c> getAllIdentifications(String sfAccountId){
+       return [SELECT Id, Name, RecordTypeId,RecordType.Name, Account__c, Completed_At__c, Failure_Reason__c,  Method__c, Reference__c, Solarisbank_Id__c, State__c, Status__c, URL__c 
+                FROM KYC_Detail__c WHERE Account__c=:sfAccountId ORDER By Completed_At__c desc ];
     }
-    
+     
     /////////////////////////////
     //Dynamic Query
     ////////////////////////////
@@ -257,7 +262,7 @@ public with sharing class BankCaseOverrideControler {
     }
     
     
-    
+     
     @AuraEnabled
     public static List<String> createBankCases(String caseId,String typeI,String typeII,String description, 
                                                String bankId,String cardId,String accountId,

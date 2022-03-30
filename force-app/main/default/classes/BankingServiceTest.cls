@@ -45,14 +45,16 @@ public class BankingServiceTest {
         BankingService.retriveBankBalanceDetails(bc.Id);
         Test.stopTest();
     }
+  
     @isTest
     static void testretriveIdentificationDetailsAndUpdate(){
         Test.setMock(HttpCalloutMock.class, new SolarisBankIdentificationWrapper.MockResponse());
         Account a=TestDataFactory.getPersonAccount(true);
-        Identification__c ident=TestDataFactory.getVideoIdentification(a.Id,true);
+        KYC_Detail__c ident=TestDataFactory.getKYCVideoIdentification(a.Id,true);
         Test.startTest();
         BankingService.retriveIdentificationDetailsAndUpdate(ident.id);
         Test.stopTest();
 
     }
+ 
 }

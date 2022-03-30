@@ -25,7 +25,7 @@ public class RestServiceAccountCreateTest {
             RestResponse res = new RestResponse();
             RestContext.response = res;
             RestRequest req=TestDataFactory.setRestRequest(URL.getSalesforceBaseUrl().toExternalForm()+'/services/apexrest/Account/Create/','PATCH');
-            req.requestBody=Blob.valueOf('{"PersonEmail":null}');
+            req.requestBody=Blob.valueOf('{"Auth0_Id__c":""}');
             RestContext.request = req;
             RestServiceAccountCreate.doPatch();
             System.assertEquals(404, res.statusCode);
@@ -56,7 +56,7 @@ public class RestServiceAccountCreateTest {
             RestResponse res = new RestResponse();
             RestContext.response = res;
             RestRequest req=TestDataFactory.setRestRequest(URL.getSalesforceBaseUrl().toExternalForm()+'/services/apexrest/Account/Create/','PATCH');
-            req.requestBody=Blob.valueOf('{"FirstName":"FirstName","LastName":"LastName","PersonEmail":"ev@com.com","Origin__pc":"lightOnboarding"}');
+            req.requestBody=Blob.valueOf('{"FirstName":"FirstName","LastName":"LastName","Auth0_Id__c":"evcomcom","Origin__pc":"lightOnboarding"}');
             RestContext.request = req;
             RestServiceAccountCreate.doPatch();
             System.assertEquals(201, res.statusCode);
@@ -74,7 +74,7 @@ public class RestServiceAccountCreateTest {
             RestResponse res = new RestResponse();
             RestContext.response = res;
             RestRequest req=TestDataFactory.setRestRequest(URL.getSalesforceBaseUrl().toExternalForm()+'/services/apexrest/Account/Create/','PATCH');
-            req.requestBody=Blob.valueOf('{"FirstName":"FirstName","LastName":"LastName","PersonEmail":"'+a.PersonEmail+'","Origin__pc":"lightOnboarding"}');
+            req.requestBody=Blob.valueOf('{"FirstName":"FirstName","LastName":"LastName","Auth0_Id__c":"'+a.Auth0_Id__c+'","Origin__pc":"lightOnboarding"}');
             RestContext.request = req;
             RestServiceAccountCreate.doPatch();
             System.assertEquals(201, res.statusCode);

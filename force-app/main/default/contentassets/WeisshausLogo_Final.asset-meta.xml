@@ -4,17 +4,6 @@
     <language>en_US</language>
     <masterLabel>WeisshausLogo_Final</masterLabel>
     <originNetwork>support</originNetwork>
-    <relationships>
-        <network>
-            <access>VIEWER</access>
-            <name>support</name>
-        </network>
-        <workspace>
-            <access>INFERRED</access>
-            <isManagingWorkspace>true</isManagingWorkspace>
-            <name>sfdc_asset_company_assets</name>
-        </workspace>
-    </relationships>
     <versions>
         <version>
             <number>1</number>

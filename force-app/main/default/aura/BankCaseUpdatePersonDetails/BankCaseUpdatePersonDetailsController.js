@@ -5,7 +5,7 @@
             let data = response.getReturnValue();
             component.set('v.isCompactLayout',data);
         });
-        helper.callApex(component,'getAccountPicklistValues',function(response){
+        helper.callApex(component,'getKYCPicklistValues',function(response){
             let data = response.getReturnValue();
             console.log('picklist',data)
             
@@ -15,8 +15,8 @@
             component.set('v.employmentStatusValues',Object.keys(data.Employment_Status__c).map(function(value){
                 return {value:value,label:data.Employment_Status__c[value]};
             }));
-            component.set('v.industryStatusValues',Object.keys(data.Industry).map(function(value){
-                return {value:value,label:data.Industry[value]};
+            component.set('v.industryStatusValues',Object.keys(data.Industry__c).map(function(value){
+                return {value:value,label:data.Industry__c[value]};
             }));
             component.set('v.industryKeyValues',Object.keys(data.Industry_Key__c).map(function(value){
                 return {value:value,label:data.Industry_Key__c[value]};

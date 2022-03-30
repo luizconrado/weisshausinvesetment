@@ -6,4 +6,8 @@
         <masterLabel>Newsletter</masterLabel>
         <translation></translation>
     </picklistValues>
+    <picklistValues>
+        <masterLabel>TESTING</masterLabel>
+        <translation></translation>
+    </picklistValues>
 </CustomFieldTranslation>

@@ -12,7 +12,7 @@
     <filters>
         <field>ACCOUNT.RECORDTYPE</field>
         <operation>equals</operation>
-        <value>PersonAccount.PersonAccount</value>
+        <value>PersonAccount.Person_Bank_Customer</value>
     </filters>
     <label>E&amp;V Konto Customers</label>
 </ListView>

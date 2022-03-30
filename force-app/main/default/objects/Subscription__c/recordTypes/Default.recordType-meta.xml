@@ -47,5 +47,9 @@
             <fullName>Newsletter</fullName>
             <default>false</default>
         </values>
+        <values>
+            <fullName>TESTING</fullName>
+            <default>false</default>
+        </values>
     </picklistValues>
 </RecordType>

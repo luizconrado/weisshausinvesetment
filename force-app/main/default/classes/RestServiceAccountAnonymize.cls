@@ -46,7 +46,7 @@ global class RestServiceAccountAnonymize {
             System.debug(e.getMessage()+' '+e.getCause());
             errorMessage.add(e.getMessage()+' '+e.getCause());
             errorMessage.add(e.getStackTraceString());
-            logError(e,'DELETE');
+            logError(e,'DELETE',accountAuth0Id);
             res.statusCode = 500;
             res.responseBody=RestResponseWrapper.setError(res.statusCode,errorMessage);
         }
@@ -55,8 +55,9 @@ global class RestServiceAccountAnonymize {
      } 
 	
     @testvisible    
-    private static void logError(Exception e,String method){
+    private static void logError(Exception e,String method,String params){
         LogService.LogMetadata elog=new LogService.LogMetadata(); 
+        elog.addComment(params);
         elog.addMetadataInfo(userinfo.getUserId(),'RestServiceAccountAnonymize',method,'',method+' /Account/Anonymize/*');
         
         elog.addError(e);

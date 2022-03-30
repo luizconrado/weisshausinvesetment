@@ -1,0 +1,41 @@
+<template>
+    <c-ev-toast></c-ev-toast>
+
+    <div class="slds-grid slds-grid_vertical ev-margin_top-mid">
+        <div class="slds-col  slds-grid  ev-Design  ">
+            <lightning-input disabled={loaded} class="ev-padding_right-small ev-checkbox tc-checkbox"
+                name="isTcAccepted" value={isTcAccepted} onchange={handleCheckboxValueChange} type="checkbox"
+                variant="label-hidden">
+            </lightning-input>
+            <span class="ev-checkbox_text">
+                Ich bin damit einverstanden, dass meine Kontaktdaten von der
+                EV Smart Money Holding GmbH für Marketingzwecke gespeichert
+                und verwendet werden. Weitere Informationen zur Datenverarbeitung
+                entnehmen Sie bitte den <a class="tc_link" href="/">Datenschutzbestimmungen.</a>
+
+
+            </span>
+
+        </div>
+        <div class="slds-col slds-grid slds-wrap ev-Design ev-margin_top-large">
+
+            <div
+                class="slds-col slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 ev-padding_right-mid ev-section_grow-large">
+
+                <lightning-input disabled={loaded} message-when-pattern-mismatch="invalid" class="ev-input"
+                    variant="label-hidden" type="email" placeholder="E-Mail" name="emailAddress" value={emailAddress}
+                    onchange={handleValueChange}>
+                </lightning-input>
+            </div>
+            <div
+                class="slds-col slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 ev-section_grow-small ">
+                <lightning-button disabled={loaded} class="ev-button" label="Anmelden" title="Anmelden"
+                    onclick={subscribe}>
+                </lightning-button>
+            </div>
+
+
+        </div>
+
+    </div>
+</template>

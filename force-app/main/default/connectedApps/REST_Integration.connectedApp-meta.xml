@@ -6,7 +6,7 @@
     <label>REST Integration</label>
     <oauthConfig>
         <callbackUrl>https://login.salesforce.com/services/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9wEVwV0C9ejAjQ5frs.3rQNHRcEBxNq19b1CjYzNuL4Q.2hH8W3rn4z9hPh.w2P6CKhDklKYSGhUdkytX</consumerKey>
+        <consumerKey>3MVG9GXbtnGKjXe7YMBmzyednKXMH.u.O2.syHEVZ6yzv1X5g7PW4ZrK5T0qUQMWY0.2SQ01gq0ZOZXKHbtwy</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isConsumerSecretOptional>false</isConsumerSecretOptional>
         <isIntrospectAllTokens>false</isIntrospectAllTokens>

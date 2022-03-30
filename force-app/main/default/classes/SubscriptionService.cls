@@ -14,7 +14,7 @@ public without sharing class SubscriptionService {
          
         
         List<Account> accountDetails=[SELECT id,FirstName,Salutation,LastName,Phone,(Select id,Send_Mail__c,Subscription_Terms_and_Conditions__c,Source__c,Type__c,Subscription_Status__c from Subscriptions__r WHERE Type__c=:product AND RecordTypeId=:Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID LIMIT 1) 
-                                      FROM Account WHERE PersonEmail=:email AND RecordTypeId=:Constant.PERSON_ACCOUNT_RECORDTYPEID];
+                                      FROM Account WHERE PersonEmail=:email AND isPersonAccount=true];
         if(accountDetails.size()>0){
             Account accountRec = accountDetails.get(0);
             respWrapper.leadId = accountRec.Id;
@@ -78,7 +78,7 @@ public without sharing class SubscriptionService {
         Boolean showForm = true;
         
         List<Account> accountList=[SELECT id,FirstName,Salutation,LastName,Phone,(Select id,Subscription_Terms_and_Conditions__c,Source__c,Type__c,Subscription_Status__c from Subscriptions__r WHERE Type__c=:product AND RecordTypeId=:Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID LIMIT 1) 
-                                      FROM Account WHERE PersonEmail=:email AND RecordTypeId=:Constant.PERSON_ACCOUNT_RECORDTYPEID];
+                                   FROM Account WHERE PersonEmail=:email AND isPersonAccount=true];
         if(accountList.size()>0){
             Account accountRec = accountList.get(0);
             if(accountRec.Subscriptions__r.size()>0){
@@ -103,7 +103,7 @@ public without sharing class SubscriptionService {
         List<String> leadAndContactId=new List<String>();
 
         List<Account> accountList=[SELECT id,FirstName,Salutation,LastName,Phone,(Select id,Send_Mail__c,Subscription_Terms_and_Conditions__c,Source__c,Type__c,Subscription_Status__c from Subscriptions__r WHERE Type__c=:product AND RecordTypeId=:Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID LIMIT 1) 
-                                   FROM Account WHERE PersonEmail=:email AND RecordTypeId=:Constant.PERSON_ACCOUNT_RECORDTYPEID];
+                                   FROM Account WHERE PersonEmail=:email AND isPersonAccount=true];
         if(accountList.size()>0){
             Account accountRec = accountList.get(0);
             if(accountRec.Subscriptions__r.size()>0){
@@ -139,17 +139,41 @@ public without sharing class SubscriptionService {
         return values;
     }
     
-     @AuraEnabled
+    @AuraEnabled
     public static List<History_Tracker__c> getLastEmailSentInfo(String subscriptionId){
         return [SELECT id,User__r.Name,Field__c,New_Value__c,CreatedDate FROM History_Tracker__c WHERE Object__c='Subscription__c' AND  Field__c='Send_Mail__c' AND Record_Id__c=:subscriptionId ORDER BY CreatedDate Desc];
     }
     
+    
+    @AuraEnabled
+    public static boolean registerSubscription(String email,String productName,String origin,String website){
+        try{
+        	RestServiceWebLead.verifyAndCreateAccount(email,productName,origin,website);
+            return true;
+        }
+        catch(Exception e){
+            logError(e,null,'Account','waitinglist_subscription','registerSubscription','Subscribe');
+            return false;
+        }
+        
+    }
+    
+     //helper
+    @testVisible
+    private static String logError(Exception e,String recordID,String objectName,String componentName,String methodName,String operation){
+        LogService.LogMetadata details=new LogService.LogMetadata();
+        details.addError(e);
+        details.addRecordInfo(objectName,recordId);
+        details.addMetadataInfo(userinfo.getUserId(),'SubscriptionService', methodName, componentName, operation);
+        return LogService.logError(details);
+    }
 
     public class leadWrapper{
         @AuraEnabled
         public Boolean showForm;
         @AuraEnabled
         public Id leadId;
+        
     }
 
 }

@@ -73,6 +73,7 @@ public class TaxExemptionFormControllerTest {
     static void closeCRPFRequestSuccess(){
         Test.setMock(HttpCalloutMock.class, new SolarisbankCRPRequestWrapper.MockResponse());
         Account a=TestDataFactory.getPersonAccount(true);
+        Bank__c b=TestDataFactory.getBankSolarisBank(a.id, true);
         Bank_Account__c ba=TestDataFactory.getBankAccount(a.id,false);
         ba.Type__c='TERM_DEPOSIT';
         insert ba;

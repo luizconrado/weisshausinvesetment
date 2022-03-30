@@ -29,6 +29,11 @@
                 <default>false</default>
                 <label>Integration Testing</label>
             </value>
+            <value>
+                <fullName>Auto-Generated Referral Code</fullName>
+                <default>false</default>
+                <label>Auto-Generated Referral Code</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
     <visibleLines>4</visibleLines>

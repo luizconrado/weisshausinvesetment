@@ -3,6 +3,6 @@ public class LogEventsHandler  extends TriggerHandler {
         List<Log_Event__e> events=(List<Log_Event__e>) newObjects;
         LogService.captureLogs(events);
         
-    }
+    } 
     
 }

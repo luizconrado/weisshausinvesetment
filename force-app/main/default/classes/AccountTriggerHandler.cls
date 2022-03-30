@@ -1,10 +1,14 @@
 public class AccountTriggerHandler  extends TriggerHandler {
     
+    
+    
     protected  override void beforeUpdate(final Map<Id, SObject> newObjects, final Map<Id, SObject> oldObjects) {
         
-	        
         for(String accountId:newObjects.keySet()){
             Account acc=(Account)newObjects.get(accountId);
+            
+            
+            
             //calcuate age
             if(acc.PersonBirthdate!=null) acc.Age__pc=AccountTriggerHelper.calucateAgeBracker(acc.PersonBirthdate);
 	         
@@ -14,10 +18,6 @@ public class AccountTriggerHandler  extends TriggerHandler {
         }
 
     }
-    
-    
-    
-    
     
     protected  override void afterUpdate(final Map<Id, SObject> newObjects, final Map<Id, SObject> oldObjects) {
         List<String> toAnonymize=new List<String>();

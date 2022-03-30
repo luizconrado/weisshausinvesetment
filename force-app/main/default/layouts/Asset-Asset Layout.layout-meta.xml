@@ -153,7 +153,6 @@
     <relatedLists>
         <fields>Date__c</fields>
         <fields>Value__c</fields>
-        <fields>Evaluation_Date_Smaller_Than_Today__c</fields>
         <relatedList>Evaluation__c.Asset__c</relatedList>
         <sortField>Date__c</sortField>
         <sortOrder>Desc</sortOrder>

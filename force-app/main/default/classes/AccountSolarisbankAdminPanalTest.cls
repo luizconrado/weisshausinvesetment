@@ -5,9 +5,9 @@ public class AccountSolarisbankAdminPanalTest {
     static void staticValuesTest(){
         AccountSolarisbankAdminPanalController.checkIsCompactLayout();
         AccountSolarisbankAdminPanalController.getBankAccountPicklistValues();
-        AccountSolarisbankAdminPanalController.getAccountPicklistValues();
+        AccountSolarisbankAdminPanalController.getKYCPicklistValues();
         Account a=TestDataFactory.getPersonAccount(true);
-        Bank_Account__c bc=TestDataFactory.getBankAccount(a.id,true);
+        Bank_Account__c bc=TestDataFactory.getBankAccount(a.id,true); 
         Card__c c=TestDataFactory.getCard(a.id,bc.id,true);
         Case ca=TestDataFactory.getBankCase(a.id,true);
         AccountSolarisbankAdminPanalController.getRecordDetails(a.id);

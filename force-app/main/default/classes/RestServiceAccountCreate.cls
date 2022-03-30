@@ -21,19 +21,24 @@ global class RestServiceAccountCreate {
         
         Account newPersonAccount=(Account)  JSON.deserialize(body, Account.class);
         
-        if(newPersonAccount.Auth0_Id__c==null && newPersonAccount.PersonEmail==null){
+        if(newPersonAccount.Auth0_Id__c==null || String.isEmpty(newPersonAccount.Auth0_Id__c)){
             res.statusCode = 404;
-            res.responseBody=RestResponseWrapper.setError(res.statusCode,new List<String>{'Auth0 Id or Email not found : '+newPersonAccount.LastName});
+            res.responseBody=RestResponseWrapper.setError(res.statusCode,new List<String>{'Auth0 Id  not found : '+newPersonAccount.LastName});
             return;
         }
         
         
         //check if account exsits
-        List<Account> personAccountList=[SELECT id,Invitation_Code__pc,Auth0_Id__c,FirstName,Solarisbank_Id__c,LastName,PersonEmail,Origin__pc FROM Account
+        List<Account> personAccountList=[SELECT id,UTM_Content__c,UTM_Term__c,UTM_Source__c,UTM_Campaign__c,UTM_Medium__c,Invitation_Code__pc,Email_Verified__pc,FirstName,Solarisbank_Id__c,LastName,PersonEmail,Origin__pc,
+                                         Auth0_ID__c,EVSM_Auth0_ID__c
+                                         FROM Account
                                          WHERE 
-                                         (Auth0_Id__c=:newPersonAccount.Auth0_Id__c OR PersonEmail=:newPersonAccount.PersonEmail )
+                                         (Auth0_Id__c=:newPersonAccount.Auth0_Id__c OR PersonEmail=:newPersonAccount.PersonEmail)
                                          AND 
-                                         (RecordTypeId  =: Constant.PERSON_ACCOUNT_RECORDTYPEID OR RecordTypeId=:Constant.PERSON_PARTNER_ACCOUNT_RECORDTYPEID)
+                                         PersonEmail!=null                                         
+                                         AND 
+                                         IsPersonAccount = true
+                                         LIMIT 1
                                         ];
        
         
@@ -57,12 +62,13 @@ global class RestServiceAccountCreate {
         if(newPersonAccount.UTM_Source__c!=null)newAccount.UTM_Source__c=newPersonAccount.UTM_Source__c;
         if(newPersonAccount.UTM_Term__c!=null)newAccount.UTM_Term__c=newPersonAccount.UTM_Term__c;
         if(newPersonAccount.UTM_Content__c!=null) newAccount.UTM_Content__c=newPersonAccount.UTM_Content__c;
+        if(newPersonAccount.Email_Verified__pc!=null && newPersonAccount.Email_Verified__pc==true)newAccount.Email_Verified__pc=newPersonAccount.Email_Verified__pc;
         
-
-
-
+        if(newPersonAccount.UTM_Term__c!=null && newAccount.Invitation_Code__pc==null)newAccount.Invitation_Code__pc=newPersonAccount.UTM_Term__c;
+	
         if(personAccountList.size()==0) newAccount.RecordTypeId=Constant.PERSON_ACCOUNT_RECORDTYPEID;
-        
+        else if(personAccountList.size()>0 && personAccountList.get(0).EVSM_Auth0_ID__c!=null && personAccountList.get(0).RecordTypeId!=Constant.ACCOUNT_INVESTMENT_BANKING_RECORDTYPEID) newAccount.RecordTypeId=Constant.ACCOUNT_INVESTMENT_BANKING_RECORDTYPEID; 
+       
         
         
         
@@ -78,15 +84,17 @@ global class RestServiceAccountCreate {
             System.debug(e.getMessage()+' '+e.getCause());
             errorMessage.add(e.getMessage()+' '+e.getCause());
             errorMessage.add(e.getStackTraceString());
-            logError(e,'PATCH');
+            
+            logError(e,'PATCH',body);
             res.statusCode = 500;
             res.responseBody=RestResponseWrapper.setError(res.statusCode,errorMessage);
         }
         
      } 
     	
-    private static void logError(Exception e,String method){
+    private static void logError(Exception e,String method,String body){
         LogService.LogMetadata elog=new LogService.LogMetadata(); 
+        elog.addComment(body);
         elog.addMetadataInfo(userinfo.getUserId(),'RestServiceAccountCreate',method,'',method+' /Account/Create/*');
         
         elog.addError(e);

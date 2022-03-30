@@ -153,6 +153,10 @@
     <picklistValues>
         <picklist>Origin__c</picklist>
         <values>
+            <fullName>Auto-Generated Referral Code</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>weisshausinvestment</fullName>
             <default>false</default>
         </values>

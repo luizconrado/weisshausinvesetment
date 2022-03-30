@@ -23,20 +23,22 @@ public without sharing  class TrackHistory {
         //create Records
         for(Tracking_Events__e event:changes){
             if(String.isNotEmpty(event.Operation__c)){
-                History_Tracker__c change=new History_Tracker__c();
-                change.Relation__c='On Record';
-                change.RecordTypeId=Constant.TRACK_FIELD_CHANGE_RECORDTYPE_ID;
-                change.Field__c=event.Field__c;
-                change.Object__c=event.Object__c;
-                change.Record_Id__c=event.Record_Id__c;
-                change.Old_Value__c=event.Old_Value__c;
-                change.New_Value__c=event.New_Value__c;
-                change.Record_Name__c=event.Record_Name__c;
-                change.User__c=event.User_Id__c;
-                change.Operation__c=event.Operation__c;
-                if(objectDescriptionMap.containsKey(event.Object__c)) change.Object_Label__c=objectDescriptionMap.get(event.Object__c).getLabel();
-                if(objectFieldsMap.containsKey(event.Object__c)) change.Field_Label__c=objectFieldsMap.get(event.Object__c).get(event.Field__c).getLabel();
-                toInsertRecords.add(change);
+                if(event.Field__c!=null && String.isNotEmpty(event.Field__c)){
+                    History_Tracker__c change=new History_Tracker__c();
+                    change.Relation__c='On Record';
+                    change.RecordTypeId=Constant.TRACK_FIELD_CHANGE_RECORDTYPE_ID;
+                    change.Field__c=event.Field__c;
+                    change.Object__c=event.Object__c;
+                    change.Record_Id__c=event.Record_Id__c;
+                    change.Old_Value__c=event.Old_Value__c;
+                    change.New_Value__c=event.New_Value__c;
+                    change.Record_Name__c=event.Record_Name__c;
+                    change.User__c=event.User_Id__c;
+                    change.Operation__c=event.Operation__c;
+                    if(objectDescriptionMap.containsKey(event.Object__c)) change.Object_Label__c=objectDescriptionMap.get(event.Object__c).getLabel();
+                    if(objectFieldsMap.containsKey(event.Object__c)) change.Field_Label__c=objectFieldsMap.get(event.Object__c).get(event.Field__c).getLabel();
+                    toInsertRecords.add(change);
+                }
             }
         }
         if(toInsertRecords.size()>0) insert toInsertRecords;
@@ -94,7 +96,7 @@ public without sharing  class TrackHistory {
                     e.Old_Value__c=String.valueOf(oldRecord.get(field));
                     e.User_Id__c=Userinfo.getUserId();
                     e.Operation__c='Update';
-                    System.debug('KING Event Update '+e);
+                   
                     toPublishRecords.add(e);
                 }
             }

@@ -4,13 +4,13 @@ public class BankCaseOverrideControlerTest {
     
     
     @isTest
-    static void testConstants(){
+    static void testConstants(){ 
         BankCaseOverrideControler.getBankCaseTypes();
         BankCaseOverrideControler.getCaseIITypes();
         BankCaseOverrideControler.getCardStatusTypes();
         BankCaseOverrideControler.getScheludedOrderTypes();
         BankCaseOverrideControler.checkIsCompactLayout();
-        BankCaseOverrideControler.getAccountPicklistValues();
+        BankCaseOverrideControler.getKYCPicklistValues();
     }
     
     @isTest

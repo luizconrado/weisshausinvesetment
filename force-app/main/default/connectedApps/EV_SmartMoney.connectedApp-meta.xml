@@ -4,11 +4,11 @@
     <label>EV SmartMoney</label>
     <oauthConfig>
         <callbackUrl>https://ev-smartmoney.secure.force.com/</callbackUrl>
-        <consumerKey>3MVG9wEVwV0C9ejAjQ5frs.3rQFjdaQD4VCe808YJI1sRyWWajf6VKuuuQucyvCPl9y6hsfdvs3FHz.gutN8h</consumerKey>
+        <consumerKey>3MVG9GXbtnGKjXe7YMBmzyednKU8EL4y0IC1j_ApLm6mm2Bneohk_64pWIRRHKWCbVV7.hzvDjvnZzMKI9Kj_</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isConsumerSecretOptional>false</isConsumerSecretOptional>
         <isIntrospectAllTokens>false</isIntrospectAllTokens>
-        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <scopes>Basic</scopes>
         <scopes>Api</scopes>
         <scopes>Full</scopes>

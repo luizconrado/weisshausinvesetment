@@ -644,6 +644,10 @@
     <picklistValues>
         <picklist>Origin__pc</picklist>
         <values>
+            <fullName>Auto-Generated Referral Code</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Referral Code Website</fullName>
             <default>false</default>
         </values>

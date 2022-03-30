@@ -5,7 +5,6 @@
     <columns>Log_Number__c</columns>
     <columns>Operation__c</columns>
     <columns>Record__c</columns>
-    <columns>Status__c</columns>
     <columns>User__c</columns>
     <columns>CREATED_DATE</columns>
     <filterScope>Everything</filterScope>

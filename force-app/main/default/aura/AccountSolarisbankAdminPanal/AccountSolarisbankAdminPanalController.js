@@ -6,10 +6,10 @@
         });
         component.set('v.sessionToken',helper.generateRandomString(10));
         if(component.get('v.source')=='Account')
-            helper.callApex(component,'getAccountPicklistValues',function(response){
+            helper.callApex(component,'getKYCPicklistValues',function(response){
                 let data = response.getReturnValue();
                 
-                
+console.log('getKYCPicklistValues',data)                
                 component.set('v.maritalStatusValues',Object.keys(data.Marital_Status__c).map(function(value){
                     return {value:value,label:data.Marital_Status__c[value]};
                 }));

@@ -20,6 +20,10 @@
         </sections>
         <sections>
             <label></label>
+            <section>Info</section>
+        </sections>
+        <sections>
+            <label></label>
             <section>Record Details</section>
         </sections>
     </layouts>
@@ -28,6 +32,10 @@
         <sections>
             <label></label>
             <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Info</section>
         </sections>
         <sections>
             <label></label>

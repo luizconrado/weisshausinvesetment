@@ -4,11 +4,17 @@
         component.set('v.loading',true);
         helper.callApex(component,'getRecordDetails',function(result){
             let status=result.getState();
-            let data=result.getReturnValue();
+            let dataResult=result.getReturnValue();
             console.log(status)
             
             if (status === "SUCCESS") {
-                if(data.length>0){
+                let data=dataResult['Record'];
+                console.log('data',data)
+                if(data.length>0){ 
+                    if(data[0].Banks__r && data[0].Banks__r[0].Marital_Status__c){
+                        data[0].Marital_Status__c=data[0].Banks__r[0].Marital_Status__c;
+                    }
+                    console.log('recordData',data[0])
                     component.set('v.recordData',data[0])
                     component.set('v.recordDataOrignal',Object.freeze(JSON.parse(JSON.stringify(data[0]))))
                     
@@ -24,15 +30,19 @@
                             component.set('v.selectedIdNowType','EN');    
                         }
                     }
-                    if(data[0].Person_Account__r && data[0].Person_Account__r.Employment_Status__c){
-                        if(data[0].Person_Account__r.Employment_Status__c=='FREELANCER' || data[0].Person_Account__r.Employment_Status__c=='SELF_EMPLOYED'){
-                            component.set('v.cardtypeSelected','VISA_BUSINESS_DEBIT');
-                        }
-                        else{
-                            component.set('v.cardtypeSelected','VISA_DEBIT');
-                        }
-                        
+                    if(dataResult['Employment_Status']){
+                        let kycData=dataResult['Employment_Status'];
+                        if(kycData[0] && kycData[0].Employment_Status__c){
+                            if(kycData[0].Employment_Status__c.toUpperCase()=='FREELANCER' || kycData[0].Employment_Status__c.toUpperCase()=='SELF_EMPLOYED'){
+                                component.set('v.cardtypeSelected','VISA_BUSINESS_DEBIT');
+                            }
+                            else{
+                                component.set('v.cardtypeSelected','VISA_DEBIT');
+                            }
+                            
+                        } 
                     }
+                    
                     if(data[0].Status__c){
                         let isBlock = (data[0].Status__c === 'ACTIVE' )?true:false;
                         let isUnBlock = data[0].Status__c === 'BLOCKED'
@@ -203,7 +213,9 @@
     createNewCard:function(component){
         let helper=this;
         let cardfName=component.get('v.cardfName');
+        
         let cardlName=component.get('v.cardlName');
+        
         let cardtypeSelected=component.get('v.cardtypeSelected');
         if( !cardfName.trim()){
             helper.showToast('Warrning','Please Enter First Name','warning');
@@ -213,8 +225,10 @@
             helper.showToast('Warrning','Please Enter First Name','warning');
             return;
         } 
+        cardfName=cardfName.trim();
+        cardlName=cardlName.trim();
         let txt=cardfName+cardlName ;
-        if(txt.length>=21){
+        if(txt.length>21){
             helper.showToast('Warrning','Please make sure first,last and surname name combined is less then 20 characters','warning');
             return;
         }  
@@ -224,7 +238,7 @@
             line_1:cardfName+'/'+cardlName,
             reference:randomString
         }
-        
+        console.log('body',body)
         component.set('v.loading',true);
         helper.callApex(component,'requestNewBankCard',function(response){
             let state = response.getState();
@@ -345,8 +359,6 @@
         let changes={};
         if(accountDetailsOrignal.PersonTitle != accountDetails.PersonTitle)changes.title=accountDetails.PersonTitle;
         if(accountDetailsOrignal.Salutation != accountDetails.Salutation)changes.salutation=accountDetails.Salutation;
-        if(accountDetailsOrignal.Industry != accountDetails.Industry)changes.industry=accountDetails.Industry;
-        if(accountDetailsOrignal.Industry_Key__c != accountDetails.Industry_Key__c)changes.industry_key=accountDetails.Industry_Key__c;
         
         if(line2){
             if(!changes.address)changes.address={};
@@ -378,13 +390,13 @@
             changes.address.postal_code=accountDetails.BillingPostalCode;
         }
         
-        if(accountDetailsOrignal.Employment_Status__c != accountDetails.Employment_Status__c)changes.employment_status=accountDetails.Employment_Status__c;
+        
         if(accountDetailsOrignal.Marital_Status__c != accountDetails.Marital_Status__c){
             changes.tax_information={};
             changes.tax_information.marital_status=accountDetails.Marital_Status__c;
         }    
-       component.set('v.accountDetailsChanged',changes)
-     console.log('changes',changes)
+        component.set('v.accountDetailsChanged',changes)
+       console.log('changes',changes)
         if(changes.title!=undefined ||
            changes.salutation ||
            changes.address ||

@@ -142,6 +142,96 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>logType</name>
+                    <value>API</value>
+                </componentInstanceProperties>
+                <componentName>LogListView</componentName>
+                <identifier>c_LogListView1</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>logType</name>
+                    <value>ERROR</value>
+                </componentInstanceProperties>
+                <componentName>LogListView</componentName>
+                <identifier>c_LogListView2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>logType</name>
+                    <value>CRP</value>
+                </componentInstanceProperties>
+                <componentName>LogListView</componentName>
+                <identifier>c_LogListView3</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-c9bde51d-0838-4d95-96bb-cf444e3b69d9</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>logType</name>
+                    <value>HISTORY</value>
+                </componentInstanceProperties>
+                <componentName>LogListView</componentName>
+                <identifier>c_LogListView4</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>logType</name>
+                    <value>VIEW</value>
+                </componentInstanceProperties>
+                <componentName>LogListView</componentName>
+                <identifier>c_LogListView5</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-rujpnzgyuz</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-c9bde51d-0838-4d95-96bb-cf444e3b69d9</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Transaction Logs</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab1</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-rujpnzgyuz</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Record Logs</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-16efd709-228f-410e-8094-392a89378584</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>displayOption</name>
                     <value>BOTH</value>
                 </componentInstanceProperties>
@@ -157,6 +247,16 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tabset</componentName>
                 <identifier>flexipage_tabset</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>tabs</name>
+                    <value>Facet-16efd709-228f-410e-8094-392a89378584</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tabset</componentName>
+                <identifier>flexipage_tabset1</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>

@@ -5,22 +5,36 @@
             let state = response.getState();
             let data = response.getReturnValue();
             if (state === "SUCCESS") {
-                 component.set('v.bankCaseDetails',data);
-                 if(data.Bank_Account__r.Person_Account__r){
-                    component.set('v.fName',(data.Bank_Account__r.Person_Account__r)?data.Bank_Account__r.Person_Account__r.FirstName:'');
-                    component.set('v.lName',(data.Bank_Account__r.Person_Account__r)?data.Bank_Account__r.Person_Account__r.LastName:'');
-                    //if user is not freelanser and sef employed all cards are visa debit
-                    if(data.Bank_Account__r.Person_Account__r.Employment_Status__c=='FREELANCER' || data.Bank_Account__r.Person_Account__r.Employment_Status__c=='SELF_EMPLOYED'){
-                        component.set('v.typeSelected','VISA_BUSINESS_DEBIT');
+                
+                helper.callApex(component,'getSuccessKYCIdentificationRecord',function(response){
+                    let stateKYC = response.getState();
+                    let dataKYC = response.getReturnValue();
+                    console.log('data',dataKYC,stateKYC)
+                    if (stateKYC === "SUCCESS") {
+                        
+                        component.set('v.bankCaseDetails',data);
+                        if(data.Bank_Account__r.Person_Account__r){
+                            component.set('v.fName',(data.Bank_Account__r.Person_Account__r)?data.Bank_Account__r.Person_Account__r.FirstName:'');
+                            component.set('v.lName',(data.Bank_Account__r.Person_Account__r)?data.Bank_Account__r.Person_Account__r.LastName:'');
+                        }
+                        //if user is not freelanser and sef employed all cards are visa debit
+                        if(dataKYC.length>0 && dataKYC[0].Employment_Status__c.toUpperCase()=='FREELANCER' || dataKYC[0].Employment_Status__c.toUpperCase()=='SELF_EMPLOYED'){
+                            component.set('v.typeSelected','VISA_BUSINESS_DEBIT');
+                        }
+                        else{
+                            component.set('v.typeSelected','VISA_DEBIT');
+                        }
                     }
-                    else{
-                        component.set('v.typeSelected','VISA_DEBIT');
-                    }
-                }
+                    component.set('v.loader',false);
+                },{ 
+                    "accountId":data.Bank_Account__r.Person_Account__c
+                });
+                
+                
             }
             else if (state === "ERROR") {
             }
-            component.set('v.loader',false);
+          
         },{
             recordId:component.get('v.recordId')
         });

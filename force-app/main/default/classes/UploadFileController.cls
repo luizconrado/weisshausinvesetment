@@ -37,7 +37,6 @@ public class UploadFileController {
         if(records.size()==0) return null;
         sobject record=records.get(0);
         String prefix=String.valueOf(record.get(config.Prefix_Field_Name__c.trim()));
-        tag = prefix +' - '+tag;
         List<ContentDocumentLink> link=[SELECT ContentDocumentId FROM ContentDocumentLink WHERE LinkedEntityId=:recordId];
         List<String> contentDocumentIds=new List<String>();
         For(ContentDocumentLink doc:link) contentDocumentIds.add(doc.ContentDocumentId);
@@ -54,14 +53,20 @@ public class UploadFileController {
         if(records.size()==0) return;
         sobject record=records.get(0);
         String prefix=String.valueOf(record.get(config.Prefix_Field_Name__c.trim()));
+        String orignalTag=tag;
         tag = prefix +' - '+tag;
         List<ContentVersion> files=[SELECT Id, ContentDocumentId,Title,ContentSize,Type__c,ContentModifiedDate,FileExtension,VersionNumber,ContentModifiedBy.Name FROM ContentVersion 
                                     WHERE  ContentDocumentId IN: documnetIds ORDER BY ContentModifiedDate DESC];
+        List<String> contentVersionIdList=new List<String>();
         for(ContentVersion file:files){
-            file.Title=tag +' - '+file.Title;
-            file.Type__c=tag;
+            file.Title=file.Title+' - '+tag ;
+            file.Type__c=orignalTag;
+            contentVersionIdList.add(file.Id);
         }
         update files;
+         
+      
+        
     }
 
    

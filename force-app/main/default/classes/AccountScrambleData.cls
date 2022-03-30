@@ -1,12 +1,20 @@
 public without sharing class AccountScrambleData implements Queueable {
     List<String> accountIdList=new List<String>();
     final String PLACEHOLDER='[SCRAMBLEDATA]';
-    
+    final String USER_ROLE='All Data Access';
     List<Scramble_Configuration__c> scrambleConfiguration{private set;get{
         if(scrambleConfiguration==null) scrambleConfiguration=[SELECT id,Field__c,IsReference__c,Object__c FROM Scramble_Configuration__c];
         return  scrambleConfiguration;
     }}
-    
+    final String userForHiddineRole{private set;get{
+        if(userForHiddineRole==null){
+            List<User> users=[SELECT Id, UserRoleId FROM User WHERE UserRole.Name=:USER_ROLE AND isActive=true];
+            userForHiddineRole=users.get(0).Id;
+        }
+        return userForHiddineRole;
+    }}
+        
+      
     public AccountScrambleData(List<String> accountIds){
         accountIdList=accountIds;
     }
@@ -27,6 +35,12 @@ public without sharing class AccountScrambleData implements Queueable {
                 List<Sobject> dbResult=queryResult.get(objectName);
                 List<DescribeFieldResult> fieldsToScramble=scrambleFields.get(objectName);
                 for(Sobject obj:dbResult){
+                    if(objectName=='Account'){
+                        if( userForHiddineRole!=null){
+                            obj.put('OwnerId',userForHiddineRole);
+                        }
+                    }  
+                    
                     for(DescribeFieldResult field:fieldsToScramble){
                         if(obj.get(field.getName()) !=null){
                             String scrambledData=getScrambledData(field);
@@ -117,6 +131,7 @@ public without sharing class AccountScrambleData implements Queueable {
     private Map<String,List<Sobject>> queryDatabase(Map<String,String> queryAndObjectMap){
         Map<String,List<Sobject>> databaseResultMap=new Map<String,List<Sobject>>();
         for(String objectName:queryAndObjectMap.keySet()){
+            System.debug('Query '+queryAndObjectMap.get(objectName));
             databaseResultMap.put(objectName,Database.query(queryAndObjectMap.get(objectName)));
         }
         return databaseResultMap;
@@ -153,6 +168,7 @@ public without sharing class AccountScrambleData implements Queueable {
         Map<String,String> querys=new Map<String,String>();
         for(String objectName:objectAndFieldsMap.keySet()){
             String fieldsQuery='SELECT Id,';
+            if(objectName=='Account')fieldsQuery+='OwnerId,';
             fieldsQuery+=string.join(objectAndFieldsMap.get(objectName), ',');
             String objectQuery=' FROM '+objectName;
             String whereQuery= ' WHERE '+objectAndRelationMap.get(objectName)+' IN '+PLACEHOLDER;    

@@ -47,20 +47,24 @@ public class SyncAccountAndSolarisbankControllerTest {
         public HTTPResponse respond(HTTPRequest req) { 
       
             String endpoint=req.getEndpoint();
-            String body='[{"id":"'+sbId+'"}]';
+            String body='[{"id":"'+sbId+'","status":"successful"}]';
             
-            HttpResponse resp = new HttpResponse(); 
+            HttpResponse resp = new HttpResponse();  
             
             resp.setStatusCode(200); 
             
             resp.setStatus('success'); 
             
             if(endpoint.endsWith(sbId)){
-                body = '{"last_name":"apiname"}';
+                body = '{"last_name":"apiname","status":"successful"}';
             }
+            else if(endpoint.contains('idnow_attempts')){ 
+                body = '[{"payload":{"identificationprocess":{"result":"SUCCESS"},"identificationdocument":{"number":{"value":"one"}}}}]';
+            } 
             else if(endpoint.endsWith('/mobile_number')){
                 body = '{}';
-            }
+            } 
+            
            
             resp.setBody(body); 
             

@@ -1,0 +1,10 @@
+{
+  "activeViewId" : "dc957eb0-f4e5-43d2-98c7-72fc4fcde8b2",
+  "appPageId" : "378757ad-93f9-446d-90b1-4f54d36d4209",
+  "configurationTags" : [ ],
+  "id" : "455a3b5a-146b-4046-b3f4-c4016ece1bde",
+  "label" : "waiting List",
+  "routeType" : "custom-waiting-list",
+  "type" : "route",
+  "urlPrefix" : "waiting-list"
+}

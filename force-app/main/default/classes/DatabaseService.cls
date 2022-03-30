@@ -9,7 +9,7 @@ public  inherited  sharing class DatabaseService {
                 for(Database.Error err : sr.getErrors()) {
                     System.debug(err.getStatusCode() + ': ' + err.getMessage());
                     System.debug('Fields that affected this error: ' + err.getFields());
-                    throw new Aurahandledexception(err.getStatusCode() + ': ' + err.getMessage());
+                   // throw new Aurahandledexception(err.getStatusCode() + ': ' + err.getMessage());
                 }
             }
         }

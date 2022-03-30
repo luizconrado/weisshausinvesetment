@@ -3,7 +3,7 @@ public class CaseTriggerHandler extends TriggerHandler {
     protected override void beforeInsert(final List<SObject> newObjects) {
         List<Case> newCaseList=(List<Case>) newObjects;
         List<String> personAccountExternalIds=new List<String>();
-        
+        Map<String,Account> externalIdAndAccountMap=new  Map<String,Account>(); 
         //pre process 
         for(Case newCase:newCaseList){
             if(newCase.recordTypeId == Constant.INVESTMENTCASE_CASE_RECORDTYPEID || newCase.recordTypeId == Constant.STANDARD_CASE_RECORDTYPEID){
@@ -14,7 +14,7 @@ public class CaseTriggerHandler extends TriggerHandler {
             }
         }
         
-        Map<String,Account> externalIdAndAccountMap=getPersonAccountMap(personAccountExternalIds);
+        if(personAccountExternalIds.size()>0) externalIdAndAccountMap=getPersonAccountMap(personAccountExternalIds);
         
         attachAccountAndContactToCase(newCaseList,externalIdAndAccountMap);
         

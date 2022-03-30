@@ -154,6 +154,7 @@ public with sharing class BankCaseService {
                                                               String index = logError(e,caseId,'Case','BankCaseNewOverride','createBankCasesRecords','Create New Bank Case');
                                                               throw new AuraHandledException('Please contact your System admin.And provide '+index+' id to resolve issue.');
                                                           }
+ 
                                                       }
     //Change Card Status
     @AuraEnabled
@@ -259,11 +260,11 @@ public with sharing class BankCaseService {
                 String responseString=SolarisbankService.fetchIdentificationRequestDetails(bankAccountDetails.Account__r.Solarisbank_Id__c,response.id,apiCallDetailsForIdent);
                 SolarisBankIdentificationWrapper identResponse=SolarisBankIdentificationWrapper.parse(responseString);
                 
-                Identification__c newIdentification=new Identification__c();
+                KYC_Detail__c newIdentification=new KYC_Detail__c();
                 newIdentification.Solarisbank_Id__c=response.id;      
                 newIdentification.Method__c='IDnow';
                 newIdentification.Account__c=bankAccountDetails.Account__c;
-                newIdentification.RecordTypeId=Constant.IDENTIFIACTION_VIDEO_IDENTIFICATION_RECORDTYPEID;
+                newIdentification.RecordTypeId=Constant.KYC_VIDEO_IDENTIFICATION_RECORDTYPEID;
                 if(String.isNotEmpty(identResponse.url)) newIdentification.URL__c=identResponse.url;
                 if(String.isNotEmpty(identResponse.reference)) newIdentification.Reference__c=identResponse.reference;
                 insert newIdentification; 
@@ -285,6 +286,7 @@ public with sharing class BankCaseService {
             String index = logError(e,recordId,'Bank_Case_Item__c','BankCaseCreateNewIdentificationAttempt','createNewIdentification','Request New Idnow');
             throw new AuraHandledException('Please contact your System admin.And provide '+index+' id to resolve issue.');
         }
+ 
     } 
     
     //request details change
@@ -348,12 +350,12 @@ public with sharing class BankCaseService {
             throw exp;
             
         }
-        
+         
     }
     
     //accept crp otp and conform request
     public static String confirmPersonDetailsChangeTanRequest(String recordId,String tanurl,String otp){
-        try{
+       try{
             List<Change_Request_Log__c> changeRequestList=new List<Change_Request_Log__c>();
             Bank_Case_Item__c bankAccountDetails=[SELECT Description__c,Id,Case__c,Action__c, Account__c,Identification__c,Account__r.Solarisbank_Id__c,Account__r.Solarisbank_Tenent__c FROM Bank_Case_Item__c WHERE id=:recordId];
             LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(recordId,'Bank_Case_Item__c',bankAccountDetails.Account__r.Solarisbank_Tenent__c);
@@ -391,6 +393,7 @@ public with sharing class BankCaseService {
             String index = logError(e,recordId,'Bank_Case_Item__c','BankCaseUpdatePersonDetails','confirmPersonDetailsChangeTanRequest','Accept CRP for Person Details');
             throw new AuraHandledException('Please contact your System admin.And provide '+index+' id to resolve issue.');
         }
+ 
     }
     
       @AuraEnabled
@@ -431,7 +434,10 @@ public with sharing class BankCaseService {
             return res;
         }
         catch(Exception e){
+             
             String index = logError(e,bankCaseId,'Bank_Case_Item__c','BankCaseRequestNewCard','requestCreateNewCard','Request For New Card');
+            SolarisbankService.CardResponse cardError=(SolarisbankService.CardResponse) JSON.deserialize(e.getMessage(), SolarisbankService.CardResponse.class);
+            System.debug(cardError.errors.get(0).detail);
             throw new AuraHandledException('Please contact your System admin.And provide '+index+' id to resolve issue.');
              
         }
@@ -442,6 +448,7 @@ public with sharing class BankCaseService {
         LogService.LogMetadata details=new LogService.LogMetadata();
         details.addError(e);
         details.addRecordInfo(objectName,recordId);
+        
         details.addMetadataInfo(userinfo.getUserId(),'BankCaseService', methodName, componentName, operation);
         return LogService.logError(details);
     }

@@ -23,9 +23,28 @@
             <section>View Details</section>
         </sections>
     </layouts>
+    <layouts>
+        <layout>Opportunity Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Document Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>View Details</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <label></label>
         <name>Account_Documents</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Opportunity_Documents</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>

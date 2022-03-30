@@ -4,7 +4,7 @@ global without sharing class RestServiceRealEstate {
     global static void doGet(){
         RestResponse res = RestContext.response;
         RestRequest req = RestContext.request;
-         String realEstateId=req.requestURI.substringAfterLast('/');
+        String realEstateId=req.requestURI.substringAfterLast('/');
          //check for asset id
         if(String.isBlank(realEstateId)){
             res.statusCode = 400;
@@ -175,7 +175,7 @@ global without sharing class RestServiceRealEstate {
             System.debug(e.getMessage()+' '+e.getCause());
             errorMessage.add(e.getMessage()+' '+e.getCause());
             errorMessage.add(e.getStackTraceString());
-            logError(e,'POST');
+            logError(e,'POST',body);
             res.statusCode = 500;
             res.responseBody=RestResponseWrapper.setError(res.statusCode,errorMessage);
         }
@@ -297,7 +297,7 @@ global without sharing class RestServiceRealEstate {
             System.debug(e.getMessage()+' '+e.getCause());
             errorMessage.add(e.getMessage()+' '+e.getCause());
             errorMessage.add(e.getStackTraceString());
-            logError(e,'PUT');
+            logError(e,'PUT',body);
             res.statusCode = 500;
             res.responseBody=RestResponseWrapper.setError(res.statusCode,errorMessage);
         }
@@ -306,10 +306,10 @@ global without sharing class RestServiceRealEstate {
         
     }
     
-    private static void logError(Exception e,String method){
+    private static void logError(Exception e,String method,string body){
         LogService.LogMetadata elog=new LogService.LogMetadata(); 
         elog.addMetadataInfo(userinfo.getUserId(),'RestServiceRealEstate',method,'',method+' /Asset/RealEstate/');
-        
+        elog.addComment(body);
         elog.addError(e);
         LogService.logError(elog);
     }

@@ -113,20 +113,36 @@ public class AccountSolarisbankAdminPanalController {
     }
     
     @auraEnabled(cacheable=true)
-    public static Map<String,Map<String,String>> getAccountPicklistValues(){
-        return BankCaseOverrideControler.getAccountPicklistValues();
+    public static Map<String,Map<String,String>> getKYCPicklistValues(){
+        return BankCaseOverrideControler.getKYCPicklistValues();
     }
     
+    
+    
     @AuraEnabled
-    public static List<sObject> getRecordDetails(Id recordId){
+    public static Map<String,List<sObject>> getRecordDetails(Id recordId){
         
-        if(recordId.getSobjectType()== Schema.Account.SObjectType)
-            return [SELECT id,Marital_Status__c,BillingCountry,BillingPostalCode,BillingCity,BillingStreet,PersonTitle,Salutation,FirstName,LastName,Preferred_Language__pc  FROM ACCOUNT WHERE Id=:recordId];
-        else if(recordId.getSobjectType()==Schema.Bank_Account__c.SObjectType)
-            return [SELECT id,Person_Account__c,Person_Account__r.Employment_Status__c,Person_Account__r.FirstName,Person_Account__r.LastName FROM Bank_Account__c WHERE Id=:recordId];
-        else if(recordId.getSobjectType()==Schema.Card__c.SObjectType)
-            return [SELECT id,Status__c FROM Card__c WHERE Id=:recordId];
-        
+        if(recordId.getSobjectType()== Schema.Account.SObjectType){
+            return new Map<String,List<sObject>>{
+                'Record'=>[SELECT id,Marital_Status__c,BillingCountry,BillingPostalCode,BillingCity,BillingStreet,PersonTitle,Salutation,FirstName,LastName,Preferred_Language__pc,
+                           (SELECT Id, Marital_Status__c  FROM Banks__r WHERE  RecordTypeId=:Constant.BANK_SOLARISBANK_RECORDTYPEID)  FROM ACCOUNT WHERE Id=:recordId]
+                    };
+                        }
+        else if(recordId.getSobjectType()==Schema.Bank_Account__c.SObjectType){
+            List<Bank_Account__c> bankAccount=[SELECT id,Person_Account__c,Person_Account__r.FirstName,Person_Account__r.LastName FROM Bank_Account__c WHERE Id=:recordId];
+            String accountId=bankAccount.get(0).Person_Account__c;
+            List<Bank__c> kycData=[SELECT Id, Employment_Status__c  FROM Bank__c WHERE Account__c=:accountId AND RecordTypeId=:Constant.BANK_SOLARISBANK_RECORDTYPEID];
+
+             return new Map<String,List<sObject>>{
+                'Record'=>bankAccount,
+                    'Employment_Status'=>kycData
+                    }; 
+                        }
+        else if(recordId.getSobjectType()==Schema.Card__c.SObjectType){
+            return new Map<String,List<sObject>>{ 
+                'Record'=>[SELECT id,Status__c FROM Card__c WHERE Id=:recordId] 
+                    };
+                        }
         return null;
     }
     
@@ -141,6 +157,7 @@ public class AccountSolarisbankAdminPanalController {
         Bank_Account__c bankAccountDetails=[SELECT Id,Person_Account__c,Solarisbank_Id__c,Person_Account__r.Solarisbank_Id__c,Person_Account__r.FirstName,Person_Account__r.LastName,Person_Account__r.Solarisbank_Tenent__c
                                             FROM Bank_Account__c 
                                             WHERE Id=:recordId];
+        List<Bank__c> sbBankDetails=[SELECT id FROM Bank__c WHERE Account__c=:bankAccountDetails.Person_Account__c AND RecordTypeId=:Constant.BANK_SOLARISBANK_RECORDTYPEID];
         LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(recordId,'Bank_Account__c',bankAccountDetails.Person_Account__r.Solarisbank_Tenent__c);
         String res=SolarisbankService.requestNewCard(bankAccountDetails.Person_Account__r.Solarisbank_Id__c, bankAccountDetails.Solarisbank_Id__c, body,apiCallDetails);
         SolarisbankService.CardResponse bankAccount=(SolarisbankService.CardResponse) JSON.deserialize(res, SolarisbankService.CardResponse.class);
@@ -155,7 +172,7 @@ public class AccountSolarisbankAdminPanalController {
         newCard.Person_Account__c=bankAccountDetails.Person_Account__c;
         newCard.Bank_Account__c=bankAccountDetails.Id;
         newCard.Solarisbank_Id__c=bankAccount.id;
-        
+        if(sbBankDetails.size()>0)newCard.Bank__c=sbBankDetails.get(0).Id;
         insert newCard;
         
         

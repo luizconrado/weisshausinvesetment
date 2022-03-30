@@ -1,0 +1,27 @@
+.ev-toast_container{
+   
+   
+    position: absolute;
+    height: 56px;
+    top: calc(3% - 56px/2);
+    background: #EAF4E8;
+    max-width: 1140px;
+    width: 80%;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+}
+.ev-toast_wraper{
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.ev-toast_icon img{
+height: 3em;
+align-self: center;
+padding:8px;
+}
+.ev-toast_text{
+    align-self: center;
+}

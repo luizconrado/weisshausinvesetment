@@ -10,12 +10,11 @@ public without sharing  class SyncAccountAndSolarisbankController {
     @AuraEnabled 
     public static void startSyncWithBank(String sfAccountId){
 
-        
+   
         Account sfAccount=[SELECT Id,Description, LastName, FirstName, Salutation, MiddleName,Gender__pc,PersonEmail,Phone,PersonTitle,Type,
                            ShippingStreet, ShippingCity, ShippingState, ShippingPostalCode, ShippingCountry ,
-                           BillingStreet, BillingCity, BillingState, BillingPostalCode, BillingCountry,Solarisbank_Id__c,Solarisbank_Tenent__c,
-                           Legal_Name__c,Tax_Assessment__c,Marital_Status__c,Terms_Conditions_Signed_At__c ,Flagged_By_Compliance__c,Own_Economic_Interest_Signed_At__c ,
-                           Birth_Name__c, Birth_City__c, Birth_Country__c,Employment_Status__c,Fatca_Relevant__c ,Fatca_Crs_Confirmed_At__c, Business_Purpose__c, Industry_Key__c 
+                           Nationality__c,
+                           BillingStreet, BillingCity, BillingState, BillingPostalCode, BillingCountry,Solarisbank_Id__c,Solarisbank_Tenent__c
                            FROM Account WHERE id=:sfAccountId LIMIT 1];
         LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(sfAccount.Id,'Account',sfAccount.Solarisbank_Tenent__c);
         Map<String,Bank_Account__c> bankAccountMap=new Map<String,Bank_Account__c>();
@@ -25,6 +24,7 @@ public without sharing  class SyncAccountAndSolarisbankController {
         
         List<Bank_Account__c> toInsertBankAccounts=new List<Bank_Account__c>();
         List<Bank_Account__c> toUpdateBankAccounts=new List<Bank_Account__c>();
+        
         //getting exsisting card details
         Map<String,Card__c> bankCardMap=new Map<String,Card__c>();
         for(Card__c card:[SELECT Id, Type__c, Status__c, Expiration_Date__c, Person_Account__c, 
@@ -42,13 +42,24 @@ public without sharing  class SyncAccountAndSolarisbankController {
         List<Tax_Identification__c> toUpdateTaxIdentification=new List<Tax_Identification__c>();
         
         //getting exsisiting identification
-        Map<String,Identification__c> personIdentificationMap=new Map<String,Identification__c>();
-        for(Identification__c personIdent:[SELECT Id, Account__c, Solarisbank_Id__c, Is_Test__c, Reference__c, URL__c, Status__c, Completed_At__c, Method__c, Failure_Reason__c, Identification_Id__c, State__c 
-                                                  FROM Identification__c
+        Map<String,KYC_Detail__c> personIdentificationMap=new Map<String,KYC_Detail__c>();
+        for(KYC_Detail__c personIdent:[SELECT Id, Account__c, Solarisbank_Id__c, Is_Test__c, Reference__c, URL__c, Status__c, Completed_At__c, Method__c, Failure_Reason__c, Identification_Id__c, State__c 
+                                                  FROM KYC_Detail__c
                                                   WHERE Account__c=:sfAccountId])  personIdentificationMap.put(personIdent.Solarisbank_Id__c,personIdent);
-        List<Identification__c> toInsertperIdentification=new List<Identification__c>();
-        List<Identification__c> toUpdateperIdentification=new List<Identification__c>();
+        List<KYC_Detail__c> toInsertperIdentification=new List<KYC_Detail__c>();
+        List<KYC_Detail__c> toUpdateperIdentification=new List<KYC_Detail__c>();
        
+        
+        List<Bank__c> sbBankList=[SELECT id,Name,Email__c,Term_Deposit_Enabled_At__c,Solarisbank_Id__c,Is_Term_Deposit_Enabled__c ,
+                                  Account__c , Phone__c, Industry_Key__c, Title__c, Salutation__c, First_Name__c, Postal_Code__c, Street__c, Birth_Name__c, Birth_Date__c, Last_Name__c, 
+                                  Birth_City__c, Job_Title__c, Fatca_Relevant__c, Fatca_Crs_Confirmed_at__c, Business_Purpose__c, Terms_conditions_Signed_At__c,
+                                  Own_Economic_Interest_Signed_At__c, Aml_Follow_Up_Date__c, Aml_Confirmed_On__c, Flagged_By_Compliance__c, Vat_Number__c, Nace_Code__c,
+                                  Business_Street__c, Business_Postal_Code__c, Country__c, City__c, State__c, Nationality__c, Birth_Country__c, Employment_Status__c, Tax_Assessment__c,
+                                  Marital_Status__c, Industry__c, Business_City__c, Business_Country__c, Screening_Progress__c, Risk_Classification_Status__c, Customer_Vetting_Status__c 
+                                  FROM Bank__c 
+                                  WHERE Account__c=:sfAccountId AND RecordTypeId=:Constant.BANK_SOLARISBANK_RECORDTYPEID];
+        
+        
         //checking if solaribank id exsisitngs
         if(String.isNotEmpty(sfAccount.Solarisbank_Id__c)){
             //calls
@@ -59,32 +70,109 @@ public without sharing  class SyncAccountAndSolarisbankController {
             //fetching phone number
             String phoneJson='{}';
             try{
-            phoneJson=SolarisbankService.fetchPersonPhoneNumber(sfAccount.Solarisbank_Id__c,apiCallDetails);
+            //not working
+            //phoneJson=SolarisbankService.fetchPersonPhoneNumber(sfAccount.Solarisbank_Id__c,apiCallDetails);
             }catch(Exception e){}
             Map<String,Object> phoneJsonMap=(Map<String,Object>) JSON.deserializeUntyped(phoneJson);
             //fetching all bank accouunts
             String banksJson=SolarisbankService.fetchAllBankAccounts(sfAccount.Solarisbank_Id__c,apiCallDetails);
             List<SolarisbankBankAccountWrapper> banksList=SolarisbankBankAccountWrapper.parseList(banksJson);
             //fetching all cards
-            String cardsJson=SolarisbankService.fetchAllCards(sfAccount.Solarisbank_Id__c,apiCallDetails);
+            String cardsJson='[]';
+            try{
+                cardsJson=SolarisbankService.fetchAllCards(sfAccount.Solarisbank_Id__c,apiCallDetails);
+            }Catch(Exception e){}
             List<SolarisbankCardWrapper> cardsList=SolarisbankCardWrapper.parseList(cardsJson);
             //fetching all identification
             String identityJson=SolarisbankService.fetchAllIdentificationAttempts(sfAccount.Solarisbank_Id__c,apiCallDetails);
             List<SolarisBankIdentificationWrapper> indentificationList=SolarisBankIdentificationWrapper.parseList(identityJson);
-            //fetching all signing
+             //fetching all signing
             //String esigningJson=SolarisbankService.fetchAllESigningAttempts(sfAccount.Solarisbank_Id__c,apiCallDetails);
             List<SolarisBankIdentificationWrapper> esigningList=new List<SolarisBankIdentificationWrapper>();//SolarisBankIdentificationWrapper.parseList(esigningJson);
 			//fetching all tax identification            
             String taxIdenityJson=SolarisbankService.fetchAllTaxIdentificationAttempts(sfAccount.Solarisbank_Id__c,apiCallDetails);
             List<SolarisBankTaxIdentificationWrapper> taxIdentificationList=SolarisBankTaxIdentificationWrapper.parseList(taxIdenityJson);
+            //checking if any sucess identification
+            String succesIdentId=null;
+            for(SolarisBankIdentificationWrapper ident:indentificationList){
+                if(ident.status.equalsIgnoreCase('SUCCESS_DATA_CHANGED') && succesIdentId==null) succesIdentId=ident.id;
+                else if (ident.status.equalsIgnoreCase('successful') && succesIdentId==null)succesIdentId=ident.id;
+                
+            }
+            String identifiactionAttemptsString='[]';
+             //fetching all attempts of success identification
+            if(succesIdentId!=null) identifiactionAttemptsString=SolarisbankService.fetchIdentificationAttemptDetails(sfAccount.Solarisbank_Id__c,succesIdentId,apiCallDetails);
+            List<SolarisBankIdentificationAttempt> attemptsList=SolarisBankIdentificationAttempt.parseList(identifiactionAttemptsString);
+         
+            
             //operation
+            
+            Bank__c sbBankDetails=new Bank__c();
+            if(sbBankList.size()==0){
+                sbBankDetails.RecordTypeId=Constant.BANK_SOLARISBANK_RECORDTYPEID;
+                sbBankDetails.Account__c=sfAccount.Id;  
+                sbBankDetails.Solarisbank_Id__c=sfAccount.Solarisbank_Id__c;
+            }
+            else{
+                sbBankDetails=sbBankList.get(0);
+            }
+              
+            
+            sbBankDetails.Phone__c  = personDetails.mobile_number;
+            if(personDetails.birth_date!=null) sbBankDetails.Birth_Date__c = Date.valueOf(personDetails.birth_date);
+            sbBankDetails.First_Name__c = personDetails.first_name;
+            sbBankDetails.Last_Name__c = personDetails.last_name;
+            sbBankDetails.Birth_Name__c= personDetails.birth_name;
+            sbBankDetails.Birth_City__c=personDetails.birth_city;
+            sbBankDetails.Birth_Country__c =personDetails.birth_country;
+            sbBankDetails.Employment_Status__c = personDetails.employment_status;
+            if(personDetails.tax_information!=null) sbBankDetails.Tax_Assessment__c= personDetails.tax_information.tax_assessment;
+            if(personDetails.tax_information!=null) sbBankDetails.Marital_Status__c=  personDetails.tax_information.marital_status;
+            if(personDetails.fatca_relevant!=null) sbBankDetails.Fatca_Relevant__c =personDetails.fatca_relevant;
+            if(String.isNotBlank(personDetails.fatca_crs_confirmed_at)) sbBankDetails.Fatca_Crs_Confirmed_At__c=  Date.valueOf(personDetails.fatca_crs_confirmed_at.replace('T',' '));
+            sbBankDetails.Business_Purpose__c = personDetails.business_purpose;
+            sbBankDetails.Industry__c = personDetails.industry;
+            sbBankDetails.Industry_Key__c = personDetails.industry_key;
+            if(String.isNotBlank(personDetails.terms_conditions_signed_at)) sbBankDetails.Terms_conditions_Signed_At__c =DateTime.valueOf(personDetails.terms_conditions_signed_at.replace('T',' '));
+            if(personDetails.flagged_by_compliance!=null)sbBankDetails.Flagged_By_Compliance__c =personDetails.flagged_by_compliance;
+            if(String.isNotBlank(personDetails.own_economic_interest_signed_at )) sbBankDetails.Own_Economic_Interest_Signed_At__c  =DateTime.valueOf(personDetails.own_economic_interest_signed_at.replace('T',' '));
+            if(personDetails.salutation==null)sbBankDetails.Salutation__c = personDetails.salutation;
+            sbBankDetails.Email__c=personDetails.email;
+            if(personDetails.title!=null) sbBankDetails.Title__c = personDetails.title;
+            sbBankDetails.Nationality__c  = personDetails.nationality;
+            if(personDetails.address != null)  sbBankDetails.Street__c =  personDetails.address.line_1 + personDetails.address.line_2;
+            if(personDetails.address != null) sbBankDetails.Postal_Code__c = personDetails.address.postal_code;
+            if(personDetails.address != null) sbBankDetails.City__c = personDetails.address.city;
+            if(personDetails.address != null) sbBankDetails.Country__c =  personDetails.address.country;
+            if(personDetails.address != null) sbBankDetails.State__c =  personDetails.address.state;
+            if(personDetails.job_title != null) sbBankDetails.Job_Title__c =  personDetails.job_title;
+            if(personDetails.aml_follow_up_date != null) sbBankDetails.Aml_Follow_Up_Date__c =  Date.valueOf(personDetails.aml_follow_up_date);
+            if(personDetails.aml_confirmed_on != null) sbBankDetails.Aml_Confirmed_On__c =  Date.valueOf(personDetails.aml_confirmed_on);
+            if(personDetails.expected_monthly_revenue_cents != null) sbBankDetails.Expected_Monthly_Revenue__c =  convertCentsToEuro(personDetails.expected_monthly_revenue_cents);
+            if(personDetails.vat_number != null) sbBankDetails.Vat_Number__c =  personDetails.vat_number;
+            if(personDetails.nace_code != null) sbBankDetails.Nace_Code__c =  personDetails.nace_code;
+            if(personDetails.customer_vetting_status != null) sbBankDetails.Customer_Vetting_Status__c =  personDetails.customer_vetting_status;
+            if(personDetails.risk_classification_status != null) sbBankDetails.Risk_Classification_Status__c =  personDetails.risk_classification_status;
+            if(personDetails.business_address_line_1 != null) sbBankDetails.Business_Street__c =  personDetails.business_address_line_1+personDetails.business_address_line_2;
+            if(personDetails.business_postal_code != null) sbBankDetails.Business_Postal_Code__c =  personDetails.business_postal_code;
+            if(personDetails.business_city != null) sbBankDetails.Business_City__c =  personDetails.business_city;
+            if(personDetails.business_country != null) sbBankDetails.Business_Country__c =  personDetails.business_country;
+            
+            if(sbBankList.size()==0){
+                insert sbBankDetails;
+            }
+            else{
+                update sbBankDetails;
+            }
+            
             if(sfAccount.Salutation==null)sfAccount.Salutation = personDetails.salutation;
             sfAccount.Gender__pc=(personDetails.salutation=='MR')?'Male':'Female';
             if(sfAccount.FirstName==null)sfAccount.FirstName = personDetails.first_name;
             if(sfAccount.Type==null) sfAccount.Type = 'Customer';
-            
             if(sfAccount.LastName==null)sfAccount.LastName = personDetails.last_name;
-            sfAccount.Legal_Name__c = personDetails.first_name+' '+ personDetails.last_name;
+            
+            if(personDetails.industry!=null)sfAccount.Industry = personDetails.industry;
+            if(personDetails.title!=null) sfAccount.PersonTitle = personDetails.title;
             if(personDetails.address != null)  sfAccount.BillingStreet =  personDetails.address.line_1;
             if(personDetails.address != null) sfAccount.BillingPostalCode = personDetails.address.postal_code;
             if(personDetails.address != null) sfAccount.BillingCity = personDetails.address.city;
@@ -96,26 +184,11 @@ public without sharing  class SyncAccountAndSolarisbankController {
             if(personDetails.contact_address != null) sfAccount.ShippingCountry =  personDetails.contact_address.country;
             if(personDetails.contact_address != null) sfAccount.ShippingState =  personDetails.contact_address.state;
             sfAccount.PersonEmail=personDetails.email;
-            
             sfAccount.PersonMobilePhone  = personDetails.mobile_number;
             if(phoneJsonMap.containsKey('number'))  sfAccount.Phone=(String)phoneJsonMap.get('number');
             if(personDetails.birth_date!=null) sfAccount.PersonBirthdate = Date.valueOf(personDetails.birth_date);
-            sfAccount.Birth_Name__c= personDetails.birth_name;
-            sfAccount.Birth_City__c=personDetails.birth_city;
-            sfAccount.Birth_Country__c =personDetails.birth_country;
             sfAccount.Nationality__c  = personDetails.nationality;
-            sfAccount.Employment_Status__c = personDetails.employment_status;
-            if(personDetails.title!=null) sfAccount.PersonTitle = personDetails.title;
-            if(personDetails.tax_information!=null) sfAccount.Tax_Assessment__c= personDetails.tax_information.tax_assessment;
-            if(personDetails.tax_information!=null) sfAccount.Marital_Status__c=  personDetails.tax_information.marital_status;
-            if(personDetails.fatca_relevant!=null) sfAccount.Fatca_Relevant__c =personDetails.fatca_relevant;
-            if(String.isNotBlank(personDetails.fatca_crs_confirmed_at)) sfAccount.Fatca_Crs_Confirmed_At__c=  Date.valueOf(personDetails.fatca_crs_confirmed_at.replace('T',' '));
-            sfAccount.Business_Purpose__c = personDetails.business_purpose;
-            sfAccount.Industry = personDetails.industry;
-            sfAccount.Industry_Key__c = personDetails.industry_key;
-            if(String.isNotBlank(personDetails.terms_conditions_signed_at)) sfAccount.Terms_Conditions_Signed_At__c =DateTime.valueOf(personDetails.terms_conditions_signed_at.replace('T',' '));
-            if(personDetails.flagged_by_compliance!=null)sfAccount.Flagged_By_Compliance__c =personDetails.flagged_by_compliance;
-            if(String.isNotBlank(personDetails.own_economic_interest_signed_at )) sfAccount.Own_Economic_Interest_Signed_At__c  =DateTime.valueOf(personDetails.own_economic_interest_signed_at.replace('T',' '));
+
             update sfAccount;
             
             //bank
@@ -128,6 +201,7 @@ public without sharing  class SyncAccountAndSolarisbankController {
                     bank.Type__c=bankAccount.type_Z;
                     bank.Status__c=bankAccount.locking_status;
                     bank.Purpose__c=bankAccount.purpose;
+                    bank.Bank__c=  sbBankDetails.id;
                     if(bankAccount.locking_reasons!=null)bank.Closure_Reasons__c=String.join(bankAccount.locking_reasons, ',');
                     toUpdateBankAccounts.add(bank);
                 }
@@ -139,6 +213,7 @@ public without sharing  class SyncAccountAndSolarisbankController {
                     bank.Name=bankAccount.iban;
                     bank.Type__c=bankAccount.type_Z;
                     bank.Purpose__c=bankAccount.purpose;
+                    bank.Bank__c=  sbBankDetails.id;
                     bank.Status__c=bankAccount.locking_status;
                     if(bankAccount.locking_reasons!=null)bank.Closure_Reasons__c=String.join(bankAccount.locking_reasons, ',');
                     toInsertBankAccounts.add(bank);
@@ -158,10 +233,10 @@ public without sharing  class SyncAccountAndSolarisbankController {
              
             //card
             for(SolarisbankCardWrapper cards:cardsList){
-                  System.debug('cards '+cards);
                 if(bankCardMap.containsKey(cards.id)){
                     Card__c card=bankCardMap.get(cards.id);
                     card.Status__c=cards.status;
+                    card.Bank__c=sbBankDetails.id;
                     card.Type__c=cards.type_Z;
                     if(cards.expiration_date !=null ) card.Expiration_Date__c=Date.valueOf(cards.expiration_date.replace('T',' '));
                     card.Name=cards.representation.masked_pan;
@@ -171,7 +246,7 @@ public without sharing  class SyncAccountAndSolarisbankController {
                 else{
                     Card__c card=new Card__c();
                     card.Person_Account__c=sfAccountId;
-                    
+                    card.Bank__c=sbBankDetails.id;
                     if(bankAccountMap.containsKey(cards.account_id)) card.Bank_Account__c=bankAccountMap.get(cards.account_id).Id;
                     card.Status__c=cards.status;
                     card.Type__c=cards.type_Z;
@@ -215,11 +290,11 @@ public without sharing  class SyncAccountAndSolarisbankController {
             if(toInsertTaxIdentification.size()>0  && !Test.isRunningTest()) insert toInsertTaxIdentification;
             if(toUpdateTaxIdentification.size()>0  && !Test.isRunningTest()) update toUpdateTaxIdentification;
 
-            
+            KYC_Detail__c successIdentification=null;
             //person idenitification
             for(SolarisBankIdentificationWrapper identification:indentificationList){
                 if(personIdentificationMap.containsKey(identification.Id)){
-                    Identification__c ident=personIdentificationMap.get(identification.Id);
+                    KYC_Detail__c ident=personIdentificationMap.get(identification.Id);
                     ident.Reference__c=identification.reference;
                     ident.URL__c=identification.url;
                     ident.Status__c=identification.status;
@@ -227,13 +302,14 @@ public without sharing  class SyncAccountAndSolarisbankController {
                     ident.Method__c=identification.method;
                     ident.Failure_Reason__c=identification.failure_reason;
                     ident.Identification_Id__c=identification.identification_id;
-                    ident.State__c=identification.state;        
+                    ident.State__c=identification.state;   
+                    if(identification.status.equalsIgnoreCase('Successful')) successIdentification=ident;
                     toUpdateperIdentification.add(ident);
                 }
                 else{
-                    Identification__c ident=new Identification__c();
+                    KYC_Detail__c ident=new KYC_Detail__c();
                     ident.Account__c=sfAccountId;
-                    ident.RecordTypeId=SchemaUtil.getRecordTypeId('Video_Identification','Identification__c');
+                    ident.RecordTypeId=Constant.KYC_VIDEO_IDENTIFICATION_RECORDTYPEID;
                     ident.Solarisbank_Id__c=identification.id;
                     ident.Reference__c=identification.reference;
                     ident.URL__c=identification.url;
@@ -243,50 +319,65 @@ public without sharing  class SyncAccountAndSolarisbankController {
                     ident.Failure_Reason__c=identification.failure_reason;
                     ident.Identification_Id__c=identification.identification_id;
                     ident.State__c=identification.state;
+                    if(identification.status.equalsIgnoreCase('Successful')) successIdentification=ident;
                     toInsertperIdentification.add(ident);
                 }
             }
             
-            for(SolarisBankIdentificationWrapper identification:esigningList){
-                if(personIdentificationMap.containsKey(identification.Id)){
-                    Identification__c ident=personIdentificationMap.get(identification.Id);
-                    ident.Reference__c=identification.reference;
-                    ident.URL__c=identification.url;
-                    ident.Status__c=identification.status;
-                    if(identification.completed_at != null) ident.Completed_At__c=DateTime.valueOf(identification.completed_at.replace('T',' '));
-                    ident.Method__c=identification.method;
-                    ident.Failure_Reason__c=identification.failure_reason;
-                    ident.Identification_Id__c=identification.identification_id;
-                    ident.State__c=identification.state;        
-                    toUpdateperIdentification.add(ident);
-                }
-                else{
-                    Identification__c ident=new Identification__c();
-                    ident.Account__c=sfAccountId;
-                    ident.RecordTypeId=SchemaUtil.getRecordTypeId('eSigning','Identification__c');
-                    ident.Solarisbank_Id__c=identification.id;
-                    ident.Reference__c=identification.reference;
-                    ident.URL__c=identification.url;
-                    ident.Status__c=identification.status;
-                    if(identification.completed_at != null) ident.Completed_At__c=DateTime.valueOf(identification.completed_at.replace('T',' '));
-                    ident.Method__c=identification.method;
-                    ident.Failure_Reason__c=identification.failure_reason;
-                    ident.Identification_Id__c=identification.identification_id;
-                    ident.State__c=identification.state;
-                    toInsertperIdentification.add(ident);
-                }
-            }
+          
         
             
             
             if(toInsertperIdentification.size()>0  && !Test.isRunningTest()) insert toInsertperIdentification;
             if(toUpdateperIdentification.size()>0  && !Test.isRunningTest()) update toUpdateperIdentification;
-             
-                 
-            
-            
+            System.debug('KING ident '+successIdentification);
+             //identification attempts
+            if(successIdentification!=null){
+                List<Attempt__c> toInsertAttempt=new List<Attempt__c>();
+                List<String> attemptId=new List<String>();
+                for(SolarisBankIdentificationAttempt attempt:attemptsList) attemptId.add(attempt.id);
+                List<Attempt__c> allAttempts=[SELECT Solarisbank_Id__c,id,Agent_Name__c,Identification_Time__c,Reason__c,Name,Type__c FROM Attempt__c WHERE KYC_Detail__c=:successIdentification.id AND Solarisbank_Id__c IN:attemptId];
+                Map<String,Attempt__c> allAttemptsMap=new Map<String,Attempt__c>();
+                for(Attempt__c attemp:allAttempts)   allAttemptsMap.put(attemp.Solarisbank_Id__c,attemp);
+                for(SolarisBankIdentificationAttempt attempt:attemptsList){
+                    Attempt__c att=(allAttemptsMap.containsKey(attempt.id))?allAttemptsMap.get(attempt.id):new Attempt__c(); 
+                    if(!allAttemptsMap.containsKey(attempt.id)) att.KYC_Detail__c=successIdentification.id;
+                    att.Agent_Name__c=attempt.payload.identificationprocess.agentname;
+                    if(attempt?.payload?.identificationprocess?.identificationtime!=null)att.Identification_Time__c=Date.valueOf(attempt.payload.identificationprocess.identificationtime.replace('T',' '));
+                    att.Reason__c=attempt.reason;
+                    att.Result__c=attempt.payload.identificationprocess.result;
+                    att.Solarisbank_Id__c=attempt.id;
+                    att.Name=attempt.payload.identificationprocess.id;
+                    att.Type__c=attempt.payload.identificationprocess.type;
+                    if(attempt.payload.identificationprocess.result.equalsIgnoreCase('SUCCESS')){
+                      
+                        successIdentification.Phone__c=attempt?.payload?.contactdata?.mobilephone;
+                        successIdentification.Email__c=attempt?.payload?.contactdata?.email;
+                        if(attempt?.payload?.userdata?.birthday?.value!=null)successIdentification.Birthday__c=Date.valueOf(attempt?.payload?.userdata?.birthday?.value);
+                        successIdentification.First_Name__c=attempt?.payload?.userdata?.firstname?.value;
+                        successIdentification.Last_Name__c=attempt?.payload?.userdata?.lastname?.value;
+                        successIdentification.Title__c=attempt?.payload?.userdata?.title?.value;
+                        successIdentification.Zipcode__c=attempt?.payload?.userdata?.address?.zipcode?.value;
+                        successIdentification.Country__c=attempt?.payload?.userdata?.address?.country?.value;
+                        successIdentification.Street__c=attempt?.payload?.userdata?.address?.street?.value;
+                        successIdentification.City__c=attempt?.payload?.userdata?.address?.city?.value;
+                        successIdentification.Birth_Place__c=attempt?.payload?.userdata?.birthplace?.value;
+                        successIdentification.Birth_Name__c=attempt?.payload?.userdata?.birthname?.value;
+                        successIdentification.Nationality__c=attempt?.payload?.userdata?.nationality?.value; 
+                        successIdentification.Document_Number__c=SolarisBankIdentificationAttempt.getIdentificationDocumentNumber(JSON.serialize(attempt));
+                        successIdentification.Place_Of_Issue__c = attempt?.payload?.identificationdocument?.issuedby?.value;              
+                        if(attempt?.payload?.identificationdocument?.dateissued?.value!=null)successIdentification.Date_Issued__c= Date.valueOf(attempt?.payload?.identificationdocument?.dateissued?.value);  
+                        successIdentification.Document_Type__c= attempt?.payload?.identificationdocument?.type?.value;  
+                        if(attempt?.payload?.identificationdocument?.validuntil?.value!=null)successIdentification.Valid_Until__c= Date.valueOf(attempt?.payload?.identificationdocument?.validuntil?.value);  
+                        
+                    }
+                    toInsertAttempt.add(att);
+                }
+                if(toInsertAttempt.size()>0  && !Test.isRunningTest()) upsert toInsertAttempt;
+                if(!Test.isRunningTest()) update successIdentification;
+            }
         }
-        
+      
     }
     
     @AuraEnabled
@@ -533,7 +624,7 @@ public without sharing  class SyncAccountAndSolarisbankController {
     
     @AuraEnabled 
     public static void startSyncWithAuthO(String sfAccountId){
-        Account sfAccount=[SELECT Id,Auth0_ID__c,Origin__pc,Solarisbank_Id__c,Solarisbank_Tenent__c,Invitation_Code__pc,PersonEmail,Email_Verified__pc,Preferred_Language__pc,FirstName, LastName     FROM Account WHERE id=:sfAccountId LIMIT 1];
+         Account sfAccount=[SELECT Id,Auth0_ID__c,Origin__pc,Solarisbank_Id__c,Solarisbank_Tenent__c,Invitation_Code__pc,PersonEmail,Email_Verified__pc,Preferred_Language__pc,FirstName, LastName     FROM Account WHERE id=:sfAccountId LIMIT 1];
         if(sfAccount.Auth0_ID__c==null) return;
        
         LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(sfAccount.Id,'Account',sfAccount.Solarisbank_Tenent__c);
@@ -562,12 +653,11 @@ public without sharing  class SyncAccountAndSolarisbankController {
        
         update sfAccount;
         
-        List<Solarisbank__c> sbList=[SELECT id,Name,Email__c,Term_Deposit_Enabled_At__c,Solarisbank_Id__c,Is_Term_Deposit_Enabled__c FROM Solarisbank__c WHERE Account__c=:sfAccount.Id];
-        Solarisbank__c sbDetails=new Solarisbank__c();
+        List<Bank__c> sbList=[SELECT id,Name,Email__c,Term_Deposit_Enabled_At__c,Solarisbank_Id__c,Is_Term_Deposit_Enabled__c FROM Bank__c WHERE Account__c=:sfAccount.Id AND RecordTypeId=:Constant.BANK_SOLARISBANK_RECORDTYPEID];
+        Bank__c sbDetails=new Bank__c();
         if(sbList.size()==0){
-            
+            sbDetails.RecordTypeId=Constant.BANK_SOLARISBANK_RECORDTYPEID;
 			sbDetails.Account__c=sfAccount.Id;
-            sbDetails.Name=personDetails.given_name+' '+personDetails.family_name;
             sbDetails.Email__c=personDetails.email;
             if(personDetails.user_metadata!=null){
                 if( personDetails.user_metadata.term_deposit_enabled!=null) sbDetails.Is_Term_Deposit_Enabled__c=personDetails.user_metadata.term_deposit_enabled;
@@ -577,7 +667,6 @@ public without sharing  class SyncAccountAndSolarisbankController {
         }
         else{
             sbDetails=sbList.get(0);
-            sbDetails.Name=personDetails.given_name+' '+personDetails.family_name;
             sbDetails.Email__c=personDetails.email;
             if(personDetails.user_metadata!=null){
                 if( personDetails.user_metadata.term_deposit_enabled!=null) sbDetails.Is_Term_Deposit_Enabled__c=personDetails.user_metadata.term_deposit_enabled;
@@ -586,6 +675,7 @@ public without sharing  class SyncAccountAndSolarisbankController {
             }
             update sbDetails;
         }
+ 
     }
     
     

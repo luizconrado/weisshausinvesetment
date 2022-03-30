@@ -24,6 +24,20 @@ public class SolarisbankPersonWrapper {
     @AuraEnabled public String terms_conditions_signed_at;
     @AuraEnabled public Boolean flagged_by_compliance;
     @AuraEnabled public String own_economic_interest_signed_at;
+    @AuraEnabled public Date aml_follow_up_date;
+    @AuraEnabled public Date aml_confirmed_on;
+    @AuraEnabled Public Integer expected_monthly_revenue_cents;
+    @AuraEnabled Public String vat_number;
+    @AuraEnabled Public String nace_code;
+    @AuraEnabled Public String customer_vetting_status;
+    @AuraEnabled Public String risk_classification_status;
+    @AuraEnabled Public String screening_progress;
+    @AuraEnabled Public String business_address_line_1;
+    @AuraEnabled Public String business_address_line_2;
+    @AuraEnabled Public String business_postal_code;
+    @AuraEnabled Public String business_city;
+    @AuraEnabled Public String business_country;
+    
     
     public class Person_Address {
         @AuraEnabled public String line_1;
@@ -73,9 +87,8 @@ public class SolarisbankPersonWrapper {
             data.business_purpose='asd';
             data.industry='OTHER_SERVICES';
             data.industry_key='OTHER_SERVICES';
-            data.terms_conditions_signed_at='2018-01-01';
             data.flagged_by_compliance=true;
-            data.own_economic_interest_signed_at='2018-01-01';
+         
             
             
             

@@ -10,7 +10,7 @@ public class AccountServiceTest {
         AccountService.createNewIdentification(a.id,'EN');
         Test.stopTest();
     }
-    
+   
     @isTest
     static void testsyncPersonDetailsWithSB(){
         Test.setMock(HttpCalloutMock.class, new SolarisbankPersonWrapper.MockResponse());

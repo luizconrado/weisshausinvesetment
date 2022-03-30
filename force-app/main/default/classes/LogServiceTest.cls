@@ -55,10 +55,10 @@ public class LogServiceTest {
         bankCase.Account__c=a.Id;
         insert bankCase;
         
-        Identification__c ident=new Identification__c();
+        KYC_Detail__c ident=new KYC_Detail__c();
         ident.Account__c =a.Id;
         insert ident;
-        
+         
         Scheduled_Order__c sc=new Scheduled_Order__c();
         sc.Bank_Account__c =bc.Id;
         insert sc;

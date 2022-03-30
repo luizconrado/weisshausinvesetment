@@ -6,13 +6,14 @@ public inherited  sharing class LogService {
         String index=RandomUtil.randomUUID();
         details.index = index;
         details.operation='REST Call';
+        e.Comments__c=details.comments;
         e.Body__c=JSON.serialize(details);
         EventBus.publish(e);
     }
     public static String logError(LogMetadata details){
         String index=RandomUtil.randomUUID();
         if(details.error!=null){
-             System.debug('ERROR => '+details.error.getStackTraceString());
+            System.debug('ERROR => '+details.error.getStackTraceString());
             System.debug('ERROR TYPE => '+details.error.getMessage());
             details.stacktrace=details.error.getStackTraceString();
             details.errorMessage=details.error.getMessage();
@@ -22,6 +23,7 @@ public inherited  sharing class LogService {
         Log_Event__e e=New Log_Event__e();
         e.Type__c='Debug';
         details.index = index;
+        e.Comments__c=details.comments;
         e.Body__c=JSON.serialize(details);
         EventBus.publish(e);
         return index;
@@ -46,6 +48,7 @@ public inherited  sharing class LogService {
                 log.Response_Status_Code__c =details.responseCode;
                 log.Response_Body__c=details.responseBody;
                 log.Call__c=details.calltype;
+                log.Comments__c=event.Comments__c;
             }
             else if(event.Type__c=='Debug'){
                 LogMetadata details = (LogMetadata) JSON.deserialize(event.Body__c, LogMetadata.class);
@@ -60,7 +63,7 @@ public inherited  sharing class LogService {
                 log.Message__c=details.errorMessage;
                 log.Method_Name__c=details.methodName;
                 log.Component_Name__c=details.componentName;
-                
+                log.Comments__c=event.Comments__c;
             }
             toInsert.add(log);
         }
@@ -79,7 +82,10 @@ public inherited  sharing class LogService {
         @AuraEnabled public Integer responseCode{set;get;}
         @AuraEnabled public String responseBody{set;get;}
         @AuraEnabled public String calltype{set;get;}
-        
+        @AuraEnabled public String comments{set;get;}
+        public void addComment(String comments){
+            this.comments=comments;
+        }
         public void addMetadataInfo(String userId,String operation){
             this.userId=userId;
             this.operation=operation;
@@ -114,6 +120,8 @@ public inherited  sharing class LogService {
         public String componentName{set;get;}
         public String stacktrace{set;get;}
         public String errorMessage{set;get;}
+        @AuraEnabled public String comments{set;get;}
+        
         public Exception error{set;get;}
         public LogMetadata(){}
         public void addMetadataInfo(String userId,String className,String methodName,String componentName,String operation){
@@ -129,6 +137,9 @@ public inherited  sharing class LogService {
         }
         public void addError(Exception error){
             this.error=error;
+        }
+        public void addComment(String comments){
+            this.comments=comments;
         }
         public void addErrorString(String errorMessage,String stacktrace){
             this.stacktrace=stacktrace;

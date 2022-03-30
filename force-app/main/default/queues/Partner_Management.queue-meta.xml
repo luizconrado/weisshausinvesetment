@@ -4,8 +4,8 @@
     <name>Partner Management</name>
     <queueMembers>
         <users>
-            <user>salesforce@ev-smartmoney.com</user>
             <user>richard.bellviure@ev-smartmoney.com</user>
+            <user>salesforce@ev-smartmoney.com</user>
         </users>
     </queueMembers>
     <queueSobject>

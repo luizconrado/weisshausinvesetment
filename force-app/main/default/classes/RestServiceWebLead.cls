@@ -27,9 +27,9 @@ global without sharing  class RestServiceWebLead {
     }
     
     
-    private static void verifyAndCreateAccount(String email,String subProductName,String origin,String website){
+    public static void verifyAndCreateAccount(String email,String subProductName,String origin,String website){
         List<Account> accountDetails=[SELECT id,(Select id,Source__c,Type__c,Subscription_Status__c from Subscriptions__r WHERE Type__c=:subProductName AND RecordTypeId=:Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID LIMIT 1) 
-                                      FROM Account WHERE PersonEmail=:email AND RecordTypeId=:Constant.PERSON_ACCOUNT_RECORDTYPEID];
+                                      FROM Account WHERE PersonEmail=:email AND isPersonAccount=true];
         //exsisitng account
         if(accountDetails.size()>0){
             //already subscribed

@@ -1,320 +1,315 @@
 <!DOCTYPE html
-PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB">
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title
-    style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; line-height: 22px;">
-    E&V Referal Code</title><!DOCTYPE html
-PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title
+        style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; line-height: 22px;">
+        E&V Referal Code</title><!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB">
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title
-    style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; line-height: 22px;">
-    E&V Referal Code</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title
+        style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; line-height: 22px;">
+        E&V Referal Code</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 
 <body
-style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; line-height: 22px;margin: 0;">
+    style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; line-height: 22px;margin: 0;">
 
-<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-    <tr>
-        <td>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td>
 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" width="650"
-                style="border-collapse: collapse; border: 1px solid black;">
-                <!--header-->
-                <tr>
-                    <td
-                        style="padding: 32px 20px 18px 20px;border-bottom: solid 3px #eb0a0a;width: 100%;background: #ffffff;">
-                        <table style="table-layout: fixed ; width: 100%;background: #ffffff;">
-                            <tr>
-                                <!--image-->
-                                <td align="left">
-                                    <a href="https://www.ev-smartmoney.com">
-                                        <img src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000cWLT&oid=00D5I000002GOw0"
-                                            class="logo" width="190">
-                                    </a>
-                                </td>
-
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                    <!--image 1-->
+                <table align="center" border="0" cellpadding="0" cellspacing="0" width="650"
+                    style="border-collapse: collapse; border: 1px solid black;">
+                    <!--header-->
                     <tr>
-                        <td>
-                            <img width="100%"
-                                src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000eV2j&oid=00D5I000002GOw0" />
+                        <td
+                            style="padding: 32px 20px 18px 20px;border-bottom: solid 3px #eb0a0a;width: 100%;background: #ffffff;">
+                            <table style="table-layout: fixed ; width: 100%;background: #ffffff;">
+                                <tr>
+                                    <!--image-->
+                                    <td align="left">
+                                        <a href="https://www.ev-smartmoney.com">
+                                            <img src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000cWLT&oid=00D5I000002GOw0"
+                                                class="logo" width="190">
+                                        </a>
+                                    </td>
+
+                                </tr>
+                            </table>
                         </td>
                     </tr>
-                <!--main-->
-                <tr>
-                    <td style="padding: 0px 24px; ">
-                        <table border="0" cellpadding="0" cellspacing="0"
-                            style="width:100%;border-collapse: collapse;">
-
-                        
-                            <tr>
-                                <td style="padding: 24px;">
-                                    <table border="0" cellpadding="0" cellspacing="0"
-                                        style="width:100%;border-collapse: collapse;">
-                                        <!--main page heading-->
-                                        <tr>
-
-                                            <td>
-                                                <h4
-                                                    style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;font-size: 16px;color: #141414;font-weight: 500;margin-top: 32px;margin-bottom: 0px;">
-                                                    {!Contact.Email_Honorific__c},
-                                                </h4>
-                                                <br>
-                                                <p
-                                                    style="margin-bottom:17px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
-
-
-                                                    mithilfe Ihres Empfehlungslinks können Sie Ihre Kunden ganz
-                                                    leicht auf uns aufmerksam machen.
-                                                </p>
-                                            </td>
-                                        </tr>
-
-                                        <!--Referal para-->
-                                        <tr>
-
-                                            <td>
-                                               
-
-                                                <div
-                                                    style="margin-bottom:17px;margin-top:1px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
-
-                                                    https://www.ev-smartmoney.com/de/landing-page/immobilienkonto?utm_source=sfagentreferral&utm_medium=ambassador&utm_campaign=onboarding&utm_term={!Contact.Inviter_Code__c}
-                                        </div>
-                                           <div
-                                                    style="margin-bottom:17px;margin-top:1px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
-
-                                                  
-                                        </div>
-                                            </td>
-                                        </tr>
-                                        <!--paragrahp-->
-                                        <tr>
-
-                                            <td>
-
-
-                                                <div
-                                                    style="margin-bottom:6px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
-                                                    Sollten Sie direkt auf den Download der E&V Smart Money App verweisen,
-                                                    können Sie auch unseren Registrierungscode weiterleiten.
-                                            </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-
-                                            <td>
-                                                <p
-                                                    style="margin-bottom:6px;margin-bottom:1px;font-weight:bold;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
-                                                    {!Contact.Inviter_Code__c}
-                                                </p>
-<p
-                                                    style="margin-bottom:17px;margin-top:1px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
-
-                                                </p>
-                                                 
-                                            </td>
-                                        </tr>
-                                        <!--paragrahp-->
-                                        <tr>
-
-                                            <td>
-
-
-                                                <div
-                                                    style="margin-bottom:17px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
-
-                                                    Jede Empfehlung lohnt sich! Durch eine klare Zuordnung bleibt es
-                                                    Ihr Kunde, im Falle eines Investments erhalten Sie auch
-                                                    nachgelagert eine Zuführungsprovision.
-
-                                            </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-
-                                            <td>
-
-
-                                                <div
-                                                    style="margin-bottom:17px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
-
-
-                                                    Für eine einfache Weiterempfehlung nutzen Sie folgenden
-                                                    Begleittext. Weiterführende Informationsmaterialien finden Sie
-                                                    im E&V Marketingportal oder E&V Newsboard.
-                                            </div>
-                                            </td>
-                                        </tr>
-                                        <!--link-->
-                                        <tr>
-                                            <td>
-                                                <table border="0" cellpadding="0" cellspacing="0"
-                                                    style="width:100%;border-collapse: collapse;">
-                                                    <tr>
-
-                                                        <td
-                                                            style="border: 1px solid #BCBDBC;background: #F9F9F9;border-radius: 4px;padding: 24px;">
-                                                            <div
-                                                                style="color: #444444;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
-                                                                Betreff: Engel & Völkers Smart Money
-                                                            </div>
-                                                            <div
-                                                                style="color: #444444;margin-top:24px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
-                                                                Sehr geehrte Frau/ Herr [ Name des Kunden ],
-                                                            </div>
-                                                            <div
-                                                                style="color: #444444;margin-top:24px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
-
-                                                                die Marke Engel & Völkers entwickelt sich
-                                                                kontinuierlich weiter: vom Vermittler exklusiver
-                                                                Immobilien hin zu einem Dienstleister rund um die
-                                                                Immobilie.
-                                                            </div>
-                                                            <div
-                                                                style="color: #444444;margin-top:24px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
-
-                                                                Mit Engel & Völkers Smart Money ist ein neues
-                                                                Unternehmen aktiv, das dieses Angebot weiter ergänzt
-                                                                und die finanziellen Bedürfnisse von
-                                                                Immobilieneigentümern und –investoren in den Fokus
-                                                                rückt – sicher, einfach und transparent.
-                                                            </div>
-                                                            <div
-                                                                style="color: #444444;margin-top:24px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
-
-                                                                Heute möchte ich Ihnen die E&V Smart Money App
-                                                                weiterempfehlen.
-                                                            </div>
-                                                            <div
-                                                                style="color: #444444;margin-top:24px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
-
-                                                                Nutzen Sie den folgenden Link, um sich
-                                                                über das Angebot weiter zu informieren und die
-                                                                Kontoeinrichtung zu beginnen.
-                                                            </div>
-
-
-
-                                                            <div
-                                                                style="margin-top:8px;color: #444444;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
-                                                                https://www.ev-smartmoney.com/de/landing-page/immobilienkonto?utm_source=sfagentreferral&utm_medium=ambassador&utm_campaign=onboarding&utm_term={!Contact.Inviter_Code__c}
-                                                            </div>
-                                                            <div
-                                                                style="color: #444444;margin-top:24px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
-                                                                Mit freundlichen Grüßen,
-
-
-                                                            </div>
-                                                            <div
-                                                                style="color: #444444;margin-top:24px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
-
-                                                                [ Ihr Name ]
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-
-                                                </table>
-                                            </td>
-                                        </tr>
-                                        <!--text-->
-                                        <tr>
-                                            <td>
-
-                                                <div
-                                                    style="color: #141414;margin-top:24px;margin-bottom:24px; font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
-
-                                                    Sie haben noch kein E&V Smart Money App? Starten Sie Ihre Kontoeröffnung
-                                                    hier.
-                                                </div>
-
-                                                <p><a style="color:rgb(255,255,255);background:rgb(235,10,10);display:inline-block;padding:10px 24px;border-radius:4px;text-decoration-line:none"
-                                                    href="https://www.ev-smartmoney.com/de/landing-page/immobilienkonto?utm_source=sfagentreferral&utm_medium=ambassador&utm_campaign=onboarding&utm_term={!Contact.Inviter_Code__c}">
-                                                    E&V Konto eröffnen</a></p>
-                                                <div
-                                                    style="color: #141414;margin-top:24px;margin-bottom:24px; font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
-
-                                                    Details zu den Zuführungsbedingungen finden Sie unter folgendem
-                                                    <a style="color: #141414;" href="https://www.ev-smartmoney.com/de/zufuehrung">LINK</a>.
-                                                </div>
-                                                <div
-                                                    style="color: #141414;margin-top:24px;margin-bottom:24px; font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
-                                                    Bei Rückfragen wenden Sie sich gern an unser Partnermanagement unter partnermanagement@ev-smartmoney.com oder +493046734952 . Vielen Dank für Ihre Weiterempfehlung.
-                                                    
-                                                   
-                                                </div>
-                                                <div
-                                                    style="color: #141414;margin-top:24px;margin-bottom:24px; font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
-
-                                                    Ihr Engel & Völkers Smart Money Team </div>
-
-
-                                            </td>
-                                        </tr>
-
-                                    </table>
-                                </td>
-                            </tr>
-
-
-                        </table>
-                    </td>
-                </tr>
-       <!--footer-->
-       <tr>
-        <td bgcolor="#f0f0f0" style="padding: 10px 24px;">
-            <table border="0" cellpadding="0" cellspacing="0"
-                style="width:100%;border-collapse: collapse;">
-                <tr>
-                    <td style="text-align:center;background-color: #f0f0f0;font-size: 14px;font-style: normal;font-weight: 400;letter-spacing: 0px;color: #444444;"
-                        align="center">
-                        <p
-                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;">
-
-
-Wenn Sie Fragen oder Rückmeldungen haben, sind wir per E-Mail unter www.ev-smartmoney.com oder unter folgender Telefonnummer gerne für Sie da: +49 30 74395959 (Mo-Fr: 9-18 Uhr)
-
+                        <!--image 1-->
+                        <tr>
+                            <td>
+                                <img width="100%"
+                                    src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000eV2j&oid=00D5I000002GOw0" />
+                            </td>
+                        </tr>
+                    <!--main-->
+                    <tr>
+                        <td style="padding: 0px 24px; ">
+                            <table border="0" cellpadding="0" cellspacing="0"
+                                style="width:100%;border-collapse: collapse;">
 
                             
+                                <tr>
+                                    <td style="padding: 24px;">
+                                        <table border="0" cellpadding="0" cellspacing="0"
+                                            style="width:100%;border-collapse: collapse;">
+                                            <!--main page heading-->
+                                            <tr>
+
+                                                <td>
+                                                    <h4
+                                                        style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;font-size: 16px;color: #141414;font-weight: 500;margin-top: 32px;margin-bottom: 0px;">
+                                                        {!Contact.Email_Honorific__c},
+                                                    </h4>
+                                                    <br>
+                                                    <p
+                                                        style="margin-bottom:17px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
 
 
-                        </p>
-                        <br>
-                        <p
-                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;">
+                                                        mithilfe Ihres Empfehlungslinks können Sie Ihre Kunden ganz
+                                                        leicht auf uns aufmerksam machen.
+                                                    </p>
+                                                </td>
+                                            </tr>
 
-                             Copyright &#169; 2020 EV Smart Money Holding GmbH | HRB 215045 B | Amtsgericht Charlottenburg | Lizenzpartner der Engel & Völkers Marken GmbH & Co. KG | Klaus-Groth-Straße 3, 14050 Berlin, Germany. | Geschäftsführung: Dr. Kyros Khadjavi
+                                            <!--Referal para-->
+                                            <tr>
+
+                                                <td>
+                                                   
+
+                                                    <div
+                                                        style="margin-bottom:17px;margin-top:1px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
+
+                                                        https://www.ev-smartmoney.com/de/landing-page/immobilienkonto?utm_source=sfagentreferral&utm_medium=ambassador&utm_campaign=onboarding&utm_term={!Contact.Inviter_Code__c}
+                                            </div>
+                                               <div
+                                                        style="margin-bottom:17px;margin-top:1px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
+
+                                                      
+                                            </div>
+                                                </td>
+                                            </tr>
+                                            <!--paragrahp-->
+                                            <tr>
+
+                                                <td>
 
 
-                        </p>
-                    </td>
+                                                    <div
+                                                        style="margin-bottom:6px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
+                                                        Sollten Sie direkt auf den Download der E&V Smart Money App verweisen,
+                                                        können Sie auch unseren Registrierungscode weiterleiten.
+                                                </div>
+                                                </td>
+                                            </tr>
 
-                </tr>
-            </table>
-        </td>
-    </tr>
+                                            <tr>
+
+                                                <td>
+                                                    <p
+                                                        style="margin-bottom:6px;margin-bottom:1px;font-weight:bold;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
+                                                        {!Contact.Inviter_Code__c}
+                                                    </p>
+<p
+                                                        style="margin-bottom:17px;margin-top:1px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
+ 
+                                                    </p>
+                                                     
+                                                </td>
+                                            </tr>
+                                            <!--paragrahp-->
+                                            <tr>
+
+                                                <td>
+
+
+                                                    <div
+                                                        style="margin-bottom:17px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
+
+                                                        Jede Empfehlung lohnt sich! Durch eine klare Zuordnung bleibt es
+                                                        Ihr Kunde, im Falle eines Investments erhalten Sie auch
+                                                        nachgelagert eine Zuführungsprovision.
+
+                                                </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <td>
+
+
+                                                    <div
+                                                        style="margin-bottom:17px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px;color: #444444;">
+
+
+                                                        Für eine einfache Weiterempfehlung nutzen Sie folgenden
+                                                        Begleittext. Weiterführende Informationsmaterialien finden Sie
+                                                        im E&V Marketingportal oder E&V Newsboard.
+                                                </div>
+                                                </td>
+                                            </tr>
+                                            <!--link-->
+                                            <tr>
+                                                <td>
+                                                    <table border="0" cellpadding="0" cellspacing="0"
+                                                        style="width:100%;border-collapse: collapse;">
+                                                        <tr>
+
+                                                            <td
+                                                                style="border: 1px solid #BCBDBC;background: #F9F9F9;border-radius: 4px;padding: 24px;">
+                                                                <div
+                                                                    style="color: #444444;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
+                                                                    Betreff: Engel & Völkers Smart Money
+                                                                </div>
+                                                                <div
+                                                                    style="color: #444444;margin-top:24px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
+                                                                    Sehr geehrte Frau/ Herr [ Name des Kunden ],
+                                                                </div>
+                                                                <div
+                                                                    style="color: #444444;margin-top:24px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
+
+                                                                    die Marke Engel & Völkers entwickelt sich
+                                                                    kontinuierlich weiter: vom Vermittler exklusiver
+                                                                    Immobilien hin zu einem Dienstleister rund um die
+                                                                    Immobilie.
+                                                                </div>
+                                                                <div
+                                                                    style="color: #444444;margin-top:24px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
+
+                                                                    Mit Engel & Völkers Smart Money ist ein neues
+                                                                    Unternehmen aktiv, das dieses Angebot weiter ergänzt
+                                                                    und die finanziellen Bedürfnisse von
+                                                                    Immobilieneigentümern und –investoren in den Fokus
+                                                                    rückt – sicher, einfach und transparent.
+                                                                </div>
+                                                                <div
+                                                                    style="color: #444444;margin-top:24px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
+
+                                                                    Heute möchte ich Ihnen die E&V Smart Money App
+                                                                    weiterempfehlen.
+                                                                </div>
+                                                                <div
+                                                                    style="color: #444444;margin-top:24px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
+
+                                                                    Nutzen Sie den folgenden Link, um sich
+                                                                    über das Angebot weiter zu informieren und die
+                                                                    Kontoeinrichtung zu beginnen.
+                                                                </div>
 
 
 
+                                                                <div
+                                                                    style="margin-top:8px;color: #444444;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
+                                                                    https://www.ev-smartmoney.com/de/landing-page/immobilienkonto?utm_source=sfagentreferral&utm_medium=ambassador&utm_campaign=onboarding&utm_term={!Contact.Inviter_Code__c}
+                                                                </div>
+                                                                <div
+                                                                    style="color: #444444;margin-top:24px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
+                                                                    Mit freundlichen Grüßen,
 
 
-        </td>
-    </tr>
-</table>
+                                                                </div>
+                                                                <div
+                                                                    style="color: #444444;margin-top:24px;font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
+
+                                                                    [ Ihr Name ]
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <!--text-->
+                                            <tr>
+                                                <td>
+
+                                                    <div
+                                                        style="color: #141414;margin-top:24px;margin-bottom:24px; font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
+
+                                                        Sie haben noch kein E&V Smart Money App? Starten Sie Ihre Kontoeröffnung
+                                                        hier.
+                                                    </div>
+
+                                                    <p><a style="color:rgb(255,255,255);background:rgb(235,10,10);display:inline-block;padding:10px 24px;border-radius:4px;text-decoration-line:none"
+                                                        href="https://www.ev-smartmoney.com/de/landing-page/immobilienkonto?utm_source=sfagentreferral&utm_medium=ambassador&utm_campaign=onboarding&utm_term={!Contact.Inviter_Code__c}">
+                                                        E&V Konto eröffnen</a></p>
+                                                    <div
+                                                        style="color: #141414;margin-top:24px;margin-bottom:24px; font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
+
+                                                        Details zu den Zuführungsbedingungen finden Sie unter folgendem
+                                                        <a style="color: #141414;" href="https://www.ev-smartmoney.com/de/zufuehrung">LINK</a>.
+                                                    </div>
+                                                    <div
+                                                        style="color: #141414;margin-top:24px;margin-bottom:24px; font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
+                                                        Bei Rückfragen wenden Sie sich gern an unser Partnermanagement unter partnermanagement@ev-smartmoney.com oder +493046734952 . Vielen Dank für Ihre Weiterempfehlung.
+                                                        
+                                                       
+                                                    </div>
+                                                    <div
+                                                        style="color: #141414;margin-top:24px;margin-bottom:24px; font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; line-height: 21px; letter-spacing: 0.01em;  text-align: left;">
+
+                                                        Ihr Engel & Völkers Smart Money Team </div>
+
+
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </td>
+                                </tr>
+
+
+                            </table>
+                        </td>
+                    </tr>
+                    <!--footer-->
+                    <tr>
+                        <td bgcolor="#f0f0f0" style="padding: 10px 24px;">
+                            <table border="0" cellpadding="0" cellspacing="0"
+                                style="width:100%;border-collapse: collapse;">
+                                <tr>
+                                    <td style="text-align:center;background-color: #f0f0f0;font-size: 14px;font-style: normal;font-weight: 400;letter-spacing: 0px;color: #444444;"
+                                        align="center">
+                                        <p
+                                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;">
+
+                                            Sie erhalten diese E-Mail, da Ihre E-Mail-Adresse auf www.ev-smartmoney.com
+                                            registriert ist.
+                                            Wenn Sie Fragen oder Rückmeldungen haben sind wir per E-Mail unter
+                                            support@ev-smartmoney.com oder unter folgender Telefonnummer gerne für Sie
+                                            da: +49 30 74395959 (Mo-Fr: 9-18 Uhr)
+
+                                        </p>
+                                        <br>
+                                        <p
+                                            style="font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;">
+                                            Copyright &#169; EV Smart Money Holding GmbH | HRB 215045 B | Amtsgericht
+                                            Charlottenburg | Lizenzpartner der Engel & Völkers Marken GmbH & Co. KG |
+                                            Klaus-Groth-Straße 3, 14050 Berlin, Deutschland. | Geschäftsführung: Dr. Kyros
+                                            Khadjavi
+                                        </p>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+            </td>
+        </tr>
+    </table>
 </body>
 
 </html>

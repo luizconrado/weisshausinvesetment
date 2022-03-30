@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>General_Class__c</fullName>
+    <externalId>false</externalId>
+    <label>General Class</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Real Estate</fullName>
+                <default>false</default>
+                <label>Real Estate</label>
+            </value>
+            <value>
+                <fullName>Tangible</fullName>
+                <default>false</default>
+                <label>Tangible</label>
+            </value>
+            <value>
+                <fullName>Payment Claim</fullName>
+                <default>false</default>
+                <label>Payment Claim</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

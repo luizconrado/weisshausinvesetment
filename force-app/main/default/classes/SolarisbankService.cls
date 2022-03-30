@@ -39,6 +39,7 @@ public inherited  sharing class SolarisbankService {
     private static final String GET_ALL_STANDING_ORDERS='/v1/persons/:person_id/accounts/:account_id/standing_orders';
     private static final String GET_IDENTIFICATION_REQUEST_DETAILS='/v1/persons/:person_id/identifications/:id/request';
     private static final String GET_IDENTIFICATION_DETAILS='/v1/persons/:person_id/identifications/:id';
+    private static final String GET_IDENTIFICATION_ATTEMPT_DETAILS='/v1/persons/:person_id/identifications/:id/idnow_attempts?page[size]=100';
     private static final String PATCH_CUSTOMER_DETAILS='/v1/persons/:id';
     private static final String POST_CREATE_NEW_CARD='/v1/persons/:person_id/accounts/:account_id/cards';
     private static final String POST_CLOSE_ACCOUNT='/v1/account_closure_requests';
@@ -258,7 +259,6 @@ public inherited  sharing class SolarisbankService {
         details.responseCode=response.getStatusCode();
         details.calltype='GET';
         if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
-        
         LogService.LogApiCall(details);
         if(response.getStatusCode()>300) throw new RestService.RestCallException(response.getStatus());
         return response.getBody();
@@ -275,6 +275,19 @@ public inherited  sharing class SolarisbankService {
         
         LogService.LogApiCall(details);
         if(response.getStatusCode()>300) throw new RestService.RestCallException(response.getStatus());
+        return response.getBody();
+    }
+    public static String fetchIdentificationAttemptDetails(String solarisPersonId,String solarisIdentificationId,LogService.ApiCallDetails details){
+        Map<String,String> headers=getHeaders(details.sbTenent);
+        String person_uri=GET_IDENTIFICATION_ATTEMPT_DETAILS.replace(':person_id', solarisPersonId);
+        person_uri=person_uri.replace(':id', solarisIdentificationId);
+        HttpResponse response=RestService.get(HOST_URL+person_uri,headers);
+        details.calltype='GET';
+        details.url=HOST_URL+person_uri;
+        details.responseCode=response.getStatusCode();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+        details.responseBody=response.getBody();
+        LogService.LogApiCall(details);
         return response.getBody();
     }
     public static String fetchIdentificationRequestDetails(String solarisPersonId,String solarisIdentificationId,LogService.ApiCallDetails details){
@@ -598,7 +611,7 @@ public inherited  sharing class SolarisbankService {
         else if(response.getStatusCode() != 201) details.responseBody=response.getBody();
         if(String.isEmpty(details.responseBody)) details.responseBody=response.getStatus();
         LogService.LogApiCall(details);
-        if(response.getStatusCode()>300) throw new RestService.RestCallException(response.getStatus());
+        if(response.getStatusCode()>300) throw new RestService.RestCallException(response.getBody());
         return response.getBody();
     }
     

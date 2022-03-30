@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_Documents</fullName>
+    <active>true</active>
+    <label>Opportunity Documents</label>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>CREATED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FAILED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IN_PROGRESS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>REQUESTED</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type__c</picklist>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

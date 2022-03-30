@@ -48,6 +48,9 @@ public class SolarisBankIdentificationWrapper {
             if(req.getMethod()=='POST' || req.getMethod()=='PATCH' ||(endpointParts.get(endpointParts.size()-2)=='identifications') ){
                 resp.setBody(JSON.serialize(data)); 
             }
+            else if(req.getEndpoint().contains('idnow_attempts')){
+                resp.setBody('[{"payload":{"identificationprocess":{"result":"SUCCESS"},"identificationdocument":{"number":{"value":"one"}}}}]');
+            }
             else{
             	resp.setBody(JSON.serialize(dataList));     
             }

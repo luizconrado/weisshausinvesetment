@@ -4,7 +4,7 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
     <label>Identification</label>
-    <referenceTo>Identification__c</referenceTo>
+    <referenceTo>KYC_Detail__c</referenceTo>
     <relationshipName>Bank_Cases</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>

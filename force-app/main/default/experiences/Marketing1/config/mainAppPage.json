@@ -1,0 +1,11 @@
+{
+  "cmsSettings" : { },
+  "currentThemeId" : "a7999b23-0723-45d4-a748-943ef4e18d8c",
+  "favIconAssetRef" : null,
+  "headMarkup" : "<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n<title>E&V Smartmoney</title>\n\n<link rel=\"stylesheet\" href=\"{ basePath }/assets/styles/styles.css?{ versionKey }\" />\n\n\n<!-- webruntime-branding-shared stylesheets -->\n<link rel=\"stylesheet\" href=\"{ basePath }/assets/styles/salesforce-lightning-design-system.min.css?{ versionKey }\" />\n<link rel=\"stylesheet\" href=\"{ basePath }/assets/styles/dxp-site-spacing-styling-hooks.min.css?{ versionKey }\" /><link rel=\"stylesheet\" href=\"{ basePath }/assets/styles/dxp-styling-hooks.min.css?{ versionKey }\" />\n<link rel=\"stylesheet\" href=\"{ basePath }/assets/styles/dxp-slds-extensions.min.css?{ versionKey }\" />\n\n\n<!-- webruntime-branding-shared stylesheets -->\n<style>\n    @font-face {\n        src: url('HelveticaNeue.ttc') format('truetype');\n    }\n\n    * {\n        font-family: \"HelveticaNeue\", \"HelveticaNeue-Light\", \"Helvetica Neue Light\", \"Helvetica Neue\", \"Helvetica\", \"Arial\", \"Lucida Grande\" !important;\n    }\n\n    /*over ride standard stytles*/\n    .section-content{\n        padding:0 !important;\n    }\n    .component-wrapper-spacer{\n        margin-bottom:0 !important;\n    }\n</style>",
+  "id" : "378757ad-93f9-446d-90b1-4f54d36d4209",
+  "isRelaxedCSPLevel" : false,
+  "label" : "main",
+  "templateName" : "talon-template-byo",
+  "type" : "appPage"
+}

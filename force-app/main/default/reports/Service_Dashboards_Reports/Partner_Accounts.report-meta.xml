@@ -4,6 +4,9 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
         <field>TYPE</field>
     </columns>
     <columns>
@@ -12,65 +15,27 @@
     <columns>
         <field>RECORDTYPE</field>
     </columns>
-    <columns>
-        <field>Account.Inviter_Code__c</field>
-    </columns>
-    <columns>
-        <field>Contact.Inviter_Code__c</field>
-    </columns>
-    <columns>
-        <field>Contact.Inviter_Code_T_C_Date__c</field>
-    </columns>
     <currency>EUR</currency>
-    <description>Accounts that have an inviter code and have not yet been onboarded.</description>
     <filter>
-        <booleanFilter>(1 OR 2) AND (3 OR 4) AND 5 AND 6</booleanFilter>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>PersonAccount.Person_Partner_Account</value>
+        </criteriaItems>
         <criteriaItems>
             <column>Account.Inviter_Code_T_C_Date__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>greaterThan</operator>
-            <value>10/1/2021 12:00 AM</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Contact.Inviter_Code_T_C_Date__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>greaterThan</operator>
-            <value>10/1/2021 12:00 AM</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Inviter_Code__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Contact.Inviter_Code__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Is_Test__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Onboarding_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,Prospect,New Partner</value>
+            <value>LAST_N_DAYS:7</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>New Partner Accounts</name>
+    <name>Partner Accounts</name>
     <params>
         <name>co</name>
         <value>1</value>
@@ -80,8 +45,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>LAST_UPDATE</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

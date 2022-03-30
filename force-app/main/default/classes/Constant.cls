@@ -10,6 +10,26 @@ public inherited sharing class Constant {
         return EV_SUPPORT_OWD_EMAIL;
     }}
     
+    public static final String PRICEBOOK_STANDARD_PRICEBOOK_ID{set;get{
+        if(PRICEBOOK_STANDARD_PRICEBOOK_ID==null){
+            if(!Test.isRunningTest()) PRICEBOOK_STANDARD_PRICEBOOK_ID=[SELECT Id, Name FROM Pricebook2 WHERE Name='Standard Price Book'].id;
+            else PRICEBOOK_STANDARD_PRICEBOOK_ID = Test.getStandardPricebookId();
+        }
+        return PRICEBOOK_STANDARD_PRICEBOOK_ID;
+    }}
+    
+    public static final String INTEGERATION_USER_ID{set;get{
+        if(INTEGERATION_USER_ID==null){
+            INTEGERATION_USER_ID=[SELECT id,name FROM USER WHERE Profile.Name='Integration' and Name LIKE '%Integration%' LIMIT 1].Id;
+        }
+        
+        return INTEGERATION_USER_ID;
+        
+    }}
+    
+    
+    
+    
     //TEMPLATE BODY
     public static final String DEFAULT_EV_TEMPLATE_START='<!DOCTYPE html> <html style="overflow-y: hidden;"> <head> <title></title> </head> <body style="margin: 0px; height: auto; min-height: auto;"> <div style="background-color: #f6f6f6;font-family: sans-serif;"> <div style="display: block;margin: 0 auto !important;max-width: 580px;padding: 10px;width: 580px;"> <div style="box-sizing: border-box;background: url(https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000dP6n&oid=00D5I000002GOw0&lastMod=1611845345000) repeat;display: block;margin: 0 auto;max-width: 580px;padding: 10px;"> <div style="text-align: center;padding-bottom: 10px;padding-top: 10px;"><img src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000cWLT&oid=00D5I000002GOw0&lastMod=1609923772000" style="text-align: right; width: 207px; border: 0; text-decoration:none; vertical-align: baseline;" width="200" /></div> </div> <div style="line-height: 1.4;box-sizing: border-box;padding: 20px;font-size: 14px;background: #ffffff;border-radius: 3px;width: 100%;">&nbsp; <p>';
     public static final String DEFAULT_EV_TEMPLATE_END='</p> </div> <div style="line-height: 1.4;padding-bottom: 10px;padding-top: 10px;color: #999999;font-size: 12px;text-align: center;"> <p>Sie erhalten diese E-Mail, da Ihre E-Mail-Adresse auf <a href="mailto:support@ev-smartmoney.com" style="color: inherit !important; font-family: inherit !important; font-size: inherit !important; font-weight: inherit !important; line-height: inherit !important; text-decoration: none !important;" target="_blank">support@ev-smartmoney.com</a> registriert ist.</p> <p>Wenn Sie Fragen oder R&uuml;ckmeldungen haben sind wir per E-Mail unter <a href="mailto:support@ev-smartmoney.com" style="color: inherit !important; font-family: inherit !important; font-size: inherit !important; font-weight: inherit !important; line-height: inherit !important; text-decoration: none !important;" target="_blank">support@ev-smartmoney.com</a> oder unter folgender Telefonnummer gerne f&uuml;r Sie da: +49 30 74395959 (Mo-Fr: 9-18 Uhr)</p> <p>Copyright &copy; 2020 EV Smart Money Holding GmbH | HRB 215045 B | Amtsgericht Charlottenburg | Lizenzpartner der Engel &amp; V&ouml;lkers Marken GmbH &amp; Co. KG | Klaus-Groth-Stra&szlig;e 3, 14050 Berlin, Germany. | Gesch&auml;ftsf&uuml;hrung: Dr. Kyros Khadjavi</p> </div> </div> </div> </body> </html>';
@@ -30,18 +50,29 @@ public inherited sharing class Constant {
     }} 
     //ACCOUNT
     public static final String PERSON_ACCOUNT_RECORDTYPEID{private set;get{
-        if(PERSON_ACCOUNT_RECORDTYPEID==null)PERSON_ACCOUNT_RECORDTYPEID=SchemaUtil.getRecordTypeId('PersonAccount', 'Account');
+        if(PERSON_ACCOUNT_RECORDTYPEID==null)PERSON_ACCOUNT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Person_Bank_Customer', 'Account');
         return PERSON_ACCOUNT_RECORDTYPEID;
     }}
     public static final String PERSON_PARTNER_ACCOUNT_RECORDTYPEID{private set;get{
         if(PERSON_PARTNER_ACCOUNT_RECORDTYPEID==null)PERSON_PARTNER_ACCOUNT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Person_Partner_Account', 'Account');
         return PERSON_PARTNER_ACCOUNT_RECORDTYPEID;
     }}
-    
+    public static final String ACCOUNT_PERSON_INVESTMENT_RECORDTYPEID{private set;get{
+        if(ACCOUNT_PERSON_INVESTMENT_RECORDTYPEID==null)ACCOUNT_PERSON_INVESTMENT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Person_Investment_Customer', 'Account');
+        return ACCOUNT_PERSON_INVESTMENT_RECORDTYPEID;
+    }}
     public static final String ACCOUNT_BUSINESS_ACCOUNT_RECORDTYPEID{private set;get{
         if(ACCOUNT_BUSINESS_ACCOUNT_RECORDTYPEID==null)ACCOUNT_BUSINESS_ACCOUNT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Business_Account', 'Account');
         return ACCOUNT_BUSINESS_ACCOUNT_RECORDTYPEID;
     }}
+    public static final String ACCOUNT_INVESTMENT_BANKING_RECORDTYPEID{private set;get{
+        if(ACCOUNT_BUSINESS_ACCOUNT_RECORDTYPEID==null)ACCOUNT_BUSINESS_ACCOUNT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Person_Investment_Banking_Customer', 'Account');
+        return ACCOUNT_BUSINESS_ACCOUNT_RECORDTYPEID;
+    }}
+    
+   
+    
+    
     
     //OPPORTUNTIY
     public static final String STANDARD_OPPORTUNITY_RECORDTYPEID{private set;get{
@@ -60,7 +91,10 @@ public inherited sharing class Constant {
         if(OPPORTUNITY_RE_VALUATION_RECORDTYPEID==null)OPPORTUNITY_RE_VALUATION_RECORDTYPEID=SchemaUtil.getRecordTypeId('Real_Estate_RE_Valuation', 'Opportunity');
         return OPPORTUNITY_RE_VALUATION_RECORDTYPEID;
     }}
-    
+       public static final String OPPORTUNITY_INVESMENT_RECORDTYPEID{private set;get{
+        if(OPPORTUNITY_INVESMENT_RECORDTYPEID==null)OPPORTUNITY_INVESMENT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Investment_SMI', 'Opportunity');
+        return OPPORTUNITY_INVESMENT_RECORDTYPEID;
+    }}
     //CASE
     public static final String STANDARD_CASE_RECORDTYPEID{private set;get{
         if(STANDARD_CASE_RECORDTYPEID==null)STANDARD_CASE_RECORDTYPEID=SchemaUtil.getRecordTypeId('General_Questions', 'Case');
@@ -84,6 +118,7 @@ public inherited sharing class Constant {
         if(STANDARD_CAMPAIGN_RECORDTYPEID==null)STANDARD_CAMPAIGN_RECORDTYPEID=SchemaUtil.getRecordTypeId('Standard_Campaign', 'Campaign');
         return STANDARD_CAMPAIGN_RECORDTYPEID;
     }}
+    
     //SCHEDULED ORDER
     public static final String TIMED_SCHEDULEDORDER_RECORDTYPEID{private set;get{
         if(TIMED_SCHEDULEDORDER_RECORDTYPEID==null)TIMED_SCHEDULEDORDER_RECORDTYPEID=SchemaUtil.getRecordTypeId('Timed_Order', 'Scheduled_Order__c');
@@ -93,6 +128,7 @@ public inherited sharing class Constant {
         if(STANDING_SCHEDULEDORDER_RECORDTYPEID==null)STANDING_SCHEDULEDORDER_RECORDTYPEID=SchemaUtil.getRecordTypeId('Standing_Order', 'Scheduled_Order__c');
         return STANDING_SCHEDULEDORDER_RECORDTYPEID;
     }}
+    
     //LOG
     public static final String INITEGERATION_LOG_RECORDTYPEID{private set;get{
         if(INITEGERATION_LOG_RECORDTYPEID==null)INITEGERATION_LOG_RECORDTYPEID=SchemaUtil.getRecordTypeId('Integration', 'Log__c');
@@ -102,6 +138,7 @@ public inherited sharing class Constant {
         if(DEBUG_LOG_RECORDTYPEID==null)DEBUG_LOG_RECORDTYPEID=SchemaUtil.getRecordTypeId('Debug', 'Log__c');
         return DEBUG_LOG_RECORDTYPEID;
     }}
+    
     //STATMENT
     public static final String STATEMENT_OF_ACCOUNTS_RECORDTYPEID{private set;get{
         if(STATEMENT_OF_ACCOUNTS_RECORDTYPEID==null)STATEMENT_OF_ACCOUNTS_RECORDTYPEID=SchemaUtil.getRecordTypeId('STATEMENT_OF_ACCOUNTS', 'Statement__c');
@@ -113,7 +150,6 @@ public inherited sharing class Constant {
     }}
     
     //BANK CASE
-    
     public static final String BANKCASE_ACCOUNT_RECORDTYPEID{private set;get{
         if(BANKCASE_ACCOUNT_RECORDTYPEID==null)BANKCASE_ACCOUNT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Account', 'Bank_Case_Item__c');
         return BANKCASE_ACCOUNT_RECORDTYPEID;
@@ -160,14 +196,14 @@ public inherited sharing class Constant {
         return SUBSCRIPTION_DEFAULT_RECORDTYPEID;
     }}
     
-    //IDENTIFIACTION
-    public static final String IDENTIFIACTION_VIDEO_IDENTIFICATION_RECORDTYPEID{
+    //KYC DATA
+     public static final String KYC_VIDEO_IDENTIFICATION_RECORDTYPEID{
         private set;get{
-        if(IDENTIFIACTION_VIDEO_IDENTIFICATION_RECORDTYPEID==null)IDENTIFIACTION_VIDEO_IDENTIFICATION_RECORDTYPEID=SchemaUtil.getRecordTypeId('Video_Identification', 'Identification__c');
-        return IDENTIFIACTION_VIDEO_IDENTIFICATION_RECORDTYPEID;
+        if(KYC_VIDEO_IDENTIFICATION_RECORDTYPEID==null)KYC_VIDEO_IDENTIFICATION_RECORDTYPEID=SchemaUtil.getRecordTypeId('Standard_Identification', 'KYC_Detail__c');
+        return KYC_VIDEO_IDENTIFICATION_RECORDTYPEID;
         }}
-     //Knowledge
     
+    //Knowledge
     public static final String KNOWLEDGE_FAQ_RECORDTYPEID{private set;get{
         if(KNOWLEDGE_FAQ_RECORDTYPEID==null)KNOWLEDGE_FAQ_RECORDTYPEID=SchemaUtil.getRecordTypeId('FAQ', 'Knowledge__kav');
         return KNOWLEDGE_FAQ_RECORDTYPEID;
@@ -197,7 +233,18 @@ public inherited sharing class Constant {
             return DOCUMENT_ACCOUNT_RECORDTYPEID;
         }}
     
+    public static final String PRODUCT_INVESTMENT_RECORDTYPEID{
+        private set;get{
+            if(PRODUCT_INVESTMENT_RECORDTYPEID==null)PRODUCT_INVESTMENT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Investment_Product', 'Product2');
+            return PRODUCT_INVESTMENT_RECORDTYPEID;
+        }}
     
+    //BANK    
+    public static final String BANK_SOLARISBANK_RECORDTYPEID{
+        private set;get{
+            if(BANK_SOLARISBANK_RECORDTYPEID==null)BANK_SOLARISBANK_RECORDTYPEID=SchemaUtil.getRecordTypeId('Solarisbank', 'Bank__c');
+            return BANK_SOLARISBANK_RECORDTYPEID;
+        }}
     //EMAIL TEMPLATE
     public static final String ACCOUNT_REFREAL_EXSISTING_USER_EMAILTEMPLATE{private set;get{
         if(ACCOUNT_REFREAL_EXSISTING_USER_EMAILTEMPLATE==null) ACCOUNT_REFREAL_EXSISTING_USER_EMAILTEMPLATE=[SELECT Id, Name, DeveloperName FROM EmailTemplate WHERE DeveloperName='Referral_Code_Existing_User'].Id;

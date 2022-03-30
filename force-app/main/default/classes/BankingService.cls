@@ -117,15 +117,70 @@ public with sharing class BankingService {
     
     @AuraEnabled
     public static void retriveIdentificationDetailsAndUpdate(String identifiactionId){
-        Identification__c identRecord=[SELECT id,URL__c,Status__c,Completed_At__c,Reference__c,Account__r.Solarisbank_Tenent__c,Solarisbank_Id__c,Account__r.Solarisbank_Id__c FROM Identification__c WHERE id=:identifiactionId];
-        LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(identRecord.Id,'Identification__c',identRecord.Account__r.Solarisbank_Tenent__c);
+        List<Attempt__c> toInsertAttempt=new List<Attempt__c>();
+         
+        KYC_Detail__c identRecord=[SELECT id,URL__c,Status__c,Completed_At__c,Reference__c,Account__r.Solarisbank_Tenent__c,Solarisbank_Id__c,Account__r.Solarisbank_Id__c, 
+                                   Phone__c,Valid_Until__c,Document_Type__c,Email__c,Birthday__c,First_Name__c,Last_Name__c,Zipcode__c,Country__c,City__c,Birth_Place__c,Nationality__c,Document_Number__c,Place_Of_Issue__c
+                                   FROM KYC_Detail__c WHERE id=:identifiactionId];
+        LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(identRecord.Id,'KYC_Detail__c',identRecord.Account__r.Solarisbank_Tenent__c);
         String identifiactionStatusString=SolarisbankService.fetchIdentificationDetails(identRecord.Account__r.Solarisbank_Id__c,identRecord.Solarisbank_Id__c,apiCallDetails);
         SolarisBankIdentificationWrapper identifiactionStatus=SolarisBankIdentificationWrapper.parse(identifiactionStatusString);
         if(String.isNotEmpty(identifiactionStatus.completed_at)) identRecord.Completed_At__c=DateTime.valueOf(identifiactionStatus.completed_at.replace('T',' '));
         if(String.isNotEmpty(identifiactionStatus.status)) identRecord.Status__c=identifiactionStatus.status;
         if(String.isNotEmpty(identifiactionStatus.url)) identRecord.URL__c=identifiactionStatus.url;
         if(String.isNotEmpty(identifiactionStatus.reference)) identRecord.Reference__c=identifiactionStatus.reference;
+        System.debug('identifiactionStatus.status:'+identifiactionStatus.status);
+        if(identifiactionStatus.status.equalsIgnoreCase('successful')){ 
+            String identifiactionAttemptsString=SolarisbankService.fetchIdentificationAttemptDetails(identRecord.Account__r.Solarisbank_Id__c,identRecord.Solarisbank_Id__c,apiCallDetails);
+            List<SolarisBankIdentificationAttempt> attemptsList=SolarisBankIdentificationAttempt.parseList(identifiactionAttemptsString);
+            
+            List<String> attemptId=new List<String>();
+            for(SolarisBankIdentificationAttempt attempt:attemptsList) attemptId.add(attempt.id);
+            List<Attempt__c> allAttempts=[SELECT Solarisbank_Id__c,id,Agent_Name__c,Identification_Time__c,Reason__c,Name,Type__c FROM Attempt__c WHERE KYC_Detail__c=:identRecord.id AND Solarisbank_Id__c IN:attemptId];
+            Map<String,Attempt__c> allAttemptsMap=new Map<String,Attempt__c>();
+            for(Attempt__c attemp:allAttempts)   allAttemptsMap.put(attemp.Solarisbank_Id__c,attemp);
+            
+            
+            for(SolarisBankIdentificationAttempt attempt:attemptsList){
+                Attempt__c att=(allAttemptsMap.containsKey(attempt.id))?allAttemptsMap.get(attempt.id):new Attempt__c(); 
+                if(!allAttemptsMap.containsKey(attempt.id)) att.KYC_Detail__c=identRecord.id;
+                att.Agent_Name__c=attempt.payload.identificationprocess.agentname;
+                if(attempt?.payload?.identificationprocess?.identificationtime!=null)att.Identification_Time__c=Date.valueOf(attempt.payload.identificationprocess.identificationtime.replace('T',' '));
+                att.Reason__c=attempt.reason;
+                att.Result__c=attempt.payload.identificationprocess.result;
+                att.Solarisbank_Id__c=attempt.id;
+                att.Name=attempt.payload.identificationprocess.id;
+                att.Type__c=attempt.payload.identificationprocess.type;
+                if(attempt.payload.identificationprocess.result.equalsIgnoreCase('SUCCESS')){
+                    
+                    identRecord.Phone__c=attempt?.payload?.contactdata?.mobilephone;
+                    identRecord.Email__c=attempt?.payload?.contactdata?.email;
+                    if(attempt?.payload?.userdata?.birthday?.value!=null)identRecord.Birthday__c=Date.valueOf(attempt?.payload?.userdata?.birthday?.value);
+                    identRecord.First_Name__c=attempt?.payload?.userdata?.firstname?.value;
+                    identRecord.Last_Name__c=attempt?.payload?.userdata?.lastname?.value;
+                    identRecord.Zipcode__c=attempt?.payload?.userdata?.address?.zipcode?.value;
+                    identRecord.Country__c=attempt?.payload?.userdata?.address?.country?.value;
+                    identRecord.Street__c=attempt?.payload?.userdata?.address?.street?.value;
+                    identRecord.City__c=attempt?.payload?.userdata?.address?.city?.value;
+                    identRecord.Birth_Place__c=attempt?.payload?.userdata?.birthplace?.value;
+                    identRecord.Birth_Name__c=attempt?.payload?.userdata?.birthname?.value;
+                    identRecord.Nationality__c=attempt?.payload?.userdata?.nationality?.value; 
+                    identRecord.Title__c=attempt?.payload?.userdata?.title?.value;
+                    identRecord.Document_Number__c=SolarisBankIdentificationAttempt.getIdentificationDocumentNumber(JSON.serialize(attempt));
+                    identRecord.Place_Of_Issue__c = attempt?.payload?.identificationdocument?.issuedby?.value;              
+                    if(attempt?.payload?.identificationdocument?.dateissued?.value!=null)identRecord.Date_Issued__c= Date.valueOf(attempt?.payload?.identificationdocument?.dateissued?.value);  
+                    identRecord.Document_Type__c= attempt?.payload?.identificationdocument?.type?.value;  
+                    if(attempt?.payload?.identificationdocument?.validuntil?.value!=null)identRecord.Valid_Until__c= Date.valueOf(attempt?.payload?.identificationdocument?.validuntil?.value);  
+                    
+                }
+                toInsertAttempt.add(att);
+            }
+        			
+        }
+        
+        
         update identRecord;
+        if(toInsertAttempt.size()>0) upsert toInsertAttempt;
         
     }
 }

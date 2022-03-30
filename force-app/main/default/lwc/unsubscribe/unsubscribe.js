@@ -91,6 +91,11 @@ export default class Unsubscribe extends LightningElement {
             height:48px;
             border-radius: 0px;
           
+        }
+        .inputDesign  .slds-combobox__input{
+            height: 48px;
+            border-radius: 0px;
+            align-items: CENTER;
         }`;
         //applying styles dynmicaly to shadow dom elements
         let inputs = this.template.querySelectorAll('div.inputDesign');
@@ -133,7 +138,7 @@ export default class Unsubscribe extends LightningElement {
         };
         unsubscribeFromProduct(params)
             .then(result => {
-                this.showToast('Success', successUnsubscribeMessage, 'success');
+                this.showEvToast( successUnsubscribeMessage );
                 this.loaded = false;
                 setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 4000);
             })
@@ -157,5 +162,7 @@ export default class Unsubscribe extends LightningElement {
         });
         this.dispatchEvent(event);
     }
-
+    showEvToast(msg){
+        this.template.querySelector("c-ev-toast").showToast(msg);
+    }
 }

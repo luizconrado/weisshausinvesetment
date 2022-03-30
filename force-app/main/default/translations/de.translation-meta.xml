@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Translations xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customApplications>
+        <label><!-- Lead Generation --></label>
+        <name>Lead_Generation</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Relationship Management --></label>
+        <name>Relationship_Management</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Sales Leadership --></label>
+        <name>Sales_Leadership</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Sales Operations --></label>
+        <name>Sales_Operations</name>
+    </customApplications>
+    <customLabels>
+        <label><!-- Account Seizures Notification	Text --></label>
+        <name>Account_Seizures_Notification_Text</name>
+    </customLabels>
     <customLabels>
         <label>Sie haben noch kein E&amp;V Konto?</label>
         <name>AgentReferalForm_AccountQuestion</name>
@@ -623,7 +643,15 @@ Vielen Dank!</label>
     </customTabs>
     <flowDefinitions>
         <flows/>
+        <fullName>Insert_Product2_Send_data_to_external_system</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
         <fullName>New_Case_Customer_Mail</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Opportunity_Send_Investment_Status</fullName>
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
@@ -708,19 +736,6 @@ Vielen Dank!</label>
         <label><!-- Snapins_Contact_PrechatQuickAction_08h5I000000fySh_1603913484965 --></label>
         <name>Snapins_Contact_PrechatQuickAction_08h5I000000fySh_1603913484965</name>
     </quickActions>
-    <reportTypes>
-        <description><!-- Accounts with Bank Accounts --></description>
-        <label><!-- Accounts with Bank Accounts --></label>
-        <name>Accounts_with_Bank_Accounts</name>
-        <sections>
-            <label><!-- Accounts --></label>
-            <name>Accounts</name>
-        </sections>
-        <sections>
-            <label><!-- Bank Accounts --></label>
-            <name>Bank Accounts</name>
-        </sections>
-    </reportTypes>
     <reportTypes>
         <description><!-- Bildschirm-Flows --></description>
         <label><!-- Bildschirm-Flows --></label>

@@ -32,7 +32,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>support@ev-smartmoney.com</emailAddress>
-            <emailServicesAddress>support@288yydlwwo656y8f8fn232sc5i7wnlv34e8zmk35ymrecrydqf.5i-2gow0uag.eu31.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>E&amp;V Smart Money Support</routingName>
             <saveEmailHeaders>true</saveEmailHeaders>
@@ -45,7 +44,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>partnermanagement@ev-smartmoney.com</emailAddress>
-            <emailServicesAddress>partnermanagement@1aq82z4iaf30xyr5pmy7g2ra3vhcy6iyn9zmib9r3v9kz98h2z.5i-2gow0uag.eu31.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Partner Management</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -58,7 +56,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>salesforce@weisshausinvestment.com</emailAddress>
-            <emailServicesAddress>salesforce@5-ah0kk075v92hwf6g1008gx1yw0v6cy2k2fs0k94r6aep12jy.5i-2gow0uag.eu31.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Salesforce Admin</routingName>
             <saveEmailHeaders>true</saveEmailHeaders>
@@ -71,7 +68,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>salesforce@ev-smartmoney.com</emailAddress>
-            <emailServicesAddress>salesforce@f-1z4fo4k0ojdpb4hgl0yioq624viwj27v9tj4vcjuezt7k5g2jz.5i-2gow0uag.eu31.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Salesforce Admin</routingName>
             <saveEmailHeaders>true</saveEmailHeaders>
@@ -84,7 +80,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>support@weisshausinvestment.com</emailAddress>
-            <emailServicesAddress>support@1m2yeklnbj9zlhotgogts6nionpocafyxj98qf17hso0iwszw5.5i-2gow0uag.eu31.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Support</routingName>
             <saveEmailHeaders>true</saveEmailHeaders>

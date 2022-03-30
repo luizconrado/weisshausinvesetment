@@ -26,4 +26,24 @@ private class SubscriptionServiceTest {
     
     }
 
+    
+    @isTest
+    static void registerSubscriptionTest(){
+        
+        User u=TestDataFactory.getUser('Integration');
+        System.runAs(u){
+            Test.startTest();
+            SubscriptionService.registerSubscription('test@ev.com','Newsletter','','www.evsmartmoeny.com');
+            Test.stopTest();
+        }
+    }
+    @isTest
+    static void logErrorTest(){
+        try{
+            Integer i=1/0;
+        }catch(Exception e){
+            SubscriptionService.logError(e,'recordID','objectName','componentName','logErrorTest','operation');
+        }
+    }
+
 }

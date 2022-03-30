@@ -8,13 +8,17 @@
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
-        <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
                 <fullName>Newsletter</fullName>
                 <default>false</default>
                 <label>Newsletter</label>
+            </value>
+            <value>
+                <fullName>TESTING</fullName>
+                <default>false</default>
+                <label>TESTING</label>
             </value>
         </valueSetDefinition>
     </valueSet>

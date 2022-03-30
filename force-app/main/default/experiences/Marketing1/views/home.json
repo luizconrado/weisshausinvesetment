@@ -1,0 +1,61 @@
+{
+  "appPageId" : "378757ad-93f9-446d-90b1-4f54d36d4209",
+  "componentName" : "community_layout:sldsFlexibleLayout",
+  "id" : "dfd75771-0f53-472c-96af-bf41290a3d43",
+  "label" : "Home",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "backgroundImageConfig" : "",
+        "backgroundImageOverlay" : "rgba(0,0,0,0)",
+        "sectionConfig" : "{\"UUID\":\"60033e40-d410-4bf1-bb32-d4f40c349ec3\",\"columns\":[{\"UUID\":\"b6da666e-2214-425f-a64f-fda2bf699100\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":null}]}"
+      },
+      "componentName" : "community_layout:section",
+      "id" : "60033e40-d410-4bf1-bb32-d4f40c349ec3",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "richTextValue" : "<img src=\"https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000elNF&oid=00D5I000002GOw0\"/>"
+          },
+          "componentName" : "community_builder:htmlEditor",
+          "id" : "807c5c06-cc92-41cc-817f-287bcaaea8cf",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "b6da666e-2214-425f-a64f-fda2bf699100",
+        "regionLabel" : "Column 1",
+        "regionName" : "col1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "scopedBrandingSetId" : null,
+      "type" : "component"
+    } ],
+    "id" : "64b07c03-15e7-4e12-ac5d-1a28a8410b7d",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "pageTitle" : "Home",
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "community_builder:seoAssistant",
+      "id" : "54655c0b-a162-4fc3-9e37-ff034a7c3314",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "56b97bca-1f46-4b99-8c00-645510720a2f",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "home"
+}

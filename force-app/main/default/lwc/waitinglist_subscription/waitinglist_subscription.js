@@ -85,7 +85,7 @@ export default class Waitinglist_subscription extends LightningElement {
         if (this.validate()) {
             that.loaded = true;
             try {
-                register({ email: this.emailAddress, productName: this.subscriptionType, origin: 'Marketing Website', website: window.location.origin }).
+                register({ email: this.emailAddress, productName: this.subscriptionType, origin: 'SMI Waiting List', website: window.location.origin }).
                     then(result => {
                       
                         that.showToast();

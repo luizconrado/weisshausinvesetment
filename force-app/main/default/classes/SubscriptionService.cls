@@ -152,10 +152,35 @@ public without sharing class SubscriptionService {
             return true;
         }
         catch(Exception e){
-            logError(e,null,'Account','waitinglist_subscription','registerSubscription','Subscribe');
+            logError(e,null,'Account','waitinglist_subscription','waitinglist_subscription','Subscribe');
             return false;
         }
         
+    }
+
+    @AuraEnabled
+    public static void registerWaitingListSubscriptionUser(String email,String product){
+        product = EncodingUtil.urlDecode(product,'utf-8');
+        List<Account> accountDetails=[SELECT id,FirstName,Salutation,LastName,Phone,
+        (Select id,Send_Mail__c,Subscription_Terms_and_Conditions__c,Source__c,Type__c,Subscription_Status__c from Subscriptions__r WHERE Type__c=:product AND RecordTypeId=:Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID LIMIT 1) 
+        FROM Account WHERE PersonEmail=:email AND isPersonAccount=true];
+        try {
+          
+            System.debug('accountDetails'+accountDetails.size());
+            if(accountDetails.size()>0){
+                if(accountDetails.get(0).Subscriptions__r.size()>0){
+                    System.debug('Subscriptions__r'+accountDetails.get(0).Subscriptions__r.size());
+                    Subscription__c subscription=accountDetails.get(0).Subscriptions__r.get(0);
+                    subscription.Subscription_Status__c='Subscribed';
+                    subscription.Send_Mail__c=true;
+                    subscription.Subscription_Terms_and_Conditions__c=true;
+                    update subscription;
+                }
+            }
+        } catch (Exception e) {
+            String recordId=(accountDetails.size()>0)?accountDetails.get(0).Id:null;
+            logError(e,recordId,'Account','registerWaitingListSubscriptionUser','waitingList_confirmEmail','Confirm Subscribe');
+        }
     }
     
      //helper

@@ -7,29 +7,21 @@ import errorMsg from '@salesforce/label/c.form_error_msg';
 import successUnsubscribeMessage from '@salesforce/label/c.from_successUnsubscribe_msg';
 
 
-import UnsubscribeLabelText from '@salesforce/label/c.Unsubscribe';
-import ReasonForUnsubscribeText from '@salesforce/label/c.ReasonForUnsubscribeText';
-import ChooseOption from '@salesforce/label/c.ChooseOption';
-import UnsubscribedText from '@salesforce/label/c.UnsubscribeText';
-import SignOut from '@salesforce/label/c.SignOut';
-import NichtOffenlegen from '@salesforce/label/c.UnsubscribeOption1';
-import NichtInteressiert from '@salesforce/label/c.UnsubscribeOption2';
-import Andere from '@salesforce/label/c.UnsubscribeOption3';
 
 
 
 
 
-export default class Unsubscribe extends LightningElement {
+export default class WaitingList_unsubscribe extends LightningElement {
     //depricated
-    @api unsubscribedtext = '';
+    @api headertext = '';
+    @api buttontext = '';
+    @api successtext = ''
 
     //labels
-    unsubscribeText = UnsubscribeLabelText;
-    reasonForUnsubscribeText = ReasonForUnsubscribeText;
-    requiredFieldText = ChooseOption;
-    headerUnsubscribedtext = UnsubscribedText
-    signOutText = SignOut;
+    reasonForUnsubscribeText = 'Grund für die Abmeldung';
+    requiredFieldText = 'Wähle eine Option';
+
 
     parameters;
     emailAddress;
@@ -51,16 +43,6 @@ export default class Unsubscribe extends LightningElement {
             let reasonOptions = [];
             for (let value in data) {
                 let lable = value;
-                if (lable == 'Nicht Offenlegen') {
-                    lable = NichtOffenlegen;
-                }
-                else if (lable == 'Nicht Interessiert') {
-                    lable = NichtInteressiert;
-                }
-                else if (lable == 'Andere') {
-                    lable = Andere;
-                }
-
                 reasonOptions.push({ value: data[value], label: lable });
             }
 
@@ -72,31 +54,32 @@ export default class Unsubscribe extends LightningElement {
         this.parameters = this.getQueryParameters();
         this.emailAddress = this.parameters.email;
         this.productname = (this.parameters.product) ? this.parameters.product.replace(/\+/g, ' ') : '';
+        if (this.emailAddress && this.productname) {
+            checkUnsubscribedStatus({
+                email: this.emailAddress,
+                product: this.productname
+            }).then(data => {
+                if (data === false) {
+                    this.showform = false;
+                    setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 4000);
+                }
 
-        checkUnsubscribedStatus({
-            email: this.emailAddress,
-            product: this.productname
-        }).then(data => {
-            if (data === false) {
-                this.showform = false;
-                setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 4000);
-            }
-
-        })
+            })
+        }
     }
     applyStyle() {
         const style = document.createElement('style');
         style.innerText = `
-        .inputDesign .slds-input{
-            height:48px;
-            border-radius: 0px;
-          
-        }
-        .inputDesign  .slds-combobox__input{
-            height: 48px;
-            border-radius: 0px;
-            align-items: CENTER;
-        }`;
+    .inputDesign .slds-input{
+        height:48px;
+        border-radius: 0px;
+    
+    }
+    .inputDesign  .slds-combobox__input{
+        height: 48px;
+        border-radius: 0px;
+        align-items: CENTER;
+    }`;
         //applying styles dynmicaly to shadow dom elements
         let inputs = this.template.querySelectorAll('div.inputDesign');
         for (let div of inputs) {
@@ -114,7 +97,7 @@ export default class Unsubscribe extends LightningElement {
     getQueryParameters() {
 
         let params = {};
-        let search = (location.search)?location.search.substring(1):undefined;
+        let search = (location.search) ? location.search.substring(1) : undefined;
 
         if (search) {
             params = JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g, '":"') + '"}', (key, value) => {
@@ -129,23 +112,26 @@ export default class Unsubscribe extends LightningElement {
             this.template.querySelector('.GrundField').reportValidity();
             return;
         }
-        this.loaded = true;
-        const params = {
-            "email": this.emailAddress,
-            "product": this.productname,
-            "reason": this.reason,
+        if (this.emailAddress && this.productname) {
+            this.loaded = true;
+            const params = {
+                "email": this.emailAddress,
+                "product": this.productname,
+                "reason": this.reason,
 
-        };
-        unsubscribeFromProduct(params)
-            .then(result => {
-                this.showEvToast( successUnsubscribeMessage );
+            };
+            unsubscribeFromProduct(params)
+                .then(result => {
+                    this.showEvToast(successUnsubscribeMessage);
+                    this.loaded = false;
+                    this.showform=false;
+                    setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 4000);
+                })
+            then(error => {
+                this.showToast('Error', errorMsg, 'error');
                 this.loaded = false;
-                setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 4000);
             })
-        then(error => {
-            this.showToast('Error', errorMsg, 'error');
-            this.loaded = false;
-        })
+        }
 
     }
     handleResonChange(event) {
@@ -162,7 +148,7 @@ export default class Unsubscribe extends LightningElement {
         });
         this.dispatchEvent(event);
     }
-    showEvToast(msg){
+    showEvToast(msg) {
         this.template.querySelector("c-ev-toast").showToast(msg);
     }
 }

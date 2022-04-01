@@ -1,0 +1,46 @@
+{
+  "appPageId" : "378757ad-93f9-446d-90b1-4f54d36d4209",
+  "componentName" : "c:communitySinglePageLayout",
+  "id" : "4149ba0c-fa04-4200-b345-b8cd51562683",
+  "label" : "confirm",
+  "regions" : [ {
+    "id" : "ed52985f-e0e7-46ce-ba14-a791a4b6f4dd",
+    "regionName" : "themeHeaderRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "headerDescription" : "Vielen Dank für Ihre Anmeldung zu unserer E&V Investment-Warteliste. Bitte haben Sie noch Geduld – wir informieren Sie wenige Tage vor unserem Launch zur Verfügbarkeit unserer Investment-Produkte. ",
+        "headerText" : "Die Bestätigung Ihrer E-Mail-Adresse war erfolgreich"
+      },
+      "componentName" : "c:waitingList_confirmEmail",
+      "id" : "f9a2144c-d311-4baa-afb7-ec5994fd1a01",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c173ac6c-d784-48a0-9ded-693d46829e98",
+    "regionName" : "contentRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "pageTitle" : "confirm",
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "community_builder:seoAssistant",
+      "id" : "bbf8cbed-0c70-4597-90ba-d734ad92f020",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f3f4a77a-e13a-4758-afc6-62d269652e22",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-confirm"
+}

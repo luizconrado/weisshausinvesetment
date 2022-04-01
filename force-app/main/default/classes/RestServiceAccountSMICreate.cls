@@ -29,7 +29,7 @@ global class RestServiceAccountSMICreate {
         
         
         //check if account exsits// 
-        List<Account> personAccountList=[SELECT id,Gender__pc ,T_C_Accepted_Date__c ,PersonMobilePhone ,Invitation_Code__pc,Email_Verified__pc,EVSM_Auth0_ID__c,FirstName,Solarisbank_Id__c,LastName,PersonEmail,Origin__pc,
+        List<Account> personAccountList=[SELECT id,Gender__pc,PersonContactId  ,T_C_Accepted_Date__c ,PersonMobilePhone ,Invitation_Code__pc,Email_Verified__pc,EVSM_Auth0_ID__c,FirstName,Solarisbank_Id__c,LastName,PersonEmail,Origin__pc,
                                          UTM_Content__c,UTM_Term__c,UTM_Source__c,UTM_Campaign__c,UTM_Medium__c,Auth0_ID__c,
                                          (SELECT id ,Account__c, Subscription_Terms_and_Conditions__c,Subscription_Status__c,Source__c FROM Subscriptions__r WHERE Type__c ='Newsletter')
                                          FROM Account
@@ -101,6 +101,13 @@ global class RestServiceAccountSMICreate {
             upsert newAccount;
             if(subscriptionRecord!=null){
                 if(subscriptionRecord.Account__c==null ) subscriptionRecord.Account__c=newAccount.id;
+                if(subscriptionRecord.Contact__c==null ){
+                    List<Contact> contactAccountList=[SELECT id FROM Contact WHERE accountId=:newAccount.id AND isPersonAccount=true];
+                    if(contactAccountList.size()>0){
+                    	subscriptionRecord.Contact__c=contactAccountList.get(0).Id;        
+                    }
+                }
+                
                 upsert subscriptionRecord;
             } 
             successMessage.add(newAccount.id);

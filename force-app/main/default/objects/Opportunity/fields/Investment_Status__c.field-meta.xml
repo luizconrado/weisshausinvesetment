@@ -4,9 +4,9 @@
     <externalId>false</externalId>
     <formula>IF( CASESAFEID(RecordTypeId) == $CustomMetadata.Constant__mdt.OpportuntiyInvestmentRecordTypeId.Value__c  , 
 IF(ISPICKVAL( StageName , &quot;ACTIVE&quot;), &quot;ACTIVE&quot;,  
-IF(ISPICKVAL( StageName , &quot;Closed Won&quot;), &quot;ACTIVE&quot;, 
-IF(ISPICKVAL( StageName , &quot;Closed Lost&quot;), &quot;CLOSED&quot;,
- &quot;RESERVED&quot;)))
+IF(ISPICKVAL( StageName , &quot;Closed Won&quot;), &quot;CLOSED_WON&quot;, 
+IF(ISPICKVAL( StageName , &quot;Closed Lost&quot;), &quot;CLOSED_LOST&quot;,
+ &quot;WAIT_FOR_START_DATE&quot;)))
 ,&quot;&quot;)</formula>
     <label>Investment Status</label>
     <required>false</required>

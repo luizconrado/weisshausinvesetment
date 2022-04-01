@@ -309,6 +309,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>FlowSendProductDetailsToBE</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>FlowUpdateProductDetailsToBE</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ForgotPasswordController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -5652,6 +5660,10 @@
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
+        <flow>Insert_Update_Subscription_Send_Email</flow>
+    </flowAccesses>
+    <flowAccesses>
+        <enabled>false</enabled>
         <flow>New_Case_Customer_Mail</flow>
     </flowAccesses>
     <flowAccesses>
@@ -5669,6 +5681,10 @@
     <flowAccesses>
         <enabled>false</enabled>
         <flow>Subscription_Emails</flow>
+    </flowAccesses>
+    <flowAccesses>
+        <enabled>false</enabled>
+        <flow>Update_Product2_Send_data_to_external_system</flow>
     </flowAccesses>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>

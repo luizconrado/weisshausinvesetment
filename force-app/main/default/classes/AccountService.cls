@@ -134,4 +134,68 @@ public with Sharing class AccountService {
         }
         
     }
+    
+    public static void createAccountAndNewsletter(String email,String subProductName,String origin,String website,String accountRecordTypeId){
+        List<Account> accountDetails=[SELECT id,Origin__pc,(Select id,Source__c,Type__c,Subscription_Status__c from Subscriptions__r WHERE Type__c=:subProductName AND RecordTypeId=:Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID LIMIT 1) 
+                                      FROM Account WHERE PersonEmail=:email AND isPersonAccount=true];
+        //exsisitng account
+        if(accountDetails.size()>0){
+            
+            Account accDetails=accountDetails.get(0);
+            if(accDetails.Origin__pc!=null)accDetails.Origin__pc+=';'+origin;
+            else accDetails.Origin__pc=origin;
+            update accDetails;
+            
+            
+            //already subscribed
+            if(accountDetails.get(0).Subscriptions__r.size()>0){
+                
+                Subscription__c subscriptionProduct=accountDetails.get(0).Subscriptions__r.get(0);
+                //if subscribed not sending mail
+                if(subscriptionProduct.Subscription_Status__c=='Subscribed'){}
+                else{
+                    subscriptionProduct.Subscription_Status__c='Awaiting Confirmation';   
+                    subscriptionProduct.Send_Mail__c=true;
+                    update subscriptionProduct;
+                }
+                
+                
+            }
+            //new subscription
+            else{
+                List<Contact> c=[SELECT id,LastName FROM Contact WHERE  AccountId=:accountDetails.get(0).Id AND Account.ispersonaccount=true];
+                Subscription__c newSubscriptionProduct=new Subscription__c();
+                newSubscriptionProduct.Subscription_Status__c='Awaiting Confirmation';
+                newSubscriptionProduct.Type__c=subProductName;
+                newSubscriptionProduct.Account__c=accountDetails.get(0).Id;
+                newSubscriptionProduct.Source__c=website;
+                newSubscriptionProduct.Send_Mail__c=true;
+                newSubscriptionProduct.recordTypeId=Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID;
+                newSubscriptionProduct.Contact__c=(c.size()>0)?c.get(0).Id:'';
+                insert newSubscriptionProduct;
+            }
+            
+            
+        }
+        //new account
+        else{
+            Account accountLead=new Account();
+            accountLead.PersonEmail = email;
+            accountLead.LastName = '[Not Provided]';
+            accountLead.Type ='Prospect';
+            accountLead.AccountSource='Website';
+            accountLead.RecordTypeId=accountRecordTypeId;
+            accountLead.Origin__pc=origin;
+            insert accountLead;
+            List<Contact> c=[SELECT id,LastName FROM Contact WHERE AccountId=:accountLead.Id AND Account.ispersonaccount=true];
+            Subscription__c newSubscriptionProduct=new Subscription__c();
+            newSubscriptionProduct.Subscription_Status__c='Awaiting Confirmation';
+            newSubscriptionProduct.Type__c=subProductName;
+            newSubscriptionProduct.Source__c=website;
+            newSubscriptionProduct.Account__c=accountLead.Id;
+            newSubscriptionProduct.Contact__c=(c.size()>0)?c.get(0).Id:'';
+            newSubscriptionProduct.Send_Mail__c=true;
+            insert newSubscriptionProduct;
+        }
+    }
 }

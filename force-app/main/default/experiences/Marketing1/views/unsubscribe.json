@@ -1,0 +1,47 @@
+{
+  "appPageId" : "378757ad-93f9-446d-90b1-4f54d36d4209",
+  "componentName" : "c:communitySinglePageLayout",
+  "id" : "1cf1340a-1227-4180-a46d-4a447b3434c4",
+  "label" : "unsubscribe",
+  "regions" : [ {
+    "id" : "e32c21d3-4c67-443e-8927-66e9340b219c",
+    "regionName" : "themeHeaderRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "buttontext" : "Abmelden",
+        "headertext" : "Abmeldung",
+        "successtext" : "erfolgreich abgemeldet"
+      },
+      "componentName" : "c:waitingList_unsubscribe",
+      "id" : "3ddfe20d-74ba-420d-8bb8-fa2caa7eff41",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "0b50cf6f-846d-4732-95de-d46e3217dd75",
+    "regionName" : "contentRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "pageTitle" : "unsubscribe",
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "community_builder:seoAssistant",
+      "id" : "92edc547-bf60-46b4-922e-9416c242d997",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "51142c74-3b1f-44fb-92ea-03eef5255d09",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-unsubscribe"
+}

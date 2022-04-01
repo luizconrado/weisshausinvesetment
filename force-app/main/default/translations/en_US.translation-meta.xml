@@ -469,6 +469,10 @@
         <name>License_partner</name>
     </customLabels>
     <customLabels>
+        <label><!-- Marketing Community Base Url --></label>
+        <name>Marketing_Community_Base_Url</name>
+    </customLabels>
+    <customLabels>
         <label><!-- Martial Status --></label>
         <name>Martial_Status</name>
     </customLabels>
@@ -638,6 +642,10 @@
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
+        <fullName>Insert_Update_Subscription_Send_Email</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
         <fullName>New_Case_Customer_Mail</fullName>
     </flowDefinitions>
     <flowDefinitions>
@@ -662,6 +670,10 @@
     <flowDefinitions>
         <flows/>
         <fullName>Subscription_Emails</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Update_Product2_Send_data_to_external_system</fullName>
     </flowDefinitions>
     <quickActions>
         <label><!-- Follow Up --></label>

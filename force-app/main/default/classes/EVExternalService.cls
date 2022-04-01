@@ -3,10 +3,12 @@ public class EVExternalService {
     private static String ACCESS_TOKEN;
     
     private static String PRODUCTS_URI='products';
+    private static String UDPATE_PRODUCTS_URI='products/:id';
     private static String DOCUMENT_URI='customers/:auth0Id/documents/:TicketId';
     private static String INVESTMENT_MONEY_TRANSFERD_FLAG='investments/:ExternalId/money-transferred';
     private static String INVESTMENT_STATUS_CHANGED_FLAG='investments/:ExternalId';
     private static String INVESTMENT_DOCUMENT_DETAILS='investments/:ExternalId/documents';
+  
     
     private static void getApiDetails(String tenentType){
         
@@ -27,6 +29,7 @@ public class EVExternalService {
                 };
                     }
     
+    //document
     public static String fetchDocumentUrl(String userAuth0Id,String ticketNumber,LogService.ApiCallDetails details){
         Map<String,String> headers=getHeaders(details.sbTenent);
         String userDetailsUri=DOCUMENT_URI;
@@ -44,6 +47,7 @@ public class EVExternalService {
         return response.getBody(); 
     }
     
+    //product
     public static String sendProductsInfo(String body,LogService.ApiCallDetails details){
         Map<String,String> headers=getHeaders(details.sbTenent);
         
@@ -57,6 +61,22 @@ public class EVExternalService {
         if(response.getStatusCode()>300) throw new RestService.RestCallException(response.getStatus());
         return response.getBody();
     }
+    public static String updateProductsInfo(String body,String productId,LogService.ApiCallDetails details){
+        Map<String,String> headers=getHeaders(details.sbTenent);
+        String uri=UDPATE_PRODUCTS_URI;
+        uri=uri.replace(':id', productId);
+        HttpResponse response=RestService.put(HOST_URL+uri,headers,body);
+        details.url=HOST_URL+uri;
+        details.responseCode=response.getStatusCode();
+        details.calltype='PUT';
+        if(response.getStatusCode()>300) details.requestBody=body;
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+        LogService.LogApiCall(details);
+        if(response.getStatusCode()>300) throw new RestService.RestCallException(response.getStatus());
+        return response.getBody();
+    }
+    
+    //Invesemnet
     
     public static String sendInvestmentMoneyTransferdStatus(String externalId,boolean status,LogService.ApiCallDetails details){
         Map<String,String> headers=getHeaders(details.sbTenent);
@@ -70,7 +90,7 @@ public class EVExternalService {
         details.url=HOST_URL+invDetailsUri;
         details.responseCode=response.getStatusCode(); 
         details.calltype='PUT';
-        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
+        if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody() ;
         LogService.LogApiCall(details);
         if(response.getStatusCode()>300) throw new RestService.RestCallException(response.getStatus());
         return response.getBody();
@@ -90,7 +110,6 @@ public class EVExternalService {
         if(response.getStatusCode()>300) throw new RestService.RestCallException(response.getStatus());
         return response.getBody();
     }
-    
     public static String sendInvestmentDocumentInformation(String externalId,String body,LogService.ApiCallDetails details){
         
         Map<String,String> headers=getHeaders(details.sbTenent);

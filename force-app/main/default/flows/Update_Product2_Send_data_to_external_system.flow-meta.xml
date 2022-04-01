@@ -5,7 +5,7 @@
         <label>Send Details To BE</label>
         <locationX>242</locationX>
         <locationY>408</locationY>
-        <actionName>FlowSendProductDetailsToBE</actionName>
+        <actionName>FlowUpdateProductDetailsToBE</actionName>
         <actionType>apex</actionType>
         <connector>
             <targetReference>Reset_Update_Website_0</targetReference>
@@ -41,8 +41,8 @@
             <label>Update Website</label>
         </rules>
     </decisions>
-    <interviewLabel>Insert - Product2 - Send data to external system {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Insert - Product2 - Send data to external system</label>
+    <interviewLabel>Update - Product2 - Send data to external system {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update - Product2 - Send data to external system</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -86,8 +86,23 @@
     <start>
         <locationX>50</locationX>
         <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Update_Website__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Update_Website__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
         <object>Product2</object>
-        <recordTriggerType>Create</recordTriggerType>
+        <recordTriggerType>Update</recordTriggerType>
         <scheduledPaths>
             <connector>
                 <targetReference>Check_Update_Web_Site</targetReference>

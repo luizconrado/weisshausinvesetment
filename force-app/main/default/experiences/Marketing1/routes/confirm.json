@@ -1,0 +1,10 @@
+{
+  "activeViewId" : "4149ba0c-fa04-4200-b345-b8cd51562683",
+  "appPageId" : "378757ad-93f9-446d-90b1-4f54d36d4209",
+  "configurationTags" : [ ],
+  "id" : "3b476ed9-a4e9-4f0a-8f74-2cf4d5aba1d2",
+  "label" : "confirm",
+  "routeType" : "custom-confirm",
+  "type" : "route",
+  "urlPrefix" : "confirm"
+}

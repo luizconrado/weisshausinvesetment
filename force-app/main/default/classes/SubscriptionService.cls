@@ -148,8 +148,8 @@ public without sharing class SubscriptionService {
     @AuraEnabled
     public static boolean registerSubscription(String email,String productName,String origin,String website){
         try{
-        	RestServiceWebLead.verifyAndCreateAccount(email,productName,origin,website);
-            return true;
+            AccountService.createAccountAndNewsletter(email, productName, origin, website, Constant.ACCOUNT_PERSON_INVESTMENT_RECORDTYPEID);
+        	return true;
         }
         catch(Exception e){
             logError(e,null,'Account','waitinglist_subscription','waitinglist_subscription','Subscribe');

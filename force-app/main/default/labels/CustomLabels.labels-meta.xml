@@ -1229,4 +1229,12 @@ Thank you very much!</value>
         <shortDescription>Account Seizures Notification	Text</shortDescription>
         <value>New Seizures is created</value>
     </labels>
+    <labels>
+        <fullName>Marketing_Community_Base_Url</fullName>
+        <categories>Generic</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Marketing Community Base Url</shortDescription>
+        <value>https://qa01-evsmartmoney.cs107.force.com/marketing</value>
+    </labels>
 </CustomLabels>

@@ -1,5 +1,7 @@
 import { LightningElement, api } from 'lwc';
-import confirmEmail from '@salesforce/apex/SubscriptionService.registerWaitingListSubscriptionUser';
+import confirmEmail from '@salesforce/apex/SubscriptionService.confirmSubscriptionOfUser';
+import { NavigationMixin, CurrentPageReference } from 'lightning/navigation';
+
 export default class WaitingList_confirmEmail extends LightningElement {
 
     @api headerText;
@@ -7,10 +9,12 @@ export default class WaitingList_confirmEmail extends LightningElement {
 
     parameters;
 
+
     connectedCallback() {
 
+
         this.parameters = this.getQueryParameters();
-        console.log(this.parameters)
+
         if (this.parameters.email && this.parameters.product)
             this.handleOnInit();
 
@@ -21,12 +25,12 @@ export default class WaitingList_confirmEmail extends LightningElement {
             "email": this.parameters.email,
             "product": this.parameters.product,
         };
-        console.log('params', params)
+
         confirmEmail(params)
             .then(result => {
 
 
-                setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 5000);
+                //setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 5000);
 
             })
             .catch(error => {
@@ -37,7 +41,7 @@ export default class WaitingList_confirmEmail extends LightningElement {
     getQueryParameters() {
 
         let params = {};
-        let search = (location.search) ? location.search.substring(1) : undefined;
+        let search = (window.location.search) ? window.location.search.substring(1) : undefined;
 
         if (search) {
             params = JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g, '":"') + '"}', (key, value) => {

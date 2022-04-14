@@ -449,12 +449,14 @@ Wenn Sie Fragen oder Rückmeldungen haben sind wir per E-Mail unter support@ev-s
                     <br>
                     <p class="apple-link">
                         Copyright &#169; EV Smart Money Holding GmbH | HRB 215045 B | Amtsgericht Charlottenburg | Lizenzpartner der Engel & Völkers Marken GmbH & Co. KG |
-                        Klaus-Groth-Straße 3, 14050 Berlin, Germany. | Geschäftsführung: Dr. Kyros Khadjavi | 
-                        <a class="confirm"
-                            href="{!$Label.Marketing_Community_Base_Url}/unsubscribe?email={!Account.PersonEmail}&product={!Subscription__c.Type_Encoded__c}">
-                            abmelden
-                        </a>
+                        Klaus-Groth-Straße 3, 14050 Berlin, Germany. | Geschäftsführung: Dr. Kyros Khadjavi 
                     </p>
+                     <p class="apple-link">
+                     <b>Sie möchten diese E-Mails nicht erhalten? Dann melden Sie sich <a class="confirm"
+                            href="{!$Label.Marketing_Community_Base_Url}/unsubscribe?email={!Account.PersonEmail}&product={!Subscription__c.Type_Encoded__c}">
+                          <u>  hier</u>
+                        </a> ab.
+                     </b></p>
                 </td>
 
             </tr>

@@ -4,8 +4,7 @@ import unsubscribeFromProduct from '@salesforce/apex/SubscriptionService.updateS
 import checkUnsubscribedStatus from '@salesforce/apex/SubscriptionService.checkUnsubscribedStatus';
 import allOptions from '@salesforce/apex/SubscriptionService.getUnsubscribeOptions';
 import errorMsg from '@salesforce/label/c.form_error_msg';
-import successUnsubscribeMessage from '@salesforce/label/c.from_successUnsubscribe_msg';
-
+import evsmartmoney_URL from '@salesforce/label/c.evsmartmoneyInvestment_URL';
 
 
 
@@ -20,9 +19,8 @@ export default class WaitingList_unsubscribe extends LightningElement {
 
     //labels
     reasonForUnsubscribeText = 'Grund für die Abmeldung';
-    requiredFieldText = 'Wähle eine Option';
-
-
+    requiredFieldText = 'Sie haben sich erfolgreich abgemeldet';
+ 
     parameters;
     emailAddress;
     rendered = false;
@@ -61,7 +59,7 @@ export default class WaitingList_unsubscribe extends LightningElement {
             }).then(data => {
                 if (data === false) {
                     this.showform = false;
-                    setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 4000);
+                    setTimeout(() => location.href = evsmartmoney_URL, 10000);
                 }
 
             })
@@ -122,12 +120,12 @@ export default class WaitingList_unsubscribe extends LightningElement {
             };
             unsubscribeFromProduct(params)
                 .then(result => {
-                    this.showEvToast(successUnsubscribeMessage);
+                    this.showEvToast('erfolgreich abgemeldet');
                     this.loaded = false;
                     this.showform=false;
-                    setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 4000);
+                   // setTimeout(() => location.href = evsmartmoney_URL, 4000);
                 })
-            then(error => {
+            .then(error => {
                 this.showToast('Error', errorMsg, 'error');
                 this.loaded = false;
             })

@@ -5,12 +5,19 @@ export default class Waitinglist_subscription extends LightningElement {
 
     @api subscriptionType;
 
+    @api tcText;
+    @api tcLink;
+    @api tcLinkText;
+
+    
     isTcAccepted;
     emailAddress;
     loaded;
 
 
-   
+    parameters={};
+
+    
 
     applyStyle() {
         const style = document.createElement('style');
@@ -29,7 +36,7 @@ export default class Waitinglist_subscription extends LightningElement {
             border-radius: 4px;
             border: 1px solid #BCBDBC;
             height:48px;
-            color:#BCBDBC;
+         
           
         }
         .ev-Design .ev-button button{
@@ -59,13 +66,22 @@ export default class Waitinglist_subscription extends LightningElement {
         }
 
     }
+   
     rendered = false;
     renderedCallback() {
         if (this.rendered) return;
         this.applyStyle();
+       
         this.rendered = true;
     }
 
+    connectedCallback() {
+        this.parameters = this.getQueryParameters();
+       
+        
+    }
+
+    //handler
     handleCheckboxValueChange(event) {
         let name = event.target.name;
         let value = event.target.checked;
@@ -80,14 +96,33 @@ export default class Waitinglist_subscription extends LightningElement {
 
     }
 
+    //server call
     subscribe() {
         let that = this;
         if (this.validate()) {
             that.loaded = true;
             try {
-                register({ email: this.emailAddress, productName: this.subscriptionType, origin: 'SMI Waiting List', website: window.location.origin }).
+                let properties = {
+                    "utm_source": this.parameters?.utm_source,
+                    "utm_medium": this.parameters?.utm_medium,
+                    "utm_campaign": this.parameters?.utm_campaign,
+                    "utm_term": this.parameters?.utm_term,
+                    "utm_content": this.parameters?.utm_content,
+                };
+               
+                const fullurl=location.href;
+                
+                register(
+                    {
+                        email: this.emailAddress,
+                        productName: this.subscriptionType,
+                        origin: 'Investment Landing Page',
+                        website: fullurl,
+                        utmParameters: properties
+                    }
+                ).
                     then(result => {
-                      
+
                         that.showToast();
                     })
                     .catch(error => {
@@ -102,6 +137,7 @@ export default class Waitinglist_subscription extends LightningElement {
         }
     }
 
+    //helper
     showToast() {
         this.template.querySelector("c-ev-toast").showToast("Vielen Dank für Ihre Anmeldung. Bitte bestätigen Sie Ihre E-Mail-Adresse.");
     }
@@ -127,5 +163,18 @@ export default class Waitinglist_subscription extends LightningElement {
         }
 
         return this.isTcAccepted && this.emailAddress;
+    }
+    getQueryParameters() {
+
+        let params = {};
+        let search = (location.search) ? location.search.substring(1) : undefined;
+
+        if (search) {
+            params = JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g, '":"') + '"}', (key, value) => {
+                return key === "" ? value : decodeURIComponent(value)
+            });
+        }
+
+        return params;
     }
 }

@@ -241,7 +241,7 @@ export default class TermDepositTaxExemptionOrderForm extends LightningElement {
         }
 
         else {
-            console.log('fail');
+            console.error('fail');
         }
     }
 
@@ -271,7 +271,7 @@ export default class TermDepositTaxExemptionOrderForm extends LightningElement {
         }).catch(error => {
             this.loaded = false;
 
-            console.log('error', error)
+            console.error('error', error)
         });
     }
     athunticateMFARequest() {

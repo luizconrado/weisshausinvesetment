@@ -10,6 +10,6 @@ export default class EvToast extends LightningElement {
         setTimeout(function () {
             that.showtoast = false;
             that.loaded = false
-        }, 2000);
+        }, 10000);
     }
 }

@@ -1,6 +1,17 @@
+/***************
+* @group Trigger Helper
+* @description Responsible for business logic of account trigger handler
+*/
 public class AccountTriggerHelper {
     
-    public static String calucateAgeBracker(Date birthDate){
+    /***************
+    * @description calcualte age based on date
+    * @param birthDate date from which age needs to be calucated
+    * @return age braket
+    * @example
+    * AccountTriggerHelper.calucateAgeBracket(dateOfPerson);
+    */
+    public static String calucateAgeBracket(Date birthDate){
         Date todaysDate=Date.today();
         Integer currentYear=todaysDate.year();
         Integer birthYear=birthDate.year();

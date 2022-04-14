@@ -4,7 +4,8 @@
     <encodingKey>ISO-8859-1</encodingKey>
     <name>Subscription Verify Email DE</name>
     <style>none</style>
-    <subject>Bitte überprüfen Sie Ihr E-Mail-Konto</subject>
+    <subject>Bitte bestätigen Sie die Anmeldung zum {!Subscription__c.Type__c}</subject>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>
+ 

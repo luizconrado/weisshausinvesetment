@@ -1,3 +1,7 @@
+/***************
+* @group Test Class
+* @description test class for AccountService
+*/
 @isTest
 public class AccountServiceTest {
     
@@ -17,6 +21,36 @@ public class AccountServiceTest {
         Account a=TestDataFactory.getPersonAccount(true);
         Test.startTest();
         AccountService.syncPersonDetailsWithSB(a.Id);
+        Test.stopTest();
+    }
+    
+    @isTest 
+    static void createAccountAndNewsletterNewUserTest(){
+        AccountService.service service=new AccountService.service();
+        Test.startTest();
+        service.createAccountAndNewsletter('test@ev.com','TESTING','APEX','www.ev-smartmoney.com',new Map<String,String>{'utm_medium'=>'utm_medium'},Constant.ACCOUNT_PERSON_INVESTMENT_RECORDTYPEID);
+        Test.stopTest();
+    }
+    @isTest 
+    static void createAccountAndNewsletterExsistingUserTest(){
+        Account a=TestDataFactory.getPersonInvestmentAccount(true); 
+        AccountService.service service=new AccountService.service();
+        Test.startTest();
+        service.createAccountAndNewsletter(a.PersonEmail,'TESTING','APEX','www.ev-smartmoney.com',new Map<String,String>{'utm_medium'=>'utm_medium'},Constant.ACCOUNT_PERSON_INVESTMENT_RECORDTYPEID);
+        Test.stopTest();
+    }
+    @isTest 
+    static void createAccountAndNewsletterExsistingAllTest(){
+        Account a=TestDataFactory.getPersonInvestmentAccount(false);
+        a.Origin__pc='Investment Landing Page';
+        insert a;
+        Contact c=[SELECT id FROM Contact WHERE accountId=:a.Id];
+        Subscription__c sub=TestDataFactory.getNewsletterSubscription(a.id, c.Id, false);
+        sub.Subscription_Status__c='Awaiting Confirmation';
+        insert sub;
+        AccountService.service service=new AccountService.service();
+        Test.startTest();
+        service.createAccountAndNewsletter(a.PersonEmail,sub.Type__c,'APEX','www.ev-smartmoney.com',new Map<String,String>{'utm_medium'=>'utm_medium'},Constant.ACCOUNT_PERSON_INVESTMENT_RECORDTYPEID);
         Test.stopTest();
     }
 }

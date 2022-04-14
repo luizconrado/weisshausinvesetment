@@ -398,9 +398,9 @@
                                     <tr>
                                         <br>
                                         <p>
-                                            {!Account.Email_Honorific__pc}
+                                          Guten Tag, 
                                         </p>
-                                        <p>Sie haben sich erfolgreich von unserem {!Subscription__c.Type__c} abgemeldet!</p>
+                                        <p>Sie haben sich erfolgreich von dem E&V {!Subscription__c.Type__c} abgemeldet.</p>
                                         <br>
                                         <p>Mit freundlichen Grüßen,</p>
                                         <p>Ihr Engel & Völkers Smart Money Team</p>

@@ -1,7 +1,15 @@
+/***************
+* @group Trigger Handler
+* @description Handles routing of trigger context
+*/
 public class AccountTriggerHandler  extends TriggerHandler {
     
     
-    
+    /***************
+    * @description Responseble for
+    * a. caluatle person agentname
+    * b. change record type to Person partner customer
+    */
     protected  override void beforeUpdate(final Map<Id, SObject> newObjects, final Map<Id, SObject> oldObjects) {
         
         for(String accountId:newObjects.keySet()){
@@ -10,7 +18,7 @@ public class AccountTriggerHandler  extends TriggerHandler {
             
             
             //calcuate age
-            if(acc.PersonBirthdate!=null) acc.Age__pc=AccountTriggerHelper.calucateAgeBracker(acc.PersonBirthdate);
+            if(acc.PersonBirthdate!=null) acc.Age__pc=AccountTriggerHelper.calucateAgeBracket(acc.PersonBirthdate);
 	         
             //Change record type if type is E&V Broker
             if(acc.Type=='E&V Broker' && acc.RecordTypeId!=Constant.PERSON_PARTNER_ACCOUNT_RECORDTYPEID) acc.RecordTypeId=Constant.PERSON_PARTNER_ACCOUNT_RECORDTYPEID;
@@ -18,7 +26,11 @@ public class AccountTriggerHandler  extends TriggerHandler {
         }
 
     }
-    
+
+    /***************
+    * @description Responseble for
+    * a. initate scrambeling data of account
+    */
     protected  override void afterUpdate(final Map<Id, SObject> newObjects, final Map<Id, SObject> oldObjects) {
         List<String> toAnonymize=new List<String>();
         for(String accountId:newObjects.keySet()){

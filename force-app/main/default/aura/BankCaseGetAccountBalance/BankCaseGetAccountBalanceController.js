@@ -12,7 +12,7 @@
                 let result = JSON.parse(data);
                 result.price=helper.formatCurrency(result.balance.value/100);
                 result.avil_price=helper.formatCurrency(result.available_balance.value/100);
-                console.log('result',result)
+            
                 component.set('v.loading',false);
                 component.set('v.tempBalance',result);
             }

@@ -1,3 +1,7 @@
+/***************
+* @group Test Class
+* @description test class for SubscriptionService
+*/
 @isTest
 private class SubscriptionServiceTest {
     
@@ -29,11 +33,22 @@ private class SubscriptionServiceTest {
     
     @isTest
     static void registerSubscriptionTest(){
-        
         User u=TestDataFactory.getUser('Integration');
         System.runAs(u){
             Test.startTest();
-            SubscriptionService.registerSubscription('test@ev.com','Newsletter','','www.evsmartmoeny.com');
+            SubscriptionService.registerSubscription('test@ev.com','Newsletter','','www.evsmartmoeny.com',new Map<String,String>());
+            Test.stopTest();
+        }
+    }
+    @isTest
+    static void confirmSubscriptionOfUserTest(){
+        User u=TestDataFactory.getUser('Integration');
+        Account a=TestDataFactory.getPersonAccount(true);
+        Contact c=[SELECT id FROM Contact WHERE accountId=:a.Id];
+        Subscription__c sub=TestDataFactory.getNewsletterSubscription(a.Id, c.Id, true);
+        System.runAs(u){
+            Test.startTest();
+            SubscriptionService.confirmSubscriptionOfUser(a.PersonEmail,sub.Type__c);
             Test.stopTest();
         }
     }

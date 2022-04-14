@@ -1,6 +1,18 @@
+/***************
+* @group Rest Api
+* @description Creates Banking Customer Record and subscription to investment 
+*/
 @RestResource(UrlMapping='/generate/lead/*')
 global without sharing  class RestServiceWebLead {
 
+    /***************
+    * @description creates/updates customer based on email address and creates new subscripiton for investment
+    * @example
+      {
+       "fields[email][value]":"",
+       "fields[websiteSource][value]":""
+      }
+    */
     @HttpPost
     global static void doPost() {
         RestResponse res = RestContext.response;
@@ -19,8 +31,8 @@ global without sharing  class RestServiceWebLead {
         else if(website!=null && String.isNotEmpty(website) ) origin=website.substringBetween('://', '.');
         
       
-          
-        AccountService.createAccountAndNewsletter(email, productInterest, origin, website, Constant.PERSON_ACCOUNT_RECORDTYPEID);
+        AccountService.service service=new AccountService.service();
+        service.createAccountAndNewsletter(email, productInterest, origin, website,new Map<String,String>(), Constant.PERSON_ACCOUNT_RECORDTYPEID);
         
         
         res.statusCode = 200;

@@ -150,9 +150,7 @@ export default class DigibankCaseForm extends LightningElement {
         if (this.rendered) return;
         this.applyStyle();
         let d = new Date();
-
-        console.log(d.toISOString())
-        console.log(d.getTimezoneOffset())
+ 
         this.OccurrenceOfIssue = d.toISOString();
 
         this.rendered = true;
@@ -206,8 +204,7 @@ export default class DigibankCaseForm extends LightningElement {
             this.contentVersionNames = fileNames;
         }
 
-
-        console.log("No. of files uploaded : ", this.contentVersionIds, uploadedFiles);
+ 
     }
     //validator
     checkFieldValidity() {
@@ -253,8 +250,7 @@ export default class DigibankCaseForm extends LightningElement {
                 newCase: caseObject
             }).then(result => {
                 this.newCaseId = result;
-                console.log('case id', result)
-                if (this.contentVersionIds.length > 0) {
+                 if (this.contentVersionIds.length > 0) {
                     this._attachFilesToCase();
                 }
                 else {
@@ -270,7 +266,7 @@ export default class DigibankCaseForm extends LightningElement {
 
         }
         else {
-            console.log('fail')
+            console.error('fail')
         }
     }
 

@@ -1,11 +1,16 @@
+/***************
+* @group Service
+* @description all subscription related logic is writen here
+*/
 public without sharing class SubscriptionService {
 
-   	//LWC Component
-      /*
-     * Description: on load of verification from update terms and condition and subscribe status
-     * email:sends product subscribed email
-     * //1
-	*/ 
+    
+    /***************
+    * @description checkes if customer exsists and updates is subsription status to subsribed
+    * @param email email of customer
+    * @param product subsription type
+    * @return leadWrapper
+    */
     @AuraEnabled
     public static leadWrapper checkAndUpdateSubscriptionOnload(String email, String product) {
         product=product.replace('+',' ');
@@ -23,6 +28,7 @@ public without sharing class SubscriptionService {
             if(accountRec.Subscriptions__r.size()>0){
                 Subscription__c subscription=accountRec.Subscriptions__r.get(0);
                 subscription.Subscription_Terms_and_Conditions__c=true;
+                subscription.Subscribed_Date__c=DateTime.now();
                 subscription.Subscription_Status__c='Subscribed';
                 update subscription;
             }
@@ -38,8 +44,21 @@ public without sharing class SubscriptionService {
      * Description: saves lead details when filled in verification form
      * //2
 	*/
+    /***************
+    * @description updates customer account details and updates subsription status to subscribed
+    * @param leadId account id of customer
+    * @param email
+    * @param product
+    * @param salutation
+    * @param lastName
+    * @param firstName
+    * @param termsAndConditions
+    * @param phoneNumber
+    * @return true of false
+    */
     @AuraEnabled
-    public static Boolean updateSubscriptionWithConfirmation(String email, String product, String salutation, String lastName, String firstName, Boolean termsAndConditions, String phoneNumber, String leadId) {
+    public static Boolean updateSubscriptionWithConfirmation(String email, String product, String salutation, String lastName, String firstName,
+     Boolean termsAndConditions, String phoneNumber, String leadId) {
         Boolean showForm = true;
         
         List<Account> accountDetails=[SELECT id,FirstName,Salutation,LastName,Phone,(Select id,Send_Mail__c,Subscription_Terms_and_Conditions__c,Source__c,Type__c,Subscription_Status__c from Subscriptions__r WHERE Type__c=:product AND RecordTypeId=:Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID LIMIT 1) 
@@ -57,6 +76,7 @@ public without sharing class SubscriptionService {
                 subscription.Send_Mail__c=true;
                 subscription.Subscription_Terms_and_Conditions__c=true;
                 subscription.Subscription_Status__c='Subscribed';
+                subscription.Subscribed_Date__c=DateTime.now();
                 update subscription;
             }
            
@@ -67,11 +87,13 @@ public without sharing class SubscriptionService {
     }
 
     
-     /*
-     * Description: on load of unsubscribe check if its already unsubscribed
-     * email:sends successfuly unsubscribed email
-     * //3
-	*/
+ 
+    /***************
+    * @description checks subsripiton status is unsubscribed
+    * @param email
+    * @param product
+    * @return true / false
+    */
     @AuraEnabled
     public static Boolean checkUnsubscribedStatus(String email,String product){
         product=product.replace('+',' ');
@@ -92,11 +114,13 @@ public without sharing class SubscriptionService {
     }
     
    
-    /*
-     * Description: on load of unsubscribe page product is updateted to unsubscribe
-     * email:sends product unsubscribed email
-     * //4
-	*/
+   /***************
+    * @description updates subsripiton status is unsubscribed
+    * @param email
+    * @param product
+    * @param reason
+    * @return true / false
+    */
     @AuraEnabled
     public static Boolean updateSubscriptionToUnSubscribed(String email,String product,String reason){
         product=product.replace('+',' ');
@@ -112,6 +136,7 @@ public without sharing class SubscriptionService {
                 Subscription__c subscription=accountRec.Subscriptions__r.get(0);
                 subscription.Subscription_Status__c='Unsubscribed'; 
                 subscription.Reason_For_Unsubscribing__c=reason;
+                subscription.Unsubscribed_Date__c=DateTime.now();
                 subscription.Send_Mail__c=true;
                 update subscription;
             }
@@ -125,10 +150,7 @@ public without sharing class SubscriptionService {
         return true;
     }
     
-     /*
-     * Description: on load of unsubscribe page reasons are loaded
-     * //5
-	*/
+     
     @AuraEnabled(cacheable=true)
     public static Map<String,String> getUnsubscribeOptions(){
         Map<String,PicklistEntry[]> allPicklistValues=SchemaUtil.getObjectPicklistFileds(SchemaUtil.getSobjectType('Subscription__c'));
@@ -139,16 +161,26 @@ public without sharing class SubscriptionService {
         return values;
     }
     
+    /***************
+    * @description querys  History_Tracker__c object and retrives all history records when send mail was checked
+    * @param subscriptionId id of subsription record
+    */
     @AuraEnabled
     public static List<History_Tracker__c> getLastEmailSentInfo(String subscriptionId){
         return [SELECT id,User__r.Name,Field__c,New_Value__c,CreatedDate FROM History_Tracker__c WHERE Object__c='Subscription__c' AND  Field__c='Send_Mail__c' AND Record_Id__c=:subscriptionId ORDER BY CreatedDate Desc];
     }
     
     
+    /***************
+    * @description creates acccount and subscripiton record
+    * @param objectName the name of the object to look up
+    * @return success or failur
+    */
     @AuraEnabled
-    public static boolean registerSubscription(String email,String productName,String origin,String website){
+    public static boolean registerSubscription(String email,String productName,String origin,String website,Map<String,String> utmParameters){
         try{
-            AccountService.createAccountAndNewsletter(email, productName, origin, website, Constant.ACCOUNT_PERSON_INVESTMENT_RECORDTYPEID);
+            AccountService.service service=new AccountService.service();
+            service.createAccountAndNewsletter(email, productName, origin, website, utmParameters, Constant.ACCOUNT_PERSON_INVESTMENT_RECORDTYPEID);
         	return true;
         }
         catch(Exception e){
@@ -158,21 +190,27 @@ public without sharing class SubscriptionService {
         
     }
 
+    /***************
+    * @description subscription status to subscribed
+    * @param email 
+    * @param product 
+    */
     @AuraEnabled
-    public static void registerWaitingListSubscriptionUser(String email,String product){
+    public static void confirmSubscriptionOfUser(String email,String product){
         product = EncodingUtil.urlDecode(product,'utf-8');
         List<Account> accountDetails=[SELECT id,FirstName,Salutation,LastName,Phone,
         (Select id,Send_Mail__c,Subscription_Terms_and_Conditions__c,Source__c,Type__c,Subscription_Status__c from Subscriptions__r WHERE Type__c=:product AND RecordTypeId=:Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID LIMIT 1) 
         FROM Account WHERE PersonEmail=:email AND isPersonAccount=true];
         try {
           
-            System.debug('accountDetails'+accountDetails.size());
+           
             if(accountDetails.size()>0){
                 if(accountDetails.get(0).Subscriptions__r.size()>0){
                     System.debug('Subscriptions__r'+accountDetails.get(0).Subscriptions__r.size());
                     Subscription__c subscription=accountDetails.get(0).Subscriptions__r.get(0);
                     subscription.Subscription_Status__c='Subscribed';
                     subscription.Send_Mail__c=true;
+                    subscription.Subscribed_Date__c=DateTime.now();
                     subscription.Subscription_Terms_and_Conditions__c=true;
                     update subscription;
                 }

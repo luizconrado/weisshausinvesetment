@@ -35,7 +35,7 @@
         <section class="slds-fade-in-open slds-modal_medium">
             <div>
                 <header class="modal-header   slds-modal__header">
-                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Resend Conformation Email to {!v.subscriptionRecord.Type__c}</h2>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Resend confirmation email for the {!v.subscriptionRecord.Type__c}</h2>
                     <p class="slds-m-top_x-small">
                         <div class="align-center slds-grid slds-gutters">
                             <div class="slds-col ">
@@ -52,8 +52,8 @@
                     <aura:if isTrue="{!v.subscriptionRecord}">
                         
                         <aura:if isTrue="{!!or(v.subscriptionRecord.Subscription_Status__c=='Subscribed',v.accountRecordRecord.Subscription_Status__c=='Unsubscribed')}">
-                            <lightning:select   label="{!'Resend conformation mail for '+ v.subscriptionRecord.Type__c +' subscription'}" value="{!v.subscriptionRecord.Subscription_Status__c}" >
-                                <option value="Awaiting Confirmation">No</option>
+                            <lightning:select   label="{!'Resend confirmation mail for the the '+ v.subscriptionRecord.Type__c +' subscription'}" value="{!v.subscriptionRecord.Subscription_Status__c}" >
+                                <option value="Awaiting confirmation">No</option>
                                 <option value="Confirmation Resent">Yes</option>
                             </lightning:select>
                             <div class="slds-text-align_right">

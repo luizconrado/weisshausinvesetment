@@ -23,7 +23,7 @@
                 }
                 else if (state === "ERROR") {
                     let errors = response.getError();
-                    console.log(errors);
+                    console.error(errors);
                 }
             });
             helper.callApex(component,'getCaseIITypes',function (response){

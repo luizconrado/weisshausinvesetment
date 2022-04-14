@@ -1,11 +1,33 @@
+/***************
+* @group Controller
+* @description controller class for AccountSolarisbankAdminPanal, porovides suport for all Solarisbank oprations that are done via admin panal on account,bank account,card object
+*/
 public class AccountSolarisbankAdminPanalController {
     
+    /***************
+    * @description sends a request to solarisbank to change user details of customer
+    * @param recordId account Id of user
+    * @param requestChangebody details that are required to change
+    * @return SolarisbankCRPRequestWrapper
+    * @example
+    * AccountSolarisbankAdminPanalController.intitatePersonDetailsChangeTanRequest(accountid,{
+                "address":{
+                    "line_1":"line_1",
+                    "line_2":"line_2"   
+                },
+                "title":"title",
+                "salutation":"salutation",
+                "address":"address",
+                "tax_information":"tax_information"
+            });
+    */
     @AuraEnabled
     public static SolarisbankCRPRequestWrapper intitatePersonDetailsChangeTanRequest(String recordId,String requestChangebody){
         List<Change_Request_Log__c> changeRequestList=new List<Change_Request_Log__c>();
         Account bankAccountDetails=[SELECT Id,Solarisbank_Id__c,Solarisbank_Tenent__c FROM Account WHERE id=:recordId];
         LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(recordId,'Account',bankAccountDetails.Solarisbank_Tenent__c);
         
+        //creating request to update changes
         String responseString= SolarisbankService.updateCustomerData(bankAccountDetails.Solarisbank_Id__c,requestChangebody,apiCallDetails);
         
         SolarisbankCRPRequestWrapper tanUrlResponse=SolarisbankCRPRequestWrapper.parse(responseString);
@@ -35,7 +57,7 @@ public class AccountSolarisbankAdminPanalController {
             changeRequestList.add(changeRequestLog);
         }
         
-        
+        //creating tan conformation request 
         String crpResponseString = SolarisbankService.initiateCRPRequest(tanUrlResponse.url,bankAccountDetails.Solarisbank_Id__c,apiCallDetails);
         SolarisbankCRPRequestWrapper crpResponse=SolarisbankCRPRequestWrapper.parse(crpResponseString);
         
@@ -54,10 +76,20 @@ public class AccountSolarisbankAdminPanalController {
         return tanUrlResponse;  
     }
     
+    /***************
+    * @description sends conformation request to solarisbank to accept changes
+    * @param recordId account id of customer record
+    * @param tanurl conformation url returend by intitatePersonDetailsChangeTanRequest
+    * @param otp key sent to customers registerd monbile number
+    * @return reponse body 
+    * @example
+    * AccountSolarisbankAdminPanalController.confirmPersonDetailsChangeTanRequest(accountid,url,securitycode);
+    */
     @AuraEnabled
     public static String confirmPersonDetailsChangeTanRequest(String recordId,String tanurl,String otp){
         List<Change_Request_Log__c> changeRequestList=new List<Change_Request_Log__c>();
         Account bankAccountDetails=[SELECT Id,Solarisbank_Id__c,Solarisbank_Tenent__c FROM Account WHERE id=:recordId];
+
         LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(recordId,'Account',bankAccountDetails.Solarisbank_Tenent__c);
         String responseString = SolarisbankService.confirmCRPRequest(tanurl,bankAccountDetails.Solarisbank_Id__c,otp,apiCallDetails);
         SolarisbankCRPRequestWrapper tanUrlResponse=SolarisbankCRPRequestWrapper.parse(responseString);
@@ -80,6 +112,7 @@ public class AccountSolarisbankAdminPanalController {
             crpRequestLog.Status__c=tanUrlResponse.status;
             crpRequestLog.Updated_At__c=tanUrlResponse.updated_at;
             crpRequestLog.URL__c=tanUrlResponse.url;
+            //sync new details 
             AccountService.syncPersonDetailsWithSB(bankAccountDetails.id);
         }
         
@@ -89,10 +122,13 @@ public class AccountSolarisbankAdminPanalController {
         return responseString;
     }
     
+    
     @AuraEnabled
     public static Boolean checkIsCompactLayout() {
         return Salesforce.isCompactLayout;
     }
+
+
     
     @auraEnabled(cacheable=true)
     public static Map<String,Map<String,String>> getBankAccountPicklistValues(){
@@ -118,7 +154,11 @@ public class AccountSolarisbankAdminPanalController {
     }
     
     
-    
+    /***************
+    * @description returns record details based on record id
+    * @param recordId record id 
+    * @return map of object and record
+    */
     @AuraEnabled
     public static Map<String,List<sObject>> getRecordDetails(Id recordId){
         
@@ -146,11 +186,29 @@ public class AccountSolarisbankAdminPanalController {
         return null;
     }
     
+    /***************
+    * @description creates new kyc identification request with solaribank
+    * @param recordId account id of customer 
+    * @param languageCode lang code in which identification is to be done
+    * @return returns identification url
+    */
     @AuraEnabled
     public static String reqeustNewIdentification(String recordId,String languageCode){
         return AccountService.createNewIdentification(recordId,languageCode);
     }
     
+    /***************
+    * @description request new card for customer
+    * @param recordId bank account record id of customer to whihc card is to be linked
+    * @param body card details 
+    * @return new card id
+    * @example
+    * requestNewBankCard(bankAccountId,{
+            type:'debit',
+            line_1:cardfName+'/'+cardlName,
+            reference:randomString
+        });
+    */
     @AuraEnabled 
     public static String requestNewBankCard(String recordId,String body){
         Map<String,Object> cardRequestBody=(Map<String,Object>) JSON.deserializeUntyped(body);
@@ -181,6 +239,13 @@ public class AccountSolarisbankAdminPanalController {
         return '{"id":"newCard.id"}';
     }
     
+    /***************
+    * @description change card status
+    * @param recordId card record id
+    * @param newStatus status to whihc it needs to be chagned Block\Close\Unblock
+    * @param reason reason for change
+    * 
+    */
     @AuraEnabled
     public static String changeCardStatus(String recordId,String newStatus,String reason){
         String errorDetails='';
@@ -215,13 +280,18 @@ public class AccountSolarisbankAdminPanalController {
         return BankCaseOverrideControler.callGoogleMapsDetailsApi(placeId,sessionToken);
     }
     
+    /***************
+    * @description close bank account of customer
+    * @param recordId bank account record id 
+    * @param reason reson for closing account
+    * @return returns null on success or error message
+    */
     @AuraEnabled
     public static SolarisbankBankAccountWrapper.Errors requestAccountCloser(String recordId,String reason){
         Bank_Account__c bankAccountDetails=[SELECT id,Status__c,Technical_Closure_Date__c,Legal_Closure_Date__c,Closure_Reasons__c,Person_Account__c,Person_Account__r.Solarisbank_Tenent__c,Solarisbank_Id__c FROM Bank_Account__c WHERE id=:recordId];
         LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(recordId,'Bank_Account__c',bankAccountDetails.Person_Account__r.Solarisbank_Tenent__c);
         String body='{"account_id":"'+bankAccountDetails.Solarisbank_Id__c+'","closure_reason":"'+reason+'"}';
         String responseJson=SolarisbankService.requestCloseAccount(body,apiCallDetails);
-        System.debug('responseJson'+responseJson);
         SolarisbankBankAccountWrapper sbDetails=SolarisbankBankAccountWrapper.parse(responseJson);
         if(sbDetails.error==null){
             

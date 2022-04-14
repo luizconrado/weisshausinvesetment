@@ -8,10 +8,8 @@
                 variant="label-hidden">
             </lightning-input>
             <span class="ev-checkbox_text">
-                Ich bin damit einverstanden, dass meine Kontaktdaten von der
-                EV Smart Money Holding GmbH für Marketingzwecke gespeichert
-                und verwendet werden. Weitere Informationen zur Datenverarbeitung
-                entnehmen Sie bitte den <a class="tc_link" href="/">Datenschutzbestimmungen.</a>
+                {tcText}
+                <a class="tc_link" target="_blank" href={tcLink}> {tcLinkText}</a>
 
 
             </span>
@@ -22,7 +20,7 @@
             <div
                 class="slds-col slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 ev-padding_right-mid ev-section_grow-large">
 
-                <lightning-input disabled={loaded} message-when-pattern-mismatch="invalid" class="ev-input"
+                <lightning-input is-loading={loaded} disabled={loaded} message-when-pattern-mismatch="invalid" class="ev-input"
                     variant="label-hidden" type="email" placeholder="E-Mail" name="emailAddress" value={emailAddress}
                     onchange={handleValueChange}>
                 </lightning-input>

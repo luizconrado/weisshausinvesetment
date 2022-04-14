@@ -14,7 +14,7 @@ export default class Communityfooter extends LightningElement {
     impressumUrl = evsmartmoney_URL + '/de/impressum';
     newsUrl = evsmartmoney_URL + '/de/news';
     supportUrl = evsmartmoney_URL + '/de/support';
-    uberunsUrl = evsmartmoney_URL + '/de/uberuns';
+    uberunsUrl = evsmartmoney_URL + '/de/ueberuns';
     bankingUrl = evsmartmoney_URL + '/de/banking'
     immobilienUrl = evsmartmoney_URL + '/de/immobilien';
 }

@@ -1,9 +1,9 @@
 .ev-toast_container{
    
    
-    position: absolute;
+    position: fixed;
     height: 56px;
-    top: calc(3% - 56px/2);
+    top: calc(16% - 56px/2);
     background: #EAF4E8;
     max-width: 1140px;
     width: 80%;

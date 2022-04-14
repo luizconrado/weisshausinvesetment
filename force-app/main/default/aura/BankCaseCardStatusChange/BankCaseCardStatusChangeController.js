@@ -11,13 +11,13 @@
                         selected:false
                     }
                 });
-                console.log('cardTypes',cardTypes)
+                
                 component.set('v.cardTypes',cardTypes);
               
             }
             else if (state === "ERROR") {
                 let errors = response.getError();
-                console.log(errors);
+                console.error(errors);
             }
         });
         component.set('v.loader',true);
@@ -25,7 +25,7 @@
             let state = response.getState();
             let data = response.getReturnValue();
             if (state === "SUCCESS") {
-                console.log('data',data)
+                 
                 component.set('v.bankCaseDetails',data);
                 
                 let isBlock = (data.Card__r.Status__c === 'ACTIVE'  )?true:false;
@@ -118,6 +118,6 @@
     },
     onTypeSelect:function(component, event, helper) {
          let selectedType=component.get('v.selectedType');
-        console.log('selectedType',selectedType)
+        
     },
 })

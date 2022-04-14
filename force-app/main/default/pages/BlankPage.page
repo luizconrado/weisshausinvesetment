@@ -13,7 +13,7 @@
         let id=undefined;
         window.addEventListener("message", function(event) {
             
-            console.log('Blank Page event origin',event.data)
+             
             //checkiong if request is from same origon
             if (event.origin !== lexOrigin) {
                 // Not the expected origin: reject message!

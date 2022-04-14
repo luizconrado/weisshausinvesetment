@@ -9,6 +9,9 @@ export default class Waitinglist_section1 extends LightningElement {
 
     @api subscriptionType;
 
+    @api tcText;
+    @api tcLink;
+    @api tcLinkText;
 
     rendered = false;
     renderedCallback() {

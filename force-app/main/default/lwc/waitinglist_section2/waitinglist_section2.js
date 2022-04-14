@@ -7,6 +7,11 @@ export default class Waitinglist_section2 extends LightningElement {
 
     @api headerDescription;
 
+    @api headerDescription2;
+
+    get showDescription2(){
+        return (this.headerDescription2)?true:false;
+    }
 
 
     rendered = false;

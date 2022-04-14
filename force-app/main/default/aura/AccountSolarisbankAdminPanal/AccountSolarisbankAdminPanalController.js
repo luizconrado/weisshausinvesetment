@@ -9,7 +9,6 @@
             helper.callApex(component,'getKYCPicklistValues',function(response){
                 let data = response.getReturnValue();
                 
-console.log('getKYCPicklistValues',data)                
                 component.set('v.maritalStatusValues',Object.keys(data.Marital_Status__c).map(function(value){
                     return {value:value,label:data.Marital_Status__c[value]};
                 }));
@@ -30,7 +29,7 @@ console.log('getKYCPicklistValues',data)
     },
     handleSelect : function(component, event, helper) {
         let selectedMenuItemValue = event.getParam("value");
-        console.log("Menu item selected with value: " + selectedMenuItemValue);
+        
         if(selectedMenuItemValue=='Update_Person_Details'){
             component.set('v.isOpen',true);
             component.set('v.isAccountUpdate',true);
@@ -97,7 +96,7 @@ console.log('getKYCPicklistValues',data)
         helper.callApex(component,'callGoogleMapSearchApi',function(response){
             let data = response.getReturnValue();
             data = JSON.parse(data);
-            console.log('searchText',data);
+           
             component.set('v.predictions',data.predictions);
         },{
             searchText:searchText,
@@ -116,9 +115,9 @@ console.log('getKYCPicklistValues',data)
         helper.callApex(component,'callGoogleMapsDetailsApi',function(response){
             let data = response.getReturnValue();
             data=JSON.parse(data);
-            console.log('searchText',data)
+          
             let address=data.result.address_components;
-            console.log('address',address)
+           
             accountDetails.BillingCountry ='';
             
             accountDetails.BillingCity='';
@@ -163,6 +162,7 @@ console.log('getKYCPicklistValues',data)
             let isAddressChange=component.get('v.isAddressChange');
             if(!isAddressChange) helper._findChangeAndPrepareAccountChangeJson(component);
             let accountDetailsChanged=component.get('v.accountDetailsChanged');
+            
             if(accountDetailsChanged.address){
                 if(accountDetailsChanged.address.line_1 && accountDetailsChanged.address.line_1.length>=35){
                     helper.showToast('Warrning','Street 1 cannot be more then 35 char','warning');
@@ -185,7 +185,7 @@ console.log('getKYCPicklistValues',data)
                     let state = response.getState();
                     let data = response.getReturnValue();
                     if (state === "SUCCESS") {
-                        console.log('result',data)
+                   
                         if(data.errors){
                             helper.showToast('Error',JSON.stringify(data.errors[0].detail),'error');
                             helper.close(component);

@@ -58,10 +58,10 @@ window._snapinsSnippetSettingsFile = (function () {
 
     let observer = new MutationObserver((mutations) => {
         let embeddedServiceLiveAgentStateOfflineSupportDefaultUI = document.querySelector(".embeddedServiceLiveAgentStateOfflineSupportDefaultUI");
-        console.log('embeddedServiceLiveAgentStateOfflineSupportDefaultUI')
+      
         if (embeddedServiceLiveAgentStateOfflineSupportDefaultUI) {
             let fieldList = embeddedServiceLiveAgentStateOfflineSupportDefaultUI.querySelector('.fieldList');
-            console.log('fieldList', fieldList)
+         
             let infoTextDiv = document.createElement('DIV');
             infoTextDiv.setAttribute('class', 'embeddedServiceSidebarFormField offline-info');
             infoTextDiv.innerText = 'Bitte geben Sie Ihre E-Mail-Adresse und Ihr Thema.Einer unserer Mitarbeiter wird sich in Kürze mit Ihnen in Verbindung setzen';

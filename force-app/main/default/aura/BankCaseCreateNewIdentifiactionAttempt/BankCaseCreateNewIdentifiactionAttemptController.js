@@ -4,7 +4,7 @@
             let state = response.getState();
             let data = response.getReturnValue();
             if (state === "SUCCESS") {
-                console.log('data',data)
+                
                 if(data.Account__r.Preferred_Language__pc=='de'){
                 	component.set('v.selectedType','DE');    
                 }

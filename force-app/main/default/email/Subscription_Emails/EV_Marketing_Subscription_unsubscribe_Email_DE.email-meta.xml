@@ -4,7 +4,7 @@
     <encodingKey>ISO-8859-1</encodingKey>
     <name>Subscription unsubscribe  Email De</name>
     <style>none</style>
-    <subject>{!Subscription__c.Type__c} Abmeldung</subject>
+    <subject>Ihre Abmeldung vom {!Subscription__c.Type__c}  war erfolgreich</subject>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

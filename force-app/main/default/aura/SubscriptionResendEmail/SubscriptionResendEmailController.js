@@ -3,7 +3,7 @@
         let eventParams = event.getParams();
         if(eventParams.changeType=='LOADED'){
             let record=component.get("v.subscriptionRecord");
-            console.log('record',JSON.stringify(record))
+            
             
             helper.callServer(component,'getLastEmailSentInfo',function(response){
                 let state = response.getState();
@@ -12,20 +12,19 @@
                     data.forEach(function(track){
                         track.User__c=track.User__r.Name;
                     })
-                    console.log('data',data)
-                    let productEmailDates={};
+                  
                     let groupByValue=data.reduce(function(total,current){
                         total[current.New_Value__c]=[...total[current.New_Value__c] || [], current];
                         return total;
                     },{});
-                    console.log('groupByValue',groupByValue)
+                 
                     for(let product in groupByValue){
                         let latestDate=groupByValue[product].sort(function(a, b) {
                             a = new Date(a.CreatedDate);
                             b = new Date(b.CreatedDate);
                             return a>b ? -1 : a<b ? 1 : 0;
                         })[0]['CreatedDate'];
-                        console.log('latestDate',latestDate)
+                       
                         if(product=='true'){
                             let finalDate=helper.getLocalDate(latestDate);  
                             component.set('v.emailSendInfo',finalDate);
@@ -51,7 +50,7 @@
     onSave:function(component, event, helper){
         let subscriptionRecord=component.get('v.subscriptionRecord');
         if(subscriptionRecord.Subscription_Status__c=='Confirmation Resent'){
-            console.log('subscriptionRecord',subscriptionRecord);
+         
             
             subscriptionRecord.Send_Mail__c=true;
             

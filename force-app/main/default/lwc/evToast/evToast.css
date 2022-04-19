@@ -1,16 +1,19 @@
 .ev-toast_container{
-   
-   
     position: fixed;
     height: 56px;
     top: calc(16% - 56px/2);
-    background: #EAF4E8;
+    z-index: 999;
     max-width: 1140px;
     width: 80%;
     left: 0;
     right: 0;
     margin: auto;
-
+}
+.ev-toast_success{
+    background: #EAF4E8;
+}
+.ev-toast_information{
+    background: #E5EFF8;
 }
 .ev-toast_wraper{
     height: 100%;

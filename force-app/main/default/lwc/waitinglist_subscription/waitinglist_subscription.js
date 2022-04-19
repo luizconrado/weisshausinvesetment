@@ -139,7 +139,7 @@ export default class Waitinglist_subscription extends LightningElement {
 
     //helper
     showToast() {
-        this.template.querySelector("c-ev-toast").showToast("Vielen Dank für Ihre Anmeldung. Bitte bestätigen Sie Ihre E-Mail-Adresse.");
+        this.template.querySelector("c-ev-toast").showToast("Vielen Dank für Ihre Anmeldung. Bitte prüfen Sie Ihr E-Mail-Postfach und bestätigen Sie Ihre E-Mail-Adresse.");
     }
     validate() {
         let checkbox = this.template.querySelector('.tc-checkbox');

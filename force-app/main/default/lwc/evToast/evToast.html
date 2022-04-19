@@ -1,9 +1,9 @@
 <template>
-    <div if:true={showtoast} class="ev-toast_container">
+    <div if:true={showtoast} class={toastClassName}>
         <div class="slds-grid ev-toast_wraper">
-            <div class="  ev-toast_icon">
+            <div class="ev-toast_icon">
                 <img
-                    src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0157T000000c5yc&oid=00D5I000002GOw0">
+                    src={toastIconUrl}>
             </div>
             <div class="slds-col ev-toast_text">
                {message}

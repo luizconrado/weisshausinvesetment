@@ -1,0 +1,87 @@
+<template>
+
+    <c-ev-toast type="success"></c-ev-toast>
+    <div>
+        <div class="ev-back_wrapper slds-grid">
+
+            <div onclick={navigateToHome} class="ev-pointer">
+                <img
+                    src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0157T000000c6t4&oid=00D5I000002GOw0&lastMod=1650877709000">
+            </div>
+            <div class="ev-back_text ev-pointer" onclick={navigateToHome}>
+                Back
+            </div>
+        </div>
+        <div class="ev-support_wrapper slds-grid slds-grid_vertical">
+            <div class="ev-header_wrapper">
+                How can we help you?
+            </div>
+            <div class="ev-callus_wrapper">
+                <div class="ev-callus_icon">
+                    <img
+                        src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000ebsC&oid=00D5I000002GOw0"></img>
+                </div>
+                <div class="ev-callus_header">
+                    Call Us
+                </div>
+                <div class="ev-callus_desc">
+                    <p>
+                        Call our support team on <a href="tel:+49 3074395959">+49 3074395959</a>
+
+                    </p>
+                    <p>
+                        Office hours Mo-Fr. 09:00 – 18:00
+                    </p>
+                </div>
+            </div>
+            <div class="ev-contactUs_wrapper">
+                <div class="ev-contactUs-icon">
+                    <img
+                        src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000eT6o&oid=00D5I000002GOw0">
+                </div>
+                <div class="ev-contactUs-header">
+                    Send Us message
+                </div>
+                <div class="ev-contactUs-desc">
+                    You can send us a message using the form below. We will get back to you shortly
+                </div>
+                <div class="ev-contactUs-input ev-Design">
+                    <lightning-input name="email" value={email} disabled={isFormDisabled} onchange={handleValueChange}
+                        type="email" class="ev-input email-input" label="Email" required="true"
+                        placeholder="Type your email here...">
+                    </lightning-input>
+                </div>
+                <div class="ev-contactUs-input ev-Design">
+                    <lightning-input type="text" disabled={isFormDisabled} max-length="254" label="Subject"
+                        required="true" class="ev-input subject-input" name="subject" value={subject}
+                        onchange={handleValueChange} placeholder="Type your subject here..."></lightning-input>
+                </div>
+                <div class="ev-contactUs-input ev-Design">
+                    <lightning-textarea disabled={isFormDisabled} max-length="31000" label="Message" required="true"
+                        class="ev-input desc-input" name="description" value={description} onchange={handleValueChange}
+                        placeholder="Type your message here..."></lightning-textarea>
+                </div>
+                <div class="ev-contactUs-checkbox ev-Design slds-grid">
+                    <lightning-input required="true" class="ev-checkbox checkbox-input" type="checkbox"
+                        variant="label-hidden" name="tcAccept" checked={tcAccept} onchange={handleCheckChange}>
+                    </lightning-input>
+                    <span class="ev-contactUs-checkbox_text" data-name="tcAcceptText" onclick={handleCheckChange}>
+                        Mit der Nutzung dieses Formulars stimmen Sie der
+                        Verarbeitung Ihrer Daten durch E&V SmartMoney
+                        gemäß unserer Datenschutzrichtlinie zu.
+                    </span>
+                </div>
+                <div class="ev-contactUs-button ev-Design">
+                    <span>
+                        <lightning-button disabled={isFormDisabled} onclick={handleSave} class="ev-button" label="Send"
+                            title="Send" variant="brand">
+                        </lightning-button>
+                    </span>
+                    <span class="slds-is-relative ev-button_spinner" if:true={loading}>
+                        <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

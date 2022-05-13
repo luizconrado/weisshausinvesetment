@@ -128,7 +128,11 @@ export default class Waitinglist_subscription extends LightningElement {
                     .catch(error => {
                         console.error('error', error)
                         that.loaded = false;
-                    }).finally(() => that.loaded = false)
+                    }).finally(() =>{ 
+                        setTimeout(() => {
+                            that.loaded = false
+                        }, 60000); 
+                    })
             }
             catch (err) {
                 console.error('error', err)
@@ -145,7 +149,8 @@ export default class Waitinglist_subscription extends LightningElement {
         let checkbox = this.template.querySelector('.tc-checkbox');
         let checkboxText = this.template.querySelector('.ev-checkbox_text');
         let tc_link = this.template.querySelector('.tc_link');
-
+        let email_textbox=this.template.querySelector('.email-textbox');
+         
         if (this.isTcAccepted) {
             checkbox.classList.remove('ev-checkbox_red');
             checkbox.classList.add('ev-checkbox');
@@ -161,8 +166,13 @@ export default class Waitinglist_subscription extends LightningElement {
             checkboxText.classList.add('ev-text_color-red');
             tc_link.classList.add('ev-text_color-red');
         }
+ 
 
-        return this.isTcAccepted && this.emailAddress;
+    
+
+
+
+        return this.isTcAccepted && this.emailAddress && email_textbox.reportValidity();
     }
     getQueryParameters() {
 

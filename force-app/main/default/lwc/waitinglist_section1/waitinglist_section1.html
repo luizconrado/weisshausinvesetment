@@ -6,8 +6,10 @@
             </div>
             <div class="ev_section-header_description">
                 {headerDescription}
+                <p class="ev_section-header_description-second" if:true={showDescripiton2}>{headerDescription2}</p>
             </div>
-            <div>
+            
+            <div if:true={showSubscribeButton}>
                 <c-waitinglist_subscription subscription-type={subscriptionType} tc-text={tcText} tc-link={tcLink}
                     tc-link-text={tcLinkText}></c-waitinglist_subscription>
             </div>

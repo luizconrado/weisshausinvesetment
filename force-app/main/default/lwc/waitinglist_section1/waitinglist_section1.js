@@ -6,12 +6,18 @@ export default class Waitinglist_section1 extends LightningElement {
     @api headerText;
 
     @api headerDescription;
+    @api headerDescription2;
+
+    get showDescripiton2(){
+        return (this.headerDescription2)?true:false;
+    }
 
     @api subscriptionType;
 
     @api tcText;
     @api tcLink;
     @api tcLinkText;
+    @api showSubscribeButton;
 
     rendered = false;
     renderedCallback() {

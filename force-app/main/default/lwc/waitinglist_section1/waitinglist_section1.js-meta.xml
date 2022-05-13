@@ -12,10 +12,13 @@
             <property name="imageUrl" type="String"  />
             <property name="headerText" type="String"  />
             <property name="headerDescription" type="String"  />
+            <property name="headerDescription2" type="String"  />
+            
             <property name="subscriptionType" type="String"  />
             <property name="tcText" type="String"  />
             <property name="tcLinkText" type="String"  />
             <property name="tcLink" type="String"  />
+            <property name="showSubscribeButton" type="Boolean"  />
             
         </targetConfig>
     </targetConfigs>

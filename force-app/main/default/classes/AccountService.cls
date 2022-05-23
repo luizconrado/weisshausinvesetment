@@ -164,107 +164,111 @@ public with Sharing class AccountService {
     }
     
     public without sharing class service{
-/***************
-    * @description create/update subscripiton for account and creates account record if not existing
-    * @param email email address of account user
-    * @param subProductName subscriptionb product name
-    * @param origin origin of request
-    * @param website webiste of request
-    * @param accountRecordTypeId if account doesnt exists create account of this record type
-    * @example 
-    * AccountService.createAccountAndNewsletter(email, productInterest, origin, website, Constant.PERSON_ACCOUNT_RECORDTYPEID);
-    */
-   public  void createAccountAndNewsletter(String email,String subProductName,String origin,String website,Map<String,String> utmParameters,String accountRecordTypeId){
-    List<Account> accountDetails=[SELECT id,Origin__pc,Marketing_Opt_In__pc,UTM_Medium__c,UTM_Source__c,UTM_Content__c,UTM_Campaign__c,UTM_Term__c,
-    (Select id,UTM_Medium__c,UTM_Source__c,UTM_Content__c,UTM_Campaign__c,UTM_Term__c,Source__c,Type__c,Subscription_Status__c from Subscriptions__r WHERE Type__c=:subProductName AND RecordTypeId=:Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID LIMIT 1) 
-                                  FROM Account WHERE PersonEmail=:email AND isPersonAccount=true];
-    //exsisitng account
-    if(accountDetails.size()>0){
-        
-        Account accDetails=accountDetails.get(0);
-        accDetails.Marketing_Opt_In__pc=true;
-        if(accDetails.Origin__pc==null) accDetails.Origin__pc=origin;   
-        else if(accDetails.Origin__pc!=null && !accDetails.Origin__pc.contains(origin)) accDetails.Origin__pc+=';'+origin;
-        
-        if(accDetails.UTM_Medium__c==null)accDetails.UTM_Medium__c=utmParameters.get('utm_medium');
-        if(accDetails.UTM_Source__c==null)accDetails.UTM_Source__c=utmParameters.get('utm_source');
-        if(accDetails.UTM_Content__c==null)accDetails.UTM_Content__c=utmParameters.get('utm_content');
-        if(accDetails.UTM_Campaign__c==null)accDetails.UTM_Campaign__c=utmParameters.get('utm_campaign');
-        if(accDetails.UTM_Term__c==null)accDetails.UTM_Term__c=utmParameters.get('utm_term');
-        
-        update accDetails;
+        /***************
+        * @description create/update subscripiton for account and creates account record if not existing
+        * @param email email address of account user
+        * @param subProductName subscriptionb product name
+        * @param origin origin of request
+        * @param website webiste of request
+        * @param accountRecordTypeId if account doesnt exists create account of this record type
+        * @example 
+        * AccountService.createAccountAndNewsletter(email, productInterest, origin, website, Constant.PERSON_ACCOUNT_RECORDTYPEID);
+        */
+        public  String createAccountAndNewsletter(String email,String subProductName,String origin,String website,Map<String,String> utmParameters,String accountRecordTypeId){
+                String accountId='';
+                List<Account> accountDetails=[SELECT id,Origin__pc,Marketing_Opt_In__pc,UTM_Medium__c,UTM_Source__c,UTM_Content__c,UTM_Campaign__c,UTM_Term__c,
+                (Select id,UTM_Medium__c,UTM_Source__c,UTM_Content__c,UTM_Campaign__c,UTM_Term__c,Source__c,Type__c,Subscription_Status__c from Subscriptions__r WHERE Type__c=:subProductName AND RecordTypeId=:Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID LIMIT 1) 
+                                            FROM Account WHERE PersonEmail=:email AND isPersonAccount=true];
+                //exsisitng account
+                if(accountDetails.size()>0){
+                    
+                    Account accDetails=accountDetails.get(0);
+                    accDetails.Marketing_Opt_In__pc=true;
+                    if(accDetails.Origin__pc==null) accDetails.Origin__pc=origin;   
+                    else if(accDetails.Origin__pc!=null && !accDetails.Origin__pc.contains(origin)) accDetails.Origin__pc+=';'+origin;
+                    
+                    if(accDetails.UTM_Medium__c==null)accDetails.UTM_Medium__c=utmParameters.get('utm_medium');
+                    if(accDetails.UTM_Source__c==null)accDetails.UTM_Source__c=utmParameters.get('utm_source');
+                    if(accDetails.UTM_Content__c==null)accDetails.UTM_Content__c=utmParameters.get('utm_content');
+                    if(accDetails.UTM_Campaign__c==null)accDetails.UTM_Campaign__c=utmParameters.get('utm_campaign');
+                    if(accDetails.UTM_Term__c==null)accDetails.UTM_Term__c=utmParameters.get('utm_term');
+                    
+                    update accDetails;
+                    accountId=accDetails.id;
+                    //already subscribed
+                    if(accountDetails.get(0).Subscriptions__r.size()>0){
+                        
+                        Subscription__c subscriptionProduct=accountDetails.get(0).Subscriptions__r.get(0);
+                        //if subscribed not sending mail
+                        if(subscriptionProduct.Subscription_Status__c=='Subscribed'){}
+                        else{
+                            subscriptionProduct.Subscription_Status__c='Awaiting Confirmation';   
+                            subscriptionProduct.Send_Mail__c=true;
+                            if(subscriptionProduct.UTM_Source__c==null) subscriptionProduct.UTM_Medium__c=utmParameters.get('utm_medium');
+                            if(subscriptionProduct.UTM_Medium__c==null) subscriptionProduct.UTM_Source__c=utmParameters.get('utm_source');
+                            if(subscriptionProduct.UTM_Content__c==null) subscriptionProduct.UTM_Content__c=utmParameters.get('utm_content');
+                            if(subscriptionProduct.UTM_Campaign__c==null) subscriptionProduct.UTM_Campaign__c=utmParameters.get('utm_campaign');
+                            if(subscriptionProduct.UTM_Term__c==null) subscriptionProduct.UTM_Term__c=utmParameters.get('utm_term');
+                            update subscriptionProduct;
+                        }
+                        
+                        
+                    }
+                    //new subscription
+                    else{
+                        List<Contact> c=[SELECT id,LastName FROM Contact WHERE  AccountId=:accountDetails.get(0).Id AND Account.ispersonaccount=true];
+                        Subscription__c newSubscriptionProduct=new Subscription__c();
+                        newSubscriptionProduct.Subscription_Status__c='Awaiting Confirmation';
+                        newSubscriptionProduct.Type__c=subProductName;
+                        newSubscriptionProduct.Account__c=accountDetails.get(0).Id;
+                        newSubscriptionProduct.Source__c=website;
+                        newSubscriptionProduct.Send_Mail__c=true;
+                        newSubscriptionProduct.recordTypeId=Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID;
+                        newSubscriptionProduct.Contact__c=(c.size()>0)?c.get(0).Id:'';
+                        newSubscriptionProduct.UTM_Medium__c=utmParameters.get('utm_medium');
+                        newSubscriptionProduct.UTM_Source__c=utmParameters.get('utm_source');
+                        newSubscriptionProduct.UTM_Content__c=utmParameters.get('utm_content');
+                        newSubscriptionProduct.UTM_Campaign__c=utmParameters.get('utm_campaign');
+                        newSubscriptionProduct.UTM_Term__c=utmParameters.get('utm_term');
+                        insert newSubscriptionProduct;
+                    }
+                    
+                    
+                }
+                //new account
+                else{
+                    Account accountLead=new Account();
+                    accountLead.PersonEmail = email;
+                    accountLead.LastName = '[Not Provided]';
+                    accountLead.Type ='Prospect';
+                    accountLead.AccountSource='Website';
+                    accountLead.RecordTypeId=accountRecordTypeId;
+                    accountLead.Origin__pc=origin;
+                    accountLead.UTM_Medium__c=utmParameters.get('utm_medium');
+                    accountLead.UTM_Source__c=utmParameters.get('utm_source');
+                    accountLead.UTM_Content__c=utmParameters.get('utm_content');
+                    accountLead.UTM_Campaign__c=utmParameters.get('utm_campaign');
+                    accountLead.UTM_Term__c=utmParameters.get('utm_term');
+                    accountLead.Marketing_Opt_In__pc=true;
+                    insert accountLead;
+                    accountId=accountLead.Id;
+                    List<Contact> c=[SELECT id,LastName FROM Contact WHERE AccountId=:accountLead.Id AND Account.ispersonaccount=true];
+                    Subscription__c newSubscriptionProduct=new Subscription__c();
+                    newSubscriptionProduct.Subscription_Status__c='Awaiting Confirmation';
+                    newSubscriptionProduct.Type__c=subProductName;
+                    newSubscriptionProduct.Source__c=website;
+                    newSubscriptionProduct.Account__c=accountLead.Id;
+                    newSubscriptionProduct.Contact__c=(c.size()>0)?c.get(0).Id:'';
+                    newSubscriptionProduct.Send_Mail__c=true;
+                    newSubscriptionProduct.UTM_Medium__c=utmParameters.get('utm_medium');
+                    newSubscriptionProduct.UTM_Source__c=utmParameters.get('utm_source');
+                    newSubscriptionProduct.UTM_Content__c=utmParameters.get('utm_content');
+                    newSubscriptionProduct.UTM_Campaign__c=utmParameters.get('utm_campaign');
+                    newSubscriptionProduct.UTM_Term__c=utmParameters.get('utm_term');
+                    insert newSubscriptionProduct;
+                }
 
-        //already subscribed
-        if(accountDetails.get(0).Subscriptions__r.size()>0){
-            
-            Subscription__c subscriptionProduct=accountDetails.get(0).Subscriptions__r.get(0);
-            //if subscribed not sending mail
-            if(subscriptionProduct.Subscription_Status__c=='Subscribed'){}
-            else{
-                subscriptionProduct.Subscription_Status__c='Awaiting Confirmation';   
-                subscriptionProduct.Send_Mail__c=true;
-                if(subscriptionProduct.UTM_Source__c==null) subscriptionProduct.UTM_Medium__c=utmParameters.get('utm_medium');
-                if(subscriptionProduct.UTM_Medium__c==null) subscriptionProduct.UTM_Source__c=utmParameters.get('utm_source');
-                if(subscriptionProduct.UTM_Content__c==null) subscriptionProduct.UTM_Content__c=utmParameters.get('utm_content');
-                if(subscriptionProduct.UTM_Campaign__c==null) subscriptionProduct.UTM_Campaign__c=utmParameters.get('utm_campaign');
-                if(subscriptionProduct.UTM_Term__c==null) subscriptionProduct.UTM_Term__c=utmParameters.get('utm_term');
-                update subscriptionProduct;
+                return accountId;
             }
-            
-            
-        }
-        //new subscription
-        else{
-            List<Contact> c=[SELECT id,LastName FROM Contact WHERE  AccountId=:accountDetails.get(0).Id AND Account.ispersonaccount=true];
-            Subscription__c newSubscriptionProduct=new Subscription__c();
-            newSubscriptionProduct.Subscription_Status__c='Awaiting Confirmation';
-            newSubscriptionProduct.Type__c=subProductName;
-            newSubscriptionProduct.Account__c=accountDetails.get(0).Id;
-            newSubscriptionProduct.Source__c=website;
-            newSubscriptionProduct.Send_Mail__c=true;
-            newSubscriptionProduct.recordTypeId=Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID;
-            newSubscriptionProduct.Contact__c=(c.size()>0)?c.get(0).Id:'';
-            newSubscriptionProduct.UTM_Medium__c=utmParameters.get('utm_medium');
-            newSubscriptionProduct.UTM_Source__c=utmParameters.get('utm_source');
-            newSubscriptionProduct.UTM_Content__c=utmParameters.get('utm_content');
-            newSubscriptionProduct.UTM_Campaign__c=utmParameters.get('utm_campaign');
-            newSubscriptionProduct.UTM_Term__c=utmParameters.get('utm_term');
-            insert newSubscriptionProduct;
-        }
-        
-        
-    }
-    //new account
-    else{
-        Account accountLead=new Account();
-        accountLead.PersonEmail = email;
-        accountLead.LastName = '[Not Provided]';
-        accountLead.Type ='Prospect';
-        accountLead.AccountSource='Website';
-        accountLead.RecordTypeId=accountRecordTypeId;
-        accountLead.Origin__pc=origin;
-        accountLead.UTM_Medium__c=utmParameters.get('utm_medium');
-        accountLead.UTM_Source__c=utmParameters.get('utm_source');
-        accountLead.UTM_Content__c=utmParameters.get('utm_content');
-        accountLead.UTM_Campaign__c=utmParameters.get('utm_campaign');
-        accountLead.UTM_Term__c=utmParameters.get('utm_term');
-        accountLead.Marketing_Opt_In__pc=true;
-        insert accountLead;
-        List<Contact> c=[SELECT id,LastName FROM Contact WHERE AccountId=:accountLead.Id AND Account.ispersonaccount=true];
-        Subscription__c newSubscriptionProduct=new Subscription__c();
-        newSubscriptionProduct.Subscription_Status__c='Awaiting Confirmation';
-        newSubscriptionProduct.Type__c=subProductName;
-        newSubscriptionProduct.Source__c=website;
-        newSubscriptionProduct.Account__c=accountLead.Id;
-        newSubscriptionProduct.Contact__c=(c.size()>0)?c.get(0).Id:'';
-        newSubscriptionProduct.Send_Mail__c=true;
-        newSubscriptionProduct.UTM_Medium__c=utmParameters.get('utm_medium');
-        newSubscriptionProduct.UTM_Source__c=utmParameters.get('utm_source');
-        newSubscriptionProduct.UTM_Content__c=utmParameters.get('utm_content');
-        newSubscriptionProduct.UTM_Campaign__c=utmParameters.get('utm_campaign');
-        newSubscriptionProduct.UTM_Term__c=utmParameters.get('utm_term');
-        insert newSubscriptionProduct;
-    }
-}
     }
 }

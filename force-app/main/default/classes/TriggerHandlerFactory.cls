@@ -1,5 +1,5 @@
 public class TriggerHandlerFactory {
-
+/*
     public static void executeHandler(final Type handlerClass, final System.TriggerOperation operation, final List<SObject> triggerNew,
                     final Map<Id, SObject> triggerNewMap, final Map<Id, SObject> triggerOldMap) {
 
@@ -14,4 +14,5 @@ public class TriggerHandlerFactory {
     }
 
     public class TriggerHandlerFactoryException extends Exception {}
+*/
 }

@@ -1,3 +1,3 @@
 <aura:application extends="force:slds" >
-    <c:evToast/>
+    <c:waitingList_supportPage/>
 </aura:application>

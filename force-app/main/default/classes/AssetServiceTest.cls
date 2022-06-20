@@ -1,7 +1,3 @@
-/***************
-* @group Test Class
-* @description test class for AssetService
-*/
 @isTest
 public class AssetServiceTest {
     

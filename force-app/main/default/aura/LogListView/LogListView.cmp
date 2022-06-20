@@ -1,6 +1,6 @@
 <aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="LogsListViewController" >
     <aura:handler name='init' value='{!this}' action='{!c.onInit}' /> 
-    
+    <aura:handler event="force:refreshView" action="{!c.onInit}"/>
     <aura:attribute name="logType" type="String" default="HISTORY"/>
     <aura:attribute name="methodName" type="String" default="getHistoryLogs"/>
     <aura:attribute name="cardTitle" type="String" default="Field History Logs"/>
@@ -50,8 +50,8 @@
             </table>
         </div>
         <aura:set attribute="footer">
-            <lightning:button  label="Next" title="Next"  onclick="{!c.onBack}" disabled="{!v.loading}"/>
-            <lightning:button label="Prev" title="Prev" onclick="{!c.onNext}" disabled="{!v.loading}"/>
+            <lightning:button label="Prev" title="Prev" onclick="{!c.onBack}" disabled="{!v.loading}"/>
+            <lightning:button  label="Next" title="Next"  onclick="{!c.onNext}" disabled="{!v.loading}"/>
         </aura:set>
     </lightning:card>
     

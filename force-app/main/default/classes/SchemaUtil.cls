@@ -67,9 +67,11 @@ public inherited sharing class SchemaUtil {
                     Object controllerValue = (controllerValues == null ? (Object) (i == 1) : (Object) (controllerValues[i].isActive() ? controllerValues[i].getLabel() : null));
                     Integer bitIndex = i / 6;
                     Integer bitShift = 5 - Math.mod(i, 6 );
-                    if(controllerValue == null || (base64map.indexOf(base64chars[bitIndex]) & (1 << bitShift)) == 0){
-                        continue;
-                    } 
+                    try{
+                        if(controllerValue == null || (base64map.indexOf(base64chars[bitIndex]) & (1 << bitShift)) == 0){
+                            continue;
+                        } 
+                    }catch(Exception e){}
                     if (!dependentPicklistValues.containsKey(controllerValue)){
                         dependentPicklistValues.put(controllerValue, new List<String>());
                     }

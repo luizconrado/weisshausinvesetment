@@ -166,7 +166,7 @@ export default class Waitinglist_subscription extends LightningElement {
             checkboxText.classList.add('ev-text_color-red');
             tc_link.classList.add('ev-text_color-red');
         }
- 
+
 
     
 

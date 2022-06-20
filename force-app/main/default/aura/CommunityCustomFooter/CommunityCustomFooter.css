@@ -16,12 +16,18 @@
 .THIS .community_footer_section-title{
     font-weight: 700;
     color: #444;
-     font-size:.8203125rem;
+    font-size:.8203125rem;
 }
 
+.THIS .community_footer_section-title_desc{
+    color: #444;
+    font-weight: 200;
+    line-height: 22px;
+}
 .THIS .community_footer_section-list{
     list-style:none;
     padding-top: .8125rem;
+    
 }
 
 .THIS .community_footer_section-list li,.THIS .community_footer_section-title-contact_list li{

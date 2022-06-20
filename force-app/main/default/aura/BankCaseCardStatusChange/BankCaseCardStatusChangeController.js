@@ -30,7 +30,7 @@
                 
                 let isBlock = (data.Card__r.Status__c === 'ACTIVE'  )?true:false;
                 let isUnBlock = data.Card__r.Status__c === 'BLOCKED'
-                let isClose = (data.Card__r.Status__c === 'INACTIVE' || data.Card__r.Status__c === 'ACTIVE' || data.Card__r.Status__c === 'BLOCKED'|| data[0].Status__c === 'PROCESSING') ? true : false;
+                let isClose = (data.Card__r.Status__c === 'INACTIVE' || data.Card__r.Status__c === 'ACTIVE' || data.Card__r.Status__c === 'BLOCKED'|| data.Card__r.Status__c === 'PROCESSING') ? true : false;
                 let isJira = (data.Card__r.Status__c === 'BLOCKED_BY_SOLARIS' ||data.Card__r.Status__c === 'ACTIVATION_BLOCKED_BY_SOLARIS' || data.Card__r.Status__c === 'CLOSED_BY_SOLARIS')?true:false;
                 
                 

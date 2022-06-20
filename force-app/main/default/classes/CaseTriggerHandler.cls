@@ -1,17 +1,15 @@
 public class CaseTriggerHandler extends TriggerHandler {
    
-    protected override void beforeInsert(final List<SObject> newObjects) {
-        List<Case> newCaseList=(List<Case>) newObjects;
+    protected override void beforeInsert() {
+        List<Case> newCaseList=(List<Case>) Trigger.new;
         List<String> personAccountExternalIds=new List<String>();
         Map<String,Account> externalIdAndAccountMap=new  Map<String,Account>(); 
         //pre process 
         for(Case newCase:newCaseList){
-            if(newCase.recordTypeId == Constant.INVESTMENTCASE_CASE_RECORDTYPEID || newCase.recordTypeId == Constant.STANDARD_CASE_RECORDTYPEID){
-                //getting customer id
-                if(newCase.Customer_Id__c!=null && (newCase.ContactId==null && newCase.AccountId==null)){
-                    personAccountExternalIds.add(newCase.Customer_Id__c);
-                }    
-            }
+            //getting customer id
+            if(newCase.Customer_Id__c!=null && (newCase.ContactId==null && newCase.AccountId==null)){
+                personAccountExternalIds.add(newCase.Customer_Id__c);
+            }    
         }
         
         if(personAccountExternalIds.size()>0) externalIdAndAccountMap=getPersonAccountMap(personAccountExternalIds);
@@ -20,12 +18,16 @@ public class CaseTriggerHandler extends TriggerHandler {
         
     }
     
+    
+    
+    
     //retrive account details
     private static  Map<String,Account>  getPersonAccountMap(List<String> personAccountExternalIds){
         Map<String,Account> externalIdAndAccountMap=new Map<String,Account>();
-        List<Account> personAccountList=[SELECT id,Auth0_ID__c,(SELECT id FROM Contacts WHERE IsPersonAccount =true) FROM ACCOUNT WHERE IsPersonAccount =true AND Auth0_ID__c IN:personAccountExternalIds];
+        List<Account> personAccountList=[SELECT id,Auth0_ID__c,EVSM_Auth0_ID__c,PersonContactId FROM ACCOUNT WHERE IsPersonAccount =true AND (Auth0_ID__c IN:personAccountExternalIds OR EVSM_Auth0_ID__c IN:personAccountExternalIds)];
         for(Account personAccount:personAccountList){
-            externalIdAndAccountMap.put(personAccount.Auth0_ID__c,personAccount);
+            if(personAccount.EVSM_Auth0_ID__c!=null) externalIdAndAccountMap.put(personAccount.Auth0_ID__c,personAccount);
+            if(personAccount.Auth0_ID__c!=null) externalIdAndAccountMap.put(personAccount.EVSM_Auth0_ID__c,personAccount);
         }
         return externalIdAndAccountMap;
     }
@@ -34,16 +36,15 @@ public class CaseTriggerHandler extends TriggerHandler {
     private static void attachAccountAndContactToCase(List<Case> newCaseList,Map<String,Account> externalIdAndAccountMap){
         //process
         for(Case newCase:newCaseList){
-            if(newCase.recordTypeId == Constant.INVESTMENTCASE_CASE_RECORDTYPEID || newCase.recordTypeId == Constant.STANDARD_CASE_RECORDTYPEID){
-                //seting account info
-                if(newCase.Customer_Id__c!=null && (newCase.ContactId==null && newCase.AccountId==null)){
-                    if(externalIdAndAccountMap.containsKey(newCase.Customer_Id__c)){
-                        Account personAccount=externalIdAndAccountMap.get(newCase.Customer_Id__c);
-                        newCase.AccountId=personAccount.id;
-                        if(personAccount.contacts.size()>0) newCase.ContactId=personAccount.contacts.get(0).id;
-                    }
-                }    
-            }
+            //seting account info
+            if(newCase.Customer_Id__c!=null && (newCase.ContactId==null && newCase.AccountId==null)){
+                if(externalIdAndAccountMap.containsKey(newCase.Customer_Id__c)){
+                    Account personAccount=externalIdAndAccountMap.get(newCase.Customer_Id__c);
+                    newCase.AccountId=personAccount.id;
+                    newCase.ContactId=personAccount.PersonContactId;
+                }
+            }    
+            
         }
     }
 

@@ -16,7 +16,21 @@ public class AgentReferalFormControllerTest {
         Account a=TestDataFactory.getBusinessAccount(true);
         AgentReferalFormController.getBuninessAccountName(a.Name);
     } 
-    
+    @isTest
+    static void getNewRefralCodeEmpty(){
+        List<Referral_Codes__c> codes=[SELECT Id,Used__c FROM Referral_Codes__c];
+        for(Referral_Codes__c rf:codes){
+            rf.Used__c=true;
+        }
+        update codes;
+        AgentReferalFormController.getNewRefralCode();
+    }
+    @isTest
+    static void attachPersonToBusinessException(){
+        try{
+        AgentReferalFormController.attachPersonToBusiness(null,null);
+        }catch(Exception e){}
+    }
     @isTest
     static void getNewPersonAccountCode(){
         User integrationUser=TestDataFactory.getUser('Integration');

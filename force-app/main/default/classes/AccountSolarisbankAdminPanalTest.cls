@@ -1,7 +1,3 @@
-/***************
-* @group Test Class
-* @description test class for AccountSolarisbankAdminPanal
-*/
 @isTest
 public class AccountSolarisbankAdminPanalTest {
     
@@ -125,15 +121,32 @@ public class AccountSolarisbankAdminPanalTest {
     
     @isTest
     static void testchangeCardStatusFailed(){
-        Test.setMock(HttpCalloutMock.class, new SolarisbankCardWrapper.MockResponse());
+      
+        Test.setMock(HttpCalloutMock.class, new SolarisbankCardWrapper.MockResponse(true)); 
+        
         Account accountDetails=TestDataFactory.getPersonAccount(true);
         Bank_Account__c bankAccountDetails = TestDataFactory.getBankAccount(accountDetails.Id,true);
         Card__c cardDetails=TestDataFactory.getCard(accountDetails.Id,bankAccountDetails.Id,true);
-         
+        
         Test.startTest();
-        try{
+         try{
             AccountSolarisbankAdminPanalController.changeCardStatus(cardDetails.id,'Unblock','Test It');
-         }catch(exception e){}
+          }catch(exception e){}
+        Test.stopTest();
+    }
+    @isTest
+    static void testchangeCardStatusException(){
+      
+        Test.setMock(HttpCalloutMock.class, new SolarisbankCardWrapper.MockResponse()); 
+        
+        Account accountDetails=TestDataFactory.getPersonAccount(true);
+        Bank_Account__c bankAccountDetails = TestDataFactory.getBankAccount(accountDetails.Id,true);
+        Card__c cardDetails=TestDataFactory.getCard(accountDetails.Id,bankAccountDetails.Id,true);
+        
+        Test.startTest();
+         try{
+            AccountSolarisbankAdminPanalController.changeCardStatus(cardDetails.id,'Unblock','Test It');
+          }catch(exception e){}
         Test.stopTest();
     }
     

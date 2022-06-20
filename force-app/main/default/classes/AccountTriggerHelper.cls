@@ -1,17 +1,6 @@
-/***************
-* @group Trigger Helper
-* @description Responsible for business logic of account trigger handler
-*/
 public class AccountTriggerHelper {
     
-    /***************
-    * @description calcualte age based on date
-    * @param birthDate date from which age needs to be calucated
-    * @return age braket
-    * @example
-    * AccountTriggerHelper.calucateAgeBracket(dateOfPerson);
-    */
-    public static String calucateAgeBracket(Date birthDate){
+    public static String calucateAgeBracker(Date birthDate){
         Date todaysDate=Date.today();
         Integer currentYear=todaysDate.year();
         Integer birthYear=birthDate.year();
@@ -29,6 +18,21 @@ public class AccountTriggerHelper {
         
         return '91-99';
         
+        
+    }
+    
+    public static void unsubscribeAllSubscriptions(List<String> accountIds){
+        
+        List<Subscription__c> subscriptionList=[SELECT Id, Account__c, Reason_For_Unsubscribing__c, Subscription_Status__c, Unsubscribed_Date__c 
+                                                FROM Subscription__c 
+                                                WHERE Account__c IN:accountIds AND  Subscription_Status__c!='Unsubscribed'];
+        for(Subscription__c subscription:subscriptionList){
+            subscription.Reason_For_Unsubscribing__c='Sonstige Gründe';
+            subscription.Unsubscribed_Date__c=Date.today();
+            subscription.Subscription_Status__c='Unsubscribed';
+        }
+        
+        if(subscriptionList.size()>0) update subscriptionList;
         
     }
 

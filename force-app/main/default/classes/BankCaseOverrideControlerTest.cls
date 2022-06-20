@@ -38,7 +38,7 @@ public class BankCaseOverrideControlerTest {
         BankCaseOverrideControler.retriveStandingOrders(bankAccountDetails.Id,null,null,null);
         BankCaseOverrideControler.retriveReservations(bankAccountDetails.Id,null,null,null);
         BankCaseOverrideControler.getAllIdentifications(accountDetails.Id);
-        
+        BankCaseOverrideControler.getSuccessKYCIdentificationRecord(accountDetails.id);
         
     }
     

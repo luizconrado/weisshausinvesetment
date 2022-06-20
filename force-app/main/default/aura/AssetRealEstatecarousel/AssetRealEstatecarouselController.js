@@ -4,12 +4,12 @@
             let state = response.getState();
             let data = response.getReturnValue();
             if (state === "SUCCESS") {
-              
+                console.log('data',data)
                 component.set('v.assetLinks',data);
             }
             else if (state === "ERROR") {
                 let errors = response.getError();
-                console.error(errors);
+                console.log(errors);
             }
         },{
             recordId:component.get('v.recordId')

@@ -39,6 +39,10 @@ public inherited sharing class Constant {
         if(DEFAULT_LEAD_RECORDTYPEID==null)DEFAULT_LEAD_RECORDTYPEID=SchemaUtil.getRecordTypeId('Default', 'Lead');
         return DEFAULT_LEAD_RECORDTYPEID;
     }}
+    public static final String LEAD_BANKING_CUSTOMER_RECORDTYPEID{private set;get{
+        if(LEAD_BANKING_CUSTOMER_RECORDTYPEID==null)LEAD_BANKING_CUSTOMER_RECORDTYPEID=SchemaUtil.getRecordTypeId('Banking_Customer', 'Lead');
+        return LEAD_BANKING_CUSTOMER_RECORDTYPEID;
+    }}
     //HISTORY TRACKER
     public static final String TRACK_FIELD_CHANGE_RECORDTYPE_ID{private set;get{
         if(TRACK_FIELD_CHANGE_RECORDTYPE_ID==null)TRACK_FIELD_CHANGE_RECORDTYPE_ID=SchemaUtil.getRecordTypeId('Field_History','History_Tracker__c');
@@ -66,8 +70,8 @@ public inherited sharing class Constant {
         return ACCOUNT_BUSINESS_ACCOUNT_RECORDTYPEID;
     }}
     public static final String ACCOUNT_INVESTMENT_BANKING_RECORDTYPEID{private set;get{
-        if(ACCOUNT_BUSINESS_ACCOUNT_RECORDTYPEID==null)ACCOUNT_BUSINESS_ACCOUNT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Person_Investment_Banking_Customer', 'Account');
-        return ACCOUNT_BUSINESS_ACCOUNT_RECORDTYPEID;
+        if(ACCOUNT_INVESTMENT_BANKING_RECORDTYPEID==null)ACCOUNT_INVESTMENT_BANKING_RECORDTYPEID=SchemaUtil.getRecordTypeId('Person_Investment_Banking_Customer', 'Account');
+        return ACCOUNT_INVESTMENT_BANKING_RECORDTYPEID;
     }}
     
    
@@ -263,4 +267,14 @@ public inherited sharing class Constant {
         if(OPPORTUNITY_REAL_ESTATE_SALE_EMAILTEMPLATE==null) OPPORTUNITY_REAL_ESTATE_SALE_EMAILTEMPLATE=[SELECT Id, Name, DeveloperName FROM EmailTemplate WHERE DeveloperName='Real_Estate_Sale'].Id;
             return OPPORTUNITY_REAL_ESTATE_SALE_EMAILTEMPLATE;
     }}
+    //Customer Classification
+    public static final String CUSTOMER_CLASSIFICATION_PROFESSIONAL_RECORDTYPEID{private set;get{
+        if(CUSTOMER_CLASSIFICATION_PROFESSIONAL_RECORDTYPEID==null) CUSTOMER_CLASSIFICATION_PROFESSIONAL_RECORDTYPEID=SchemaUtil.getRecordTypeId('Professional', 'Customer_Classification__c');
+        return CUSTOMER_CLASSIFICATION_PROFESSIONAL_RECORDTYPEID;
+    }}
+    public static final String CUSTOMER_CLASSIFICATION_SEMI_PROFESSIONAL_RECORDTYPEID{private set;get{
+        if(CUSTOMER_CLASSIFICATION_SEMI_PROFESSIONAL_RECORDTYPEID==null) CUSTOMER_CLASSIFICATION_SEMI_PROFESSIONAL_RECORDTYPEID=SchemaUtil.getRecordTypeId('Semi_Professional', 'Customer_Classification__c');
+        return CUSTOMER_CLASSIFICATION_SEMI_PROFESSIONAL_RECORDTYPEID;
+    }}
+    
 }

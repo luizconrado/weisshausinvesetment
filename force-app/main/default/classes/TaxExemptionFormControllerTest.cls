@@ -41,19 +41,7 @@ public class TaxExemptionFormControllerTest {
         TaxExemptionFormController.initiateCRPRequest(a.id, '{}');
         Test.stopTest();
     }
-    @isTest
-    static void initiateCRPRequestTestError(){
-        Test.setMock(HttpCalloutMock.class, new SolarisbankCRPRequestWrapper.MockResponse(true));
-        Account a=TestDataFactory.getPersonAccount(true);
-        Bank_Account__c ba=TestDataFactory.getBankAccount(a.id,false);
-        ba.Type__c='TERM_DEPOSIT';
-        insert ba;
-        Test.startTest();
-        try{
-        TaxExemptionFormController.initiateCRPRequest(a.id, '{}');
-        }catch(Exception e){}
-        Test.stopTest();
-    }
+    
     
     @isTest
     static void closeMFARequestTest(){
@@ -105,4 +93,21 @@ public class TaxExemptionFormControllerTest {
         TaxExemptionFormController.createTaxExemptionCase(a.Id, ba.Id, 'TaxExemption','Remove','Early Termination');
         Test.stopTest();
     }
+    @isTest
+    static void initiateCRPRequestTestError(){
+        
+        System.Test.setMock(HttpCalloutMock.class, new SolarisbankCRPRequestWrapper.MockResponse(true));
+        
+        Account a=TestDataFactory.getPersonAccount(true);
+        Bank_Account__c ba=TestDataFactory.getBankAccount(a.id,false);
+        ba.Type__c='TERM_DEPOSIT';
+        insert ba;
+        Test.startTest();
+        try{
+        TaxExemptionFormController.initiateCRPRequest(a.id, '{}');
+        }catch(Exception e){}
+        Test.stopTest();
+    }
+    
+    
 }

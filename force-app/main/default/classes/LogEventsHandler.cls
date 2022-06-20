@@ -1,6 +1,6 @@
 public class LogEventsHandler  extends TriggerHandler {
-    protected override void afterInsert(final List<SObject> newObjects) {
-        List<Log_Event__e> events=(List<Log_Event__e>) newObjects;
+    protected override void afterInsert() {
+        List<Log_Event__e> events=(List<Log_Event__e>) Trigger.new;
         LogService.captureLogs(events);
         
     } 

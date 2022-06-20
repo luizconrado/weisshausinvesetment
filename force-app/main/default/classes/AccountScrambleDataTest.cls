@@ -1,7 +1,6 @@
-
 /***************
 * @group Test Class
-* @description test class for AccountScrambleData
+* @description Test Class for AccountScrambleData
 */
 @isTest
 public class AccountScrambleDataTest {
@@ -22,7 +21,7 @@ public class AccountScrambleDataTest {
         scrableFields.add(new Scramble_Configuration__c(Field__c='CloseDate',Object__c='Opportunity',Name='CloseDate',IsReference__c=false));
         
         insert scrableFields;
-        
+         
         Account personAccount=TestDataFactory.getPersonAccount(false);
         Date d=Date.today();
         personAccount.PersonBirthdate=d.addYears(-100); 
@@ -58,7 +57,7 @@ public class AccountScrambleDataTest {
         update personAccount;
         Test.startTest();
         AccountScrambleData scrable=new AccountScrambleData(new List<String>{});
-        scrable.logError('','',null);
+        scrable.logError('','','',null);
         Test.stopTest();
             
             

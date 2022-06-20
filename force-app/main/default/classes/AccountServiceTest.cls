@@ -53,4 +53,18 @@ public class AccountServiceTest {
         service.createAccountAndNewsletter(a.PersonEmail,sub.Type__c,'APEX','www.ev-smartmoney.com',new Map<String,String>{'utm_medium'=>'utm_medium'},Constant.ACCOUNT_PERSON_INVESTMENT_RECORDTYPEID);
         Test.stopTest();
     }
+    
+    @isTest
+    static void triggerMarketingOutTest(){
+        Account a=TestDataFactory.getPersonInvestmentAccount(false);
+        a.Marketing_Opt_In__pc=true;
+        insert a;
+        Contact c=[SELECT id FROM Contact WHERE accountid=:a.id];
+        Subscription__c sub=TestDataFactory.getInvestmentNewsletterSubscription(a.id,c.id,true);
+        Test.startTest();
+        a.Marketing_Opt_In__pc=false;
+        update a;
+        Test.stopTest();
+    }
+    
 }

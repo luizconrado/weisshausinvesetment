@@ -193,12 +193,14 @@ public without sharing class AgentReferalFormController {
         return null;
     }
     //get new referal code
+    @testVisible
     private static Referral_Codes__c getNewRefralCode(){
         List<Referral_Codes__c> newCode=[SELECT Used__c, Account_Id__c, Name, Id FROM Referral_Codes__c WHERE Used__c=false];
         if(newCode.size()>0) return newCode.get(0);
         return null;
     }
     //attach contact to account 
+    @testVisible
     private static void attachPersonToBusiness(String bussinessId,String personId){
         //try catch to ignor duplciates
         try{

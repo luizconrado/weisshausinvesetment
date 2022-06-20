@@ -1,6 +1,6 @@
 public class ContentVersionService {
     
-    
+     
     @future(callout=true)
     public static void sendDocumentInfoToEV(List<String> cvIdList){
         //add integeration user as share record
@@ -35,48 +35,50 @@ public class ContentVersionService {
                 entityIdAndLinkMap.put(cdl.LinkedEntityId,cdl);
             }
         }
-        
-        //getRecord
-        List<Opportunity> oppRecordsList=[SELECT id,Account.EVSM_Auth0_Id__c,External_Id__c,Account.Solarisbank_Tenent__c,CreatedDate FROM Opportunity WHERE id IN:oppIdList AND RecordTypeId=:Constant.OPPORTUNITY_INVESMENT_RECORDTYPEID];
-        
-       
-        
-      
-        for(Opportunity o:oppRecordsList){
-            try{
-                LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(o.Id,'Opportunity',o.Account.Solarisbank_Tenent__c);
-                ContentDocumentLink linkRecord=entityIdAndLinkMap.get(o.Id);
-                ContentVersion versionRecord=contentDocumentIdAndVersionMap.get(linkRecord.ContentDocumentId);
-                if(linkRecord.ShareType=='V' && linkRecord.LinkedEntity.Type=='Opportunity'){
-                    linkRecord.ShareType='I';
-                    toUpdatecdl.add(linkRecord);
-                }
-         
-                
-                Map<String,Object> body=new Map<String,Object>();
-                body.put('object', 'Opportunity');
-                body.put('opportunityRecordId', o.Id);
-                body.put('documentId', versionRecord.ContentDocumentId);
-                body.put('name', versionRecord.Title+'.'+versionRecord.FileExtension);
-                body.put('documentUrl',Salesforce.baseUrl+'/services/data/v53.0/sobjects/ContentVersion/'+versionRecord.id+'/VersionData');
-                body.put('fileType',versionRecord.FileType);
-                body.put('customerId',o.Account.EVSM_Auth0_Id__c);
-                body.put('investmentId',o.External_Id__c);
-                body.put('createdDate',o.CreatedDate);
-                EVExternalService.sendInvestmentDocumentInformation(o.External_Id__c, JSON.serialize(body), apiCallDetails);     	
-            }
-            Catch(Exception e){
-                logError(e,o.Id,'sendDocumentInfoToEV','ContentVersionTrigger','Send Document To BE');
-            }
+        if(oppIdList.size()>0){
+            //getRecord
+            List<Opportunity> oppRecordsList=[SELECT id,Account.EVSM_Auth0_Id__c,External_Id__c,Account.Solarisbank_Tenent__c,CreatedDate FROM Opportunity WHERE id IN:oppIdList AND RecordTypeId=:Constant.OPPORTUNITY_INVESMENT_RECORDTYPEID];
             
+            
+            
+            
+            for(Opportunity o:oppRecordsList){
+                try{
+                    LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(o.Id,'Opportunity',o.Account.Solarisbank_Tenent__c);
+                    ContentDocumentLink linkRecord=entityIdAndLinkMap.get(o.Id);
+                    ContentVersion versionRecord=contentDocumentIdAndVersionMap.get(linkRecord.ContentDocumentId);
+                    if(linkRecord.ShareType=='V' && linkRecord.LinkedEntity.Type=='Opportunity'){
+                        linkRecord.ShareType='I';
+                        toUpdatecdl.add(linkRecord);
+                    }
+                    String fileName=versionRecord.Title.split('\\|').get(0);
+                    
+                    Map<String,Object> body=new Map<String,Object>();
+                    body.put('object', 'Opportunity');
+                    body.put('opportunityRecordId', o.Id);
+                    body.put('documentId', versionRecord.ContentDocumentId);
+                    body.put('name', fileName+'.'+versionRecord.FileExtension);
+                    body.put('documentUrl',Salesforce.baseUrl+'/services/data/v53.0/sobjects/ContentVersion/'+versionRecord.id+'/VersionData');
+                    body.put('fileType',versionRecord.FileType);
+                    body.put('customerId',o.Account.EVSM_Auth0_Id__c);
+                    body.put('investmentId',o.External_Id__c);
+                    body.put('createdDate',o.CreatedDate); 
+                    body.put('title',fileName);
+                    body.put('fileTag',versionRecord.Type__c);
+                    EVExternalService.sendInvestmentDocumentInformation(o.External_Id__c, JSON.serialize(body), apiCallDetails);     	
+                }
+                Catch(Exception e){
+                    logError(e,o.Id,'sendDocumentInfoToEV','ContentVersionTrigger','Send Document To BE');
+                }
+                
+            }
+            try{
+                if(toUpdatecdl.size()>0) update toUpdatecdl;
+            }
+            catch(Exception e){
+                logError(e,null,'sendDocumentInfoToEV','ContentVersionTrigger','Link Integeration User');
+            }
         }
-        try{
-            if(toUpdatecdl.size()>0) update toUpdatecdl;
-        }
-        catch(Exception e){
-            logError(e,null,'sendDocumentInfoToEV','ContentVersionTrigger','Link Integeration User');
-        }
-        
         
         
     }

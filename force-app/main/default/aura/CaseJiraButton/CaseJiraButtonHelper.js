@@ -288,7 +288,7 @@
                         description += '\n';
                         description += 'language of the Statement  required = ';
                     }
-                component.set('v.subject', summary);
+                component.set('v.subject', summary+' '+caseDetails.Thread_Id__c);
                 component.set('v.body', description);
                 
             }
@@ -374,7 +374,7 @@
                     
                     
                 }
-            component.set('v.subject', summary);
+            component.set('v.subject', summary+' '+caseDetails.Thread_Id__c);
             component.set('v.body', description);
         }
         else {
@@ -440,7 +440,7 @@
                                     
                                 }
             }
-            component.set('v.subject', summary);
+            component.set('v.subject', summary+' '+caseDetails.Thread_Id__c);
             component.set('v.body', description);
         }
         else {
@@ -506,7 +506,7 @@
                 } 
                 
             }
-            component.set('v.subject', summary);
+            component.set('v.subject', summary+' '+caseDetails.Thread_Id__c);
             component.set('v.body', description);
         }
         else {
@@ -545,7 +545,7 @@
                 } 
                 
             }
-            component.set('v.subject', summary);
+            component.set('v.subject', summary+' '+caseDetails.Thread_Id__c);
             component.set('v.body', description);
         }
         else{
@@ -582,7 +582,7 @@
                 } 
                 
             }
-            component.set('v.subject', summary);
+            component.set('v.subject', summary+' '+caseDetails.Thread_Id__c);
             component.set('v.body', description);
         }
         else{
@@ -628,7 +628,7 @@
                     }
                 
             }
-            component.set('v.subject', summary);
+            component.set('v.subject', summary+' '+caseDetails.Thread_Id__c);
             component.set('v.body', description);
         }
         else{
@@ -670,7 +670,7 @@
                 } 
                 
             }
-            component.set('v.subject', summary);
+            component.set('v.subject', summary+' '+caseDetails.Thread_Id__c);
             component.set('v.body', description);
         }
         else{
@@ -702,7 +702,7 @@
                 } 
                 
             }
-            component.set('v.subject', summary);
+            component.set('v.subject', summary+' '+caseDetails.Thread_Id__c);
             component.set('v.body', description);
         }
         else{
@@ -792,7 +792,7 @@
                                 description += '\n';
                                 description += 'User Accepted "agrees to be charged 10 EUR for payment recall attempt"';
                             }
-                component.set('v.subject', summary);
+                component.set('v.subject', summary+' '+caseDetails.Thread_Id__c);
                 component.set('v.body', description);
             }
         }
@@ -980,7 +980,7 @@
                                 
                             });
                         }
-                component.set('v.subject', summary);
+                component.set('v.subject', summary+' '+caseDetails.Thread_Id__c);
                 component.set('v.body', description);
             }
         }

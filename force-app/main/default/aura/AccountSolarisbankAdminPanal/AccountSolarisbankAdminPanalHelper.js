@@ -5,16 +5,16 @@
         helper.callApex(component,'getRecordDetails',function(result){
             let status=result.getState();
             let dataResult=result.getReturnValue();
-        
+            console.log(status)
             
             if (status === "SUCCESS") {
                 let data=dataResult['Record'];
-               
+                console.log('data',data)
                 if(data.length>0){ 
                     if(data[0].Banks__r && data[0].Banks__r[0].Marital_Status__c){
                         data[0].Marital_Status__c=data[0].Banks__r[0].Marital_Status__c;
                     }
-                 
+                    console.log('recordData',data[0])
                     component.set('v.recordData',data[0])
                     component.set('v.recordDataOrignal',Object.freeze(JSON.parse(JSON.stringify(data[0]))))
                     
@@ -100,7 +100,7 @@
             return;
         }
         let tanUrlDetails=component.get('v.tanRequestResponse');
-      
+        console.log('requestBody',tanUrlDetails,tannumber)
         if(tanUrlDetails.url.endsWith('/authorize')){
             tanUrlDetails.url=tanUrlDetails.url.replace('/authorize','/confirm')
         }
@@ -113,7 +113,7 @@
             let data = response.getReturnValue();
             if (state === "SUCCESS") {
                 let res=JSON.parse(data);
-             
+                console.log('result',res)
                 if(res.status==='COMPLETED'){
                     helper.showToast('Success','User Details Update.','success');
                     $A.get('e.force:refreshView').fire();
@@ -188,7 +188,7 @@
             let state = response.getState();
             let data = response.getReturnValue();
             if (state === "SUCCESS") {
-               
+                console.log(data);
                 if(data.length==36){
                     $A.get('e.force:refreshView').fire();
                     helper.showToast('Success','New Person Identification is created.','success');    
@@ -238,14 +238,14 @@
             line_1:cardfName+'/'+cardlName,
             reference:randomString
         }
-         
+        console.log('body',body)
         component.set('v.loading',true);
         helper.callApex(component,'requestNewBankCard',function(response){
             let state = response.getState();
             let data = response.getReturnValue();
             if (state === "SUCCESS") {
                 let res=JSON.parse(data);
-               
+                console.log('result',data)
                 if(res.errors){
                     helper.showToast('Error',res.errors[0].detail,'Error')
                 }
@@ -283,7 +283,7 @@
             let state = response.getState();
             let data = response.getReturnValue();
             if (state === "SUCCESS") {
-                 
+                 console.log('result',data)
                  if(data.errors){
                       helper.showToast('Error',data.errors[0].detail,'error');
                    
@@ -396,7 +396,7 @@
             changes.tax_information.marital_status=accountDetails.Marital_Status__c;
         }    
         component.set('v.accountDetailsChanged',changes)
-     
+       console.log('changes',changes)
         if(changes.title!=undefined ||
            changes.salutation ||
            changes.address ||

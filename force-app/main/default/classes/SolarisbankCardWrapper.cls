@@ -101,7 +101,11 @@ public class SolarisbankCardWrapper {
     }
     
     public class MockResponse implements HttpCalloutMock { 
-        
+        Boolean isError=false;
+        public MockResponse(){}
+        public MockResponse(Boolean isError){
+            isError=isError;
+        }
         public HTTPResponse respond(HTTPRequest req) { 
             SolarisbankCardWrapper data=new SolarisbankCardWrapper();
             data.id='123123';
@@ -128,13 +132,12 @@ public class SolarisbankCardWrapper {
             
             resp.setStatus('success'); 
            
-            
-           
-           
-            if(req.getEndpoint().contains('Unblock')){
+        
+            if(isError){
+                 resp.setBody('{"errors":[{"detail":"testing"}]}'); 
+            }
+            else if(req.getEndpoint().containsIgnoreCase('Unblock')){
                 resp.setBody('{"errors":[{"detail":"testing"}]}'); 
-                
-                
             }
             else if(req.getEndpoint().contains('block')){
                 data.status='BLOCKED';
@@ -144,13 +147,11 @@ public class SolarisbankCardWrapper {
             else if(req.getEndpoint().startsWith('https://api.solaris-sandbox.de/v1/cards/testcardeaea2acad1bcf119')){
                 data.status='BLOCKED';
                 resp.setBody(JSON.serialize(data)); 
-                
-                
             }
             else{
                 resp.setBody(JSON.serialize(dataList)); 
             }
-            
+           
             
             return resp; 
             

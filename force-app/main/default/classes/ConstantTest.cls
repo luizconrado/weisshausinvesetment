@@ -81,5 +81,12 @@ private class ConstantTest {
         System.assert(String.isNotEmpty(Constant.ACCOUNT_REFREAL_BUSINESSE_USER_EMAILTEMPLATE));
         
     }
+    @isTest
+    static void getValues2(){
+         System.assert(String.isNotEmpty(Constant.PRICEBOOK_STANDARD_PRICEBOOK_ID));
+        System.assert(String.isNotEmpty(Constant.INTEGERATION_USER_ID));
+       // System.assert(String.isNotEmpty(Constant.PRODUCT_INVESTMENT_RECORDTYPEID));
+        
+    }
     
 }

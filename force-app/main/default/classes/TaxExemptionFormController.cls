@@ -38,11 +38,12 @@ public without sharing class TaxExemptionFormController {
     
     @AuraEnabled
     public static SolarisbankCRPRequestWrapper initiateCRPRequest(String sfId,String requestChangebody){
+        
         List<Change_Request_Log__c> changeRequestList=new List<Change_Request_Log__c>();
         Account bankAccountDetails=[SELECT Id,Solarisbank_Id__c,Solarisbank_Tenent__c FROM Account WHERE id=:sfId];
         LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(sfId,'Account',bankAccountDetails.Solarisbank_Tenent__c);
         
-        String responseString= SolarisbankService.updateCustomerData(bankAccountDetails.Solarisbank_Id__c,requestChangebody,apiCallDetails);
+        String responseString = SolarisbankService.updateCustomerData(bankAccountDetails.Solarisbank_Id__c,requestChangebody,apiCallDetails);
         
         SolarisbankCRPRequestWrapper tanUrlResponse=SolarisbankCRPRequestWrapper.parse(responseString);
         
@@ -61,6 +62,7 @@ public without sharing class TaxExemptionFormController {
         changeRequestList.add(generateChangeLog(crpResponse.id, sfId, 'Update Account Details', crpResponse.status, null, tanUrlResponse.url.replace('/authorize', '/confirm'), crpResponse.updated_at));
         
         insert changeRequestList;
+       
         return tanUrlResponse;  
         
     }

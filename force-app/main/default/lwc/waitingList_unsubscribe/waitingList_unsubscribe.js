@@ -4,7 +4,7 @@ import unsubscribeFromProduct from '@salesforce/apex/SubscriptionService.updateS
 import checkUnsubscribedStatus from '@salesforce/apex/SubscriptionService.checkUnsubscribedStatus';
 import allOptions from '@salesforce/apex/SubscriptionService.getUnsubscribeOptions';
 import errorMsg from '@salesforce/label/c.form_error_msg';
-import evsmartmoney_URL from '@salesforce/label/c.evsmartmoneyInvestment_URL';
+ 
 
 
 
@@ -59,7 +59,7 @@ export default class WaitingList_unsubscribe extends LightningElement {
             }).then(data => {
                 if (data === false) {
                     this.showform = false;
-                    setTimeout(() => location.href = evsmartmoney_URL, 10000);
+                    setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 10000);
                 }
 
             })
@@ -123,9 +123,9 @@ export default class WaitingList_unsubscribe extends LightningElement {
                     this.showEvToast('erfolgreich abgemeldet');
                     this.loaded = false;
                     this.showform=false;
-                   // setTimeout(() => location.href = evsmartmoney_URL, 4000);
+                   // setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 4000);
                 })
-            .then(error => {
+            then(error => {
                 this.showToast('Error', errorMsg, 'error');
                 this.loaded = false;
             })

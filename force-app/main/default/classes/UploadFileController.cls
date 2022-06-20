@@ -47,6 +47,7 @@ public class UploadFileController {
     
     @AuraEnabled
     public static void tagVersionFiles(String objectName,String recordId,String tag,List<String> documnetIds){
+        String seprator=' | ';
         File_Type_Option__mdt config=getConfigurations(objectName,recordId);
         String query='SELECT id,'+config.Prefix_Field_Name__c.trim()+' FROM '+objectName+' WHERE id=:recordId';
         List<Sobject> records=Database.query(query);
@@ -54,12 +55,12 @@ public class UploadFileController {
         sobject record=records.get(0);
         String prefix=String.valueOf(record.get(config.Prefix_Field_Name__c.trim()));
         String orignalTag=tag;
-        tag = prefix +' - '+tag;
+        tag = prefix +seprator+tag;
         List<ContentVersion> files=[SELECT Id, ContentDocumentId,Title,ContentSize,Type__c,ContentModifiedDate,FileExtension,VersionNumber,ContentModifiedBy.Name FROM ContentVersion 
                                     WHERE  ContentDocumentId IN: documnetIds ORDER BY ContentModifiedDate DESC];
         List<String> contentVersionIdList=new List<String>();
         for(ContentVersion file:files){
-            file.Title=file.Title+' - '+tag ;
+            file.Title=file.Title+seprator+tag ;
             file.Type__c=orignalTag;
             contentVersionIdList.add(file.Id);
         }

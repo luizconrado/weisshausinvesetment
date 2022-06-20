@@ -3,58 +3,128 @@ public class EVExternalServiceTest {
   
     
     @isTest
-    static void testFetchDocumentUrl(){
-        Test.setMock(HttpCalloutMock.class, new DocumentMockResponse());
+    static void testFetchDocumentUrl(){ 
+        Test.setMock(HttpCalloutMock.class, new EVMockResponse());
         Account a=TestDataFactory.getPersonAccount(true);
         Document__c doc=TestDataFactory.getDocumentForAccount(a.Id,true);
         Document__c document=[SELECT Read_At__c,Last_Viewed_User__c, Status__c, Requested_At__c, Ticket_Number__c, Id,Account__r.Auth0_Id__c, Account__c,Account__r.Solarisbank_Tenent__c FROM Document__c Limit 1];
+        User u=TestDataFactory.getUser('Integration');
         Test.startTest();
-        LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(document.Id,'Document__c',document.Account__r.Solarisbank_Tenent__c);
-        EVExternalService.fetchDocumentUrl(document.Account__r.Auth0_Id__c, document.Ticket_Number__c, apiCallDetails);
+        System.runAs(u){
+            LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(document.Id,'Document__c',document.Account__r.Solarisbank_Tenent__c);
+            EVExternalService.fetchDocumentUrl(document.Account__r.Auth0_Id__c, document.Ticket_Number__c, apiCallDetails);
+        }
         Test.stopTest();
     }
     
     @isTest
     static void requestDocumentUrlTest(){
-        Test.setMock(HttpCalloutMock.class, new DocumentMockResponse());
+        Test.setMock(HttpCalloutMock.class, new EVMockResponse());
         Account a=TestDataFactory.getPersonAccount(true);
         Document__c doc=TestDataFactory.getDocumentForAccount(a.Id,true);
+        User u=TestDataFactory.getUser('Integration');
+        
         Test.startTest();
-        DocumentReadControler.requestDocumentUrl(doc.id);
+        System.runAs(u){
+            DocumentReadControler.requestDocumentUrl(doc.id);
+        }
         Test.stopTest();
         
     }
     
     @isTest
     static void sendProductsInfoTest(){
-        Test.setMock(HttpCalloutMock.class, new DocumentMockResponse());
+        Test.setMock(HttpCalloutMock.class, new Product2ServiceTest.ProductMockResponse());
         Account a=TestDataFactory.getPersonAccount(true);
-        Document__c doc=TestDataFactory.getDocumentForAccount(a.Id,true);
-        Document__c document=[SELECT Read_At__c,Last_Viewed_User__c, Status__c, Requested_At__c, Ticket_Number__c, Id,Account__r.Auth0_Id__c, Account__c,Account__r.Solarisbank_Tenent__c FROM Document__c Limit 1];
+        Product2 prod=TestDataFactory.getInvesetmentProduct('TestProd',true); 
+        User u=TestDataFactory.getUser('Integration');
         Test.startTest();
-        LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(document.Id,'Document__c',document.Account__r.Solarisbank_Tenent__c);
-        EVExternalService.sendProductsInfo('{"id":'+document.Account__r.Auth0_Id__c+'}', apiCallDetails);
+        System.runAs(u){
+            LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(prod.Id,'Product2','Sandbox');
+            EVExternalService.sendProductsInfo('{"id":'+prod.Id+'}', apiCallDetails);
+        }
         Test.stopTest();
     }
+    
     @isTest
     static void requestDocumentUrlErrorTest(){
-        Test.setMock(HttpCalloutMock.class, new DocumentMockResponse(true));
+        Test.setMock(HttpCalloutMock.class, new EVMockResponse(true));
         Account a=TestDataFactory.getPersonAccount(true);
         Document__c doc=TestDataFactory.getDocumentForAccount(a.Id,true);
+        User u=TestDataFactory.getUser('Integration');
         Test.startTest();
-        try{
-        DocumentReadControler.requestDocumentUrl(doc.id);
-        }Catch(Exception e){}
+        System.runAs(u){
+            try{
+                DocumentReadControler.requestDocumentUrl(doc.id);
+            }Catch(Exception e){}
+        }
         Test.stopTest();
         
     }
     
-      public class DocumentMockResponse implements HttpCalloutMock { 
+
+    @isTest
+    static void updateProductsInfoTest(){
+        Test.setMock(HttpCalloutMock.class, new Product2ServiceTest.ProductMockResponse());
+        Account a=TestDataFactory.getPersonAccount(true);
+        Product2 prod=TestDataFactory.getInvesetmentProduct('TestProd',true);
+        User u=TestDataFactory.getUser('Integration');
+        Test.startTest();
+        System.runAs(u){
+            LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(prod.Id,'Product2','Mobile');
+            EVExternalService.updateProductsInfo('{"id":'+prod.id+'}',prod.Id, apiCallDetails);
+        }
+        Test.stopTest();
+    }
+    
+    @isTest
+    static void sendInvestmentMoneyTransferdStatusTest(){
+        Test.setMock(HttpCalloutMock.class, new EVMockResponse());
+        Account a=TestDataFactory.getPersonAccount(true);
+        Opportunity opp=TestDataFactory.getOpportunityInvestment(a.Id,true);
+        User u=TestDataFactory.getUser('Integration');
+        Test.startTest();
+        System.runAs(u){
+            LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(opp.Id,'Opportunity','Mobile');
+            EVExternalService.updateInvestmentUpdate(opp.External_Id__c,a.EVSM_Auth0_Id__c, '{"moneyTransferred":true}', apiCallDetails);
+        }
+        Test.stopTest();
+    }
+    @isTest
+    static void sendInvestmentDocumentInformationTest(){
+        Test.setMock(HttpCalloutMock.class, new EVMockResponse());
+        Account a=TestDataFactory.getPersonAccount(true);
+        Opportunity opp=TestDataFactory.getOpportunityInvestment(a.Id,true);
+        User u=TestDataFactory.getUser('Integration');
+        Test.startTest();
+        System.runAs(u){
+            LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(opp.Id,'Opportunity','Mobile');
+            EVExternalService.sendInvestmentDocumentInformation(opp.Id,'{"status":true}', apiCallDetails);
+        }
+        Test.stopTest();
+    }
+    
+    @isTest
+    static void updateCustomerClassificationUpdateTest(){
+        Test.setMock(HttpCalloutMock.class, new EVMockResponse());
+        Account a=TestDataFactory.getPersonAccount(true);
+        Opportunity opp=TestDataFactory.getOpportunityInvestment(a.Id,true);
+        User u=TestDataFactory.getUser('Integration');
+        Test.startTest();
+        System.runAs(u){
+            LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(opp.Id,'Opportunity','Mobile');
+            EVExternalService.updateCustomerClassificationUpdate(opp.Id,a.Id,'{"status":"ONGOING" , "type":"Professional"}', apiCallDetails);
+        }
+        Test.stopTest();
+    }
+    
+    
+    public class EVMockResponse implements HttpCalloutMock { 
         Boolean isError{set;get;}
-        public DocumentMockResponse(){
+        public EVMockResponse(){
             this.isError=false;
         }
-        public DocumentMockResponse(Boolean isError){
+        public EVMockResponse(Boolean isError){
             this.isError=isError;
         }
         
@@ -66,7 +136,9 @@ public class EVExternalServiceTest {
             if(req.getEndpoint().contains('customers') && req.getEndpoint().contains('documents')){
                 data='{"pdfUrlBase64":"https://salesforce-api.dev.ev-smartmoney.com/"}'; 
             } 
-            
+            else if(req.getMethod()!='GET'){
+                data=req.getBody(); 
+            }
             if(isError){
                 resp.setStatusCode(400); 
                 resp.setStatus('error');   

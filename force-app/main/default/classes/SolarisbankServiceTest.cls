@@ -236,6 +236,14 @@ public class SolarisbankServiceTest {
         }catch(Exception e){}
     }
     @isTest
+    static void teststopMFAError(){
+        Test.setMock(HttpCalloutMock.class, new SolarisbankCRPRequestWrapper.MockResponse(false));
+        LogService.ApiCallDetails details=new LogService.ApiCallDetails(userinfo.getUserId(),'Account','Sandbox');
+        try{
+        SolarisbankService.stopMFA( 'mfaId','1234',details);
+        }catch(Exception e){}
+    }
+    @isTest
     static void testrequestCloseAccount(){
         Test.setMock(HttpCalloutMock.class, new SolarisbankPersonWrapper.MockResponse());
         LogService.ApiCallDetails details=new LogService.ApiCallDetails(userinfo.getUserId(),'Account','Sandbox');
@@ -262,10 +270,11 @@ public class SolarisbankServiceTest {
         SolarisbankService.fetchIdentificationRequestDetails( 'solarisPersonId', 'solarisIdentificationId',details);
     }
     @isTest
-    static void ffetchIdentificationAttemptDetailsTest(){
+    static void fetchIdentificationAttemptDetailsTest(){
         Test.setMock(HttpCalloutMock.class, new SolarisBankIdentificationAttempt.MockResponse());
         LogService.ApiCallDetails details=new LogService.ApiCallDetails(userinfo.getUserId(),'KYC_Detail__c','Sandbox');
         SolarisbankService.fetchIdentificationAttemptDetails( 'solarisPersonId', 'solarisIdentificationId',details);
     }
+  
     
 }

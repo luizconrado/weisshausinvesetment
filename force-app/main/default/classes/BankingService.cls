@@ -33,7 +33,7 @@ public with sharing class BankingService {
    
     @AuraEnabled 
     public static List<Case> retriveCaseDetails(String caseId){
-        return [SELECT Id,CaseNumber, Type, Status, Subject, Description, Type_II__c, Internal_Description__c,
+        return [SELECT Id,CaseNumber, Type, Status, Subject, Description, Type_II__c, Internal_Description__c,Thread_Id__c, 
                 (SELECT Id,RecordTypeId,RecordType.Name,
                  Booking__r.Bank_Account__r.Name,Booking__r.Amount__c,Booking__r.Description__c , Booking__r.Recipient_IBAN__c, Booking__r.Recipient_Name__c, Booking__r.Recipient_BIC__c,Booking__c,Booking__r.Solarisbank_Id__c,Booking__r.Bank_Account__r.Solarisbank_Id__c,Booking__r.Bank_Account__r.Person_Account__r.Legal_Name__c,Booking__r.Name,Booking__r.Booking_Date__c,
                  Bank_Account__r.Person_Account__r.Solarisbank_Tenent__c,Bank_Account__r.Status__c ,Bank_Account__c ,Bank_Account__r.Solarisbank_Id__c,Bank_Account__r.Name,Bank_Account__r.Person_Account__r.Legal_Name__c,

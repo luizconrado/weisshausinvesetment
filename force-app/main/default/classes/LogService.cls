@@ -1,5 +1,13 @@
+/***************
+* @group Service
+* @description loging service class priovides wrapper class for debug and api call logs
+*/
 public inherited  sharing class LogService {
     
+    /***************
+    * @description sends platform event with details for api call log
+    * @param details ApiCallDetails wrapper class conataing api details
+    */
     public static void LogApiCall(ApiCallDetails details){
         Log_Event__e e=New Log_Event__e();
         e.Type__c='Integeration';
@@ -10,6 +18,10 @@ public inherited  sharing class LogService {
         e.Body__c=JSON.serialize(details);
         EventBus.publish(e);
     }
+    /***************
+    * @description sends platform event with details for debug= log
+    * @param details LogMetadata wrapper class conataing error details
+    */
     public static String logError(LogMetadata details){
         String index=RandomUtil.randomUUID();
         if(details.error!=null){
@@ -29,7 +41,10 @@ public inherited  sharing class LogService {
         return index;
     }
     
-    
+    /***************
+    * @description Captures platform event and inserts records to Log object
+	* @param events[] list of platform event
+    */
     public static void captureLogs(List<Log_Event__e> events){
         List<Log__c> toInsert =new  List<Log__c>();
         
@@ -39,35 +54,42 @@ public inherited  sharing class LogService {
                 ApiCallDetails details = (ApiCallDetails) JSON.deserialize(event.Body__c, ApiCallDetails.class);
                 log.RecordTypeId=Constant.INITEGERATION_LOG_RECORDTYPEID;
                 log.User__c=details.userId;
-                log.Operation__c=details.operation;
-                log.Object_Name__c=details.objectName;
+                log.Operation__c=concatinate(details.operation,255);
+                log.Object_Name__c=concatinate(details.objectName,80);
                 log.Record_Id__c=details.recordId;
                 log.Log_Number__c=details.index;
-                log.Request_Body__c=details.requestBody;
+                log.Request_Body__c=concatinate(details.requestBody,100767);
                 log.Endpoint__c=details.url;
                 log.Response_Status_Code__c =details.responseCode;
-                log.Response_Body__c=details.responseBody;
+                log.Response_Body__c=concatinate(details.responseBody,32768);
                 log.Call__c=details.calltype;
-                log.Comments__c=event.Comments__c;
+                log.Comments__c=concatinate(event.Comments__c,130768);
             }
             else if(event.Type__c=='Debug'){
                 LogMetadata details = (LogMetadata) JSON.deserialize(event.Body__c, LogMetadata.class);
                 log.RecordTypeId=Constant.DEBUG_LOG_RECORDTYPEID;
                 log.User__c=details.userId;
-                log.Object_Name__c=details.objectName;
-                log.Operation__c=details.operation;
+                log.Object_Name__c=concatinate(details.objectName,80);
+                log.Operation__c=concatinate(details.operation,255);
                 log.Record_Id__c=details.recordId;
                 log.Log_Number__c=details.index;
-                log.Stack_Trace__c=details.stacktrace;
-                log.Class_Name__c=details.className;
-                log.Message__c=details.errorMessage;
-                log.Method_Name__c=details.methodName;
-                log.Component_Name__c=details.componentName;
-                log.Comments__c=event.Comments__c;
+                log.Stack_Trace__c=concatinate(details.stacktrace,131072);
+                log.Class_Name__c=concatinate(details.className,255);
+                log.Message__c=concatinate(details.errorMessage,255);
+                log.Method_Name__c=concatinate(details.methodName,255);
+                log.Component_Name__c=concatinate(details.componentName,255);
+                log.Comments__c=concatinate(event.Comments__c,130768);
             }
             toInsert.add(log);
         }
         if(toInsert.size()>0) insert toInsert;
+    }
+    
+    private static string concatinate(String str,Integer length){
+        if(str!=null && str.length()>length){
+            str=str.substring(0, length-1);
+        }
+        return str;
     }
     
     public class ApiCallDetails{
@@ -85,6 +107,13 @@ public inherited  sharing class LogService {
         @AuraEnabled public String comments{set;get;}
         public void addComment(String comments){
             this.comments=comments;
+        }
+        public void addRequestDetails(String url,String method,String requestBody,String responseBody,Integer responseCode){
+            this.url=url;
+            this.calltype=method;
+            this.requestBody=requestBody;
+            this.responseBody=responseBody;
+            this.responseCode=responseCode;
         }
         public void addMetadataInfo(String userId,String operation){
             this.userId=userId;

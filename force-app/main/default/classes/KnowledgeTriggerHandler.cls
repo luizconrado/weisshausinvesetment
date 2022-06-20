@@ -1,6 +1,6 @@
 public class KnowledgeTriggerHandler extends TriggerHandler {
-    protected override void beforeInsert(final List<SObject> newObjects) {
-        List<Knowledge__kav> newRecords=newObjects;
+    protected override void beforeInsert() {
+        List<Knowledge__kav> newRecords=Trigger.new;
         Map<String,Knowledge__kav> newDraftLocalArticles=new Map<String,Knowledge__kav>();
         
         

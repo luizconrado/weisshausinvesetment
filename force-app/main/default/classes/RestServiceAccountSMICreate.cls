@@ -3,7 +3,7 @@
 * @description Creates Investment Customer 
 */
 @RestResource(UrlMapping='/Account/SMI/Create/*')
-global class RestServiceAccountSMICreate { 
+global without sharing  class RestServiceAccountSMICreate { 
 
     /***************
     * @description creates/updates customer based on evsm auth0 id or email address
@@ -29,6 +29,7 @@ global class RestServiceAccountSMICreate {
     */
 	@HttpPatch
     global static void doPatch(){
+        final String subscriptionType='Investment-Newsletter';
         List<String> successMessage=new List<String>();
         List<String> errorMessage=new List<String>();
         
@@ -46,7 +47,7 @@ global class RestServiceAccountSMICreate {
         Account newAccount=null;
         Subscription__c subscriptionRecord=null;
         Account newPersonAccount=(Account)  JSON.deserialize(body, Account.class);
-        
+        System.debug('KING '+newPersonAccount.EVSM_Auth0_ID__c);
         if(newPersonAccount.EVSM_Auth0_ID__c==null || String.isEmpty(newPersonAccount.EVSM_Auth0_ID__c)){
             res.statusCode = 404;
             res.responseBody=RestResponseWrapper.setError(res.statusCode,new List<String>{'EVSM Auth0 Id  not found : '+newPersonAccount.LastName});
@@ -55,18 +56,40 @@ global class RestServiceAccountSMICreate {
         
         
         //check if account exsits// 
-        List<Account> personAccountList=[SELECT id,Website,Gender__pc,PersonContactId  ,T_C_Accepted_Date__c ,PersonMobilePhone ,Invitation_Code__pc,Email_Verified__pc,EVSM_Auth0_ID__c,FirstName,Solarisbank_Id__c,LastName,PersonEmail,Origin__pc,
+        List<Account> personAccountList=new List<Account>();
+        
+        personAccountList=[SELECT id,Website,Gender__pc,PersonContactId  ,T_C_Accepted_Date__c ,PersonMobilePhone ,Invitation_Code__pc,Email_Verified__pc,
+                                         EVSM_Auth0_ID__c,FirstName,Solarisbank_Id__c,LastName,PersonEmail,Origin__pc,RecordTypeId, 
                                          UTM_Content__c,UTM_Term__c,UTM_Source__c,UTM_Campaign__c,UTM_Medium__c,Auth0_ID__c,
-                                         (SELECT id ,Account__c, Subscription_Terms_and_Conditions__c,Subscription_Status__c,Source__c FROM Subscriptions__r WHERE Type__c ='Newsletter')
+                                         (SELECT id ,Account__c,Contact__c, Subscription_Terms_and_Conditions__c,Subscription_Status__c,Source__c,
+                                          UTM_Content__c,UTM_Term__c,UTM_Source__c,UTM_Campaign__c,UTM_Medium__c 
+                                          FROM Subscriptions__r WHERE Type__c =:subscriptionType)
                                          FROM Account
                                          WHERE 
-                                         (EVSM_Auth0_ID__c=:newPersonAccount.EVSM_Auth0_ID__c OR PersonEmail=:newPersonAccount.PersonEmail)
+                                         EVSM_Auth0_ID__c=:newPersonAccount.EVSM_Auth0_ID__c  
                                          AND 
-										 PersonEmail!=null                                         
+										 EVSM_Auth0_ID__c!=null                                         
                                          AND 
                                          IsPersonAccount = true
                                          LIMIT 1
                                         ];
+        if(personAccountList.size()==0){
+            personAccountList=[SELECT id,Website,Gender__pc,PersonContactId  ,T_C_Accepted_Date__c ,PersonMobilePhone ,Invitation_Code__pc,Email_Verified__pc,
+                               EVSM_Auth0_ID__c,FirstName,Solarisbank_Id__c,LastName,PersonEmail,Origin__pc,RecordTypeId, 
+                               UTM_Content__c,UTM_Term__c,UTM_Source__c,UTM_Campaign__c,UTM_Medium__c,Auth0_ID__c,
+                               (SELECT id ,Account__c,Contact__c, Subscription_Terms_and_Conditions__c,Subscription_Status__c,Source__c,
+                                UTM_Content__c,UTM_Term__c,UTM_Source__c,UTM_Campaign__c,UTM_Medium__c 
+                                FROM Subscriptions__r WHERE Type__c =:subscriptionType)
+                               FROM Account
+                               WHERE 
+                               PersonEmail=:newPersonAccount.PersonEmail  
+                               AND 
+                               PersonEmail!=null                                         
+                               AND 
+                               IsPersonAccount = true
+                               LIMIT 1
+                              ];
+        }
        
         
  
@@ -115,12 +138,24 @@ global class RestServiceAccountSMICreate {
                     subscriptionRecord=personAccountList.get(0).Subscriptions__r.get(0);
                 }
             }            
-            subscriptionRecord.Type__c='Investment-Newsletter';
+            subscriptionRecord.Type__c=subscriptionType;
             subscriptionRecord.Subscription_Terms_and_Conditions__c=true;
             subscriptionRecord.Subscription_Status__c='Subscribed';
-            subscriptionRecord.Source__c=newAccount.Website;
+            subscriptionRecord.Source__c=newPersonAccount.Website;
+            subscriptionRecord.Subscribed_Date__c=Date.today();
+            
+            //Campaing Values
+            if(newPersonAccount.UTM_Campaign__c!=null && subscriptionRecord.UTM_Campaign__c==null)subscriptionRecord.UTM_Campaign__c=newPersonAccount.UTM_Campaign__c;
+            if(newPersonAccount.UTM_Medium__c!=null && subscriptionRecord.UTM_Medium__c==null)subscriptionRecord.UTM_Medium__c=newPersonAccount.UTM_Medium__c;
+            if(newPersonAccount.UTM_Source__c!=null && subscriptionRecord.UTM_Source__c==null)subscriptionRecord.UTM_Source__c=newPersonAccount.UTM_Source__c;
+            if(newPersonAccount.UTM_Term__c!=null && subscriptionRecord.UTM_Term__c==null)subscriptionRecord.UTM_Term__c=newPersonAccount.UTM_Term__c;
+            if(newPersonAccount.UTM_Content__c!=null && subscriptionRecord.UTM_Content__c==null) subscriptionRecord.UTM_Content__c=newPersonAccount.UTM_Content__c;
+            
                 
         }
+        
+        
+        if(Salesforce.isSandbox && personAccountList.size()==0) newAccount.Solarisbank_Tenent__c='Sandbox';
         
         try{
             

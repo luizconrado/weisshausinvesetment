@@ -9,7 +9,7 @@ global class RestServiceAccountAnonymize {
         RestResponse res = RestContext.response;
         RestRequest req = RestContext.request;
         
-        List<String> requestParam=req.requestURI.split('/');
+        List<String> requestParam=req.requestURI.split('/');  
         
         String accountAuth0Id=requestParam.get(requestParam.size()-1);
         if(String.isBlank(accountAuth0Id) || !accountAuth0Id.containsIgnoreCase('auth0')){
@@ -18,7 +18,7 @@ global class RestServiceAccountAnonymize {
             return;
         }
         accountAuth0Id=EncodingUtil.urlDecode(accountAuth0Id,'UTF-8');
-        List<Account> personAccountList=[SELECT id,Deletion_Request__c,LastName, Deletion_Request_Source__c FROM Account WHERE Auth0_Id__c=:accountAuth0Id];
+        List<Account> personAccountList=[SELECT id,Deletion_Request__c,LastName, Deletion_Request_Source__c FROM Account WHERE Auth0_Id__c=:accountAuth0Id OR EVSM_Auth0_Id__c=:accountAuth0Id];
         
         if(personAccountList.size()==0){
             res.statusCode = 404;
@@ -46,7 +46,7 @@ global class RestServiceAccountAnonymize {
             System.debug(e.getMessage()+' '+e.getCause());
             errorMessage.add(e.getMessage()+' '+e.getCause());
             errorMessage.add(e.getStackTraceString());
-            logError(e,'DELETE',accountAuth0Id);
+            logError(e,'DELETE',req.requestURI);
             res.statusCode = 500;
             res.responseBody=RestResponseWrapper.setError(res.statusCode,errorMessage);
         }

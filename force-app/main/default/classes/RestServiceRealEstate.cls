@@ -26,9 +26,6 @@ global without sharing class RestServiceRealEstate {
         
         res.statusCode=200;
         res.responseBody=RestResponseWrapper.setSuccess(res.statusCode,realEstateList);
-        
-        
-        
     }
     @HttpDelete
     global static void doDelete(){

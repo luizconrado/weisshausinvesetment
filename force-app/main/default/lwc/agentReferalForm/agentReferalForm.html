@@ -207,8 +207,9 @@
 
                 </div>
             </div>
+
             <div if:true={showStep1} class="slds-col slds-medium-size_1-of-1 slds-large-size_1-of-2 info-image">
-                <img src={imageUrlLanding} />
+                <!--<img src={imageUrlLanding} />-->
             </div>
 
             <div if:true={showStep2}
@@ -272,44 +273,18 @@
                     </div>
 
                 </div>
-                <!--
-                <div class="slds-col slds-grid slds-wrap ev-margin-top_large ev-verticle-align_center-mobile">
-                    <div
-                        class="slds-col slds-grid referal_description_container slds-large-size_1-of-2 slds-medium-size_1-of-1 slds-small-size_1-of-1">
-                        <div class="slds-col slds-size_1-of-2 referal_description">
-                            <div class="icon">
-                                <img src={emailIconUrl}>
-                            </div>
-                            <div class="text ev-padding-top_small-x">{APPSTEP1TEXT}</div>
-                        </div>
-                        <div class="slds-col slds-size_1-of-2 referal_description">
-                            <div class="icon"> <img src={downloadIconUrl}> </div>
-                            <div class="text ev-padding-top_small-x">{APPSTEP2TEXT}</div>
-                        </div>
-                    </div>
-                    <div
-                        class="slds-col slds-grid  referal_description_container slds-large-size_1-of-2 slds-medium-size_1-of-1 slds-small-size_1-of-1">
-                        <div class="slds-col  slds-size_1-of-2 referal_description">
-                            <div class="icon"><img src={noteIconUrl}> </div>
-                            <div class="text ev-padding-top_small-x">{APPSTEP3TEXT}</div>
-                        </div>
-                        <div class="slds-col slds-size_1-of-2 referal_description">
-                            <div class="icon"><img src={pieIconUrl}></div>
-                            <div class="text ev-padding-top_small-x">{APPSTEP4TEXT} </div>
-                        </div>
-                    </div>
-                </div>
-                -->
-                <div class="slds-col ev-margin-top_large-x">
+                
+               <!--<div class="slds-col ev-margin-top_large-x">
                     <a class="slds-col slds-button ev-margin-top_small primaryButton" href={refrelLink}>
                         {STEP3BUTTONTEXT}
                     </a>
-                </div>
+                </div>--> 
             </div>
-            <div if:true={showStep3} class="slds-col slds-medium-size_1-of-1 slds-large-size_1-of-2 info-image_referal">
+            <!--
+                <div if:true={showStep3} class="slds-col slds-medium-size_1-of-1 slds-large-size_1-of-2 info-image_referal">
                 <img src={imageUrlRedirect} />
             </div>
-
+        -->
             <lightning-layout if:true={showError}>
 
                 <lightning-layout-item padding="around-small" size="12" style="text-align: center;">

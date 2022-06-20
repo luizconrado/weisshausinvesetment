@@ -157,7 +157,7 @@ public inherited  sharing class SolarisbankService {
         if(response.getStatusCode() != 200 || response.getStatusCode() != 201) details.responseBody=response.getBody();
         
         LogService.LogApiCall(details);
-        if(response.getStatusCode()>300) throw new RestService.RestCallException(response.getStatus());
+        
         return response.getBody();
     }
     //get bookins transactional seap debit transfer details
@@ -556,7 +556,7 @@ public inherited  sharing class SolarisbankService {
         details.responseCode=response.getStatusCode();
         details.responseBody=response.getBody();
         LogService.LogApiCall(details);
-        if(response.getStatusCode()>300) throw new RestService.RestCallException(response.getStatus());
+         
         return response.getBody();
     }
     public static String initiateCRPRequest(String tanUrl,String solarisbankPersonId,LogService.ApiCallDetails details){
@@ -576,7 +576,7 @@ public inherited  sharing class SolarisbankService {
         if(String.isEmpty(details.responseBody)) details.responseBody=response.getStatus();
         
         LogService.LogApiCall(details);
-        if(response.getStatusCode()>300) throw new RestService.RestCallException(response.getStatus());
+        //if(response.getStatusCode()>300) throw new RestService.RestCallException(response.getStatus());
         return response.getBody();
     }
     public static String confirmCRPRequest(String tanUrl,String solarisbankPersonId,String tanOtp,LogService.ApiCallDetails details){
@@ -670,6 +670,7 @@ public inherited  sharing class SolarisbankService {
         @AuraEnabled public String status{set;get;}
         @AuraEnabled public List<CardResponse> errors{set;get;}
         @AuraEnabled public String detail{set;get;}
+        
     }
     
     

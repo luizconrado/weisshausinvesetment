@@ -61,8 +61,29 @@ public class BankCaseServiceTest {
         Bank_Case_Item__c bcase=BankCaseOverrideControler.getBankCaseDetails(cardBankCaseDetails.Id);
         Test.startTest();
         try{
-            BankCaseOverrideControler.changeCardStatus(bcase,'Unblock','Test It',false);
             BankCaseOverrideControler.changeCardStatus(bcase,'Close','Test It',false);
+        }catch(exception e){}
+        Test.stopTest();
+    }
+    @isTest
+    static void changeCardStatusError(){
+        Test.setMock(HttpCalloutMock.class, new SolarisbankCardWrapper.MockResponse());
+        Account accountDetails=TestDataFactory.getPersonAccount(true);
+        Bank_Account__c bankAccountDetails = TestDataFactory.getBankAccount(accountDetails.Id,true);
+        Card__c cardDetails=TestDataFactory.getCard(accountDetails.Id,bankAccountDetails.Id,true);
+        Booking__c booking=TestDataFactory.getBooking(bankAccountDetails.Id,true);
+        Scheduled_Order__c tOrder=TestDataFactory.getTimedOrder(bankAccountDetails.Id,true);
+        Scheduled_Order__c sOrder=TestDataFactory.getStandingOrder(bankAccountDetails.Id,true);
+        Reservation__c res=TestDataFactory.getReservation(bankAccountDetails.Id,true);
+        
+        Case caseDetails=TestDataFactory.getBankCase(accountDetails.Id,true);
+        Bank_Case_Item__c cardBankCaseDetails=TestDataFactory.getCardBankCase(caseDetails.Id,false);
+        cardBankCaseDetails.Card__c=cardDetails.Id;
+        insert cardBankCaseDetails;
+        Bank_Case_Item__c bcase=BankCaseOverrideControler.getBankCaseDetails(cardBankCaseDetails.Id);
+        Test.startTest();
+        try{
+            BankCaseOverrideControler.changeCardStatus(bcase,'Unblock','Test It',false);
         }catch(exception e){}
         Test.stopTest();
     }
@@ -149,7 +170,7 @@ public class BankCaseServiceTest {
         Case caseDetails=TestDataFactory.getBankCase(accountDetails.Id,true);
         Test.startTest();
         try{
-        BankCaseOverrideControler.createBankCases(caseDetails.Id,caseDetails.Type,caseDetails.Type_II__c,caseDetails.Description, 
+        BankCaseOverrideControler.createBankCases(caseDetails.Id,caseDetails.Type,'Invalid Type',caseDetails.Description, 
                                                   bankAccountDetails.Id,cardDetails.Id,accountDetails.Id,
                                                  
                                                   new List<String>{tOrder.Id}, new List<String>{booking.Id},new List<String>{res.Id},

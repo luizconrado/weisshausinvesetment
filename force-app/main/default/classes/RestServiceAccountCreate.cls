@@ -1,5 +1,5 @@
 @RestResource(UrlMapping='/Account/Create/*')
-global class RestServiceAccountCreate {
+global without sharing class RestServiceAccountCreate {
 
 	@HttpPatch
     global static void doPatch(){
@@ -29,17 +29,33 @@ global class RestServiceAccountCreate {
         
         
         //check if account exsits
-        List<Account> personAccountList=[SELECT id,UTM_Content__c,UTM_Term__c,UTM_Source__c,UTM_Campaign__c,UTM_Medium__c,Invitation_Code__pc,Email_Verified__pc,FirstName,Solarisbank_Id__c,LastName,PersonEmail,Origin__pc,
-                                         Auth0_ID__c,EVSM_Auth0_ID__c
+        List<Account> personAccountList=new List<Account>();
+            
+        personAccountList=[SELECT id,UTM_Content__c,UTM_Term__c,UTM_Source__c,UTM_Campaign__c,UTM_Medium__c,Invitation_Code__pc,Email_Verified__pc,FirstName,Solarisbank_Id__c,LastName,PersonEmail,Origin__pc,
+                                         Auth0_ID__c,EVSM_Auth0_ID__c,RecordTypeId
                                          FROM Account
                                          WHERE 
-                                         (Auth0_Id__c=:newPersonAccount.Auth0_Id__c OR PersonEmail=:newPersonAccount.PersonEmail)
+                                         Auth0_Id__c=:newPersonAccount.Auth0_Id__c
                                          AND 
-                                         PersonEmail!=null                                         
+                                         Auth0_Id__c!=null                                         
                                          AND 
                                          IsPersonAccount = true
                                          LIMIT 1
                                         ];
+        //adding this as we where getting exceptions for duplicate accounts based on email, even after adding email search query in above soql
+        if(personAccountList.size()==0){
+            personAccountList=[SELECT id,UTM_Content__c,UTM_Term__c,UTM_Source__c,UTM_Campaign__c,UTM_Medium__c,Invitation_Code__pc,Email_Verified__pc,FirstName,Solarisbank_Id__c,LastName,PersonEmail,Origin__pc,
+                               Auth0_ID__c,EVSM_Auth0_ID__c,RecordTypeId
+                               FROM Account
+                               WHERE 
+                               PersonEmail=:newPersonAccount.PersonEmail
+                               AND 
+                               PersonEmail!=null                                         
+                               AND 
+                               IsPersonAccount = true
+                               LIMIT 1
+                              ];
+        }
        
         
  
@@ -69,7 +85,7 @@ global class RestServiceAccountCreate {
         if(personAccountList.size()==0) newAccount.RecordTypeId=Constant.PERSON_ACCOUNT_RECORDTYPEID;
         else if(personAccountList.size()>0 && personAccountList.get(0).EVSM_Auth0_ID__c!=null && personAccountList.get(0).RecordTypeId!=Constant.ACCOUNT_INVESTMENT_BANKING_RECORDTYPEID) newAccount.RecordTypeId=Constant.ACCOUNT_INVESTMENT_BANKING_RECORDTYPEID; 
        
-        
+        if(Salesforce.isSandbox && personAccountList.size()==0) newAccount.Solarisbank_Tenent__c='Mobile';
         
         
         try{

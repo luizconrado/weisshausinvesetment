@@ -460,7 +460,7 @@ public class RestServiceRealEstateTest {
         Asset_Link__c link=TestDataFactory.getAssetLink(null,false);
         Evaluation__c eval=TestDataFactory.getAssetEvaluation(null,false);
         
-        
+        DateTime dt=Date.Today();
         String assetJSON='{';
         assetJSON+='"Name":"'+asset.Name+'",';
         assetJSON+='"Asset_Id__c":"'+asset.Asset_Id__c+'",';
@@ -476,7 +476,7 @@ public class RestServiceRealEstateTest {
         assetJSON+='"Date__c":"2021-07-08",';
         assetJSON+='"Value__c":"'+eval.Value__c+'"},';
         assetJSON+='{';
-        assetJSON+='"Date__c":"2022-07-08",';
+        assetJSON+='"Date__c":"'+dt.year()+'-'+(dt.month()-1)+'-08",';
         assetJSON+='"Value__c":"'+eval.Value__c+'"}';
         assetJSON+=']';
         assetJSON+='},';

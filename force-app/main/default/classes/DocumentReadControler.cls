@@ -5,7 +5,8 @@ public with sharing class DocumentReadControler {
     public static String requestDocumentUrl(String documentId){
         Try{
            
-            Document__c document=[SELECT Read_At__c,Last_Viewed_User__c, Status__c, Requested_At__c, Ticket_Number__c, Id,Account__r.Auth0_Id__c, Account__c,Account__r.Solarisbank_Tenent__c FROM Document__c WHERE Id=:documentId];
+            Document__c document=[SELECT RecordTypeId,Read_At__c,Last_Viewed_User__c, Status__c, Requested_At__c, Ticket_Number__c, Id,Account__r.Auth0_Id__c, Account__c,Account__r.Solarisbank_Tenent__c FROM Document__c WHERE Id=:documentId];
+            
             LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(documentId,'Document__c',document.Account__r.Solarisbank_Tenent__c);
             String documentResponseBody = EVExternalService.fetchDocumentUrl(document.Account__r.Auth0_Id__c, document.Ticket_Number__c, apiCallDetails);
             

@@ -53,12 +53,26 @@ private class SubscriptionServiceTest {
         }
     }
     @isTest
+    static void confirmSubscriptionOfUserError(){
+        Test.startTest();
+        SubscriptionService.confirmSubscriptionOfUser(null,null);
+        Test.stopTest();
+    }
+    @isTest
     static void logErrorTest(){
         try{
             Integer i=1/0;
         }catch(Exception e){
             SubscriptionService.logError(e,'recordID','objectName','componentName','logErrorTest','operation');
         }
+    }
+    @isTest
+    static void registerSubscriptionErrorTest(){
+        Account a=TestDataFactory.getPersonInvestmentAccount(true);
+        Test.startTest();
+       Boolean status= SubscriptionService.registerSubscription(a.PersonEmail,'TESTING','TEST',null,null);
+        System.assert(!status);
+        Test.stopTest();
     }
 
 }

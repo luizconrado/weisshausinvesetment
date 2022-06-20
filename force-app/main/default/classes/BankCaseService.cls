@@ -64,6 +64,7 @@ public with sharing class BankCaseService {
                                                               caseDetails.Id=caseId;
                                                               caseDetails.Type = typeI;
                                                               caseDetails.Type_II__c=typeII;
+                                                              caseDetails.Status='In Progress';
                                                               caseDetails.Internal_Description__c=description;
                                                               
                                                               Boolean isAccountExsists = false;
@@ -436,8 +437,6 @@ public with sharing class BankCaseService {
         catch(Exception e){
              
             String index = logError(e,bankCaseId,'Bank_Case_Item__c','BankCaseRequestNewCard','requestCreateNewCard','Request For New Card');
-            SolarisbankService.CardResponse cardError=(SolarisbankService.CardResponse) JSON.deserialize(e.getMessage(), SolarisbankService.CardResponse.class);
-            System.debug(cardError.errors.get(0).detail);
             throw new AuraHandledException('Please contact your System admin.And provide '+index+' id to resolve issue.');
              
         }

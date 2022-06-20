@@ -23,6 +23,22 @@ public class DigibankCaseFormControllerTest {
         System.assert(c.size()>0);
     }
     @isTest
+    static void createNewEVKnotoCaseError(){
+        Test.startTest();
+        try{
+        DigibankCaseFormController.createNewEVKnotoCase(null);
+            }catch(Exception e){}
+        Test.stopTest();
+    }
+    @isTest
+    static void attachFilesToCaseError(){
+        Test.startTest();
+        try{
+        DigibankCaseFormController.attachFilesToCase(null,null);
+        }catch(Exception e){}
+        Test.stopTest();
+    }
+    @isTest
     static void attachFilesToCaseTest(){
         Account a=TestDataFactory.getPersonAccount(true);
         Case c=TestDataFactory.getEVKontoCase(a.Id,true);

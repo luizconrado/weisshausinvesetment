@@ -15,7 +15,7 @@ public class RestServiceAccountAnonymizeTest {
             System.assertEquals(404,res.statusCode);
         }
         Test.stopTest();
-    }
+    } 
     @isTest
     static void doDeleteErrorTest(){
         User u=TestDataFactory.getUser('Integration');
@@ -52,7 +52,7 @@ public class RestServiceAccountAnonymizeTest {
             Integer i=1/0;
         }
         catch(Exception e){
-            RestServiceAccountAnonymize.logError(e,'Delete');
+            RestServiceAccountAnonymize.logError(e,'Delete','{}');
         }
     }
     

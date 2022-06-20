@@ -90,7 +90,8 @@ global without sharing  class RestServiceWebLead {
       }
       
    } 
-    
+  
+  @testVisible
   private static void logError(Exception e,String method,String body){
       LogService.LogMetadata elog=new LogService.LogMetadata(); 
       elog.addMetadataInfo(userinfo.getUserId(),'RestServiceWebLead',method,'',method+' /generate/subscription/*');

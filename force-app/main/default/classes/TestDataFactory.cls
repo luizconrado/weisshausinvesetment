@@ -70,9 +70,7 @@ public class TestDataFactory {
         
     }
      
-    public static Bank__c getBankSolarisBank(String accountId,Boolean doInsert){
-        return generateBank(accountId,Constant.BANK_SOLARISBANK_RECORDTYPEID,true);
-    }
+    
   
     public static Seizure__c getSeziure(String accountId,Boolean doInsert){
         Seizure__c sei=new Seizure__c();
@@ -81,20 +79,45 @@ public class TestDataFactory {
         if(doInsert) insert Sei;
         return sei;
     }
-    
+    public static Contentversion getContentVersion(Boolean doInsert){
+        Contentversion cv=new Contentversion(Title = 'ABC',Type__c='Draft', PathOnClient = 'test', VersionData = EncodingUtil.base64Decode('Unit Test Attachment Body'));
+        if(doInsert) insert cv;
+        return  cv;
+    }
+    public static void linkContentDocumentToRecord(String cvId,String recordId){
+        Id conDocId = [SELECT ContentDocumentId FROM ContentVersion WHERE Id =:cvId].ContentDocumentId;
+        ContentDocumentLink cdl = New ContentDocumentLink();
+        cdl.LinkedEntityId = recordId;
+        cdl.ContentDocumentId = conDocId;
+        cdl.shareType = 'V';
+        Insert cdl;
+    }
     //record generate handlers
+    
+    public static Bank__c getBankSolarisBank(String accountId,Boolean doInsert){
+        return generateBank(accountId,Constant.BANK_SOLARISBANK_RECORDTYPEID,true);
+    }
+    
     public static Lead getWebLead(Boolean doInsert){
         return generateLead(Constant.DEFAULT_LEAD_RECORDTYPEID,doInsert);
+    }
+    public static Lead getLeadBankingCustomer(Boolean doInsert){
+        return generateLead(Constant.LEAD_BANKING_CUSTOMER_RECORDTYPEID,doInsert);
     }
     public static Account getPersonAccount(Boolean doInsert){
         return generateAccount(Constant.PERSON_ACCOUNT_RECORDTYPEID, doInsert);
     }
-    
+    public static Account getPersonInvestmentAccount(Boolean doInsert){ 
+        return generateAccount(Constant.ACCOUNT_PERSON_INVESTMENT_RECORDTYPEID, doInsert);
+    }
     public static Opportunity getStandardOpportunity(String accountId,Boolean doInsert){
         return generateOpportunity(Constant.STANDARD_OPPORTUNITY_RECORDTYPEID,accountId,doInsert);
     }
     public static Opportunity getOpportunityFullSale(String accountId,Boolean doInsert){
         return generateOpportunity(Constant.OPPORTUNITY_RE_FULLSALE_RECORDTYPEID,accountId,doInsert);
+    }
+     public static Opportunity getOpportunityInvestment(String accountId,Boolean doInsert){
+        return generateOpportunity(Constant.OPPORTUNITY_INVESMENT_RECORDTYPEID,accountId,doInsert);
     }
     public static Case getStandardCase(String accountId,Boolean doInsert){
         return generateCase(Constant.STANDARD_CASE_RECORDTYPEID, accountid, doInsert);
@@ -111,11 +134,7 @@ public class TestDataFactory {
     public static Campaign getStandardCampaign(Boolean doInsert){
         return generateCampaing(Constant.STANDARD_CAMPAIGN_RECORDTYPEID,doInsert);
     }    
-    public static Contentversion getContentVersion(Boolean doInsert){
-        Contentversion cv=new Contentversion(Title = 'ABC',Type__c='Draft', PathOnClient = 'test', VersionData = EncodingUtil.base64Decode('Unit Test Attachment Body'));
-        if(doInsert) insert cv;
-        return  cv;
-    }
+
     
     public static Bank_Account__c getBankAccount(String accountId,Boolean doInsert){
         return generateBankAccount(accountId,doInsert);
@@ -187,15 +206,46 @@ public class TestDataFactory {
     public static Subscription__c getNewsletterSubscription(String accountId,String contactId,Boolean doInsert){
         return generateSubscription(accountId,contactId,'Newsletter',Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID,doInsert);
     }
+    public static Subscription__c getInvestmentNewsletterSubscription(String accountId,String contactId,Boolean doInsert){
+        return generateSubscription(accountId,contactId,'Investment-Newsletter',Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID,doInsert);
+    }
     public static History_Tracker__c getChangeHistoryLog(String recordId,Boolean doInsert){
         return generateHistoryLog(recordId,Constant.TRACK_FIELD_CHANGE_RECORDTYPE_ID, doInsert);
     } 
     public static History_Tracker__c getViewHistoryLog(String recordId,Boolean doInsert){
         return generateHistoryLog(recordId,Constant.TRACK_USAGE_HISTORY_RECORDTYPE_ID, doInsert);
     } 
+    public static Product2 getInvesetmentProduct(string name,Boolean doInsert){
+        return generateProduct(name,RandomUtil.randomNumber(100000),'Investment',Constant.PRODUCT_INVESTMENT_RECORDTYPEID,doInsert);
+    }
+    public static Customer_Classification__c getProfessionalCustomerClassfication(String accountId,Boolean doInsert){
+        return generateCustomerClassification(accountId,Constant.CUSTOMER_CLASSIFICATION_PROFESSIONAL_RECORDTYPEID,doInsert);
+    }
+    public static Customer_Classification__c getSemiProfessionalCustomerClassfication(String accountId,Boolean doInsert){
+        return generateCustomerClassification(accountId,Constant.CUSTOMER_CLASSIFICATION_SEMI_PROFESSIONAL_RECORDTYPEID,doInsert);
+    }
     /*
 Generators
 */
+    private static Customer_Classification__c generateCustomerClassification(String accountId,String recordTypeId,Boolean doInsert){
+        Customer_Classification__c cc=new Customer_Classification__c();
+        cc.External_Id__c=RandomUtil.randomString(12);
+        cc.Account__c=accountId;
+        cc.recordTypeId=recordTypeId;
+        if(doInsert) insert cc;
+        return cc;
+    }
+    private static Product2 generateProduct(String name,Integer minAmount,String prodFamily,String recordTypeId,Boolean doInsert){
+        Product2 prod=new Product2();
+        prod.Family=prodFamily;
+        prod.Minimum_Investment__c=minAmount;
+        prod.Name=name;
+        prod.IsActive=true;
+        
+        prod.RecordTypeId=recordTypeId;
+        if(doInsert) insert prod;
+        return prod;
+    }
     
     private static Booking__c generateBooking(String bankaccountId,Boolean doInsert){
         Booking__c book=new Booking__c();
@@ -269,6 +319,7 @@ Generators
         Account account = new Account();
         account.PersonEmail= RandomUtil.randomString(3)+'@'+RandomUtil.randomString(4)+'.com';
         account.Auth0_ID__c='auth0|'+RandomUtil.randomString(6);
+        account.EVSM_Auth0_ID__c=RandomUtil.randomString(6);
         account.LastName = RandomUtil.randomString(4);
         account.RecordTypeId = recordtypeid;
         account.Solarisbank_Id__c='0652225cebcd3bec2c95ea8c461fe'+RandomUtil.randomString(6);
@@ -282,6 +333,7 @@ Generators
     private static Opportunity generateOpportunity(Final String recordTypeId,Final String accountId,Final Boolean doInsert){
         Opportunity opp=new Opportunity();
         opp.Name=RandomUtil.randomString(4);
+        opp.External_Id__c=RandomUtil.randomString(12);
         opp.AccountId=accountId;
         opp.StageName='Qualifying';
         opp.CloseDate=Date.today()+10;
@@ -294,6 +346,7 @@ Generators
         Case c=new Case();
         c.RecordTypeId=recordTypeId;
         c.Status='New';
+        c.Subject=RandomUtil.randomString(8); 
         c.Origin='Web';
         c.AccountId=accountid;
         if(doInsert) insert c;
@@ -412,6 +465,31 @@ Generators
         req.httpMethod = method;	
         req.addHeader('Content-Type', 'application/json');	
         return req;	
+    }
+    public class MultiRequestMock implements HttpCalloutMock {
+        Map<String, HttpCalloutMock> requests;
+        
+        public MultiRequestMock(Map<String, HttpCalloutMock> requests) {
+            this.requests = requests;
+        }
+        
+        public HTTPResponse respond(HTTPRequest req) {
+            HttpCalloutMock mock = null;
+            for(String keys:requests.keySet()){
+                if(req.getEndpoint().containsIgnoreCase(keys)){
+                    mock=requests.get(keys);
+                    break;
+                }
+            }
+            if (mock != null) {
+                return mock.respond(req);
+            }
+            return mock.respond(req);
+        }
+        
+        public void addRequestMock(String url, HttpCalloutMock mock) {
+            requests.put(url, mock);
+        }
     }
     
 }

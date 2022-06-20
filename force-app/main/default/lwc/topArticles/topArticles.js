@@ -29,7 +29,7 @@ export default class TopArticles extends LightningElement {
     })
     wiredKnowlodge({ error, data }) {
         if (error) {
-            console.error(error)
+            console.log(error)
         } else if (data) {
             this.topArticles = data.map(a => {
                 let record = JSON.parse(JSON.stringify(a));

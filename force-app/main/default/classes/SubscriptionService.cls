@@ -178,15 +178,17 @@ public without sharing class SubscriptionService {
     */
     @AuraEnabled
     public static boolean registerSubscription(String email,String productName,String origin,String website,Map<String,String> utmParameters){
+        Boolean status=false;
         try{
             AccountService.service service=new AccountService.service();
             service.createAccountAndNewsletter(email, productName, origin, website, utmParameters, Constant.ACCOUNT_PERSON_INVESTMENT_RECORDTYPEID);
-        	return true;
+        	status = true;
         }
         catch(Exception e){
             logError(e,null,'Account','waitinglist_subscription','waitinglist_subscription','Subscribe');
-            return false;
+            status = false;
         }
+        return status;
         
     }
 
@@ -197,16 +199,15 @@ public without sharing class SubscriptionService {
     */
     @AuraEnabled
     public static void confirmSubscriptionOfUser(String email,String product){
-        product = EncodingUtil.urlDecode(product,'utf-8');
-        List<Account> accountDetails=[SELECT id,FirstName,Salutation,LastName,Phone,
-        (Select id,Send_Mail__c,Subscription_Terms_and_Conditions__c,Source__c,Type__c,Subscription_Status__c from Subscriptions__r WHERE Type__c=:product AND RecordTypeId=:Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID LIMIT 1) 
-        FROM Account WHERE PersonEmail=:email AND isPersonAccount=true];
+        List<Account> accountDetails=new List<Account>();
         try {
-          
-           
+            product = EncodingUtil.urlDecode(product,'utf-8');
+            accountDetails=[SELECT id,FirstName,Salutation,LastName,Phone,
+                                          (Select id,Send_Mail__c,Subscription_Terms_and_Conditions__c,Source__c,Type__c,Subscription_Status__c from Subscriptions__r WHERE Type__c=:product AND RecordTypeId=:Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID LIMIT 1) 
+                                          FROM Account WHERE PersonEmail=:email AND isPersonAccount=true];
+            
             if(accountDetails.size()>0){
                 if(accountDetails.get(0).Subscriptions__r.size()>0){
-                    System.debug('Subscriptions__r'+accountDetails.get(0).Subscriptions__r.size());
                     Subscription__c subscription=accountDetails.get(0).Subscriptions__r.get(0);
                     subscription.Subscription_Status__c='Subscribed';
                     subscription.Send_Mail__c=true;

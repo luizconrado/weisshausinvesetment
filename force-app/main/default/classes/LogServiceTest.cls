@@ -21,6 +21,7 @@ public class LogServiceTest {
             data.addRecordInfo('Log_Event__e',null);
             data.addError(e);
             data.addErrorString(e.getStackTraceString(),e.getMessage());
+            data.addComment('from test class');
             Test.startTest();
             String s=LogService.logError(data);
             Test.stopTest();
@@ -41,6 +42,7 @@ public class LogServiceTest {
         call.addMetadataInfo(userinfo.getUserId(),'Call');
         call.addRecordInfo('Log_Event__e',null);
         call.addApiDetails('www.evsmartmoney.com','{}','{}',200);
+        call.addComment('from test class');
         Test.startTest();
         LogService.LogApiCall(call);
         Test.stopTest();

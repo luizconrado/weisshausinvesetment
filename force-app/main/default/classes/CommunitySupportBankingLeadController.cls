@@ -1,3 +1,8 @@
+/***************
+* @group Controller Class
+* @description class responsible for logic behind lwc component "support_kontoform" , creates a lead 
+* Ref :  https://qa01-evsmartmoney.cs107.force.com/support/s/kontoanmeldung?language=de
+*/
 public without sharing class CommunitySupportBankingLeadController {
     
     

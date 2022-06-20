@@ -1,5 +1,5 @@
 /***************
-* @group Controller
+* @group Controller Class
 * @description business logic for lwc component waitingList_supportPage
 */
 public without sharing class CommunityWLSupportPageController {

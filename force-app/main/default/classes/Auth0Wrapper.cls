@@ -1,3 +1,7 @@
+/***************
+* @group Wrapper Class
+* @description auth response
+*/
 public class Auth0Wrapper {
     
     public class User_metadata {

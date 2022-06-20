@@ -1,3 +1,7 @@
+/***************
+* @group Controller Class
+* @description all bank case override button logic is here
+*/
 public with sharing class BankCaseOverrideControler {
     
     /////////////////////////////

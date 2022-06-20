@@ -1,5 +1,14 @@
+/***************
+* @group Helper Class
+* @description account trigger logic
+*/
 public class AccountTriggerHelper {
     
+    /***************
+    * @description calcualtes users age 
+    * @param birthDate brithdate of user
+    * @return users age bucket
+    */
     public static String calucateAgeBracker(Date birthDate){
         Date todaysDate=Date.today();
         Integer currentYear=todaysDate.year();
@@ -20,7 +29,12 @@ public class AccountTriggerHelper {
         
         
     }
+
     
+    /***************
+    * @description unsubscribes all subscriptions of user
+    * @param accountIds list of account ids
+    */
     public static void unsubscribeAllSubscriptions(List<String> accountIds){
         
         List<Subscription__c> subscriptionList=[SELECT Id, Account__c, Reason_For_Unsubscribing__c, Subscription_Status__c, Unsubscribed_Date__c 

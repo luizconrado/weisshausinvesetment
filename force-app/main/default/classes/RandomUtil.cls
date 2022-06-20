@@ -1,3 +1,7 @@
+/***************
+* @group Utility Class
+* @description helepr class to generate random values
+*/
 public inherited sharing class RandomUtil {
     public static String getUUID() {
         Blob b = Crypto.generateAesKey(128);

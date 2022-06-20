@@ -1,3 +1,7 @@
+/***************
+* @group Utility Class
+* @description helper class to fetch object reatled details
+*/
 public inherited sharing class SchemaUtil {
     public static String getRecordTypeId(final String recordTypeDevName, final String objectAPIName) {
         Schema.DescribeSObjectResult sobjectResult = Schema.getGlobalDescribe().get(objectAPIName).getDescribe();

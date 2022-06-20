@@ -1,3 +1,7 @@
+/***************
+* @group Controller Class
+* @description controler class of vf page Translate help in translate text 
+*/
 global inherited sharing  class Translate {
     
     global List<TranslationWrapper> translatedValues{set;get;}

@@ -1,3 +1,7 @@
+/***************
+* @group Wrapper Class
+* @description SB
+*/
 public class SolarisBankIdentificationWrapper {
     @AuraEnabled public String id; 
     @AuraEnabled public String reference;

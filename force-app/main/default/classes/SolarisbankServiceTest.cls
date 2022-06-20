@@ -1,3 +1,7 @@
+/***************
+* @group Test Class
+* @description test class for SolarisbankService
+*/
 @isTest
 public class SolarisbankServiceTest {
     

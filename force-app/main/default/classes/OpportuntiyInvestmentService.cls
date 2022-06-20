@@ -1,5 +1,13 @@
+/***************
+* @group Service Class
+* @description all logic for opportuntiy object with investment record type is here
+*/
 public class  OpportuntiyInvestmentService {
     
+    /***************
+    * @description send mony transferd flag to ev and update details on opportuntiy
+    * @param oppId opportuntiy record id
+    */
     @AuraEnabled
     public static void sendMoneyTransferConformation(String oppId){
         try{         
@@ -23,6 +31,10 @@ public class  OpportuntiyInvestmentService {
         }
     }
     
+    /***************
+    * @description send investment status to ev
+    * @param oppId opportuntiy record id
+    */
     
      @AuraEnabled
     public static void sendInvestmentStatus(String oppId){

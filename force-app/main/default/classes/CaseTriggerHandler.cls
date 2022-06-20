@@ -1,3 +1,7 @@
+/***************
+* @group Handler Class
+* @description case trigger router
+*/
 public class CaseTriggerHandler extends TriggerHandler {
    
     protected override void beforeInsert() {

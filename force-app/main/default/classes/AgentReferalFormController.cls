@@ -1,11 +1,25 @@
+/***************
+* @group Controller Class
+* @description class responsible for agent referal page logic
+*/
 public without sharing class AgentReferalFormController {
  
+    /***************
+    * @description returns business account based on query
+    * @param accName account name
+    * @return returns list of business account
+    */
     @AuraEnabled(cacheable=true)
     public static List<Account> getBuninessAccountName(String accName){
         String keywords = '%' +  accName + '%';
         return [Select Id, Name From Account Where Name like:keywords AND RecordTypeId=:Constant.ACCOUNT_BUSINESS_ACCOUNT_RECORDTYPEID AND Type='E&V Licensed Partner' ORDER BY Name ASC LIMIT 5];
     }    
     
+    /***************
+    * @description gets new/exsisting referal code 
+    * @param payload details of customer 
+    * @return referal code
+    */
      @AuraEnabled
     public static String fetchCustomerReferalCode(String payload){
         Map<String,Object> payloadData=(Map<String,Object>) JSON.deserializeUntyped(payload);
@@ -138,13 +152,22 @@ public without sharing class AgentReferalFormController {
     
      
     
-    //retrive person details
+    /***************
+    * @description retrive person details
+    * @param email account email
+    * @return account details
+    */
     private static Account getPersonDetails(String email){
         List<Account> accountDetails=[SELECT Id,Origin__pc ,Gender__pc,Invitation_Code__pc,Inviter_Code_T_C_Date__pc,Type,Phone,Salutation,PersonEmail,LastName,FirstName,Inviter_Code__pc FROM Account WHERE personEmail=:email AND isPersonAccount=true];
 		if(accountDetails.size()>0) return accountDetails.get(0);
         return null;
     }
-	//retrive businees account    
+    /***************
+    * @description retrive businees account    
+    * @param sfId account id
+    * @param iban bank account iban
+    * @return account details
+    */
     private static Account getBusinessDetails(String sfId,String iban){
         if(iban!=null) iban=iban.replaceAll(' ','');
         String businessAccountRecordTypeId=Constant.ACCOUNT_BUSINESS_ACCOUNT_RECORDTYPEID;
@@ -154,7 +177,13 @@ public without sharing class AgentReferalFormController {
         if(busineesAccountList.size()>0) return busineesAccountList.get(0);
         return null;
     }
-	//create business acount    
+    /***************
+    * @description create business acount     
+    * @param accountName name of account
+    * @param bankName bank account name
+    * @param customerIban bank account iban
+    * @return account details
+    */
     private static Account createBusinessAccount(String accountName,String bankName,String customerIban){
         Account businessAccount=new Account();
         businessAccount.Name=accountName;
@@ -167,7 +196,15 @@ public without sharing class AgentReferalFormController {
         insert businessAccount;
         return businessAccount;
     }
-    //create person account
+    /***************
+    * @description create person account
+    * @param firstName user first name
+    * @param lastName user last name
+    * @param email account email
+    * @param salutation salutaion 
+    * @param phone account phone
+    * @return account details
+    */
     private static Account createPersonAccount(String firstName,String lastName,String email,String salutation,String phone){
         Account personAccountAccount=new Account();
         personAccountAccount.FirstName=firstName;

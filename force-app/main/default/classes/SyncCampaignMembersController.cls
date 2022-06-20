@@ -1,3 +1,7 @@
+/***************
+* @group Controller Class
+* @description contorler class for button on campaing to sync all account with same subscription as campaign
+*/
 public with sharing class SyncCampaignMembersController {
     
     

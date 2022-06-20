@@ -1,3 +1,7 @@
+/***************
+* @group Wrapper Class
+* @description SB
+*/
 public class SolarisBankIdentificationAttempt {
     public String id {get;set;} 
     public String result {get;set;} 

@@ -1,5 +1,5 @@
 /***************
-* @group Service
+* @group Service Class
 * @description all subscription related logic is writen here
 */
 public without sharing class SubscriptionService {

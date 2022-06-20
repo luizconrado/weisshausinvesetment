@@ -1,3 +1,7 @@
+/***************
+* @group Test Class
+* @description test class for SolarisbankAdminPanal
+*/
 @isTest
 public class SolarisbankAdminPanalTest {
     

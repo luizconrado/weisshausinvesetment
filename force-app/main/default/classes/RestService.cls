@@ -1,3 +1,7 @@
+/***************
+* @group Utility Class
+* @description helper class to send http request 
+*/
 public inherited  sharing class RestService {
     
     public static HttpResponse get(String endpoint,Map<String,String> headers){

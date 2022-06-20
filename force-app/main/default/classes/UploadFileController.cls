@@ -1,3 +1,7 @@
+/***************
+* @group Controller Class
+* @description controler class for aura component UploadFileAction
+*/
 public class UploadFileController {
     
     

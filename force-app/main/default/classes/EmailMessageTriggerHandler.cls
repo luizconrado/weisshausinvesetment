@@ -1,3 +1,7 @@
+/***************
+* @group Handler Class
+* @description Email Message router
+*/
 public class EmailMessageTriggerHandler  extends TriggerHandler {
     
     private static String solarisbankSupportEmailAddress=Label.Case_Jira_SupportEmail;

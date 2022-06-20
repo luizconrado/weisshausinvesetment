@@ -1,3 +1,7 @@
+/***************
+* @group Utility Class
+* @description helper class to send response from custom api
+*/
 global class RestResponseWrapper {
     global Integer status{set;get;}
     global List<String> error{set;get;}

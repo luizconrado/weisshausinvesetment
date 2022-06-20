@@ -1,3 +1,7 @@
+/***************
+* @group Test Class
+* @description test class for Constant
+*/
 @isTest
 private class ConstantTest {
     @isTest
@@ -85,7 +89,7 @@ private class ConstantTest {
     static void getValues2(){
          System.assert(String.isNotEmpty(Constant.PRICEBOOK_STANDARD_PRICEBOOK_ID));
         System.assert(String.isNotEmpty(Constant.INTEGERATION_USER_ID));
-       // System.assert(String.isNotEmpty(Constant.PRODUCT_INVESTMENT_RECORDTYPEID));
+       System.assert(String.isNotEmpty(Constant.PRODUCT_INVESTMENT_RECORDTYPEID));
         
     }
     

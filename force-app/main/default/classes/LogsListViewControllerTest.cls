@@ -1,3 +1,7 @@
+/***************
+* @group Test Class
+* @description test class for LogsListViewController 
+*/
 @isTest
 public class LogsListViewControllerTest {
     

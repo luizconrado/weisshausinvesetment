@@ -1,3 +1,7 @@
+/***************
+* @group Service Class
+* @description all bank case object related logic is here
+*/
 public with sharing class BankCaseService {
     
     private static Bank_Case_Item__c initiateBankCase(String caseId,String filedName,String recordId,String recordType){

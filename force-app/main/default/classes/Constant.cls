@@ -1,3 +1,7 @@
+/***************
+* @group Utility Class
+* @description holds all constat values used in system
+*/
 public inherited sharing class Constant { 
     
    

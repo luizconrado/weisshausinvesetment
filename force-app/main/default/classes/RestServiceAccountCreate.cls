@@ -1,3 +1,7 @@
+/***************
+* @group Rest Api
+* @description create new banking customer
+*/
 @RestResource(UrlMapping='/Account/Create/*')
 global without sharing class RestServiceAccountCreate {
 

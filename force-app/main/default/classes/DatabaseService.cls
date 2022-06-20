@@ -1,3 +1,7 @@
+/***************
+* @group Utility Class
+* @description dml opertaiopn support class
+*/
 public  inherited  sharing class DatabaseService {
     
     public static List<String> insertRecords(List<SObject> recordsList){

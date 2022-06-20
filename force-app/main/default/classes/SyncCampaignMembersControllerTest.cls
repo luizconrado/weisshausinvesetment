@@ -1,3 +1,7 @@
+/***************
+* @group Test Class
+* @description test class for SyncCampaignMembersController
+*/
 @isTest
 public class SyncCampaignMembersControllerTest {
 

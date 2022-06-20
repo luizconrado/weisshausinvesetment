@@ -1,3 +1,7 @@
+/***************
+* @group Test Class
+* @description test class for Translate
+*/
 @isTest
 public class TranslateTest {
     

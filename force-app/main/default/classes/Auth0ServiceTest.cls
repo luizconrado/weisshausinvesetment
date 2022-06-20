@@ -1,3 +1,7 @@
+/***************
+* @group Test Class
+* @description test class for Auth0ServiceTest
+*/
 @isTest
 private class Auth0ServiceTest {
 

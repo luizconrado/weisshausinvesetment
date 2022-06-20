@@ -1,3 +1,7 @@
+/***************
+* @group Controller Class
+* @description all case object with ev konto record type logic is here
+*/
 public without sharing class DigibankCaseFormController {
     
     @AuraEnabled(Cacheable=true)
@@ -5,6 +9,10 @@ public without sharing class DigibankCaseFormController {
         return Constant.EVKONTOAPPCASE_CASE_RECORDTYPEID;
     }
     
+    /***************
+    * @description creates new ev konto case
+    * @param newCase case details 
+    */
     @AuraEnabled
     public static String createNewEVKnotoCase(Case newCase){
         try{
@@ -21,6 +29,11 @@ public without sharing class DigibankCaseFormController {
         catch(Exception e){throw processError('DigibankCaseFormController','createNewEVKnotoCase','digibankCaseForm','Create EV Konto Case',e);}
     }
     
+    /***************
+    * @description attach file to case
+    * @param caseId case record id
+    * @param contentVersionIds list of cv ids
+    */
     @AuraEnabled
     public static void attachFilesToCase(String caseId,List<String> contentVersionIds){
         try{

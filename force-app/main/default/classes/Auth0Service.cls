@@ -1,3 +1,7 @@
+/***************
+* @group External Service
+* @description all api calls to Auth0 are configured here
+*/
 public inherited  sharing  class Auth0Service {
     private static  String HOST_URL;//='https://digibank-ev.eu.auth0.com';
     private static  String CLIENT_ID;//='wPBXw3DRQz8FZxjddeIXMtbX08CffPv5';
@@ -44,6 +48,11 @@ public inherited  sharing  class Auth0Service {
                 };
                     }
     
+    /***************
+    * @description retirves user details 
+    * @param userAuth0Id id of user
+    * @return user details
+    */
     public static String fetchUserDetails(String userAuth0Id,LogService.ApiCallDetails details){
         Map<String,String> headers=getHeaders(details.sbTenent);
         String userDetailsUri=VERSION+GET_USER_DETAILS_URI;
@@ -61,6 +70,14 @@ public inherited  sharing  class Auth0Service {
         return response.getBody(); 
     }
     
+    /***************
+    * @description updates user details
+    * @param userAuth0Id id of user
+    * @param body request body
+    * @return update response
+    * @example of body
+    * { "user_metadata": { "term_deposit_enabled":'+status+' } }
+    */
     public static String updateUserDetails(String userAuth0Id,String body,LogService.ApiCallDetails details){
         Map<String,String> headers=getHeaders(details.sbTenent);
         String userDetailsUri=VERSION+GET_USER_DETAILS_URI;

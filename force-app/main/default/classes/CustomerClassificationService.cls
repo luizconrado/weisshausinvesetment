@@ -1,5 +1,13 @@
+/***************
+* @group Service Class
+* @description all Customer Classification  related logic is here
+*/
 public with sharing class CustomerClassificationService {
 
+    /***************
+    * @description send system status details to ev
+    * @param customerClassificationId record if of cc 
+    */
     @AuraEnabled
     public static void updateSystemStatusToExternalSystem(String customerClassificationId){
         try{

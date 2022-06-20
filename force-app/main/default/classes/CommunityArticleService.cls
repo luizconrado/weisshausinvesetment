@@ -1,3 +1,7 @@
+/***************
+* @group Controller Class
+* @description class responsible for logic behind component to view top artiles on communities
+*/
 public class CommunityArticleService {
     
     @AuraEnabled(Cacheable=true)

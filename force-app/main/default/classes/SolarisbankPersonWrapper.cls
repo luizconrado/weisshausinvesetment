@@ -1,3 +1,7 @@
+/***************
+* @group Wrapper Class
+* @description SB
+*/
 public class SolarisbankPersonWrapper {
     @AuraEnabled public String id;
     @AuraEnabled public String salutation;

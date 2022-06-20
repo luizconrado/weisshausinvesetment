@@ -1,3 +1,7 @@
+/***************
+* @group Wrapper Class
+* @description SB
+*/
 public class SolarisbankBankAccountWrapper {
     public String id {get;set;} 
     public String iban {get;set;} 

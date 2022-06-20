@@ -1,3 +1,7 @@
+/***************
+* @group Rest Api
+* @description Creates Real Estate Asset Record
+*/
 @RestResource(UrlMapping='/Asset/RealEstate/*')
 global without sharing class RestServiceRealEstate {
     @HttpGet

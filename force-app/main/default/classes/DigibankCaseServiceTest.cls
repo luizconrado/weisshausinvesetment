@@ -1,3 +1,7 @@
+/***************
+* @group Test Class
+* @description test class for DigibankCaseService
+*/
 @isTest
 public class DigibankCaseServiceTest { 
     @isTest

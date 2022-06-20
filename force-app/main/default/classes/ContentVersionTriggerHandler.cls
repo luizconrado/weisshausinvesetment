@@ -1,3 +1,7 @@
+/***************
+* @group Handler Class
+* @description Content Version  trigger router
+*/
 public class ContentVersionTriggerHandler extends TriggerHandler {
      
     protected override void afterInsert() {

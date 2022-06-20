@@ -1,3 +1,7 @@
+/***************
+* @group Service Class
+* @description all logic for opportuntiy object with real estate record type is here
+*/
 public with sharing class OpportuntiyRealEstateService {
     
     

@@ -1,3 +1,7 @@
+/***************
+* @group Controller Class
+* @description contorler class for button on account to sync sb
+*/
 public without sharing  class SyncAccountAndSolarisbankController {
     
     @testVisible

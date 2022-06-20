@@ -1,3 +1,7 @@
+/***************
+* @group Wrapper Class
+* @description SB
+*/
 public class SolarisbankCRPRequestWrapper {
     
     @AuraEnabled public String id; 

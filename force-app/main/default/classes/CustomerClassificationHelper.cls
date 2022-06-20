@@ -1,5 +1,14 @@
+/***************
+* @group Helper Class
+* @description Customer Classification trigger logic
+*/
 public inherited sharing class CustomerClassificationHelper {
     
+    /***************
+    * @description business logic behine approval fields 
+    * @param classificationList cc list
+    * @param oldClassificationMap old cc map
+    */
     public static void processSystemStatusValue(List<Customer_Classification__c> classificationList,Map<Id,Customer_Classification__c> oldClassificationMap){
        Boolean isValidationValid = !Label.Users_Exclusion.contains(Userinfo.getUserName());
         

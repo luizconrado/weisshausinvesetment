@@ -1,5 +1,5 @@
 /***************
-* @group Service
+* @group Service Class
 * @description all lead related logic are here
 */
 public inherited sharing class LeadService {

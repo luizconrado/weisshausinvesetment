@@ -1,3 +1,7 @@
+/***************
+* @group Controller Class
+* @description business logic for aura component LogListView
+*/
 public without sharing class LogsListViewController {
     
     @AuraEnabled

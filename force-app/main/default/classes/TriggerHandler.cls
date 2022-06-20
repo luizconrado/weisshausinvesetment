@@ -1,3 +1,7 @@
+/***************
+* @group Utility Class
+* @description Trigger frame work base class
+*/
 public virtual class TriggerHandler {
     
     // static map of handlername, times run() was invoked

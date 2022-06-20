@@ -1,3 +1,7 @@
+/***************
+* @group Test Class
+* @description test class for CustomerClassificationService
+*/
 @isTest
 public class CustomerClassificationServiceTest {
 

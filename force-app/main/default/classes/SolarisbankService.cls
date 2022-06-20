@@ -1,3 +1,7 @@
+/***************
+* @group External Service
+* @description all api calls to solarisbank  are configured here
+*/
 public inherited  sharing class SolarisbankService {
     
     //private static final String PRODUCTION_URL='https://api.solarisbank.de';

@@ -1,5 +1,5 @@
 /***************
-* @group Service
+* @group Service Class
 * @description all account related logic are here
 */
 

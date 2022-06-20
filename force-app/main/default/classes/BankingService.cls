@@ -1,3 +1,8 @@
+/***************
+* @group Service Class
+* @description all caseobject  with banking case recordtype  related logic is here
+*/
+
 public with sharing class BankingService {
     
     //////////////

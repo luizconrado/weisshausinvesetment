@@ -1,5 +1,5 @@
 /***************
-* @group Service
+* @group Service Class
 * @description loging service class priovides wrapper class for debug and api call logs
 */
 public inherited  sharing class LogService {

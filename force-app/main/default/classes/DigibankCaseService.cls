@@ -1,3 +1,7 @@
+/***************
+* @group Service Class
+* @description all digi bank case record type logic iois here
+*/
 public with sharing class DigibankCaseService { 
     
       @AuraEnabled
@@ -13,6 +17,10 @@ public with sharing class DigibankCaseService {
                 };
     }
     
+    /***************
+    * @description prepares body that is defined by digi bank to rase a case
+    * @param caseId record id of case
+    */
     @AuraEnabled
     public static Map<String,String> fetchBugBody(String caseId){
         String emailBody='';
@@ -63,6 +71,12 @@ public with sharing class DigibankCaseService {
         return new Map<String,String>{'body'=>emailBody,'threadid'=>threadId};
     }
     
+     /***************
+    * @description updates case description with body and subject of email that needs to send to digibank and send mail 
+    * @param caseId record id of case
+    * @param bugBody body of email
+    * @param bugSubject subject of email
+    */
     @AuraEnabled
     public static Boolean prepareBugInfoBody(String caseId,String bugBody,String bugSubject){
         Boolean success=false;

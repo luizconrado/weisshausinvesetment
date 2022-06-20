@@ -1,6 +1,14 @@
+/***************
+* @group Controller Class
+* @description business logic for aura component documentReadRequest
+*/
 public with sharing class DocumentReadControler {
     
     
+    /***************
+    * @description request temprory link from ev to privew fiel for 5 min
+    * @param documentId record id of document object
+    */
     @AuraEnabled
     public static String requestDocumentUrl(String documentId){
         Try{

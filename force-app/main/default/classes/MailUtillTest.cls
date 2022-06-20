@@ -1,3 +1,7 @@
+/***************
+* @group Test Class
+* @description test class for MailUtill 
+*/
 @isTest
 public class MailUtillTest {
     

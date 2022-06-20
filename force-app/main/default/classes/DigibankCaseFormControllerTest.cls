@@ -1,3 +1,7 @@
+/***************
+* @group Test Class
+* @description test class for DigibankCaseFormController
+*/
 @isTest
 public class DigibankCaseFormControllerTest {
     

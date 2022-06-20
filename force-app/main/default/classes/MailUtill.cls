@@ -1,3 +1,7 @@
+/***************
+* @group Utility Class
+* @description helper class to send email form system
+*/
 public  inherited sharing class MailUtill {
     
     //1. returns all index values of merge field refrense in string

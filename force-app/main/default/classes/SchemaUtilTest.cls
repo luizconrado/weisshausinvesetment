@@ -1,5 +1,8 @@
+/***************
+* @group Test Class
+* @description test class for SchemaUtil
+*/
 @isTest
-
 public class SchemaUtilTest {
 
     @isTest

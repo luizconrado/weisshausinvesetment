@@ -1,4 +1,8 @@
-@isTest
+
+/***************
+* @group Test Class
+* @description test class for CommunitySupportBankingLead
+*/@isTest
 public class CommunitySupportBankingLeadTest {
 
     @isTest

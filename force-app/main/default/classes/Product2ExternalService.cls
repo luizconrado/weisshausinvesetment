@@ -1,8 +1,15 @@
+/***************
+* @group Service Class
+* @description all product2 object external calls are here
+*/
 public class Product2ExternalService {
     
     
     
-     
+        /***************
+     * @description sends new product details to ev
+     * @param products list of products
+     */
     public static void sendProductDataToExternalSystem(List<Product2> products){
         
         for(Product2 prod:products){
@@ -62,7 +69,11 @@ public class Product2ExternalService {
         } 
         
     }
-   
+    
+    /***************
+     * @description update product details to ev
+     * @param products list of products
+     */
     public static void  updatedProductDataToExternalSystem(List<Product2> products){
         
         for(Product2 prod:products){

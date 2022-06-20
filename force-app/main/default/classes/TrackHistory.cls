@@ -1,3 +1,7 @@
+/***************
+* @group Helper Class
+* @description Tracking Events tracking and publsing logic
+*/
 public without sharing  class TrackHistory {
 
     public static void captureChanges(List<Tracking_Events__e> changes){

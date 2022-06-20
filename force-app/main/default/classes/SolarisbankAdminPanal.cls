@@ -1,3 +1,7 @@
+/***************
+* @group Controller Class
+* @description class responsible for actions of admin panal for solaris Bank 
+*/
 public class SolarisbankAdminPanal {
 
     @AuraEnabled

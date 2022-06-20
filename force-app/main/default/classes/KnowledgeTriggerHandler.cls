@@ -1,3 +1,7 @@
+/***************
+* @group Handler Class
+* @description Knowledge Trigger router
+*/
 public class KnowledgeTriggerHandler extends TriggerHandler {
     protected override void beforeInsert() {
         List<Knowledge__kav> newRecords=Trigger.new;

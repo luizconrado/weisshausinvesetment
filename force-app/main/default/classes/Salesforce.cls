@@ -1,3 +1,7 @@
+/***************
+* @group Utility Class
+* @description helper class to fetch salesforce realted details
+*/
 public inherited  sharing class Salesforce {
     
     private static final String BASE_URL;

@@ -1,3 +1,7 @@
+/***************
+* @group Controller Class
+* @description contorler class for lwc usageDashboard
+*/
 public with sharing class TrackerDashboardController {
     
     @AuraEnabled(cacheable=true)

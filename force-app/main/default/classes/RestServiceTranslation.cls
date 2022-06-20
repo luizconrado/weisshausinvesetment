@@ -1,6 +1,17 @@
+/***************
+* @group Rest Api
+* @description translates picklist text to DE
+*/
+@Res
 @RestResource(UrlMapping='/Translation/*/*/*')
-//Example - /services/apexrest/Translation/PickList/Knowledge__kav/Type__c
 global class RestServiceTranslation {
+
+    /***************
+    * @description returns json of picklist value in translated to de
+    
+    * @example
+    * /services/apexrest/Translation/PickList/Knowledge__kav/Type__c
+    */
     @HttpGet
     global static void doGet(){
         List<String> errorMessage=new List<String>();

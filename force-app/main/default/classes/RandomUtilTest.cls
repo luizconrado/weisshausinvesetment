@@ -1,3 +1,7 @@
+/***************
+* @group Test Class
+* @description test class for RandomUtil 
+*/
 @isTest
 public class RandomUtilTest {
     

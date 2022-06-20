@@ -1,6 +1,15 @@
+/***************
+* @group Service Class
+* @description all Content Version related logic is here
+*/
 public class ContentVersionService {
     
-     
+
+    
+    /***************
+    * @description sends investment file details to EV and make fields visible to all
+    * @param cvIdList list of content version ids
+    */
     @future(callout=true)
     public static void sendDocumentInfoToEV(List<String> cvIdList){
         //add integeration user as share record

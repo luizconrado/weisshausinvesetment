@@ -7,167 +7,184 @@
     <aura:attribute type="String" name="clockIcon" />
     <aura:attribute type="String" name="homeIcon" />
     <aura:attribute type="String" name="phoneIcon" />
+    <aura:attribute type="String" name="smartmoney" />
+    <aura:attribute type="String" name="commercial" />
+    <aura:attribute type="String" name="yatching" />
+    <aura:attribute type="String" name="charity" />
+    <aura:attribute type="String" name="captial" />
+    <aura:attribute type="String" name="devlopment" />
+    <aura:attribute type="String" name="school" />
+    <aura:attribute type="String" name="aviation" />
+    <aura:attribute type="String" name="gg" />
 
     <div>
-        <div class="community_footer">
-            <div class="community_footer-container">
-                <div class="slds-grid slds-wrap flex-reverse">
-                    <div class="slds-col slds-size_8-of-12  align-center_mobile fotter_item_p_desktop-large">
-                        <div class="slds-grid slds-wrap flex-coloum">
-                            <div class="list_p_large_desktop align-center_mobile">
-                                <p class="community_footer_section-title">
-                                    EV Smart Money Holding GmbH
-                                    <p class="community_footer_section-title_desc">
-                                        Lizenzpartner der Engel &#38; Völkers 
-                                        </p>
-                                        <p  class="community_footer_section-title_desc">
+        <div class="hr_line">
 
-                                        Marken GmbH &#38; Co. KG
-                                    </p>
-                                </p>
-                                <ul class="community_footer_section-list">
-                                    <li>
-                                        <a rel="noreferrer" href="{!v.hostUrl+'/de/immobilien'}" target="_blank">
-                                            Immobilien </a>
-                                    </li>
-                                    <li>
-                                        <a rel="noreferrer" href="{!v.hostUrl+'/de/banking'}" target="_blank">
-                                            Banking
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a rel="noreferrer" href="{!v.hostUrl+'/de/uberuns'}" target="_blank">
-                                            Über uns
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a rel="noreferrer" href="{!v.hostUrl+'/de/support'}" target="_blank">
-                                            Support
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a rel="noreferrer" href="{!v.hostUrl+'/de/news'}" target="_blank">
-                                            News
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="slds-col  align-center_mobile">
-                                <p class="community_footer_section-title">
-                                    Vertragliche Unterlagen
-                                </p>
-                                <ul class="community_footer_section-list">
-                                    <li>
-                                        <a rel="noreferrer" href="{!v.hostUrl+'/de/impressum'}" target="_blank">
-                                            Impressum
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a rel="noreferrer" href="{!v.hostUrl+'/de/verbraucherinformationen'}"
-                                            target="_blank">
-                                            Wichtige Verbraucherinformationen
-                                        </a>
-                                    </li>
-                                </ul>
+            <div class="ev-footer_wrapper">
+                <div class="slds-grid slds-wrap ev-footer_container">
+                    <div
+                        class="slds-col slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_8-of-12 slds-grid slds-wrap">
+                        <div
+                            class="slds-col slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2  ">
 
+                            <p class="ev-headline_text">EV Smart Money Holding
+                                GmbH</p>
+                            <p>
+                            <div class="ev-headline_desctiption">
+                                <p><span>Lizenzpartner der Engel &amp; Völkers <br />Marken GmbH &amp; Co. KG</span></p>
                             </div>
-                        </div>
-                    </div>
-                    <div class="slds-col  slds-col_bump-right  align-center_mobile fotter_item_p_desktop-large">
-                        <div class="text-center text-lg-start">
-                            <p class="community_footer_section-title-contact">
-                                Kontakt
                             </p>
-                            <hr class="community_footer_section-title-contact_divider" />
-                        </div>
-                       
-                        <ul class="community_footer_section-title-contact_list">
-                            <li>
-                                <img class="info-icon" src="{!v.homeIcon}"></img>
-                                <span>
-                                    Klaus-Groth-Straße 3, 14050 Berlin
-                                </span>
-                            </li>
-                        </ul>
-                        <ul class="community_footer_section-title-contact_list">
-                            <li>
-                                <img class="info-icon" src="{!v.emailIcon}"></img>
-                                <span>
-                                    <a href="mailto:contact@ev-smartmoney.com">contact@ev-smartmoney.com</a>
-
-                                </span>
-                            </li>
-                        </ul>
-                        <ul class="community_footer_section-title-contact_list">
-                            <li>
-                                <img class="info-icon" src="{!v.phoneIcon}"></img>
-                                <span>
-                                    <a href="tel:+49 3074395959">
-                                        +49 3074395959
+                            <ul class="ev-footer-list">
+                                <li class="ev-footer-list_item">
+                                    <a class="footer__link " rel="noreferrer" href="{!v.hostUrl}">
+                                        Startseite
                                     </a>
-                                </span>
-                            </li>
-                        </ul>
-                        
-                       
-                        <ul class="community_footer_section-title-contact_list">
-                            <li>
-                                <img class="info-icon" src="{!v.clockIcon}"></img>
-                                <span>Montag - Freitag: 09.00 - 18.00 Uhr</span>
-                            </li>
-                        </ul>
-                    </div>
+                                </li>
+                                <li class="ev-footer-list_item">
+                                    <a class="footer__link " rel="noreferrer" href="{!v.hostUrl}">
+                                        Banking
+                                    </a>
+                                </li>
 
+                                <li class="ev-footer-list_item">
+                                    <a class="footer__link " rel="noreferrer"
+                                        href="https://support.ev-smartmoney.com/s/kontoanmeldung?language=de">
+                                        Support
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div
+                            class="slds-col slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2  ">
+
+                            <p class="ev-headline_text">Vertragliche Unterlagen
+                            </p>
+                            <p>
+                            <div>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                            </div>
+                            </p>
+                            <ul class="ev-footer-list">
+                                <li class="ev-footer-list_item">
+                                    <a class="footer__link " rel="noreferrer" href="{!v.hostUrl+'/imprint'}">
+                                        Impressum
+                                    </a>
+                                </li>
+
+                                <li class="ev-footer-list_item">
+                                    <a class="footer__link " rel="noreferrer" href="{!v.hostUrl}">
+                                        Datenschutz
+                                    </a>
+                                </li>
+                                <li class="ev-footer-list_item">
+                                    <a class="footer__link " rel="noreferrer" href="{!v.hostUrl+'/signup'}">
+                                        AGBs
+                                    </a>
+                                </li>
+                                <li class="ev-footer-list_item">
+                                    <a class="footer__link " rel="noreferrer" href="{!v.hostUrl}">
+                                        Wichtige Verbraucherinformationen
+                                    </a>
+                                </li>
+                                <li class="ev-footer-list_item">
+                                    <a class="footer__link " rel="noreferrer" href="{!v.hostUrl+'/support'}">
+                                        FAQs
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div
+                        class="slds-col slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12">
+
+                        <div class="">
+                            <p class="ev-headline_text">Kontakt</p>
+                            <hr class="ev-footer__divider" />
+                        </div>
+                        <ul class="ev-footer-list">
+                            <li class="ev-footer-list_item">
+                                <img class="info-icon" src="{!v.phoneIcon}"></img>
+                                <span>&nbsp;&nbsp;</span>
+                                <a class="footer__link " href="tel:+49 3074395959">
+                                    +49 3074395959
+                                </a>
+                            </li>
+
+                            <li class="ev-footer-list_item">
+                                <img class="info-icon" src="{!v.homeIcon}"></img>
+                                <span class="">&nbsp;&nbsp;</span>
+                                <span class="footer__link ">Klaus-Groth-Straße 3, 14050 Berlin</span>
+                            </li>
+
+                            <li class="ev-footer-list_item">
+                                <img class="info-icon" src="{!v.emailIcon}"></img>
+                                <span>&nbsp;&nbsp;</span>
+                                <a class="footer__link "
+                                    href="mailto:contact@ev-smartmoney.com">contact@ev-smartmoney.com</a>
+                            </li>
+
+
+
+                            <li class="ev-footer-list_item">
+                                <img class="info-icon" src="{!v.clockIcon}"></img>
+                                <span>&nbsp;&nbsp;</span>
+                                <span class="footer__link ">Montag - Freitag: 09.00 - 18.00 Uhr</span>
+                            </li>
+                        </ul>
+
+                    </div>
                 </div>
                 <div class="footer__container">
                     <div class="container">
                         <div class="footer__logo-row">
                             <div class="footer__logo">
-                                <img src="https://www.datocms-assets.com/49780/1624878403-e-v-logo.png?auto=format"
-                                    alt="Engel &amp; Völkers Logo" width="200" height="60">
+                                <img src="{!v.smartmoney}" alt="Engel &amp; Völkers Smartmoney" width="200" height="60">
                                 </img>
                             </div>
                             <div class="footer__logo">
-                                <img src="https://www.datocms-assets.com/49780/1635413055-e-v-capital.png?auto=format"
-                                    alt="Engel &amp; Völkers Capital" width="202" height="60">
+                                <img src="{!v.commercial}" alt="Engel &amp; Völkers Commercial" width="202" height="60">
                                 </img>
                             </div>
                             <div class="footer__logo">
-                                <img src="https://www.datocms-assets.com/49780/1624878481-e-v-charity.png?auto=format"
-                                    alt="Engel &amp; Völkers Charity" width="204" height="60">
+                                <img src="{!v.yatching}" alt="Engel &amp; Völkers Yatching" width="204" height="60">
                                 </img>
                             </div>
                             <div class="footer__logo">
-                                <img src="https://www.datocms-assets.com/49780/1624878513-e-v-commercial.png?auto=format"
-                                    alt="Engel &amp; Völkers Commercial" width="202" height="60">
+                                <img src="{!v.charity}" alt="Engel &amp; Völkers Charity" width="202" height="60">
                                 </img>
                             </div>
                             <div class="footer__logo">
-                                <img src="https://www.datocms-assets.com/49780/1624878565-e-v-yachting.png?auto=format"
-                                    alt="Engel &amp; Völkers Yachting" width="200" height="60">
+                                <img src="{!v.captial}" alt="Engel &amp; Völkers Capital" width="200" height="60">
 
                                 </img>
                             </div>
                             <div class="footer__logo">
-                                <img src="https://www.datocms-assets.com/49780/1624878537-e-v-polo-school.png?auto=format"
-                                    alt="Engel &amp; Völkers Polo School" width="198" height="60">
+                                <img src="{!v.devlopment}" alt="Engel &amp; Völkers Development" width="198"
+                                    height="60">
                                 </img>
 
                             </div>
                             <div class="footer__logo">
-                                <img src="https://www.datocms-assets.com/49780/1624878589-e-v-gg.png?auto=format"
-                                    alt="Engel &amp; Völkers GG" width="98" height="56">
+                                <img src="{!v.school}" alt="Engel &amp; Völkers Polo School" width="98" height="56">
+                                </img>
+                            </div>
+                            <div class="footer__logo">
+                                <img src="{!v.aviation}" alt="Engel &amp; Völkers Aviation" width="98" height="56">
+                                </img>
+                            </div>
+                            <div class="footer__logo">
+                                <img src="{!v.gg}" alt="Engel &amp; GG" width="98" height="56">
                                 </img>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="community_fotter-logo">
-                 
-                </div>
+
             </div>
         </div>
-
-
     </div>
 </aura:component>

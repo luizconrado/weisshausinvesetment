@@ -9,15 +9,15 @@ export default class Waitinglist_subscription extends LightningElement {
     @api tcLink;
     @api tcLinkText;
 
-    
+
     isTcAccepted;
     emailAddress;
     loaded;
 
 
-    parameters={};
+    parameters = {};
 
-    
+
 
     applyStyle() {
         const style = document.createElement('style');
@@ -66,19 +66,19 @@ export default class Waitinglist_subscription extends LightningElement {
         }
 
     }
-   
+
     rendered = false;
     renderedCallback() {
         if (this.rendered) return;
         this.applyStyle();
-       
+
         this.rendered = true;
     }
 
     connectedCallback() {
+
         this.parameters = this.getQueryParameters();
-       
-        
+
     }
 
     //handler
@@ -109,9 +109,9 @@ export default class Waitinglist_subscription extends LightningElement {
                     "utm_term": this.parameters?.utm_term,
                     "utm_content": this.parameters?.utm_content,
                 };
-               
-                const fullurl=location.href;
-                
+
+                const fullurl = location.href;
+
                 register(
                     {
                         email: this.emailAddress,
@@ -122,16 +122,16 @@ export default class Waitinglist_subscription extends LightningElement {
                     }
                 ).
                     then(result => {
-
-                        that.showToast();
+                        that.showToast("Vielen Dank für Ihre Anmeldung. Bitte prüfen Sie Ihr E-Mail-Postfach und bestätigen Sie Ihre E-Mail-Adresse.");
                     })
                     .catch(error => {
                         console.error('error', error)
+                        that.showToast("Bitte geben Sie die richtige E-Mail-Adresse ein.");
                         that.loaded = false;
-                    }).finally(() =>{ 
+                    }).finally(() => {
                         setTimeout(() => {
                             that.loaded = false
-                        }, 60000); 
+                        }, 60000);
                     })
             }
             catch (err) {
@@ -142,15 +142,15 @@ export default class Waitinglist_subscription extends LightningElement {
     }
 
     //helper
-    showToast() {
-        this.template.querySelector("c-ev-toast").showToast("Vielen Dank für Ihre Anmeldung. Bitte prüfen Sie Ihr E-Mail-Postfach und bestätigen Sie Ihre E-Mail-Adresse.");
+    showToast(text) {
+        this.template.querySelector("c-ev-toast").showToast(text);
     }
     validate() {
         let checkbox = this.template.querySelector('.tc-checkbox');
         let checkboxText = this.template.querySelector('.ev-checkbox_text');
         let tc_link = this.template.querySelector('.tc_link');
-        let email_textbox=this.template.querySelector('.email-textbox');
-         
+        let email_textbox = this.template.querySelector('.email-textbox');
+
         if (this.isTcAccepted) {
             checkbox.classList.remove('ev-checkbox_red');
             checkbox.classList.add('ev-checkbox');
@@ -168,7 +168,7 @@ export default class Waitinglist_subscription extends LightningElement {
         }
 
 
-    
+
 
 
 
@@ -178,7 +178,6 @@ export default class Waitinglist_subscription extends LightningElement {
 
         let params = {};
         let search = (location.search) ? location.search.substring(1) : undefined;
-
         if (search) {
             params = JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g, '":"') + '"}', (key, value) => {
                 return key === "" ? value : decodeURIComponent(value)
@@ -187,4 +186,8 @@ export default class Waitinglist_subscription extends LightningElement {
 
         return params;
     }
+
+   
+
+  
 }

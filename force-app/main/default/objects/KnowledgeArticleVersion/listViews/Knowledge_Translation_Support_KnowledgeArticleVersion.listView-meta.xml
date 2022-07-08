@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Knowledge_Translation_Support_KnowledgeArticleVersion</fullName>
-    <filterScope xsi:nil="true"></filterScope>
-    <label xsi:nil="true"></label>
-</ListView>

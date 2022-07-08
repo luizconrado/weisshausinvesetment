@@ -41,7 +41,7 @@
                                     </a>
                                 </li>
                                 <li class="ev-footer-list_item">
-                                    <a class="footer__link " rel="noreferrer" href="{!v.hostUrl}">
+                                    <a class="footer__link " rel="noreferrer" href="https://banking.ev-smartmoney.com/de">
                                         Banking
                                     </a>
                                 </li>
@@ -75,7 +75,7 @@
                                 </li>
 
                                 <li class="ev-footer-list_item">
-                                    <a class="footer__link " rel="noreferrer" href="{!v.hostUrl}">
+                                    <a class="footer__link " rel="noreferrer" href="{!v.hostUrl+'/datenschutz'}">
                                         Datenschutz
                                     </a>
                                 </li>
@@ -184,6 +184,17 @@
                     </div>
                 </div>
 
+            </div>
+            <div class="footer_disclaimer">
+                <div class="footer_disclainer_text">
+                    Die Dienstleistungen auf den folgenden Seiten bieten wir Ihnen auf eigene Rechnung und auf eigene
+                    Haftung an. Ausgenommen sind Wertpapierdienstleistungen. Auf den folgenden Seiten bieten wir Ihnen
+                    als vertraglich gebundener Vermittler gemäß § 3 Abs. 2 WpIG für Rechnung und unter der Haftung der
+                    NFS Netfonds Financial Service GmbH, Heidenkampsweg 73, 20097 Hamburg (NFS) die Anlagevermittlung (§
+                    2 Abs. 2 Nr. 3 WpIG) von Finanzinstrumenten im Sinne des § 2 Abs. 5 WpIG an. Die NFS ist ein
+                    Wertpapierinstitut und verfügt über die erforderlichen Erlaubnisse der Bundesanstalt für
+                    Finanzdienstleistungsaufsicht (BaFin). Weitere Informationen finden Sie in unserem Impressum.
+                </div>
             </div>
         </div>
     </div>

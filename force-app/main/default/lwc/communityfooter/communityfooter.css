@@ -20,14 +20,14 @@
 } 
 
 .ev-headline_text{
-  font-weight: 500;
+  font-weight: 600;
   color: #444;
-  font-size: .8rem;
+  font-size: 14px;
 
 }
 
 .ev-headline_desctiption{
-  font-size: .8rem;
+  font-size: 14px;
   color: #777;
 }
 
@@ -53,6 +53,8 @@
 }
 .footer__link {
   color: #444!important;
+  font-size: 14px!important;
+  font-weight: 400!important;
   text-decoration: none!important;
 }
 
@@ -62,9 +64,17 @@
   padding-right:4px;
 }
 
-.footer__container{
-  border-bottom: 0.0625rem solid #bcbcbc;
-  margin-bottom:3rem;
+.footer_disclaimer{
+  text-align: center;
+  padding: 2rem 0;
+  background-color: #F0F0F0;
+}
+.footer_disclainer_text{
+  max-width:960px;  
+  margin:auto;
+  font-size: 14px;
+  font-weight: 400;
+  color: #444;
 }
 
 .footer__logo-row {

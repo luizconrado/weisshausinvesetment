@@ -6,6 +6,7 @@ export default class Communityfooter extends LightningElement {
     hostUrl = evsmartmoney_URL
     support = 'https://support.ev-smartmoney.com/s/kontoanmeldung?language=de';
     impressum = this.hostUrl + '/imprint';
+    datenschutz = this.hostUrl + '/datenschutz';
     agb = this.hostUrl + '/signup';
 
     footerlogo = 'https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000nLMT&oid=00D5I000002GOw0';

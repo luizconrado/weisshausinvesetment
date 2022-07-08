@@ -145,6 +145,11 @@
     
 }
 
+.ev-contactUs-checkbox_text a{
+    color: #777777;
+    text-decoration: underline;
+}
+
 .ev-contactUs-button{
     margin-top: 44px;
     padding-bottom:40px;

@@ -16,7 +16,7 @@ New Css
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-    max-width:960px; 
+    max-width:960px;  
     
 }
 .THIS  .ev-footer_container{ 
@@ -26,14 +26,14 @@ New Css
 }
 
 .THIS .ev-headline_text{
-    font-weight: 500;
+    font-weight: 600;
     color: #444;
-    font-size: .8rem;
+    font-size: 14px;
 
 }
 
 .THIS .ev-headline_desctiption{
-    font-size: .8rem;
+    font-size: 14px;
     color: #777;
 }
 
@@ -60,6 +60,8 @@ New Css
 .THIS .footer__link {
     color: #444;
     text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
 }
 
 .THIS .info-icon{
@@ -68,10 +70,18 @@ New Css
     padding-right:4px;
 }
 
-.THIS .footer__container{
-    border-bottom: 0.0625rem solid #bcbcbc;
-    margin-bottom:3rem;
+.THIS .footer_disclaimer{
+    text-align: center;
+    padding: 2rem 0;
+    background-color: #F0F0F0;
 }
+.THIS .footer_disclainer_text{
+    max-width:960px;  
+    margin:auto;
+    font-size: 14px;
+    font-weight: 400;
+    color: #444;
+} 
 
 .THIS .footer__logo-row {
     align-items: center;

@@ -174,21 +174,19 @@ public without sharing class SubscriptionService {
     /***************
     * @description creates acccount and subscripiton record
     * @param objectName the name of the object to look up
-    * @return success or failur
     */
     @AuraEnabled
-    public static boolean registerSubscription(String email,String productName,String origin,String website,Map<String,String> utmParameters){
-        Boolean status=false;
+    public static void registerSubscription(String email,String productName,String origin,String website,Map<String,String> utmParameters){
+        
         try{
             AccountService.service service=new AccountService.service();
             service.createAccountAndNewsletter(email, productName, origin, website, utmParameters, Constant.ACCOUNT_PERSON_INVESTMENT_RECORDTYPEID);
-        	status = true;
         }
         catch(Exception e){
             logError(e,null,'Account','waitinglist_subscription','waitinglist_subscription','Subscribe');
-            status = false;
+        	throw new AuraHandledException(e.getMessage());
         }
-        return status;
+        
         
     }
 

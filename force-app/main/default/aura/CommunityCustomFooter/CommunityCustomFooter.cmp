@@ -41,7 +41,7 @@
                                     </a>
                                 </li>
                                 <li class="ev-footer-list_item">
-                                    <a class="footer__link " rel="noreferrer" href="https://banking.ev-smartmoney.com/de">
+                                    <a class="footer__link " rel="noreferrer" href="{!v.hostUrl}">
                                         Banking
                                     </a>
                                 </li>
@@ -75,7 +75,7 @@
                                 </li>
 
                                 <li class="ev-footer-list_item">
-                                    <a class="footer__link " rel="noreferrer" href="{!v.hostUrl+'/datenschutz'}">
+                                    <a class="footer__link " rel="noreferrer" href="{!v.hostUrl}">
                                         Datenschutz
                                     </a>
                                 </li>

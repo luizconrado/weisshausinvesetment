@@ -17,7 +17,7 @@ public class CaseTriggerHandler extends TriggerHandler {
         }
         
         if(personAccountExternalIds.size()>0) externalIdAndAccountMap=getPersonAccountMap(personAccountExternalIds);
-        
+        System.debug('KING '+externalIdAndAccountMap);
         attachAccountAndContactToCase(newCaseList,externalIdAndAccountMap);
         
     }
@@ -30,8 +30,8 @@ public class CaseTriggerHandler extends TriggerHandler {
         Map<String,Account> externalIdAndAccountMap=new Map<String,Account>();
         List<Account> personAccountList=[SELECT id,Auth0_ID__c,EVSM_Auth0_ID__c,PersonContactId FROM ACCOUNT WHERE IsPersonAccount =true AND (Auth0_ID__c IN:personAccountExternalIds OR EVSM_Auth0_ID__c IN:personAccountExternalIds)];
         for(Account personAccount:personAccountList){
-            if(personAccount.EVSM_Auth0_ID__c!=null) externalIdAndAccountMap.put(personAccount.Auth0_ID__c,personAccount);
-            if(personAccount.Auth0_ID__c!=null) externalIdAndAccountMap.put(personAccount.EVSM_Auth0_ID__c,personAccount);
+            if(personAccount.EVSM_Auth0_ID__c!=null) externalIdAndAccountMap.put(personAccount.EVSM_Auth0_ID__c,personAccount);
+            if(personAccount.Auth0_ID__c!=null) externalIdAndAccountMap.put(personAccount.Auth0_ID__c,personAccount);
         }
         return externalIdAndAccountMap;
     }

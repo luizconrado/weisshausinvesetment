@@ -1,4 +1,3 @@
-
 /***************
 * @group Test Class
 * @description test class for CommunitySupportBankingLead

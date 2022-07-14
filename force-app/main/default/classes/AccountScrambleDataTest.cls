@@ -52,7 +52,7 @@ public class AccountScrambleDataTest {
         personAccount.PersonBirthdate=d.addYears(-100); 
         
         personAccount.Terms_Conditions_Signed_At__c=DateTime.now();
-        personAccount.PersonEmail='asdfg@asdf.com';
+        personAccount.PersonEmail='asdfgh@asdf.com';
         insert personAccount;
         update personAccount;
         Test.startTest();

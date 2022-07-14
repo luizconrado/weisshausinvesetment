@@ -37,6 +37,28 @@ public class EVExternalServiceTest {
     }
     
     @isTest
+    static void requestInvestmentDocumentUrlTest(){
+        Test.setMock(HttpCalloutMock.class, new EVMockResponse());
+        Account a=TestDataFactory.getPersonInvestmentAccount(true);
+        Opportunity o=TestDataFactory.getOpportunityInvestment(a.id, true);
+        
+        Document__c doc=TestDataFactory.getDocumentForInvestmentOpportuntiy(o.Id,true);
+        User u=TestDataFactory.getUser('Integration');
+        
+        Test.startTest();
+        System.runAs(u){
+            try{
+            DocumentReadControler.requestDocumentUrl(doc.id);
+            }
+            Catch(Exception e){
+            	System.debug('Error '+e.getMessage());    
+            }
+        }
+        Test.stopTest();
+        
+    }
+    
+    @isTest
     static void sendProductsInfoTest(){
         Test.setMock(HttpCalloutMock.class, new Product2ServiceTest.ProductMockResponse());
         Account a=TestDataFactory.getPersonAccount(true);

@@ -13,10 +13,29 @@ public with sharing class DocumentReadControler {
     public static String requestDocumentUrl(String documentId){
         Try{
            
-            Document__c document=[SELECT RecordTypeId,Read_At__c,Last_Viewed_User__c, Status__c, Requested_At__c, Ticket_Number__c, Id,Account__r.Auth0_Id__c, Account__c,Account__r.Solarisbank_Tenent__c FROM Document__c WHERE Id=:documentId];
+            Document__c document=[SELECT Opportunity__r.External_id__c,Opportunity__r.Account.Solarisbank_Tenent__c,Opportunity__r.Account.EVSM_Auth0_Id__c,RecordTypeId,Read_At__c,Last_Viewed_User__c, Status__c, Requested_At__c, Ticket_Number__c, Id,Account__r.Auth0_Id__c, Account__c,Account__r.Solarisbank_Tenent__c FROM Document__c WHERE Id=:documentId];
+            String accountAuthoId='';
+            String tenent='';
+            if(document.RecordTypeId==Constant.DOCUMENT_ACCOUNT_RECORDTYPEID) accountAuthoId = document.Account__r.Auth0_Id__c;
+            else if(document.RecordTypeId==Constant.DOCUMENT_OPPORTUNTIY_RECORDTYPEID) accountAuthoId = document.Opportunity__r.Account.EVSM_Auth0_Id__c;
             
-            LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(documentId,'Document__c',document.Account__r.Solarisbank_Tenent__c);
-            String documentResponseBody = EVExternalService.fetchDocumentUrl(document.Account__r.Auth0_Id__c, document.Ticket_Number__c, apiCallDetails);
+            if(document.RecordTypeId==Constant.DOCUMENT_ACCOUNT_RECORDTYPEID) tenent = document.Account__r.Solarisbank_Tenent__c;
+            else if(document.RecordTypeId==Constant.DOCUMENT_OPPORTUNTIY_RECORDTYPEID) tenent = document.Opportunity__r.Account.Solarisbank_Tenent__c;
+            
+            
+            
+           
+            
+            LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(documentId,'Document__c',tenent);
+            
+            
+            
+            String documentResponseBody = '';
+            
+            if(document.RecordTypeId==Constant.DOCUMENT_ACCOUNT_RECORDTYPEID) documentResponseBody= EVExternalService.fetchDocumentUrl(accountAuthoId, document.Ticket_Number__c, apiCallDetails);    
+            else if(document.RecordTypeId==Constant.DOCUMENT_OPPORTUNTIY_RECORDTYPEID) documentResponseBody = EVExternalService.fetchInvestmentDocumentUrl(document.Opportunity__r.External_id__c,accountAuthoId, document.Ticket_Number__c, apiCallDetails); 
+            
+            
             
             document.Requested_At__c=DateTime.now();
             document.Status__c='REQUESTED';

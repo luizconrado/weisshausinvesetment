@@ -13,8 +13,9 @@ public class EVExternalService {
     private static String CUSTOMER_CLASSIFICATION_UPDATE_DETAILS='customers/:auth0Id/categorization';
     
     private static String INVESTMENT_UPDATE_DETAILS='investments/:ExternalId';
-    private static String INVESTMENT_DOCUMENT_DETAILS='investments/:ExternalId/documents';
   
+    private static String INVESTMENT_DOCUMENT_DETAILS='investments/:ExternalId/documents';
+  	private static String INVESTMENT_DOCUMENT_TEMP_LINK='investments/:ExternalId/customers/:auth0Id/documents/:TicketId';
     
     private static void getApiDetails(String tenentType){
         
@@ -45,6 +46,26 @@ public class EVExternalService {
     public static String fetchDocumentUrl(String userAuth0Id,String ticketNumber,LogService.ApiCallDetails details){
         Map<String,String> headers=getHeaders(details.sbTenent);
         String userDetailsUri=DOCUMENT_URI;
+        userDetailsUri=userDetailsUri.replace(':auth0Id', EncodingUtil.urlEncode(userAuth0Id,'UTF-8'));
+        userDetailsUri=userDetailsUri.replace(':TicketId', EncodingUtil.urlEncode(ticketNumber,'UTF-8'));
+        
+        HttpResponse response=RestService.get(HOST_URL+userDetailsUri,headers);
+        details.addRequestDetails(HOST_URL+userDetailsUri,'GET','',response.getBody(),response.getStatusCode());
+        LogService.LogApiCall(details);
+        if(response.getStatusCode()>300) throw new RestService.RestCallException(response.getStatus());
+        return response.getBody(); 
+    }
+    
+    /***************
+    * @description request temp document url whihc allows user to view docuemnt referd in document record
+    * @param userAuth0Id user auth0 id
+    * @param ticketNumber docuemnt ticket number
+    * @return temp document refrence url
+    */
+    public static String fetchInvestmentDocumentUrl(String oppExternalId,String userAuth0Id,String ticketNumber,LogService.ApiCallDetails details){
+        Map<String,String> headers=getHeaders(details.sbTenent);
+        String userDetailsUri=INVESTMENT_DOCUMENT_TEMP_LINK;
+        userDetailsUri=userDetailsUri.replace(':ExternalId', EncodingUtil.urlEncode(oppExternalId,'UTF-8'));
         userDetailsUri=userDetailsUri.replace(':auth0Id', EncodingUtil.urlEncode(userAuth0Id,'UTF-8'));
         userDetailsUri=userDetailsUri.replace(':TicketId', EncodingUtil.urlEncode(ticketNumber,'UTF-8'));
         
@@ -122,7 +143,7 @@ public class EVExternalService {
     * @param body - attachment file details
     * @return success body
     */
-    public static String sendInvestmentDocumentInformation(String externalId,String body,LogService.ApiCallDetails details){
+     public static String sendInvestmentDocumentInformation(String externalId,String body,LogService.ApiCallDetails details){
         
         Map<String,String> headers=getHeaders(details.sbTenent);
         
@@ -148,7 +169,6 @@ public class EVExternalService {
         Map<String,String> headers=getHeaders(details.sbTenent);
         String invDetailsUri=CUSTOMER_CLASSIFICATION_UPDATE_DETAILS;
         invDetailsUri=invDetailsUri.replace(':auth0Id', EncodingUtil.urlEncode(customerId,'UTF-8'));
-        //invDetailsUri=invDetailsUri.replace(':ExternalId', EncodingUtil.urlEncode(externalId,'UTF-8'));
         HttpResponse response=RestService.patch(HOST_URL+invDetailsUri,headers,body);
         details.addRequestDetails(HOST_URL+invDetailsUri,'PATCH',body,response.getBody(),response.getStatusCode()); 
         details.addComment(JSON.serialize(headers));

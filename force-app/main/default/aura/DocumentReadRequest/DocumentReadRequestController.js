@@ -15,9 +15,13 @@
             let data = response.getReturnValue();
             if (state === "SUCCESS") { 
                 let pdfFiledDetails=JSON.parse(data);
-                //window.btoa(pdfFiledDetails.pdfFile)
-                component.set('v.pdfUrlBase64',pdfFiledDetails.pdfFile+'#toolbar=0');
-                
+             
+                if(pdfFiledDetails.pdfFile){
+                	component.set('v.pdfUrlBase64',pdfFiledDetails.pdfFile+'#toolbar=0');
+                }
+                else if(pdfFiledDetails.url){
+                    component.set('v.pdfUrlBase64',pdfFiledDetails.url+'#toolbar=0');
+                }
                 component.set('v.loading',false);
                 component.set('v.showDisclaimer',false);
                 component.set('v.showPdf',true);

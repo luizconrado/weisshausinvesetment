@@ -221,7 +221,7 @@ public with Sharing class AccountService {
                         newSubscriptionProduct.Subscription_Status__c='Awaiting Confirmation';
                         newSubscriptionProduct.Type__c=subProductName;
                         newSubscriptionProduct.Account__c=accountDetails.get(0).Id;
-                        newSubscriptionProduct.Source__c=website;
+                        newSubscriptionProduct.Source__c=trimString(website,254);
                         newSubscriptionProduct.Send_Mail__c=true;
                         newSubscriptionProduct.recordTypeId=Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID;
                         newSubscriptionProduct.Contact__c=(c.size()>0)?c.get(0).Id:'';
@@ -256,7 +256,7 @@ public with Sharing class AccountService {
                     Subscription__c newSubscriptionProduct=new Subscription__c();
                     newSubscriptionProduct.Subscription_Status__c='Awaiting Confirmation';
                     newSubscriptionProduct.Type__c=subProductName;
-                    newSubscriptionProduct.Source__c=website;
+                    newSubscriptionProduct.Source__c=trimString(website,254);
                     newSubscriptionProduct.Account__c=accountLead.Id;
                     newSubscriptionProduct.Contact__c=(c.size()>0)?c.get(0).Id:'';
                     newSubscriptionProduct.Send_Mail__c=true;
@@ -270,5 +270,10 @@ public with Sharing class AccountService {
 
                 return accountId;
             }
+        
+        private  String trimString(String str ,Integer length){
+            if(str!=null && str.trim().length()>length) str = str.trim().substring(0, length);
+            return str;
+        }
     }
 }

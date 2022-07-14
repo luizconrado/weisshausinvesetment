@@ -47,7 +47,6 @@ global without sharing  class RestServiceAccountSMICreate {
         Account newAccount=null;
         Subscription__c subscriptionRecord=null;
         Account newPersonAccount=(Account)  JSON.deserialize(body, Account.class);
-        System.debug('KING '+newPersonAccount.EVSM_Auth0_ID__c);
         if(newPersonAccount.EVSM_Auth0_ID__c==null || String.isEmpty(newPersonAccount.EVSM_Auth0_ID__c)){
             res.statusCode = 404;
             res.responseBody=RestResponseWrapper.setError(res.statusCode,new List<String>{'EVSM Auth0 Id  not found : '+newPersonAccount.LastName});
@@ -157,6 +156,17 @@ global without sharing  class RestServiceAccountSMICreate {
         
         if(Salesforce.isSandbox && personAccountList.size()==0) newAccount.Solarisbank_Tenent__c='Sandbox';
         
+        KYC_Detail__c emptyKycRecord=null;
+        List<KYC_Detail__c> kycDetails=[SELECT id FROM KYC_Detail__c WHERE External_Id__c=:newAccount.EVSM_Auth0_ID__c AND Method__c='KYC Flow'];
+        if(kycDetails.size()==0){
+            emptyKycRecord=new KYC_Detail__c();
+            emptyKycRecord.External_Id__c=newAccount.EVSM_Auth0_ID__c;
+            emptyKycRecord.State__c = emptyKycRecord.Status__c = 'Pending';
+            emptyKycRecord.Method__c='KYC Flow';
+        }
+        
+        
+        
         try{
             
 
@@ -173,6 +183,10 @@ global without sharing  class RestServiceAccountSMICreate {
                 
                 upsert subscriptionRecord;
             } 
+            if(emptyKycRecord!=null){
+                emptyKycRecord.Account__c=newAccount.id;
+                insert emptyKycRecord;
+            }
             successMessage.add(newAccount.id);
             res.statusCode = 201;
             res.responseBody=RestResponseWrapper.setSuccess(res.statusCode,successMessage);

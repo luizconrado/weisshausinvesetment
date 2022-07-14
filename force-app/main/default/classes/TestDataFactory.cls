@@ -198,7 +198,10 @@ public class TestDataFactory {
     }
     
     public static Document__c getDocumentForAccount(String accountId,Boolean doInsert){
-        return generateDocumentRecord(Constant.DOCUMENT_ACCOUNT_RECORDTYPEID, accountId, doInsert);
+        return generateDocumentRecord(Constant.DOCUMENT_ACCOUNT_RECORDTYPEID, accountId,null, doInsert);
+    } 
+    public static Document__c getDocumentForInvestmentOpportuntiy(String oppId,Boolean doInsert){
+        return generateDocumentRecord(Constant.DOCUMENT_OPPORTUNTIY_RECORDTYPEID,null, oppId, doInsert);
     } 
     
     public static Log__c getDebugLog(String recordId,Boolean doInsert){
@@ -422,10 +425,11 @@ Generators
         return km;	
     }
     
-    private static Document__c generateDocumentRecord(String docRecordTypeId,String accountId,Boolean doInsert){
+    private static Document__c generateDocumentRecord(String docRecordTypeId,String accountId,String oppId,Boolean doInsert){
         Document__c doc=new Document__c();
         doc.RecordTypeId=docRecordTypeId;
-        doc.Account__c=accountId;
+        if(accountId!=null)doc.Account__c=accountId;
+        if(oppId!=null)doc.Opportunity__c=oppId;
         doc.Status__c='Created';
         doc.Name=RandomUtil.randomString(6);
         doc.Ticket_Number__c=RandomUtil.randomString(6);

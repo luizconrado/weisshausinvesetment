@@ -12,6 +12,7 @@ public class TestDataFactoryTest {
         Account personAccount=TestDataFactory.getPersonInvestmentAccount(true);
         Bank_Account__c bankAccount=TestDataFactory.getBankAccount(personAccount.Id, true);
         Lead lead=TestDataFactory.getWebLead(true);
+        TestDataFactory.getLeadBankingCustomer(true);
         Campaign camp=TestDataFactory.getStandardCampaign(true);
         Contact con=TestDataFactory.getContact(true);
         
@@ -22,7 +23,8 @@ public class TestDataFactoryTest {
         TestDataFactory.getReservation(bankAccount.id,true);
         TestDataFactory.getUser('Integration');
         TestDataFactory.getSeziure(personAccount.id,true);
-        TestDataFactory.getContentVersion(true);
+        Contentversion cv=TestDataFactory.getContentVersion(true);
+        TestDataFactory.linkContentDocumentToRecord(cv.id,personAccount.id);
         TestDataFactory.getDocumentForAccount(personAccount.id,true);
         
     }
@@ -58,6 +60,12 @@ public class TestDataFactoryTest {
         TestDataFactory.getCaseInvestment(personAccount.id, true);
         
     }
+    @isTest
+    public static void getClassificationGenerators(){
+        Account personAccount=TestDataFactory.getPersonAccount(true);
+         TestDataFactory.getProfessionalCustomerClassfication(personAccount.id,true);
+         TestDataFactory.getSemiProfessionalCustomerClassfication(personAccount.id,true);
+    }
     
     @isTest
     public static void getBankCaseItemGeneratorsTest(){
@@ -76,6 +84,7 @@ public class TestDataFactoryTest {
         Asset asset=TestDataFactory.getAssetRealEstate(personAccount.id, c.Id,true);
         TestDataFactory.getAssetLink(asset.id,true);
         TestDataFactory.getAssetEvaluation(asset.id, true);
+        TestDataFactory.getInvestmentNewsletterSubscription(personAccount.id,c.id,true);
         
     }
     
@@ -86,7 +95,12 @@ public class TestDataFactoryTest {
         TestDataFactory.getDebugLog(personAccount.id,true);
         TestDataFactory.getChangeHistoryLog(personAccount.id,true);
         TestDataFactory.getViewHistoryLog(personAccount.id,true);
+        TestDataFactory.getIntegerationLog(personAccount.id,true);
         
-        
+    }
+    @isTest
+    static void getKmGenerators(){
+        TestDataFactory.getKnowledgeFAQRecord(true);
+        TestDataFactory.getKnowledgeSBRecord(true);
     }
 }

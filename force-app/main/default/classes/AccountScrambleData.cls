@@ -1,7 +1,3 @@
-/***************
-* @group Queueable Class
-* @description Class responsible for scrambleing data on fields 
-*/
 public without sharing class AccountScrambleData implements Queueable {
     List<String> accountIdList=new List<String>();
     final String PLACEHOLDER='[SCRAMBLEDATA]';
@@ -13,7 +9,7 @@ public without sharing class AccountScrambleData implements Queueable {
     final String userForHiddineRole{private set;get{
         if(userForHiddineRole==null){
             List<User> users=[SELECT Id, UserRoleId FROM User WHERE UserRole.Name=:USER_ROLE AND isActive=true];
-            userForHiddineRole=users.get(0).Id;
+            if(users.size()>0) userForHiddineRole=users.get(0).Id;
         }
         return userForHiddineRole;
     }} 
@@ -39,11 +35,13 @@ public without sharing class AccountScrambleData implements Queueable {
                 List<Sobject> dbResult=queryResult.get(objectName);
                 List<DescribeFieldResult> fieldsToScramble=scrambleFields.get(objectName);
                 for(Sobject obj:dbResult){
+                    /* we dont have this user due to license constrains
                     if(objectName=='Account'){
                         if( userForHiddineRole!=null){
                             obj.put('OwnerId',userForHiddineRole);
                         }
-                    }  
+                    } 
+					*/
                     
                     for(DescribeFieldResult field:fieldsToScramble){
                         if(obj.get(field.getName()) !=null){

@@ -240,7 +240,12 @@ public inherited sharing class Constant {
             if(DOCUMENT_ACCOUNT_RECORDTYPEID==null)DOCUMENT_ACCOUNT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Account_Documents', 'Document__c');
             return DOCUMENT_ACCOUNT_RECORDTYPEID;
         }}
-    
+
+    public static final String DOCUMENT_OPPORTUNTIY_RECORDTYPEID{
+        private set;get{
+            if(DOCUMENT_OPPORTUNTIY_RECORDTYPEID==null)DOCUMENT_OPPORTUNTIY_RECORDTYPEID=SchemaUtil.getRecordTypeId('Opportunity_Documents', 'Document__c');
+            return DOCUMENT_OPPORTUNTIY_RECORDTYPEID;
+        }}    
     public static final String PRODUCT_INVESTMENT_RECORDTYPEID{
         private set;get{
             if(PRODUCT_INVESTMENT_RECORDTYPEID==null)PRODUCT_INVESTMENT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Investment_Product', 'Product2');

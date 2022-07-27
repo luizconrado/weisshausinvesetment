@@ -1,10 +1,15 @@
 import { LightningElement, wire, api } from 'lwc';
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import unsubscribeFromProduct from '@salesforce/apex/SubscriptionService.updateSubscriptionToUnSubscribed';
+import unsubscribeLeadFromProduct from '@salesforce/apex/SubscriptionService.updateLeadSubscriptionToUnSubscribed';
+
 import checkUnsubscribedStatus from '@salesforce/apex/SubscriptionService.checkUnsubscribedStatus';
+import checkUnsubscribedLeadStatus from '@salesforce/apex/SubscriptionService.checkUnsubscribedLeadStatus';
+
+
 import allOptions from '@salesforce/apex/SubscriptionService.getUnsubscribeOptions';
 import errorMsg from '@salesforce/label/c.form_error_msg';
- 
+
 
 
 
@@ -16,11 +21,11 @@ export default class WaitingList_unsubscribe extends LightningElement {
     @api headertext = '';
     @api buttontext = '';
     @api successtext = ''
-
+    @api object = 'Account';
     //labels
     reasonForUnsubscribeText = 'Grund für die Abmeldung';
     requiredFieldText = 'Sie haben sich erfolgreich abgemeldet';
- 
+
     parameters;
     emailAddress;
     rendered = false;
@@ -53,16 +58,30 @@ export default class WaitingList_unsubscribe extends LightningElement {
         this.emailAddress = this.parameters.email;
         this.productname = (this.parameters.product) ? this.parameters.product.replace(/\+/g, ' ') : '';
         if (this.emailAddress && this.productname) {
-            checkUnsubscribedStatus({
-                email: this.emailAddress,
-                product: this.productname
-            }).then(data => {
-                if (data === false) {
-                    this.showform = false;
-                    setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 10000);
-                }
+            if (this.object == 'Account') {
+                checkUnsubscribedStatus({
+                    email: this.emailAddress,
+                    product: this.productname
+                }).then(data => {
+                    if (data === false) {
+                        this.showform = false;
+                        setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 10000);
+                    }
 
-            })
+                })
+            }
+            else if (this.object == 'Lead') {
+                checkUnsubscribedLeadStatus({
+                    email: this.emailAddress,
+                    product: this.productname
+                }).then(data => {
+                    if (data === false) {
+                        this.showform = false;
+                        setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 10000);
+                    }
+
+                })
+            }
         }
     }
     applyStyle() {
@@ -118,17 +137,32 @@ export default class WaitingList_unsubscribe extends LightningElement {
                 "reason": this.reason,
 
             };
-            unsubscribeFromProduct(params)
-                .then(result => {
-                    this.showEvToast('erfolgreich abgemeldet');
+            if (this.object == 'Account') {
+                unsubscribeFromProduct(params)
+                    .then(result => {
+                        this.showEvToast('erfolgreich abgemeldet');
+                        this.loaded = false;
+                        this.showform = false;
+                        // setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 4000);
+                    })
+                then(error => {
+                    this.showToast('Error', errorMsg, 'error');
                     this.loaded = false;
-                    this.showform=false;
-                   // setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 4000);
                 })
-            then(error => {
-                this.showToast('Error', errorMsg, 'error');
-                this.loaded = false;
-            })
+            }
+            else if (this.object == 'Lead') {
+                unsubscribeLeadFromProduct(params)
+                    .then(result => {
+                        this.showEvToast('erfolgreich abgemeldet');
+                        this.loaded = false;
+                        this.showform = false;
+                        // setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 4000);
+                    })
+                then(error => {
+                    this.showToast('Error', errorMsg, 'error');
+                    this.loaded = false;
+                })
+            }
         }
 
     }

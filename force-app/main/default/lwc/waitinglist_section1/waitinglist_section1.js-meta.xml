@@ -20,6 +20,10 @@
             <property name="tcLink" type="String"  />
             <property name="showSubscribeButton" type="Boolean"  />
             
+            <property name="object"
+            type="String" datasource="Account,Lead" default="Account"
+            
+        />
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

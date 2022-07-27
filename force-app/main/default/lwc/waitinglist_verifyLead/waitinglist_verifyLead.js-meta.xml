@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>54.0</apiVersion>
+    <apiVersion>55.0</apiVersion>
     <isExposed>true</isExposed>
-    <masterLabel>MLPage Confrim Subscription</masterLabel>
+    <masterLabel>MLPage Confrim Lead Subscription</masterLabel>
     <targets>
+        <target>lightning__Tab</target>
         <target>lightningCommunity__Page</target>
         <target>lightningCommunity__Default</target>
     </targets>
@@ -11,9 +12,6 @@
         <targetConfig targets="lightningCommunity__Default">
             <property name="headerText" type="String"  />
             <property name="headerDescription" type="String"  />
-            <property name="object"
-            type="String" datasource="Account,Lead" default="Account"
-            ></property>
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

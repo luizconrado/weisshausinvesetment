@@ -1,0 +1,10 @@
+[
+    {
+        "sobject": "Scramble_Configuration__c",
+        "saveRefs": true,
+        "resolveRefs": false,
+        "files": [
+            "scramble-config-Scramble_Configuration__cs.json"
+        ]
+    }
+]

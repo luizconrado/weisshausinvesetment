@@ -1,0 +1,224 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef1"
+            },
+            "Name": "KYC_Detail_Birthday__c",
+            "Field__c": "Birthday__c",
+            "IsReference__c": false,
+            "Object__c": "KYC_Detail__c"
+        },
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef2"
+            },
+            "Name": "KYC_Detail_Street__c",
+            "Field__c": "Street__c",
+            "IsReference__c": false,
+            "Object__c": "KYC_Detail__c"
+        },
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef3"
+            },
+            "Name": "KYC_Detail_Country_Of_Document__c",
+            "Field__c": "Country_Of_Document__c",
+            "IsReference__c": false,
+            "Object__c": "KYC_Detail__c"
+        },
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef4"
+            },
+            "Name": "KYC_Detail_Phone__c",
+            "Field__c": "Phone__c",
+            "IsReference__c": false,
+            "Object__c": "KYC_Detail__c"
+        },
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef5"
+            },
+            "Name": "KYC_Detail_Document_Number__c",
+            "Field__c": "Document_Number__c",
+            "IsReference__c": false,
+            "Object__c": "KYC_Detail__c"
+        },
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef6"
+            },
+            "Name": "KYC_Detail_Last_Name__c",
+            "Field__c": "Last_Name__c",
+            "IsReference__c": true,
+            "Object__c": "KYC_Detail__c"
+        },
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef7"
+            },
+            "Name": "KYC_Detail_Zipcode__c",
+            "Field__c": "Zipcode__c",
+            "IsReference__c": false,
+            "Object__c": "KYC_Detail__c"
+        },
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef8"
+            },
+            "Name": "KYC_Detail_Birth_Place__c",
+            "Field__c": "Birth_Place__c",
+            "IsReference__c": false,
+            "Object__c": "KYC_Detail__c"
+        },
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef9"
+            },
+            "Name": "KYC_Detail_Account__c",
+            "Field__c": "Account__c",
+            "IsReference__c": true,
+            "Object__c": "KYC_Detail__c"
+        },
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef10"
+            },
+            "Name": "KYC_Detail_Birth_Name__c",
+            "Field__c": "Birth_Name__c",
+            "IsReference__c": false,
+            "Object__c": "KYC_Detail__c"
+        },
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef11"
+            },
+            "Name": "Account_FirstName",
+            "Field__c": "FirstName",
+            "IsReference__c": false,
+            "Object__c": "Account"
+        },
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef12"
+            },
+            "Name": "KYC_Detail_City__c",
+            "Field__c": "City__c",
+            "IsReference__c": false,
+            "Object__c": "KYC_Detail__c"
+        },
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef13"
+            },
+            "Name": "KYC_Detail_Document_Type__c",
+            "Field__c": "Document_Type__c",
+            "IsReference__c": false,
+            "Object__c": "KYC_Detail__c"
+        },
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef14"
+            },
+            "Name": "KYC_Detail_First_Name__c",
+            "Field__c": "First_Name__c",
+            "IsReference__c": false,
+            "Object__c": "KYC_Detail__c"
+        },
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef15"
+            },
+            "Name": "Account_Phone",
+            "Field__c": "Phone",
+            "IsReference__c": false,
+            "Object__c": "Account"
+        },
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef16"
+            },
+            "Name": "KYC_Detail_Email__c",
+            "Field__c": "Email__c",
+            "IsReference__c": false,
+            "Object__c": "KYC_Detail__c"
+        },
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef17"
+            },
+            "Name": "Account_Id",
+            "Field__c": "Id",
+            "IsReference__c": true,
+            "Object__c": "Account"
+        },
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef18"
+            },
+            "Name": "Account_LastName",
+            "Field__c": "LastName",
+            "IsReference__c": false,
+            "Object__c": "Account"
+        },
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef19"
+            },
+            "Name": "KYC_Detail_House_Number__c",
+            "Field__c": "House_Number__c",
+            "IsReference__c": false,
+            "Object__c": "KYC_Detail__c"
+        },
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef20"
+            },
+            "Name": "Opportunity_Name",
+            "Field__c": "Name",
+            "IsReference__c": false,
+            "Object__c": "Opportunity"
+        },
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef21"
+            },
+            "Name": "Opportunity_AccountId",
+            "Field__c": "AccountId",
+            "IsReference__c": true,
+            "Object__c": "Opportunity"
+        },
+        {
+            "attributes": {
+                "type": "Scramble_Configuration__c",
+                "referenceId": "Scramble_Configuration__cRef22"
+            },
+            "Name": "Account_PersonEmail",
+            "Field__c": "PersonEmail",
+            "IsReference__c": false,
+            "Object__c": "Account"
+        }
+    ]
+}

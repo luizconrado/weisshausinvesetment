@@ -13,7 +13,9 @@
             <property name="headertext" type="String" default=""/>
             <property name="buttontext" type="String" default=""/>
             <property name="successtext" type="String" default=""/>
-            
+            <property name="object"
+            type="String" datasource="Account,Lead" default="Account"
+            ></property>
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

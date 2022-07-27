@@ -203,6 +203,10 @@ public inherited sharing class Constant {
         if(SUBSCRIPTION_DEFAULT_RECORDTYPEID==null)SUBSCRIPTION_DEFAULT_RECORDTYPEID=SchemaUtil.getRecordTypeId('Default', 'Subscription__c');
         return SUBSCRIPTION_DEFAULT_RECORDTYPEID;
     }}
+    public static final String SUBSCRIPTION_LEAD_RECORDTYPEID{private set;get{
+        if(SUBSCRIPTION_LEAD_RECORDTYPEID==null)SUBSCRIPTION_LEAD_RECORDTYPEID=SchemaUtil.getRecordTypeId('Lead', 'Subscription__c');
+        return SUBSCRIPTION_LEAD_RECORDTYPEID;
+    }}
     
     //KYC DATA
      public static final String KYC_VIDEO_IDENTIFICATION_RECORDTYPEID{

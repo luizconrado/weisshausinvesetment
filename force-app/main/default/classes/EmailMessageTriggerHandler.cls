@@ -4,15 +4,15 @@
 */
 public class EmailMessageTriggerHandler  extends TriggerHandler {
     
-    private static String solarisbankSupportEmailAddress=Label.Case_Jira_SupportEmail;
+    private static String solarisbankSupportEmailAddress=Label.Solarisbank_Support_Email;
     
     protected override void beforeInsert() {
         try{
             List<String> solaribankSupportCaseIds=new List<String>();
-            List<EmailMessage> msgList=Trigger.new;
+            List<EmailMessage> msgList=Trigger.new; 
             Map<String,EmailMessage> caseIdAndEmailMap=new Map<String,EmailMessage>();
             for(EmailMessage email:msgList){
-                if(email.Incoming && email.FromAddress==solarisbankSupportEmailAddress && email.ParentId!=null){
+                if(email.Incoming && email.FromAddress.endsWithIgnoreCase(solarisbankSupportEmailAddress) && email.ParentId!=null){
                     if(String.valueOf(email.ParentId.getSobjectType())=='Case'){
                         solaribankSupportCaseIds.add(email.ParentId);
                         caseIdAndEmailMap.put(email.ParentId,email);

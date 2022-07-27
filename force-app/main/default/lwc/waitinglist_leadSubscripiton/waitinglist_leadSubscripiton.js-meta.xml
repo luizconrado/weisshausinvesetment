@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>54.0</apiVersion>
-    <isExposed>true</isExposed>
-    <masterLabel>MLPage Confrim Subscription</masterLabel>
+    <apiVersion>55.0</apiVersion>
+    <masterLabel>MLPage Lead Subscribe Button</masterLabel>
     <targets>
         <target>lightningCommunity__Page</target>
         <target>lightningCommunity__Default</target>
     </targets>
     <targetConfigs>
         <targetConfig targets="lightningCommunity__Default">
-            <property name="headerText" type="String"  />
-            <property name="headerDescription" type="String"  />
-            <property name="object"
-            type="String" datasource="Account,Lead" default="Account"
-            ></property>
+            <property name="subscriptionType" type="String"  />
+            <property name="tcLink" type="String"  />
+            <property name="tcLinkText" type="String"  />
+            <property name="tcText" type="String"  />
+            <property name="leadOrigin" type="String"  />
+            
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

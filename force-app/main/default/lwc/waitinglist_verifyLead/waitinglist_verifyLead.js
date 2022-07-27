@@ -1,13 +1,11 @@
 import { LightningElement, api } from 'lwc';
-import confirmEmail from '@salesforce/apex/SubscriptionService.confirmSubscriptionOfUser';
-import confirmLeadEmail from '@salesforce/apex/SubscriptionService.confirmSubscriptionOfLead';
+import confirmEmail from '@salesforce/apex/SubscriptionService.confirmSubscriptionOfLead';
 import { NavigationMixin, CurrentPageReference } from 'lightning/navigation';
 
-export default class WaitingList_confirmEmail extends LightningElement {
+export default class Waitinglist_verifyLead extends LightningElement {
 
     @api headerText;
     @api headerDescription;
-    @api object = 'Account';
 
     parameters;
 
@@ -16,42 +14,30 @@ export default class WaitingList_confirmEmail extends LightningElement {
 
 
         this.parameters = this.getQueryParameters();
-
+        
         if (this.parameters.email && this.parameters.product)
             this.handleOnInit();
 
     }
 
     handleOnInit() {
+        console.info(decodeURIComponent(this.parameters.email))
+        console.info(decodeURIComponent(this.parameters.product))
         const params = {
             "email": decodeURIComponent(this.parameters.email),
             "product": decodeURIComponent(this.parameters.product),
         };
 
-        if (this.object == 'Account') {
-            confirmEmail(params)
-                .then(result => {
+        confirmEmail(params)
+            .then(result => {
 
 
-                    //setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 5000);
+                //setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 5000);
 
-                })
-                .catch(error => {
-                    console.error(error);
-                })
-        }
-        else if (this.object == 'Lead') {
-            confirmLeadEmail(params)
-                .then(result => {
-
-
-                    //setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 5000);
-
-                })
-                .catch(error => {
-                    console.error(error);
-                })
-        }
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
 
     getQueryParameters() {
@@ -67,5 +53,4 @@ export default class WaitingList_confirmEmail extends LightningElement {
 
         return params;
     }
-
 }

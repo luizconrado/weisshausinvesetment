@@ -39,6 +39,8 @@ public without sharing class SubscriptionService {
         respWrapper.showForm = showForm;
         return respWrapper;
     }
+
+   
     
      /*
      * Description: saves lead details when filled in verification form
@@ -85,6 +87,7 @@ public without sharing class SubscriptionService {
         }
         return showForm;
     }
+    
 
     
  
@@ -112,10 +115,33 @@ public without sharing class SubscriptionService {
         
         return showForm;
     }
-    
+    /***************
+    * @description checks subsripiton status is unsubscribed for lead
+    * @param email
+    * @param product
+    * @return true / false
+    */
+   @AuraEnabled
+   public static Boolean checkUnsubscribedLeadStatus(String email,String product){
+    product=product.replace('+',' ');
+       Boolean showForm = true;
+       
+       List<Lead> accountList=[SELECT id,FirstName,Salutation,LastName,Phone,(Select id,Subscription_Terms_and_Conditions__c,Source__c,Type__c,Subscription_Status__c from Subscriptions__r WHERE Type__c=:product AND RecordTypeId=:Constant.SUBSCRIPTION_LEAD_RECORDTYPEID LIMIT 1) 
+                                  FROM Lead WHERE Email=:email AND RecordTypeId=:Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID];
+       if(accountList.size()>0){
+           Lead accountRec = accountList.get(0);
+           if(accountRec.Subscriptions__r.size()>0){
+               Subscription__c subscription=accountRec.Subscriptions__r.get(0);
+               showForm = (subscription.Subscription_Status__c=='Unsubscribed')?false:true;
+           }
+       }
+       
+       
+       return showForm;
+   }
    
    /***************
-    * @description updates subsripiton status is unsubscribed
+    * @description updates subsripiton status for unsubscribed
     * @param email
     * @param product
     * @param reason
@@ -149,6 +175,40 @@ public without sharing class SubscriptionService {
         if(campaignMember.size()>0)   delete campaignMember;
         return true;
     }
+    /***************
+    * @description updates subsripiton status to unsubscribed for lead
+    * @param email
+    * @param product
+    * @param reason
+    * @return true / false
+    */
+   @AuraEnabled
+   public static Boolean updateLeadSubscriptionToUnSubscribed(String email,String product,String reason){
+        product=product.replace('+',' ');
+       List<String> leadAndContactId=new List<String>();
+
+       List<Lead> accountList=[SELECT id,FirstName,Salutation,LastName,Phone,(Select id,Send_Mail__c,Subscription_Terms_and_Conditions__c,Source__c,Type__c,Subscription_Status__c from Subscriptions__r WHERE Type__c=:product AND RecordTypeId=:Constant.SUBSCRIPTION_LEAD_RECORDTYPEID LIMIT 1) 
+                                  FROM Lead WHERE Email=:email AND RecordTypeId=:Constant.DEFAULT_LEAD_RECORDTYPEID];
+       if(accountList.size()>0){
+           Lead accountRec = accountList.get(0);
+           if(accountRec.Subscriptions__r.size()>0){
+            leadAndContactId.add(accountRec.Id);
+               Subscription__c subscription=accountRec.Subscriptions__r.get(0);
+               subscription.Subscription_Status__c='Unsubscribed'; 
+               subscription.Reason_For_Unsubscribing__c=reason;
+               subscription.Unsubscribed_Date__c=DateTime.now();
+               subscription.Send_Mail__c=true;
+               update subscription;
+           }
+       }
+       
+      
+
+       
+       List<CampaignMember> campaignMember=[select id from CampaignMember where Campaign.Product__c=:product AND LeadOrContactId IN:leadAndContactId];
+       if(campaignMember.size()>0)   delete campaignMember;
+       return true;
+   }
     
      
     @AuraEnabled(cacheable=true)
@@ -189,6 +249,26 @@ public without sharing class SubscriptionService {
         
         
     }
+     /***************
+    * @description creates lead and subscripiton record
+    * @param objectName the name of the object to look up
+    */
+   @AuraEnabled
+   public static void createLeadAndSubscription(String firstName,String lastName,String email,String productName,String origin,String website,Map<String,String> utmParameters){
+       
+       try{
+        LeadService.service service=new LeadService.service();
+        List<String> leadIds=service.createLead(null,firstName,lastName,email,website,true,origin,utmParameters,Constant.DEFAULT_LEAD_RECORDTYPEID);
+        service.createSubscription(leadIds,productName,utmParameters,website);
+           
+       }
+       catch(Exception e){
+           logError(e,null,'Lead','waitinglist_leadsubscription','waitinglist_leadsubscription','Subscribe');
+           throw new AuraHandledException(e.getMessage());
+       }
+       
+       
+   }
 
     /***************
     * @description subscription status to subscribed
@@ -219,6 +299,35 @@ public without sharing class SubscriptionService {
             logError(e,recordId,'Account','registerWaitingListSubscriptionUser','waitingList_confirmEmail','Confirm Subscribe');
         }
     }
+    /***************
+    * @description lead subscription status to subscribed
+    * @param email 
+    * @param product 
+    */
+   @AuraEnabled
+   public static void confirmSubscriptionOfLead(String email,String product){
+       List<Lead> accountDetails=new List<Lead>();
+       try {
+           product = EncodingUtil.urlDecode(product,'utf-8');
+           accountDetails=[SELECT id,FirstName,Salutation,LastName,Phone,
+                                         (Select id,Send_Mail__c,Subscription_Terms_and_Conditions__c,Source__c,Type__c,Subscription_Status__c from Subscriptions__r WHERE Type__c=:product AND RecordTypeId=:Constant.SUBSCRIPTION_LEAD_RECORDTYPEID LIMIT 1) 
+                                         FROM Lead WHERE Email=:email AND RecordTypeId=:Constant.DEFAULT_LEAD_RECORDTYPEID];
+           
+           if(accountDetails.size()>0){
+               if(accountDetails.get(0).Subscriptions__r.size()>0){
+                   Subscription__c subscription=accountDetails.get(0).Subscriptions__r.get(0);
+                   subscription.Subscription_Status__c='Subscribed';
+                   subscription.Send_Mail__c=true;
+                   subscription.Subscribed_Date__c=DateTime.now();
+                   subscription.Subscription_Terms_and_Conditions__c=true;
+                   update subscription;
+               }
+           }
+       } catch (Exception e) {
+           String recordId=(accountDetails.size()>0)?accountDetails.get(0).Id:null;
+           logError(e,recordId,'Lead','registerWaitingListSubscriptionLeadUser','waitinglist_verifyLead','Confirm Lead Subscribe');
+       }
+   }
     
      //helper
     @testVisible

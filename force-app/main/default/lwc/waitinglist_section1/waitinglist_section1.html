@@ -6,12 +6,21 @@
             </div>
             <div class="ev_section-header_description">
                 {headerDescription}
-                <p class="ev_section-header_description-second" if:true={showDescripiton2}>{headerDescription2}</p>
+                <p class="ev_section-header_description-second" if:true={showDescripiton2}>
+                   
+                    <lightning-formatted-rich-text value={headerDescription2}>
+                    </lightning-formatted-rich-text>
+                </p>
+            
+
+
             </div>
             
             <div if:true={showSubscribeButton}>
                 <c-waitinglist_subscription subscription-type={subscriptionType} tc-text={tcText} tc-link={tcLink}
-                    tc-link-text={tcLinkText}></c-waitinglist_subscription>
+                    tc-link-text={tcLinkText} if:true={showAccount}></c-waitinglist_subscription>
+                    <c-waitinglist_lead-subscripiton subscription-type={subscriptionType} tc-text={tcText} tc-link={tcLink}
+                    tc-link-text={tcLinkText} if:true={showLead}></c-waitinglist_lead-subscripiton>
             </div>
         </div>
         <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2  ">

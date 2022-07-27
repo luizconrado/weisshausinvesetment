@@ -130,28 +130,28 @@ global without sharing  class RestServiceAccountSMICreate {
         else if(personAccountList.size()>0 && personAccountList.get(0).Auth0_ID__c!=null && personAccountList.get(0).RecordTypeId!=Constant.ACCOUNT_INVESTMENT_BANKING_RECORDTYPEID) newAccount.RecordTypeId=Constant.ACCOUNT_INVESTMENT_BANKING_RECORDTYPEID; 
        
         
-        if(newPersonAccount.Marketing_Opt_In__pc==true){
-            subscriptionRecord = new Subscription__c();
-            if(personAccountList.size()>0){
-                if(personAccountList.get(0).Subscriptions__r.size()>0){
-                    subscriptionRecord=personAccountList.get(0).Subscriptions__r.get(0);
-                }
-            }            
-            subscriptionRecord.Type__c=subscriptionType;
-            subscriptionRecord.Subscription_Terms_and_Conditions__c=true;
-            subscriptionRecord.Subscription_Status__c='Subscribed';
-            subscriptionRecord.Source__c=newPersonAccount.Website;
-            subscriptionRecord.Subscribed_Date__c=Date.today();
+         
+        subscriptionRecord = new Subscription__c();
+        if(personAccountList.size()>0){
+            if(personAccountList.get(0).Subscriptions__r.size()>0){
+                subscriptionRecord=personAccountList.get(0).Subscriptions__r.get(0);
+            }
+        }            
+        subscriptionRecord.Type__c=subscriptionType;
+        subscriptionRecord.Subscription_Terms_and_Conditions__c=newPersonAccount.Marketing_Opt_In__pc;
+        subscriptionRecord.Subscription_Status__c=(newPersonAccount.Marketing_Opt_In__pc)?'Subscribed':'Not Subscribed';
+        subscriptionRecord.Source__c=newPersonAccount.Website;
+        subscriptionRecord.Subscribed_Date__c=(newPersonAccount.Marketing_Opt_In__pc)?Date.today():null;
+        
+        //Campaing Values
+        if(newPersonAccount.UTM_Campaign__c!=null && subscriptionRecord.UTM_Campaign__c==null)subscriptionRecord.UTM_Campaign__c=newPersonAccount.UTM_Campaign__c;
+        if(newPersonAccount.UTM_Medium__c!=null && subscriptionRecord.UTM_Medium__c==null)subscriptionRecord.UTM_Medium__c=newPersonAccount.UTM_Medium__c;
+        if(newPersonAccount.UTM_Source__c!=null && subscriptionRecord.UTM_Source__c==null)subscriptionRecord.UTM_Source__c=newPersonAccount.UTM_Source__c;
+        if(newPersonAccount.UTM_Term__c!=null && subscriptionRecord.UTM_Term__c==null)subscriptionRecord.UTM_Term__c=newPersonAccount.UTM_Term__c;
+        if(newPersonAccount.UTM_Content__c!=null && subscriptionRecord.UTM_Content__c==null) subscriptionRecord.UTM_Content__c=newPersonAccount.UTM_Content__c;
+        
             
-            //Campaing Values
-            if(newPersonAccount.UTM_Campaign__c!=null && subscriptionRecord.UTM_Campaign__c==null)subscriptionRecord.UTM_Campaign__c=newPersonAccount.UTM_Campaign__c;
-            if(newPersonAccount.UTM_Medium__c!=null && subscriptionRecord.UTM_Medium__c==null)subscriptionRecord.UTM_Medium__c=newPersonAccount.UTM_Medium__c;
-            if(newPersonAccount.UTM_Source__c!=null && subscriptionRecord.UTM_Source__c==null)subscriptionRecord.UTM_Source__c=newPersonAccount.UTM_Source__c;
-            if(newPersonAccount.UTM_Term__c!=null && subscriptionRecord.UTM_Term__c==null)subscriptionRecord.UTM_Term__c=newPersonAccount.UTM_Term__c;
-            if(newPersonAccount.UTM_Content__c!=null && subscriptionRecord.UTM_Content__c==null) subscriptionRecord.UTM_Content__c=newPersonAccount.UTM_Content__c;
-            
-                
-        }
+
         
         
         if(Salesforce.isSandbox && personAccountList.size()==0) newAccount.Solarisbank_Tenent__c='Sandbox';
@@ -163,6 +163,7 @@ global without sharing  class RestServiceAccountSMICreate {
             emptyKycRecord.External_Id__c=newAccount.EVSM_Auth0_ID__c;
             emptyKycRecord.State__c = emptyKycRecord.Status__c = 'Pending';
             emptyKycRecord.Method__c='KYC Flow';
+            emptyKycRecord.RecordTypeId=Constant.KYC_VIDEO_IDENTIFICATION_RECORDTYPEID;
         }
         
         

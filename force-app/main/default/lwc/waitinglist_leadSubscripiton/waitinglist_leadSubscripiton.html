@@ -1,0 +1,61 @@
+<template>
+    <c-ev-toast type="information"></c-ev-toast>
+
+    <div class="slds-grid slds-grid_vertical ev-margin_top-mid">
+
+        <div class="slds-grid ev-Design  ev-margin_top-large slds-wrap">
+            <div
+                class="slds-col slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 ev-padding_right-mid">
+                <lightning-input is-loading={loaded} disabled={loaded} max-size="50" class="ev-input fist-textbox"
+                    variant="label-hidden" type="text" placeholder="Vorname" name="firstName" value={firstName} required
+                    onchange={handleValueChange}>
+                </lightning-input>
+            </div>
+            <div
+                class="slds-col slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                <lightning-input is-loading={loaded} disabled={loaded} max-size="50" class="ev-input last-textbox"
+                    variant="label-hidden" type="text" placeholder="Nachname" name="lastName" value={lastName} required
+                    onchange={handleValueChange}>
+                </lightning-input>
+            </div>
+        </div>
+        <div class="slds-col slds-grid slds-wrap ev-Design ">
+
+
+            <div
+                class="slds-col slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 ev-section_grow-large">
+
+                <lightning-input is-loading={loaded} disabled={loaded} message-when-pattern-mismatch="invalid" required
+                    class="ev-input email-textbox" variant="label-hidden" type="email" placeholder="E-Mail"
+                    name="emailAddress" value={emailAddress} onchange={handleValueChange}>
+                </lightning-input>
+            </div>
+
+
+
+        </div>
+        <div class="slds-col  slds-grid  ev-Design  ">
+
+            <lightning-input disabled={loaded} class="ev-padding_right-small ev-checkbox tc-checkbox"
+                name="isTcAccepted" value={isTcAccepted} onchange={handleCheckboxValueChange} type="checkbox"
+                variant="label-hidden">
+            </lightning-input>
+            <span class="ev-checkbox_text">
+                {tcText}
+                <a class="tc_link" target="_blank" href={tcLink}> {tcLinkText}</a>
+
+
+            </span>
+
+        </div>
+        <div class="slds-grid ev-Design  ev-margin_top-mid">
+            <div
+                class="slds-col slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 ev-section_grow-small ">
+                <lightning-button disabled={loaded} class="ev-button" label="Anmelden" title="Anmelden"
+                    onclick={subscribe}>
+                </lightning-button>
+            </div>
+        </div>
+
+    </div>
+</template>

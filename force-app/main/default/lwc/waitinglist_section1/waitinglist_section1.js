@@ -1,6 +1,14 @@
 import { LightningElement, api } from 'lwc';
 
 export default class Waitinglist_section1 extends LightningElement {
+    @api object='Account';
+    get showAccount(){
+        return this.object=='Account';
+    }
+    get showLead(){
+        return this.object=='Lead';
+    }
+
     @api imageUrl;
 
     @api headerText;

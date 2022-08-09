@@ -1,0 +1,111 @@
+<apex:page showHeader="false" sidebar="false" applyHtmlTag="false" standardStylesheets="false">
+    <apex:includeLightning />
+    <apex:includeScript value="{!URLFOR($Resource.CKEditor, 'ckeditor.js')}" />
+    <head>
+        <style>
+            html,body{
+            margin:0;
+            padding0;
+            }
+            .cke_show_borders {
+    overflow: scroll;
+}
+        </style>
+        <script>
+        let domain="{!$Label.Org_Domain}"
+        let lexOrigin = "https://"+domain+".lightning.force.com";
+        let id=undefined;
+        window.addEventListener("DOMContentLoaded", init);
+        
+        function init(){
+            passDataToVf({event:'init',id:id});
+        }
+        
+        
+        
+        
+        
+        window.addEventListener("message", function(event) {
+            
+            //checkiong if request is from same origon
+            if (event.origin !== lexOrigin) {
+                // Not the expected origin: reject message!
+                return;
+            }
+            //null check for message
+            if(!event.data){
+                return;
+            }
+            
+            if(id==undefined){
+                id=event.data.id;    
+            }
+
+            
+            //checking container uniquens
+            if(id!=event.data.id){
+                return;    
+            }
+            
+             let containerData=event.data;
+            if(containerData.mode=='init'){
+                initEditor(containerData.value||'',containerData.height-90);
+            }
+            else if(containerData.mode=='change') {
+                updateEditorContent(containerData.value);
+            }
+        }, false);
+        function initEditor(content,height){
+            if(!CKEDITOR.instances.ckeditor){
+                CKEDITOR.config.fullPage = false;
+                CKEDITOR.config.resize_enabled = false;
+                CKEDITOR.config.allowedContent = true;
+                CKEDITOR.config.height = height; 
+                CKEDITOR.config.toolbar =
+                    [
+                    ['Source'],
+                    ['Undo','Redo'],
+                    ['Find','Replace','SelectAll','SpellChecker','Scayt'],
+                    [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','CopyFormatting','RemoveFormat'],
+                    ['NumberedList','BulletedList','Outdent','Indent'],
+                    ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','BidiLtr','BidiRtl'],
+                    ['HorizontalRule' ],
+                    ['Styles','Format','Font','FontSize','TextColor','BGColor','Table']  ]
+                let editor = CKEDITOR.replace( 'cKEditorTextare' );
+                 
+             }
+            
+            updateEditorContent(content);
+            
+        }
+        
+        CKEDITOR.on('instanceCreated', function (e) {
+            var body = document.body,
+                html = document.documentElement;
+            
+            var height = Math.max( body.scrollHeight, body.offsetHeight, 
+                                  html.clientHeight, html.scrollHeight, html.offsetHeight )
+            e.editor.on('change', function (ev) {
+                let text=ev.editor.getData();
+                passDataToVf({
+                    event:'change',
+                    value:text,
+                    id:id
+                }, lexOrigin); 
+            }); 
+            
+        });
+        function updateEditorContent(content){
+            let ckEditorInstance=CKEDITOR.instances.cKEditorTextare;
+           if(ckEditorInstance){
+                ckEditorInstance.setData(content);  
+            }
+        }
+        function passDataToVf(returnMessage){
+            parent.postMessage(returnMessage, lexOrigin); 
+        }
+        </script>
+    </head>
+    <textarea id="cKEditorTextare"> </textarea>
+    
+</apex:page>

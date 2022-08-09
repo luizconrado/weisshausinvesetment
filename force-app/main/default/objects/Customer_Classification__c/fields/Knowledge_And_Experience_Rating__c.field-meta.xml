@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Knowledge_And_Experience_Rating__c</fullName>
+    <externalId>false</externalId>
+    <label>Knowledge And Experience Rating</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>NONE</fullName>
+                <default>false</default>
+                <label>NONE</label>
+            </value>
+            <value>
+                <fullName>BASIC</fullName>
+                <default>false</default>
+                <label>BASIC</label>
+            </value>
+            <value>
+                <fullName>AVERAGE</fullName>
+                <default>false</default>
+                <label>AVERAGE</label>
+            </value>
+            <value>
+                <fullName>ADVANCED</fullName>
+                <default>false</default>
+                <label>ADVANCED</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

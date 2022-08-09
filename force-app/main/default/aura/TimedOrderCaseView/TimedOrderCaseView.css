@@ -1,0 +1,15 @@
+.THIS .full-width button{
+        width: 100%;
+}
+.THIS .fix-width-col{
+    min-width: 14rem;
+    max-width: 14rem;
+    min-height: 15rem;
+}
+
+
+.THIS .form-grid-padding{
+    padding-left: .75rem;
+    align-self: flex-end;
+    padding-right: .75rem;
+}

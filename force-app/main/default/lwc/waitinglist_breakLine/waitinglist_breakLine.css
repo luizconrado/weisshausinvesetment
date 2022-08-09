@@ -1,0 +1,27 @@
+.container{
+    
+    margin-top:96px;
+    margin-bottom:96px;
+}
+
+.line{
+    border-top: 1.5px solid #EB0A0A;
+    width:180px;
+    margin:auto;
+}
+
+
+
+/*slds small screen*/
+@media (max-width: 1023px){
+    .line{
+        
+        width:100px;
+        
+    }
+    .container{
+    
+        margin-top:56px;
+        margin-bottom:56px;
+    }
+}

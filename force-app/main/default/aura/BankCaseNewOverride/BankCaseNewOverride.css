@@ -1,0 +1,11 @@
+.THIS .grid-column-width {
+    margin: 10px;
+    max-width: 320px;
+    border-radius: 18px;
+}
+
+.THIS .model-header_large{
+    font-size: larger;
+    font-weight: 600;
+
+}

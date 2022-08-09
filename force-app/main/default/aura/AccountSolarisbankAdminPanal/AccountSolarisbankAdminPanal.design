@@ -1,0 +1,3 @@
+<design:component label="Solarisbank Admin Panal">
+	<design:attribute name="source" datasource="Account,Bank Account,Card" />
+</design:component>

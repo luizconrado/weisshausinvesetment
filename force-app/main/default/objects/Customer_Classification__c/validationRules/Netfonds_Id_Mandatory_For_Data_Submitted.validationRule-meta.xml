@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Netfonds_Id_Mandatory_For_Data_Submitted</fullName>
+    <active>true</active>
+    <description>Netfonds id is required if Data Submitted to Partner is submited</description>
+    <errorConditionFormula>IF(  
+OR($User.Username == $Label.Integration_Username, CONTAINS(  $Label.Users_Exclusion,$User.Username )), 
+false,
+IF(ISPICKVAL(Data_Submitted_to_Partner__c , &quot;Summited&quot;) ,  ISBLANK( Netfonds_Id__c ) , false) 
+
+ 
+  
+)</errorConditionFormula>
+    <errorDisplayField>Netfonds_Id__c</errorDisplayField>
+    <errorMessage>Netfonds Id is required if Data Submitted to Partner is submitted</errorMessage>
+</ValidationRule>

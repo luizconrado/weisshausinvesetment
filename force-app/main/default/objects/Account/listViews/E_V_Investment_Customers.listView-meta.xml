@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>E_V_Investment_Customers</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>PC_EMAIL</columns>
+    <columns>EVSM_Auth0_ID__c</columns>
+    <columns>ACCOUNT.LAST_UPDATE</columns>
+    <columns>ACCOUNT.CREATED_DATE</columns>
+    <columns>CREATEDBY_USER.ALIAS</columns>
+    <columns>Is_Test__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ACCOUNT.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>PersonAccount.Person_Investment_Banking_Customer,PersonAccount.Person_Investment_Customer</value>
+    </filters>
+    <filters>
+        <field>Is_Test__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>EV Investment Customers</label>
+</ListView>

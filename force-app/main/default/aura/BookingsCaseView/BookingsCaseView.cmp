@@ -1,0 +1,531 @@
+<aura:component controller="BankCaseOverrideControler" >
+    <lightning:workspaceAPI aura:id="workspace"/>
+
+    <aura:handler name='init' value='{!this}' action='{!c.onInit}' />
+
+    
+    <aura:attribute name="caseRecordId" type="String"/>
+    <aura:attribute name="bankAccountDetails" type="Object"/>
+    <aura:attribute name="selectedBookings" type="List"/>
+    
+    
+    <aura:attribute type="boolean" name="isCompactLayout" default="false"/>
+    <aura:attribute type="boolean" name="loading" default="false"/>
+    <aura:attribute type="boolean" name="popup" default="false"/>
+    <aura:attribute type="Object" name="tempTransaction"/>
+    
+    <aura:attribute type="String" name="dateFilterStart"/>
+    <aura:attribute type="String" name="dateFilterEnd"/>
+    <aura:attribute type="String" name="ibanFilter"/>
+
+    
+    <aura:attribute type="List" name="displayList"/>
+    <aura:attribute type="List" name="filterdList"/>
+	<aura:attribute type="List" name="orignalDataList"/>
+    
+    
+    <aura:attribute name="sortBy" type="String" default="Name"/>
+    <aura:attribute name="sortOrder" type="String" default="desc"/>
+    <aura:attribute name="currentPage" type="String" default="1"/>
+    <aura:attribute name="pageCount" type="Integer" default="1"/>
+    
+    
+    <div class="slds-grid">
+        <div class="slds-col slds-box slds-grid fix-width-col slds-grid_vertical slds-grow-none">
+            <div class="slds-col slds-grow-none">
+                <lightning:input value="{!v.dateFilterStart}" onchange="{!c.inputChangeHandler}" type="date"
+                                 name="BookingDateStart" label="Booking Date Start">
+                </lightning:input>
+            </div>
+            <div class="slds-col slds-grow-none">
+                <lightning:input value="{!v.dateFilterEnd}" onchange="{!c.inputChangeHandler}" type="date" name="BookingDateEnd"
+                                 label="Booking Date End">
+                </lightning:input>
+            </div>
+            <div class="slds-col slds-grow-none">
+                <lightning:input name="Recipient_iban" value="{!v.ibanFilter}"  label="Recipient IBAN" onchange="{!c.inputChangeHandler}"
+                                 type="search">
+                </lightning:input>
+            </div>
+            <div class="slds-col full-width slds-p-top_small slds-grow-none">
+                <lightning:button  label="Search" title="Search" iconName="utility:search"
+                                  onclick="{!c.getBookings}">
+                </lightning:button>
+            </div>
+        </div>
+        <div class="slds-col table-overflow slds-scrollable">
+            <div class="slds-grid slds-grid_vertical">
+                <div class="slds-col slds-p-around_small">
+                    <lightning:input name="searchtable" label="Search Table" onchange="{!c.searchTable}" type="search">
+                    </lightning:input>
+                </div>
+                <div class="slds-col slds-is-relative ">
+                    <aura:if isTrue="{!v.loading}">
+                        <lightning:spinner alternativeText="Loading" size="small">
+                            
+                        </lightning:spinner>
+                    </aura:if>
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th class="" scope="col">        
+                                    <a name="selected" onclick="{!c.sortChangeHandler}">
+                                    Selected
+                                    <aura:if isTrue="{!v.sortBy=='selected'}">
+                                        <aura:if isTrue="{!v.sortOrder=='desc'}">
+                                            <lightning:icon size="xx-small" iconName="utility:arrowdown"
+                                                            alternative-text="desc" title="desc" >
+                                                
+                                            </lightning:icon>
+                                            
+                                        </aura:if>
+                                        <aura:if isTrue="{!v.sortOrder=='asc'}">
+                                            <lightning:icon size="xx-small" 
+                                                            iconName="utility:arrowup" alternative-text="asc" title="asc">
+                                                
+                                            </lightning:icon>
+                                        </aura:if>
+                                    </aura:if>
+                                    </a>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Booking Date" data-id="Booking_Date__c">
+                                        <a name="Booking_Date__c" onclick="{!c.sortChangeHandler}">
+                                            Booking Date
+                                            <aura:if isTrue="{!v.sortBy=='Booking_Date__c'}">
+                                                <aura:if isTrue="{!v.sortOrder=='desc'}">
+                                                    <lightning:icon size="xx-small" iconName="utility:arrowdown"
+                                                                    alternative-text="desc" title="desc" >
+                                                        
+                                                    </lightning:icon>
+                                                    
+                                                </aura:if>
+                                                <aura:if isTrue="{!v.sortOrder=='asc'}">
+                                                    <lightning:icon size="xx-small" 
+                                                                    iconName="utility:arrowup" alternative-text="asc" title="asc">
+                                                        
+                                                    </lightning:icon>
+                                                </aura:if>
+                                            </aura:if>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Description" data-id="Description__c">
+                                        <a name="Description__c" onclick="{!c.sortChangeHandler}">
+                                            Description
+                                            <aura:if isTrue="{!v.sortBy=='Description__c'}">
+                                                <aura:if isTrue="{!v.sortOrder=='desc'}">
+                                                    <lightning:icon size="xx-small" iconName="utility:arrowdown"
+                                                                    alternative-text="desc" title="desc" >
+                                                        
+                                                    </lightning:icon>
+                                                    
+                                                </aura:if>
+                                                <aura:if isTrue="{!v.sortOrder=='asc'}">
+                                                    <lightning:icon size="xx-small" 
+                                                                    iconName="utility:arrowup" alternative-text="asc" title="asc">
+                                                        
+                                                    </lightning:icon>
+                                                </aura:if>
+                                            </aura:if>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Amount" data-id="Amount__c">
+                                        <a name="Amount__c" onclick="{!c.sortChangeHandler}">
+                                            Amount
+                                            <aura:if isTrue="{!v.sortBy=='Amount__c'}">
+                                                <aura:if isTrue="{!v.sortOrder=='desc'}">
+                                                    <lightning:icon size="xx-small" iconName="utility:arrowdown"
+                                                                    alternative-text="desc" title="desc" >
+                                                        
+                                                    </lightning:icon>
+                                                    
+                                                </aura:if>
+                                                <aura:if isTrue="{!v.sortOrder=='asc'}">
+                                                    <lightning:icon size="xx-small" 
+                                                                    iconName="utility:arrowup" alternative-text="asc" title="asc">
+                                                        
+                                                    </lightning:icon>
+                                                </aura:if>
+                                            </aura:if>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Recipient IBAN" data-id="Recipient_IBAN__c">
+                                        <a name="Recipient_IBAN__c" onclick="{!c.sortChangeHandler}">
+                                            Recipient IBAN
+                                            <aura:if isTrue="{!v.sortBy=='Recipient_IBAN__c'}">
+                                                <aura:if isTrue="{!v.sortOrder=='desc'}">
+                                                    <lightning:icon size="xx-small" iconName="utility:arrowdown"
+                                                                    alternative-text="desc" title="desc" >
+                                                        
+                                                    </lightning:icon>
+                                                    
+                                                </aura:if>
+                                                <aura:if isTrue="{!v.sortOrder=='asc'}">
+                                                    <lightning:icon size="xx-small" 
+                                                                    iconName="utility:arrowup" alternative-text="asc" title="asc">
+                                                        
+                                                    </lightning:icon>
+                                                </aura:if>
+                                            </aura:if>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Recipient IBAN" data-id="Recipient_Name__c">
+                                        <a name="Recipient_Name__c" onclick="{!c.sortChangeHandler}">
+                                            Recipient Name
+                                            <aura:if isTrue="{!v.sortBy=='Recipient_Name__c'}">
+                                                <aura:if isTrue="{!v.sortOrder=='desc'}">
+                                                    <lightning:icon size="xx-small" iconName="utility:arrowdown"
+                                                                    alternative-text="desc" title="desc" >
+                                                        
+                                                    </lightning:icon>
+                                                    
+                                                </aura:if>
+                                                <aura:if isTrue="{!v.sortOrder=='asc'}">
+                                                    <lightning:icon size="xx-small" 
+                                                                    iconName="utility:arrowup" alternative-text="asc" title="asc">
+                                                        
+                                                    </lightning:icon>
+                                                </aura:if>
+                                            </aura:if>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Sender IBAN" data-id="Sender_IBAN__c ">
+                                        <a name="Sender_IBAN__c" onclick="{!c.sortChangeHandler}">
+                                            Sender IBAN
+                                            <aura:if isTrue="{!v.sortBy=='Sender_IBAN__c'}">
+                                                <aura:if isTrue="{!v.sortOrder=='desc'}">
+                                                    <lightning:icon size="xx-small" iconName="utility:arrowdown"
+                                                                    alternative-text="desc" title="desc" >
+                                                        
+                                                    </lightning:icon>
+                                                    
+                                                </aura:if>
+                                                <aura:if isTrue="{!v.sortOrder=='asc'}">
+                                                    <lightning:icon size="xx-small" 
+                                                                    iconName="utility:arrowup" alternative-text="asc" title="asc">
+                                                        
+                                                    </lightning:icon>
+                                                </aura:if>
+                                            </aura:if>
+                                        </a>
+                                        
+                                    </div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Sender Name" data-id="Sender_Name__c ">
+                                        <a name="Sender_Name__c" onclick="{!c.sortChangeHandler}">
+                                            Sender Name
+                                            <aura:if isTrue="{!v.sortBy=='Sender_Name__c'}">
+                                                <aura:if isTrue="{!v.sortOrder=='desc'}">
+                                                    <lightning:icon size="xx-small" iconName="utility:arrowdown"
+                                                                    alternative-text="desc" title="desc" >
+                                                        
+                                                    </lightning:icon>
+                                                    
+                                                </aura:if>
+                                                <aura:if isTrue="{!v.sortOrder=='asc'}">
+                                                    <lightning:icon size="xx-small" 
+                                                                    iconName="utility:arrowup" alternative-text="asc" title="asc">
+                                                        
+                                                    </lightning:icon>
+                                                </aura:if>
+                                            </aura:if>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Booking Type" data-id="Booking_Type__c ">
+                                        <a name="Booking_Type__c" onclick="{!c.sortChangeHandler}">
+                                            Booking Type
+                                            <aura:if isTrue="{!v.sortBy=='Booking_Type__c'}">
+                                                <aura:if isTrue="{!v.sortOrder=='desc'}">
+                                                    <lightning:icon size="xx-small" iconName="utility:arrowdown"
+                                                                    alternative-text="desc" title="desc" >
+                                                        
+                                                    </lightning:icon>
+                                                    
+                                                </aura:if>
+                                                <aura:if isTrue="{!v.sortOrder=='asc'}">
+                                                    <lightning:icon size="xx-small" 
+                                                                    iconName="utility:arrowup" alternative-text="asc" title="asc">
+                                                        
+                                                    </lightning:icon>
+                                                </aura:if>
+                                            </aura:if>
+                                        </a>
+                                    </div>
+                                </th>
+                                
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Sepa Returned" data-id="isSepa">
+                                        <a name="isSepa" onclick="{!c.sortChangeHandler}">
+                                            Sepa Returned
+                                            <aura:if isTrue="{!v.sortBy=='isSepa'}">
+                                                <aura:if isTrue="{!v.sortOrder=='desc'}">
+                                                    <lightning:icon size="xx-small" iconName="utility:arrowdown"
+                                                                    alternative-text="desc" title="desc" >
+                                                        
+                                                    </lightning:icon>
+                                                    
+                                                </aura:if>
+                                                <aura:if isTrue="{!v.sortOrder=='asc'}">
+                                                    <lightning:icon size="xx-small" 
+                                                                    iconName="utility:arrowup" alternative-text="asc" title="asc">
+                                                        
+                                                    </lightning:icon>
+                                                </aura:if>
+                                            </aura:if>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Transaction Id" data-id="Transaction_Id__c ">
+                                        <a name="Transaction_Id__c" onclick="{!c.sortChangeHandler}">
+                                            Transaction
+                                            <aura:if isTrue="{!v.sortBy=='Transaction_Id__c'}">
+                                                <aura:if isTrue="{!v.sortOrder=='desc'}">
+                                                    <lightning:icon size="xx-small" iconName="utility:arrowdown"
+                                                                    alternative-text="desc" title="desc" >
+                                                        
+                                                    </lightning:icon>
+                                                    
+                                                </aura:if>
+                                                <aura:if isTrue="{!v.sortOrder=='asc'}">
+                                                    <lightning:icon size="xx-small" 
+                                                                    iconName="utility:arrowup" alternative-text="asc" title="asc">
+                                                        
+                                                    </lightning:icon>
+                                                </aura:if>
+                                            </aura:if>
+                                        </a>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <aura:iteration items="{!v.displayList}" var="booking">
+                                <tr class="slds-hint-parent">
+                                        
+                                        <th data-label="Select Booking" scope="row">
+                                            <lightning:input checked="{!booking.selected}" onchange="{!c.bookingselect}"
+                                                             type="checkbox" label="" name="{!booking.Id}">
+                                            </lightning:input>
+                                            
+                                        </th>
+                                        
+                                        <td data-label="Booking Date">
+                                            <div class="slds-truncate" title="{!booking.Booking_Date__c}">
+                                                <a name="{!booking.Id}" onclick="{!c.showBookingDetails}">
+                                                    {!booking.BookingDate}
+                                                </a>
+                                                
+                                            </div>
+                                        </td>
+                                        <td data-label="Description">
+                                            <div class="slds-truncate" title="{!booking.Description__c}">{!booking.Description__c}
+                                            </div>
+                                        </td>
+                                        <td data-label="Amount">
+                                            <div class="slds-truncate" title="{!booking.price}">{!booking.price}</div>
+                                        </td>
+                                        <td data-label="Recipient IBAN">
+                                            <div class="slds-truncate" title="{!booking.Recipient_IBAN__c}">
+                                                {!booking.Recipient_IBAN__c}</div>
+                                        </td>
+                                        <td data-label="Recipient Name">
+                                            <div class="slds-truncate" title="{!booking.Recipient_Name__c}">
+                                                {!booking.Recipient_Name__c}</div>
+                                        </td>
+                                        <td data-label="Sender IBAN">
+                                            <div class="slds-truncate" title="{!booking.Sender_IBAN__c}">{!booking.Sender_IBAN__c}
+                                            </div>
+                                        </td>
+                                        <td data-label="Sender Name">
+                                            <div class="slds-truncate" title="{!booking.Sender_Name__c}">
+                                                {!booking.Sender_Name__c}</div>
+                                        </td>
+                                        <td data-label="Booking Type">
+                                            <div class="slds-truncate" title="{!booking.Booking_Type__c}">{!booking.Booking_Type__c}
+                                            </div>
+                                        </td>
+                                        
+                                        <td data-label="Sepa Returned">
+                                            <div class="slds-truncate" title="{!booking.isSepa}">
+                                                <lightning:input type="checkbox" label="" name="{!booking.isSepa}"
+                                                                 checked="{!booking.isSepa}" disabled="true">
+                                                </lightning:input>
+                                            </div>
+                                        </td>
+                                        <td data-label="Transaction">
+                                            <div class="slds-truncate" title="{!booking.Transaction_Id__c}">
+                                                <aura:if isTrue="{!booking.Transaction_Id__c }">
+                                                    <a  name="{!booking.Transaction_Id__c}"
+                                                       onclick="{!c.getTransactionMoreDetails}">More Details</a>
+                                                </aura:if>
+                                            </div>
+                                        </td>
+                                    </tr>
+                            </aura:iteration>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="slds-col slds-m-around_small slds-grid slds-grid_align-center grid-align-center">
+                    <div class="slds-col">
+                        <lightning:buttonIcon onclick="{!c.prevpage}" iconName="utility:left" variant="bare"
+                                               alternativeText="Previous" title="Previous"></lightning:buttonIcon>
+                    </div>
+                    <div class="slds-col slds-m-left_x-small slds-m-right_x-small">
+                        {!v.currentPage} / {!v.pageCount}
+                    </div>
+                    <div class="slds-col">
+                        <lightning:buttonIcon onclick="{!c.nextpage}" iconName="utility:right" variant="bare"
+                                               alternativeText="Next" title="Next">
+                        </lightning:buttonIcon>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <aura:if isTrue="{!v.popup}">
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_medium"
+                 aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button onclick="{!c.closepopup}"
+                            class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                        X
+                    </button>
+                    <h2  id="modal-heading-01" class="slds-modal__title slds-hyphenate">
+                        Transaction - {!v.tempTransaction.recipient_iban} - {!v.tempTransaction.created_at}
+                    </h2>
+                    
+                </header>
+                <div class="slds-modal__content slds-is-relative slds-p-around_medium model_min-height"
+                     id="modal-content-id-1">
+                  
+                    <div class="slds-grid slds-grid_vertical">
+                        <div class="slds-grid slds-col">
+                            <div class="slds-col form-grid-padding  slds-size_1-of-2">
+                                <div class="{! join(' ', 
+                                            'slds-form-element slds-form-element_readonly',
+                                            v.isCompactLayout? 'slds-form-element_horizontal' : 'slds-form-element_stacked'
+                                            )}">
+                                    <span class="slds-form-element__label">Status</span>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-form-element__static">
+                                            {!v.tempTransaction.status}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-col form-grid-padding slds-size_1-of-2">
+                                 <div class="{! join(' ', 
+                                            'slds-form-element slds-form-element_readonly',
+                                            v.isCompactLayout? 'slds-form-element_horizontal' : 'slds-form-element_stacked'
+                                            )}">
+                                    <span class="slds-form-element__label">Amount</span>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-form-element__static">
+                                            {!v.tempTransaction.price}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-grid slds-col">
+                            <div class="slds-col  form-grid-padding slds-size_1-of-2">
+                                <div class="{! join(' ', 
+                                            'slds-form-element slds-form-element_readonly',
+                                            v.isCompactLayout? 'slds-form-element_horizontal' : 'slds-form-element_stacked'
+                                            )}">
+                                    <span class="slds-form-element__label">Recipient IBAN</span>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-form-element__static">
+                                            {!v.tempTransaction.recipient_iban}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-col form-grid-padding  slds-size_1-of-2">
+                                <div class="{! join(' ', 
+                                            'slds-form-element slds-form-element_readonly',
+                                            v.isCompactLayout? 'slds-form-element_horizontal' : 'slds-form-element_stacked'
+                                            )}">
+                                    <span class="slds-form-element__label">Recipient Name</span>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-form-element__static">
+                                            {!v.tempTransaction.recipient_name}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-grid   slds-col">
+                            <div class="slds-col form-grid-padding slds-size_1-of-2">
+                                <div class="{! join(' ', 
+                                            'slds-form-element slds-form-element_readonly',
+                                            v.isCompactLayout? 'slds-form-element_horizontal' : 'slds-form-element_stacked'
+                                            )}">
+                                    <span class="slds-form-element__label">Description</span>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-form-element__static">
+                                            {!v.tempTransaction.description}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-col  form-grid-padding slds-size_1-of-2">
+                                <div class="{! join(' ', 
+                                            'slds-form-element slds-form-element_readonly',
+                                            v.isCompactLayout? 'slds-form-element_horizontal' : 'slds-form-element_stacked'
+                                            )}">
+                                    <span class="slds-form-element__label">Date</span>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-form-element__static">
+                                            {!v.tempTransaction.created_at}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-grid slds-col">
+                            <div class="slds-col  form-grid-padding  slds-size_1-of-2">
+                                <div class="{! join(' ', 
+                                            'slds-form-element slds-form-element_readonly',
+                                            v.isCompactLayout? 'slds-form-element_horizontal' : 'slds-form-element_stacked'
+                                            )}">
+                                    <span class="slds-form-element__label">Reference Id</span>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-form-element__static">
+                                            {!v.tempTransaction.reference}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button label="Close" title="Close" onclick="{!c.closepopup}">
+                    </lightning:button>
+                   
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

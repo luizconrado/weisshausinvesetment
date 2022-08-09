@@ -1,0 +1,170 @@
+<!-- Verify Email Account -->
+<template>
+
+
+    <article>
+        <div class="slds-card__header ">
+            <!-- Loader START-->
+            <template if:true={loaded}>
+                <div class="spinnerHolder">
+                    <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+                </div>
+            </template>
+            <!-- Loader END-->
+            <lightning-layout if:true={showForm}>
+
+                <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
+                    <div class="header-font">
+                        {title}
+                    </div>
+
+                </lightning-layout-item>
+
+            </lightning-layout>
+            <lightning-layout if:false={showForm}>
+
+                <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
+                    <div class="header-font">
+                        <span>
+                            {title_thankYou}
+
+                        </span>
+                    </div>
+                </lightning-layout-item>
+
+            </lightning-layout>
+        </div>
+        <div if:true={showForm} class="slds-card__body slds-card__body_inner slds-is-relative">
+            <!-- Loader START-->
+            <template if:true={loaded}>
+                <div class="spinnerHolder">
+                    <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+                </div>
+            </template>
+            <!-- Loader END-->
+
+            <div class="slds-grid slds-grid_vertical">
+                <div class="slds-col">
+                    <div class="inputDesign set-max-width">
+                        <lightning-input value={email} name="email" type="email" label={emailFieldLabel}
+                            autocomplete="on" required="true" onchange={handleValueChange}>
+                        </lightning-input>
+                    </div>
+                </div>
+                <div class="slds-col">
+                    <div class="inputDesign set-max-width">
+                        <lightning-input value={subject} autocomplete="off" name="subject" type="text"
+                            pattern=".*\S.*[a-zA-z0-9 ]" label={subjectFieldLabel} required="true"
+                            onchange={handleValueChange} placeholder={subjectFieldHelp}>
+                        </lightning-input>
+                    </div>
+                </div>
+                <div class="slds-col">
+                    <div class="inputDesign set-max-width">
+                        <lightning-textarea autocomplete="off" onchange={handleValueChange} value={issueExperiencing}
+                            name="issueExperiencing" type="text" pattern=".*\S.*[a-zA-z0-9 ]"
+                            label={issueExprencingFieldLabel} required=" true" placeholder={issueExprencingFieldHelp}>
+                        </lightning-textarea>
+                    </div>
+                </div>
+                <div class="slds-col">
+                    <div class="inputDesign dateTimeInput set-max-width">
+                        <lightning-input onchange={handleValueChange} value={OccurrenceOfIssue} type="datetime"
+                            name="OccurrenceOfIssue" required="true" label={occurenceTimeFieldLabel}>
+                        </lightning-input>
+                    </div>
+                </div>
+                <div class="slds-col">
+                    <div class="inputDesign textarea_large set-max-width">
+                        <lightning-textarea autocomplete="off" onchange={handleValueChange} value={stepstoReproduce}
+                            name="stepstoReproduce" pattern=".*\S.*[a-zA-z0-9 ]" type="text"
+                            label={setpsToRepFieldLabel} required="true" placeholder={setpsToRepFieldHelp}>
+                        </lightning-textarea>
+                    </div>
+                </div>
+                <div class="sdls-col">
+                    <div class="inputDesign set-max-width">
+                        <lightning-textarea autocomplete="off" onchange={handleValueChange} name="expectedResult"
+                            value={expectedResult} pattern=".*\S.*[a-zA-z0-9 ]" type="text"
+                            label={expectedResultFieldLabel} required="true" placeholder={expectedResultFieldHelp}>
+                        </lightning-textarea>
+                    </div>
+                </div>
+                <div class="slds-col">
+                    <div class="inputDesign set-max-width">
+                        <lightning-textarea autocomplete="off" onchange={handleValueChange} name="actualResult"
+                            value={actualResult} pattern=".*\S.*[a-zA-z0-9 ]" type="text" label={actualResultFieldLabel}
+                            required="true" placeholder={actualResultFieldHelp}>
+                        </lightning-textarea>
+                    </div>
+                </div>
+                <div class="slds-col">
+                    <div class="inputDesign set-max-width">
+                        <lightning-input autocomplete="new-password" onchange={handleValueChange} type="text"
+                            pattern=".*\S.*[a-zA-z0-9 ]" value={phoneModel} placeholder={mobileModalFieldHelp}
+                            name="phoneModel" label={mobileModalFieldLable} required="true" options={typeOptions}>
+                        </lightning-input>
+                    </div>
+                </div>
+                <div class="slds-col">
+                    <div class="inputDesign set-max-width">
+                        <lightning-combobox autocomplete="new-password" value={phoneOs} name="phoneOs"
+                            label={mobileOsFieldLabel} required="true" options={phoneOsOptions}
+                            onchange={handlePhoneOsChange}>
+                        </lightning-combobox>
+                    </div>
+                </div>
+                <div class="slds-col">
+                    <div class="inputDesign set-max-width">
+                        <lightning-combobox autocomplete="new-password" onchange={handleValueChange} name="phoneVersion"
+                            value={phoneVersion} label={mobileOsVersionFieldLable} required="true"
+                            options={phoneOsVersionOptions}>
+                        </lightning-combobox>
+                    </div>
+                </div>
+                <div class="slds-col">
+                    <div class="inputDesign set-max-width">
+                        <lightning-combobox autocomplete="off" onchange={handleValueChange} name="appVersion"
+                            value={appVersion} label={appVerFieldLabel} required="true" options={appVersionOptions}>
+                        </lightning-combobox>
+                    </div>
+                </div>
+                <div class="slds-col">
+                    <div class="set-max-width">
+                        <lightning-file-upload label={fileUploadFieldLabel} name="fileUploader"
+                            onuploadfinished={handleUploadFinished} file-field-name="Type__c"
+                            file-field-value="Digibank Form File" multiple>
+                        </lightning-file-upload>
+                        <ul>
+                            <template for:each={contentVersionNames} for:item="itm">
+                                <li key={itm}>
+                                    {itm}
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <footer class="slds-card__footer " if:true={showForm} style="text-align: center;">
+
+            <lightning-layout>
+
+                <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
+                    <div class="set-max-width">
+                        <button disabled={loaded} class="slds-button primaryButton" onclick={handleSave}>
+                            {submitButtonLabel}
+                        </button>
+
+                    </div>
+                </lightning-layout-item>
+
+
+            </lightning-layout>
+
+        </footer>
+    </article>
+
+</template>

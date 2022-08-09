@@ -1,0 +1,65 @@
+<aura:component controller="SolarisbankAdminPanal" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global"  >
+    
+    
+    <aura:attribute type="boolean" name="loading" default="false"/>
+    <aura:attribute type="boolean" name="isOpen" default="false"/>
+    <aura:attribute type="boolean" name="isDepositToggle" default="false"/>
+    
+    <aura:attribute type="String" name="termDepositStatus" default="false"/>
+    <aura:attribute type="String" name="termDepositReason" default=""/>
+    
+    
+    <lightning:card  title="Auth0 Actions" iconName="standard:account" >
+        <aura:set attribute="actions">
+            <lightning:buttonMenu menuAlignment="right" alternativeText="Show menu" onselect="{!c.handleSelect}">
+                <lightning:menuItem value="Toggle_Term_Deposit" label="Toggle Term Deposit" />
+            </lightning:buttonMenu>
+        </aura:set>
+        <p>
+            <aura:if isTrue="{!v.loading}">
+                <lightning:spinner alternativeText="Loading" size="medium" />
+            </aura:if>
+            &nbsp;
+        </p>
+    </lightning:card>
+    
+     <aura:if isTrue="{!v.isOpen}">
+         <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_medium" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button onclick="{! c.handleClose }" class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                        X
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
+                        
+                        <aura:if isTrue="{!v.isDepositToggle}">
+                            Update User Term Deposit Status
+                        </aura:if>
+                        
+                    </h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <aura:if isTrue="{!v.loading}">
+                        <lightning:spinner alternativeText="Loading" size="medium" />
+                    </aura:if>
+                   <aura:if isTrue="{!v.isDepositToggle}">
+                       <lightning:select   label="Term Deposite Status" name="termDeposite"  value="{!v.termDepositStatus}">
+                           <option value="false">False</option>
+                           <option value="true">True</option>
+                       </lightning:select>
+                       
+                       <lightning:textarea name="statusReason" value="{!v.termDepositReason}" label="Enter Reason" />
+                    </aura:if>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button label="Close" title="Close" onclick="{! c.handleClose }"/> 
+                    <aura:if isTrue="{!v.isDepositToggle}">
+                        <lightning:button variant="brand" disabled="{!v.loading}" label="Change" title="Change" onclick="{! c.changeTermStatus }"/>
+                    </aura:if>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

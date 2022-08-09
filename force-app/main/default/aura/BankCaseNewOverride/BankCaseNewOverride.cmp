@@ -1,0 +1,301 @@
+<aura:component controller="BankCaseOverrideControler" implements="lightning:isUrlAddressable,flexipage:availableForRecordHome,force:hasRecordId,lightning:actionOverride" access="global"  >
+    <lightning:workspaceAPI aura:id="workspace"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <lightning:navigation aura:id="navService"/>
+
+    <aura:attribute type="boolean" name="isRender" default="false"/>
+
+    <aura:handler name='render' value='{!this}' action='{!c.onRender}' />
+    
+     
+    <aura:attribute type="String" name="header" default="Select Case Type"/>
+    <aura:attribute type="String" name="currentStep" default="selectType"/>
+    <aura:attribute type="boolean" name="isSave" default="false"/>
+    <aura:attribute type="boolean" name="isClose" default="true"/>
+    <aura:attribute type="boolean" name="loading" default="true"/>
+    <aura:attribute type="boolean" name="typeLoaded" default="false"/>
+    <aura:attribute type="boolean" name="subTypeLoaded" default="false"/>
+    
+    <aura:attribute type="List" name="caseTypes"/>
+    <aura:attribute type="Object" name="caseIITypes"/>
+    <aura:attribute type="List" name="caseDependentTypes" />
+    
+    <aura:attribute type="Object" name="caseDetails"/>
+    <aura:attribute type="Object" name="selectedBank"/>
+    <aura:attribute type="Object" name="selectedCard"/>
+    <aura:attribute type="Object" name="selectedStatementInfo"/>
+    <aura:attribute type="List" name="selectedBookings"/>
+    <aura:attribute type="List" name="selectedReservations"/>
+    <aura:attribute type="List" name="selectedTimedOrders"/>
+    <aura:attribute type="List" name="selectedStandingOrders"/>
+    <aura:attribute type="List" name="selectedIdentList"/>
+    
+    <aura:attribute type="String" name="selectedType"/>
+    <aura:attribute type="String" name="selectedTypeII"/>
+    <aura:attribute type="String" name="reasonForContact"/>
+    
+    <aura:attribute type="List" name="personBanks"/>
+    <aura:attribute type="List" name="orignalPersonBanks"/>
+    
+    
+    
+    <div>
+        <section >
+            <div class="lds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-modal__title model-header_large slds-hyphenate">Create Bank Case</h2>
+                    <p class="slds-m-top_x-small">
+                        <div class="align-center slds-grid slds-gutters">
+                            <div class="slds-col ">
+                                <lightning:progressIndicator currentStep="{!v.currentStep}">
+                                    <lightning:progressStep label="Select Case Type" value="selectType"/>
+                                    <lightning:progressStep label="Select Bank Account" value="selectBank"/>
+                                    <lightning:progressStep label="Select Associate Record" value="selectRecord"/>
+                                    <lightning:progressStep label="Create Record" value="createRecord"/>
+                                    
+                                </lightning:progressIndicator>
+                            </div>
+                            <div class="slds-col slds-grow-none">
+                                <lightning:button variant="brand-outline" value="back" name="back" label="{!v.isClose?'Close':'Back'}" title="Back" onclick="{! c.onBack }"/>
+                                <lightning:button variant="brand" value="next" name="next" label="{!v.isSave?'Save':'Next'}" title="Next" onclick="{! c.onNext }"/>
+                            </div>
+                        </div>
+                        <h2 class="block-header ">{!v.header}</h2>
+                    </p>
+                </header>
+                <div class="slds-modal__content slds-is-relative slds-p-around_medium margin-bottom" id="modal-content-id-1">
+                    <aura:if isTrue="{!v.loading}">
+                        <lightning:spinner alternativeText="Loading" size="medium" />
+                    </aura:if>
+                    <!--section 1-->
+                    <aura:if isTrue="{!v.currentStep=='selectType'}">
+                        <div class="slds-grid_vertical slds-grid">
+                            <div class="slds-grid slds-col" >
+                                <div class="slds-col slds-size_1-of-2 ">
+                                    <lightning:input type="text" name="caseNumber" label="Case Number" readonly="true" value="{!v.caseDetails.CaseNumber}" />
+                                </div>
+                                <div class="slds-col slds-size_1-of-2 ">
+                                    <lightning:input type="text" name="personAccount" label="Account" readonly="true" value="{!v.caseDetails.Account.Name}" />
+                                </div>
+                            </div>
+                            <div class="slds-col slds-m-bottom_small">
+                                <lightning:select label="Select Type" name="type"  required="true" value="{!v.selectedType}" onchange="{! c.onTypeSelect }">
+                                    <aura:iteration items="{!v.caseTypes}" var="option">
+                                        <option text="{!option.label}" value="{!option.value}" selected="{!option.selected}"/>
+                                    </aura:iteration>
+                                </lightning:select>
+                            </div>
+                            <div class="slds-col slds-m-bottom_small">
+                                <lightning:select label="Select Sub Type" name="subType" value="{!v.selectedTypeII}" >
+                                    <aura:iteration items="{!v.caseDependentTypes}" var="option">
+                                        <option text="{!option.label}" value="{!option.value}" selected="{!option.selected}"/>
+                                    </aura:iteration>
+                                </lightning:select>
+                            </div>
+                        </div>
+                    </aura:if>
+                    <!--section 2-->
+                    <aura:if isTrue="{!v.currentStep=='selectBank'}">
+                        <div class="slds-grid_vertical slds-grid">            
+                            <div class=" slds-col slds-m-bottom_small ">
+                                <lightning:input onchange="{! c.onBankSearch }"
+                                                 name="bankIBAN"
+                                                 label="Search IBAN"
+                                                 type="search"
+                                                 />
+                                
+                            </div>
+                            <div class="slds-col slds-grid  slds-wrap">
+                                <aura:iteration items="{!v.personBanks}" var="bank">
+                                    <div data-id="{!bank.Id}" 
+                                         class="slds-col slds-box  grid-column-width">
+                                        <article class="slds-tile slds-hint-parent">
+                                            <div class="slds-m-bottom_x-small slds-grid slds-grid_align-spread slds-has-flexi-truncate">
+                                                <h3 class="slds-tile__title slds-truncate" title="{!bank.Name}">
+                                                    <lightning:input type="checkbox" label="{!bank.Name}" name="{!bank.Id}" checked="{!bank.selected}" onchange="{!c.onBankSelection}" /> 
+                                                </h3>
+                                            </div>
+                                            <div class="slds-tile__detail">
+                                                <dl class="slds-list_horizontal slds-wrap">
+                                                    <dt class="slds-item_label slds-text-color_weak slds-truncate" title="BIC">BIC
+                                                    </dt>
+                                                    <dd class="slds-item_detail slds-truncate" title="{!bank.BIC__c}">{!bank.BIC__c}</dd>
+                                                    <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Type">Type
+                                                    </dt>
+                                                    <dd class="slds-item_detail slds-truncate" title="{!bank.Type__c}">
+                                                        {!bank.Type__c}</dd>
+                                                    <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Status">Status
+                                                    </dt>
+                                                    <dd class="slds-item_detail slds-truncate" title="{!bank.Status__c}">
+                                                        "{!bank.Status__c}"</dd>
+                                                </dl>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </aura:iteration>
+                            </div>
+                        </div>
+                    </aura:if>
+                    <!--section 3-->
+                    <aura:if isTrue="{!v.currentStep=='selectRecord'}">
+                        <lightning:tabset variant="scoped">
+                            <lightning:tab label="Cards">
+                                <c:CardsCaseView  selectedCard="{!v.selectedCard}" bankAccountDetails="{!v.selectedBank}"/>
+                            </lightning:tab>
+                             <lightning:tab label="Bookings">
+                                <c:BookingsCaseView caseRecordId="{!v.caseDetails.Id}" selectedBookings="{!v.selectedBookings}" bankAccountDetails="{!v.selectedBank}"/>
+                            </lightning:tab>
+                            <lightning:tab label="Reservations">
+                                <c:ReservationCaseView selectedReservations="{!v.selectedReservations}" bankAccountDetails="{!v.selectedBank}"/>
+                            </lightning:tab>
+                            <lightning:tab label="Timed Orders">
+                                <c:TimedOrderCaseView  selectedTimedOrder="{!v.selectedTimedOrders}" bankAccountDetails="{!v.selectedBank}"/>
+                            </lightning:tab>
+                            <lightning:tab label="Standing Orders">
+                                <c:StandingOrderCaseView   selectedStandingOrders="{!v.selectedStandingOrders}" bankAccountDetails="{!v.selectedBank}"/>
+                            </lightning:tab>
+                           
+                             <lightning:tab label="Statement">
+                                 <c:StatmentsCaseView caseRecordId="{!v.caseDetails.Id}" selectedStatementInfo="{!v.selectedStatementInfo}" bankAccountDetails="{!v.selectedBank}"/>
+
+                            </lightning:tab>
+                            <lightning:tab label="Person Identifications">
+                                 <c:IdentificationCaseView  selectedIdentList="{!v.selectedIdentList}" personAccountId="{!v.caseDetails.AccountId}"/>
+
+                            </lightning:tab>
+                            
+                            
+                        </lightning:tabset>
+                    </aura:if>
+                    <aura:if isTrue="{!v.currentStep=='createRecord'}">
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-1 slds-m-around_x-small">
+                                <lightning:textarea  required="true" name="reason" value="{!v.reasonForContact}" label="Reason for contact" />
+                            </div>
+                            <aura:if isTrue="{!v.caseDetails.AccountId}">
+                                <div class="card-details slds-m-around_x-small">
+                                    <lightning:card variant="Narrow" title="Person Account">
+                                        <p class="slds-p-horizontal_small">
+                                            <ul>
+                                                <li>Name : {!v.caseDetails.Account.Name}</li>
+                                                <li>Industry  : {!v.caseDetails.Account.Industry }</li>
+                                            </ul>
+                                        </p>
+                                    </lightning:card>
+                                </div>
+                            </aura:if>
+                            <aura:if isTrue="{!v.selectedBank}">
+                                <div class="card-details slds-m-around_x-small">
+                                    <lightning:card variant="Narrow" title="Bank Account">
+                                        <p class="slds-p-horizontal_small">
+                                            <ul>
+                                                <li>IBAN : {!v.selectedBank.Name}</li>
+                                                <li>Status : {!v.selectedBank.Status__c}</li>
+                                            </ul>
+                                        </p>
+                                    </lightning:card>
+                                </div>
+                            </aura:if>
+                            <aura:if isTrue="{!v.selectedCard}">
+                                <div class="card-details slds-m-around_x-small">
+                                    <lightning:card variant="Narrow" title="Card">
+                                        <p class="slds-p-horizontal_small">
+                                            <ul>
+                                                <li>Number : {!v.selectedCard.Name}</li>
+                                                <li>Status : {!v.selectedCard.Status__c }</li>
+                                            </ul>
+                                        </p>
+                                    </lightning:card>
+                                </div>
+                            </aura:if>
+                            <aura:if isTrue="{!v.selectedTimedOrders}">
+                                <aura:iteration items="{!v.selectedTimedOrders}" var="torder">
+                                    <div class="card-details slds-m-around_x-small">
+                                        <lightning:card variant="Narrow" title="Timed Order">
+                                            <p class="slds-p-horizontal_small">
+                                                <ul>
+                                                    <li>Recipient : {!torder.Recipient_IBAN__c }</li>
+                                                    <li>Amount : {!torder.price }</li>
+                                                </ul>
+                                            </p>
+                                        </lightning:card>
+                                    </div>
+                                </aura:iteration>
+                            </aura:if>
+                            <aura:if isTrue="{!v.selectedStandingOrders}">
+                                <aura:iteration items="{!v.selectedStandingOrders}" var="sorder">
+                                    <div class="card-details slds-m-around_x-small">
+                                        <lightning:card variant="Narrow" title="Standing Order">
+                                            <p class="slds-p-horizontal_small">
+                                                <ul>
+                                                    <li>Reoccurrence : {!sorder.Reoccurrence__c }</li>
+                                                    <li>Status : {!sorder.Status__c }</li>
+                                                </ul>
+                                            </p>
+                                        </lightning:card>
+                                    </div>
+                                </aura:iteration>
+                            </aura:if>
+                            <aura:if isTrue="{!v.selectedBookings}">
+                                <aura:iteration items="{!v.selectedBookings}" var="booking">
+                                    <div class="card-details slds-m-around_x-small">
+                                        <lightning:card variant="Narrow" title="Booking">
+                                            <p class="slds-p-horizontal_small">
+                                                <ul>
+                                                    <li>Recipient : {!booking.Recipient_IBAN__c }</li>
+                                                    <li>Amount : {!booking.price }</li>
+                                                </ul>
+                                            </p>
+                                        </lightning:card>
+                                    </div>
+                                </aura:iteration>
+                            </aura:if>
+                            <aura:if isTrue="{!v.selectedReservations}">
+                                <aura:iteration items="{!v.selectedReservations}" var="reservation">
+                                    <div class="card-details slds-m-around_x-small">
+                                        <lightning:card variant="Narrow" title="Reservation">
+                                            <p class="slds-p-horizontal_small">
+                                                <ul>
+                                                    <li>Description : {!reservation.Description__c }</li>
+                                                    <li>Amount : {!reservation.price } </li>
+                                                </ul>
+                                            </p>
+                                        </lightning:card>
+                                    </div>
+                                </aura:iteration>
+                            </aura:if>
+                            <aura:if isTrue="{!v.selectedStatementInfo}">
+                                <div class="card-details slds-m-around_x-small">
+                                    <lightning:card variant="Narrow" title="Statement">
+                                        <p class="slds-p-horizontal_small">
+                                            <ul>
+                                                <li>Period : {!v.selectedStatementInfo.Name }</li>
+                                                <li>Issue Date : {!v.selectedStatementInfo.Issue_Date__c  }</li>
+                                            </ul>
+                                        </p>
+                                    </lightning:card>
+                                </div>
+                            </aura:if>
+                            <aura:if isTrue="{!v.selectedIdentList}">
+                                <aura:iteration items="{!v.selectedIdentList}" var="identification">
+                                    <div class="card-details slds-m-around_x-small">
+                                        <lightning:card variant="Narrow" title="Identification">
+                                            <p class="slds-p-horizontal_small">
+                                                <ul>
+                                                    <li>Ref : {!identification.Reference__c }</li>
+                                                    <li>Status : {!identification.Status__c } </li>
+                                                </ul>
+                                            </p>
+                                        </lightning:card>
+                                    </div>
+                                </aura:iteration>
+                            </aura:if>
+                        </div>
+                    </aura:if>
+                </div>
+                
+            </div>
+        </section>
+        
+    </div>
+</aura:component>

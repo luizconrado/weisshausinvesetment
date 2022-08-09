@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BANK_STATEMENTS</fullName>
+    <active>true</active>
+    <description>Kontoauszug in German</description>
+    <label>Bank Statements</label>
+    <picklistValues>
+        <picklist>Unit__c</picklist>
+        <values>
+            <fullName>cents</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -1,0 +1,93 @@
+<aura:component controller="BankCaseOverrideControler" implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global"  >
+    <lightning:workspaceAPI aura:id="workspace"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <aura:handler name='init' value='{!this}' action='{!c.onInit}' />
+    <aura:html tag="style">
+        
+        .cuf-content {
+        padding: 0 0rem !important;
+        }
+         .slds-p-around--medium {
+        padding: 0rem !important;
+        }       
+         .slds-modal__content{
+        height:unset !important;
+        max-height:unset !important;
+        }
+    </aura:html>
+    <aura:attribute name="loader" type="boolean" default="false"/>
+    
+    <aura:attribute name="bankCaseDetails" type="Object" />
+ 
+    <aura:attribute name="typeSelected" type="String" default="VISA_DEBIT"/>
+    <aura:attribute name="fName" type="String"/>
+    <aura:attribute name="lName" type="String"/>
+     
+    <aura:attribute type="boolean" name="isError" default="false"/>
+    
+    <aura:attribute type="object" name="errorDetails" />
+
+    
+
+     <section>
+            <header class="modal-header  slds-modal__header">
+                <button onclick="{!c.close}" class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                    X
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Request New Card</h2>
+              
+            </header>
+            <div class="slds-modal__content slds-p-around_medium slds-is-relative"  id="modal-content-id-1">
+                <aura:if isTrue="{!v.loader}">
+                    <lightning:spinner alternativeText="Loading" size="medium" />
+                </aura:if>
+                   <aura:if isTrue="{!v.isError}">
+                       <div class="content-center">
+                           <div class="slds-notify_toast slds-theme_warning" role="status">
+                               <span class="slds-assistive-text">{!v.errorDetails.title}</span>
+                               <span class="slds-icon_container slds-icon-utility-warning slds-m-right_small slds-no-flex slds-align-top" title="{!v.errorDetails.title}">
+                                   <lightning:icon iconName="utility:warning" alternativeText="warning" size="small" title="{!v.errorDetails.title}" />
+                               </span>
+                               <div class="slds-notify__content">
+                                   <h2 class="slds-text-heading_small ">
+                                       {!v.errorDetails.detail}
+                                   </h2>
+                               </div>
+                           </div>
+                       </div>
+                </aura:if>
+                <div class="slds-grid slds-grid_vertical">
+                    <div class="slds-grid slds-col">
+                        <div class="slds-col form-grid-padding  slds-size_1-of-2">
+                            <lightning:input name="firstName" label="First Name" value="{!v.fName}" required="true"/>
+                        </div>
+                        <div class="slds-col form-grid-padding  slds-size_1-of-2">
+                            <lightning:input name="lastName" label="Last Name" value="{!v.lName}" required="true"/>
+                        </div>
+                                                
+                    </div>
+                    
+                    
+                    <div class="slds-col">
+                        <div class="slds-col form-grid-padding  slds-size_1-of-1">
+                                 <lightning:select disabled="true" label="Type" name="type"  required="true" value="{!v.typeSelected}" >
+                                     <option text="Visa Debit" value="VISA_DEBIT" />
+                                    <option text="Visa Business Debit" value="VISA_BUSINESS_DEBIT"/>
+                                </lightning:select>
+                         </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="modal-footer slds-modal__footer">
+                
+                <lightning:button label="Cancel" title="Cancel" onclick="{! c.close }"/>
+                
+                <lightning:button variant="brand"  label="Create New Card" 
+                                  title="Create New Card"
+                                  onclick="{! c.save }" />
+                
+            </footer>
+        
+    </section>
+</aura:component>

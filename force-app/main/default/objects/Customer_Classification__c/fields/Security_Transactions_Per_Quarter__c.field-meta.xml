@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Security_Transactions_Per_Quarter__c</fullName>
+    <description>On average, how many securities transactions did you make per quarter last year?</description>
+    <externalId>false</externalId>
+    <inlineHelpText>On average, how many securities transactions did you make per quarter last year?</inlineHelpText>
+    <label>Security Transactions Per Quarter</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>NONE</fullName>
+                <default>false</default>
+                <label>NONE</label>
+            </value>
+            <value>
+                <fullName>FIVE_OR_LESS</fullName>
+                <default>false</default>
+                <label>FIVE_OR_LESS</label>
+            </value>
+            <value>
+                <fullName>NINE_OR_LESS</fullName>
+                <default>false</default>
+                <label>NINE_OR_LESS</label>
+            </value>
+            <value>
+                <fullName>TEN_OR_MORE</fullName>
+                <default>false</default>
+                <label>TEN_OR_MORE</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

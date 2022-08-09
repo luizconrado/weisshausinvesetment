@@ -1,0 +1,215 @@
+<!-- Verify Email Account -->
+<template>
+
+
+    <article>
+        <div class="slds-card__header ">
+            <!-- Loader START-->
+            <template if:true={loaded}>
+                <div class="spinnerHolder">
+                    <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+                </div>
+            </template>
+            <!-- Loader END-->
+            <lightning-layout if:true={showForm}>
+
+                <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
+                    <div class="header-font">
+                        {TITLE}
+                    </div>
+
+                </lightning-layout-item>
+
+            </lightning-layout>
+            <lightning-layout if:true={showSuccess}>
+
+                <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
+                    <div class="header-font">
+                        {SUCCESS_TITLE}
+                    </div>
+
+                </lightning-layout-item>
+
+            </lightning-layout>
+
+            <lightning-layout if:true={error}>
+
+                <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
+                    <div class="header-font">
+                        <span>
+                            {INVALID_TITLE}
+                        </span>
+                    </div>
+                </lightning-layout-item>
+
+            </lightning-layout>
+        </div>
+        <div if:true={showForm} class="slds-card__body slds-card__body_inner slds-is-relative">
+            <!-- Loader START-->
+            <template if:true={loaded}>
+                <div class="spinnerHolder">
+                    <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+                </div>
+            </template>
+            <!-- Loader END-->
+
+            <div class="slds-grid slds-grid_vertical">
+                <div class="slds-col">
+                    <div class="inputDesign set-max-width">
+                        <lightning-input value={customerName} autocomplete="off" name="customerName" type="text"
+                            label={CUSTOMERNAME} disabled="true" required="true">
+                        </lightning-input>
+                    </div>
+                </div>
+
+                <div class="slds-col">
+                    <div class="inputDesign set-max-width">
+                        <lightning-input value={depositAccount} autocomplete="off" name="depositAccount" type="text"
+                            label={DEPOSITACCOUNT} disabled="true" required="true">
+                        </lightning-input>
+                    </div>
+                </div>
+                <div class="slds-col">
+                    <div class="inputDesign set-max-width">
+                        <lightning-input value={taxId} name="taxId" type="text" label={TAXID} autocomplete="off"
+                            required="true" disabled="true">
+                        </lightning-input>
+                    </div>
+                </div>
+                <div class="slds-col">
+                    <div class="inputDesign set-max-width">
+
+                        <lightning-combobox label={MARTIALSTATUS} name="martialStatus" value={martialStatus}
+                            options={martialStatusOptions} required="true" onchange={handleValueChange}
+                            message-when-value-missing="please update your status">
+                        </lightning-combobox>
+
+                    </div>
+                </div>
+                <div class="slds-col" if:true={askSpouseDetails}>
+                    <div class="inputDesign  set-max-width">
+                        <lightning-input autocomplete="off" onchange={handleValueChange} value={spouseName}
+                            name="spouseName" pattern=".*\S.*[a-zA-z0-9 ]" type="text" label={SPOUSENAME}
+                            required="true">
+                        </lightning-input>
+                    </div>
+                </div>
+                <div class="slds-col" if:true={askSpouseDetails}>
+                    <div class="inputDesign  set-max-width">
+                        <lightning-input autocomplete="off" onchange={handleValueChange} value={spouseTaxId}
+                            name="spouseTaxId" pattern=".*\S.*[a-zA-z0-9 ]" type="text" label={SPOUSETAXID}
+                            required="true">
+                        </lightning-input>
+                    </div>
+                </div>
+                <div class="slds-col" if:true={askSpouseDetails}>
+                    <div class="inputDesign  set-max-width">
+                        <lightning-input autocomplete="off" onchange={handleValueChange} value={spouseBirthDay}
+                            name="spouseBirthDay" max={minDateValue} type="Date" label={SPOUSEBIRTHDATE}
+                            required="true">
+                        </lightning-input>
+                    </div>
+                </div>
+                <div class="slds-col" if:true={askSpouseDetails}>
+                    <div class="inputDesign set-max-width">
+                        <lightning-input type="checkbox" label={ADDRESSSAMEASSPOUSE} name="isAddressSameAsSpouse"
+                            value={isAddressSameAsSpouse} onchange={handleCheckboxValueChange}>
+                        </lightning-input>
+
+                    </div>
+                </div>
+                <div class="slds-col" if:false={isAddressSameAsSpouse}>
+                    <div class="inputDesign  set-max-width" if:true={askSpouseDetails}>
+                        <lightning-textarea autocomplete="off" onchange={handleValueChange} value={spouseAddress}
+                            name="spouseAddress" pattern=".*\S.*[a-zA-z0-9 ]" type="text" label={SPOUSEADDRESS}
+                            required="true">
+                        </lightning-textarea>
+                    </div>
+                </div>
+                <div class="slds-col">
+                    <div class="inputDesign set-max-width">
+                        <lightning-input type="number" required="true" max={maxTaxExemptionValue} formatter="currency" label="Exemption amount" name="exemptionAmount" step="0" value={exemptionAmount}
+                            onchange={handleValueChange}>
+                        </lightning-input>
+
+                    </div>
+                </div>
+                <div class="slds-col ">
+                    <div class="set-max-width slds-grid slds-wrap ">
+                        <div class="slds-col slds-m-right_medium">
+                            <div class="inputDesign dateTimeInput set-max-width">
+                                <lightning-input onchange={handleValueChange} value={startDate} type="date"
+                                    name="startDate" disabled="true" required="true" label={STARTDATE_LABEL}>
+                                </lightning-input>
+                                <div class="error-warning" if:true={showBookingMissingMessage}>{BOOKING_MISSING_PART1}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col ">
+                            <div class="inputDesign dateTimeInput set-max-width">
+                                <lightning-input onchange={handleValueChange} value={endDate} type="date" name="endDate"
+                                    required="true" disabled="true" label={ENDDATE_LABEL}>
+                                </lightning-input>
+                                <div class="error-warning" if:true={showBookingMissingMessage}>{BOOKING_MISSING_PART2}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <footer class="slds-card__footer " if:true={showForm} style="text-align: center;">
+
+            <lightning-layout>
+
+                <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
+                    <div class="set-max-width">
+                        <button disabled={loaded} class="slds-button primaryButton" onclick={openPopup}>
+                            {SUBMIT_BUTTON}
+                        </button>
+
+                    </div>
+                </lightning-layout-item>
+
+
+            </lightning-layout>
+
+        </footer>
+    </article>
+    <template if:true={popup}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small"
+            aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        title="Close" onclick={handleClose}>
+                        X
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">{AUTHUNTICATE_TITLE} </h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="inputDesign set-max-width">
+                        <lightning-input value={otp} autocomplete="off" name="otp" type="number"
+                            label={ATHUNTICATE_LABEL} required="true" onchange={handleValueChange}>
+                        </lightning-input>
+                        <div style="float:right;">{counterValue}</div>
+                    </div>
+                </div>
+                <footer class="slds-modal__footer">
+                    <button disabled={loaded} class="slds-button primaryButton" onclick={handleClose}>
+                        {CLOSE_BUTTON}
+                    </button>
+                    <button disabled={loaded} class="slds-button primaryButton" onclick={handleSave}>
+                        {SUBMIT_BUTTON}
+                    </button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

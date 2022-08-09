@@ -1,0 +1,87 @@
+<template>
+
+    <c-ev-toast type="success"></c-ev-toast>
+    <div>
+        <div class="ev-back_wrapper slds-grid">
+
+            <div onclick={navigateToHome} class="ev-pointer">
+                <img
+                    src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0157T000000c6t4&oid=00D5I000002GOw0&lastMod=1650877709000">
+            </div>
+            <div class="ev-back_text ev-pointer" onclick={navigateToHome}>
+                Back
+            </div>
+        </div>
+        <div class="ev-support_wrapper slds-grid slds-grid_vertical">
+            <div class="ev-header_wrapper">
+                Sie benötigen Hilfe?
+            </div>
+            <div class="ev-callus_wrapper">
+                <div class="ev-callus_icon">
+                    <img
+                        src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000ebsC&oid=00D5I000002GOw0"></img>
+                </div>
+                <div class="ev-callus_header">
+                    Rufen Sie uns an
+                </div> 
+                <div class="ev-callus_desc">
+                    <p>
+                        Rufen Sie unser Support Team an:<a href="tel:+49 3074395959">+49 3074395959</a>
+
+                    </p>
+                    <p>
+                        Sprechzeiten Mo.-Fr. 09:00 - 18:00 Uhr
+                    </p>
+                </div>
+            </div>
+            <div class="ev-contactUs_wrapper">
+                <div class="ev-contactUs-icon">
+                    <img
+                        src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0155I000000eT6o&oid=00D5I000002GOw0">
+                </div>
+                <div class="ev-contactUs-header">
+                    Senden Sie uns eine Nachricht
+                </div>
+                <div class="ev-contactUs-desc">
+                    Sie können uns einfach eine Nachricht über das untenstehende Formular senden. Wir melden uns schnellstmöglich bei Ihne zurück.
+                </div>
+                <div class="ev-contactUs-input ev-Design">
+                    <lightning-input name="email" value={email} disabled={isFormDisabled} onchange={handleValueChange}
+                        type="email" class="ev-input email-input" label="E-Mail" required="true"
+                        placeholder="(Geben Sie hier Ihre E-Mail-Adresse ein)">
+                    </lightning-input>
+                </div>
+                <div class="ev-contactUs-input ev-Design">
+                    <lightning-input type="text" disabled={isFormDisabled} max-length="254" label="Betreff"
+                        required="true" class="ev-input subject-input" name="subject" value={subject}
+                        onchange={handleValueChange} placeholder="(Geben Sie hier einen Betreff ein)"></lightning-input>
+                </div>
+                <div class="ev-contactUs-input ev-Design">
+                    <lightning-textarea disabled={isFormDisabled} max-length="31000" label="Nachricht" required="true"
+                        class="ev-input desc-input" name="description" value={description} onchange={handleValueChange}
+                        placeholder="(Geben Sie hier Ihre Nachricht ein)"></lightning-textarea>
+                </div>
+                <div class="ev-contactUs-checkbox ev-Design slds-grid">
+                    <lightning-input required="true" disabled={isFormDisabled} class="ev-checkbox checkbox-input" type="checkbox"
+                        variant="label-hidden" name="tcAccept" checked={tcAccept} onchange={handleCheckChange}>
+                    </lightning-input>
+                    <span class="ev-contactUs-checkbox_text" data-name="tcAcceptText" onclick={handleCheckChange}>
+                        Mit der Nutzung dieses Formulars stimmen Sie der
+                        Verarbeitung Ihrer Daten durch EV SmartMoney
+                        gemäß unserer <a href="https://www.ev-smartmoney.com/">Datenschutzrichtlinie</a> zu.
+                    </span>
+                </div>
+                <div class="ev-contactUs-button ev-Design">
+                    <span>
+                        <lightning-button disabled={isFormDisabled} onclick={handleSave} class="ev-button" label="Senden"
+                            title="Senden" variant="brand">
+                        </lightning-button>
+                    </span>
+                    <span class="slds-is-relative ev-button_spinner" if:true={loading}>
+                        <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

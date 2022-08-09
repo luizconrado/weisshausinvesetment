@@ -1,0 +1,188 @@
+<aura:component controller="BankCaseOverrideControler">
+    
+    <lightning:workspaceAPI aura:id="workspace"/>
+
+	<aura:handler name='init' value='{!this}' action='{!c.onInit}' />
+    
+    <aura:attribute name="loading" type="boolean" default="false"/>
+    
+    <aura:attribute name="bankAccountDetails" type="Object"/>
+    <aura:attribute name="selectedCard" type="Object"/>
+    
+    <aura:attribute name="cardsList" type="List"/>
+    <aura:attribute name="orignalCardsList" type="List"/>
+    
+    <aura:attribute name="sortBy" type="String" default="Expiration_Date__c"/>
+    <aura:attribute name="sortOrder" type="String" default="desc"/>
+     
+    
+    <div class="slds-scrollable  slds-is-relative" style="height:80%;">
+        <aura:if isTrue="{!v.loading}">
+            <lightning:spinner alternativeText="Loading" size="small">
+                
+            </lightning:spinner>
+        </aura:if>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="selection">
+                            
+                        </div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Status">
+                            
+                            <a name="Status__c" onclick="{!c.sortChangeHandler}">
+                                Status
+                                <aura:if isTrue="{!v.sortBy=='Status__c'}">
+                                    <aura:if isTrue="{!v.sortOrder=='desc'}">
+                                        <lightning:icon size="xx-small" iconName="utility:arrowdown"
+                                                        alternative-text="desc" title="desc" >
+                                            
+                                        </lightning:icon>
+                                        
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.sortOrder=='asc'}">
+                                        <lightning:icon size="xx-small" 
+                                                        iconName="utility:arrowup" alternative-text="asc" title="asc">
+                                            
+                                        </lightning:icon>
+                                    </aura:if>
+                                </aura:if>
+                            </a>
+                        </div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Name">
+                            
+                            <a name="Name_on_Card__c" onclick="{!c.sortChangeHandler}">
+                                Name
+                                <aura:if isTrue="{!v.sortBy=='Name_on_Card__c'}">
+                                    <aura:if isTrue="{!v.sortOrder=='desc'}">
+                                        <lightning:icon size="xx-small" iconName="utility:arrowdown"
+                                                        alternative-text="desc" title="desc" >
+                                            
+                                        </lightning:icon>
+                                        
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.sortOrder=='asc'}">
+                                        <lightning:icon size="xx-small" 
+                                                        iconName="utility:arrowup" alternative-text="asc" title="asc">
+                                            
+                                        </lightning:icon>
+                                    </aura:if>
+                                </aura:if>
+                            </a>
+                        </div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Number">
+                            <a name="Name" onclick="{!c.sortChangeHandler}">
+                                Number
+                                <aura:if isTrue="{!v.sortBy=='Name'}">
+                                    <aura:if isTrue="{!v.sortOrder=='desc'}">
+                                        <lightning:icon size="xx-small" iconName="utility:arrowdown"
+                                                        alternative-text="desc" title="desc" >
+                                            
+                                        </lightning:icon>
+                                        
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.sortOrder=='asc'}">
+                                        <lightning:icon size="xx-small" 
+                                                        iconName="utility:arrowup" alternative-text="asc" title="asc">
+                                            
+                                        </lightning:icon>
+                                    </aura:if>
+                                </aura:if>
+                            </a>
+                            
+                        </div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Expiration Date">
+                            
+                            <a name="Expiration_Date__c" onclick="{!c.sortChangeHandler}">
+                                Expiration Date
+                                <aura:if isTrue="{!v.sortBy=='Expiration_Date__c'}">
+                                    <aura:if isTrue="{!v.sortOrder=='desc'}">
+                                        <lightning:icon size="xx-small" iconName="utility:arrowdown"
+                                                        alternative-text="desc" title="desc" >
+                                            
+                                        </lightning:icon>
+                                        
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.sortOrder=='asc'}">
+                                        <lightning:icon size="xx-small" 
+                                                        iconName="utility:arrowup" alternative-text="asc" title="asc">
+                                            
+                                        </lightning:icon>
+                                    </aura:if>
+                                </aura:if>
+                            </a>
+                        </div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Type">
+                            <a name="Type__c" onclick="{!c.sortChangeHandler}">
+                                Type
+                                <aura:if isTrue="{!v.sortBy=='Type'}">
+                                    <aura:if isTrue="{!v.sortOrder=='desc'}">
+                                        <lightning:icon size="xx-small" iconName="utility:arrowdown"
+                                                        alternative-text="desc" title="desc" >
+                                            
+                                        </lightning:icon>
+                                        
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.sortOrder=='asc'}">
+                                        <lightning:icon size="xx-small" 
+                                                        iconName="utility:arrowup" alternative-text="asc" title="asc">
+                                            
+                                        </lightning:icon>
+                                    </aura:if>
+                                </aura:if>
+                            </a>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.cardsList}" var="card">
+                    <tr  class="slds-hint-parent">
+                        <td data-label="selection">
+                            <lightning:input type="checkbox" label="" checked="{!card.selected}" onchange="{!c.onSelection}" name="{!card.Id}"/>
+
+                        </td>
+                        <td data-label="Status">
+                            <div class="slds-truncate" title="{!card.Status__c}">
+                                {!card.Status__c}</div>
+                        </td>
+                        <td data-label="Name">
+                            <div class="slds-truncate" title="{!card.Name_On_Card__c}">
+                                {!card.Name_On_Card__c}
+                            </div>
+                        </td>
+                        <td data-label="Number">
+                            <div class="slds-truncate" title="{!card.Name}">
+                                <a name="{!card.Id}" onclick="{!c.openCardHandler}">
+                                    {!card.Name}
+                                </a>
+                                
+                            </div>
+                        </td>
+                        <td data-label="Expiration Date">
+                            <div class="slds-truncate" title="{!card.Expiration_Date__c}">
+                                {!card.Expiration_Date__c}
+                            </div>
+                        </td>
+                        <td data-label="Type">
+                            <div class="slds-truncate" title="{!card.Type__c}">
+                                {!card.Type__c}
+                            </div>
+                        </td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>
+</aura:component>

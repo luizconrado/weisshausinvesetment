@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Industry_Key__c</fullName>
+    <externalId>false</externalId>
+    <label>Industry Key</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>BUILDING_INDUSTRY</fullName>
+                <default>false</default>
+                <label>Building Industry</label>
+            </value>
+            <value>
+                <fullName>TRADE_MAINTENANCE_AND_REPAIR_OF_VEHICLES</fullName>
+                <default>false</default>
+                <label>Trade Maintenance And Repair Of Vehicles</label>
+            </value>
+            <value>
+                <fullName>OTHER_SERVICES</fullName>
+                <default>false</default>
+                <label>Other Services</label>
+            </value>
+            <value>
+                <fullName>GASTRONOMY</fullName>
+                <default>false</default>
+                <label>Gastronomy</label>
+            </value>
+            <value>
+                <fullName>SCIENTIFIC_TECHNICAL_CONSULTING_SERVICES</fullName>
+                <default>false</default>
+                <label>Scientific Technical Consulting Services</label>
+            </value>
+            <value>
+                <fullName>INFORMATION_AND_COMMUNICATION</fullName>
+                <default>false</default>
+                <label>Information And Communication</label>
+            </value>
+            <value>
+                <fullName>OTHER_ECONOMIC_SERVICES</fullName>
+                <default>false</default>
+                <label>Other Economic Services</label>
+            </value>
+            <value>
+                <fullName>FARMER_FORESTRY_FISHING_AND_AQUACULTURE</fullName>
+                <default>false</default>
+                <label>Farmer Forestry Fishing And Aquaculture</label>
+            </value>
+            <value>
+                <fullName>POWER_WATER_SUPPLY_DISPOSAL_MINING</fullName>
+                <default>false</default>
+                <label>Power Water Supply Disposal Mining</label>
+            </value>
+            <value>
+                <fullName>CHEMICAL_INDUSTRY_COKE_OVEN_MINERAL_OIL</fullName>
+                <default>false</default>
+                <label>Chemical Industry Coke Oven Mineral Oil</label>
+            </value>
+            <value>
+                <fullName>MANUFACTURE_PLASTICS_RUBBER_GOODS</fullName>
+                <default>false</default>
+                <label>Manufacture Plastics Rubber Goods</label>
+            </value>
+            <value>
+                <fullName>STONE_SOIL_CERAMICS_GLASS</fullName>
+                <default>false</default>
+                <label>Stone Soil Ceramics Glass</label>
+            </value>
+            <value>
+                <fullName>METAL_PRODUCTION_PROCESSING</fullName>
+                <default>false</default>
+                <label>Metal Production Processing</label>
+            </value>
+            <value>
+                <fullName>MECHANICAL_ENGINEERING_VEHICLE_MANUFACTURING</fullName>
+                <default>false</default>
+                <label>Mechanical Engineering Vehicle Manufacturing</label>
+            </value>
+            <value>
+                <fullName>MANUFACTURE_DATA_PROC_EQUIPMENT_ELECTRIC_OPTICS</fullName>
+                <default>false</default>
+                <label>Manufacture Data Proc Equipment Electric Optics</label>
+            </value>
+            <value>
+                <fullName>WOOD_PAPER_PRINT_INDUSTRY_FURNITURE_ETC</fullName>
+                <default>false</default>
+                <label>Wood Paper Print Industry Furniture Etc</label>
+            </value>
+            <value>
+                <fullName>LEATHER_TEXTILE_CLOTHES_INDUSTRY</fullName>
+                <default>false</default>
+                <label>Leather Textile Clothes Industry</label>
+            </value>
+            <value>
+                <fullName>FOOD_INDUSTRY_TOBACCO_PRODUCTS</fullName>
+                <default>false</default>
+                <label>Food Industry Tobacco Products</label>
+            </value>
+            <value>
+                <fullName>TRANSPORT_AND_STORAGE_AND_NEWS_TRANSMISSION</fullName>
+                <default>false</default>
+                <label>Transport And Storage And News Transmission</label>
+            </value>
+            <value>
+                <fullName>FINANCIAL_LEASING_COMPANIES</fullName>
+                <default>false</default>
+                <label>Financial Leasing Companies</label>
+            </value>
+            <value>
+                <fullName>FINANCIAL_INSTITUTIONS_INSURANCE</fullName>
+                <default>false</default>
+                <label>Financial Institutions Insurance</label>
+            </value>
+            <value>
+                <fullName>HOLDING_COMPANIES</fullName>
+                <default>false</default>
+                <label>Holding Companies</label>
+            </value>
+            <value>
+                <fullName>HOUSING_COMPANIES</fullName>
+                <default>false</default>
+                <label>Housing Companies</label>
+            </value>
+            <value>
+                <fullName>OTHER_PROPERTY_MANAGEMENT</fullName>
+                <default>false</default>
+                <label>Other Property Management</label>
+            </value>
+            <value>
+                <fullName>HEALTH_CARE_VETERIN_A_WELFARE_FIRM_FREELANCE</fullName>
+                <default>false</default>
+                <label>Health Care Veterin A Welfare Firm Freelance</label>
+            </value>
+            <value>
+                <fullName>LEASING_OF_MOVABLE_OBJECTS</fullName>
+                <default>false</default>
+                <label>Leasing Of Movable Objects</label>
+            </value>
+            <value>
+                <fullName>NONE</fullName>
+                <default>false</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>ECONOMICALLY_DEPENDENT_INDIVIDUALS</fullName>
+                <default>false</default>
+                <label>Economically Dependent Individuals</label>
+            </value>
+            <value>
+                <fullName>OTHER_PERSONAL_SERVICE_ACTIVITIES</fullName>
+                <default>false</default>
+                <label>Other Personal Service Activities</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Employment_Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Employment Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>EMPLOYED</fullName>
+                <default>false</default>
+                <label>Employed</label>
+            </value>
+            <value>
+                <fullName>UNEMPLOYED</fullName>
+                <default>false</default>
+                <label>Unemployed</label>
+            </value>
+            <value>
+                <fullName>PUBLIC_SECTOR_EMPLOYEE</fullName>
+                <default>false</default>
+                <label>Public Sector Employee</label>
+            </value>
+            <value>
+                <fullName>PROFESSIONAL_SOLDIER</fullName>
+                <default>false</default>
+                <label>Professional Soldier</label>
+            </value>
+            <value>
+                <fullName>FREELANCER</fullName>
+                <default>false</default>
+                <label>Freelancer</label>
+            </value>
+            <value>
+                <fullName>HOUSEWORK</fullName>
+                <default>false</default>
+                <label>Housework</label>
+            </value>
+            <value>
+                <fullName>APPRENTICE</fullName>
+                <default>false</default>
+                <label>Apprentice</label>
+            </value>
+            <value>
+                <fullName>MANAGEMENT</fullName>
+                <default>false</default>
+                <label>Management</label>
+            </value>
+            <value>
+                <fullName>RETIRED</fullName>
+                <default>false</default>
+                <label>Retired</label>
+            </value>
+            <value>
+                <fullName>STUDENT</fullName>
+                <default>false</default>
+                <label>Student</label>
+            </value>
+            <value>
+                <fullName>SELF_EMPLOYED</fullName>
+                <default>false</default>
+                <label>Self Employed</label>
+            </value>
+            <value>
+                <fullName>MILITARY_OR_COMMUNITY_SERVICE</fullName>
+                <default>false</default>
+                <label>Military Or Community Service</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

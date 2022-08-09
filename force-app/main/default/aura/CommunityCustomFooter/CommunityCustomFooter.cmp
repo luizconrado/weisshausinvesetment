@@ -1,0 +1,201 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    <aura:handler name='init' value='{!this}' action='{!c.onInit}' />
+    <aura:attribute type="String" name="hostUrl" />
+
+    <aura:attribute type="String" name="footerlogo" />
+    <aura:attribute type="String" name="emailIcon" />
+    <aura:attribute type="String" name="clockIcon" />
+    <aura:attribute type="String" name="homeIcon" />
+    <aura:attribute type="String" name="phoneIcon" />
+    <aura:attribute type="String" name="smartmoney" />
+    <aura:attribute type="String" name="commercial" />
+    <aura:attribute type="String" name="yatching" />
+    <aura:attribute type="String" name="charity" />
+    <aura:attribute type="String" name="captial" />
+    <aura:attribute type="String" name="devlopment" />
+    <aura:attribute type="String" name="school" />
+    <aura:attribute type="String" name="aviation" />
+    <aura:attribute type="String" name="gg" />
+
+    <div>
+        <div class="hr_line">
+
+            <div class="ev-footer_wrapper">
+                <div class="slds-grid slds-wrap ev-footer_container">
+                    <div
+                        class="slds-col slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_8-of-12 slds-grid slds-wrap">
+                        <div
+                            class="slds-col slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2  ">
+
+                            <p class="ev-headline_text">EV Smart Money Holding
+                                GmbH</p>
+                            <p>
+                            <div class="ev-headline_desctiption">
+                                <p><span>Lizenzpartner der Engel &amp; Völkers <br />Marken GmbH &amp; Co. KG</span></p>
+                            </div>
+                            </p>
+                            <ul class="ev-footer-list">
+                                <li class="ev-footer-list_item">
+                                    <a class="footer__link " rel="noreferrer" href="{!v.hostUrl}">
+                                        Startseite
+                                    </a>
+                                </li>
+                                <li class="ev-footer-list_item">
+                                    <a class="footer__link " rel="noreferrer" href="https://banking.ev-smartmoney.com/de">
+                                        Banking
+                                    </a>
+                                </li>
+
+                                <li class="ev-footer-list_item">
+                                    <a class="footer__link " rel="noreferrer"
+                                        href="https://support.ev-smartmoney.com/s/kontoanmeldung?language=de">
+                                        Support
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div
+                            class="slds-col slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2  ">
+
+                            <p class="ev-headline_text">Vertragliche Unterlagen
+                            </p>
+                            <p>
+                            <div>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                            </div>
+                            </p>
+                            <ul class="ev-footer-list">
+                                <li class="ev-footer-list_item">
+                                    <a class="footer__link " rel="noreferrer" href="{!v.hostUrl+'/imprint'}">
+                                        Impressum
+                                    </a>
+                                </li>
+
+                                <li class="ev-footer-list_item">
+                                    <a class="footer__link " rel="noreferrer" href="{!v.hostUrl+'/datenschutz'}">
+                                        Datenschutz
+                                    </a>
+                                </li>
+                                <li class="ev-footer-list_item">
+                                    <a class="footer__link " rel="noreferrer" href="{!v.hostUrl+'/signup'}">
+                                        AGBs
+                                    </a>
+                                </li>
+                                <li class="ev-footer-list_item">
+                                    <a class="footer__link " rel="noreferrer" href="{!v.hostUrl}">
+                                        Wichtige Verbraucherinformationen
+                                    </a>
+                                </li>
+                                <li class="ev-footer-list_item">
+                                    <a class="footer__link " rel="noreferrer" href="{!v.hostUrl+'/support'}">
+                                        FAQs
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div
+                        class="slds-col slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12">
+
+                        <div class="">
+                            <p class="ev-headline_text">Kontakt</p>
+                            <hr class="ev-footer__divider" />
+                        </div>
+                        <ul class="ev-footer-list">
+                            <li class="ev-footer-list_item">
+                                <img class="info-icon" src="{!v.phoneIcon}"></img>
+                                <span>&nbsp;&nbsp;</span>
+                                <a class="footer__link " href="tel:+49 3074395959">
+                                    +49 3074395959
+                                </a>
+                            </li>
+
+                            <li class="ev-footer-list_item">
+                                <img class="info-icon" src="{!v.homeIcon}"></img>
+                                <span class="">&nbsp;&nbsp;</span>
+                                <span class="footer__link ">Klaus-Groth-Straße 3, 14050 Berlin</span>
+                            </li>
+
+                            <li class="ev-footer-list_item">
+                                <img class="info-icon" src="{!v.emailIcon}"></img>
+                                <span>&nbsp;&nbsp;</span>
+                                <a class="footer__link "
+                                    href="mailto:contact@ev-smartmoney.com">contact@ev-smartmoney.com</a>
+                            </li>
+
+
+
+                            <li class="ev-footer-list_item">
+                                <img class="info-icon" src="{!v.clockIcon}"></img>
+                                <span>&nbsp;&nbsp;</span>
+                                <span class="footer__link ">Montag - Freitag: 09.00 - 18.00 Uhr</span>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="footer__container">
+                    <div class="container">
+                        <div class="footer__logo-row">
+                            <div class="footer__logo">
+                                <img src="{!v.smartmoney}" alt="Engel &amp; Völkers Smartmoney" width="200" height="60">
+                                </img>
+                            </div>
+                            <div class="footer__logo">
+                                <img src="{!v.commercial}" alt="Engel &amp; Völkers Commercial" width="202" height="60">
+                                </img>
+                            </div>
+                            <div class="footer__logo">
+                                <img src="{!v.yatching}" alt="Engel &amp; Völkers Yatching" width="204" height="60">
+                                </img>
+                            </div>
+                            <div class="footer__logo">
+                                <img src="{!v.charity}" alt="Engel &amp; Völkers Charity" width="202" height="60">
+                                </img>
+                            </div>
+                            <div class="footer__logo">
+                                <img src="{!v.captial}" alt="Engel &amp; Völkers Capital" width="200" height="60">
+
+                                </img>
+                            </div>
+                            <div class="footer__logo">
+                                <img src="{!v.devlopment}" alt="Engel &amp; Völkers Development" width="198"
+                                    height="60">
+                                </img>
+
+                            </div>
+                            <div class="footer__logo">
+                                <img src="{!v.school}" alt="Engel &amp; Völkers Polo School" width="98" height="56">
+                                </img>
+                            </div>
+                            <div class="footer__logo">
+                                <img src="{!v.aviation}" alt="Engel &amp; Völkers Aviation" width="98" height="56">
+                                </img>
+                            </div>
+                            <div class="footer__logo">
+                                <img src="{!v.gg}" alt="Engel &amp; GG" width="98" height="56">
+                                </img>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="footer_disclaimer">
+                <div class="footer_disclainer_text">
+                    Die Dienstleistungen auf den folgenden Seiten bieten wir Ihnen auf eigene Rechnung und auf eigene
+                    Haftung an. Ausgenommen sind Wertpapierdienstleistungen. Auf den folgenden Seiten bieten wir Ihnen
+                    als vertraglich gebundener Vermittler gemäß § 3 Abs. 2 WpIG für Rechnung und unter der Haftung der
+                    NFS Netfonds Financial Service GmbH, Heidenkampsweg 73, 20097 Hamburg (NFS) die Anlagevermittlung (§
+                    2 Abs. 2 Nr. 3 WpIG) von Finanzinstrumenten im Sinne des § 2 Abs. 5 WpIG an. Die NFS ist ein
+                    Wertpapierinstitut und verfügt über die erforderlichen Erlaubnisse der Bundesanstalt für
+                    Finanzdienstleistungsaufsicht (BaFin). Weitere Informationen finden Sie in unserem Impressum.
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

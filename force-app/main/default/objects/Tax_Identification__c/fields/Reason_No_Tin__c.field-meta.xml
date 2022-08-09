@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_No_Tin__c</fullName>
+    <externalId>false</externalId>
+    <label>Reason No Tin</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>NOT_ASSIGNED_YET</fullName>
+                <default>false</default>
+                <label>Not Assigned Yet</label>
+            </value>
+            <value>
+                <fullName>NOT_ASSIGNED_BY_COUNTRY</fullName>
+                <default>false</default>
+                <label>Not Assigned By Country</label>
+            </value>
+            <value>
+                <fullName>OTHER</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,16 @@
+<aura:component controller="AssetService" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:handler name='init' value='{!this}' action='{!c.onInit}' />
+    <aura:attribute type="List" name="assetLinks"/>
+    <aura:if isTrue="{!v.assetLinks.length>0}">
+        <lightning:carousel disableAutoRefresh="false" disableAutoScroll="true">
+            <aura:iteration items="{!v.assetLinks}" var="image">
+                <lightning:carouselImage disableAutoScroll="true"
+                                         src = "{!image.Image_Url__c}"
+                                         alternativeText = "{!image.Name}"
+                                         href = "{!image.Image_Url__c}"
+                                         >
+                </lightning:carouselImage>
+            </aura:iteration>
+        </lightning:carousel>
+    </aura:if>
+    </aura:component>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>STATEMENT_OF_ACCOUNTS</fullName>
+    <active>true</active>
+    <description>Rechnungsabschluss in German</description>
+    <label>Statement Of Accounts</label>
+    <picklistValues>
+        <picklist>Unit__c</picklist>
+        <values>
+            <fullName>cents</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

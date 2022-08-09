@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Failed_Integration</fullName>
+    <columns>NAME</columns>
+    <columns>Log_Number__c</columns>
+    <columns>User__c</columns>
+    <columns>Record__c</columns>
+    <columns>Response_Status_Code__c</columns>
+    <columns>Endpoint__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Log__c.Integration</value>
+    </filters>
+    <filters>
+        <field>Response_Status_Code__c</field>
+        <operation>greaterThan</operation>
+        <value>250</value>
+    </filters>
+    <label>Failed Integration</label>
+</ListView>

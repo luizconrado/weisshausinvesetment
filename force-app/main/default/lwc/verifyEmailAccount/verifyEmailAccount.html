@@ -1,0 +1,130 @@
+<!--
+ - Created by prasad on 11.06.20.
+ -->
+
+<!-- Verify Email Account -->
+<template>
+    <!-- Loader START-->
+    <template if:true={loaded}>
+        <div class="spinnerHolder">
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+    </template>
+    <!-- Loader END-->
+
+    <article class="" style="margin-top: 5rem;">
+        <div class="slds-card__header ">
+            <lightning-layout if:true={showForm}>
+
+                <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
+                    <div class="header-font">
+                        {verifyAccountHeaderText}
+                    </div>
+
+                </lightning-layout-item>
+
+            </lightning-layout>
+            <lightning-layout if:false={showForm}>
+
+                <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
+                    <div class="header-font">
+                        <span>{subscribedHeadertext}</span>
+                    </div>
+                </lightning-layout-item>
+
+            </lightning-layout>
+        </div>
+        <div if:true={showForm} class="slds-card__body slds-card__body_inner ">
+
+            <lightning-layout>
+
+                <lightning-layout-item padding="around-small" size="12">
+                    <div class="inputDesign set-max-width">
+                        <lightning-combobox name="Anrede" variant="label-hidden" value={salutation}
+                            placeholder={placeholderSalutationText} options={salutationOptions}
+                            onchange={handleSalutationChange}>
+                        </lightning-combobox>
+                    </div>
+                </lightning-layout-item>
+
+            </lightning-layout>
+
+            <lightning-layout>
+
+                <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
+                    <div class="inputDesign set-max-width">
+                        <lightning-input type="text" pattern="[a-zA-Z][a-zA-Z0-9\s]*" required="true"
+                            variant="label-hidden" placeholder={firstNameText} value={firstName}
+                            onchange={handleFirstNameChange}></lightning-input>
+                    </div>
+                </lightning-layout-item>
+
+            </lightning-layout>
+
+            <lightning-layout>
+
+                <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
+                    <div class="inputDesign set-max-width">
+                        <lightning-input type="text" pattern="[a-zA-Z][a-zA-Z0-9\s]*" required="true"
+                            variant="label-hidden" placeholder={surnameText} value={lastName}
+                            onchange={handleLastNameChange} label=""></lightning-input>
+                    </div>
+                </lightning-layout-item>
+
+            </lightning-layout>
+
+            <lightning-layout>
+
+                <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
+                    <div class="inputDesign set-max-width">
+                        <lightning-input type="email" variant="label-hidden" label={emailAddressText}
+                            value={emailAddress} disabled></lightning-input>
+                    </div>
+                </lightning-layout-item>
+
+            </lightning-layout>
+
+            <lightning-layout>
+
+                <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
+                    <div class="inputDesign set-max-width">
+                        <lightning-input type="tel" variant="label-hidden" label={phoneNumberText}
+                            onchange={handlePhoneChange} pattern="^[+]{1}[0-9]{8,}$" placeholder="+49"
+                            value={phoneNumber}></lightning-input>
+                    </div>
+                </lightning-layout-item>
+
+            </lightning-layout>
+
+            <lightning-layout>
+
+                <lightning-layout-item padding="around-small" size="12">
+                    <div class="set-max-width">
+                        <a href={privacyLink} style="color:#6b6d70;" target="_blank">
+                            {acceptTermsAndConditionsText}
+                        </a>
+
+                    </div>
+                </lightning-layout-item>
+
+            </lightning-layout>
+
+        </div>
+        <footer class="slds-card__footer " if:true={showForm} style="text-align: center;">
+
+            <lightning-layout>
+
+                <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
+                    <div class="set-max-width">
+                        <button class="slds-button primaryButton" onclick={handleSave}>{verifyText}</button>
+
+                    </div>
+                </lightning-layout-item>
+
+
+            </lightning-layout>
+
+        </footer>
+    </article>
+
+</template>

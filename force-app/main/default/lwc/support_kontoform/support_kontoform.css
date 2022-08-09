@@ -1,0 +1,144 @@
+.support-main{
+     background:#F9F9F9;
+ }
+ a{
+    color: #777777;
+    text-decoration: underline;
+ }
+ 
+ .ev-text_color-red,.ev-text_color-red a{
+    color: #B30000  !important;
+}
+
+ .ev-pading-top_medium{
+     padding-top:40px
+ }
+ 
+ .support-wrapper{
+     margin:auto;
+     max-width: 50em;
+ }
+
+.ev-header{
+    
+
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 41px;
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: #141414;
+    margin-top: 80px;
+
+}
+
+.ev-descripiton{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: #777777;
+    margin-top: 24px;
+}
+
+
+
+.ev-Design{
+    margin-top:24px;
+    width:80%;
+}
+
+.ev-Design_button{
+    margin-top:24px;
+}
+
+
+
+.ev-success-background{
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    background-image: url('https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0157T000000c6NN&oid=00D5I000002GOw0');
+     
+}
+
+.ev-success-header{
+   
+    
+    max-width: 36em;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 41px;
+    letter-spacing: 0.01em;
+    text-align: center;
+
+}
+.ev-success-image{
+    padding-bottom: 4em;
+    padding-top: 8em;
+}
+
+.ev-success-image img{
+    
+    height: 100px;
+}
+
+.ev-success-desription{
+    padding-bottom: 4em;
+    padding-top:4em;
+    max-width: 36em;
+    color:#777777;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0.01em;
+    text-align: center;
+
+}
+
+
+.ev-primary-link_button{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    background-color: transparent;
+    border: 1px solid #777777;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0.03em;
+    color: #777777;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin-bottom: 10em;
+}
+
+
+/*mobile*/
+@media only screen and (max-width: 600px){
+    .support-wrapper{
+        max-width: 25em;
+    }
+}
+
+
+/*table*/
+@media   (min-width: 601px) and (max-width: 768px){
+    .support-wrapper{
+        max-width: 40em;
+    }
+}
+
+/*laptop*/
+@media (min-width: 769px) and (max-width: 992px){
+    .support-wrapper{
+        max-width: 50em;
+    }
+}

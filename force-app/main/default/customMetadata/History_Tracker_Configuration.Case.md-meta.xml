@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Case</label>
+    <protected>false</protected>
+    <values>
+        <field>Fields__c</field>
+        <value xsi:type="xsd:string">IsDeleted, CaseNumber, ContactId, AccountId, AssetId, SourceId, BusinessHoursId, ParentId, SuppliedName, SuppliedEmail, SuppliedPhone, SuppliedCompany, Type, RecordTypeId, Status, Reason, Origin, Language, Subject, Priority, Description, IsClosed, ClosedDate, IsEscalated, CurrencyIsoCode, OwnerId, IsClosedOnCreate, CreatedDate, CreatedById, LastModifiedDate, LastModifiedById, ContactPhone, ContactMobile, ContactEmail, ContactFax, Comments, Is_Test__c, Type_II__c, JIRA_Description__c, Internal_Description__c, Email_Honorific__c, Actual_Result__c, App_Version__c, Expected_Result__c, Occurrence_Of_Issue__c, Phone_Model__c, Phone_OS__c, OS_Version__c, Reported__c, Submitted_FLC_Date__c, Thread_Id__c</value>
+    </values>
+    <values>
+        <field>Object__c</field>
+        <value xsi:type="xsd:string">Case</value>
+    </values>
+    <values>
+        <field>Track_Change__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Track_Insert__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Track_Update__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Track_View__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+</CustomMetadata>

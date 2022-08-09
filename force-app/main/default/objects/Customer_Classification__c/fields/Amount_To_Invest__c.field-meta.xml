@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Amount_To_Invest__c</fullName>
+    <externalId>false</externalId>
+    <label>Amount To Invest</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>BETWEEN_200K_AND_500K</fullName>
+                <default>false</default>
+                <label>BETWEEN_200K_AND_500K</label>
+            </value>
+            <value>
+                <fullName>BETWEEN_500K_AND_1M</fullName>
+                <default>false</default>
+                <label>BETWEEN_500K_AND_1M</label>
+            </value>
+            <value>
+                <fullName>MORE_THAN_1M</fullName>
+                <default>false</default>
+                <label>MORE_THAN_1M</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

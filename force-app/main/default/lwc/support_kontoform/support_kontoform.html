@@ -1,0 +1,81 @@
+<template>
+
+    <div class="support-main" if:false={showSuccess}>
+        <div class="support-wrapper">
+            <div class="slds-grid slds-grid_vertical slds-grid_align-center slds-grid_vertical-align-center ">
+                <div class="slds-col ev-header">
+                    {headerText}
+                </div>
+                <div class="slds-col ev-descripiton">
+                    {descripitonText}
+                </div>
+                <div class="slds-col  ev-Design ev-padding-top_medium">
+                    <lightning-combobox class="ev-input salutation" disabled={disabled} name="salutation" value={salutation} label={placeholderSalutationText}
+                        options={salutationOptions} onchange={handleValueChange}>
+                    </lightning-combobox>
+                </div>
+                <div class="slds-col  ev-Design ev-padding-top_medium">
+
+                    <lightning-input max-length="80"	disabled={disabled} onchange={handleValueChange} name="firstname"  
+                        class="ev-input firstname" type="text" label={firstNameText} value={firstname}>
+                    </lightning-input>
+                </div>
+                <div class="slds-col ev-Design">
+                    <lightning-input max-length="80" disabled={disabled} onchange={handleValueChange} name="lastname"  
+                        class="ev-input lastname" type="text" label={lastNameText} value={lastname}></lightning-input>
+                </div>
+                <div class="slds-col ev-Design">
+                    <lightning-input max-length="80" disabled={disabled} onchange={handleValueChange} name="email"  
+                        class="ev-input email" type="email" label={emailText} value={email}></lightning-input>
+                </div>
+                <div class="slds-grid ev-Design">
+                    <lightning-input message-when-value-missing=" " disabled={disabled}
+                        class="tcAgree ev-padding_right-small ev-input" required="true" checked={tcAgree}
+                        type="checkbox" variant="label-hidden" name="tcAgree" onchange={handleCheckboxValueChange}>
+                    </lightning-input>
+                    <span class="slds-p-left_large ev-checkbox_tctext" data-name="tcAccept">
+                        {tcTextPart1} <a target="_blank" href={tcLink}>{tcLinkText}</a> {tcTextPart2}
+                    </span>
+                </div>
+                <div class="slds-grid ev-Design">
+                    <lightning-input message-when-value-missing=" " disabled={disabled} class="moptinAgree ev-input"
+                        required="true" type="checkbox" checked={moptinAgree} variant="label-hidden" name="moptinAgree"
+                        onchange={handleCheckboxValueChange}>
+                    </lightning-input>
+                    <span class="slds-p-left_large ev-checkbox_moptintext" data-name="mOptoutAccept">
+                        {mOptinText}
+                    </span>
+                </div>
+                <div class="slds-grid slds-m-bottom_xx-large ev-Design_button">
+                    <span>
+                        <lightning-button disabled={disabled} onclick={onSubmit} class="ev-button" label={buttonText}
+                            title="Send" variant="brand">
+                        </lightning-button>
+                    </span>
+                    <span class="slds-is-relative" if:true={loading}>
+                        <lightning-spinner class="slds-m-left_large" alternative-text="Loading" size="small">
+                        </lightning-spinner>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div if:true={showSuccess}>
+        <div class="slds-grid slds-grid_vertical slds-grid_vertical-align-center ev-success-background">
+            <div class="slds-col ev-success-image">
+                <img
+                    src="https://ev-smartmoney--c.documentforce.com/servlet/servlet.ImageServer?id=0157T000000c5yc&oid=00D5I000002GOw0"></img>
+            </div>
+            <div class="slds-col ev-success-header">
+                {successHeaderText}
+            </div>
+            <div class="slds-col ev-success-desription">
+                {successHeaderDescription}
+            </div>
+            <div class="slds-col">
+                <a href={homePageUrl} class="ev-primary-link_button">{successButtonText}</a>
+            </div>
+
+        </div>
+    </div>
+</template>

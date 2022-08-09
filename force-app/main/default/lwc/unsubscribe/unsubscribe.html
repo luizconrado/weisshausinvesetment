@@ -1,0 +1,74 @@
+<!--
+ - Created by prasad on 11.06.20.
+ -->
+
+<!-- Verify Email Account -->
+<template>
+    <!-- Loader START-->
+    <template if:true={loaded}>
+        <div class="spinnerHolder">
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+    </template>
+    <!-- Loader END-->
+    <c-ev-toast></c-ev-toast>
+    <article class="" style="margin-top: 5rem;">
+        <div class="slds-card__header" if:true={showform}>
+            <lightning-layout>
+
+                <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
+                    <div class="header-font">
+                        {unsubscribeText} {productname}
+                    </div>
+
+                </lightning-layout-item>
+
+            </lightning-layout>
+        </div>
+        <div class="slds-card__body slds-card__body_inner ">
+
+            <lightning-layout if:true={showform}>
+                <lightning-layout-item padding="around-small" size="12">
+                    <div class="inputDesign set-max-width">
+                        <lightning-combobox class="GrundField" name="Grund" variant="label-hidden" value={reason}
+                            placeholder={reasonForUnsubscribeText} options={reasonOptions}
+                            message-when-value-missing={requiredFieldText} required onchange={handleResonChange}>
+                        </lightning-combobox>
+                    </div>
+                </lightning-layout-item>
+
+            </lightning-layout>
+
+            <lightning-layout if:false={showform}>
+
+                <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
+                    <div class="header-font">
+                        <span>{headerUnsubscribedtext}</span>
+                    </div>
+
+
+                </lightning-layout-item>
+
+            </lightning-layout>
+
+
+
+        </div>
+        <footer if:true={showform} class="slds-card__footer " style="text-align: center;">
+
+            <lightning-layout>
+
+                <lightning-layout-item padding="around-small" size="12" style="text-align: center;">
+                    <div class="set-max-width">
+                        <button class="slds-button primaryButton" onclick={handleOptout}>{signOutText}</button>
+
+                    </div>
+                </lightning-layout-item>
+
+
+            </lightning-layout>
+
+        </footer>
+    </article>
+
+</template>

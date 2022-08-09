@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Investment</fullName>
+    <fields>Name</fields>
+    <fields>Investment_Funnel_Stage__c</fields>
+    <fields>PersonEmail</fields>
+    <fields>LastModifiedById</fields>
+    <fields>CreatedById</fields>
+    <label>Investment</label>
+</CompactLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Origin__c</fullName>
+    <externalId>false</externalId>
+    <label>Origin</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>weisshausinvestment</fullName>
+                <default>false</default>
+                <label>Weißhaus Investment</label>
+            </value>
+            <value>
+                <fullName>Referral Code Website</fullName>
+                <default>false</default>
+                <label>Referral Code Website</label>
+            </value>
+            <value>
+                <fullName>lightOnboarding</fullName>
+                <default>false</default>
+                <label>Light On Boarding</label>
+            </value>
+            <value>
+                <fullName>integration_test</fullName>
+                <default>false</default>
+                <label>Integration Testing</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

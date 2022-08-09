@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email_Honorific__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISPICKVAL(Gender__c , &apos;Female&apos;) ,&apos;Sehr geehrte Frau &apos;,
+IF(ISPICKVAL( Gender__c , &apos;Diverse&apos;),&apos;Sehr geehrt* &apos; + &apos; &apos;,&apos;Sehr geehrter Herr &apos;))
+
++
+
+SUBSTITUTE(IF(NOT(ISBLANK(Title) ) , UPPER(MID(SUBSTITUTE(Title, &apos;_&apos;,&apos; &apos; ),0,1))+LOWER(MID(SUBSTITUTE(Title, &apos;_&apos;,&apos; &apos; ),2,LEN(SUBSTITUTE(Title, &apos;_&apos;,&apos; &apos; ))))+&apos;. &apos; , &apos;&apos;), &apos;dr&apos;,&apos;Dr&apos;)
+
++
+
+IF(ISPICKVAL( Gender__c , &apos;Diverse&apos;), FirstName +&apos; &apos;,  &apos;&apos;)
+
++
+
+LastName</formula>
+    <label>Email Honorific</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

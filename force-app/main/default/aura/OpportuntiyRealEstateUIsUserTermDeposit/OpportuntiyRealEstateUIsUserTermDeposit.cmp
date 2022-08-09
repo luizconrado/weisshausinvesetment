@@ -1,0 +1,15 @@
+<aura:component controller="OpportuntiyRealEstateService" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:handler name='init' value='{!this}' action='{!c.onInit}' /> 
+    <aura:attribute type="Boolean" name="termStatus" default="false" />
+    <aura:if isTrue="{!v.termStatus}">
+        <div>
+            <div class="ev-toast slds-theme_success" role="status">
+                <div class="slds-notify__content">
+                    <h2 class="slds-text-heading_small ev-gradient">
+                        Term Deposit is enabled for this user 
+                    </h2>
+                </div>
+            </div>
+        </div>        
+    </aura:if>
+</aura:component>

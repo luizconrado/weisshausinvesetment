@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Average_Transaction_Value__c</fullName>
+    <externalId>false</externalId>
+    <label>Average Transaction Value</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>LESS_THAN_10K</fullName>
+                <default>false</default>
+                <label>LESS_THAN_10K</label>
+            </value>
+            <value>
+                <fullName>BETWEEN_10K_AND_25K</fullName>
+                <default>false</default>
+                <label>BETWEEN_10K_AND_25K</label>
+            </value>
+            <value>
+                <fullName>MORE_THAN_25K</fullName>
+                <default>false</default>
+                <label>MORE_THAN_25K</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

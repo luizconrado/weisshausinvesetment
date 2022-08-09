@@ -30,7 +30,7 @@ Change_Request_Log__c
 
 
 # retrieve
-sfdx force:source:retrieve -m ApexClass:EmailMessageTriggerHandlerTest
+sfdx force:source:retrieve -m CustomObject:Slack_Alert_Configuration__mdt
 
 # deploy to prod
 sfdx force:source:deploy -m ApexClass:RestServiceAccountSMICreate --json --loglevel fatal  --testlevel RunSpecifiedTests --runtests 'RestServiceAccountSMICreateTest' -u evprod1

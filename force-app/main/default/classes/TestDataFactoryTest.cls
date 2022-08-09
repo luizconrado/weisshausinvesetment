@@ -26,7 +26,8 @@ public class TestDataFactoryTest {
         Contentversion cv=TestDataFactory.getContentVersion(true);
         TestDataFactory.linkContentDocumentToRecord(cv.id,personAccount.id);
         TestDataFactory.getDocumentForAccount(personAccount.id,true);
-        
+        TestDataFactory.getInvesetmentProduct('name',true);
+       
     }
 
     @isTest
@@ -48,6 +49,8 @@ public class TestDataFactoryTest {
         TestDataFactory.getStandardOpportunity(personAccount.id,true);
         TestDataFactory.getOpportunityFullSale(personAccount.id,true);
         TestDataFactory.getBankCase(personAccount.id, true);
+        Opportunity o= TestDataFactory.getOpportunityInvestment(personAccount.id, true);
+        TestDataFactory.getDocumentForInvestmentOpportuntiy(o.id,true);
         
     }
     @isTest
@@ -84,10 +87,18 @@ public class TestDataFactoryTest {
         Asset asset=TestDataFactory.getAssetRealEstate(personAccount.id, c.Id,true);
         TestDataFactory.getAssetLink(asset.id,true);
         TestDataFactory.getAssetEvaluation(asset.id, true);
-        TestDataFactory.getInvestmentNewsletterSubscription(personAccount.id,c.id,true);
+       
         
     }
-    
+    @isTest
+    public static void getNewsleeterTest(){
+        Account personAccount=TestDataFactory.getPersonAccount(true);
+        Contact c=[SELECT id FROM Contact WHERE accountId=:personAccount.Id];
+        Lead l=TestDataFactory.getWebLead(true);
+        TestDataFactory.getNewsletterSubscription(personAccount.id, c.id,true);
+        TestDataFactory.getInvestmentNewsletterSubscription(personAccount.id,c.id,true);
+        TestDataFactory.getLeadWebinarSubscription(l.id,true);
+    }
     @isTest
     static void getLogGeneratorsTest(){
         Account personAccount=TestDataFactory.getPersonAccount(true);

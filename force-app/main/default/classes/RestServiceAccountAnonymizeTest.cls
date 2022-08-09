@@ -30,7 +30,7 @@ public class RestServiceAccountAnonymizeTest {
             RestRequest req=TestDataFactory.setRestRequest(URL.getSalesforceBaseUrl().toExternalForm()+'/services/apexrest/Account/Anonymize/','DELETE');
             RestContext.request = req;
             RestServiceAccountAnonymize.doDelete();
-            System.assertEquals(400,res.statusCode);
+            System.assertEquals(404,res.statusCode);
         }
         Test.stopTest();
     }

@@ -2,7 +2,7 @@
 * @group Test Class
 * @description test class for CommunitySupportBankingLead
 */@isTest
-public class CommunitySupportBankingLeadTest {
+public class CommunitySupportBankingLeadTest { 
 
     @isTest
     static void createBankingLeadSuccessTest(){

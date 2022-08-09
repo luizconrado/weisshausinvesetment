@@ -11,8 +11,8 @@ public without sharing class CommunitySupportBankingLeadController {
         Boolean status=false;
         try{
             LeadService.Service service=new LeadService.Service();
-            service.createLead(salutation,firstName, lastName, emailAddress,true,'Website',utmParameters,Constant.LEAD_BANKING_CUSTOMER_RECORDTYPEID);
-            status=true;
+            service.createLead(salutation,firstName, lastName, emailAddress,null,true,'Website',utmParameters,Constant.LEAD_BANKING_CUSTOMER_RECORDTYPEID);
+            status=true; 
         }
         Catch(Exception e){
             String errorId=logError(e,null,'Lead','support_kontoform','createBankingLead',emailAddress+' : '+firstName+' : '+lastName,'Create Banking Lead');

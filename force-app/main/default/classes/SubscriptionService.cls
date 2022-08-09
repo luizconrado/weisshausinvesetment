@@ -127,7 +127,7 @@ public without sharing class SubscriptionService {
        Boolean showForm = true;
        
        List<Lead> accountList=[SELECT id,FirstName,Salutation,LastName,Phone,(Select id,Subscription_Terms_and_Conditions__c,Source__c,Type__c,Subscription_Status__c from Subscriptions__r WHERE Type__c=:product AND RecordTypeId=:Constant.SUBSCRIPTION_LEAD_RECORDTYPEID LIMIT 1) 
-                                  FROM Lead WHERE Email=:email AND RecordTypeId=:Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID];
+                                  FROM Lead WHERE Email=:email AND RecordTypeId=:Constant.DEFAULT_LEAD_RECORDTYPEID];
        if(accountList.size()>0){
            Lead accountRec = accountList.get(0);
            if(accountRec.Subscriptions__r.size()>0){
@@ -184,7 +184,7 @@ public without sharing class SubscriptionService {
     */
    @AuraEnabled
    public static Boolean updateLeadSubscriptionToUnSubscribed(String email,String product,String reason){
-        product=product.replace('+',' ');
+       product=product.replace('+',' ');
        List<String> leadAndContactId=new List<String>();
 
        List<Lead> accountList=[SELECT id,FirstName,Salutation,LastName,Phone,(Select id,Send_Mail__c,Subscription_Terms_and_Conditions__c,Source__c,Type__c,Subscription_Status__c from Subscriptions__r WHERE Type__c=:product AND RecordTypeId=:Constant.SUBSCRIPTION_LEAD_RECORDTYPEID LIMIT 1) 
@@ -279,7 +279,7 @@ public without sharing class SubscriptionService {
     public static void confirmSubscriptionOfUser(String email,String product){
         List<Account> accountDetails=new List<Account>();
         try {
-            product = EncodingUtil.urlDecode(product,'utf-8');
+            product=product.replace('+',' ');
             accountDetails=[SELECT id,FirstName,Salutation,LastName,Phone,
                                           (Select id,Send_Mail__c,Subscription_Terms_and_Conditions__c,Source__c,Type__c,Subscription_Status__c from Subscriptions__r WHERE Type__c=:product AND RecordTypeId=:Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID LIMIT 1) 
                                           FROM Account WHERE PersonEmail=:email AND isPersonAccount=true];
@@ -308,7 +308,7 @@ public without sharing class SubscriptionService {
    public static void confirmSubscriptionOfLead(String email,String product){
        List<Lead> accountDetails=new List<Lead>();
        try {
-           product = EncodingUtil.urlDecode(product,'utf-8');
+           product=product.replace('+',' ');
            accountDetails=[SELECT id,FirstName,Salutation,LastName,Phone,
                                          (Select id,Send_Mail__c,Subscription_Terms_and_Conditions__c,Source__c,Type__c,Subscription_Status__c from Subscriptions__r WHERE Type__c=:product AND RecordTypeId=:Constant.SUBSCRIPTION_LEAD_RECORDTYPEID LIMIT 1) 
                                          FROM Lead WHERE Email=:email AND RecordTypeId=:Constant.DEFAULT_LEAD_RECORDTYPEID];

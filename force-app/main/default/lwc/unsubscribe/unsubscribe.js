@@ -79,11 +79,11 @@ export default class Unsubscribe extends LightningElement {
         }).then(data => {
             if (data === false) {
                 this.showform = false;
-                setTimeout(() => location.href = 'https://www.ev-smartmoney.com/', 4000);
+                setTimeout(() => location.href = 'https://banking.ev-smartmoney.com/', 4000);
             }
 
         })
-    }
+    } 
     applyStyle() {
         const style = document.createElement('style');
         style.innerText = `
@@ -102,7 +102,7 @@ export default class Unsubscribe extends LightningElement {
         for (let div of inputs) {
             div.appendChild(style);
         }
-
+ 
     }
 
     renderedCallback() {

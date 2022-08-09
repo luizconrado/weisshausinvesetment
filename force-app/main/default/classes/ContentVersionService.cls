@@ -92,6 +92,11 @@ public class ContentVersionService {
         
     }
     
+    @future(callout=true)
+    public static void sendCaseArchiveZipToEv(List<String> cvIdList){
+        
+    }
+    
     @testVisible
     private static void logError(Exception e,String recordId,String methodName,String componentName,String action){
         LogService.LogMetadata errorDetails=new LogService.LogMetadata();

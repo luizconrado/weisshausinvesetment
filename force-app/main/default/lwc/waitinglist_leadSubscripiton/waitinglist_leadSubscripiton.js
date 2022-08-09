@@ -14,7 +14,7 @@ export default class Waitinglist_leadSubscripiton extends LightningElement {
     @api tcLinkText;
 
 
-    isTcAccepted; 
+    isTcAccepted;
     emailAddress;
     lastName;
     firstName;

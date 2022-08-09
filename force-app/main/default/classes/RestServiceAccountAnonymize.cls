@@ -21,11 +21,7 @@ global class RestServiceAccountAnonymize {
         List<String> requestParam=req.requestURI.split('/');  
         
         String accountAuth0Id=requestParam.get(requestParam.size()-1);
-        if(String.isBlank(accountAuth0Id) || !accountAuth0Id.containsIgnoreCase('auth0')){
-            res.statusCode = 400;
-            res.responseBody=RestResponseWrapper.setError(res.statusCode,new List<String>{'Account Id missing'});
-            return;
-        }
+      
         accountAuth0Id=EncodingUtil.urlDecode(accountAuth0Id,'UTF-8');
         List<Account> personAccountList=[SELECT id,Deletion_Request__c,LastName, Deletion_Request_Source__c FROM Account WHERE Auth0_Id__c=:accountAuth0Id OR EVSM_Auth0_Id__c=:accountAuth0Id];
         
@@ -41,7 +37,7 @@ global class RestServiceAccountAnonymize {
             Account personAccount=personAccountList.get(0);
             if(personAccount.Deletion_Request__c==false){
                 personAccount.Deletion_Request__c=true;
-                personAccount.Deletion_Request_Source__c='Bank';
+                personAccount.Deletion_Request_Source__c='Backend';
                 update personAccount;
                 
             }

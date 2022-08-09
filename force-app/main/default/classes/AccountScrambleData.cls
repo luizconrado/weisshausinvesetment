@@ -1,7 +1,12 @@
+/***************
+* @group Queueable Class
+* @description Class Responsible for anonimizing data of account and related records based on configuration settings Scramble_Configuration__c
+*/
 public without sharing class AccountScrambleData implements Queueable {
     List<String> accountIdList=new List<String>();
     final String PLACEHOLDER='[SCRAMBLEDATA]';
     final String USER_ROLE='All Data Access';
+    final String PICKLIST_PLACEHOLDER='Anonymized';
     List<Scramble_Configuration__c> scrambleConfiguration{private set;get{
         if(scrambleConfiguration==null) scrambleConfiguration=[SELECT id,Field__c,IsReference__c,Object__c FROM Scramble_Configuration__c];
         return  scrambleConfiguration;
@@ -55,6 +60,9 @@ public without sharing class AccountScrambleData implements Queueable {
                             else if(field.getType()==Schema.DisplayType.Double || field.getType()==Schema.DisplayType.Integer || field.getType()==Schema.DisplayType.CURRENCY){
                                 obj.put(field.getName(),Double.valueOf(scrambledData));    
                             }
+                            else if(field.getType() == Schema.DisplayType.BOOLEAN){
+                                obj.put(field.getName(),false);
+                            }
                             else{
                             	obj.put(field.getName(),scrambledData);        
                             }
@@ -104,10 +112,16 @@ public without sharing class AccountScrambleData implements Queueable {
             return String.valueOf(RandomUtil.randomNumber(2));
         }
         else if(fieldType.getType()==Schema.DisplayType.Email){
-            return RandomUtil.randomString(5)+'@'+RandomUtil.randomString(4)+'.eu';
+            DateTime dt=DateTime.now();
+            String dtNow=JSON.serialize(dt);
+            dtNow=dtNow.replace('"','').replace('-','').replace(':','').replace('.','');
+            return RandomUtil.randomString(3)+dtNow+'@'+RandomUtil.randomString(4)+'.eu';
         } 
-        else if(fieldType.getType()==Schema.DisplayType.Picklist){
-            return fieldType.getPicklistValues().get(0).getValue();
+        else if(fieldType.getType()==Schema.DisplayType.Phone){
+            return String.valueOf(RandomUtil.randomNumber(10));
+        }
+        else if(fieldType.getType()==Schema.DisplayType.Picklist || fieldType.getType()==Schema.DisplayType.MultiPicklist){
+            return PICKLIST_PLACEHOLDER;
         }
         return  RandomUtil.randomString(6);
          

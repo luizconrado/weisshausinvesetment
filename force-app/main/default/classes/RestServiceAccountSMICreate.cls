@@ -155,16 +155,7 @@ global without sharing  class RestServiceAccountSMICreate {
         
         
         if(Salesforce.isSandbox && personAccountList.size()==0) newAccount.Solarisbank_Tenent__c='Sandbox';
-        
-        KYC_Detail__c emptyKycRecord=null;
-        List<KYC_Detail__c> kycDetails=[SELECT id FROM KYC_Detail__c WHERE External_Id__c=:newAccount.EVSM_Auth0_ID__c AND Method__c='KYC Flow'];
-        if(kycDetails.size()==0){
-            emptyKycRecord=new KYC_Detail__c();
-            emptyKycRecord.External_Id__c=newAccount.EVSM_Auth0_ID__c;
-            emptyKycRecord.State__c = emptyKycRecord.Status__c = 'Pending';
-            emptyKycRecord.Method__c='KYC Flow';
-            emptyKycRecord.RecordTypeId=Constant.KYC_VIDEO_IDENTIFICATION_RECORDTYPEID;
-        }
+       
         
         
         
@@ -184,10 +175,7 @@ global without sharing  class RestServiceAccountSMICreate {
                 
                 upsert subscriptionRecord;
             } 
-            if(emptyKycRecord!=null){
-                emptyKycRecord.Account__c=newAccount.id;
-                insert emptyKycRecord;
-            }
+            
             successMessage.add(newAccount.id);
             res.statusCode = 201;
             res.responseBody=RestResponseWrapper.setSuccess(res.statusCode,successMessage);

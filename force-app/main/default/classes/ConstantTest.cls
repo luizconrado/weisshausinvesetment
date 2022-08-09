@@ -99,6 +99,8 @@ private class ConstantTest {
         System.assert(String.isNotEmpty(Constant.CUSTOMER_CLASSIFICATION_PROFESSIONAL_RECORDTYPEID));
         System.assert(String.isNotEmpty(Constant.CUSTOMER_CLASSIFICATION_SEMI_PROFESSIONAL_RECORDTYPEID));
         
+        System.assert(String.isNotEmpty(Constant.SUBSCRIPTION_LEAD_RECORDTYPEID));
+        
     }
     
 }

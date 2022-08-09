@@ -211,10 +211,13 @@ public class TestDataFactory {
         return generateLog(recordId,Constant.INITEGERATION_LOG_RECORDTYPEID, doInsert);
     }
     public static Subscription__c getNewsletterSubscription(String accountId,String contactId,Boolean doInsert){
-        return generateSubscription(accountId,contactId,'Newsletter',Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID,doInsert);
+        return generateSubscription(accountId,contactId,null,'Newsletter',Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID,doInsert);
     }
     public static Subscription__c getInvestmentNewsletterSubscription(String accountId,String contactId,Boolean doInsert){
-        return generateSubscription(accountId,contactId,'Investment-Newsletter',Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID,doInsert);
+        return generateSubscription(accountId,contactId,null,'Investment-Newsletter',Constant.SUBSCRIPTION_DEFAULT_RECORDTYPEID,doInsert);
+    }
+     public static Subscription__c getLeadWebinarSubscription(String leadid,Boolean doInsert){
+        return generateSubscription(null,null,leadid,'Webinar',Constant.SUBSCRIPTION_LEAD_RECORDTYPEID,doInsert);
     }
     public static History_Tracker__c getChangeHistoryLog(String recordId,Boolean doInsert){
         return generateHistoryLog(recordId,Constant.TRACK_FIELD_CHANGE_RECORDTYPE_ID, doInsert);
@@ -362,12 +365,12 @@ Generators
     
     
     
-    private static Subscription__c generateSubscription(String accountId,String contactId,String subType,String recordTypeId,Boolean doInsert){
+    private static Subscription__c generateSubscription(String accountId,String contactId,String leadId,String subType,String recordTypeId,Boolean doInsert){
         Subscription__c newSubscriptionProduct=new Subscription__c();
         newSubscriptionProduct.Subscription_Status__c='Subscribed';
-        newSubscriptionProduct.Type__c=subType;//'';
+        newSubscriptionProduct.Type__c=subType;
         newSubscriptionProduct.Account__c=accountId;
-        
+        newSubscriptionProduct.Lead__c=leadId;
         newSubscriptionProduct.Send_Mail__c=false;
         newSubscriptionProduct.recordTypeId=recordTypeId;
         newSubscriptionProduct.Contact__c=contactId;

@@ -123,4 +123,24 @@ public inherited sharing class CustomerClassificationHelper {
         }
     }
 
+     /***************
+    * @description sets account name in custom field - used in slack alert, formula fields where not working and cannot do it in flows/as they are processed after trigger
+    * @param classificationList cc list
+    */
+    public static void setAccountNameValue(List<Customer_Classification__c> classificationList){
+        List<String> accountIds=new List<String>();
+        for(Customer_Classification__c classification:classificationList){
+            if(classification.Account__c!=null) accountIds.add(classification.Account__c);
+        }
+        
+        Map<String,String> accountIdAndNameMap=new Map<String,String>();
+        for(Account acc:[SELECT Id,Name FROM Account WHERE Id IN:accountIds]){
+            accountIdAndNameMap.put(acc.Id,acc.Name);
+        }
+        
+        for(Customer_Classification__c classification:classificationList){
+            if(accountIdAndNameMap.containsKey(classification.Account__c)) classification.Account_Name__c=accountIdAndNameMap.get(classification.Account__c);
+        }
+        
+    }
 }

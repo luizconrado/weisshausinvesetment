@@ -34,11 +34,10 @@ private class SubscriptionServiceTest {
     @isTest
     static void registerSubscriptionTest(){
         User u=TestDataFactory.getUser('Integration');
-        System.runAs(u){
-            Test.startTest();
-            SubscriptionService.registerSubscription('test@ev.com','Newsletter','','www.evsmartmoeny.com',new Map<String,String>());
-            Test.stopTest();
-        }
+        Test.startTest();
+        SubscriptionService.registerSubscription('test@ev.com','Newsletter','','www.evsmartmoeny.com',new Map<String,String>());
+        Test.stopTest();
+        
     }
     @isTest
     static void confirmSubscriptionOfUserTest(){
@@ -74,6 +73,34 @@ private class SubscriptionServiceTest {
         SubscriptionService.registerSubscription(a.PersonEmail,'TESTING','TEST',null,null);
         }Catch(Exception e){}
         Test.stopTest();
+    }
+    
+    @isTest
+    static void checkUnsubscribedLeadStatusTest(){
+        Lead l=TestDataFactory.getWebLead(true);
+        Subscription__c sub=TestDataFactory.getLeadWebinarSubscription(l.Id,true);
+        System.debug([SELECT NAME FROM LEAD]);
+        System.debug([SELECT NAME FROM Subscription__c]);
+        SubscriptionService.checkUnsubscribedLeadStatus(l.Email,sub.Type__c);
+    }
+    
+    @isTest
+    static void updateLeadSubscriptionToUnSubscribedTest(){
+        Lead l=TestDataFactory.getWebLead(true);
+        Subscription__c sub=TestDataFactory.getLeadWebinarSubscription(l.Id,true);
+        SubscriptionService.updateLeadSubscriptionToUnSubscribed(l.Email,sub.Type__c,'');
+    }
+    
+    @isTest
+    static void confirmSubscriptionOfLeadTest(){
+        Lead l=TestDataFactory.getWebLead(true);
+        Subscription__c sub=TestDataFactory.getLeadWebinarSubscription(l.Id,true);
+        SubscriptionService.confirmSubscriptionOfLead(l.Email,sub.Type__c);
+    }
+    
+    @isTest
+    static void createLeadAndSubscriptionTest(){
+        SubscriptionService.createLeadAndSubscription('firstName', 'lastName', 'email@ev.com', 'productName', 'origin', 'website', new Map<String,String>());
     }
 
 }

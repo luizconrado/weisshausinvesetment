@@ -34,3 +34,25 @@ Thumbs.db
 ehthumbs.db
 [Dd]esktop.ini
 $RECYCLE.BIN/
+
+# SF Metadata Fiels that are not needed
+force-app/main/default/objects/Account/webLinks/GoogleMaps.webLink-meta.xml
+force-app/main/default/objects/Account/webLinks/GoogleNews.webLink-meta.xml
+force-app/main/default/objects/Account/webLinks/GoogleSearch.webLink-meta.xml
+force-app/main/default/objects/Account/webLinks/slackv2__Send_to_Slack.webLink-meta.xml
+force-app/main/default/objects/Account/webLinks/slackv2__Slack_Alerts.webLink-meta.xml
+force-app/main/default/objects/Campaign/webLinks/ViewAllCampaignMembers.webLink-meta.xml
+force-app/main/default/objects/Campaign/webLinks/ViewCampaignInfluenceReport.webLink-meta.xml
+force-app/main/default/objects/Case/webLinks/slackv2__Send_to_Slack.webLink-meta.xml
+force-app/main/default/objects/Case/webLinks/slackv2__Slack_Alerts.webLink-meta.xml
+force-app/main/default/objects/Contact/webLinks/GoogleMaps.webLink-meta.xml
+force-app/main/default/objects/Contact/webLinks/GoogleSearch.webLink-meta.xml
+force-app/main/default/objects/Contact/webLinks/slackv2__Send_to_Slack.webLink-meta.xml
+force-app/main/default/objects/Contact/webLinks/slackv2__Slack_Alerts.webLink-meta.xml
+force-app/main/default/objects/Lead/webLinks/GoogleMaps.webLink-meta.xml
+force-app/main/default/objects/Lead/webLinks/GoogleNews.webLink-meta.xml
+force-app/main/default/objects/Lead/webLinks/GoogleSearch.webLink-meta.xml
+force-app/main/default/objects/Lead/webLinks/slackv2__Send_to_Slack.webLink-meta.xml
+force-app/main/default/objects/Lead/webLinks/slackv2__Slack_Alerts.webLink-meta.xml
+force-app/main/default/objects/Opportunity/webLinks/slackv2__Send_to_Slack.webLink-meta.xml
+force-app/main/default/objects/Opportunity/webLinks/slackv2__Slack_Alerts.webLink-meta.xml

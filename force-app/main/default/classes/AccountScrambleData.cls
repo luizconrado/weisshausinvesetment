@@ -1,7 +1,7 @@
 /***************
 * @group Queueable Class
 * @description Class Responsible for anonimizing data of account and related records based on configuration settings Scramble_Configuration__c
-* PR Push Test
+*  Push Test
 */
 public without sharing class AccountScrambleData implements Queueable {
     List<String> accountIdList=new List<String>();

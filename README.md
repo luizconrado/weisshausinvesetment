@@ -65,6 +65,6 @@ SFDX_PRODUCTION_URL
 
 and value of it copy from running command
 
-`sfdx force:org:display --targetusername evprod --verbose`
+`sfdx force:org:display --targetusername <orgname> --verbose`
 
 and copy Sfdx Auth Url

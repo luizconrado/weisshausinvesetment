@@ -32,6 +32,8 @@ jobs:
               env:
                 PR_BODY: ${{github.event.head_commit.message}}
               run: |
+                  echo $PR_BODY
+                  echo "Commit message"
                   echo $PR_BODY > ./pr_body.txt
                   node ./parsePR.js              
                   TESTS=$(cat testsToRun.txt)       

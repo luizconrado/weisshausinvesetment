@@ -29,7 +29,7 @@ jobs:
             # Read Apex::[]::Apex To Get Class Names
             - name: 'Read PR Body'
               env:
-                PR_BODY: ${{github.event.push.commits}}
+                PR_BODY: ${{github.event.head_commit.message}}
               run: |
                   echo $PR_BODY > ./pr_body.txt
                   node ./parsePR.js              

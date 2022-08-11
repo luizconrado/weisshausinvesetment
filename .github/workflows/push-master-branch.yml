@@ -15,6 +15,13 @@ jobs:
         runs-on: ubuntu-latest
         if: ${{ github.actor != 'dependabot[bot]' }}
         steps:
+            - name: Logging
+            env:
+                PR_SUMMARY: ${{github.event.head_commit.description}}
+            run: |
+                echo $PR_SUMMARY
+                echo '${{toJSON(github.event)}}''
+
             # Now we install nodejs in the VM, and specify version 14
             - uses: actions/setup-node@v2
               with:

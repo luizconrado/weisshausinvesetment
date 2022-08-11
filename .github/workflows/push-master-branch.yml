@@ -36,6 +36,8 @@ jobs:
                   node ./parsePR.js              
                   TESTS=$(cat testsToRun.txt)       
                   echo "APEX_TESTS=$TESTS" >> $GITHUB_ENV
+                  echo "My Test Class"
+                  echo ${{env.APEX_TESTS}}
 
            
            

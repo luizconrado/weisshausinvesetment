@@ -32,12 +32,13 @@ jobs:
               env:
                 PR_BODY: ${{github.event.head_commit.message}}
               run: |
+                  echo $PR_BODY
                   echo $PR_BODY > ./pr_body.txt
                   node ./parsePR.js              
                   TESTS=$(cat testsToRun.txt) 
                   echo "APEX_TESTS=$TESTS" >> $GITHUB_ENV
                   echo "Test Class Selected"
-                  echo ${{env.APEX_TESTS}}
+                  echo $GITHUB_ENV
 
            
            

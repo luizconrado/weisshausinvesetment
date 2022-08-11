@@ -37,8 +37,7 @@ jobs:
                   TESTS=$(cat testsToRun.txt)       
                   echo "APEX_TESTS=$TESTS" >> $GITHUB_ENV
 
-            - name: 'Logging'
-              run: |
-                  echo '${{toJSON(github.event)}}''
+           
+           
 
            

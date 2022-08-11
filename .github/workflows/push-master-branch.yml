@@ -38,10 +38,7 @@ jobs:
                   echo "APEX_TESTS=$TESTS" >> $GITHUB_ENV
 
             - name: 'Logging'
-              env:
-                PR_SUMMARY: ${{github.event.head_commit.description}}
               run: |
-                  echo $PR_SUMMARY
                   echo '${{toJSON(github.event)}}''
 
            

@@ -44,17 +44,24 @@ Configure object and fields related to account for which all data in it will be 
 
 # Git deployment
 
+## PR 
 1. Create a new PR with related components to deploy
-2. On Create of PR code package check will occurs with production org
-3. on successfully merge it will be deployed to production org
+2. On Create of PR,package check will occurs with production org
 
-## Specify Test class to run as comma separated values in pr
+### Specify Test class to run as comma separated values in pr
 
     Apex::[ConstantTest]::Apex
 
-## Specify all as value to run all local tests
+### Specify all as value to run all local tests
 
     Apex::[all]::Apex
+
+## Push to master
+1. On push comment add "[Deploy]" in comment to mark it as deployment 
+2. in case summary add Apex::[T]::Apex to run specific class during deployment
+
+
+3. on successfully merge it will be deployed to production org
 
 
 

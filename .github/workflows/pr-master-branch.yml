@@ -1,5 +1,5 @@
 # Unique name for this workflow
-name: Validate PR on develop branch
+name: Validate PR on master branch
 
 # Definition when the workflow should run
 on:
@@ -9,7 +9,7 @@ on:
       # to a branch that has an existing pull request
       types: [opened, synchronize]
       # The branches filter allows to specify that this workflow should only
-      # run if the branch name is "develop". This way we prevent this workflow
+      # run if the branch name is "master". This way we prevent this workflow
       # from running when PRs are opened on other branches
       branches: [ master ]
       # We only care about changes to the force-app directory, which is the
@@ -22,7 +22,7 @@ on:
 # Jobs to be executed when the above conditions are met
 jobs:
     # This is the name of the job. You can give it whatever name you want
-    validate-deployment-on-develop-org:
+    validate-deployment-on-master-org:
         # As mentioned in the blog post, this job runs inside a VM. Here we
         # can specify which OS this VM should run on. 
         # In this case, we are going to run our commands on the latest version
@@ -112,12 +112,9 @@ jobs:
             - name: 'Installing java'
               run: sudo apt-get install openjdk-8-jdk
 
-            # Install SFDX scanner
-            - name: 'Installing SFDX scanner'
-              run: sfdx plugins:install @salesforce/sfdx-scanner
-
+        
             # Prior to setting up this workflow, you have to create a Github Secret
-            # that contains the sfdx url of the integration/qa org.
+            # that contains the sfdx url of the production/qa org.
 
             # The steps to generate the url are here 
             # https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_auth_sfdxurl.htm
@@ -127,16 +124,16 @@ jobs:
             # was generated from. This works just like that, there's no need to create
             # connected apps or any else. 
 
-            # The URL is stored in the Github Secret named SFDX_INTEGRATION_URL
+            # The URL is stored in the Github Secret named SFDX_PRODUCTION_URL
             # so here we store the URL into a text file
-            - name: 'Populate auth file with SFDX_URL secret of integration org'
+            - name: 'Populate auth file with SFDX_URL secret of production org'
               shell: bash
               run: |
-                  echo ${{ secrets.SFDX_INTEGRATION_URL}} > ./SFDX_INTEGRATION_URL.txt
+                  echo ${{ secrets.SFDX_PRODUCTION_URL}} > ./SFDX_PRODUCTION_URL.txt
 
             # Authenticate to org using the URL stored in the text file
-            - name: 'Authenticate to Integration Org'
-              run: sfdx auth:sfdxurl:store -f ./SFDX_INTEGRATION_URL.txt -s -a integration
+            - name: 'Authenticate to Production Org'
+              run: sfdx auth:sfdxurl:store -f ./SFDX_PRODUCTION_URL.txt -s -a production
 
             # We use SFDX Git Delta to create a directory with only the metadata that has changed.
             # this allows us to deploy only those changes, as opposed to deploying the entire branch. 
@@ -146,24 +143,7 @@ jobs:
                   mkdir changed-sources
                   sfdx sgd:source:delta --to "HEAD" --from "HEAD^" --output changed-sources/ --generate-delta --source force-app/ 
 
-            # Now we can use the sfdx scanner to scan the code in the delta directory
-            # The output of the scan is stored in a file called apexScanResults.sarif
-
-            # The .sarif file can later be uploaded to github, so that we can see the 
-            # results of the scan directly from the PR.
-
-            - name: 'Scan code'
-              run: |
-                  cd changed-sources
-                  sfdx scanner:run --format sarif --target './**/*.cls' --category "Design,Best Practices,Performance" --outfile 'apexScanResults.sarif'  
-                  cd ..
-
-            # Now we upload the .sarif file as explained in the previous step
-            - name: Upload SARIF file
-              uses: github/codeql-action/upload-sarif@v1
-              with:
-                sarif_file: changed-sources/apexScanResults.sarif
-
+  
             # We do a check-only deploy and we only run the tests specified in the PR
             # If the env variable does not equal 'all', we know that there is a list of
             # tests that can be run

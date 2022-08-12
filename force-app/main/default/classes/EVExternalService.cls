@@ -186,13 +186,14 @@ public class EVExternalService {
     * {
     *   "fileName": "string",
     *   "customerId": "string",
-    *   "fileUrl": "string"
+    *   "fileUrl": "string",
+    *    "documentId": "string"
     *  }
     */
     public static String sendCustomerCaseArchiveFile(String body,LogService.ApiCallDetails details){
         Map<String,String> headers=getHeaders(details.sbTenent);
         String invDetailsUri=DOCUMENT_ARCHIVE_URI;
-        HttpResponse response=RestService.patch(HOST_URL+invDetailsUri,headers,body);
+        HttpResponse response=RestService.post(HOST_URL+invDetailsUri,headers,body);
         details.addRequestDetails(HOST_URL+invDetailsUri,'POST',body,response.getBody(),response.getStatusCode()); 
         details.addComment(JSON.serialize(headers));
         LogService.LogApiCall(details);

@@ -151,7 +151,7 @@ public class ContentVersionService {
                     body.put('fileUrl',Salesforce.baseUrl+'/services/data/v53.0/sobjects/ContentVersion/'+versionRecord.id+'/VersionData');
                     body.put('customerId',customerId);
                     body.put('fileName', versionRecord.Title);
-                    
+                    body.put('documentId', versionRecord.ContentDocumentId);
                     EVExternalService.sendCustomerCaseArchiveFile( JSON.serialize(body), apiCallDetails);     	
                 }
                 Catch(Exception e){

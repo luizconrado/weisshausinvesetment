@@ -7,6 +7,9 @@
         <members>ContentVersionService</members>
         <members>EVExternalService</members>
         <members>AccountTriggerHandler</members>
+        <members>EmailMessageTriggerHandlerTest</members>
+        <members>ContentVersionServiceTest</members>
+        <members>TestDataFactory</members>
         <name>ApexClass</name>
 	</types>
 	<version>53.0</version>

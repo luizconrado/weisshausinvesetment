@@ -11,6 +11,8 @@ public class EVExternalService {
     
     private static String DOCUMENT_URI='customers/:auth0Id/documents/:TicketId';
     private static String CUSTOMER_CLASSIFICATION_UPDATE_DETAILS='customers/:auth0Id/categorization';
+    private static String DOCUMENT_ARCHIVE_URI='customers/cases/delete';
+    
     
     private static String INVESTMENT_UPDATE_DETAILS='investments/:ExternalId';
   
@@ -176,6 +178,28 @@ public class EVExternalService {
         if(response.getStatusCode()>300) throw new RestService.RestCallException(response.getStatus());
         return response.getBody();
     }
+      /***************
+    * @description send customer case archive zip file link to backend
+    * @param body
+    * @return success body
+    * @example
+    * {
+    *   "fileName": "string",
+    *   "customerId": "string",
+    *   "fileUrl": "string"
+    *  }
+    */
+    public static String sendCustomerCaseArchiveFile(String body,LogService.ApiCallDetails details){
+        Map<String,String> headers=getHeaders(details.sbTenent);
+        String invDetailsUri=DOCUMENT_ARCHIVE_URI;
+        HttpResponse response=RestService.patch(HOST_URL+invDetailsUri,headers,body);
+        details.addRequestDetails(HOST_URL+invDetailsUri,'POST',body,response.getBody(),response.getStatusCode()); 
+        details.addComment(JSON.serialize(headers));
+        LogService.LogApiCall(details);
+        if(response.getStatusCode()>300) throw new RestService.RestCallException(response.getStatus());
+        return response.getBody();
+    }
+    
     
     
 }

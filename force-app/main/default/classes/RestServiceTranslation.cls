@@ -1,5 +1,10 @@
+/***************
+* @group Rest Api
+* @description Returns tranlated value for picklsit value
+* @example
+* Get - /services/apexrest/Translation/PickList/Knowledge__kav/Type__c
+*/
 @RestResource(UrlMapping='/Translation/*/*/*')
-//Example - /services/apexrest/Translation/PickList/Knowledge__kav/Type__c
 global class RestServiceTranslation {
     @HttpGet
     global static void doGet(){

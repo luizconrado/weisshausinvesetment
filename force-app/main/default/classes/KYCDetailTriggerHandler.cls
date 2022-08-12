@@ -1,3 +1,7 @@
+/***************
+* @group Handler Class
+* @description EKYC Trigger handler class
+*/
 public inherited sharing class KYCDetailTriggerHandler extends TriggerHandler {
     
     protected override void beforeInsert(){

@@ -10,6 +10,10 @@
         <members>EmailMessageTriggerHandlerTest</members>
         <members>ContentVersionServiceTest</members>
         <members>TestDataFactory</members>
+        <members>HexUtil</members>
+        <members>Puff</members>
+        <members>Zippex</members>
+        <members>ZippexTests</members>
         <name>ApexClass</name>
 	</types>
 	<version>53.0</version>

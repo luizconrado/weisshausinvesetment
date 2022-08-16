@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+	<types>
+		<members>AccountArchiveCaseTest</members>
+        <members>AccountArchiveCase</members>
+        <members>ContentVersionTriggerHandler</members>
+        <members>ContentVersionService</members>
+        <members>EVExternalService</members>
+        <members>AccountTriggerHandler</members>
+        <members>EmailMessageTriggerHandlerTest</members>
+        <members>ContentVersionServiceTest</members>
+        <members>TestDataFactory</members>
+        <members>HexUtil</members>
+        <members>Puff</members>
+        <members>Zippex</members>
+        <members>ZippexTests</members>
+        <name>ApexClass</name>
+	</types>
+	<version>53.0</version>
+</Package>

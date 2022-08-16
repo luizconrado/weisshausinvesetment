@@ -42,6 +42,8 @@ public class AccountTriggerHandler  extends TriggerHandler {
         
         //call function to anaonymize
         if(toAnonymize.size()>0) System.enqueueJob(new AccountScrambleData(toAnonymize));
+        //delete related case
+        if(toAnonymize.size()>0) System.enqueueJob(new AccountArchiveCase(toAnonymize));
     }
     
     

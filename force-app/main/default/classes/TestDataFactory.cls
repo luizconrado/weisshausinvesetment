@@ -70,6 +70,8 @@ public class TestDataFactory {
                           LocaleSidKey='en_US', ProfileId = p.Id, 	
                           TimeZoneSidKey='America/Los_Angeles', UserName=profileName+'@evsmertmoney.com');	
         insert u;	
+        PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = 'Slack_Standard_User'];
+        insert new PermissionSetAssignment(AssigneeId = u.id, PermissionSetId = ps.Id);
         return u;	
         
     }

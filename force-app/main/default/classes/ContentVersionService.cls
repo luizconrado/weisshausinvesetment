@@ -7,7 +7,7 @@ public class ContentVersionService {
 
     
     /***************
-    * @description sends investment file details to EV and make fields visible to all
+    * @description sends investment file details to EV and make files visible to all
     * @param cvIdList list of content version ids
     */
     @future(callout=true)
@@ -77,7 +77,7 @@ public class ContentVersionService {
                     EVExternalService.sendInvestmentDocumentInformation(o.External_Id__c, JSON.serialize(body), apiCallDetails);     	
                 }
                 Catch(Exception e){
-                    logError(e,o.Id,'sendDocumentInfoToEV','ContentVersionTrigger','Send Document To BE');
+                    logError(e,'Opportunity',o.Id,'sendDocumentInfoToEV','ContentVersionTrigger','Send Document To BE');
                 }
                 
             }
@@ -85,19 +85,95 @@ public class ContentVersionService {
                 if(toUpdatecdl.size()>0) update toUpdatecdl;
             }
             catch(Exception e){
-                logError(e,null,'sendDocumentInfoToEV','ContentVersionTrigger','Link Integeration User');
+                logError(e,'Opportunity',null,'sendDocumentInfoToEV','ContentVersionTrigger','Link Integeration User');
             }
         }
         
         
     }
     
+    /***************
+    * @description sends case details zip file details to EV and make files visible to all
+    * @param cvIdList list of content version ids
+    */
+    @future(callout=true)
+    public static void sendCaseArchiveZipToEv(List<String> cvIdList){
+        //add integeration user as share record
+        List<ContentDocumentLink> toUpdatecdl=new List<ContentDocumentLink>();
+        
+        //get file details
+        List<String> contentDocumnetIdList=new List<String>();
+        Map<String,ContentVersion> contentDocumentIdAndVersionMap=new Map<String,ContentVersion>();
+        List<ContentVersion> contentVersionsList=[SELECT Id,FileExtension, FileType , ContentDocumentId,ContentDocument.ParentId, Type__c, VersionNumber, ContentUrl, Title 
+                                                  FROM ContentVersion 
+                                                  WHERE 
+                                                  Id IN:cvIdList];
+        
+        for(ContentVersion cv:contentVersionsList){
+            contentDocumnetIdList.add(cv.ContentDocumentId);
+            contentDocumentIdAndVersionMap.put(cv.ContentDocumentId, cv);
+        }
+        
+        //get relation details
+        List<String> accIdList=new List<String>();
+        Map<String,ContentDocumentLink> entityIdAndLinkMap=new Map<String,ContentDocumentLink>();
+        List<ContentDocumentLink> documentLinkList=[SELECT Id, LinkedEntityId,ShareType,LinkedEntity.Name,LinkedEntity.Type, ContentDocumentId 
+                                                    FROM ContentDocumentLink 
+                                                    WHERE 
+                                                    ContentDocumentId IN:contentDocumnetIdList
+                                                   ];
+        
+        
+        for(ContentDocumentLink cdl:documentLinkList){
+            if(cdl.LinkedEntity.Type=='Account'){
+                accIdList.add(cdl.LinkedEntityId);
+                entityIdAndLinkMap.put(cdl.LinkedEntityId,cdl);
+            }
+        }
+        if(accIdList.size()>0){
+            //getRecord
+            List<Account> accRecordsList=[SELECT id,Auth0_ID__c,EVSM_Auth0_Id__c,Solarisbank_Tenent__c,CreatedDate FROM Account WHERE id IN:accIdList AND isPersonAccount=true];
+            
+            
+            
+            
+            for(Account a:accRecordsList){
+                try{
+                    LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(a.Id,'Account',A.Solarisbank_Tenent__c);
+                    ContentDocumentLink linkRecord=entityIdAndLinkMap.get(a.Id);
+                    ContentVersion versionRecord=contentDocumentIdAndVersionMap.get(linkRecord.ContentDocumentId);
+                    if(linkRecord.ShareType=='V' && linkRecord.LinkedEntity.Type=='Account'){
+                        linkRecord.ShareType='I';
+                        toUpdatecdl.add(linkRecord);
+                    }
+                    String customerId=(a.EVSM_Auth0_Id__c!=null)?a.EVSM_Auth0_Id__c:a.Auth0_ID__c;
+                    Map<String,Object> body=new Map<String,Object>();
+                    body.put('fileUrl',Salesforce.baseUrl+'/services/data/v53.0/sobjects/ContentVersion/'+versionRecord.id+'/VersionData');
+                    body.put('customerId',customerId);
+                    body.put('fileName', versionRecord.Title);
+                    body.put('documentId', versionRecord.ContentDocumentId);
+                    EVExternalService.sendCustomerCaseArchiveFile( JSON.serialize(body), apiCallDetails);     	
+                }
+                Catch(Exception e){
+                    logError(e,'Account',a.Id,'sendCaseArchiveZipToEv','ContentVersionTrigger','Send Case Zip To BE');
+                }
+                
+            }
+            try{
+                if(toUpdatecdl.size()>0) update toUpdatecdl;
+            }
+            catch(Exception e){
+                logError(e,'Account',null,'sendCaseArchiveZipToEv','ContentVersionTrigger','Link Integeration User');
+            }
+        }
+    }
+    
     @testVisible
-    private static void logError(Exception e,String recordId,String methodName,String componentName,String action){
+    private static void logError(Exception e,String sObjectName,String recordId,String methodName,String componentName,String action){
         LogService.LogMetadata errorDetails=new LogService.LogMetadata();
         errorDetails.addError(e);
         errorDetails.addMetadataInfo(userinfo.getUserId(), 'ContentVersionService', methodName, componentName,action);
-        errorDetails.addRecordInfo('Opportunity',recordId);
+        errorDetails.addRecordInfo(sObjectName,recordId);
         LogService.logError(errorDetails);
     }
     

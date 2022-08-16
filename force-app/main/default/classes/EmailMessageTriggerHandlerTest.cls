@@ -17,7 +17,7 @@ public class EmailMessageTriggerHandlerTest {
         
         //Insert emailmessage for case
         EmailMessage email = new EmailMessage();
-        email.FromAddress = 'asd@'+Label.Solarisbank_Support_Email;
+        email.FromAddress = 'support'+Label.Solarisbank_Support_Email;
         email.Incoming = True;
         email.ToAddress= 'test@xyz.org';
         email.Subject = oldCase.Subject;

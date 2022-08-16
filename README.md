@@ -39,6 +39,11 @@ Configure object and fields related to account for which all data in it will be 
 
 
 
+# Sfdx 
+
+## Retriev Metadata
+
+`sfdx force:source:retrieve -m ApexClass:AccountArchiveCaseTest`
 
 
 

@@ -24,7 +24,7 @@ public with sharing class SyncCampaignMembersController {
         
         List<CampaignMember> toInsertCampaignMembers=new List<CampaignMember>();
         
-        List<Subscription__c> subscriptions=[Select id,Contact__c from Subscription__c WHERE Type__c IN:products AND Subscription_Status__c='Subscribed'];
+        List<Subscription__c> subscriptions=[Select id,Contact__c from Subscription__c WHERE Type__c IN:products AND Subscription_Status__c='Subscribed' AND Is_Test__c=false];
         for(Subscription__c sub:subscriptions){
             //remove from campaing member if already member
             if(contactOrLeadMemberMap.containsKey(sub.Contact__c))  contactOrLeadMemberMap.remove(sub.Contact__c);

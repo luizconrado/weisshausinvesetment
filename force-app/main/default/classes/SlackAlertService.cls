@@ -167,7 +167,16 @@ public class SlackAlertService {
                 statusCheck=false;
             }
         }
-        
+        else if(objectName=='KYC_Detail__c'){
+            if(Boolean.valueOf(record.get('Anonymized__c'))==true){
+                statusCheck=false;
+            }
+        }
+        else if(objectName=='Customer_Classification__c'){
+            if(Boolean.valueOf(record.get('Anonymized__c'))==true){
+                statusCheck=false;
+            }
+        }
         
         return statusCheck;
     }

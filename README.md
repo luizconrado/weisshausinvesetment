@@ -43,7 +43,7 @@ Configure object and fields related to account for which all data in it will be 
 
 ## Retriev Metadata
 
-`sfdx force:source:retrieve -m CustomField:Account.USA_Tax_Verification__c`
+`sfdx force:source:retrieve -m CustomField:Customer_Classification__c.Anonymized__c `
 
 
 
@@ -62,7 +62,7 @@ Configure object and fields related to account for which all data in it will be 
     Apex::[all]::Apex
 
 ## Push to master
-1. On push comment add "[Deploy]" in comment to mark it as deployment 
+1. On push comment add "Deploy" in comment to mark it as deployment 
 2. in case summary add Apex::[T]::Apex to run specific class during deployment
 
 

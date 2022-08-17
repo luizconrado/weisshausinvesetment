@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
-		<members>AccountArchiveCaseTest</members>
-        <members>AccountArchiveCase</members>
-        <members>ContentVersionTriggerHandler</members>
-        <members>ContentVersionService</members>
-        <members>EVExternalService</members>
-        <members>AccountTriggerHandler</members>
-        <members>EmailMessageTriggerHandlerTest</members>
-        <members>ContentVersionServiceTest</members>
-        <members>TestDataFactory</members>
-        <members>HexUtil</members>
-        <members>Puff</members>
-        <members>Zippex</members>
-        <members>ZippexTests</members>
+		<members>SlackAlertService</members> 
         <name>ApexClass</name>
 	</types>
+    <types>
+        <members>Account.USA_Tax_Verification__c</members>
+		<members>Customer_Classification__c.Anonymized__c</members>
+		<members>KYC_Detail__c.Anonymized__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>KYC_Detail__c-Video Identification Layout</members>
+        <members>Customer_Classification__c-Professional Qualification Layout</members>
+		<members>Customer_Classification__c-Semi Professional</members>
+		<name>Layout</name>
+    </types>
 	<version>53.0</version>
 </Package>

@@ -629,6 +629,9 @@
 		<members>Tracking_Events__e.Record_Name__c</members>
 		<members>Tracking_Events__e.User_Id__c</members>
 		<members>Trigger_Setting__mdt.Active__c</members>
+		<members>Account.USA_Tax_Verification__c</members>
+		<members>Customer_Classification__c.Anonymized__c</members>
+		<members>KYC_Detail__c.Anonymized__c</members>
 		<name>CustomField</name>
 	</types>
 	<types>

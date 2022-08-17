@@ -43,7 +43,7 @@ Configure object and fields related to account for which all data in it will be 
 
 ## Retriev Metadata
 
-`sfdx force:source:retrieve -m ApexClass:AccountArchiveCaseTest`
+`sfdx force:source:retrieve -m CustomField:Account.USA_Tax_Verification__c`
 
 
 

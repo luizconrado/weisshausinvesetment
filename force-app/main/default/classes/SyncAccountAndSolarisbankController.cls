@@ -362,9 +362,7 @@ public without sharing  class SyncAccountAndSolarisbankController {
                         successIdentification.Last_Name__c=attempt?.payload?.userdata?.lastname?.value;
                         successIdentification.Title__c=attempt?.payload?.userdata?.title?.value;
                         successIdentification.Zipcode__c=attempt?.payload?.userdata?.address?.zipcode?.value;
-                        successIdentification.Country__c=attempt?.payload?.userdata?.address?.country?.value;
                         successIdentification.Street__c=attempt?.payload?.userdata?.address?.street?.value;
-                        successIdentification.City__c=attempt?.payload?.userdata?.address?.city?.value;
                         successIdentification.Birth_Place__c=attempt?.payload?.userdata?.birthplace?.value;
                         successIdentification.Birth_Name__c=attempt?.payload?.userdata?.birthname?.value;
                         successIdentification.Nationality__c=attempt?.payload?.userdata?.nationality?.value; 

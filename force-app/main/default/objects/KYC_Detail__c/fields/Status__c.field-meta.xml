@@ -4,6 +4,7 @@
     <externalId>false</externalId>
     <label>Status</label>
     <required>false</required>
+    <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
@@ -33,6 +34,16 @@
                 <fullName>rejected</fullName>
                 <default>false</default>
                 <label>rejected</label>
+            </value>
+            <value>
+                <fullName>AWAITING_INTERNAL_PROCESSING</fullName>
+                <default>false</default>
+                <label>AWAITING_INTERNAL_PROCESSING</label>
+            </value>
+            <value>
+                <fullName>failed</fullName>
+                <default>false</default>
+                <label>failed</label>
             </value>
         </valueSetDefinition>
     </valueSet>

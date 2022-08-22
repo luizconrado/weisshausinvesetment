@@ -125,7 +125,7 @@ public with sharing class BankingService {
         List<Attempt__c> toInsertAttempt=new List<Attempt__c>();
          
         KYC_Detail__c identRecord=[SELECT id,URL__c,Status__c,Completed_At__c,Reference__c,Account__r.Solarisbank_Tenent__c,Solarisbank_Id__c,Account__r.Solarisbank_Id__c, 
-                                   Phone__c,Valid_Until__c,Document_Type__c,Email__c,Birthday__c,First_Name__c,Last_Name__c,Zipcode__c,Country__c,City__c,Birth_Place__c,Nationality__c,Document_Number__c,Place_Of_Issue__c
+                                   Phone__c,Valid_Until__c,Document_Type__c,Email__c,Birthday__c,First_Name__c,Last_Name__c,Zipcode__c,Birth_Place__c,Nationality__c,Document_Number__c,Place_Of_Issue__c
                                    FROM KYC_Detail__c WHERE id=:identifiactionId];
         LogService.ApiCallDetails apiCallDetails =  new LogService.ApiCallDetails(identRecord.Id,'KYC_Detail__c',identRecord.Account__r.Solarisbank_Tenent__c);
         String identifiactionStatusString=SolarisbankService.fetchIdentificationDetails(identRecord.Account__r.Solarisbank_Id__c,identRecord.Solarisbank_Id__c,apiCallDetails);
@@ -164,9 +164,9 @@ public with sharing class BankingService {
                     identRecord.First_Name__c=attempt?.payload?.userdata?.firstname?.value;
                     identRecord.Last_Name__c=attempt?.payload?.userdata?.lastname?.value;
                     identRecord.Zipcode__c=attempt?.payload?.userdata?.address?.zipcode?.value;
-                    identRecord.Country__c=attempt?.payload?.userdata?.address?.country?.value;
+                    
                     identRecord.Street__c=attempt?.payload?.userdata?.address?.street?.value;
-                    identRecord.City__c=attempt?.payload?.userdata?.address?.city?.value;
+                    
                     identRecord.Birth_Place__c=attempt?.payload?.userdata?.birthplace?.value;
                     identRecord.Birth_Name__c=attempt?.payload?.userdata?.birthname?.value;
                     identRecord.Nationality__c=attempt?.payload?.userdata?.nationality?.value; 

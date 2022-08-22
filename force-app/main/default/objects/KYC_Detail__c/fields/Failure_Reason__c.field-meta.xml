@@ -4,6 +4,7 @@
     <externalId>false</externalId>
     <label>Failure Reason</label>
     <required>false</required>
+    <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
@@ -13,6 +14,26 @@
                 <fullName>TECH_LIGHTING</fullName>
                 <default>false</default>
                 <label>Tech Lighting</label>
+            </value>
+            <value>
+                <fullName>INVALID_BIRTH_DATE</fullName>
+                <default>false</default>
+                <label>INVALID_BIRTH_DATE</label>
+            </value>
+            <value>
+                <fullName>INVALID_NATIONALITY</fullName>
+                <default>false</default>
+                <label>INVALID_NATIONALITY</label>
+            </value>
+            <value>
+                <fullName>INVALID_ADDRESS</fullName>
+                <default>false</default>
+                <label>INVALID_ADDRESS</label>
+            </value>
+            <value>
+                <fullName>INVALID_COUNTRY</fullName>
+                <default>false</default>
+                <label>INVALID_COUNTRY</label>
             </value>
         </valueSetDefinition>
     </valueSet>

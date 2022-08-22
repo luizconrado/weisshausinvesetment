@@ -18,23 +18,9 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>City__c</picklist>
-        <values>
-            <fullName>BERLIN</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
         <picklist>Country_Of_Document__c</picklist>
         <values>
             <fullName>DEU</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>Country__c</picklist>
-        <values>
-            <fullName>DE</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -47,6 +33,22 @@
     </picklistValues>
     <picklistValues>
         <picklist>Failure_Reason__c</picklist>
+        <values>
+            <fullName>INVALID_ADDRESS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>INVALID_BIRTH_DATE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>INVALID_COUNTRY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>INVALID_NATIONALITY</fullName>
+            <default>false</default>
+        </values>
         <values>
             <fullName>TECH_LIGHTING</fullName>
             <default>false</default>
@@ -86,6 +88,10 @@
     </picklistValues>
     <picklistValues>
         <picklist>Status__c</picklist>
+        <values>
+            <fullName>AWAITING_INTERNAL_PROCESSING</fullName>
+            <default>false</default>
+        </values>
         <values>
             <fullName>pending</fullName>
             <default>false</default>

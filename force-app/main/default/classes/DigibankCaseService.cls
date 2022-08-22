@@ -12,8 +12,8 @@ public with sharing class DigibankCaseService {
     @AuraEnabled(cacheable=true) 
     public static Map<String,String> retriveDefaultTemplatHtml() {
         return new Map<String,String>{
-            'START'=>Constant.DEFAULT_EV_TEMPLATE_START,
-                'END'=>Constant.DEFAULT_EV_TEMPLATE_END
+            'START'=>'',/*Constant.DEFAULT_EV_TEMPLATE_START,*/
+                'END'=>''/*Constant.DEFAULT_EV_TEMPLATE_END*/
                 };
     }
     
@@ -98,7 +98,7 @@ public with sharing class DigibankCaseService {
             List<ContentVersion> cvFiles=getAttachedFileIds(caseId);
             List<String> cvIds=new List<String>();
             for(ContentVersion cv:cvFiles) cvIds.add(cv.Id);
-            success = MailUtill.sendEmailWithAttachment(bugSubject+'  '+caseDetails.Thread_Id__c,bugBody.replaceAll('\n','<br/>'), cvIds,System.label.DigibankSupport_Email, Constant.EV_SUPPORT_OWD_EMAIL, caseDetails.id);
+            success = MailUtill.sendEmailWithAttachment(bugSubject+'  '+caseDetails.Thread_Id__c,bugBody.replaceAll('\n','<br>'), cvIds,System.label.DigibankSupport_Email, Constant.EV_SUPPORT_OWD_EMAIL, caseDetails.id);
             update caseDetails;
         }
         return success;

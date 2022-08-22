@@ -18,23 +18,9 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>City__c</picklist>
-        <values>
-            <fullName>BERLIN</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
         <picklist>Country_Of_Document__c</picklist>
         <values>
             <fullName>DEU</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>Country__c</picklist>
-        <values>
-            <fullName>DE</fullName>
             <default>false</default>
         </values>
     </picklistValues>
